@@ -1,0 +1,159 @@
+directive simulator sundials
+//directive simulator deterministic
+//directive deterministic {stiff = true}
+//directive inference {name=target; burnin=400000; samples=400000; thin=50; noise_model=proportional}
+directive inference {name=target; burnin=100; samples=100; thin=10; noise_model=proportional; partial=true}
+directive sweeps [ 
+  sweepC6C12 = [
+    (condition,C6,C12) = [
+      (1,25000,0); (2,8333.33333333333,0); (3,2777.77777777778,0); (4,925.925925925926,0); (5,308.641975308642,0); (6,102.880658436214,0); (7,34.2935528120713,0); (8,11.4311842706904,0); (9,3.81039475689681,0); (10,1.27013158563227,0); (11,0.423377195210757,0); (12,0,0); 
+      (13,0,25000); (14,0,8333.33333333333); (15,0,2777.77777777778); (16,0,925.925925925926); (17,0,308.641975308642); (18,0,102.880658436214); (19,0,34.2935528120713); (20,0,11.4311842706904); (21,0,3.81039475689681); (22,0,1.27013158563227); (23,0,0.423377195210757); (24,0,0);
+    ]; 
+  ];
+  sweepC6C12double = [
+    (condition,C6,C12) = [
+      (1,25000,0); (2,8333.33333333333,0); (3,2777.77777777778,0); (4,925.925925925926,0); (5,308.641975308642,0); (6,102.880658436214,0); (7,34.2935528120713,0); (8,11.4311842706904,0); (9,3.81039475689681,0); (10,1.27013158563227,0); (11,0.423377195210757,0); (12,0,0); 
+      (13,0,25000); (14,0,8333.33333333333); (15,0,2777.77777777778); (16,0,925.925925925926); (17,0,308.641975308642); (18,0,102.880658436214); (19,0,34.2935528120713); (20,0,11.4311842706904); (21,0,3.81039475689681); (22,0,1.27013158563227); (23,0,0.423377195210757); (24,0,0);
+      (1,25000,0); (2,8333.33333333333,0); (3,2777.77777777778,0); (4,925.925925925926,0); (5,308.641975308642,0); (6,102.880658436214,0); (7,34.2935528120713,0); (8,11.4311842706904,0); (9,3.81039475689681,0); (10,1.27013158563227,0); (11,0.423377195210757,0); (12,0,0); 
+      (13,0,25000); (14,0,8333.33333333333); (15,0,2777.77777777778); (16,0,925.925925925926); (17,0,308.641975308642); (18,0,102.880658436214); (19,0,34.2935528120713); (20,0,11.4311842706904); (21,0,3.81039475689681); (22,0,1.27013158563227); (23,0,0.423377195210757); (24,0,0);
+    ];
+  ]; 
+]
+
+directive simulation { final=20; points=250 }
+
+directive rates [
+  plot_od = [x]+x0;
+  plot_fp = [x]*[fp]+f0;
+  plot_yfp = [x]*([yfp]+[f500])+yb0;
+  plot_cfp = [x]*([cfp]+[f430])+cb0;
+]
+
+directive parameters [ 
+  // Background
+  c0 = 0.001, { distribution=Uniform(1e-4,3e-1) };
+  x0 = 0.1, { interval=Real; distribution=Uniform(0,0.2) };  
+  f0=5000.0,{ interval=Real; distribution=Uniform(0.0,10000.0) }; 
+  yb0=1e3, { interval=Real; distribution=Uniform(0.0,5e3) };
+  cb0=1e3, { interval=Real; distribution=Uniform(0.0,1e4) };	
+  
+  // Autofluorescence
+  dfp=0.1,  { distribution=Uniform(1e-3,1e0) };
+  autoYFP=1e0, 	{ distribution=Uniform(1e-3,1e3) };
+  autoCFP=1e0, 	{ distribution=Uniform(1e-3,1e3) };
+  
+  C6=0.0; C12=0.0; tau=0.0; aR=1.0; aS=1.0; ATC=0.0; IPTG=0.0;
+  aYFP_PL=1000.0; aCFP_PL=1000.0; Ara=0.0; condition = 0;
+]
+
+module LuxR(aR,growth,capacity) = {
+  | ->[[capacity]*aR*[PTet]] luxR
+  | luxR ->{dR}
+  | luxR ->[[growth]*[luxR]]
+}
+module LasR(aS,growth,capacity) = {
+  | ->[[capacity]*aS*[PLac]] lasR
+  | lasR ->{dR}
+  | lasR ->[[growth]*[lasR]] 
+} 
+module TetR(P,growth,capacity) = {
+  | ->[[capacity]*aT*[P]] tetR
+  | tetR ->{dT}
+  | tetR ->[[growth]*[tetR]]
+  | tetR ->{iA*ATC}
+}
+module LacI(P,growth,capacity) = {
+  | ->[[capacity]*aL*[P]] lacI
+  | lacI ->[[growth]*[lacI]]
+  | lacI ->{dL}
+  | lacI ->{iI*IPTG}
+}
+module LuxI(P,growth,capacity) = {
+  | ->[[capacity]*[P]] luxI
+  | luxI ->{dluxI}
+  | luxI ->[[growth]*[luxI]]
+  | ->[kC6*[capacity]*[x]*[luxI]/(1+[luxI]/Klux)] c6
+} 
+module LasI(P,growth,capacity) = {
+  | ->[[capacity]*[P]] lasI
+  | lasI ->{dlasI}
+  | lasI ->[[growth]*[lasI]]
+  | ->[kC12*[capacity]*[x]*[lasI]/(1+[lasI]/Klas)] c12 
+} 
+module CFP(P,a,growth,capacity) = {
+  | ->[[capacity]*a*[P]] cfp
+  | cfp ->{dCFP}
+  | cfp ->[[growth]*[cfp]] 
+} 
+module YFP(P,a,growth,capacity) = {
+  | ->[[capacity]*a*[P]] yfp
+  | yfp ->{dYFP}
+  | yfp ->[[growth]*[yfp]] 
+} 
+module Growth(growth,tlag) = {
+  | init x c0 
+  | init grow 1 @ tlag 
+  | ->[[growth]*[x]] x 
+}
+module Control(growth,tlag,capacity) = { 
+  | Growth(growth,tlag)
+  | fp ->[[growth]*[fp]] // Dilution
+  | ->[[capacity]] fp    // Transcription/translation		
+  | fp ->{dfp}           // Degradation
+}
+module cells(growth,tlag,capacity) = { 
+  | init luxR 0 | init lasR 0 | init lacI 0 | init tetR 0 
+  | init yfp 0 | init cfp 0 | init f430 0 | init f500 0 
+  | init c6 C6 @ tau | init c12 C12 @ tau // Hack to prevent greedy evaluation of rates from hurting us
+  | Growth(growth,tlag)
+  // Autofluorescence
+  | ->[[capacity]*autoYFP] f500
+  | f500 ->[[growth]*[f500]]
+  | ->[[capacity]*autoCFP] f430
+  | f430 ->[[growth]*[f430]]
+}
+
+system Auto_growth      = { 
+  directive data [R33S175_Y81C76_OD_proc141021] 
+  directive simulation { plots = [plot_od]; sweeps = [sweepC6C12] }
+  directive parameters [ 
+    r = 1, { distribution=Uniform(0.1,10); interval=Real; variation=Multiple }; 
+    K = 2, { distribution=Uniform(0.1,5); interval=Real; variation=Multiple }; 
+    tlag = 1, { distribution=Uniform(0,10); interval=Real; variation=Multiple }; 
+  ]
+  directive rates [ growth = [grow]*r*(1-[x]/K) ]
+  | Growth(growth,tlag)
+}
+
+system Auto_control = { 
+  directive data [R33S175_Y81C76_mRFP1_proc141021] 
+	directive simulation { plots=[plot_fp]; sweeps = [sweepC6C12]; plotcolours=["#FF0000"] }
+  directive parameters [ 
+    r=1, { distribution=Uniform(1,100000); variation=Multiple }; 
+    K=2, { distribution=Uniform(1,100000); variation=Multiple }; 
+    tlag=1, { distribution=Uniform(1,100000); variation=Multiple }; 
+    rc=100, { distribution=Uniform(1,100000); variation=Multiple } ]
+  directive rates [ growth = [grow]*r*(1-[x]/K); capacity = rc ]
+  | Control(growth,tlag,capacity)
+}
+
+system Auto = {
+  directive simulation { plots=[plot_yfp; plot_cfp]; sweeps = [sweepC6C12]; plotcolours=["#FFDF00"; "#ADD8E6"] }
+  directive parameters [ 
+    r=1, { distribution=Uniform(1,100000); variation=Multiple }; 
+    K=2, { distribution=Uniform(1,100000); variation=Multiple }; 
+    tlag=1, { distribution=Uniform(1,100000); variation=Multiple }; 
+    rc=100, { distribution=Uniform(1,100000); variation=Multiple } ]
+  directive rates [ growth = [grow]*r*(1-[x]/K); capacity = rc ] 
+  directive data [ Pcat_Y81C76_mRFP1_proc141006 ] 
+  | cells(growth,tlag,capacity)
+}
+
+// Assume normal distribution by default for chained parameters
+node Auto_growth { systems = [Auto_growth] }
+node Auto_control { systems = [Auto_control] }
+node Auto { systems = [Auto] }
+
+// Control and Growth parameters
+edge Auto_growth.Auto_growth ->[r=Fixed;K=Fixed;tlag=Fixed] Auto_control.Auto_control
+edge Auto_control.Auto_control ->[r=Fixed;K=Fixed;tlag=Fixed;rc=Fixed] Auto.Auto

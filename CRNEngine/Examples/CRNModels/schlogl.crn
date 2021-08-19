@@ -1,0 +1,13 @@
+﻿directive simulation {final=100.0; points=2000; kinetics=Deterministic}
+//directive specmax X 500
+directive parameters [
+	k1 = 2250.0;
+	k2 = 37.5;
+	k3 = 0.18;
+	k4 = 2.5e-4;
+]
+
+->{k1} X | 
+X ->{k2} |
+2X ->{k3} 3X | 
+3X ->{k4} 2X

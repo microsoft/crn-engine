@@ -1,0 +1,12 @@
+﻿directive simulation { final=0.15; points=300 }
+directive parameters [r = 1.0]
+directive simulator deterministic
+directive deterministic { reltolerance=1e-5 }
+
+| X + Y ->{r} X + B
+| Y + X ->{r} Y + B
+| X + B ->{r} X + X
+| Y + B ->{r} Y + Y
+
+| 30 X
+| 20 Y 

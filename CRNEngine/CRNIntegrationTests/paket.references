@@ -1,0 +1,9 @@
+﻿group DOTNETCORE
+
+Canopy
+Expecto
+FSharp.Core
+Selenium.WebDriver
+Selenium.WebDriver.ChromeDriver
+Selenium.WebDriver.GeckoDriver.Win64
+Selenium.WebDriver.MicrosoftWebDriver

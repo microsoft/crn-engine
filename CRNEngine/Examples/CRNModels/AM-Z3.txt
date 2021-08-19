@@ -1,0 +1,36 @@
+﻿//no_auto_test
+directive simulation { final=10.0; points=10000 }
+directive parameters [r=1.0]
+directive verification abstraction stutter
+
+predicate AllX = {X=X@[0]+Y@[0]} |
+predicate AllY = {Y=X@[0]+Y@[0]} |
+predicate majority = {AllX or AllY} |
+predicate error = {not majority} |
+
+predicate invariant = {B=0 or (X>0 or Y>0)} |
+
+query AllX = {Init@[0] and Terminal@[5] and AllX@[5]} |
+query AllY = {Init@[0] and Terminal@[5] and AllY@[5]} |
+
+query invariant_preserved = { (* UNSATISFIABLE means the invariant is always preserved *)
+  invariant@[0] and not invariant@[1]
+} |
+query error = { (* UNSATISFIABLE means the error cannot be realized *)
+  abstraction connected;
+  B@[0] = 0 and
+  Terminal@[1] and
+  error@[1] and
+  ConservationOfMass@[1] and
+  invariant@[1]
+} |
+
+
+| X + Y ->{r} X + B
+| Y + X ->{r} Y + B
+| X + B ->{r} X + X
+| Y + B ->{r} Y + Y
+
+| (100000 + 1) X
+| 100000  Y 
+

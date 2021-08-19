@@ -1,0 +1,38 @@
+﻿directive simulation {initial=0.0; final=6000.0; points=1000; plots=[SignalR]}
+directive inference  { burnin = 1000; samples = 10000; thin = 100 }
+directive simulator deterministic
+directive parameters [
+	// Rates
+	kt=0.0001, {distribution=Uniform(1e-5, 2e-3); interval=Log; variation=Random};
+	//ks=1e-6, {distribution=Uniform(1e-8, 2e-5); interval=Log; variation=Random};	
+
+    // Errors and times
+    leak=0.2, {distribution=Uniform(0.0,1.0); interval=Real; variation=Random};
+    bad=0.2, {distribution=Uniform(0.0,0.3); interval=Real; variation=Random};
+    T1=600.0, {distribution=Uniform(0.0,1800.0); interval=Real; variation=Random};
+    
+    // Sweep parameters
+	N = 0.0;
+]
+directive sweeps [input = [ N = [0.0; 0.2; 0.4; 0.6] ]]
+directive data [Join_Simulated]
+directive inference { burnin = 2000; samples = 5000; thin = 10 }
+
+// Initial conditions
+init Translator 30*leak |
+init RepR 30 |
+init Join_AB 30*(1.0-leak) |
+init Helper 100 |
+init Catalyst 100 |
+init Input 10.0 * N * (1.0-bad) @ T1 |
+
+// Optional slow leak reaction
+//Join_AB ->{ks} Join_AB_1 + InputR |
+
+// Reporter
+RepR + Translator ->{kt} Waste + SignalR |
+
+// Join circuit
+Join_AB + Input <->{kt,kt} Join_AB_1 + InputR |
+Join_AB_1 + Catalyst <->{kt,kt} Join_AB_2 + CatalystR |
+Join_AB_2 + Helper <->{kt,kt} Join_AB_3 + Translator

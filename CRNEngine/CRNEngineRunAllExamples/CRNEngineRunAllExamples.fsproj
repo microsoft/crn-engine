@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <OutputType>Exe</OutputType>
+    <PlatformTarget>x64</PlatformTarget>
+    <Platforms>x64</Platforms>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="Program.fs" />
+    <None Include="paket.references" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\MomentClosure\MomentClosure\MomentClosure.fsproj" />
+    <ProjectReference Include="..\CliLibrary\CliLibrary.fsproj" />
+    <ProjectReference Include="..\CRNEngineDotNet\CRNEngineDotNet.fsproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Oslo.FSharp">
+      <HintPath>..\..\Lib\Oslo.FSharp\Oslo.FSharp.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <Target Name="Copying Sundials" AfterTargets="AfterBuild" Condition="$(OS) == Windows_NT">
+    <Exec Command="xcopy /y /q /d &quot;$(ProjectDir)..\x64\$(Configuration)\SundialsSolver15.dll&quot; &quot;$(OutDir)&quot;" />
+    <Exec Command="xcopy /y /q /d &quot;$(ProjectDir)..\x64\$(Configuration)\SundialsSolver15.pdb&quot; &quot;$(OutDir)&quot;" />
+  </Target>
+  <Import Project="..\..\.paket\Paket.Restore.targets" />
+</Project>

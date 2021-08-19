@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <PlatformTarget>x64</PlatformTarget>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="AssemblyInfo.fs" />
+    <Compile Include="moments.fs" />
+    <Compile Include="mc_utils.fs" />
+    <None Include="App.config" />
+    <None Include="paket.references" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\CRNEngine\CRNEngineDotNet\CRNEngineDotNet.fsproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Oslo.FSharp">
+      <HintPath>..\..\Lib\Oslo.FSharp\Oslo.FSharp.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <Import Project="..\..\.paket\Paket.Restore.targets" />
+</Project>

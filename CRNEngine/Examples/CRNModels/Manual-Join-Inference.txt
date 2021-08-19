@@ -1,0 +1,19 @@
+directive simulation {
+  final=600;
+  plots=[Input1; Input2; Output; Signal]
+}
+directive simulator deterministic
+directive parameters [
+  k = 0.003, {distribution=Uniform(0.0001,1)};
+  u = 0.1;
+]
+directive inference {burnin=100; samples=100}
+directive data [Join_data]
+
+| 100 Reporter
+| 100 Join
+| 10 Input2
+| 10 Input1
+| Reporter + Output ->{k} sp8 + Signal
+| Join + Input1 <->{k}{k} sp10 + sp9
+| sp10 + Input2 <->{k}{k} sp7 + Output

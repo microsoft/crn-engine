@@ -1,0 +1,9 @@
+directive simulation {final=1000.0; points=1000}
+directive simulator deterministic
+
+| init X 1000
+| init X 1000.0 @ 250.0
+| init X 1000.0 @ 500.0
+| init X 1000.0 @ 750.0
+
+| X ->{0.1}

@@ -1,0 +1,26 @@
+directive inference { burnin=1000; samples=5000; parallel=true }
+directive simulator sundials
+directive simulation {plots = [N]; points = 100; final = 140.0}
+directive deterministic {stiff=true; reltolerance = 1e-5}
+directive sweeps [ sweep1 = [c = [0.0;0.01;0.05;0.1;0.5;1.0;5.0;10.0]; IC50 = [IC50_1]; n = [n_1]; N0 = [N0_1]]
+				 ; sweep2 = [c = [0.0;0.01;0.05;0.1;0.5;1.0;5.0;10.0]; IC50 = [IC50_2]; n = [n_2]; N0 = [N0_2]] ]
+directive data [ dat1_combined; dat2_combined]
+directive parameters [ 
+  rlin = 0.1, {interval = Log; distribution=Uniform(1e-5,1e1); variation = Random};
+  rexp = 0.1, {interval = Log; distribution=Uniform(1e-5,1e1); variation = Random};
+  IC50_1 = 1.0, {interval = Log;  distribution = Uniform(1e-5,1e1); variation = Random};
+  IC50_2 = 1.0, {interval = Log;  distribution = Uniform(1e-5,1e1); variation = Random};
+  n_1 = 1.0, {interval = Log;  distribution = Uniform(1e-5,1e1); variation = Random};
+  n_2 = 1.0, {interval = Log;  distribution = Uniform(1e-5,1e1); variation = Random};
+  N0_1 = 8.0, {interval = Real; distribution = Uniform(1.0,20.0); variation = Random};
+  N0_2 = 8.0, {interval = Real; distribution = Uniform(1.0,20.0); variation = Random};
+  lag = 24.0 , {interval = Real; distribution = Uniform(0.0,48.0); variation = Random};
+  c = 0.0; K = 100.0; IC50 = 1.0; n = 1.0; N0 = 8.0
+]
+init i1 1.0 |
+init i1 -1.0 @ lag |
+init i2 1.0 @ lag |
+init i2 0.0 | 
+init N N0 |
+->[rlin*[i1] / (1.0 + (c/IC50)^n)] N |
+->[rexp*[i2]*[N]*(1.0-[N]/K) / (1.0 + (c/IC50)^n)] N

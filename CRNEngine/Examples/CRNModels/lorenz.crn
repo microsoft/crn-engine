@@ -1,0 +1,44 @@
+directive simulation {final=10.0; points=1000; plots=[[y_p]-[y_m];[x_p]-[x_m];[z_p]-[z_m]]}
+directive plot_settings { h_boundaries = [0] }
+directive simulator deterministic
+ 
+directive parameters [
+	s = 10;
+	b = 2.66667;
+	r = 28
+]
+ 
+init x_p 1 |
+init x_m 0 |
+init y_p 0 |
+init y_m 0 |
+init z_p 28 |
+init z_m 0 |
+ 
+y_p ->{s} y_p + x_p |
+x_m ->{s} x_m + x_p |
+ 
+y_m ->{s} y_m + x_m |
+x_p ->{s} x_p + x_m |
+ 
+x_p ->{r} x_p + y_p |
+x_p + z_m -> x_p + z_m + y_p |
+x_m + z_p -> x_m + z_p + y_p |
+y_m -> y_m + y_p |
+ 
+x_m ->{r} x_m + y_m |
+x_p + z_p -> x_p + z_p + y_m |
+x_m + z_m -> x_m + z_p + y_m |
+y_p -> y_p + y_m |
+ 
+x_p + y_p -> x_p + y_p + z_p |
+x_m + y_m -> x_m + y_m + z_p |
+z_m ->{b} z_m + z_p |
+ 
+x_p + y_m -> x_p + y_m + z_m |
+x_m + y_p -> x_m + y_p + z_m |
+z_p ->{b} z_p + z_m |
+ 
+2 x_p + 2 x_m -> | 
+2 y_p + 2 y_m -> | 
+2 z_p + 2 z_m -> 

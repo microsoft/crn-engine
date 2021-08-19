@@ -1,0 +1,11 @@
+**/*.js
+**/*.wasm
+!Scripts/WorkerBoot.js
+!Scripts/FastTasksWorkerBoot.js
+**/*.js.map
+**/*.d.ts
+!Scripts/declarations.d.ts
+bin
+bower_components
+node_modules
+obj

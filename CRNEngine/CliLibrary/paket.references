@@ -1,0 +1,8 @@
+﻿group NETSTANDARD
+
+FSharp.Core
+MathNet.Numerics
+#FsPickler
+FSharpIDD
+argu
+WebSharper.Core

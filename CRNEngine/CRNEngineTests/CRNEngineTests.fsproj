@@ -1,0 +1,92 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <OutputType>Exe</OutputType>
+    <PlatformTarget>x64</PlatformTarget>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="AssemblyInfo.fs" />
+    <Compile Include="jit_test.fs" />
+    <Compile Include="mset.test.fs" />
+    <Compile Include="crn.test.fs" />
+    <Compile Include="inference.test.fs" />
+    <Compile Include="model.test.fs" />
+    <Compile Include="result.test.fs" />
+    <Compile Include="sweep.test.fs" />
+    <Compile Include="sweeps.test.fs" />
+    <Compile Include="assignment.test.fs" />
+    <Compile Include="crn_settings.test.fs" />
+    <Compile Include="deterministic_settings.test.fs" />
+    <Compile Include="environment.test.fs" />
+    <Compile Include="expression.test.fs" />
+    <Compile Include="InferenceSiteGraph.test.fs" />
+    <Compile Include="inference_settings.test.fs" />
+    <Compile Include="parameter.test.fs" />
+    <Compile Include="parametersummary.test.fs" />
+    <Compile Include="simulation_settings.test.fs" />
+    <Compile Include="table.test.fs" />
+    <Compile Include="statistics.test.fs" />
+    <Compile Include="Array.fs" />
+    <Compile Include="CRNTests.fs" />
+    <Compile Include="moments.test.fs" />
+    <Compile Include="CTMCTests.fs" />
+    <Compile Include="CMETest.fs" />
+    <Compile Include="CellGrowth.fs" />
+    <Compile Include="CharacterizationTests.fs" />
+    <Compile Include="ParserTests.fs" />
+    <Compile Include="SimulationTests.fs" />
+    <Compile Include="SimulatorsRegressionTests.fs" />
+    <Compile Include="SpatialTests.fs" />
+    <Compile Include="InferenceTests.fs" />
+    <Compile Include="PruneTests.fs" />
+    <Compile Include="ModelTests.fs" />
+    <Compile Include="RNGTests.fs" />
+    <Compile Include="ExportTests.fs" />
+    <Compile Include="GUITests.fs" />
+    <Compile Include="Program.fs" />
+    <Content Include="app.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Include="AM_obs_noised.csv">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="dat1.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="dat1_1rep.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="dat2.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="dat2_1rep.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <Content Include="Pcat_R123_cfp_130607.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ssa_stationary_2stage.dat">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <None Include="paket.references" />
+    <None Include="Models\Autofluorescence.crn" />
+    <None Include="Models\GoalReceivers.crn" />
+    <None Include="Models\cellgrowth_lag.crn" />
+    <None Include="Models\Control.crn" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CliLibrary\CliLibrary.fsproj" />
+    <ProjectReference Include="..\CRNEngineDotNet\CRNEngineDotNet.fsproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Oslo.FSharp">
+      <HintPath>..\..\Lib\Oslo.FSharp\Oslo.FSharp.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <Target Name="Copying Sundials" AfterTargets="AfterBuild" Condition="$(OS) == Windows_NT">
+    <Exec Command="xcopy /y /q /d &quot;$(SolutionDir)x64\$(Configuration)\SundialsSolver15.dll&quot; &quot;$(OutDir)&quot;" />
+    <Exec Command="xcopy /y /q /d &quot;$(SolutionDir)x64\$(Configuration)\SundialsSolver15.pdb&quot; &quot;$(OutDir)&quot;" />
+  </Target>
+  <Import Project="..\..\.paket\Paket.Restore.targets" />
+</Project>

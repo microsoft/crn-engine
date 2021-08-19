@@ -1,0 +1,29 @@
+directive sample 0.0,1000.0 100
+directive plot Fuel; Autocatalyst; sp_12
+directive scale 500.0
+directive parameters
+  [ e = 2.71828183
+  ; R = 0.0019872
+  ; T = 298.15 ]
+
+init Autocatalyst 100.0 |
+init FluorescingAutocatalytic 100.0 |
+init Fuel 100.0 |
+init Substrate 100.0 |
+FluorescingAutocatalytic + Autocatalyst ->{0.0006} sp_0 |
+FluorescingAutocatalytic + Fuel ->{0.0006} sp_1 |
+Substrate + Autocatalyst <->{0.0003}{0.1126} sp_4 |
+sp_7 + Fuel ->{0.00042} sp_9 + Autocatalyst |
+sp_9 <->{0.1126}{0.0003} sp_10 + Autocatalyst |
+sp_10 + Fuel <->{0.0003}{0.1126} sp_11 |
+sp_7 + FluorescingAutocatalytic <->{0.0003}{0.1126} sp_8 |
+sp_8 + Fuel ->{0.00042} sp_0 + sp_9 |
+FluorescingAutocatalytic + sp_6 ->{0.0006} sp_13 + sp_12 |
+sp_4 <->{0.04}{0.00042} sp_7 + sp_6 |
+sp_4 + FluorescingAutocatalytic <->{0.0003}{0.1126} sp_5 |
+sp_8 + sp_6 <->{0.00042}{0.04} sp_5 |
+Substrate + FluorescingAutocatalytic <->{0.0003}{0.1126} sp_2 |
+sp_5 <->{0.1126}{0.0003} sp_2 + Autocatalyst |
+sp_2 + Fuel <->{0.0003}{0.1126} sp_14 |
+Substrate + Fuel <->{0.0003}{0.1126} sp_3 |
+sp_14 <->{0.1126}{0.0003} FluorescingAutocatalytic + sp_3

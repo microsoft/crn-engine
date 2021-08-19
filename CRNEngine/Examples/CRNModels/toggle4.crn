@@ -1,0 +1,19 @@
+directive simulation {final=1000; points=2000; plots=[pu; pv] }
+directive simulator deterministic
+directive parameters [
+	a_1=1.0, {variation=Random};
+	a_2=1.0, {variation=Random};    
+	b_1=1.0, {variation=Random};
+	b_2=1.0, {variation=Random};
+	K_1=1.0, {variation=Random};
+	K_2=1.0, {variation=Random};
+]
+
+->[a_1/(K_1+[pv]*[pv])] mu |
+mu ->{1.0} |
+mu ~->{b_1} pu |
+pu ->{0.1} |
+->[a_2/(K_2+[pu]*[pu])] mv |
+mv ->{1.0} |
+mv ~->{b_2} pv |
+pv ->{0.1}

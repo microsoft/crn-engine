@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DefineConstants>TRACE;JavaScript</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DefineConstants>TRACE;JavaScript</DefineConstants>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="..\ParserCombinators\websharperstubs.fs" Link="websharperstubs.fs" />
+    <Compile Include="..\ParserCombinators\ParserCombinators.fsi" Link="ParserCombinators.fsi" />
+    <Compile Include="..\ParserCombinators\ParserCombinators.fs" Link="ParserCombinators.fs" />
+    <None Include="paket.references" />
+  </ItemGroup>
+  <Import Project="..\..\.paket\Paket.Restore.targets" />
+</Project>

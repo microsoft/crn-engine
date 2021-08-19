@@ -1,0 +1,19 @@
+directive sample 0.0,6000.0 1000
+directive plot Signal
+directive scale 10.0
+directive simulation deterministicstiff
+directive reltolerance 1e-5
+directive parameters
+  [ N = 1.0
+  ; T1 = 600.0
+  ; e = 2.71828183
+  ; R = 0.0019872
+  ; T = 298.15 ]
+
+event Input1 (N * 10.0) @ T1 |
+init Input2 10.0 |
+init Join 100.0 |
+init Reporter 100.0 |
+sp_1 + Input2 <->{0.0003}{0.0003} sp_3 + sp_2 |
+Join + Input1 <->{0.0003}{0.0003} sp_1 + sp_0 |
+Reporter + sp_2 ->{0.0003} sp_4 + Signal

@@ -1,0 +1,3 @@
+#I want this folder to exist to simplify copying from it
+**/*.wasm
+Scripts/CRNEngine

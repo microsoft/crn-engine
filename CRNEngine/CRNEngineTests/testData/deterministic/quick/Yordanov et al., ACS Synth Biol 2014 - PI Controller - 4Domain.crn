@@ -1,0 +1,115 @@
+directive sample 0.0,150000.0 1000
+directive plot (R - R'); (V - V'); (Y - Y'); (L - L')
+directive simulation deterministicstiff
+directive reltolerance 1e-5
+directive parameters
+  [ deg = 0.0008
+  ; cat = 0.0008
+  ; pol = 0.0167
+  ; nick = 0.0167
+  ; x0 = 4.0
+  ; ann = 0.01
+  ; bind = 5.4E-06
+  ; bind2 = 0.001
+  ; bind1 = 5E-05
+  ; unbind = 0.1126
+  ; Cmax = 1000.0
+  ; c = 0.0008
+  ; kt = 0.001
+  ; ku = 0.001
+  ; s = 2.0
+  ; e = 2.71828183
+  ; R = 0.0019872
+  ; T = 298.15 ]
+
+event R (2.0 * x0) @ 100000.0 |
+event R' (2.0 * x0) @ 50000.0 |
+init Annihilation_15 Cmax |
+init Annihilation_14 Cmax |
+init Annihilation_13 Cmax |
+init Annihilation_12 Cmax |
+init Annihilation_11 Cmax |
+init Annihilation_10 Cmax |
+init Annihilation_9 Cmax |
+init Annihilation_8 Cmax |
+init Annihilation_7 Cmax |
+init Annihilation_6 Cmax |
+init Annihilation_5 Cmax |
+init Annihilation_4 Cmax |
+init Annihilation_3 Cmax |
+init Annihilation_2 Cmax |
+init Annihilation_1 Cmax |
+init Annihilation Cmax |
+init Catalysis_7 Cmax |
+init Catalysis_6 Cmax |
+init Catalysis_5 Cmax |
+init Catalysis_4 Cmax |
+init Catalysis_3 Cmax |
+init Catalysis_2 Cmax |
+init Catalysis_1 Cmax |
+init Catalysis Cmax |
+init Catalysis'_7 Cmax |
+init Catalysis'_6 Cmax |
+init Catalysis'_5 Cmax |
+init Catalysis'_4 Cmax |
+init Catalysis'_3 Cmax |
+init Catalysis'_2 Cmax |
+init Catalysis'_1 Cmax |
+init Catalysis' Cmax |
+init CatalysisInv_1 Cmax |
+init CatalysisInv Cmax |
+init CatalysisInv'_1 Cmax |
+init CatalysisInv' Cmax |
+init Degradation_1 Cmax |
+init Degradation Cmax |
+init Degradation'_1 Cmax |
+init Degradation' Cmax |
+init R x0 |
+V ->{0.2} V + Y |
+V' ->{0.2} V' + Y' |
+Y ->{0.1} |
+Y' ->{0.1} |
+Y' + Y ->{0.1} |
+L + Y ->{0.01} L |
+L' + Y' ->{0.01} L' |
+L + L' ->{1.0} |
+Catalysis + R ->{(kt * c)} sp_1 + sp_0 |
+Annihilation_4 + R <->{kt}{kt} sp_2 + Annihilation_5 |
+Catalysis_1 + sp_0 ->{kt} sp_4 + sp_3 + R |
+Catalysis_4 + sp_3 ->{(kt * c)} sp_6 + sp_8 |
+Catalysis_2 + sp_3 ->{(kt * c)} sp_6 + sp_7 |
+Degradation + sp_3 ->{(kt * c)} sp_6 + sp_5 |
+Annihilation_12 + sp_3 <->{kt}{kt} sp_9 + Annihilation_13 |
+Catalysis_5 + sp_8 ->{kt} sp_10 + V + sp_3 |
+Degradation_1 + V ->{(kt * c)} sp_12 + sp_11 |
+Annihilation_8 + V <->{kt}{kt} sp_13 + Annihilation_9 |
+Catalysis_3 + sp_7 ->{kt} sp_15 + sp_14 + sp_3 |
+Catalysis_6 + sp_14 ->{(kt * c)} sp_17 + sp_16 |
+Annihilation + sp_14 <->{kt}{kt} sp_18 + Annihilation_1 |
+Catalysis_7 + sp_16 ->{kt} sp_19 + V + sp_14 |
+Catalysis' + R' ->{(kt * c)} sp_23 + sp_22 |
+sp_2 + R' ->{kt} sp_21 + sp_20 |
+Annihilation_6 + R' <->{kt}{kt} sp_24 + Annihilation_7 |
+sp_24 + R ->{kt} sp_26 + sp_25 |
+Catalysis'_1 + sp_22 ->{kt} sp_28 + sp_27 + R' |
+Catalysis'_4 + sp_27 ->{(kt * c)} sp_31 + sp_33 |
+Catalysis'_2 + sp_27 ->{(kt * c)} sp_31 + sp_32 |
+Degradation' + sp_27 ->{(kt * c)} sp_31 + sp_29 |
+sp_9 + sp_27 ->{kt} sp_30 + sp_29 |
+Annihilation_14 + sp_27 <->{kt}{kt} sp_34 + Annihilation_15 |
+sp_34 + sp_3 ->{kt} sp_35 + sp_5 |
+Catalysis'_5 + sp_33 ->{kt} sp_36 + V' + sp_27 |
+Degradation'_1 + V' ->{(kt * c)} sp_39 + sp_37 |
+sp_13 + V' ->{kt} sp_38 + sp_37 |
+Annihilation_10 + V' <->{kt}{kt} sp_40 + Annihilation_11 |
+sp_40 + V ->{kt} sp_41 + sp_11 |
+Catalysis'_3 + sp_32 ->{kt} sp_43 + sp_42 + sp_27 |
+Catalysis'_6 + sp_42 ->{(kt * c)} sp_47 + sp_46 |
+sp_18 + sp_42 ->{kt} sp_45 + sp_44 |
+Annihilation_2 + sp_42 <->{kt}{kt} sp_48 + Annihilation_3 |
+sp_48 + sp_14 ->{kt} sp_50 + sp_49 |
+Catalysis'_7 + sp_46 ->{kt} sp_51 + V' + sp_42 |
+CatalysisInv + Y ->{(kt * c)} sp_53 + sp_52 |
+CatalysisInv_1 + sp_52 ->{kt} sp_54 + sp_27 + Y |
+CatalysisInv' + Y' ->{(kt * c)} sp_56 + sp_55 |
+CatalysisInv'_1 + sp_55 ->{kt} sp_57 + sp_3 + Y'

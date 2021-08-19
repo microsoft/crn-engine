@@ -1,0 +1,15 @@
+﻿X ->{1} Y |
+Y ->{2} |
+init X 30
+
+system foo = {
+X ->{2} Y |
+Y ->{1} |
+init X 40
+}
+
+system bar = {
+X ->{1} Y |
+Y ->{1} |
+init X 20
+}

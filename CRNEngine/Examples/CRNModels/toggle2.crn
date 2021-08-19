@@ -1,0 +1,15 @@
+directive simulation {final=1000; points=2000; plots=[u; v] }
+directive simulator deterministic
+directive parameters [
+	a_1=1.0, {variation=Random};
+	a_2=1.0, {variation=Random};    
+	K_1=1.0, {variation=Random};
+	K_2=1.0, {variation=Random};
+	d_1=1.0, {variation=Random};
+	d_2=1.0, {variation=Random};
+]
+
+->[a_1/(K_1+[v]*[v])] u |
+u ->{d_1} |
+->[a_2/(K_2+[u]*[u])] v |
+v ->{d_2}

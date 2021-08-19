@@ -1,0 +1,12 @@
+﻿directive simulation { final=36000.0; points=200; plots=[X] }
+directive parameters [r = 1e-4]
+directive simulator pde
+directive spatial { nx=101; xmax=0.05; dt=500.0; default_diffusion=1e-10; random=0.2; dimensions=2 }
+
+| X + Y ->{r} X + B
+| Y + X ->{r} Y + B
+| X + B ->{r} X + X
+| Y + B ->{r} Y + Y
+
+| 5 X
+| 5 Y 

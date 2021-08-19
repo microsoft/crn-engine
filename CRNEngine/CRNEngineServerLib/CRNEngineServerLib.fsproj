@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <PlatformTarget>x64</PlatformTarget>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="AssemblyInfo.fs" />
+    <Compile Include="Utility.fs" />
+    <Compile Include="Serialisation.fs" />
+    <Compile Include="Messages.fs" />
+    <Compile Include="Jobs.fs" />
+    <Compile Include="Exports.fs" />
+    <Compile Include="Parse.fs" />
+    <Compile Include="Inference.fs" />
+    <Compile Include="Simulation.fs" />
+    <Compile Include="StateSpace.fs" />
+    <Compile Include="Synthesis.fs" />
+    <Compile Include="Server.fs" />
+    <None Include="paket.references" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\MomentClosure\MomentClosure\MomentClosure.fsproj" />
+    <ProjectReference Include="..\..\StabilityZ3\StabilityZ3\StabilityZ3.fsproj" />
+    <ProjectReference Include="..\CliLibrary\CliLibrary.fsproj" />
+    <ProjectReference Include="..\CRNEngineCloudLib\CRNEngineCloudLib.fsproj" />
+    <ProjectReference Include="..\CRNEngineDotNet\CRNEngineDotNet.fsproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Oslo.FSharp">
+      <HintPath>..\..\Lib\Oslo.FSharp\Oslo.FSharp.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <Import Project="..\..\.paket\Paket.Restore.targets" />
+</Project>

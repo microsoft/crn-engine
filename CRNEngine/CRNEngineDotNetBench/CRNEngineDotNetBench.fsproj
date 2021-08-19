@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="AssemblyInfo.fs" />
+    <Compile Include="SimulationBenchmark.fs" />
+    <Compile Include="InferenceBenchmark.fs" />
+    <Compile Include="FunctionalRateBenchmark.fs" />
+    <Compile Include="CharacterizationBenchmark.fs" />
+    <Compile Include="LambdaBenchmark.fs" />
+    <Compile Include="ExpressionBenchmark.fs" />
+    <Compile Include="Program.fs" />
+    <None Include="paket.references" />
+    <None Include="..\..\Data\AM_obs_noised.csv">
+      <Link>AM_obs_noised.csv</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="..\..\Data\Pcat_Y81C76_EYFP_ECFP_proc141006.txt">
+      <Link>Pcat_Y81C76_EYFP_ECFP_proc141006.txt</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="..\..\Data\R33S32_Y81C76_EYFP_ECFP_proc140916.txt">
+      <Link>R33S32_Y81C76_EYFP_ECFP_proc140916.txt</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="..\..\Data\R33S175_Y81C76_EYFP_ECFP_proc141021.txt">
+      <Link>R33S175_Y81C76_EYFP_ECFP_proc141021.txt</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="..\..\Data\RS100S32_Y81C76_EYFP_ECFP_proc140916.txt">
+      <Link>RS100S32_Y81C76_EYFP_ECFP_proc140916.txt</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CliLibrary\CliLibrary.fsproj" />
+    <ProjectReference Include="..\CRNEngineDotNet\CRNEngineDotNet.fsproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Oslo.FSharp">
+      <HintPath>..\..\Lib\Oslo.FSharp\Oslo.FSharp.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+  </PropertyGroup>
+  <Target Name="Copying Sundials" AfterTargets="AfterBuild" Condition="$(OS) == Windows_NT">
+    <Exec Command="xcopy /y /q /d &quot;$(SolutionDir)x64\$(Configuration)\SundialsSolver15.dll&quot; &quot;$(OutDir)&quot;" />
+    <Exec Command="xcopy /y /q /d &quot;$(SolutionDir)x64\$(Configuration)\SundialsSolver15.pdb&quot; &quot;$(OutDir)&quot;" />
+  </Target>
+  <Import Project="..\..\.paket\Paket.Restore.targets" />
+</Project>

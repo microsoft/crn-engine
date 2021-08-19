@@ -1,0 +1,45 @@
+directive simulation { final=7200.0; points=30000; plots=[MeP1;MeP2;MeP3] }
+directive simulator deterministic
+directive deterministic {stiff=true}
+directive parameters [
+  dMe = 9.329349e-5;
+  b = 3.177334e-11;
+  c = 8.302928e-8;
+  g1 = 20930.81;
+  g2 = 17592.64;
+  g3 = 10639.4;
+  dP = 0.13;
+  u1 = 0.000876407;
+  u2 = 5.658359e-6;
+  u3 = 4.176587e-7;
+  uT = 1.184643e-6;
+  vT = 0.0011091974705091;
+  bT = 1.662768e-9;
+  gT = 1505;
+  dT = 0.001725968;
+  e = 0.1141804;
+  gM = 150.5;
+  dM = 7.9892e-5;
+  q = 21035;
+]
+
+module Pep(Pi,M,TM,MPi,TMPi,MePi,Me,ui) = { 
+  | M + Pi <->{b}{ui} MPi 
+  | TM + Pi <->{c}{ui*q} TMPi 
+  | TMPi ->{vT} T + MPi 
+  | MPi ->{e} MePi 
+  | MePi ->{ui} Me 
+  | Me ->{dMe} 
+}
+
+| <->{gT}{dT} T 
+| <->{gM}{dM} M 
+| T + M <->{bT}{uT} TM 
+
+| <->{g1}{dP} P1 
+| <->{g2}{dP} P2 
+| <->{g3}{dP} P3 
+
+| Pep(P1,M,TM,MP1,TMP1,MeP1,Me,u1) 
+| Pep(P2,M,TM,MP2,TMP2,MeP2,Me,u2) 
+| Pep(P3,M,TM,MP3,TMP3,MeP3,Me,u3)

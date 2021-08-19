@@ -1,0 +1,11 @@
+﻿directive parameters [N = 0.0010]
+directive sweeps [mySweep = [N = [0.0005; 0.0010; 0.0015; 0.0020]]]
+
+X + Y ->{N} X + B |
+Y + X ->{0.002} Y + B |
+X + B ->{0.003} X + X |
+Y + B ->{0.004} Y + Y |
+
+init X 30 |
+init Y 20 |
+init B 0

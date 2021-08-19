@@ -1,0 +1,9 @@
+﻿directive simulation { final=2000.0; points=1000; plots=[u] }
+directive simulator pde
+directive spatial { dt=0.5; xmax=100.0; nx=51; diffusibles = [ u=1.0; v=12.0 ]; random = 0.1; boundary=ZeroFlux }
+directive parameters [b = 0.5]
+
+| 2 u
+| 4 v
+| <->[[u]*[u]/[v]]{b} u
+| <->[[u]*[u]]{1.0} v

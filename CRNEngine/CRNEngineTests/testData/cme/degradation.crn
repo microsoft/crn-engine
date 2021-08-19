@@ -1,0 +1,9 @@
+directive simulation cme
+directive sample 0.6931471806 1000
+directive plot X 
+directive reltolerance 1e-5
+directive parameters [ a=10.0; k=1.0]
+directive sweep mysweep =
+ { k = [1.0] }
+
+init X a | X ->{k}

@@ -1,0 +1,13 @@
+﻿directive inference { burnin=90; samples=95 }
+directive simulator deterministic
+directive parameters [N = 0.0010]
+directive sweeps [mySweep = [N = [0.0005; 0.0010; 0.0015; 0.0020]]]
+
+X + Y ->{N} X + B |
+Y + X ->{0.2} Y + B |
+X + B ->{0.3} X + X |
+Y + B ->{0.4} Y + Y |
+
+init X 30 |
+init Y 20 |
+init B 0

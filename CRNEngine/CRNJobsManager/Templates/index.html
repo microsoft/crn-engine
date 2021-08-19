@@ -1,0 +1,77 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>CRN Jobs Manager</title>
+    <meta charset="utf-8" />
+</head>
+<body>
+    <div id="app">
+        <h1 data-bind="text: 'CRN Jobs Manager ('+Account()+')'"></h1>
+        <button class="e-jobs-reload" data-bind="click: reload">Reload</button>
+        <h2 data-bind="text: StatusText"></h2>
+        <span data-bind="visible: Error() != null, text: 'Error: '+Error()"></span>
+        <div id="jobs">
+            <div class="c-jobs-header" data-bind="if: Jobs().length > 0">
+                <div class="c-jobs-header__prop"></div>
+                <div class="c-jobs-header__prop"></div>
+                <div class="c-jobs-header__prop"></div>
+                <div class="c-jobs-header__prop"></div>
+                <div class="c-jobs-header__prop"></div>
+                <div class="c-jobs-header__commands">
+                    <span>All<input type="checkbox" data-bind="nullableChecked: AllSelected" /></span>
+                </div>
+            </div>
+            <!-- ko foreach: Jobs -->
+            <div class="c-job" data-bind="class: 's-state-'+State().toLowerCase()">
+                <div class="c-job__props">
+                    <div class="c-job__prop">
+                        <span class="c-job__prop-header">ID:</span>
+                        <span data-bind="text: Job().id"></span>
+                    </div>
+                    <div class="c-job__prop">
+                        <span class="c-job__prop-header">Type:</span>
+                        <span data-bind="text: Job().verb"></span>
+                    </div>
+                    <div class="c-job__prop">
+                        <span class="c-job__prop-header">Start:</span>
+                        <span data-bind="text: new Date(Job().start).toLocaleString()"></span>
+                    </div>
+                    <div class="c-job__prop">
+                        <span class="c-job__prop-header">State:</span>
+                        <span data-bind="text: State, class: 's-state-'+State().toLowerCase()+'__text'"></span>
+                    </div>
+                    <div class="c-job__prop">
+                        <span class="c-job__prop-header">Results:</span>
+                        <!-- ko if: ZipFile() != null -->
+                        <a data-bind="attr: { href: ZipFile().uri }"><span data-bind="text: ZipFile().name"></span></a>
+                        <!-- /ko -->
+                    </div>
+                    <div>
+                        <input type="checkbox" data-bind="checked: Selected" />
+                    </div>
+                </div>
+                <div>
+                    <!-- ko foreach: Files -->
+                    <div>
+                        <span class="c-job__prop-header">File:</span>
+                        <a data-bind="attr: { href: uri }"><span data-bind="text: name"></span></a>
+                    </div>
+                    <!-- /ko -->
+                </div>
+            </div>
+            <!-- /ko -->
+            <div class="c-jobs-footer" data-bind="if: Jobs().length > 0">
+                <div class="c-jobs-footer__prop"></div>
+                <div class="c-jobs-footer__prop"></div>
+                <div class="c-jobs-footer__prop"></div>
+                <div class="c-jobs-footer__prop"></div>
+                <div class="c-jobs-footer__prop"></div>
+                <div class="c-jobs-footer__commands">
+                    <button data-bind="click: stopSelected">Stop Selected</button>
+                    <button data-bind="click: deleteSelected">Delete Selected</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

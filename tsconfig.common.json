@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "noImplicitAny": true,
+    "noImplicitReturns": true,
+    "noImplicitThis": true,
+    "alwaysStrict": true,
+    "module": "es6",
+    "declaration": true,
+    "noEmitOnError": true,
+    "removeComments": false,
+    "sourceMap": true,
+    "target": "es5",
+    // It once happened that the node_modules/@types folder got the nodejs types in it for some reason. This caused several browser functions to have their types redefined, causing compilations to fail in a way that's fairly hard to diagnose. This line causes the TS compiler to only use typings that are explicitly listed here. This adds a slight maintenance burden, but I currently do not see any better solution.
+    "types": [ "jquery", "jqueryui", "requirejs", "tinycolor" ]
+  }
+}

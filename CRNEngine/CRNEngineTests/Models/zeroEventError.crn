@@ -1,0 +1,5 @@
+directive simulation { initial=-10.0; final = 100.0 }
+directive simulator deterministic
+directive parameters [ r=2.0; s=1.5 ]
+init X (r*s) @ 0.0 |
+X ->{1.0}

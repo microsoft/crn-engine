@@ -1,0 +1,30 @@
+type file
+id CRNEngine
+licenseUrl https://crn.azurewebsites.net/Docs/license.html
+projectUrl https://www.microsoft.com/en-us/research/group/biological-computation/
+authors Colin Gravill,Neil Dalchau
+
+description
+  Model chemical reaction networks
+tags
+  F#, Biology
+
+files
+	build/CRNEngineDotNet.dll
+	build/CRNEngineDotNet.pdb
+	build/Filzbach.FSharp.Portable.dll
+	build/Filzbach.FSharp.Portable.pdb
+	build/Oslo.FSharp.dll
+	build/Oslo.FSharp.pdb
+	build/ParserCombinators.dll
+	build/ParserCombinators.pdb
+	build/ReactionDiffusion.dll
+	build/ReactionDiffusion.pdb
+	build/SundialsSolver15.dll ==> build
+	build/SundialsSolver15.pdb ==> build
+	CRNEngineDotNET/CRNEngine.targets ==> build
+
+	HTML5CRN/Docs/license.html ==> .
+
+dependencies
+	#FSharp.Core >= 4.2.3

@@ -1,0 +1,13 @@
+directive simulation { 
+  final=600; 
+  plots=[Input1; Input2; Output; Signal];
+}
+directive simulator deterministic
+directive parameters [ k = 0.003; u = 0.1 ]
+| constant 100 Reporter 
+| constant 100 Join
+| 10 Input2 @ 50
+| 10 Input1 @ 50
+| Reporter + Output ->{k} sp2 + Signal
+| Join + Input1 <->{k}{k} sp4 + sp3
+| sp4 + Input2 <->{k}{k} sp1 + Output

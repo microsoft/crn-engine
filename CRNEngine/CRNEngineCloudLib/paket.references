@@ -1,0 +1,8 @@
+﻿group NETSTANDARD
+
+WindowsAzure.Storage
+Microsoft.Azure.Batch
+
+#Streams
+FSharp.Core
+WebSharper.Core

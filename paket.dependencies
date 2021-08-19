@@ -1,0 +1,249 @@
+version 5.245.1
+
+group NETSTANDARD
+    source https://api.nuget.org/v3/index.json
+    framework: netstandard2.0
+    redirects: on
+    storage:none
+
+    nuget FSharp.Core ~> 4.7.0 redirects: force 
+    nuget WebSharper = 4.5.19.349
+    nuget WebSharper.FSharp = 4.5.19.349
+	nuget WebSharper.Core = 4.5.19.349
+
+    nuget FSharp.Collections.ParallelSeq ~> 1.1.2
+    nuget FSharp.Compiler.Service
+    
+    nuget Giraffe >= 3.4.0
+    nuget Microsoft.AspNetCore >= 2.1.6
+    nuget Microsoft.AspNetCore.StaticFiles
+    nuget Microsoft.AspNetCore.WebSockets
+    nuget Microsoft.AspNetCore.WebSockets.Server
+
+    nuget WindowsAzure.Storage 9.3.3
+	nuget Microsoft.Azure.Batch ~> 10.1.0
+
+    nuget FSharpIDD >= 0.4.3
+    nuget FSharpIDD.WS >= 0.4.3
+
+    nuget FParsec = 1.1.1
+
+	nuget DynamicLanguageRuntime >= 1.1.2
+	nuget FSharp.Interop.Dynamic 4.0.3-beta95
+	nuget Python.Runtime.NETStandard
+	nuget Microsoft.Msagl
+	nuget Microsoft.Msagl.Drawing
+	nuget Microsoft.Msagl.GraphViewerGDI
+
+    nuget MathNet.Numerics >= 4.7.0
+    nuget MathNet.Numerics.FSharp >= 4.7.0
+    nuget MathNet.Symbolics ~> 0.20.0
+
+    nuget Argu 6.0.0
+
+    nuget Newtonsoft.Json = 12.0.2
+
+    nuget BenchmarkDotNet ~> 0.11.4
+
+    nuget Microsoft.Z3.x64 4.8.4
+    nuget Microsoft.ML.Probabilistic >= 0.3.1810.501
+    nuget Microsoft.ML.Probabilistic.Compiler
+    nuget Microsoft.ML.Probabilistic.Learners
+
+    nuget FsLexYacc >= 10.0.0 
+	nuget FsLexYacc.Runtime >= 10.0.0 
+
+	nuget XPlot.Plotly ~> 1.5.0
+
+	nuget System.Drawing.Common >= 4.5.1
+
+    nuget SixLabors.ImageSharp 1.0.0-beta0007
+	
+	nuget FSBOL >= 2.2.1.1
+	nuget FSBOLJS >= 2.2.1.5
+
+    nuget Thoth.Json.net >= 2.5.0
+
+group NETFRAMEWORK
+
+    source https://api.nuget.org/v3/index.json
+    framework:net472
+    redirects: on
+    storage:none
+
+    nuget FSharp.Core ~> 4.7.0 redirects: force 
+
+    nuget Newtonsoft.Json = 12.0.2
+
+    #Only existed as netframework or netcore
+    nuget FsLexYacc >= 10.0.0 
+	nuget FsLexYacc.Runtime >= 10.0.0 
+
+	# Dependencies for Turing-Z3 project
+	nuget Argu
+	nuget MathNet.Numerics >= 4.7.0
+    nuget MathNet.Numerics.FSharp >= 4.7.0
+    nuget MathNet.Symbolics ~> 0.20.0
+	nuget Microsoft.Z3.x64 4.8.4
+	nuget DynamicLanguageRuntime
+	nuget FSharp.Plotly
+	
+    #Only existed as netframework currently, working on netstandard
+    nuget Microsoft.Msagl 1.1.3
+    nuget Microsoft.Msagl.Drawing 1.1.3
+	nuget Microsoft.Msagl.GraphViewerGDI 1.1.3
+
+    nuget XPlot.Plotly ~> 3.0.1
+
+    nuget FSharp.Compiler.Service ~> 28.0.0
+
+    nuget SixLabors.ImageSharp 1.0.0-beta0006
+    nuget SixLabors.ImageSharp.Drawing 1.0.0-beta0006
+
+    nuget System.Drawing.Common 4.6.0-preview5.19224.8
+
+group DOTNETCORE
+
+    source https://api.nuget.org/v3/index.json
+    framework: netcoreapp3.1
+    redirects: on
+    storage:none
+
+    nuget Yarn.MSBuild 1.22.4
+    nuget Node.js.redist 10.16.3
+    
+    nuget FSharp.Core ~> 4.7.0 redirects: force 
+    nuget Fable.Core >= 3.1.2
+    nuget Fable.Elmish >= 3.0.6
+    nuget Fable.Elmish.React >= 3.0.1
+    nuget Fable.Elmish.HMR >= 4.0.1
+    nuget Fable.Elmish.Debugger >= 3.0.3 
+    nuget Fable.Browser.WebSocket >= 1.0.0
+    nuget Fulma
+
+    nuget Fable.PowerPack >= 3.0.0
+    nuget Fable.React 5.3.5
+
+    nuget FSharpIDD >= 0.4.3
+    nuget FSharpIDD.WS >= 0.4.3
+
+    nuget FsPickler >= 5.2.0
+    nuget FsPickler.Json >= 5.2.0
+
+    nuget FsCheck ~> 2.14.0
+    nuget FsUnit.xUnit ~> 3.8.0
+    nuget FSharp.Collections.ParallelSeq ~> 1.1.2
+    nuget xunit.runner.console ~> 2.4.1
+    nuget xunit.runner.visualstudio ~> 2.4.1
+
+    nuget Microsoft.Z3.x64 4.8.4
+	nuget MathNet.Numerics >= 4.7.0
+    nuget MathNet.Numerics.FSharp >= 4.7.0
+    nuget MathNet.Symbolics ~> 0.20.0
+	nuget DynamicLanguageRuntime >= 1.1.2
+	nuget FSharp.Interop.Dynamic 4.0.3-beta95
+	nuget Python.Runtime.NETStandard
+	nuget Microsoft.Msagl
+	nuget Microsoft.Msagl.Drawing
+	nuget Microsoft.Msagl.GraphViewerGDI
+	
+    nuget canopy >= 2.1.1
+    nuget Selenium.WebDriver >= 3.141.0
+    nuget Selenium.WebDriver.ChromeDriver ~> 83.0.4103.3900
+    nuget Selenium.WebDriver.GeckoDriver.Win64 ~> 0.26.0
+    nuget Selenium.WebDriver.MicrosoftWebDriver ~> 10.0.17134
+
+    nuget Giraffe >= 4.0.1
+    nuget Saturn >= 0.11
+    nuget Fable.JsonConverter
+    nuget Microsoft.AspNetCore >= 2.1.6
+    nuget Microsoft.AspNetCore.StaticFiles
+    nuget Microsoft.AspNetCore.WebSockets
+    nuget Microsoft.AspNetCore.WebSockets.Server
+
+    #Need to keep Fable.Remoting compatible
+    nuget Fable.Remoting.Giraffe = 3.9.0
+    nuget Fable.Remoting.Client = 5.10.0
+    nuget Fable.Remoting.Server = 4.9.0
+
+    #nuget WindowsAzure.Storage-PremiumTable
+
+    # Need to migrate to the split Azure storage in future, they haven't really finished yet, no table support...
+    nuget Microsoft.Azure.Storage.Blob >= 11.1.0
+    nuget WindowsAzure.Storage 9.3.3 # <- needs to go
+
+    nuget Newtonsoft.Json = 12.0.2
+
+    nuget Argu 6.0.0
+
+    nuget Microsoft.NETCore.App >= 2.2.0
+
+    nuget TaskBuilder.fs 2.1.0
+
+    nuget Thoth.Json.net >= 2.5.0
+
+    nuget Microsoft.Azure.Storage.DataMovement >= 0.9
+    nuget Microsoft.Azure.Batch ~> 10.1.0
+    nuget Microsoft.IdentityModel.Clients.ActiveDirectory ~> 4.5.1
+    nuget Microsoft.Azure.KeyVault ~> 3.0.3
+
+    nuget Expecto ~> 8.13.1
+    nuget Expecto.Diff ~> 8.13.1
+
+    clitool dotnet-fable >= 2.0.9
+    #clitool dotnet-fake >= 5.12.4
+
+    nuget BenchmarkDotNet ~> 0.12.0 
+
+    nuget FSharp.Configuration >= 2.0.0-alpha2
+
+    nuget WebSharper = 4.5.19.349
+    nuget WebSharper.FSharp = 4.5.19.349
+	nuget WebSharper.Core = 4.5.19.349
+	
+	nuget FSharp.Data >= 3.3.3
+
+// [ FAKE GROUP ]
+group Build
+    source https://api.nuget.org/v3/index.json
+    storage:none
+
+    nuget Yarn.MSBuild 1.22.4
+    nuget Node.js.redist 10.16.3
+
+	nuget WindowsAzure.Storage 9.3.3
+
+    nuget FSharp.Core ~> 4.7.0 redirects: force  // https://github.com/fsharp/FAKE/issues/2001
+    nuget Fake.DotNet.Paket >= 5.20.0
+    nuget Fake.Core.Target >= 5.20.0
+    nuget Fake.Core.Process >= 5.20.0
+    nuget Fake.Core.String >= 5.20.0
+    #nuget Fake.Core.ReleaseNotes
+    nuget Fake.IO.FileSystem >= 5.20.0
+    nuget Fake.Tools.Git >= 5.20.0
+    nuget Fake.IO.Zip >= 5.20.0
+    nuget BlackFox.Fake.BuildTask
+
+    #These need moving together... can we avoid fragility?
+    nuget fantomas 3.2.0
+    nuget FSharp.Compiler.Service 33.0.0
+
+
+group JavaScriptBuild
+    //We make use of these packages via MSBUILD which currently requires knowing where node.js is, that's most easily done by
+    //putting it in the source tree.
+    //TODO: It would be cleaner and faster to get node.js.redist from the global NuGet location
+
+    source https://api.nuget.org/v3/index.json
+    storage:none
+
+    nuget Yarn.MSBuild 1.22.4
+    nuget Node.js.redist 10.16.3 storage:packages
+
+    nuget Microsoft.TypeScript.MSBuild 3.0.3
+    nuget TypesTSFS ~> 0.4.0 storage:packages
+
+    github SharpKit/SharpKit-SDK Frameworks/JsClr/res/jsclr.js
+    github SharpKit/SharpKit-SDK Frameworks/JsClr/res/jsclr.min.js
+    github microsoft/automatic-graph-layout GraphLayout/MsaglSharpkit/WebMsagl/Scripts/src/Microsoft.Msagl.js
+    github microsoft/automatic-graph-layout GraphLayout/MsaglSharpkit/WebMsagl/Scripts/src/Microsoft.Msagl.min.js

@@ -60,6 +60,7 @@ BenchmarkDotNet.Artifacts/
 project.lock.json
 project.fragment.lock.json
 artifacts/
+**/Properties/launchSettings.json
 
 # StyleCop
 StyleCopReport.xml
@@ -68,6 +69,7 @@ StyleCopReport.xml
 *_i.c
 *_p.c
 *_h.h
+*_i.h
 *.ilk
 *.meta
 *.obj
@@ -126,6 +128,9 @@ $tf/
 _ReSharper*/
 *.[Rr]e[Ss]harper
 *.DotSettings.user
+
+# JustCode is a .NET coding add-in
+.JustCode
 
 # TeamCity is a build add-in
 _TeamCity*
@@ -293,11 +298,14 @@ node_modules/
 _Pvt_Extensions
 
 # Paket dependency manager
-.paket/paket.exe
 paket-files/
 
 # FAKE - F# Make
 .fake/
+
+# JetBrains Rider
+.idea/
+*.sln.iml
 
 # CodeRush personal settings
 .cr/personal
@@ -337,6 +345,12 @@ ASALocalRun/
 # MFractors (Xamarin productivity tool) working folder
 .mfractor/
 
+# Everything in lib should be kept
+!lib/**
+
+# Usually webpack (but maybe Python too)
+dist/
+
 # Local History for Visual Studio
 .localhistory/
 
@@ -348,3 +362,70 @@ MigrationBackup/
 
 # Ionide (cross platform F# VS Code tools) working folder
 .ionide/
+
+# Generated version text
+CRNEngine/CRNEngineDotNet/version.txt
+
+# Azure keys
+**/azure.xml
+**/azure.*.xml
+
+# DSD
+/ClassicDSD/ClassicDSDJS/Content/*
+!/ClassicDSD/ClassicDSDJS/Content/placeholder.js
+/ClassicDSD/ClassicDSDTSWrapper/Local
+/ClassicDSD/ClassicDSDHTML5/dist
+/ClassicDSD/ClassicDSDHTML5/lib/katex.min.js
+/ClassicDSD/ClassicDSDHTML5/lib/katex.js
+/ClassicDSD/ClassicDSDHTML5/lib/katex.min.css
+/ClassicDSD/ClassicDSDHTML5/lib/katex.css
+/ClassicDSD/ClassicDSDHTML5/lib/fonts
+
+# GEC
+/ClassicGEC/ClassicGECJS/Content/*
+!/ClassicGEC/ClassicGECJS/Content/placeholder.js
+/ClassicGEC/ClassicGECHTML5/Config.js
+/ClassicGEC/ClassicGECHTML5/Config.d.ts
+/ClassicGEC/ClassicGECHTML5/AppBootstrap.js
+/ClassicGEC/ClassicGECHTML5/AppBootstrap.d.ts
+/ClassicGEC/ClassicGECTSWrapper/Local
+/ClassicGEC/ClassicGECHTML5/dist
+/ClassicGEC/ClassicGECHTML5/lib/katex.min.js
+/ClassicGEC/ClassicGECHTML5/lib/katex.js
+/ClassicGEC/ClassicGECHTML5/lib/katex.min.css
+/ClassicGEC/ClassicGECHTML5/lib/katex.css
+/ClassicGEC/ClassicGECHTML5/lib/fonts
+
+# CRN
+/CRNEngine/build
+/CRNEngine/CRNEngineTests/Models/Test*
+/CRNEngine/CRNEngineJSBench/*.js
+/CRNEngine/CRNEngineJSBench/*.js.map
+/CRNEngine/CRNEngineJS/Content/*
+!/CRNEngine/CRNEngineJS/Content/placeholder.js
+/CRNEngine/HTML5CRN/dist
+/CRNEngine/HTML5CRN/lib/fonts
+/CRNEngine/HTML5CRN/lib/katex.min.css
+/CRNEngine/HTML5CRN/lib/katex.css
+/CRNEngine/CRNEngineTSWrapper/Local/
+/CRNEngine/CRNEngineJSBench/CRNEngine
+
+# Shared GUI
+/HTML5SharedGUI/SimulationViewer/Scripts/IDD
+/HTML5SharedGUI/CodeEditor_Samples/dist
+
+# Strand Graphs
+/HTML5StrandGraphs/HTML5StrandGraphs/Config.js
+/HTML5StrandGraphs/HTML5StrandGraphs/Config.d.ts
+/HTML5StrandGraphs/HTML5StrandGraphs/AppBootstrap.js
+/HTML5StrandGraphs/HTML5StrandGraphs/AppBootstrap.d.ts
+
+# Rules DSD
+/RulesDSD/RulesDSDJS/Content
+
+# SiteGraph
+/SiteGraphReactor/SiteGraphReactorJS/Content/
+/SiteGraphReactor/SiteGraphCRNJS/Content/
+/SiteGraphReactor/SinglePageApplication/Content
+/SiteGraphReactor/SiteGraphReactorTSWrapper/Content
+/SiteGraphReactor/SpeciesViewer/Content

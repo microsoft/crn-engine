@@ -1,0 +1,14 @@
+directive simulation {initial=-3.14; final=3.14; points=1000; plots=[tanh]}
+directive plot_settings { h_boundaries = [0] }
+directive simulator deterministic
+directive rates [tanh = [v_p] - [v_m]]
+ 
+init v_p 1.0 |
+init v_m 1.99627207622 |  // 1 + tanh(pi)
+   
+-> v_p |
+v_p + v_m ->{2} v_p + v_m + v_p |
+v_p + v_p -> v_p + v_p + v_m |
+v_m + v_m -> v_m + v_m + v_m |
+ 
+v_p + v_p + v_m + v_m -> 

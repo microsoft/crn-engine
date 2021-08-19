@@ -1,0 +1,19 @@
+﻿directive simulator mc
+// Note that the moment closure (mc) simulator doesn't work in the browser version of Visual CRN
+directive simulation { final=25.0; points=1000 }
+directive moments { order = 3; initial_minimum = 1e-16 }
+directive parameters [k=1]
+
+| 200 OO
+| 0 OP
+| 0 PO
+| 100 PP
+ 
+| OO + PP ->{0.012} PP + OP
+| OP + PP ->{0.012} PP + PP
+
+| PP + OO ->{0.01} OO + PO
+| PO + OO ->{0.01} OO + OO
+
+| PP ->{0.001} PO
+| OO ->{0.001} OP

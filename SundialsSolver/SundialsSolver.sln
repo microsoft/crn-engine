@@ -1,0 +1,30 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27428.2011
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestSundialsCSharp", "TestSundialsCSharp\TestSundialsCSharp.csproj", "{ECE33449-F628-4FC2-82C1-6DD31D256742}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SundialsSolver15", "SundialsSolver15\SundialsSolver15.vcxproj", "{866880DC-BF1E-4C12-8238-72E7EFF44AFB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Release|x64 = Release|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{ECE33449-F628-4FC2-82C1-6DD31D256742}.Debug|x64.ActiveCfg = Debug|x64
+		{ECE33449-F628-4FC2-82C1-6DD31D256742}.Debug|x64.Build.0 = Debug|x64
+		{ECE33449-F628-4FC2-82C1-6DD31D256742}.Release|x64.ActiveCfg = Release|x64
+		{866880DC-BF1E-4C12-8238-72E7EFF44AFB}.Debug|x64.ActiveCfg = Debug|x64
+		{866880DC-BF1E-4C12-8238-72E7EFF44AFB}.Debug|x64.Build.0 = Debug|x64
+		{866880DC-BF1E-4C12-8238-72E7EFF44AFB}.Release|x64.ActiveCfg = Release|x64
+		{866880DC-BF1E-4C12-8238-72E7EFF44AFB}.Release|x64.Build.0 = Release|x64
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {2826428B-9902-4FC8-9EFF-67D4ECB41295}
+	EndGlobalSection
+EndGlobal

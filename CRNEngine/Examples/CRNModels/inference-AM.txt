@@ -1,0 +1,15 @@
+﻿directive inference  { burnin = 1000; samples = 10000; thin = 100 }
+directive simulation { final=1.0; points=1000; plots=[B; Y; X] }
+directive simulator deterministic
+directive deterministic { reltolerance=1e-5 }
+directive parameters [r = 0.2,  { interval=Log; distribution=Uniform(1e-2,1e2); variation=Random }]
+directive data [AM_obs_noised]
+
+| X + Y ->{r} X + B
+| Y + X ->{r} Y + B
+| X + B ->{r} X + X
+| Y + B ->{r} Y + Y
+
+| 30 X
+| 20 Y 
+| 0 B

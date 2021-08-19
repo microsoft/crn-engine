@@ -1,0 +1,125 @@
+directive sample 0.0,(12.0 * 3600.0) 1000
+directive plot Catalyst; Input
+directive simulation deterministic
+directive parameters
+  [ ka, (1E-05, 0.002), 0.0003, log, random
+  ; kq, (1E-05, 0.002), 0.0003, log, random
+  ; kr, (1E-05, 0.002), 0.0003, log, random
+  ; kb, (1E-05, 0.002), 0.0003, log, random
+  ; kc, (1E-05, 0.002), 0.0003, log, random
+  ; ua = 0.1
+  ; ub = 0.1
+  ; ur = 0.1
+  ; uq = 0.1
+  ; uc = 0.1
+  ; kt, (1E-05, 0.002), 0.0003, log, random
+  ; ku1, (1E-05, 0.002), 0.0003, log, random
+  ; ku2, (1E-05, 0.002), 0.0003, log, random
+  ; ku3, (1E-05, 0.002), 0.0003, log, random
+  ; ut = 0.1
+  ; uu1 = 0.1
+  ; uu2 = 0.1
+  ; uu3 = 0.1
+  ; X = 50.0
+  ; NG = 75.0
+  ; NH = 100.0
+  ; NR = 150.0
+  ; Xv = 40.0
+  ; NGv = 120.0
+  ; NHv = 120.0
+  ; NRv = 120.0
+  ; Xh = 10.0
+  ; NGh = 15.0
+  ; NHh = 20.0
+  ; NRh = 30.0
+  ; Xi = 10.0
+  ; NGi = 30.0
+  ; NHi = 30.0
+  ; NRi = 30.0
+  ; NMi = 100.0
+  ; Xr = 1.0
+  ; NRr = 3.0
+  ; Xm = 40.0
+  ; NGm = 80.0
+  ; NHm = 80.0
+  ; NRm = 120.0
+  ; leakXY2B_J = 0.01
+  ; badXY2B_X = 0.01
+  ; leakXY2B_F = 0.01
+  ; badXY2B_Y = 0.01
+  ; leakBX2X_J = 0.01
+  ; badBX2X_B = 0.01
+  ; leakBX2X_F = 0.01
+  ; badBX2X_X = 0.01
+  ; leakBY2Y_J = 0.01
+  ; badBY2Y_B = 0.01
+  ; leakBY2Y_F = 0.01
+  ; badBY2Y_Y = 0.01
+  ; leakJoinBX_B = 0.01
+  ; badJoinBX_B = 0.01
+  ; leakJoinBX_X = 0.01
+  ; badJoinBX_X = 0.01
+  ; leakJoinBX_H = 0.01
+  ; badJoinBX_H = 0.01
+  ; leakJoinBY_B = 0.01
+  ; badJoinBY_B = 0.01
+  ; leakJoinBY_Y = 0.01
+  ; badJoinBY_Y = 0.01
+  ; leakJoinBY_H = 0.01
+  ; badJoinBY_H = 0.01
+  ; leakJoinXY_X = 0.01
+  ; badJoinXY_X = 0.01
+  ; leakJoinXY_Y = 0.01
+  ; badJoinXY_Y = 0.01
+  ; leakJoinXY_H = 0.01
+  ; badJoinXY_H = 0.01
+  ; leakFork2B_R = 0.01
+  ; badFork2B_R = 0.01
+  ; leakFork2B_H1 = 0.01
+  ; badFork2B_H1 = 0.01
+  ; leakFork2B_H2 = 0.01
+  ; badFork2B_H2 = 0.01
+  ; leakFork2X_R = 0.01
+  ; badFork2X_R = 0.01
+  ; leakFork2X_H1 = 0.01
+  ; badFork2X_H1 = 0.01
+  ; leakFork2X_H2 = 0.01
+  ; badFork2X_H2 = 0.01
+  ; leakFork2Y_R = 0.01
+  ; badFork2Y_R = 0.01
+  ; leakFork2Y_H1 = 0.01
+  ; badFork2Y_H1 = 0.01
+  ; leakFork2Y_H2 = 0.01
+  ; badFork2Y_H2 = 0.01
+  ; leakJoinBX_R1 = 0.01
+  ; badJoinBX_R1 = 0.01
+  ; leakJoinBX_R2 = 0.01
+  ; badJoinBX_R2 = 0.01
+  ; leakJoinBX_R3 = 0.01
+  ; badJoinBX_R3 = 0.01
+  ; leakJoinBY_R1 = 0.01
+  ; badJoinBY_R1 = 0.01
+  ; leakJoinBY_R2 = 0.01
+  ; badJoinBY_R2 = 0.01
+  ; leakJoinBY_R3 = 0.01
+  ; badJoinBY_R3 = 0.01
+  ; leakJoinXY_R1 = 0.01
+  ; badJoinXY_R1 = 0.01
+  ; leakJoinXY_R2 = 0.01
+  ; badJoinXY_R2 = 0.01
+  ; leakJoinXY_R3 = 0.01
+  ; badJoinXY_R3 = 0.01
+  ; e = 2.71828183
+  ; R = 0.0019872
+  ; T = 298.15 ]
+
+init CatalystR NMi |
+init InputR NMi |
+init Join_ABRev (NGi * (1.0 - leakJoinBX_R3)) |
+init Input (NGi * leakJoinBX_R3) |
+init Rep_Fork NRi |
+init Translator ((0.4 * Xi) * (1.0 - badJoinBX_R3)) |
+Rep_Fork + Input ->{kt} sp_0 + Signal_Fork |
+Join_ABRev + Translator <->{ku1}{kt} sp_1 + Helper |
+sp_1 + CatalystR <->{kt}{kt} sp_2 + Catalyst |
+sp_2 + InputR <->{kt}{kt} sp_3 + Input

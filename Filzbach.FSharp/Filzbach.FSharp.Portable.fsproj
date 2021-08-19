@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <Platforms>x64</Platforms>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="WebSharper.Stubs.fs" />
+    <Compile Include="Lib.fs" />
+    <Compile Include="DataStructures.fs" />
+    <Compile Include="Parameter.fs" />
+    <Compile Include="Filzbach.fs" />
+    <Compile Include="FilzbachMultiple.fs" />
+    <Compile Include="Filzbach.Js.fs" />
+    <Compile Include="Analysis.fs" />
+    <None Include="paket.references" />
+  </ItemGroup>
+  <Import Project="..\.paket\Paket.Restore.targets" />
+</Project>

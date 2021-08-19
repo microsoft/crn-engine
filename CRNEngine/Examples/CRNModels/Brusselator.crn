@@ -1,0 +1,11 @@
+directive spatial { diffusibles=[X=1.0; Y=DY] }
+directive parameters [
+    A=1.0, {variation=Random};
+    B=1.0, {variation=Random};
+]
+directive synthesis { mode=turing }
+
+->{A} X |
+X ->{1.0} |
+X ->{B} Y |
+X + X + Y ->{1.0} X + X + X

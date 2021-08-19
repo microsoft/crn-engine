@@ -1,0 +1,6 @@
+﻿directive simulation { final=100.0; points=200; plots=[X] }
+directive simulator pde
+directive spatial { nx = 51; dt = 0.05; diffusibles = [ X = 0.1 ]; random = 0.25 }
+  
+| 1.0 X
+| X ->{0.1}

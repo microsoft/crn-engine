@@ -1,0 +1,9 @@
+﻿//no_auto_test
+| X + Y ->{r} X + B
+| Y + X ->{r} Y + B
+| X + B ->{r} X + X
+| Y + B ->{r} Y + Y
+
+| 30 X
+| 20 Y 
+| 0 B

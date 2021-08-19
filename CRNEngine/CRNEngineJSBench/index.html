@@ -1,0 +1,34 @@
+﻿<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>TypeScript HTML App</title>
+    <link rel="stylesheet" href="app.css" type="text/css" />
+    
+    <script src="Scripts/CRNEngine/CRNEngineJS.js"></script>
+    <script src="app.js"></script>
+</head>
+<body>
+    <h1>TypeScript HTML App</h1>
+
+    <div id="content"></div>
+
+    <textarea rows="8" cols="50" id="program">
+        directive simulation { final=1.0; points=300 }
+        directive parameters [r = 1.0]
+        directive simulator deterministic
+        directive deterministic { reltolerance=1e-5 }
+
+        X + Y ->{r} X + B |
+        Y + X ->{r} Y + B |
+        X + B ->{r} X + X |
+        Y + B ->{r} Y + Y |
+
+        init X 30 |
+        init Y 20
+    </textarea>
+
+    <button onclick="benchmark()">Benchmark</button>
+</body>
+</html>

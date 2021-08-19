@@ -1,0 +1,35 @@
+directive plot catalyst0; catalyst1; sp_22
+directive parameters
+  [ e = 2.71828183
+  ; R = 0.0019872
+  ; T = 298.15 ]
+
+init Fuel0 10.0 |
+init Fuel1 10.0 |
+init Substrate0 10.0 |
+init Substrate1 10.0 |
+init catalyst0 5.0 |
+init catalyst1 5.0 |
+init reporter 10.0 |
+Substrate0 + Fuel0 <->{0.00065}{0.004} sp_1 |
+Substrate0 + Fuel1 <->{0.00065}{0.004} sp_0 |
+Substrate1 + Fuel0 <->{0.00065}{0.004} sp_3 |
+Substrate1 + Fuel1 <->{0.00065}{0.004} sp_2 |
+Substrate0 + catalyst0 <->{0.00065}{0.004} sp_5 |
+Substrate1 + catalyst0 <->{0.00065}{0.004} sp_4 |
+sp_7 + Fuel1 ->{0.00042} sp_8 + catalyst1 |
+sp_8 <->{0.004}{0.00065} sp_9 + catalyst0 |
+sp_9 + Fuel0 <->{0.00065}{0.004} sp_11 |
+sp_9 + Fuel1 <->{0.00065}{0.004} sp_10 |
+Substrate0 + catalyst1 <->{0.00065}{0.004} sp_14 |
+sp_16 + Fuel0 ->{0.0005} sp_17 + catalyst0 |
+sp_17 <->{0.004}{0.00065} sp_18 + catalyst1 |
+sp_18 + Fuel0 <->{0.00065}{0.004} sp_21 |
+sp_18 + Fuel1 <->{0.00065}{0.004} sp_20 |
+sp_18 + catalyst0 <->{0.00065}{0.004} sp_19 |
+sp_14 <->{0.00019}{0.0005} sp_16 + sp_15 |
+Substrate1 + catalyst1 <->{0.00065}{0.004} sp_13 |
+sp_9 + catalyst1 <->{0.00065}{0.004} sp_12 |
+sp_4 <->{0.04}{0.00042} sp_7 + sp_6 |
+reporter + sp_6 ->{0.0003} sp_23 + sp_22 |
+reporter + Fuel1 <->{0.0003}{0.1126} sp_24

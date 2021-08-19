@@ -1,0 +1,25 @@
+directive simulation { 
+  final=600; 
+  plots=[Signal];
+}
+directive simulator pde
+directive spatial { 
+  boundary = ZeroFlux; 
+  dimensions = 1;
+  diffusibles = [Input1 = 0.5; Input2 = 0.5]; 
+  xmax = 50; 
+  nx = 101; 
+  dt = 1;
+}
+directive parameters [ k = 0.003; u = 0.1 ]
+| 100 Reporter 
+| 100 Join
+| Input1 = { spatial = { points = 
+    [ {x=0.3; y=0.3; width=0.4; value=10.0}] 
+  } }
+| Input2 = { spatial = { points = 
+    [ {x=0.7; y=0.7; width=0.4; value=10.0}] 
+  } }
+| Reporter + Output ->{k} sp2 + Signal
+| Join + Input1 <->{k}{k} sp4 + sp3
+| sp4 + Input2 <->{k}{k} sp1 + Output

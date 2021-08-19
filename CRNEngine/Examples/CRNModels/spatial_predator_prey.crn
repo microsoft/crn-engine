@@ -1,0 +1,49 @@
+﻿directive simulation {final=500.0; points=1000; plots=[c1]}
+directive simulator pde
+directive spatial { dimensions=2; boundary=ZeroFlux; xmax=10.0; nx=31; diffusibles=[s=0.0324; c1=0.0108; c2=0.0108; Ae2=0.0324; Ae1=0.0162] }
+directive parameters [
+	kc1 = 0.8;
+    kc2 = 0.4;
+    cmax = 500.0;
+    cabs = 1540.0;
+    Ks = 0.1;
+    K1 = 10.0;
+    K2 = 10.0;
+    beta = 2.0;
+    Ie = 5.0;
+    dc2 = 0.3;
+    vA1 = 0.01;
+    vA2 = 0.005;
+    dAe1 = 0.017;
+    dAe2 = 0.11;
+    kd1 = 0.00052;
+    kd2 = 0.00026;
+]
+
+directive rates [
+	monod = [s]/(Ks*cmax+[s]);
+	predation = dc2 * [Ae1]^beta / (K2 + [Ae1]^beta);
+	feeding = (0.5 + Ie^2 / (25 + Ie^2)) * K1 / (K1 + [Ae2]^beta)
+]
+
+// Initial conditions for spatial simulation
+| init c1 { spatial = { centralcore = { width=0.1; inner=100.0 }}}
+| init c2 { spatial = { centralcore = { width=0.1; inner=100.0 }}}
+| init s  { spatial = { centralcore = { width=0.1; inner=300.0; outer=500.0 }}}
+
+// Initial conditions for deterministic simulation
+//| init s 300 | init c1 100 | init c2 100 |
+
+// Monod growth term for bacterial growth
+| s <->[kc1 * [c1] * [monod]][[feeding] * [c1]] c1
+| s <->[kc2 * [c2] * [monod]][[predation] * [c2]] c2 
+
+// AHL synthesis (dense)
+| <->[vA1*cabs * ([c1] + [d1]) / (cabs - ([c1] + [c2] + [d1] + [d2]))]{dAe1} Ae1
+| <->[vA2*cabs * ([c2] + [d2]) / (cabs - ([c1] + [c2] + [d1] + [d2]))]{dAe2} Ae2
+
+// Predation/dormancy
+| c1 ->[kd1 * [c1] * ([c1] + [c2] + [d1] + [d2])] d1
+| c2 ->[kd2 * [c2] * ([c1] + [c2] + [d1] + [d2])] d2
+| d1 ->[[feeding] * [d1]] s
+| d2 ->[[predation] * [d2]] s

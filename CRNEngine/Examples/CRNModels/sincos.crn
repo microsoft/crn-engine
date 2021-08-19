@@ -1,0 +1,20 @@
+directive simulation {final=6.28; points=1000; plots=[[sin];[cos]]}
+directive plot_settings { h_boundaries = [0] }
+directive simulator deterministic
+directive rates [
+	sin = [v_m]-[v_p];
+    cos = [u_p]-[u_m];
+]	
+
+init u_p 2 |
+init u_m 1 | 
+init v_p 1 |
+init v_m 1 |
+   
+v_p -> v_p + u_p |
+v_m -> v_m + u_m |
+u_p -> u_p + v_m |
+u_m -> u_m + v_p |
+ 
+v_p + v_m -> |
+u_p + u_m ->

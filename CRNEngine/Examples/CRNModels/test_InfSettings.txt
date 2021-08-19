@@ -1,0 +1,17 @@
+﻿//no_auto_test
+directive inference  { burnin = 1234; samples = 4321; thin = 234 }
+directive simulation { final = 1.0; points = 1000; plots = [B; Y; X] }
+directive simulator deterministic
+directive deterministic { reltolerance = 1e-5 }
+directive parameters [r = 0.2, { interval=Log; distribution=Uniform(1e-2, 1e2); variation=Random }]
+
+directive sweeps [dummySweep = [NotUsed = [0.0]]]
+
+X + Y ->{ r } X + B |
+Y + X ->{ r } Y + B |
+X + B ->{ r } X + X |
+Y + B ->{ r } Y + Y |
+
+init X 30 |
+init Y 20 |
+init B 0

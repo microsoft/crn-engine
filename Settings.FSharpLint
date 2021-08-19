@@ -1,0 +1,22 @@
+﻿﻿﻿<?xml version="1.0" encoding="utf-8"?>
+<FSharpLintSettings xmlns="https://github.com/fsprojects/FSharpLint/blob/master/ConfigurationSchema.xsd">
+  <IgnoreFiles>
+    <![CDATA[
+      assemblyinfo.*
+    ]]>
+  </IgnoreFiles>
+  <Analysers>
+    <FunctionReimplementation>
+      <Rules>
+        <ReimplementsFunction>
+          <Enabled>false</Enabled>
+        </ReimplementsFunction>
+
+        <CanBeReplacedWithComposition>
+          <Enabled>false</Enabled>
+        </CanBeReplacedWithComposition>
+      </Rules>
+      <Enabled>false</Enabled>
+    </FunctionReimplementation>
+  </Analysers>
+</FSharpLintSettings>

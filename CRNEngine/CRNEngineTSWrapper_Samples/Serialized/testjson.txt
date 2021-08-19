@@ -1,0 +1,414 @@
+﻿{
+	"name": "test",
+	"settings": {
+		"stochastic": {
+			"scale": 1,
+			"trajectories": 1
+		},
+		"deterministic": {
+			"stiff": false,
+			"abstolerance": 0.000001,
+			"reltolerance": 0.001
+		},
+		"spatial": {
+			"parameters": [],
+			"dimensions": 1,
+			"diffusibles": [],
+			"boundary": "Periodic",
+			"xmax": 0,
+			"nx": 0,
+			"dt": 0,
+			"default_diffusion": 0,
+			"random": 0
+		},
+		"simulation": {
+			"name": "",
+			"points": 1000,
+			"initial": 0,
+			"final": 1000,
+			"plots": [
+				"species_0",
+				"species_1",
+				"species_2",
+				"species_3",
+				"species_4",
+				"species_5",
+				"species_6",
+				"species_7",
+				"species_8",
+				"species_9",
+				"species_10"
+			],
+			"plotcolours": [],
+			"kinetics": "Contextual",
+			"sweeps": [],
+			"times": [],
+			"prune": false,
+			"multicore": false,
+			"data": []
+		},
+		"simulations": [],
+		"data": [],
+		"units": {
+			"concentration": { "Molar": -9 },
+			"time": { "Seconds": 0 },
+			"space": { "Metres": -3 }
+		},
+		"inference": {
+			"name": "",
+			"burnin": 100,
+			"samples": 100,
+			"thin": 10,
+			"noise_model": "Constant",
+			"noise_parameter": "Random",
+			"prune": false,
+			"seed": 0,
+			"seeds": [],
+			"timer": false,
+			"partial_evaluation": false,
+			"print_console": false,
+			"print_summary": false
+		},
+		"moment_closure": {
+			"order": 0,
+			"initial_minimum": 0,
+			"log_evaluation": false,
+			"plots": []
+		},
+		"simulator": "Oslo",
+		"parameters": [],
+		"sweeps": [],
+		"rates": {},
+		"plot": {
+			"x_label": "",
+			"y_label": "",
+			"title": "",
+			"label_font_size": 0,
+			"tick_font_size": 0,
+			"x_ticks": [],
+			"y_ticks": []
+		}
+	},
+	"reactions": [
+		{
+			"reactants": [
+				{
+					"element": "species_1",
+					"multiplicity": 1
+				},
+				{
+					"element": "species_0",
+					"multiplicity": 1
+				}
+			],
+			"products": [
+				{
+					"element": "species_5",
+					"multiplicity": 1
+				}
+			],
+			"catalysts": [],
+			"rate": {
+				"$": 0,
+				"MassAction": "0.003"
+			}
+		},
+		{
+			"reactants": [
+				{
+					"element": "species_2",
+					"multiplicity": 1
+				},
+				{
+					"element": "species_0",
+					"multiplicity": 1
+				}
+			],
+			"products": [
+				{
+					"element": "species_6",
+					"multiplicity": 1
+				}
+			],
+			"catalysts": [],
+			"rate": {
+				"$": 0,
+				"MassAction": "0.003"
+			}
+		},
+		{
+			"reactants": [
+				{
+					"element": "species_4",
+					"multiplicity": 1
+				},
+				{
+					"element": "species_2",
+					"multiplicity": 1
+				}
+			],
+			"products": [
+				{
+					"element": "species_8",
+					"multiplicity": 1
+				}
+			],
+			"catalysts": [],
+			"rate": {
+				"$": 0,
+				"MassAction": "0.003"
+			}
+		},
+		{
+			"reactants": [
+				{
+					"element": "species_5",
+					"multiplicity": 1
+				},
+				{
+					"element": "species_2",
+					"multiplicity": 1
+				}
+			],
+			"products": [
+				{
+					"element": "species_9",
+					"multiplicity": 1
+				}
+			],
+			"catalysts": [],
+			"rate": {
+				"$": 0,
+				"MassAction": "0.003"
+			}
+		},
+		{
+			"reactants": [
+				{
+					"element": "species_6",
+					"multiplicity": 1
+				},
+				{
+					"element": "species_1",
+					"multiplicity": 1
+				}
+			],
+			"products": [
+				{
+					"element": "species_9",
+					"multiplicity": 1
+				}
+			],
+			"catalysts": [],
+			"rate": {
+				"$": 0,
+				"MassAction": "0.003"
+			}
+		},
+		{
+			"reactants": [
+				{
+					"element": "species_7",
+					"multiplicity": 1
+				},
+				{
+					"element": "species_3",
+					"multiplicity": 1
+				}
+			],
+			"products": [
+				{
+					"element": "species_10",
+					"multiplicity": 1
+				}
+			],
+			"catalysts": [],
+			"rate": {
+				"$": 0,
+				"MassAction": "0.003"
+			}
+		},
+		{
+			"reactants": [
+				{
+					"element": "species_5",
+					"multiplicity": 1
+				}
+			],
+			"products": [
+				{
+					"element": "species_4",
+					"multiplicity": 1
+				}
+			],
+			"catalysts": [],
+			"rate": {
+				"$": 0,
+				"MassAction": "1.0"
+			}
+		},
+		{
+			"reactants": [
+				{
+					"element": "species_8",
+					"multiplicity": 1
+				}
+			],
+			"products": [
+				{
+					"element": "species_7",
+					"multiplicity": 1
+				}
+			],
+			"catalysts": [],
+			"rate": {
+				"$": 0,
+				"MassAction": "1.0"
+			}
+		},
+		{
+			"reactants": [
+				{
+					"element": "species_9",
+					"multiplicity": 1
+				}
+			],
+			"products": [
+				{
+					"element": "species_8",
+					"multiplicity": 1
+				}
+			],
+			"catalysts": [],
+			"rate": {
+				"$": 0,
+				"MassAction": "1.0"
+			}
+		}
+	],
+	"initials": [
+		{
+			"species": "species_0",
+			"value": "1.0",
+			"constant": false,
+			"time": "0.0"
+		},
+		{
+			"species": "species_1",
+			"value": "1.0",
+			"constant": false,
+			"time": "0.0"
+		},
+		{
+			"species": "species_2",
+			"value": "1.0",
+			"constant": false,
+			"time": "0.0"
+		},
+		{
+			"species": "species_3",
+			"value": "1.0",
+			"constant": false,
+			"time": "0.0"
+		},
+		{
+			"species": "species_4",
+			"value": "0.0",
+			"constant": false,
+			"time": "0.0"
+		},
+		{
+			"species": "species_5",
+			"value": "0.0",
+			"constant": false,
+			"time": "0.0"
+		},
+		{
+			"species": "species_6",
+			"value": "0.0",
+			"constant": false,
+			"time": "0.0"
+		},
+		{
+			"species": "species_7",
+			"value": "0.0",
+			"constant": false,
+			"time": "0.0"
+		},
+		{
+			"species": "species_8",
+			"value": "0.0",
+			"constant": false,
+			"time": "0.0"
+		},
+		{
+			"species": "species_9",
+			"value": "0.0",
+			"constant": false,
+			"time": "0.0"
+		},
+		{
+			"species": "species_10",
+			"value": "0.0",
+			"constant": false,
+			"time": "0.0"
+		}
+	],
+	"attributes": {
+		"species_0": {
+			"name": "species_0",
+			"structure": "[ <x* a*> ]",
+			"svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"221.000000\" height=\"61.000000\" stroke=\"black\">\n<style> path { stroke: silver; stroke-width: 2.500000; stroke-linejoin: round; fill: none; } text { stroke: black; fill: black; stroke-width: 0; font-family: Verdana,Arial,sans-serif; font-size: 15px; text-anchor: middle; }  </style>\n<text x=\"70.000000\" y= \"42.000000\" transform=\"rotate(0.000000 70.000000,42.000000)\" dy=\"6\" class=\"normal_text\">x*</text>\n<path d=\"M 30.000000 30.000000 L 110.000000 30.000000\" class=\"normal\"/>\n<path d=\"M 110.000000 30.000000 L 110.000000 30.000000\" stroke=\"silver\"/>\n<text x=\"150.000000\" y= \"42.000000\" transform=\"rotate(0.000000 150.000000,42.000000)\" dy=\"6\" class=\"normal_text\">a*</text>\n<path d=\"M 110.000000 30.000000 L 190.000000 30.000000 L 181.431112 35.155014\" class=\"normal\"/>\n</svg>"
+		},
+		"species_1": {
+			"name": "species_1",
+			"structure": "[ <a x!0 b x*!0> ]",
+			"svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"205.000221\" height=\"125.000000\" stroke=\"black\">\n<style> path { stroke: silver; stroke-width: 2.500000; stroke-linejoin: round; fill: none; } text { stroke: black; fill: black; stroke-width: 0; font-family: Verdana,Arial,sans-serif; font-size: 15px; text-anchor: middle; }  </style>\n<text x=\"61.999990\" y= \"76.999951\" transform=\"rotate(0.000048 61.999990,76.999951)\" dy=\"6\" class=\"normal_text\">a</text>\n<path d=\"M 30.000000 64.999924 L 94.000000 64.999977\" class=\"normal\"/>\n<path d=\"M 94.000000 64.999977 L 94.000001 64.999993\" stroke=\"silver\"/>\n<text x=\"134.000001\" y= \"76.999993\" transform=\"rotate(0.000000 134.000001,76.999993)\" dy=\"6\" class=\"normal_text\">x</text>\n<path d=\"M 94.000001 64.999993 L 174.000001 64.999993\" class=\"normal\"/>\n<path d=\"M 174.000001 64.999993 L 173.999780 30.000000\" stroke=\"silver\"/>\n<text x=\"162.000001\" y= \"62.000083\" transform=\"rotate(89.999968 162.000001,62.000083)\" dy=\"6\" class=\"normal_text\">b</text>\n<path d=\"M 173.999780 30.000000 L 174.000221 94.000000\" class=\"normal\"/>\n<path d=\"M 174.000221 94.000000 L 174.000001 58.999993\" stroke=\"silver\"/>\n<text x=\"134.000001\" y= \"46.999993\" transform=\"rotate(0.000000 134.000001,46.999993)\" dy=\"6\" class=\"normal_text\">x*</text>\n<path d=\"M 174.000001 58.999993 L 94.000001 58.999993 L 102.568888 53.844980\" class=\"normal\"/>\n</svg>"
+		},
+		"species_2": {
+			"name": "species_2",
+			"structure": "[ <x b*!0 c b!0> ]",
+			"svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"205.000221\" height=\"125.000000\" stroke=\"black\">\n<style> path { stroke: silver; stroke-width: 2.500000; stroke-linejoin: round; fill: none; } text { stroke: black; fill: black; stroke-width: 0; font-family: Verdana,Arial,sans-serif; font-size: 15px; text-anchor: middle; }  </style>\n<text x=\"61.999990\" y= \"76.999951\" transform=\"rotate(0.000048 61.999990,76.999951)\" dy=\"6\" class=\"normal_text\">x</text>\n<path d=\"M 30.000000 64.999924 L 94.000000 64.999977\" class=\"normal\"/>\n<path d=\"M 94.000000 64.999977 L 94.000001 64.999993\" stroke=\"silver\"/>\n<text x=\"134.000001\" y= \"76.999993\" transform=\"rotate(0.000000 134.000001,76.999993)\" dy=\"6\" class=\"normal_text\">b*</text>\n<path d=\"M 94.000001 64.999993 L 174.000001 64.999993\" class=\"normal\"/>\n<path d=\"M 174.000001 64.999993 L 173.999780 30.000000\" stroke=\"silver\"/>\n<text x=\"162.000001\" y= \"62.000083\" transform=\"rotate(89.999968 162.000001,62.000083)\" dy=\"6\" class=\"normal_text\">c</text>\n<path d=\"M 173.999780 30.000000 L 174.000221 94.000000\" class=\"normal\"/>\n<path d=\"M 174.000221 94.000000 L 174.000001 58.999993\" stroke=\"silver\"/>\n<text x=\"134.000001\" y= \"46.999993\" transform=\"rotate(0.000000 134.000001,46.999993)\" dy=\"6\" class=\"normal_text\">b</text>\n<path d=\"M 174.000001 58.999993 L 94.000001 58.999993 L 102.568888 53.844980\" class=\"normal\"/>\n</svg>"
+		},
+		"species_3": {
+			"name": "species_3",
+			"structure": "[ <c* x*!0 a* x!0> ]",
+			"svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"221.000271\" height=\"141.000000\" stroke=\"black\">\n<style> path { stroke: silver; stroke-width: 2.500000; stroke-linejoin: round; fill: none; } text { stroke: black; fill: black; stroke-width: 0; font-family: Verdana,Arial,sans-serif; font-size: 15px; text-anchor: middle; }  </style>\n<text x=\"69.999992\" y= \"84.999955\" transform=\"rotate(0.000036 69.999992,84.999955)\" dy=\"6\" class=\"normal_text\">c*</text>\n<path d=\"M 30.000000 72.999929 L 110.000000 72.999980\" class=\"normal\"/>\n<path d=\"M 110.000000 72.999980 L 110.000000 72.999994\" stroke=\"silver\"/>\n<text x=\"150.000000\" y= \"84.999994\" transform=\"rotate(0.000000 150.000000,84.999994)\" dy=\"6\" class=\"normal_text\">x*</text>\n<path d=\"M 110.000000 72.999994 L 190.000000 72.999994\" class=\"normal\"/>\n<path d=\"M 190.000000 72.999994 L 189.999730 30.000000\" stroke=\"silver\"/>\n<text x=\"178.000001\" y= \"70.000081\" transform=\"rotate(89.999975 178.000001,70.000081)\" dy=\"6\" class=\"normal_text\">a*</text>\n<path d=\"M 189.999730 30.000000 L 190.000271 110.000000\" class=\"normal\"/>\n<path d=\"M 190.000271 110.000000 L 190.000000 66.999994\" stroke=\"silver\"/>\n<text x=\"150.000000\" y= \"54.999994\" transform=\"rotate(0.000000 150.000000,54.999994)\" dy=\"6\" class=\"normal_text\">x</text>\n<path d=\"M 190.000000 66.999994 L 110.000000 66.999994 L 118.568888 61.844980\" class=\"normal\"/>\n</svg>"
+		},
+		"species_4": {
+			"name": "species_4",
+			"structure": "[ <x*!0 a*!1>\n| <a!1 x!0 b x*> ]",
+			"svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"365.000000\" height=\"67.000000\" stroke=\"black\">\n<style> path { stroke: silver; stroke-width: 2.500000; stroke-linejoin: round; fill: none; } text { stroke: black; fill: black; stroke-width: 0; font-family: Verdana,Arial,sans-serif; font-size: 15px; text-anchor: middle; }  </style>\n<text x=\"214.000000\" y= \"48.000000\" transform=\"rotate(-0.000000 214.000000,48.000000)\" dy=\"6\" class=\"normal_text\">x*</text>\n<path d=\"M 174.000000 36.000000 L 254.000000 36.000000\" class=\"normal\"/>\n<path d=\"M 254.000000 36.000000 L 254.000000 36.000000\" stroke=\"silver\"/>\n<text x=\"294.000000\" y= \"48.000000\" transform=\"rotate(0.000000 294.000000,48.000000)\" dy=\"6\" class=\"normal_text\">a*</text>\n<path d=\"M 254.000000 36.000000 L 334.000000 36.000000 L 325.431112 41.155014\" class=\"normal\"/>\n<text x=\"294.000000\" y= \"18.000000\" transform=\"rotate(0.000000 294.000000,18.000000)\" dy=\"6\" class=\"normal_text\">a</text>\n<path d=\"M 334.000000 30.000000 L 254.000000 30.000000\" class=\"normal\"/>\n<path d=\"M 254.000000 30.000000 L 254.000000 30.000000\" stroke=\"silver\"/>\n<text x=\"214.000000\" y= \"18.000000\" transform=\"rotate(-0.000000 214.000000,18.000000)\" dy=\"6\" class=\"normal_text\">x</text>\n<path d=\"M 254.000000 30.000000 L 174.000000 30.000000\" class=\"normal\"/>\n<path d=\"M 174.000000 30.000000 L 174.000000 30.000000\" stroke=\"silver\"/>\n<text x=\"141.999848\" y= \"18.000405\" transform=\"rotate(-0.000725 141.999848,18.000405)\" dy=\"6\" class=\"normal_text\">b</text>\n<path d=\"M 174.000000 30.000000 L 110.000000 30.000810\" class=\"normal\"/>\n<path d=\"M 110.000000 30.000810 L 110.000000 30.000810\" stroke=\"silver\"/>\n<text x=\"69.999848\" y= \"18.001316\" transform=\"rotate(-0.000725 69.999848,18.001316)\" dy=\"6\" class=\"normal_text\">x*</text>\n<path d=\"M 110.000000 30.000810 L 30.000000 30.001822 L 38.568822 24.846700\" class=\"normal\"/>\n</svg>"
+		},
+		"species_5": {
+			"name": "species_5",
+			"structure": "[ <x* a*!0>\n| <a!0 x!1 b x*!1> ]",
+			"svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"211.311673\" height=\"220.063812\" stroke=\"black\">\n<style> path { stroke: silver; stroke-width: 2.500000; stroke-linejoin: round; fill: none; } text { stroke: black; fill: black; stroke-width: 0; font-family: Verdana,Arial,sans-serif; font-size: 15px; text-anchor: middle; }  </style>\n<text x=\"90.703769\" y= \"160.422942\" transform=\"rotate(-59.999966 90.703769,160.422942)\" dy=\"6\" class=\"normal_text\">x*</text>\n<path d=\"M 60.311326 189.063812 L 100.311660 119.781972\" class=\"normal\"/>\n<path d=\"M 100.311660 119.781972 L 100.311673 119.781974\" stroke=\"silver\"/>\n<text x=\"140.311673\" y= \"131.781974\" transform=\"rotate(0.000000 140.311673,131.781974)\" dy=\"6\" class=\"normal_text\">a*</text>\n<path d=\"M 100.311673 119.781974 L 180.311673 119.781974 L 171.742785 124.936988\" class=\"normal\"/>\n<text x=\"140.311673\" y= \"101.781974\" transform=\"rotate(0.000000 140.311673,101.781974)\" dy=\"6\" class=\"normal_text\">a</text>\n<path d=\"M 180.311673 113.781974 L 100.311673 113.781974\" class=\"normal\"/>\n<path d=\"M 100.311673 113.781974 L 100.311691 113.781963\" stroke=\"silver\"/>\n<text x=\"90.703275\" y= \"73.141118\" transform=\"rotate(59.999225 90.703275,73.141118)\" dy=\"6\" class=\"normal_text\">x</text>\n<path d=\"M 100.311691 113.781963 L 60.310462 44.500641\" class=\"normal\"/>\n<path d=\"M 60.310462 44.500641 L 30.000000 62.001366\" stroke=\"silver\"/>\n<text x=\"63.712675\" y= \"56.392840\" transform=\"rotate(-30.001533 63.712675,56.392840)\" dy=\"6\" class=\"normal_text\">b</text>\n<path d=\"M 30.000000 62.001366 L 85.424837 30.000000\" class=\"normal\"/>\n<path d=\"M 85.424837 30.000000 L 55.114363 47.500733\" stroke=\"silver\"/>\n<text x=\"64.722779\" y= \"88.141578\" transform=\"rotate(59.999225 64.722779,88.141578)\" dy=\"6\" class=\"normal_text\">x*</text>\n<path d=\"M 55.114363 47.500733 L 95.115592 116.782055 L 86.366689 111.938843\" class=\"normal\"/>\n</svg>"
+		},
+		"species_6": {
+			"name": "species_6",
+			"structure": "[ <x*!0 a*>\n| <x!0 b*!1 c b!1> ]",
+			"svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"301.000617\" height=\"125.000000\" stroke=\"black\">\n<style> path { stroke: silver; stroke-width: 2.500000; stroke-linejoin: round; fill: none; } text { stroke: black; fill: black; stroke-width: 0; font-family: Verdana,Arial,sans-serif; font-size: 15px; text-anchor: middle; }  </style>\n<text x=\"150.000617\" y= \"76.998945\" transform=\"rotate(0.000000 150.000617,76.998945)\" dy=\"6\" class=\"normal_text\">x*</text>\n<path d=\"M 110.000617 64.998945 L 190.000617 64.998945\" class=\"normal\"/>\n<path d=\"M 190.000617 64.998945 L 190.000617 64.998965\" stroke=\"silver\"/>\n<text x=\"230.000607\" y= \"76.998996\" transform=\"rotate(0.000044 230.000607,76.998996)\" dy=\"6\" class=\"normal_text\">a*</text>\n<path d=\"M 190.000617 64.998965 L 270.000617 64.999027 L 261.431725 70.154035\" class=\"normal\"/>\n<text x=\"150.000617\" y= \"46.998945\" transform=\"rotate(0.000000 150.000617,46.998945)\" dy=\"6\" class=\"normal_text\">x</text>\n<path d=\"M 190.000617 58.998945 L 110.000617 58.998945\" class=\"normal\"/>\n<path d=\"M 110.000617 58.998945 L 110.000617 58.998918\" stroke=\"silver\"/>\n<text x=\"70.000454\" y= \"46.999463\" transform=\"rotate(-0.000781 70.000454,46.999463)\" dy=\"6\" class=\"normal_text\">b*</text>\n<path d=\"M 110.000617 58.998918 L 30.000617 59.000009\" class=\"normal\"/>\n<path d=\"M 30.000617 59.000009 L 30.001316 94.000000\" stroke=\"silver\"/>\n<text x=\"42.000658\" y= \"61.999753\" transform=\"rotate(89.999184 42.000658,61.999753)\" dy=\"6\" class=\"normal_text\">c</text>\n<path d=\"M 30.001316 94.000000 L 30.000000 30.000000\" class=\"normal\"/>\n<path d=\"M 30.000000 30.000000 L 30.000699 65.000009\" stroke=\"silver\"/>\n<text x=\"70.000863\" y= \"76.999463\" transform=\"rotate(-0.000781 70.000863,76.999463)\" dy=\"6\" class=\"normal_text\">b</text>\n<path d=\"M 30.000699 65.000009 L 110.000699 64.998918 L 101.431882 70.154048\" class=\"normal\"/>\n</svg>"
+		},
+		"species_7": {
+			"name": "species_7",
+			"structure": "[ <x*!0 a*!1>\n| <a!1 x!0 b!2 x*!3>\n| <x!3 b*!2 c b> ]",
+			"svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"306.198440\" height=\"313.416214\" stroke=\"black\">\n<style> path { stroke: silver; stroke-width: 2.500000; stroke-linejoin: round; fill: none; } text { stroke: black; fill: black; stroke-width: 0; font-family: Verdana,Arial,sans-serif; font-size: 15px; text-anchor: middle; }  </style>\n<text x=\"155.198440\" y= \"186.562715\" transform=\"rotate(0.000000 155.198440,186.562715)\" dy=\"6\" class=\"normal_text\">x*</text>\n<path d=\"M 115.198440 174.562715 L 195.198440 174.562715\" class=\"normal\"/>\n<path d=\"M 195.198440 174.562715 L 195.198440 174.562715\" stroke=\"silver\"/>\n<text x=\"235.198440\" y= \"186.562715\" transform=\"rotate(0.000000 235.198440,186.562715)\" dy=\"6\" class=\"normal_text\">a*</text>\n<path d=\"M 195.198440 174.562715 L 275.198440 174.562715 L 266.629552 179.717729\" class=\"normal\"/>\n<text x=\"235.198440\" y= \"156.562715\" transform=\"rotate(0.000000 235.198440,156.562715)\" dy=\"6\" class=\"normal_text\">a</text>\n<path d=\"M 275.198440 168.562715 L 195.198440 168.562715\" class=\"normal\"/>\n<path d=\"M 195.198440 168.562715 L 195.198440 168.562715\" stroke=\"silver\"/>\n<text x=\"155.198440\" y= \"156.562715\" transform=\"rotate(0.000000 155.198440,156.562715)\" dy=\"6\" class=\"normal_text\">x</text>\n<path d=\"M 195.198440 168.562715 L 115.198440 168.562715\" class=\"normal\"/>\n<path d=\"M 115.198440 168.562715 L 115.198440 168.562715\" stroke=\"silver\"/>\n<text x=\"105.590059\" y= \"127.921861\" transform=\"rotate(59.999275 105.590059,127.921861)\" dy=\"6\" class=\"normal_text\">b</text>\n<path d=\"M 115.198440 168.562715 L 75.197271 99.281357\" class=\"normal\"/>\n<path d=\"M 75.197271 99.281357 L 75.197271 99.281357\" stroke=\"silver\"/>\n<text x=\"65.588890\" y= \"58.640503\" transform=\"rotate(59.999275 65.588890,58.640503)\" dy=\"6\" class=\"normal_text\">x*</text>\n<path d=\"M 75.197271 99.281357 L 35.196102 30.000000 L 43.945000 34.843220\" class=\"normal\"/>\n<text x=\"39.608381\" y= \"73.640942\" transform=\"rotate(59.999275 39.608381,73.640942)\" dy=\"6\" class=\"normal_text\">x</text>\n<path d=\"M 30.000000 33.000088 L 70.001169 102.281445\" class=\"normal\"/>\n<path d=\"M 70.001169 102.281445 L 70.001169 102.281445\" stroke=\"silver\"/>\n<text x=\"79.609550\" y= \"142.922299\" transform=\"rotate(59.999275 79.609550,142.922299)\" dy=\"6\" class=\"normal_text\">b*</text>\n<path d=\"M 70.001169 102.281445 L 110.002338 171.562802\" class=\"normal\"/>\n<path d=\"M 110.002338 171.562802 L 110.002339 171.562802\" stroke=\"silver\"/>\n<text x=\"83.610767\" y= \"193.276506\" transform=\"rotate(-60.002176 83.610767,193.276506)\" dy=\"6\" class=\"normal_text\">c</text>\n<path d=\"M 110.002339 171.562802 L 78.004210 226.989508\" class=\"normal\"/>\n<path d=\"M 78.004210 226.989508 L 78.004210 226.989508\" stroke=\"silver\"/>\n<text x=\"51.612638\" y= \"248.703212\" transform=\"rotate(-60.002176 51.612638,248.703212)\" dy=\"6\" class=\"normal_text\">b</text>\n<path d=\"M 78.004210 226.989508 L 46.006081 282.416214 L 45.825814 272.417839\" class=\"normal\"/>\n</svg>"
+		},
+		"species_8": {
+			"name": "species_8",
+			"structure": "[ <x*!0 a*!1>\n| <a!1 x!0 b x*!2>\n| <x!2 b*!3 c b!3> ]",
+			"svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"355.308975\" height=\"220.063577\" stroke=\"black\">\n<style> path { stroke: silver; stroke-width: 2.500000; stroke-linejoin: round; fill: none; } text { stroke: black; fill: black; stroke-width: 0; font-family: Verdana,Arial,sans-serif; font-size: 15px; text-anchor: middle; }  </style>\n<text x=\"204.308974\" y= \"117.280514\" transform=\"rotate(0.000000 204.308974,117.280514)\" dy=\"6\" class=\"normal_text\">x*</text>\n<path d=\"M 164.308974 105.280514 L 244.308974 105.280514\" class=\"normal\"/>\n<path d=\"M 244.308974 105.280514 L 244.308974 105.280519\" stroke=\"silver\"/>\n<text x=\"284.308974\" y= \"117.280521\" transform=\"rotate(0.000002 284.308974,117.280521)\" dy=\"6\" class=\"normal_text\">a*</text>\n<path d=\"M 244.308974 105.280519 L 324.308974 105.280522 L 315.740087 110.435535\" class=\"normal\"/>\n<text x=\"284.308975\" y= \"87.280521\" transform=\"rotate(0.000002 284.308975,87.280521)\" dy=\"6\" class=\"normal_text\">a</text>\n<path d=\"M 324.308975 99.280522 L 244.308975 99.280519\" class=\"normal\"/>\n<path d=\"M 244.308975 99.280519 L 244.308974 99.280514\" stroke=\"silver\"/>\n<text x=\"204.308974\" y= \"87.280514\" transform=\"rotate(0.000000 204.308974,87.280514)\" dy=\"6\" class=\"normal_text\">x</text>\n<path d=\"M 244.308974 99.280514 L 164.308974 99.280514\" class=\"normal\"/>\n<path d=\"M 164.308974 99.280514 L 164.308972 99.280501\" stroke=\"silver\"/>\n<text x=\"132.308818\" y= \"87.280910\" transform=\"rotate(-0.000733 132.308818,87.280910)\" dy=\"6\" class=\"normal_text\">b</text>\n<path d=\"M 164.308972 99.280501 L 100.308972 99.281319\" class=\"normal\"/>\n<path d=\"M 100.308972 99.281319 L 100.308968 99.281305\" stroke=\"silver\"/>\n<text x=\"90.700535\" y= \"58.640464\" transform=\"rotate(59.999201 90.700535,58.640464)\" dy=\"6\" class=\"normal_text\">x*</text>\n<path d=\"M 100.308968 99.281305 L 60.307710 30.000000 L 69.056614 34.843208\" class=\"normal\"/>\n<text x=\"64.720045\" y= \"73.640936\" transform=\"rotate(59.999201 64.720045,73.640936)\" dy=\"6\" class=\"normal_text\">x</text>\n<path d=\"M 55.111612 33.000094 L 95.112871 102.281400\" class=\"normal\"/>\n<path d=\"M 95.112871 102.281400 L 95.112863 102.281390\" stroke=\"silver\"/>\n<text x=\"64.721598\" y= \"130.923509\" transform=\"rotate(-60.002321 64.721598,130.923509)\" dy=\"6\" class=\"normal_text\">b*</text>\n<path d=\"M 95.112863 102.281390 L 55.115377 171.564874\" class=\"normal\"/>\n<path d=\"M 55.115377 171.564874 L 85.427011 189.063577\" stroke=\"silver\"/>\n<text x=\"63.713056\" y= \"162.672212\" transform=\"rotate(29.997641 63.713056,162.672212)\" dy=\"6\" class=\"normal_text\">c</text>\n<path d=\"M 85.427011 189.063577 L 30.000000 157.065976\" class=\"normal\"/>\n<path d=\"M 30.000000 157.065976 L 60.311639 174.564685\" stroke=\"silver\"/>\n<text x=\"90.702904\" y= \"145.922566\" transform=\"rotate(-60.002321 90.702904,145.922566)\" dy=\"6\" class=\"normal_text\">b</text>\n<path d=\"M 60.311639 174.564685 L 100.309125 105.281201 L 100.489417 115.279576\" class=\"normal\"/>\n</svg>"
+		},
+		"species_9": {
+			"name": "species_9",
+			"structure": "[ <x*!0 a*!1>\n| <x!0 b*!2 c b!2>\n| <a!1 x!3 b x*!3> ]",
+			"svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"291.310477\" height=\"220.063861\" stroke=\"black\">\n<style> path { stroke: silver; stroke-width: 2.500000; stroke-linejoin: round; fill: none; } text { stroke: black; fill: black; stroke-width: 0; font-family: Verdana,Arial,sans-serif; font-size: 15px; text-anchor: middle; }  </style>\n<text x=\"150.000610\" y= \"131.781912\" transform=\"rotate(-0.000000 150.000610,131.781912)\" dy=\"6\" class=\"normal_text\">x*</text>\n<path d=\"M 110.000610 119.781912 L 190.000610 119.781912\" class=\"normal\"/>\n<path d=\"M 190.000610 119.781912 L 190.000625 119.781998\" stroke=\"silver\"/>\n<text x=\"199.608492\" y= \"160.422973\" transform=\"rotate(60.000000 199.608492,160.422973)\" dy=\"6\" class=\"normal_text\">a*</text>\n<path d=\"M 190.000625 119.781998 L 230.000917 189.063861 L 221.252080 184.220531\" class=\"normal\"/>\n<text x=\"150.000610\" y= \"101.781912\" transform=\"rotate(0.000000 150.000610,101.781912)\" dy=\"6\" class=\"normal_text\">x</text>\n<path d=\"M 190.000610 113.781912 L 110.000610 113.781912\" class=\"normal\"/>\n<path d=\"M 110.000610 113.781912 L 110.000600 113.781827\" stroke=\"silver\"/>\n<text x=\"70.000443\" y= \"101.782352\" transform=\"rotate(-0.000752 70.000443,101.782352)\" dy=\"6\" class=\"normal_text\">b*</text>\n<path d=\"M 110.000600 113.781827 L 30.000600 113.782876\" class=\"normal\"/>\n<path d=\"M 30.000600 113.782876 L 30.001274 148.782851\" stroke=\"silver\"/>\n<text x=\"42.000637\" y= \"116.782612\" transform=\"rotate(89.999222 42.000637,116.782612)\" dy=\"6\" class=\"normal_text\">c</text>\n<path d=\"M 30.001274 148.782851 L 30.000000 84.782851\" class=\"normal\"/>\n<path d=\"M 30.000000 84.782851 L 30.000679 119.782876\" stroke=\"silver\"/>\n<text x=\"70.000836\" y= \"131.782352\" transform=\"rotate(-0.000752 70.000836,131.782352)\" dy=\"6\" class=\"normal_text\">b</text>\n<path d=\"M 30.000679 119.782876 L 110.000679 119.781827 L 101.431859 124.936953\" class=\"normal\"/>\n<text x=\"225.589190\" y= \"145.422864\" transform=\"rotate(60.000000 225.589190,145.422864)\" dy=\"6\" class=\"normal_text\">a</text>\n<path d=\"M 235.197057 186.063839 L 195.196765 116.781976\" class=\"normal\"/>\n<path d=\"M 195.196765 116.781976 L 195.196800 116.782036\" stroke=\"silver\"/>\n<text x=\"225.588487\" y= \"88.140365\" transform=\"rotate(-60.001477 225.588487,88.140365)\" dy=\"6\" class=\"normal_text\">x</text>\n<path d=\"M 195.196800 116.782036 L 235.195307 47.499141\" class=\"normal\"/>\n<path d=\"M 235.195307 47.499141 L 204.883944 30.000000\" stroke=\"silver\"/>\n<text x=\"226.597505\" y= \"56.391689\" transform=\"rotate(29.998497 226.597505,56.391689)\" dy=\"6\" class=\"normal_text\">b</text>\n<path d=\"M 204.883944 30.000000 L 260.310477 61.998429\" class=\"normal\"/>\n<path d=\"M 260.310477 61.998429 L 229.999089 44.499253\" stroke=\"silver\"/>\n<text x=\"199.607402\" y= \"73.140925\" transform=\"rotate(-60.001477 199.607402,73.140925)\" dy=\"6\" class=\"normal_text\">x*</text>\n<path d=\"M 229.999089 44.499253 L 190.000583 113.782148 L 189.820438 103.783771\" class=\"normal\"/>\n</svg>"
+		},
+		"species_10": {
+			"name": "species_10",
+			"structure": "[ <x*!0 a*!1>\n| <a!1 x!0 b!2 x*!3>\n| <x!3 b*!2 c!4 b>\n| <c*!4 x*!5 a* x!5> ]",
+			"svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"370.999990\" height=\"307.002543\" stroke=\"black\">\n<style> path { stroke: silver; stroke-width: 2.500000; stroke-linejoin: round; fill: none; } text { stroke: black; fill: black; stroke-width: 0; font-family: Verdana,Arial,sans-serif; font-size: 15px; text-anchor: middle; }  </style>\n<text x=\"219.999992\" y= \"208.000007\" transform=\"rotate(0.000000 219.999992,208.000007)\" dy=\"6\" class=\"normal_text\">x*</text>\n<path d=\"M 179.999992 196.000007 L 259.999992 196.000007\" class=\"normal\"/>\n<path d=\"M 259.999992 196.000007 L 259.999990 196.000010\" stroke=\"silver\"/>\n<text x=\"299.999989\" y= \"208.000011\" transform=\"rotate(0.000002 299.999989,208.000011)\" dy=\"6\" class=\"normal_text\">a*</text>\n<path d=\"M 259.999990 196.000010 L 339.999990 196.000013 L 331.431102 201.155026\" class=\"normal\"/>\n<text x=\"299.999990\" y= \"178.000011\" transform=\"rotate(0.000002 299.999990,178.000011)\" dy=\"6\" class=\"normal_text\">a</text>\n<path d=\"M 339.999990 190.000013 L 259.999990 190.000010\" class=\"normal\"/>\n<path d=\"M 259.999990 190.000010 L 259.999992 190.000007\" stroke=\"silver\"/>\n<text x=\"219.999992\" y= \"178.000007\" transform=\"rotate(-0.000000 219.999992,178.000007)\" dy=\"6\" class=\"normal_text\">x</text>\n<path d=\"M 259.999992 190.000007 L 179.999992 190.000007\" class=\"normal\"/>\n<path d=\"M 179.999992 190.000007 L 179.999999 190.000000\" stroke=\"silver\"/>\n<text x=\"191.999234\" y= \"149.999770\" transform=\"rotate(89.999267 191.999234,149.999770)\" dy=\"6\" class=\"normal_text\">b</text>\n<path d=\"M 179.999999 190.000000 L 179.998469 110.000000\" class=\"normal\"/>\n<path d=\"M 179.998469 110.000000 L 179.998473 110.000000\" stroke=\"silver\"/>\n<text x=\"191.997710\" y= \"69.999771\" transform=\"rotate(89.999269 191.997710,69.999771)\" dy=\"6\" class=\"normal_text\">x*</text>\n<path d=\"M 179.998473 110.000000 L 179.996947 30.000000 L 185.152124 38.568789\" class=\"normal\"/>\n<text x=\"161.997710\" y= \"70.000343\" transform=\"rotate(89.999269 161.997710,70.000343)\" dy=\"6\" class=\"normal_text\">x</text>\n<path d=\"M 173.996947 30.000114 L 173.998473 110.000114\" class=\"normal\"/>\n<path d=\"M 173.998473 110.000114 L 173.998469 110.000115\" stroke=\"silver\"/>\n<text x=\"161.999234\" y= \"150.000344\" transform=\"rotate(89.999267 161.999234,150.000344)\" dy=\"6\" class=\"normal_text\">b*</text>\n<path d=\"M 173.998469 110.000115 L 173.999999 190.000115\" class=\"normal\"/>\n<path d=\"M 173.999999 190.000115 L 173.999997 190.000108\" stroke=\"silver\"/>\n<text x=\"133.999536\" y= \"178.001645\" transform=\"rotate(-0.002201 133.999536,178.001645)\" dy=\"6\" class=\"normal_text\">c</text>\n<path d=\"M 173.999997 190.000108 L 93.999997 190.003181\" class=\"normal\"/>\n<path d=\"M 93.999997 190.003181 L 94.000000 190.003172\" stroke=\"silver\"/>\n<text x=\"61.999544\" y= \"178.004387\" transform=\"rotate(-0.002176 61.999544,178.004387)\" dy=\"6\" class=\"normal_text\">b</text>\n<path d=\"M 94.000000 190.003172 L 30.000000 190.005602 L 38.568692 184.850263\" class=\"normal\"/>\n<text x=\"134.000689\" y= \"208.001644\" transform=\"rotate(-0.002201 134.000689,208.001644)\" dy=\"6\" class=\"normal_text\">c*</text>\n<path d=\"M 94.000228 196.003181 L 174.000228 196.000108\" class=\"normal\"/>\n<path d=\"M 174.000228 196.000108 L 174.000221 196.000113\" stroke=\"silver\"/>\n<text x=\"162.002551\" y= \"236.000812\" transform=\"rotate(89.997024 162.002551,236.000812)\" dy=\"6\" class=\"normal_text\">x*</text>\n<path d=\"M 174.000221 196.000113 L 174.004882 276.000113\" class=\"normal\"/>\n<path d=\"M 174.004882 276.000113 L 217.004879 275.997336\" stroke=\"silver\"/>\n<text x=\"177.004098\" y= \"263.999940\" transform=\"rotate(-0.003729 177.004098,263.999940)\" dy=\"6\" class=\"normal_text\">a*</text>\n<path d=\"M 217.004879 275.997336 L 137.004879 276.002543\" class=\"normal\"/>\n<path d=\"M 137.004879 276.002543 L 180.004882 275.999764\" stroke=\"silver\"/>\n<text x=\"192.002551\" y= \"235.999065\" transform=\"rotate(89.997024 192.002551,235.999065)\" dy=\"6\" class=\"normal_text\">x</text>\n<path d=\"M 180.004882 275.999764 L 180.000221 195.999764 L 185.155734 204.568351\" class=\"normal\"/>\n</svg>"
+		}
+	}
+}

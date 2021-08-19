@@ -1,0 +1,1 @@
+﻿export var Timeout = 30000;

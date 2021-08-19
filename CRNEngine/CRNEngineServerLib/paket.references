@@ -1,0 +1,12 @@
+﻿group NETSTANDARD
+
+Giraffe
+Microsoft.AspNetCore
+Microsoft.AspNetCore.StaticFiles
+Microsoft.AspNetCore.WebSockets
+Microsoft.AspNetCore.WebSockets.Server
+Microsoft.Extensions.FileProviders.Physical
+
+#Streams
+FSharp.Core
+WebSharper.Core

@@ -1,0 +1,14 @@
+directive simulation {final=10.0; points=1000}
+directive parameters [
+	c1 = 10.0;
+	c2 = 0.01;
+	c3 = 10.0;
+]
+
+init X 1 | 
+init Y1 1000 | 
+init Y2 1000 |
+
+X + Y1 ->{c1} X + Y1 + Y1 |
+Y1 + Y2 ->{c2} Y2 + Y2 |
+Y2 ->{c3}

@@ -1,0 +1,14 @@
+{
+  "extends": "../../tsconfig.common",
+  "include": [
+    "*.ts",
+    "Exports/*.ts",
+    "FastTasks/*.ts",
+    "Inference/*.ts",
+    "Parser/*.ts",
+    "Probabilities/*.ts",
+    "Serialized/*.ts",
+    "Simulator/*.ts",
+    "StateSpace/*.ts"
+  ]
+}

@@ -1,0 +1,15 @@
+﻿directive simulation {initial=0.0; final=6000.0; points=1000; plots=[Signal]}
+directive inference  { burnin = 1000; samples = 5000; thin = 100 }
+directive simulator deterministic
+directive parameters [ 
+  k=0.0003, {distribution=Uniform(1E-05, 0.002); interval=Log; variation=Random};
+  bad=0.2, {distribution=Uniform(0.0, 0.3); interval=Real; variation=Random};
+  T1=600.0, {distribution=Uniform(0.0, 1800.0); interval=Real;  variation=Random};
+  N = 0.6;
+]
+directive sweeps [sweepRepR = [ N = [0.2; 0.4; 0.6; 0.8]]]
+directive data [Rep_Simulated]
+
+| 30.0 Rep
+| (4.0 * N) * (1.0 - bad) Input @ T1
+| Rep + Input ->{k} Signal + Waste

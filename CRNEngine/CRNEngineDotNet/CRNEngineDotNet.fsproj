@@ -1,0 +1,132 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <PlatformTarget>x64</PlatformTarget>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="version.txt" />
+    <Compile Include="websharperstubs.fs" />
+    <Compile Include="graph.fs" />
+    <Compile Include="stringbuilder.fs" />
+    <Compile Include="keywords.fs" />
+    <Compile Include="sbml.fsi" />
+    <Compile Include="sbml.fs" />
+    <Compile Include="svg.fsi" />
+    <Compile Include="svg.fs" />
+    <Compile Include="RngAdapter.fs" />
+    <Compile Include="Matrix.fsi" />
+    <Compile Include="Matrix.fs" />
+    <Compile Include="hashtable.fs" />
+    <Compile Include="dictionary.fs" />
+    <Compile Include="queue.fs" />
+    <Compile Include="lib.fs" />
+    <Compile Include="statistics.fs" />
+    <Compile Include="operators.fs" />
+    <Compile Include="stringmap.fs" />
+    <Compile Include="pQueue.fs" />
+    <Compile Include="IPQ.fs" />
+    <Compile Include="errors.fs" />
+    <Compile Include="environment.fs" />
+    <Compile Include="mset.fsi" />
+    <Compile Include="mset.fs" />
+    <Compile Include="lambda.fs" />
+    <Compile Include="expression.fs" />
+    <Compile Include="inlined.fs" />
+    <Compile Include="key.fs" />
+    <Compile Include="value.fs" />
+    <Compile Include="spatial_initial.fs" />
+    <Compile Include="population.fs" />
+    <Compile Include="populations.fs" />
+    <Compile Include="rate.fs" />
+    <Compile Include="units.fs" />
+    <Compile Include="target.fs" />
+    <Compile Include="event.fs" />
+    <Compile Include="species.fs" />
+    <Compile Include="functional.fs" />
+    <Compile Include="reaction.fs" />
+    <Compile Include="reactions.fs" />
+    <Compile Include="point.fs" />
+    <Compile Include="row.fs" />
+    <Compile Include="column.fs" />
+    <Compile Include="table.fs" />
+    <Compile Include="dataset.fs" />
+    <Compile Include="distribution.fs" />
+    <Compile Include="interval.fs" />
+    <Compile Include="variation.fs" />
+    <Compile Include="prior.fs" />
+    <Compile Include="assignment.fs" />
+    <Compile Include="sweep.fs" />
+    <Compile Include="sweeps.fs" />
+    <Compile Include="parameter.fs" />
+    <Compile Include="parameters.fs" />
+    <Compile Include="parametersummary.fs" />
+    <Compile Include="initial.fs" />
+    <Compile Include="initials.fs" />
+    <Compile Include="kinetics.fs" />
+    <Compile Include="simulation_settings.fs" />
+    <Compile Include="noise_parameter.fs" />
+    <Compile Include="noise_model.fs" />
+    <Compile Include="inference_settings.fs" />
+    <Compile Include="deterministic_settings.fs" />
+    <Compile Include="spatial_settings.fs" />
+    <Compile Include="stochastic_settings.fs" />
+    <Compile Include="moment_closure_settings.fs" />
+    <Compile Include="synthesis_settings.fs" />
+    <Compile Include="plot_settings.fs" />
+    <Compile Include="instance.fs" />
+    <Compile Include="result.fs" />
+    <Compile Include="simulator.fs" />
+    <Compile Include="directive.fs" />
+    <Compile Include="api.fs" />
+    <Compile Include="crn_settings.fs" />
+    <Compile Include="simulation.fs" />
+    <Compile Include="inference.fsi" />
+    <Compile Include="inference.fs" />
+    <Compile Include="oslo_integrator.fs" />
+    <Compile Include="odeoslo.fs" />
+    <Compile Include="sundials.fs" />
+    <Compile Include="odesundials.fs" />
+    <Compile Include="ctmc.fs" />
+    <Compile Include="probabilities.fs" />
+    <Compile Include="cme.fs" />
+    <Compile Include="pde.fs" />
+    <Compile Include="ssa.fs" />
+    <Compile Include="lna.fs" />
+    <Compile Include="ode.fs" />
+    <Compile Include="attributes.fs" />
+    <Compile Include="instruction.fs" />
+    <Compile Include="adapter.fs" />
+    <Compile Include="calculus.fs" />
+    <Compile Include="crn.fs" />
+    <Compile Include="jit.fsi" />
+    <Compile Include="jit.fs" />
+    <Compile Include="legacyParser.fsi" />
+    <Compile Include="legacyParser.fs" />
+    <Compile Include="io.fs" />
+    <Compile Include="model.fs" />
+    <Compile Include="task.fs" />
+    <Compile Include="InferenceSiteGraph.fs" />
+    <Compile Include="gui.fs" />
+    <Compile Include="plotting.fs" />
+    <Compile Include="html.fs" />
+    <Compile Include="jsapi.fs" />
+    <Compile Include="fakeSlowTest.fs" />
+    <None Include="paket.references" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Filzbach.FSharp\Filzbach.FSharp.Portable.fsproj" />
+    <ProjectReference Include="..\..\ParserCombinators\ParserCombinators\ParserCombinators.fsproj" />
+    <ProjectReference Include="..\..\PDESolvers\ReactionDiffusion\ReactionDiffusion.fsproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Oslo.FSharp">
+      <HintPath>..\..\Lib\Oslo.FSharp\Oslo.FSharp.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <Target Name="Making Version" BeforeTargets="BeforeBuild">
+    <Exec Command="git rev-parse --short HEAD &gt; $(ProjectDir)\version.txt" />
+  </Target>
+  <Import Project="..\..\.paket\Paket.Restore.targets" />
+</Project>

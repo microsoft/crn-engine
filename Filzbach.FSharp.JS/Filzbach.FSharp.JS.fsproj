@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DefineConstants>TRACE;JavaScript</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DefineConstants>TRACE;JavaScript</DefineConstants>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="..\Filzbach.FSharp\WebSharper.Stubs.fs" Link="WebSharper.Stubs.fs" />
+    <Compile Include="..\Filzbach.FSharp\Lib.fs" Link="Lib.fs" />
+    <Compile Include="..\Filzbach.FSharp\DataStructures.fs" Link="DataStructures.fs" />
+    <Compile Include="..\Filzbach.FSharp\Parameter.fs" Link="Parameter.fs" />
+    <Compile Include="..\Filzbach.FSharp\Filzbach.fs" Link="Filzbach.fs" />
+    <Compile Include="..\Filzbach.FSharp\FilzbachMultiple.fs" Link="FilzbachMultiple.fs" />
+    <Compile Include="..\Filzbach.FSharp\Filzbach.Js.fs" Link="Filzbach.Js.fs" />
+    <Compile Include="..\Filzbach.FSharp\Analysis.fs" Link="Analysis.fs" />
+    <None Include="paket.references" />
+  </ItemGroup>
+  <Import Project="..\.paket\Paket.Restore.targets" />
+</Project>

@@ -1,0 +1,96 @@
+directive sample 0.0,10000.0 1000
+directive plot sp_11; sp_41; sp_65; SpeciesR; SpeciesL_1; SpeciesR_1; sp_24; sp_51
+directive reltolerance 1e-05
+directive scale 10.0
+directive parameters
+  [ e = 2.71828183
+  ; R = 0.0019872
+  ; T = 298.15 ]
+
+constant BinaryLRxLR_19 100.0 |
+constant BinaryLRxLR_18 1.0 |
+constant BinaryLRxLR_17 100.0 |
+constant BinaryLRxLR_16 1.0 |
+constant BinaryLRxLR_15 5000.0 |
+constant BinaryLRxLR_14 50.0 |
+constant BinaryLRxLR_13 5000.0 |
+constant BinaryLRxLR_12 50.0 |
+constant BinaryLRxLR_11 100.0 |
+constant BinaryLRxLR_10 1.0 |
+constant BinaryLRxLR_9 100.0 |
+constant BinaryLRxLR_8 1.0 |
+constant BinaryLRxLR_7 5000.0 |
+constant BinaryLRxLR_6 50.0 |
+constant BinaryLRxLR_5 5000.0 |
+constant BinaryLRxLR_4 50.0 |
+constant BinaryLRxLR_3 100.0 |
+constant BinaryLRxLR_2 1.0 |
+constant BinaryLRxLR_1 5000.0 |
+constant BinaryLRxLR 50.0 |
+init SpeciesL_3 1.0 |
+init SpeciesL_2 1.0 |
+init SpeciesL_1 100.0 |
+init SpeciesL 1.0 |
+init SpeciesR_2 1.0 |
+init SpeciesR_1 100.0 |
+init SpeciesR 10.0 |
+BinaryLRxLR_18 + SpeciesL_3 <->{0.0003}{0.1126} sp_1 |
+BinaryLRxLR_16 + SpeciesL_3 <->{0.0003}{0.1126} sp_0 |
+BinaryLRxLR_2 + SpeciesL_2 <->{0.0003}{0.1126} sp_2 |
+BinaryLRxLR_4 + SpeciesL_1 <->{0.0003}{0.1126} sp_3 |
+BinaryLRxLR + SpeciesL <->{0.0003}{0.1126} sp_4 |
+BinaryLRxLR_10 + SpeciesR_2 <->{0.0003}{0.1126} sp_6 |
+BinaryLRxLR_8 + SpeciesR_2 <->{0.0003}{0.1126} sp_5 |
+BinaryLRxLR_12 + SpeciesR_1 <->{0.0003}{0.1126} sp_7 |
+sp_4 + SpeciesR ->{0.0003} sp_9 + sp_8 |
+BinaryLRxLR + SpeciesR <->{0.0003}{0.1126} sp_10 |
+sp_10 + SpeciesL ->{0.0003} sp_9 + sp_8 |
+BinaryLRxLR_1 + sp_8 ->{0.0003} sp_14 + sp_13 + SpeciesL + sp_12 + sp_11 |
+sp_2 + sp_11 ->{0.0003} sp_18 + sp_17 |
+sp_3 + sp_11 ->{0.0003} sp_16 + sp_15 |
+BinaryLRxLR_6 + sp_11 <->{0.0003}{0.1126} sp_21 |
+BinaryLRxLR_4 + sp_11 <->{0.0003}{0.1126} sp_20 |
+sp_20 + SpeciesL_1 ->{0.0003} sp_16 + sp_15 |
+BinaryLRxLR_5 + sp_15 ->{0.0003} sp_26 + sp_25 + sp_24 + sp_23 + sp_11 |
+BinaryLRxLR_7 + sp_15 <->{0.0003}{0.1126} sp_27 |
+sp_6 + sp_24 ->{0.0003} sp_31 + sp_30 |
+sp_21 + sp_24 ->{0.0003} sp_29 + sp_28 |
+BinaryLRxLR_10 + sp_24 <->{0.0003}{0.1126} sp_33 |
+sp_33 + SpeciesR_2 ->{0.0003} sp_31 + sp_30 |
+BinaryLRxLR_11 + sp_30 ->{0.0003} sp_37 + sp_36 + SpeciesL_1 + sp_35 + SpeciesR_2 |
+BinaryLRxLR_9 + sp_30 <->{0.0003}{0.1126} sp_34 |
+BinaryLRxLR_6 + sp_24 <->{0.0003}{0.1126} sp_32 |
+sp_32 + sp_11 ->{0.0003} sp_29 + sp_28 |
+BinaryLRxLR_7 + sp_28 ->{0.0003} sp_43 + sp_42 + sp_41 + sp_40 + sp_11 |
+sp_5 + sp_41 ->{0.0003} sp_47 + sp_46 |
+sp_7 + sp_41 ->{0.0003} sp_45 + sp_44 |
+BinaryLRxLR_14 + sp_41 <->{0.0003}{0.1126} sp_50 |
+BinaryLRxLR_12 + sp_41 <->{0.0003}{0.1126} sp_49 |
+sp_49 + SpeciesR_1 ->{0.0003} sp_45 + sp_44 |
+BinaryLRxLR_13 + sp_44 ->{0.0003} sp_54 + sp_53 + sp_41 + sp_52 + sp_51 |
+sp_1 + sp_51 ->{0.0003} sp_58 + sp_57 |
+sp_50 + sp_51 ->{0.0003} sp_56 + sp_55 |
+BinaryLRxLR_18 + sp_51 <->{0.0003}{0.1126} sp_60 |
+sp_60 + SpeciesL_3 ->{0.0003} sp_58 + sp_57 |
+BinaryLRxLR_19 + sp_57 ->{0.0003} sp_64 + sp_63 + SpeciesL_3 + sp_62 + SpeciesR_1 |
+BinaryLRxLR_15 + sp_57 <->{0.0003}{0.1126} sp_61 |
+BinaryLRxLR_14 + sp_51 <->{0.0003}{0.1126} sp_59 |
+sp_59 + sp_41 ->{0.0003} sp_56 + sp_55 |
+BinaryLRxLR_15 + sp_55 ->{0.0003} sp_68 + sp_67 + sp_41 + sp_66 + sp_65 |
+BinaryLRxLR_19 + sp_55 <->{0.0003}{0.1126} sp_69 |
+sp_0 + sp_65 ->{0.0003} sp_71 + sp_70 |
+BinaryLRxLR_16 + sp_65 <->{0.0003}{0.1126} sp_72 |
+sp_72 + SpeciesL_3 ->{0.0003} sp_71 + sp_70 |
+BinaryLRxLR_17 + sp_70 ->{0.0003} sp_75 + sp_74 + SpeciesL_3 + sp_73 + sp_51 |
+BinaryLRxLR_8 + sp_41 <->{0.0003}{0.1126} sp_48 |
+sp_48 + SpeciesR_2 ->{0.0003} sp_47 + sp_46 |
+BinaryLRxLR_9 + sp_46 ->{0.0003} sp_78 + sp_77 + sp_24 + sp_76 + SpeciesR_2 |
+BinaryLRxLR_11 + sp_46 <->{0.0003}{0.1126} sp_79 |
+BinaryLRxLR_5 + sp_28 <->{0.0003}{0.1126} sp_39 |
+BinaryLRxLR_3 + sp_28 <->{0.0003}{0.1126} sp_38 |
+BinaryLRxLR_3 + sp_15 <->{0.0003}{0.1126} sp_22 |
+BinaryLRxLR_2 + sp_11 <->{0.0003}{0.1126} sp_19 |
+sp_19 + SpeciesL_2 ->{0.0003} sp_18 + sp_17 |
+BinaryLRxLR_3 + sp_17 ->{0.0003} sp_82 + sp_81 + SpeciesL_2 + sp_80 + SpeciesR |
+BinaryLRxLR_7 + sp_17 <->{0.0003}{0.1126} sp_84 |
+BinaryLRxLR_5 + sp_17 <->{0.0003}{0.1126} sp_83

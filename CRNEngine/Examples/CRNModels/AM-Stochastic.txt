@@ -1,0 +1,10 @@
+﻿directive simulation { final=0.15; points=1000 }
+directive parameters [r = 1.0]
+
+| X + Y ->{r} X + B
+| Y + X ->{r} Y + B
+| X + B ->{r} X + X
+| Y + B ->{r} Y + Y
+
+| 30 X
+| 20 Y 

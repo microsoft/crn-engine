@@ -1,0 +1,82 @@
+﻿body {
+}
+
+#jobs {
+}
+
+/* The reload button.  */
+.e-jobs-reload {
+    float: right;
+}
+
+/* The control for a single job. */
+.c-job {
+    margin-bottom: 20px;
+    background: lightgray;
+    padding: 5px;
+}
+
+/* The area which displays a job's properties. */
+.c-job__props {
+    display: flex;
+}
+
+/* The header for a job property. */
+.c-job__prop-header {
+    font-weight: bold;
+}
+
+/* The content of a job property. */
+.c-job__prop {
+    flex: 1;
+}
+
+/* This class is used through a KO class binding where the class name is dynamically generated, based on the name of the job state. */
+.s-state-active {
+    background: lightgreen;
+}
+
+/* This class is used through a KO class binding where the class name is dynamically generated, based on the name of the job state. */
+.s-state-stopping {
+    background: yellow;
+}
+
+/* This class is used through a KO class binding where the class name is dynamically generated, based on the name of the job state. */
+.s-state-deleting {
+    background: yellow;
+}
+
+/* This class is used through a KO class binding where the class name is dynamically generated, based on the name of the job state. */
+.s-state-active__text {
+    font-weight: bold;
+}
+
+/* The page header. */
+.c-jobs-header {
+    display: flex;
+}
+
+/* A div in the header that exists to occupy the same space as the corresponding columns of the jobs, so that the header buttons align correctly. */
+.c-jobs-header__prop {
+    flex: 1;
+}
+
+/* The containre of the header buttons. */
+.c-jobs-header__commands {
+}
+
+/* The page footer. */
+.c-jobs-footer {
+    display: flex;
+}
+
+/* A div in the footer that exists to occupy the same space as the corresponding columns of the jobs, so that the footer buttons align correctly. */
+.c-jobs-footer__prop {
+    flex: 1;
+}
+
+/* The container of the footer buttons. */
+.c-jobs-footer__commands {
+    display: flex;
+    flex-direction: column;
+}
