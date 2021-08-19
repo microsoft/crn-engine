@@ -1,0 +1,13 @@
+  directive duration 10000.0
+  directive simulation jit
+  directive polymers
+  def XS = 1000
+  def N = 3
+
+  ( <t^ a>  (* Initiator *)
+| N * {t^*}[a u^]{b*} (* Monomer 1 *)
+| XS * [a]{u^*}  (* Collector 1 *)
+| XS * [b]<t^>  (* Collector 2 *)
+| N * <u^>[b t^]<a>   (* Monomer 2 *)
+(*|{u^* b*}           (* Initiator 2 *)*)
+)

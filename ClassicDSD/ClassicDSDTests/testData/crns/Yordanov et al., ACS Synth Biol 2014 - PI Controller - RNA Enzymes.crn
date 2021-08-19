@@ -1,0 +1,105 @@
+directive sample 0.0,150000.0 1000
+directive plot (R - R'); (V - V'); (Y - Y'); (L - L')
+directive simulation deterministicstiff
+directive parameters
+  [ deg = 0.0008
+  ; cat = 0.0008
+  ; pol = 0.0167
+  ; nick = 0.0167
+  ; x0 = 4.0
+  ; ann = 0.01
+  ; bind = 5.4E-06
+  ; bind2 = 0.001
+  ; bind1 = 5E-05
+  ; unbind = 0.1126
+  ; Cmax = 1000.0
+  ; c = 0.0008
+  ; kt = 0.001
+  ; ku = 0.001
+  ; s = 2.0
+  ; e = 2.71828183
+  ; R = 0.0019872
+  ; T = 298.15 ]
+
+event R (2.0 * x0) @ 100000.0 |
+event R' (2.0 * x0) @ 50000.0 |
+init R x0 |
+init Rev_3 Cmax |
+init Rev_2 (2.0 * Cmax) |
+init Rev_1 Cmax |
+init Rev Cmax |
+init Rev'_3 Cmax |
+init Rev'_2 (2.0 * Cmax) |
+init Rev'_1 Cmax |
+init Rev' Cmax |
+init TemplateOff_3 Cmax |
+init TemplateOff_2 Cmax |
+init TemplateOff_1 Cmax |
+init TemplateOff Cmax |
+init TemplateOff'_3 Cmax |
+init TemplateOff'_2 Cmax |
+init TemplateOff'_1 Cmax |
+init TemplateOff' Cmax |
+init TemplateOffInv Cmax |
+init TemplateOffInv' Cmax |
+init Transducer_3 Cmax |
+init Transducer_2 (2.0 * Cmax) |
+init Transducer_1 Cmax |
+init Transducer Cmax |
+init TransducerRev Cmax |
+init Transducer'_3 Cmax |
+init Transducer'_2 (2.0 * Cmax) |
+init Transducer'_1 Cmax |
+init Transducer' Cmax |
+init TransducerRev' Cmax |
+init TransducerRev_3 Cmax |
+init TransducerRev_2 (2.0 * Cmax) |
+init TransducerRev_1 Cmax |
+init TransducerRev'_3 Cmax |
+init TransducerRev'_2 (2.0 * Cmax) |
+init TransducerRev'_1 Cmax |
+Template ->{pol} Template + sp_3 |
+sp_1 ->{pol} sp_1 + sp_13 |
+sp_5 ->{pol} sp_5 + sp_13 |
+sp_8 ->{pol} sp_8 + sp_3 |
+sp_3 ->{deg} |
+sp_13 ->{deg} |
+Template_1 ->{pol} Template_1 + sp_2 |
+sp_14 ->{pol} sp_14 + sp_10 |
+Template_2 ->{pol} Template_2 + V |
+sp_15 ->{pol} sp_15 + V' |
+Template_3 ->{pol} Template_3 + V |
+sp_11 ->{pol} sp_11 + V' |
+V ->{deg} |
+V' ->{deg} |
+V ->{0.2} V + Y |
+V' ->{0.2} V' + Y' |
+Y ->{0.1} |
+Y' ->{0.1} |
+Y' + Y ->{0.1} |
+L + Y ->{0.01} L |
+L' + Y' ->{0.01} L' |
+L + L' ->{1.0} |
+R' + R ->{ann} Ann_1 |
+Template_3 + Rev_3 <->{bind2}{bind2} TemplateOff_3 + Fwd_2 |
+Template_2 + Rev_2 <->{bind2}{bind2} TemplateOff_2 + Fwd_1 |
+Template_1 + Rev_2 <->{bind2}{bind2} TemplateOff_1 + Fwd_1 |
+Template + Rev <->{bind2}{bind2} TemplateOff + Fwd |
+Transducer + R <->{bind1}{bind2} TransducerRev + Fwd |
+Transducer' + R' <->{bind1}{bind2} TransducerRev' + sp_0 |
+TemplateOff' + sp_0 <->{bind2}{bind2} sp_1 + Rev' |
+TransducerRev_3 + Fwd_2 <->{bind2}{bind1} Transducer_3 + sp_2 |
+TransducerRev_2 + Fwd_1 <->{bind2}{bind1} Transducer_2 + sp_3 |
+V' + V ->{ann} Ann_2 |
+Transducer_1 + Y <->{bind1}{bind2} TransducerRev_1 + sp_4 |
+TemplateOffInv + sp_4 <->{bind2}{bind2} sp_5 + Rev_1 |
+Y' + Y ->{ann} sp_6 |
+Transducer'_1 + Y' <->{bind1}{bind2} TransducerRev'_1 + sp_7 |
+TemplateOffInv' + sp_7 <->{bind2}{bind2} sp_8 + Rev'_1 |
+sp_11 + Rev'_3 <->{bind2}{bind2} TemplateOff'_3 + sp_9 |
+TransducerRev'_3 + sp_9 <->{bind2}{bind1} Transducer'_3 + sp_10 |
+sp_10 + sp_2 ->{ann} Ann |
+sp_15 + Rev'_2 <->{bind2}{bind2} TemplateOff'_2 + sp_12 |
+TemplateOff'_1 + sp_12 <->{bind2}{bind2} sp_14 + Rev'_2 |
+TransducerRev'_2 + sp_12 <->{bind2}{bind1} Transducer'_2 + sp_13 |
+sp_13 + sp_3 ->{ann} Ann_3

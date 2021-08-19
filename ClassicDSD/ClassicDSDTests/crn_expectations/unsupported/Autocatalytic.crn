@@ -1,0 +1,150 @@
+directive sample 0.0,72000.0 1000
+directive plot "<px fl^>"; "<fl^ rbx>"
+directive simulation deterministic
+directive parameters
+  [ kint, (1E-05, 0.002), 3E-05, log, random
+  ; kextL, (1E-06, 0.002), 0.0001, log, random
+  ; kextR, (1E-06, 0.002), 0.0003, log, random
+  ; JoinOn = 0.0
+  ; ForkOn = 0.0
+  ; NRepJ = 0.0
+  ; NRepF = 0.0
+  ; NMi = 100.0
+  ; NG = 30.0
+  ; inB = 0.0
+  ; inX = 0.0
+  ; inH = 0.0
+  ; inRepL = 0.0
+  ; inRepR = 0.0
+  ; inR = 0.0
+  ; inH1 = 0.0
+  ; inH2 = 0.0
+  ; auto = 0.0
+  ; leakJoinBX_B, (0.0, 0.05), 0.002, real, random
+  ; badJoinBX_B, (0.0, 0.3), 0.0, real, random
+  ; leakJoinBX_X, (0.0, 0.05), 0.01, real, random
+  ; badJoinBX_X, (0.0, 0.3), 0.2, real, random
+  ; leakJoinBX_H, (0.0, 0.05), 0.01, real, random
+  ; badJoinBX_H, (0.0, 0.3), 0.2, real, random
+  ; leakForkXX_R, (0.0, 0.05), 0.01, real, random
+  ; badForkXX_R, (0.0, 0.3), 0.2, real, random
+  ; leakForkXX_H1, (0.0, 0.05), 0.01, real, random
+  ; badForkXX_H1, (0.0, 0.3), 0.2, real, random
+  ; leakForkXX_H2, (0.0, 0.05), 0.01, real, random
+  ; badForkXX_H2, (0.0, 0.3), 0.2, real, random
+  ; badRepR, (0.0, 0.3), 0.2, real, random
+  ; badRepL, (0.0, 0.3), 0.2, real, random
+  ; T1, (7000.0, 8000.0), 7400.0, real, random
+  ; T1_Rep, (3600.0, 4000.0), 3800.0, real, random
+  ; N = 0.6 ]
+directive sweep sweepBX2X =
+  { N = [0.0, 0.1, 0.3, 1.0]
+  , auto = [1.0]
+  , NRepF = [150.0]
+  , JoinOn = [1.0]
+  , ForkOn = [1.0]
+  , NG = [75.0] }
+directive sweep sweepRepL =
+  { N = [0.2, 0.4, 0.6, 0.8]
+  , inRepL = [1.0]
+  , NRepF = [30.0] }
+directive sweep sweepFork_AddH2 =
+  { N = [0.0, 0.2, 0.4, 0.6]
+  , inH2 = [1.0]
+  , ForkOn = [1.0]
+  , NRepF = [30.0] }
+directive sweep sweepFork_AddH1 =
+  { N = [0.0, 0.2, 0.4, 0.6]
+  , inH1 = [1.0]
+  , ForkOn = [1.0]
+  , NRepF = [30.0] }
+directive sweep sweepFork_AddR =
+  { N = [0.0, 0.2, 0.4, 0.6]
+  , inR = [1.0]
+  , ForkOn = [1.0]
+  , NRepF = [30.0] }
+directive sweep sweepRepR =
+  { N = [0.2, 0.4, 0.6, 0.8]
+  , inRepR = [1.0]
+  , NRepJ = [30.0] }
+directive sweep sweepJoin_AddH =
+  { N = [0.0, 0.2, 0.4, 0.6]
+  , inH = [1.0]
+  , JoinOn = [1.0]
+  , NRepJ = [30.0] }
+directive sweep sweepJoin_AddX =
+  { N = [0.0, 0.2, 0.4, 0.6]
+  , inX = [1.0]
+  , JoinOn = [1.0]
+  , NRepJ = [30.0] }
+directive sweep sweepJoin_AddB =
+  { N = [0.0, 0.2, 0.4, 0.6]
+  , inB = [1.0]
+  , JoinOn = [1.0]
+  , NRepJ = [30.0] }
+directive fit {sweepJoin_AddB; JoinBX_AddB; ["<fl^ rbx>"] }
+directive fit {sweepJoin_AddX; JoinBX_AddX; ["<fl^ rbx>"] }
+directive fit {sweepJoin_AddH; JoinBX_AddH; ["<fl^ rbx>"] }
+directive fit {sweepRepR; Rep_rbxu1; ["<fl^ rbx>"] }
+directive fit {sweepFork_AddR; ForkXX_AddR; ["<px fl^>"] }
+directive fit {sweepFork_AddH1; ForkXX_AddH1; ["<px fl^>"] }
+directive fit {sweepFork_AddH2; ForkXX_AddH2; ["<px fl^>"] }
+directive fit {sweepRepL; Rep_u3px; ["<px fl^>"] }
+directive fit {sweepBX2X; AutoCatBX; ["<px fl^>"] }
+directive fit_run { burnin      = 5000
+                  ; samples     = 50000
+                  ; mle_burnin  = 2000
+                  ; mle_samples = 2000
+                  ; thin        = 10
+                  ; separatenoise = false }
+
+event "<u3^ px>" (((inRepL * 4.0) * N) * (1.0 - badRepL)) @ T1_Rep |
+event "<px tx^>" (((inH2 * 10.0) * N) * (1.0 - badForkXX_H2)) @ T1 |
+event "<x u2^>" (((inH1 * 10.0) * N) * (1.0 - badForkXX_H1)) @ T1 |
+event "<rbx u1^>" (((inR * 10.0) * N) * (1.0 - badForkXX_R)) @ T1 |
+event "<rbx u1^>" (((inRepR * 4.0) * N) * (1.0 - badRepR)) @ T1_Rep |
+event "<trbx^ rbx>" (((inH * 10.0) * N) * (1.0 - badJoinBX_H)) @ T1 |
+event "<tx^ x>" (((inX * 10.0) * N) * (1.0 - badJoinBX_X)) @ T1 |
+event "<tb^ b>" (((inB * 10.0) * N) * (1.0 - badJoinBX_B)) @ T1 |
+event "<rbx u1^>" ((auto * NG) * leakJoinBX_B) @ T1_Rep |
+event "<tx^ x>" (((auto * 50.0) * N) * (1.0 - badJoinBX_X)) @ T1_Rep |
+event "<tb^ b>" ((auto * 50.0) * (1.0 - badJoinBX_B)) @ T1_Rep |
+init "<tx^ x>" (JoinOn * (((1.0 - auto) * (1.0 - inX)) * NMi)) |
+init "[ig]:[tx^ x]:[u3^ px]:[tx^ x]:[u2^ rbx]{u1^*}" (ForkOn * (NG * (1.0 - (((inR * leakForkXX_R) + (inH1 * leakForkXX_H1)) + (inH2 * leakForkXX_H2))))) |
+init "<trbx^ rbx>" (JoinOn * ((1.0 - inH) * NMi)) |
+init "<x u2^>" (ForkOn * ((1.0 - inH1) * NMi)) |
+init "<px tx^>" (ForkOn * ((1.0 - inH2) * NMi)) |
+init "<x u3^>" (ForkOn * NMi) |
+init "<ig tx^>" (ForkOn * NMi) |
+init "<tb^ b>" (JoinOn * (((1.0 - auto) * (1.0 - inB)) * NMi)) |
+init "{tb^*}[b tx^]:[x trbx^]:[rbx u1^]" (JoinOn * (NG * (1.0 - (((inB * leakJoinBX_B) + (inX * leakJoinBX_X)) + (inH * leakJoinBX_H))))) |
+init "[tb^ b]{tx^*}:[x trbx^]:[rbx u1^]" 0.0 |
+init "[tb^ b]:[tx^ x]{trbx^*}:[rbx u1^]" 0.0 |
+init "[tb^ b]:[tx^ x]:[trbx^ rbx]{u1^*}" 0.0 |
+init "<rbx u1^>" ((ForkOn * (((1.0 - auto) * (1.0 - inR)) * NMi)) + (JoinOn * (NG * (((inB * leakJoinBX_B) + (inX * leakJoinBX_X)) + (inH * leakJoinBX_H))))) |
+init "[ig]:[tx^ x]:[u3^ px]:[tx^ x]{u2^*}:[rbx u1^]" 0.0 |
+init "[ig]:[tx^ x]:[u3^ px]{tx^*}:[x u2^]:[rbx u1^]" 0.0 |
+init "[ig]:[tx^ x]{u3^*}:[px tx^]:[x u2^]:[rbx u1^]" 0.0 |
+init "[ig]{tx^*}:[x u3^]:[px tx^]:[x u2^]:[rbx u1^]" 0.0 |
+init "[ig tx^]:[x u3^]:[px tx^]:[x u2^]:[rbx u1^]" 0.0 |
+init "<ig>" 0.0 |
+init "<u3^ px>" (ForkOn * (NG * (((inR * leakForkXX_R) + (inH1 * leakForkXX_H1)) + (inH2 * leakForkXX_H2)))) |
+init "<u2^ rbx>" 0.0 |
+init "<x trbx^>" 0.0 |
+init "<b tx^>" 0.0 |
+init "{u3^*}[px]<fl^>" NRepF |
+init "[u3^ px]" 0.0 |
+init "<px fl^>" 0.0 |
+init "<fl^>[rbx]{u1^*}" NRepJ |
+init "[rbx u1^]" 0.0 |
+init "<fl^ rbx>" 0.0 |
+"[tb^ b]:[tx^ x]{trbx^*}:[rbx u1^]" + "<trbx^ rbx>" <->{kint}{kextR} "[tb^ b]:[tx^ x]:[trbx^ rbx]{u1^*}" + "<rbx u1^>" |
+"[ig]:[tx^ x]:[u3^ px]:[tx^ x]{u2^*}:[rbx u1^]" + "<x u2^>" <->{kint}{kint} "[ig]:[tx^ x]:[u3^ px]{tx^*}:[x u2^]:[rbx u1^]" + "<tx^ x>" |
+"[ig]:[tx^ x]{u3^*}:[px tx^]:[x u2^]:[rbx u1^]" + "<x u3^>" <->{kint}{kint} "[ig]{tx^*}:[x u3^]:[px tx^]:[x u2^]:[rbx u1^]" + "<tx^ x>" |
+"[ig]{tx^*}:[x u3^]:[px tx^]:[x u2^]:[rbx u1^]" + "<ig tx^>" ->{kint} "[ig tx^]:[x u3^]:[px tx^]:[x u2^]:[rbx u1^]" + "<ig>" |
+"[ig]:[tx^ x]:[u3^ px]{tx^*}:[x u2^]:[rbx u1^]" + "<px tx^>" <->{kint}{kint} "[ig]:[tx^ x]{u3^*}:[px tx^]:[x u2^]:[rbx u1^]" + "<u3^ px>" |
+"[ig]:[tx^ x]:[u3^ px]:[tx^ x]:[u2^ rbx]{u1^*}" + "<rbx u1^>" <->{kextR}{kint} "[ig]:[tx^ x]:[u3^ px]:[tx^ x]{u2^*}:[rbx u1^]" + "<u2^ rbx>" |
+"[tb^ b]{tx^*}:[x trbx^]:[rbx u1^]" + "<tx^ x>" <->{kint}{kint} "[tb^ b]:[tx^ x]{trbx^*}:[rbx u1^]" + "<x trbx^>" |
+"{tb^*}[b tx^]:[x trbx^]:[rbx u1^]" + "<tb^ b>" <->{kextL}{kint} "[tb^ b]{tx^*}:[x trbx^]:[rbx u1^]" + "<b tx^>" |
+"{u3^*}[px]<fl^>" + "<u3^ px>" ->{kint} "[u3^ px]" + "<px fl^>" |
+"<fl^>[rbx]{u1^*}" + "<rbx u1^>" ->{kextR} "[rbx u1^]" + "<fl^ rbx>"

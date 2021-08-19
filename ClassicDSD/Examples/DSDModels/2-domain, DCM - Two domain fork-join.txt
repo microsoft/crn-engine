@@ -1,0 +1,30 @@
+directive simulation {
+  initial=0; final=300; points=1000; 
+  plots=[ <t^ yv>; <t^ yw>; <t^ zv>; <t^ zw>; sum([[t^ _]:[_ t^]]) ]
+}
+directive compilation infinite
+new t  @ 1.0, 1.0
+def F(N, x, y, z) = 
+  (new a
+  ( N * <t^ a>
+  | N * <y t^>
+  | N * <z t^>
+  | N * {t^*}[x t^]:[a t^]:[a]
+  | N * [x]:[t^ z]:[t^ y]:[t^ a]{t^*}))
+def J(N, x, y, z) = 
+  (new a
+  new b
+  ( N * <t^ a>
+  | N * <b t^>
+  | N * <z t^>
+  | N * {t^*}[x t^]:[y t^]:[a t^]:[a]
+  | N * [x]:[t^ b]:[t^ z]:[t^ a]{t^*}
+  | N * {t^*}[b y]{t^*}))
+( F(10.0,x,y,z)
+| F(10.0,u,v,w)
+| J(10.0,y,v,yv)
+| J(10.0,y,w,yw)
+| J(10.0,z,v,zv)
+| J(10.0,z,w,zw)
+| 1.0 * <t^ x>
+| 1.0 * <t^ u>)

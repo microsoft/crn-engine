@@ -1,0 +1,56 @@
+directive simulation {initial=0; final=20000; points=1000; plots=[<kkks t^ kkksr>; <kkppl t^ kkpp x^>; <kpp t^ kppr>; <kkk t^ kkkr>; <kkl t^ kk x^>; <k t^ kr>; <kkpl t^ kkp x^>; <kp t^ kpr>]}
+directive stochastic {scale = 10.000000; trajectories = 1}
+def bind = 0.0003
+def unbind = 0.1126
+def Init = 50.0
+def Low = 1.0
+def Excess = 100.0
+new x  @ bind, unbind
+new t  @ bind, unbind
+def SpeciesL(N, al, a) = N * <al t^ a x^>
+def SpeciesR(N, a, ar) = N * <a t^ ar>
+def BinaryLRxLR(N, al, a, b, br, cl, c, d, dr) = 
+  (new i
+  ( constant N * {t^*}[a x^ b]<i cl t^ i t^ dr>{t^*}
+  | constant (N * Excess) * {x^*}[b i]:[cl t^]<c x^>:[i]:<d>[t^ dr]))
+new e1l 
+new e1 
+new kkk 
+new kkkr 
+new kkl 
+new kk 
+new k 
+new kr 
+new e2l 
+new e2 
+new kkpase 
+new kkpaser 
+new kpasel 
+new kpase 
+new kkks 
+new kkksr 
+new kkpl 
+new kkp 
+new kkppl 
+new kkpp 
+new kp 
+new kpr 
+new kpp 
+new kppr 
+( SpeciesL(1.0,e1l,e1)
+| SpeciesR(10.0,kkk,kkkr)
+| SpeciesL(100.0,kkl,kk)
+| SpeciesR(100.0,k,kr)
+| SpeciesL(1.0,e2l,e2)
+| SpeciesR(1.0,kkpase,kkpaser)
+| SpeciesL(1.0,kpasel,kpase)
+| BinaryLRxLR(Init,e1l,e1,kkk,kkkr,e1l,e1,kkks,kkksr)
+| BinaryLRxLR(Low,e2l,e2,kkks,kkksr,e2l,e2,kkk,kkkr)
+| BinaryLRxLR(Init,kkl,kk,kkks,kkksr,kkpl,kkp,kkks,kkksr)
+| BinaryLRxLR(Init,kkpl,kkp,kkks,kkksr,kkppl,kkpp,kkks,kkksr)
+| BinaryLRxLR(Low,kkppl,kkpp,kkpase,kkpaser,kkpl,kkp,kkpase,kkpaser)
+| BinaryLRxLR(Low,kkpl,kkp,kkpase,kkpaser,kkl,kk,kkpase,kkpaser)
+| BinaryLRxLR(Init,kkppl,kkpp,k,kr,kkppl,kkpp,kp,kpr)
+| BinaryLRxLR(Init,kkppl,kkpp,kp,kpr,kkppl,kkpp,kpp,kppr)
+| BinaryLRxLR(Low,kpasel,kpase,kpp,kppr,kpasel,kpase,kp,kpr)
+| BinaryLRxLR(Low,kpasel,kpase,kp,kpr,kpasel,kpase,k,kr))

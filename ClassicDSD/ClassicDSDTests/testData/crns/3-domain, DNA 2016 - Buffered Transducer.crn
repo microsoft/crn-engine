@@ -1,0 +1,21 @@
+directive sample 0.0,30000.0 1000
+directive plot sum(sp_0); sum(sp_7)
+directive scale 100.0
+directive parameters
+  [ e = 2.71828183
+  ; R = 0.0019872
+  ; T = 298.15 ]
+
+init sp_0 1.0 |
+init BTr_4 1.0 |
+init BTr_3 100.0 |
+init BTr_2 100.0 |
+init BTr_1 100.0 |
+init BTr 100.0 |
+BTr + BTr_4 <->{0.0003}{0.1126} sp_1 |
+sp_3 + sp_0 <->{0.0003}{0.1126} sp_4 |
+sp_6 + BTr_1 ->{0.0003} sp_8 + sp_7 + BTr_4 |
+BTr_2 + sp_5 ->{0.0003} sp_10 + sp_9 |
+sp_4 <->{0.1126}{0.0003} sp_6 + sp_5 |
+BTr_3 + sp_2 ->{0.0003} sp_12 + sp_11 |
+sp_1 <->{0.1126}{0.0003} sp_3 + sp_2

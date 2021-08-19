@@ -1,0 +1,79 @@
+directive sample 20000.0 1000
+directive compilation infinite
+directive simulation deterministic
+directive time s
+directive concentration nM
+directive plot <_ fl^>; <fl^ _>
+
+directive event <tb^ b> inB * 10.0 * N * (1.0-badJoinBX_B) @ T1
+directive event <rbx u1^> inRepR * 4.0 * N * (1.0-badRepR) @ T1_Rep
+
+directive parameters [
+kint,(1.0e-5,1.0e-3),0.00003,log,random;
+kextL,(1.0e-5,1.0e-3),0.0001,log,random;
+kextR,(1.0e-5,1.0e-3),0.0003,log,random;
+
+JoinOn = 0.0; ForkOn = 0.0; NRepJ = 0.0; NRepF = 0.0; NMi = 100.0; NG = 30.0;
+inB = 0.0; inX = 0.0; inH = 0.0; inRepL = 0.0; inRepR = 0.0;
+inR = 0.0; inH1 = 0.0; inH2 = 0.0;
+
+leakJoinBX_B,(0.0,0.05),0.001,real,random;
+badJoinBX_B,(0.0,0.3),0.0,real,random;
+badRepR,(0.0,0.3),0.2,real,random;
+
+T1,(7000.0,8000.0),7400.0,real,random;
+T1_Rep,(3600.0,4000.0),3800.0,real,random;
+N,(0.0,1.0),0.6,real,fixed
+]
+
+(* Directives for parameter inference *)
+directive fit_run { burnin = 5000
+                  ; samples = 20000
+                  ; mle_burnin = 100
+                  ; mle_samples = 100
+                  ; thin = 5 }
+directive sweep sweepJoin_AddB = { N = [0.0,0.2,0.4,0.6], inB = [1.0], JoinOn = [1.0], NRepJ = [30.0] }
+directive fit { sweepJoin_AddB; JoinBX_AddB; <fl^ rbx> }
+directive sweep sweepRepR = { N = [0.2,0.4,0.6,0.8], inRepR = [1.0], NRepJ = [30.0] }
+directive fit { sweepRepR; Rep_rbxu1; <fl^ rbx> }
+
+new fl@0.0,0.0
+new tb@kextL,0.0
+new tx@kint,0.0
+new trbx@kint,0.0
+new u1@kextR,0.0
+new u2@kint,0.0
+new u3@kint,0.0
+new tF2@kint,0.0
+new tF4@kint,0.0
+
+def Input(ta,a) = <ta^ a>
+def Catalyst(tb,b) = <tb^ b>
+def Helper(tr,r) = <tr^ r>
+def Translator(x,tx) = <x tx^>
+def Signal(c,fl) = <c fl^>
+def Rep(tx,x) = {tx^*}[x]<fl^>
+def InputR(h,th) = <h th^>
+def CatalystR(h,th) = <h th^>
+def HelperR(r,tr) = <r tr^>
+def Output(tz,z) = <tz^ z>
+def SignalR(fl,c) = <fl^ c>
+def RepR(x,tx) = <fl^>[x]{tx^*}
+def Join_AB(ta,a,tb,b,tr,r,tq) = {ta^*}[a tb^]:[b tr^]:[r tq^]
+def Fork_ABC(i,tc,c,tb,b,ta,a,tr,r,tq) = [i]:[tc^ c]:[tb^ b]:[ta^ a]:[tr^ r]{tq^*}
+
+def Join(NA,NB,NH,NG,Leak,ta,a,tb,b,tr,r,tq) =
+( NG*(1.0-Leak) * Join_AB(ta,a,tb,b,tr,r,tq)
+| NG*Leak * Translator(r,tq)
+| NA * Input(ta,a)
+| NB * Catalyst(tb,b)
+| NH * Helper(tr,r) )
+
+def RepJoin(N,NR,r,tq) =
+( N * Translator(r,tq)
+| NR * RepR(r,tq)
+| 0 * SignalR(fl,r) )
+
+( RepJoin(0.0,NRepJ,rbx,u1)
+| JoinOn * Join((1.0-inB)*NMi,(1.0-inX)*NMi,(1.0-inH)*NMi,NG,inB*leakJoinBX_B,tb,b,tx,x,trbx,rbx,u1)
+)

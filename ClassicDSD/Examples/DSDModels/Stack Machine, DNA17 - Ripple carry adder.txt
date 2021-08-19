@@ -1,0 +1,158 @@
+directive simulation {
+  initial=0; final=10000000; points=1000000; 
+  plots=[ 
+    sum([<_ T^ pS1>]);  sum([<_ T^ pS2>]);  sum([<_ T^ pS3>]); 
+    sum([<_ T^ pS4>]);  sum([<_ T^ pS5>]);  sum([<_ T^ pS6>]); 
+    sum([<_ T^ pS7>]);  sum([<_ T^ pS8>]);  sum([<_ T^ pS9>]); 
+    sum([<_ T^ pS10>]); sum([<_ T^ pS11>]); sum([<_ T^ pS12>]); 
+    sum([<_ T^ pS13>]); sum([<_ T^ pAcc>]); sum([<_ T^ pRej>]);
+  ];
+}
+directive compilation infinite
+directive polymers
+directive jit
+def lots = 20.0
+new mBot 
+new pBot 
+new T 
+def EditStack(mPushZ, pPushZ, mPopZ, pPopZ, GlueZ) = 
+  (( lots * <pPushZ T^>
+  | lots * {GlueZ T^}
+  | lots * <T^>[GlueZ* T^*]<mPopZ>
+  | lots * {T^}[mPopZ T^]<pPopZ>:[pPushZ T^]{GlueZ}))
+def EmptyStack(mPushZ, pPushZ, mPopZ, pPopZ, GlueZ) = 
+  (( <mBot mPushZ>[T^ pPushZ]<pBot>:[T^ GlueZ*]::[T^* mPopZ]{T^*}:[pPushZ T^]{GlueZ}
+  | EditStack(mPushZ,pPushZ,mPopZ,pPopZ,GlueZ)))
+def OneStack(mPushZ, pPushZ, mPopZ, pPopZ, GlueZ, mX, pX) = 
+  (( <mBot mPushZ>[T^ pPushZ]<pBot>:[T^ GlueZ*]::[T^* mPopZ]:<mX mPushZ>[T^ pPushZ]<pX>:[T^ GlueZ*]::[T^* mPopZ]{T^*}:[pPushZ T^]{GlueZ}
+  | EditStack(mPushZ,pPushZ,mPopZ,pPopZ,GlueZ)))
+def TwoStack(mPushZ, pPushZ, mPopZ, pPopZ, GlueZ, mX, pX, mY, pY) = 
+  (( <mBot mPushZ>[T^ pPushZ]<pBot>:[T^ GlueZ*]::[T^* mPopZ]:<mX mPushZ>[T^ pPushZ]<pX>:[T^ GlueZ*]::[T^* mPopZ]:<mY mPushZ>[T^ pPushZ]<pY>:[T^ GlueZ*]::[T^* mPopZ]{T^*}:[pPushZ T^]{GlueZ}
+  | EditStack(mPushZ,pPushZ,mPopZ,pPopZ,GlueZ)))
+def ThreeStack(mPushZ, pPushZ, mPopZ, pPopZ, GlueZ, mX, pX, mY, pY, mW, pW) = 
+  (( <mBot mPushZ>[T^ pPushZ]<pBot>:[T^ GlueZ*]::[T^* mPopZ]:<mX mPushZ>[T^ pPushZ]<pX>:[T^ GlueZ*]::[T^* mPopZ]:<mY mPushZ>[T^ pPushZ]<pY>:[T^ GlueZ*]::[T^* mPopZ]:<mW mPushZ>[T^ pPushZ]<pW>:[T^ GlueZ*]::[T^* mPopZ]{T^*}:[pPushZ T^]{GlueZ}
+  | EditStack(mPushZ,pPushZ,mPopZ,pPopZ,GlueZ)))
+def FourStack(mPushZ, pPushZ, mPopZ, pPopZ, GlueZ, mX, pX, mY, pY, mW, pW, mU, pU) = 
+  (( <mBot mPushZ>[T^ pPushZ]<pBot>:[T^ GlueZ*]::[T^* mPopZ]:<mX mPushZ>[T^ pPushZ]<pX>:[T^ GlueZ*]::[T^* mPopZ]:<mY mPushZ>[T^ pPushZ]<pY>:[T^ GlueZ*]::[T^* mPopZ]:<mW mPushZ>[T^ pPushZ]<pW>:[T^ GlueZ*]::[T^* mPopZ]:<mU mPushZ>[T^ pPushZ]<pU>:[T^ GlueZ*]::[T^* mPopZ]{T^*}:[pPushZ T^]{GlueZ}
+  | EditStack(mPushZ,pPushZ,mPopZ,pPopZ,GlueZ)))
+def FiveStack(mPushZ, pPushZ, mPopZ, pPopZ, GlueZ, mX, pX, mY, pY, mW, pW, mU, pU, mR, pR) = 
+  (( <mBot mPushZ>[T^ pPushZ]<pBot>:[T^ GlueZ*]::[T^* mPopZ]:<mX mPushZ>[T^ pPushZ]<pX>:[T^ GlueZ*]::[T^* mPopZ]:<mY mPushZ>[T^ pPushZ]<pY>:[T^ GlueZ*]::[T^* mPopZ]:<mW mPushZ>[T^ pPushZ]<pW>:[T^ GlueZ*]::[T^* mPopZ]:<mU mPushZ>[T^ pPushZ]<pU>:[T^ GlueZ*]::[T^* mPopZ]:<mR mPushZ>[T^ pPushZ]<pR>:[T^ GlueZ*]::[T^* mPopZ]{T^*}:[pPushZ T^]{GlueZ}
+  | EditStack(mPushZ,pPushZ,mPopZ,pPopZ,GlueZ)))
+def SixStack(mPushZ, pPushZ, mPopZ, pPopZ, GlueZ, mX, pX, mY, pY, mW, pW, mU, pU, mR, pR, mP, pP) = 
+  (( <mBot mPushZ>[T^ pPushZ]<pBot>:[T^ GlueZ*]::[T^* mPopZ]:<mX mPushZ>[T^ pPushZ]<pX>:[T^ GlueZ*]::[T^* mPopZ]:<mY mPushZ>[T^ pPushZ]<pY>:[T^ GlueZ*]::[T^* mPopZ]:<mW mPushZ>[T^ pPushZ]<pW>:[T^ GlueZ*]::[T^* mPopZ]:<mU mPushZ>[T^ pPushZ]<pU>:[T^ GlueZ*]::[T^* mPopZ]:<mR mPushZ>[T^ pPushZ]<pR>:[T^ GlueZ*]::[T^* mPopZ]:<mP mPushZ>[T^ pPushZ]<pP>:[T^ GlueZ*]::[T^* mPopZ]{T^*}:[pPushZ T^]{GlueZ}
+  | EditStack(mPushZ,pPushZ,mPopZ,pPopZ,GlueZ)))
+def SevenStack(mPushZ, pPushZ, mPopZ, pPopZ, GlueZ, mA, pA, mB, pB, mC, pC, mD, pD, mE, pE, mF, pF, mG, pG) = 
+  (( <mBot mPushZ>[T^ pPushZ]<pBot>:[T^ GlueZ*]::[T^* mPopZ]:<mA mPushZ>[T^ pPushZ]<pA>:[T^ GlueZ*]::[T^* mPopZ]:<mB mPushZ>[T^ pPushZ]<pB>:[T^ GlueZ*]::[T^* mPopZ]:<mC mPushZ>[T^ pPushZ]<pC>:[T^ GlueZ*]::[T^* mPopZ]:<mD mPushZ>[T^ pPushZ]<pD>:[T^ GlueZ*]::[T^* mPopZ]:<mE mPushZ>[T^ pPushZ]<pE>:[T^ GlueZ*]::[T^* mPopZ]:<mF mPushZ>[T^ pPushZ]<pF>:[T^ GlueZ*]::[T^* mPopZ]:<mG mPushZ>[T^ pPushZ]<pG>:[T^ GlueZ*]::[T^* mPopZ]{T^*}:[pPushZ T^]{GlueZ}
+  | EditStack(mPushZ,pPushZ,mPopZ,pPopZ,GlueZ)))
+def EightStack(mPushZ, pPushZ, mPopZ, pPopZ, GlueZ, mA, pA, mB, pB, mC, pC, mD, pD, mE, pE, mF, pF, mG, pG, mH, pH) = 
+  (( <mBot mPushZ>[T^ pPushZ]<pBot>:[T^ GlueZ*]::[T^* mPopZ]:<mA mPushZ>[T^ pPushZ]<pA>:[T^ GlueZ*]::[T^* mPopZ]:<mB mPushZ>[T^ pPushZ]<pB>:[T^ GlueZ*]::[T^* mPopZ]:<mC mPushZ>[T^ pPushZ]<pC>:[T^ GlueZ*]::[T^* mPopZ]:<mD mPushZ>[T^ pPushZ]<pD>:[T^ GlueZ*]::[T^* mPopZ]:<mE mPushZ>[T^ pPushZ]<pE>:[T^ GlueZ*]::[T^* mPopZ]:<mF mPushZ>[T^ pPushZ]<pF>:[T^ GlueZ*]::[T^* mPopZ]:<mG mPushZ>[T^ pPushZ]<pG>:[T^ GlueZ*]::[T^* mPopZ]:<mH mPushZ>[T^ pPushZ]<pH>:[T^ GlueZ*]::[T^* mPopZ]{T^*}:[pPushZ T^]{GlueZ}
+  | EditStack(mPushZ,pPushZ,mPopZ,pPopZ,GlueZ)))
+def Element(mX, mPushZ, pPushZ, pX) = <mX mPushZ T^ pPushZ pX>
+def Signal(mX, pX) = <mX T^ pX>
+def Irrev33x33(mX, pX, mY, pY, mA, pA, mB, pB) = 
+  (new mA
+  ( lots * {T^*}[pX T^]:[pY T^]:[mA T^]<pA>:[mB T^]<pB>
+  | lots * <T^ mA T^ mB>))
+def Irrev53x35(mX, mPushZ1, pPushZ1, pX, mY, pY, mB, pB, mA, mPushZ2, pPushZ2, pA) = 
+  (new mB
+  ( lots * {T^*}[pPushZ1 pX T^]:[pY T^]:[mB T^]<pB>:[mA mPushZ2 T^]<pPushZ2 pA>
+  | lots * <T^ mB T^ mA mPushZ2>))
+def Irrev53x33(mX, mPushZ1, pPushZ1, pX, mY, pY, mA, pA, mB, pB) = 
+  (new mA
+  ( lots * {T^*}[pPushZ1 pX T^]:[pY T^]:[mA T^]<pA>:[mB T^]<pB>
+  | lots * <T^ mA T^ mB>))
+def Irrev53x3(mX, mPushZ1, pPushZ1, pX, mY, pY, mA, pA) = 
+  (new mA
+  ( lots * {T^*}[pPushZ1 pX T^]:[pY T^]:[mA T^]<pA>
+  | lots * <T^ mA T^>))
+def Irrev33x35(mX, pX, mY, pY, mB, pB, mA, mPushZ2, pPushZ2, pA) = 
+  (new mB
+  ( lots * {T^*}[pX T^]:[pY T^]:[mB T^]<pB>:[mA mPushZ2 T^]<pPushZ2 pA>
+  | lots * <T^ mB T^ mA mPushZ2>))
+new mPushA 
+new pPushA 
+new mPopA 
+new pPopA 
+new GlueA 
+new mPushB 
+new pPushB 
+new mPopB 
+new pPopB 
+new GlueB 
+new mPushC 
+new pPushC 
+new mPopC 
+new pPopC 
+new GlueC 
+new mPushX 
+new pPushX 
+new mPopX 
+new pPopX 
+new GlueX 
+new mZero 
+new pZero 
+new mOne 
+new pOne 
+new mS1 
+new pS1 
+new mS2 
+new pS2 
+new mS3 
+new pS3 
+new mS4 
+new pS4 
+new mS5 
+new pS5 
+new mS6 
+new pS6 
+new mS7 
+new pS7 
+new mS8 
+new pS8 
+new mS9 
+new pS9 
+new mS10 
+new pS10 
+new mS11 
+new pS11 
+new mS12 
+new pS12 
+new mS13 
+new pS13 
+new mAcc 
+new pAcc 
+new mRej 
+new pRej 
+( TwoStack(mPushA,pPushA,mPopA,pPopA,GlueA,mZero,pZero,mZero,pZero)
+| TwoStack(mPushB,pPushB,mPopB,pPopB,GlueB,mZero,pZero,mZero,pZero)
+| OneStack(mPushC,pPushC,mPopC,pPopC,GlueC,mZero,pZero)
+| EmptyStack(mPushX,pPushX,mPopX,pPopX,GlueX)
+| Signal(mS1,pS1)
+| Signal(mPopA,pPopA)
+| Irrev53x33(mBot,mPushA,pPushA,pBot,mS1,pS1,mS2,pS2,mPopB,pPopB)
+| Irrev53x33(mOne,mPushA,pPushA,pOne,mS1,pS1,mS3,pS3,mPopB,pPopB)
+| Irrev53x33(mZero,mPushA,pPushA,pZero,mS1,pS1,mS4,pS4,mPopB,pPopB)
+| Irrev53x3(mBot,mPushB,pPushB,pBot,mS2,pS2,mAcc,pAcc)
+| Irrev53x3(mOne,mPushB,pPushB,pOne,mS2,pS2,mRej,pRej)
+| Irrev53x3(mZero,mPushB,pPushB,pZero,mS2,pS2,mRej,pRej)
+| Irrev53x3(mBot,mPushB,pPushB,pBot,mS3,pS3,mRej,pRej)
+| Irrev53x33(mOne,mPushB,pPushB,pOne,mS3,pS3,mS5,pS5,mPopC,pPopC)
+| Irrev53x33(mZero,mPushB,pPushB,pZero,mS3,pS3,mS6,pS6,mPopC,pPopC)
+| Irrev53x3(mBot,mPushB,pPushB,pBot,mS4,pS4,mRej,pRej)
+| Irrev53x33(mOne,mPushB,pPushB,pOne,mS4,pS4,mS6,pS6,mPopC,pPopC)
+| Irrev53x33(mZero,mPushB,pPushB,pZero,mS4,pS4,mS7,pS7,mPopC,pPopC)
+| Irrev53x3(mBot,mPushC,pPushC,pBot,mS5,pS5,mRej,pRej)
+| Irrev53x35(mOne,mPushC,pPushC,pOne,mS5,pS5,mS8,pS8,mOne,mPushC,pPushC,pOne)
+| Irrev53x35(mZero,mPushC,pPushC,pZero,mS5,pS5,mS9,pS9,mOne,mPushC,pPushC,pOne)
+| Irrev53x3(mBot,mPushC,pPushC,pBot,mS6,pS6,mRej,pRej)
+| Irrev53x35(mOne,mPushC,pPushC,pOne,mS6,pS6,mS9,pS9,mOne,mPushC,pPushC,pOne)
+| Irrev53x35(mZero,mPushC,pPushC,pZero,mS6,pS6,mS10,pS10,mZero,mPushC,pPushC,pZero)
+| Irrev53x3(mBot,mPushC,pPushC,pBot,mS7,pS7,mRej,pRej)
+| Irrev53x35(mOne,mPushC,pPushC,pOne,mS7,pS7,mS10,pS10,mZero,mPushC,pPushC,pZero)
+| Irrev53x35(mZero,mPushC,pPushC,pZero,mS7,pS7,mS11,pS11,mZero,mPushC,pPushC,pZero)
+| Irrev33x35(mPopC,pPopC,mS8,pS8,mS13,pS13,mOne,mPushX,pPushX,pOne)
+| Irrev33x35(mPopC,pPopC,mS9,pS9,mS12,pS12,mZero,mPushX,pPushX,pZero)
+| Irrev33x35(mPopC,pPopC,mS10,pS10,mS13,pS13,mOne,mPushX,pPushX,pOne)
+| Irrev33x35(mPopC,pPopC,mS11,pS11,mS12,pS12,mZero,mPushX,pPushX,pZero)
+| Irrev33x33(mPopX,pPopX,mS12,pS12,mS1,pS1,mPopA,pPopA)
+| Irrev33x33(mPopX,pPopX,mS13,pS13,mS1,pS1,mPopA,pPopA))

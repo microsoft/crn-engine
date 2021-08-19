@@ -1,0 +1,122 @@
+directive sample 15.0*3600.0 500
+directive compilation infinite
+directive declare 
+directive simulation deterministic
+directive plot <t^ x>; <t^ y>; <t^ b>
+
+directive parameters [
+  (* Rates *)
+  kF1_YY = 4.3095e-06;
+  kJ1 = 7.9236e-06;
+  kJ1r = 8.2974e-05;
+  kJ2 = 1.2138e-04;
+  kJ2r = 1.0223e-06;
+  kJ3 = 5.0160e-04;
+  kJ3r = 1.0123e-06;
+  kF1 = 1.2721e-05;
+  kF1r = 2.3276e-04;
+  kF2 = 5.6530e-05;
+  kF2r = 1.2561e-04;
+  kF3 = 7.4418e-05;
+  kF3r = 1.0293e-06;
+  kF4 = 1.3428e-06;
+  kF5 = 9.7709e-04;
+    
+  (* Concentrations *)
+  X = 80.0; NG = 160.0; NH = 160.0;
+	
+  (* Initial conditions *)
+  Nx = 0.7;
+
+  (* Leak parameters *)
+  leakXY2B_J = 0.0172; leakXY2B_F = 0.0090;
+  leakBX2X_J = 0.0114; leakBX2X_F = 2.2677e-06;
+  leakBY2Y_J = 0.0105; leakBY2Y_F = 0.0154;      
+  badXY2B_X = 3.5686e-05; badXY2B_Y = 7.6834e-05;
+  badBX2X_B = 0.1504; badBX2X_X = 0.1195;
+  badBY2Y_B = 1.0204e-05; badBY2Y_Y = 0.2500
+  ]
+
+(* Sweep over different input values *)
+directive sweep mysweep = { Nx = [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9] }
+
+new t@0.0,0.0 new u1@0.0,0.0 new u2@0.0,0.0 new u3@0.0,0.0
+new b new x new y new rbx new rby new rxy 
+new pb new px new py new ig
+new fl@0.0,0.0
+
+def Input(ta,a) = <ta^ a>
+def Catalyst(tb,b) = <tb^ b>
+def Helper(tr,r) = <tr^ r>
+
+def Translator(r,tq) = <r tq^>
+def Output1R(b,tr) = <b tr^>
+def Output2R(c,tb) = <c tb^>
+def Output3R(d,tc) = <d tc^>
+def End(i,tc) = <i tc^>
+def Signal_Fork(c,fl) = <c fl^>
+def Signal_Join(fl,r) = <fl^ r>
+def Join(ta,a,tb,b,tr,r,tq) = {ta^*}[a tb^]:[b tr^]:[r tq^]
+def Join1(ta,a,tb,b,tr,r,tq) = [ta^ a]:{tb^*}[b tr^]:[r tq^]
+def Join2(ta,a,tb,b,tr,r,tq) = [ta^ a]:[tb^ b]:{tr^*}[r tq^]
+def Join3(ta,a,tb,b,tr,r,tq) = [ta^ a]:[tb^ b]:[tr^ r]{tq^*}
+def Fork(i,td,d,tc,c,tb,b,tr,r,tq) = [i]:[td^ d]:[tc^ c]:[tb^ b]:[tr^ r]{tq^*}
+def Fork1(i,td,d,tc,c,tb,b,tr,r,tq) = [i]:[td^ d]:[tc^ c]:[tb^ b]:{tr^*}[r tq^]
+def Fork2(i,td,d,tc,c,tb,b,tr,r,tq) = [i]:[td^ d]:[tc^ c]:{tb^*}[b tr^]:[r tq^]
+def Fork3(i,td,d,tc,c,tb,b,tr,r,tq) = [i]:[td^ d]:{tc^*}[c tb^]:[b tr^]:[r tq^]
+def Fork4(i,td,d,tc,c,tb,b,tr,r,tq) = [i]:{td^*}[d tc^]:[c tb^]:[b tr^]:[r tq^]
+def Fork5(i,td,d,tc,c,tb,b,tr,r,tq) = [i td^]:[d tc^]:[c tb^]:[b tr^]:[r tq^]
+
+(* Module definitions *)
+def JoinAB(NA,NB,NH,NG,NV,Leak,ta,a,tb,b,tr,r,tq) =
+( NG*(1.0-Leak) * Join(ta,a,tb,b,tr,r,tq)
+| NG*Leak * Translator(r,tq)
+| NA * Input(ta,a)
+| NB * Catalyst(tb,b)
+| NH * Helper(tr,r)
+| rxn <ta^ a> + Join(ta,a,tb,b,tr,r,tq) <->{kJ1,kJ1r} <a tb^> + Join1(ta,a,tb,b,tr,r,tq)
+| rxn <tb^ b> + Join1(ta,a,tb,b,tr,r,tq) <->{kJ2,kJ2r} <b tr^> + Join2(ta,a,tb,b,tr,r,tq)
+| rxn <tr^ r> + Join2(ta,a,tb,b,tr,r,tq) <->{kJ3,kJ3r} <r tq^> + Join3(ta,a,tb,b,tr,r,tq)
+)
+def ForkXYZ(N,NH1,NH2,NH3,NH4,NG,Leak,i,tz,z,ty,y,tx,x,tr,r,tq,k1) =
+( NG*(1.0-Leak) * Fork(i,tz,z,ty,y,tx,x,tr,r,tq)
+| N * Translator(r,tq)
+| NH1 * Output1R(x,tr)
+| NH2 * Output2R(y,tx)
+| NH3 * Output3R(z,ty)
+| NH4 * End(i,tz)
+| rxn <r tq^> + Fork(i,tz,z,ty,y,tx,x,tr,r,tq) <->{k1,kF1r} <tr^ r> + Fork1(i,tz,z,ty,y,tx,x,tr,r,tq)
+| rxn <x tr^> + Fork1(i,tz,z,ty,y,tx,x,tr,r,tq) <->{kF2,kF2r} <tx^ x> + Fork2(i,tz,z,ty,y,tx,x,tr,r,tq)
+| rxn <y tx^> + Fork2(i,tz,z,ty,y,tx,x,tr,r,tq) <->{kF3,kF3r} <ty^ y> + Fork3(i,tz,z,ty,y,tx,x,tr,r,tq)
+| rxn <z ty^> + Fork3(i,tz,z,ty,y,tx,x,tr,r,tq) <->{kF4,kF2r} <tz^ z> + Fork4(i,tz,z,ty,y,tx,x,tr,r,tq)
+| rxn <i t^> + Fork4(i,tz,z,ty,y,tx,x,tr,r,tq) ->{kF5} Fork5(i,tz,z,ty,y,tx,x,tr,r,tq) + <i>
+)
+
+(* Components *)
+def JoinBX(NB,NX,NH,NG,Leak) = JoinAB(NB,NX,NH,NG,0.0,Leak,t,b,t,x,t,rbx,u1)
+def JoinBY(NB,NY,NH,NG,Leak) = JoinAB(NB,NY,NH,NG,0.0,Leak,t,b,t,y,t,rby,u1)
+def JoinXY(NX,NY,NH,NG,Leak) = JoinAB(NX,NY,NH,NG,0.0,Leak,t,x,t,y,t,rxy,u1)
+def ForkBB(NT,NH1,NH2,NH3,NH4,NG,Leak) = ForkXYZ(NT,NH1,NH2,NH3,NH4,NG,Leak,ig,t,b,u3,pb,t,b,u2,rxy,u1,kF1)
+def ForkXX(NT,NH1,NH2,NH3,NH4,NG,Leak) = ForkXYZ(NT,NH1,NH2,NH3,NH4,NG,Leak,ig,t,x,u3,px,t,x,u2,rbx,u1,kF1)
+def ForkYY(NT,NH1,NH2,NH3,NH4,NG,Leak) = ForkXYZ(NT,NH1,NH2,NH3,NH4,NG,Leak,ig,t,y,u3,py,t,y,u2,rby,u1,kF1_YY)
+
+(* Circuits *)
+def XY2B(Nx,Ny,X,NH,NG) = 
+( JoinXY(X*Nx*(1.0-badXY2B_X),X*Ny*(1.0-badXY2B_Y),NH,NG,leakXY2B_J) 
+| ForkBB(0.0,NH,NH,NH,NH,NG,leakXY2B_F) )
+def BX2X(N,X,NH,NG) = 
+( JoinBX(X*(1.0-badBX2X_B),X*N*(1.0-badBX2X_B),NH,NG,leakBX2X_J) 
+| ForkXX(0.0,NH,NH,NH,NH,NG,leakBX2X_F) )
+def BY2Y(N,X,NH,NG) = 
+( JoinBY(X*(1.0-badBY2Y_B),X*N*(1.0-badBY2Y_B),NH,NG,leakBY2Y_J) 
+| ForkYY(0.0,NH,NH,NH,NH,NG,leakBY2Y_F) )
+def AM() = 
+( XY2B(Nx,1.0-Nx,X,NH,NG) 
+| BX2X(0.0,0.0,NH,NG) 
+| BY2Y(0.0,0.0,NH*1.2,NG*1.2) 
+| NH * 0.8 * <ig t^> )
+
+(* Specify circuit regime *)
+def N = 0.4
+(*BX2X(N,X,NH,NG)*)
+AM()

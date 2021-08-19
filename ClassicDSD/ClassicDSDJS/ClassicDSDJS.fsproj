@@ -1,0 +1,173 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DefineConstants>TRACE;JavaScript</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DefineConstants>TRACE;JavaScript</DefineConstants>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="..\ClassicDSDDotNet\logicDSD.fs" Link="logicDSD.fs" />
+    <Compile Include="..\..\ClassicDSD\ClassicDSDDotNet\types.fsi">
+      <Link>types.fsi</Link>
+    </Compile>
+    <Compile Include="..\..\ClassicDSD\ClassicDSDDotNet\types.fs">
+      <Link>types.fs</Link>
+    </Compile>
+    <Compile Include="..\..\ClassicDSD\ClassicDSDDotNet\errors.fsi">
+      <Link>errors.fsi</Link>
+    </Compile>
+    <Compile Include="..\..\ClassicDSD\ClassicDSDDotNet\errors.fs">
+      <Link>errors.fs</Link>
+    </Compile>
+    <Compile Include="..\..\ClassicDSD\ClassicDSDDotNet\value.fsi">
+      <Link>value.fsi</Link>
+    </Compile>
+    <Compile Include="..\..\ClassicDSD\ClassicDSDDotNet\value.fs">
+      <Link>value.fs</Link>
+    </Compile>
+    <Compile Include="..\..\ClassicDSD\ClassicDSDDotNet\measures.fsi">
+      <Link>measures.fsi</Link>
+    </Compile>
+    <Compile Include="..\..\ClassicDSD\ClassicDSDDotNet\measures.fs">
+      <Link>measures.fs</Link>
+    </Compile>
+    <Compile Include="..\..\ClassicDSD\ClassicDSDDotNet\defaultDatabase.fs">
+      <Link>defaultDatabase.fs</Link>
+    </Compile>
+    <Compile Include="..\..\ClassicDSD\ClassicDSDDotNet\options.fsi">
+      <Link>options.fsi</Link>
+    </Compile>
+    <Compile Include="..\..\ClassicDSD\ClassicDSDDotNet\options.fs">
+      <Link>options.fs</Link>
+    </Compile>
+    <Compile Include="..\..\ClassicDSD\ClassicDSDDotNet\domain.fsi">
+      <Link>domain.fsi</Link>
+    </Compile>
+    <Compile Include="..\..\ClassicDSD\ClassicDSDDotNet\domain.fs">
+      <Link>domain.fs</Link>
+    </Compile>
+    <Compile Include="..\..\ClassicDSD\ClassicDSDDotNet\strand.fsi">
+      <Link>strand.fsi</Link>
+    </Compile>
+    <Compile Include="..\..\ClassicDSD\ClassicDSDDotNet\strand.fs">
+      <Link>strand.fs</Link>
+    </Compile>
+    <Compile Include="..\..\ClassicDSD\ClassicDSDDotNet\segment.fsi">
+      <Link>segment.fsi</Link>
+    </Compile>
+    <Compile Include="..\..\ClassicDSD\ClassicDSDDotNet\segment.fs">
+      <Link>segment.fs</Link>
+    </Compile>
+    <Compile Include="..\..\ClassicDSD\ClassicDSDDotNet\gate.fsi">
+      <Link>gate.fsi</Link>
+    </Compile>
+    <Compile Include="..\..\ClassicDSD\ClassicDSDDotNet\gate.fs">
+      <Link>gate.fs</Link>
+    </Compile>
+    <Compile Include="..\..\ClassicDSD\ClassicDSDDotNet\origami.fsi">
+      <Link>origami.fsi</Link>
+    </Compile>
+    <Compile Include="..\..\ClassicDSD\ClassicDSDDotNet\origami.fs">
+      <Link>origami.fs</Link>
+    </Compile>
+    <Compile Include="..\..\ClassicDSD\ClassicDSDDotNet\species.fsi">
+      <Link>species.fsi</Link>
+    </Compile>
+    <Compile Include="..\..\ClassicDSD\ClassicDSDDotNet\species.fs">
+      <Link>species.fs</Link>
+    </Compile>
+    <Compile Include="..\..\ClassicDSD\ClassicDSDDotNet\sequence.fsi">
+      <Link>sequence.fsi</Link>
+    </Compile>
+    <Compile Include="..\..\ClassicDSD\ClassicDSDDotNet\sequence.fs">
+      <Link>sequence.fs</Link>
+    </Compile>
+    <Compile Include="..\..\ClassicDSD\ClassicDSDDotNet\sequenceCalc.fsi">
+      <Link>sequenceCalc.fsi</Link>
+    </Compile>
+    <Compile Include="..\..\ClassicDSD\ClassicDSDDotNet\sequenceCalc.fs">
+      <Link>sequenceCalc.fs</Link>
+    </Compile>
+    <Compile Include="..\..\ClassicDSD\ClassicDSDDotNet\visualisation.fsi">
+      <Link>visualisation.fsi</Link>
+    </Compile>
+    <Compile Include="..\..\ClassicDSD\ClassicDSDDotNet\visualisation.fs">
+      <Link>visualisation.fs</Link>
+    </Compile>
+    <Compile Include="..\..\ClassicDSD\ClassicDSDDotNet\svg.fsi">
+      <Link>svg.fsi</Link>
+    </Compile>
+    <Compile Include="..\..\ClassicDSD\ClassicDSDDotNet\svg.fs">
+      <Link>svg.fs</Link>
+    </Compile>
+    <Compile Include="..\ClassicDSDDotNet\circlesrenderer.fsi" Link="circlesrenderer.fsi" />
+    <Compile Include="..\ClassicDSDDotNet\circlesrenderer.fs" Link="circlesrenderer.fs" />
+    <Compile Include="..\ClassicDSDDotNet\branchesrenderer.fsi">
+      <Link>branchesrenderer.fsi</Link>
+    </Compile>
+    <Compile Include="..\ClassicDSDDotNet\branchesrenderer.fs">
+      <Link>branchesrenderer.fs</Link>
+    </Compile>
+    <Compile Include="..\..\ClassicDSD\ClassicDSDDotNet\dsdreaction.fsi">
+      <Link>dsdreaction.fsi</Link>
+    </Compile>
+    <Compile Include="..\..\ClassicDSD\ClassicDSDDotNet\dsdreaction.fs">
+      <Link>dsdreaction.fs</Link>
+    </Compile>
+    <Compile Include="..\..\ClassicDSD\ClassicDSDDotNet\pattern.fsi">
+      <Link>pattern.fsi</Link>
+    </Compile>
+    <Compile Include="..\..\ClassicDSD\ClassicDSDDotNet\pattern.fs">
+      <Link>pattern.fs</Link>
+    </Compile>
+    <Compile Include="..\..\ClassicDSD\ClassicDSDDotNet\process.fsi">
+      <Link>process.fsi</Link>
+    </Compile>
+    <Compile Include="..\..\ClassicDSD\ClassicDSDDotNet\process.fs">
+      <Link>process.fs</Link>
+    </Compile>
+    <Compile Include="..\..\ClassicDSD\ClassicDSDDotNet\syntax.fsi">
+      <Link>syntax.fsi</Link>
+    </Compile>
+    <Compile Include="..\..\ClassicDSD\ClassicDSDDotNet\syntax.fs">
+      <Link>syntax.fs</Link>
+    </Compile>
+    <Compile Include="..\..\ClassicDSD\ClassicDSDDotNet\AssemblyInfo.fs">
+      <Link>AssemblyInfo.fs</Link>
+    </Compile>
+    <Compile Include="..\..\ClassicDSD\ClassicDSDDotNet\DSDParser.fs">
+      <Link>DSDParser.fs</Link>
+    </Compile>
+    <Compile Include="..\..\ClassicDSD\ClassicDSDDotNet\SLConversion.fs">
+      <Link>SLConversion.fs</Link>
+    </Compile>
+    <Compile Include="..\..\ClassicDSD\ClassicDSDDotNet\dsd.fsi">
+      <Link>dsd.fsi</Link>
+    </Compile>
+    <Compile Include="..\..\ClassicDSD\ClassicDSDDotNet\dsd.fs">
+      <Link>dsd.fs</Link>
+    </Compile>
+    <Compile Include="..\..\ClassicDSD\ClassicDSDDotNet\jsapi.fs">
+      <Link>jsapi.fs</Link>
+    </Compile>
+    <Compile Include="jsonapi.fs" />
+    <None Include="paket.references" />
+    <None Include="wsconfig.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\PDESolvers\ReactionDiffusionJS\ReactionDiffusionJS.fsproj" />
+    <ProjectReference Include="..\..\RulesDSD\RulesDSDJS\RulesDSDJS.fsproj" />
+    <Reference Include="Oslo.FSharp.WebSharper">
+      <HintPath>..\..\Lib\Oslo-FSharp.websharper\Oslo.FSharp.WebSharper.dll</HintPath>
+    </Reference>
+    <ProjectReference Include="..\..\CRNEngine\CRNEngineJS\CRNEngineJS.fsproj" />
+    <ProjectReference Include="..\..\Filzbach.FSharp.JS\Filzbach.FSharp.JS.fsproj" />
+    <ProjectReference Include="..\..\ParserCombinators\ParserCombinatorsJS\ParserCombinatorsJS.fsproj" />
+  </ItemGroup>
+  <Import Project="..\..\.paket\Paket.Restore.targets" />
+</Project>

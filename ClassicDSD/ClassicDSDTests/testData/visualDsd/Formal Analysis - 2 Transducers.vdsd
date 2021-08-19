@@ -1,0 +1,49 @@
+directive sample 300000.0 1000
+directive plot <t^ x>; <t^ y>; <t^ b>
+directive compilation infinite
+directive leak 1.0e-9  (* 1.0 /M/s  * 1.0e-9 nM  *)  (* /nM/s *)
+directive scale 1.0 (* for stochastic simulation *)
+directive predicates all
+def kt = 1.0e+6 (* /M/s *)
+def exp_DeltaG_over_RT = 3.75479e-7 (* T=25C, DeltaG=-8.76 kcal/mol *)
+def bind = kt*1.0e-9 (* /nM/s *)
+def unbind =  kt*exp_DeltaG_over_RT (* /s *)
+new t@bind,unbind
+
+(* Enumerate up to 5 "good" terminal states *)
+query good = {
+enumeration limit 5;
+Terminal@[0] and Invariant@[0] and NoReactiveGates@[0]
+}
+
+(* Enumerate up to 5 "bad" terminal states *)
+query bad = {
+enumeration limit 5;
+Terminal@[0] and Invariant@[0] and not NoReactiveGates@[0]
+}
+
+(* Try to prove that a bad state is reachable through BMC (works for very large N) *)
+query findBad = {
+abstraction stutter;
+Init@[0] and Terminal@[20] and not NoReactiveGates@[20]
+}
+
+(* Try to prove that a good state is reachable through BMC (works for very large N) *)
+query findGood = {
+abstraction stutter;
+Init@[0] and Terminal@[20] and NoReactiveGates@[20]
+}
+
+(* Signal strand *)
+def S(N, x) = N * <t^ x>
+
+(* Transducer gate - buggy, with GC *)
+def T(N, x, y) = new c new a
+( N * <t^ c a>
+| N * <y c t^>
+| N * {t^*}:[x t^]:[c]:[a t^]:[a]
+| N * [x]:[t^ y]:[c]:[t^ a]:{t^*} )
+
+new x0 new x1 new x2
+def N = 1
+( S(N, x0) | T(N, x0, x1) | T(N, x1, x2) )

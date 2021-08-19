@@ -1,0 +1,30 @@
+directive sample 0.0,30000.0 1000
+directive plot sum("<h tx^ x>"); sum("<a ty^ y>"); sum("<b tz^ z>")
+directive scale 100.0
+
+init "<h tx^ x>" 1.0 |
+init "{tB^*}[B tx^]:[x ta^]:[a ty^]<y>:[b tz^]<z>:[c tB^]<B>" 100.0 |
+init "<ta^ a ty^ b tz^ c tB^>" 100.0 |
+init "[x]{ta^*}" 100.0 |
+init "[B]{tx^*}" 100.0 |
+init "<c tB^ B>" 1.0 |
+init "<c>[tB^ B]:<B>[tx^]:[x ta^]:[a ty^]<y>:[b tz^]<z>:[c tB^]<B>" 0.0 |
+init "<c>[tB^ B]{tx^*}:[x ta^]:[a ty^]<y>:[b tz^]<z>:[c tB^]<B>" 0.0 |
+init "<c>[tB^ B]:<h>[tx^ x]:<x>[ta^]:[a ty^]<y>:[b tz^]<z>:[c tB^]<B>" 0.0 |
+init "<c>[tB^ B]:<h>[tx^ x]{ta^*}:[a ty^]<y>:[b tz^]<z>:[c tB^]<B>" 0.0 |
+init "<c>[tB^ B]:<h>[tx^ x]:[ta^ a ty^ b tz^ c tB^]" 0.0 |
+init "<a ty^ y>" 0.0 |
+init "<b tz^ z>" 0.0 |
+init "<x ta^>" 0.0 |
+init "[x ta^]" 0.0 |
+init "<x>" 0.0 |
+init "<B tx^>" 0.0 |
+init "[B tx^]" 0.0 |
+init "<B>" 0.0 |
+"{tB^*}[B tx^]:[x ta^]:[a ty^]<y>:[b tz^]<z>:[c tB^]<B>" + "<c tB^ B>" <->{0.0003}{0.1126} "<c>[tB^ B]:<B>[tx^]:[x ta^]:[a ty^]<y>:[b tz^]<z>:[c tB^]<B>" |
+"<c>[tB^ B]{tx^*}:[x ta^]:[a ty^]<y>:[b tz^]<z>:[c tB^]<B>" + "<h tx^ x>" <->{0.0003}{0.1126} "<c>[tB^ B]:<h>[tx^ x]:<x>[ta^]:[a ty^]<y>:[b tz^]<z>:[c tB^]<B>" |
+"<c>[tB^ B]:<h>[tx^ x]{ta^*}:[a ty^]<y>:[b tz^]<z>:[c tB^]<B>" + "<ta^ a ty^ b tz^ c tB^>" ->{0.0003} "<c>[tB^ B]:<h>[tx^ x]:[ta^ a ty^ b tz^ c tB^]" + "<a ty^ y>" + "<b tz^ z>" + "<c tB^ B>" |
+"[x]{ta^*}" + "<x ta^>" ->{0.0003} "[x ta^]" + "<x>" |
+"<c>[tB^ B]:<h>[tx^ x]:<x>[ta^]:[a ty^]<y>:[b tz^]<z>:[c tB^]<B>" <->{0.1126}{0.0003} "<c>[tB^ B]:<h>[tx^ x]{ta^*}:[a ty^]<y>:[b tz^]<z>:[c tB^]<B>" + "<x ta^>" |
+"[B]{tx^*}" + "<B tx^>" ->{0.0003} "[B tx^]" + "<B>" |
+"<c>[tB^ B]:<B>[tx^]:[x ta^]:[a ty^]<y>:[b tz^]<z>:[c tB^]<B>" <->{0.1126}{0.0003} "<c>[tB^ B]{tx^*}:[x ta^]:[a ty^]<y>:[b tz^]<z>:[c tB^]<B>" + "<B tx^>"

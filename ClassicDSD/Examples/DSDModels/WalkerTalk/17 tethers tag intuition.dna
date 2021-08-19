@@ -1,0 +1,8 @@
+directive locations [a = 10000; b=100; c=1]
+directive unproductive
+
+[[ <tether(a) x^>[s]<tether(b)>:[x^]<tether(c)>
+| {tether(a) s* x^*}
+| {tether(b) s* x^*}
+| {tether(c) s* x^*}
+]]

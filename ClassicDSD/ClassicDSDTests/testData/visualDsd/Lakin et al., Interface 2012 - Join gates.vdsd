@@ -1,0 +1,54 @@
+directive sample 2000000.0 1000
+directive plot sum(<_ t^ A>); sum(<_ t^ B>); sum(<_ t^ C>);
+               sum(<_ t^ D>); <B t^ K>;
+               {t^*}[K t^]:[A t^]<I>:[B t^]<K>:[Ch t^]<B>:[Dh t^]<B>:[J t^]:[I];
+               {t^*}[K t^]:[B t^]<I>:[C t^]<K>:[Ch t^]<C>:[Dh t^]<C>:[J t^]:[I];
+               {t^*}[K t^]:[C t^]<I>:[A t^]<K>:[Ch t^]<A>:[Dh t^]<A>:[J t^]:[I]
+directive scale 100.0
+
+def bind = 0.0003 (* /nM/s *)
+def unbind = 0.1126 (* /s *)
+new t@bind,unbind
+
+(* Signal species with history domain h and signal domain A. *)
+def Species(M,h,A) = M * <h t^ A>
+
+(* Buffered join gate A + B -> C + D. *)
+def BJ2x2(Buffer,Fuel,Init,A,B,C,D) =
+  new I new J new K new Ch new Dh
+    ( Buffer * {t^*}[K t^]:[ A t^]<I>:[B t^]<K>:[Ch t^]<C>:[Dh t^]<D>:[J t^]:[I]
+    | Fuel * <t^ Ch t^ Dh t^ J>
+    | Fuel * [J]{t^*}
+    | Fuel * [K]{t^*}
+    | (Init*10) * <A t^ I>
+    | Init * <B t^ K> )
+
+(* Unbuffered join gate (with garbage collection) A + B -> C + D. *)
+def J2x2(Fuel, N, A, B, C, D) =
+  new I new J new K new Ch new Dh
+    ( N * {t^*}[ A t^]<I>:[B t^]<K>:[Ch t^]<C>:[Dh t^]<D>:[J t^]:[I]
+    | Fuel * <t^ Ch t^ Dh t^ J>
+    | Fuel * [J]{t^*}
+    | Fuel * {t^*}[K]
+    | (N*10) * <A t^ I> )
+
+(* ********** Examples ********** *)
+
+(* Single buffered reaction A + B -> C + D. *)
+(* Set Buffer and Fuel to 100 when enabling leaks. *)
+def Buffer = 1000
+def Fuel = 1000
+def Init = 1
+  ( BJ2x2(Buffer, Fuel, Init, A, B, C, D)
+  | Species(1,hA,A)
+  | Species(1,hB,B) )
+
+(* Single unbuffered reaction A + B -> C + D. *)
+(* Set Fuel to 100 when enabling leaks. *)
+(*
+def Fuel = 1000
+def N = 1
+( J2x2(Fuel, N, A, B, C, D)
+| Species(1,hA,A)
+| Species(1,hB,B) )
+*)

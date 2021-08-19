@@ -1,0 +1,125 @@
+directive simulation {initial=0; final=10000; points=1000; plots=[<ra rb>]}
+directive simulator cme
+directive parameters [
+  length = 0, {interval=Real; distribution=Uniform(0,0); variation=Fixed};
+  c = 50, {interval=Real; distribution=Uniform(50,50); variation=Fixed};
+]
+directive sweeps [
+  sweep_1 = [length = [0; 1; 2; 3; 4; 5; 6; 7; 8; 9]];
+]
+directive compilation infinite
+directive leaks
+directive leak (1E-09 * c)
+directive tau 1
+def num = (2.0 ** length)
+def x0 = (num % 2.0)
+def r0 = ((num - x0) /  2.0)
+def x1 = (r0 % 2.0)
+def r1 = ((r0 - x1) /  2.0)
+def x2 = (r1 % 2.0)
+def r2 = ((r1 - x2) /  2.0)
+def x3 = (r2 % 2.0)
+def r3 = ((r2 - x3) /  2.0)
+def x4 = (r3 % 2.0)
+def r4 = ((r3 - x4) /  2.0)
+def x5 = (r4 % 2.0)
+def r5 = ((r4 - x5) /  2.0)
+def x6 = (r5 % 2.0)
+def r6 = ((r5 - x6) /  2.0)
+def x7 = (r6 % 2.0)
+def r7 = ((r6 - x7) /  2.0)
+def x8 = (r7 % 2.0)
+def r8 = ((r7 - x8) /  2.0)
+def x9 = (r8 % 2.0)
+def r9 = ((r8 - x9) /  2.0)
+def bind = 5E-05
+def unbind = 26.0
+def STRAND(T, sa, sb) = <T^ sa sb>
+def WIRE(T, Inputa, Inputb, To, Outputa, Outputb) = ( {T^*}[Inputa]:[Inputb To^]<Outputa Outputb>)
+def REPORTER(T, Inputa, Inputb) = {T^*}[Inputa Inputb]
+new T  @ (c * bind), unbind
+def WIRES0() = 
+  (( STRAND(T,ra,rb)
+  | REPORTER(T,ra,rb)))
+def WIRES1() = 
+  (( STRAND(T,aa,ab)
+  | WIRE(T,aa,ab,T,ra,rb)
+  | REPORTER(T,ra,rb)))
+def WIRES2() = 
+  (( STRAND(T,aa,ab)
+  | WIRE(T,aa,ab,T,ba,bb)
+  | WIRE(T,ba,bb,T,ra,rb)
+  | REPORTER(T,ra,rb)))
+def WIRES3() = 
+  (( STRAND(T,aa,ab)
+  | WIRE(T,aa,ab,T,ba,bb)
+  | WIRE(T,ba,bb,T,ca,cb)
+  | WIRE(T,ca,cb,T,ra,rb)
+  | REPORTER(T,ra,rb)))
+def WIRES4() = 
+  (( STRAND(T,aa,ab)
+  | WIRE(T,aa,ab,T,ba,bb)
+  | WIRE(T,ba,bb,T,ca,cb)
+  | WIRE(T,ca,cb,T,da,db)
+  | WIRE(T,da,db,T,ra,rb)
+  | REPORTER(T,ra,rb)))
+def WIRES5() = 
+  (( STRAND(T,aa,ab)
+  | WIRE(T,aa,ab,T,ba,bb)
+  | WIRE(T,ba,bb,T,ca,cb)
+  | WIRE(T,ca,cb,T,da,db)
+  | WIRE(T,da,db,T,ea,eb)
+  | WIRE(T,ea,eb,T,ra,rb)
+  | REPORTER(T,ra,rb)))
+def WIRES6() = 
+  (( STRAND(T,aa,ab)
+  | WIRE(T,aa,ab,T,ba,bb)
+  | WIRE(T,ba,bb,T,ca,cb)
+  | WIRE(T,ca,cb,T,da,db)
+  | WIRE(T,da,db,T,ea,eb)
+  | WIRE(T,ea,eb,T,fa,fb)
+  | WIRE(T,fa,fb,T,ra,rb)
+  | REPORTER(T,ra,rb)))
+def WIRES7() = 
+  (( STRAND(T,aa,ab)
+  | WIRE(T,aa,ab,T,ba,bb)
+  | WIRE(T,ba,bb,T,ca,cb)
+  | WIRE(T,ca,cb,T,da,db)
+  | WIRE(T,da,db,T,ea,eb)
+  | WIRE(T,ea,eb,T,fa,fb)
+  | WIRE(T,fa,fb,T,ga,gb)
+  | WIRE(T,ga,gb,T,ra,rb)
+  | REPORTER(T,ra,rb)))
+def WIRES8() = 
+  (( STRAND(T,aa,ab)
+  | WIRE(T,aa,ab,T,ba,bb)
+  | WIRE(T,ba,bb,T,ca,cb)
+  | WIRE(T,ca,cb,T,da,db)
+  | WIRE(T,da,db,T,ea,eb)
+  | WIRE(T,ea,eb,T,fa,fb)
+  | WIRE(T,fa,fb,T,ga,gb)
+  | WIRE(T,ga,gb,T,ha,hb)
+  | WIRE(T,ha,hb,T,ra,rb)
+  | REPORTER(T,ra,rb)))
+def WIRES9() = 
+  (( STRAND(T,aa,ab)
+  | WIRE(T,aa,ab,T,ba,bb)
+  | WIRE(T,ba,bb,T,ca,cb)
+  | WIRE(T,ca,cb,T,da,db)
+  | WIRE(T,da,db,T,ea,eb)
+  | WIRE(T,ea,eb,T,fa,fb)
+  | WIRE(T,fa,fb,T,ga,gb)
+  | WIRE(T,ga,gb,T,ha,hb)
+  | WIRE(T,ha,hb,T,ia,ib)
+  | WIRE(T,ia,ib,T,ra,rb)
+  | REPORTER(T,ra,rb)))
+( x0 * WIRES0()
+| x1 * WIRES1()
+| x2 * WIRES2()
+| x3 * WIRES3()
+| x4 * WIRES4()
+| x5 * WIRES5()
+| x6 * WIRES6()
+| x7 * WIRES7()
+| x8 * WIRES8()
+| x9 * WIRES9())

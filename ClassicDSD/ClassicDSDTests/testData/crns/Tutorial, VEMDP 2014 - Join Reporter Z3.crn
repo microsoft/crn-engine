@@ -1,0 +1,44 @@
+directive sample 0.0,10000.0 1000
+directive plot Input1; Input2; Signal
+directive parameters
+  [ e = 2.71828183
+  ; R = 0.0019872
+  ; T = 298.15 ]
+
+predicate out2 = {
+Signal = Input2@[0.0]
+} |
+predicate out1 = {
+Signal = Input1@[0.0]
+} |
+predicate min2 = {
+Input1 >= Input2
+} |
+predicate min1 = {
+Input1 < Input2
+} |
+predicate MinFn = {
+min1 -> out1 and min2 -> out2
+} |
+predicate Error = {
+not MinFn
+} |
+query errorComputation = {
+abstraction connected;
+
+Init@[0.0] and Terminal@[1.0] and ConservationOfMass@[1.0] and Error@[1.0]
+} |
+query correctComputation = {
+abstraction stutter;
+
+Init@[0.0] and Terminal@[5.0] and ConservationOfMass@[5.0] and MinFn@[5.0]
+} |
+init Input1 1.0 |
+init Input2 1.0 |
+init Join 3.0 |
+init Reporter 3.0 |
+Join + Input1 <->{0.0003}{0.1126} sp_0 |
+sp_2 + Input2 <->{0.0003}{0.1126} sp_3 |
+sp_3 <->{0.1126}{0.0003} sp_5 + sp_4 |
+sp_0 <->{0.1126}{0.0003} sp_2 + sp_1 |
+Reporter + sp_4 ->{0.0003} sp_6 + Signal

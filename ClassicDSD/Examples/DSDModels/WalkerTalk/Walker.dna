@@ -1,0 +1,15 @@
+(* 3-stator Walker *)
+//old_syntax
+directive sample 40000.0 1000
+directive simulation jit
+directive compilation infinite
+directive polymers
+directive localconcentrations [ (a, 100000); (b, 100000) ]
+
+[[ {tether(a) y^*}[s l^]<r^ s>
+ | {r^*}[s]<q^ s>{x^* tether(a,b)}
+ | {tether(b) z^*}<s w^>[s]{l^*}
+ | {tether(0) q^*}[s]<y^ s>
+ | {tether(1) w^*}[s]<x^ s>
+]]
+  

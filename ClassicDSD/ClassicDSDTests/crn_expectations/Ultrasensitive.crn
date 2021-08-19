@@ -1,0 +1,201 @@
+directive sample 0.0,500000.0 1000
+directive plot sum("<a.2 tl1p^ l1p>"); sum("<b.8 tl2p^ l2p>"); sum("<b.14 tl3p^ l3p>")
+
+init "<hl2 tl2^ l2>" 1000.0 |
+init "<hl3 tl3^ l3>" 1000.0 |
+init "<hstim tstim^ stim>" 10.0 |
+init "{tB^*}[B tstim^]:[stim ta^]:[a tl1^]<l1>:[b tstim^]<stim>:[c tB^]<B>" 10000.0 |
+init "<ta^ a tl1^ b tstim^ c tB^>" 10000.0 |
+init "[stim]{ta^*}" 10000.0 |
+init "[B]{tstim^*}" 10000.0 |
+init "<c tB^ B>" 10.0 |
+init "<c>[tB^ B]:<B>[tstim^]:[stim ta^]:[a tl1^]<l1>:[b tstim^]<stim>:[c tB^]<B>" 0.0 |
+init "<c>[tB^ B]{tstim^*}:[stim ta^]:[a tl1^]<l1>:[b tstim^]<stim>:[c tB^]<B>" 0.0 |
+init "<c>[tB^ B]:<hstim>[tstim^ stim]:<stim>[ta^]:[a tl1^]<l1>:[b tstim^]<stim>:[c tB^]<B>" 0.0 |
+init "<c>[tB^ B]:<hstim>[tstim^ stim]{ta^*}:[a tl1^]<l1>:[b tstim^]<stim>:[c tB^]<B>" 0.0 |
+init "<c>[tB^ B]:<hstim>[tstim^ stim]:[ta^ a tl1^ b tstim^ c tB^]" 0.0 |
+init "<a tl1^ l1>" 0.0 |
+init "<b tstim^ stim>" 0.0 |
+init "<c>[tB^ B]:<b>[tstim^ stim]:<stim>[ta^]:[a tl1^]<l1>:[b tstim^]<stim>:[c tB^]<B>" 0.0 |
+init "<c>[tB^ B]:<b>[tstim^ stim]{ta^*}:[a tl1^]<l1>:[b tstim^]<stim>:[c tB^]<B>" 0.0 |
+init "<c>[tB^ B]:<b>[tstim^ stim]:[ta^ a tl1^ b tstim^ c tB^]" 0.0 |
+init "<stim ta^>" 0.0 |
+init "[stim ta^]" 0.0 |
+init "<stim>" 0.0 |
+init "<B tstim^>" 0.0 |
+init "[B tstim^]" 0.0 |
+init "<B>" 0.0 |
+init "{tB.10^*}[B.11 tl1p^]:[l1p tl2^]:[l2 ta.6^]:[a.7 tl1^]<l1>:[b.8 tl2p^]<l2p>:[c.9 tB.10^]<B.11>" 10000.0 |
+init "<ta.6^ a.7 tl1^ b.8 tl2p^ c.9 tB.10^>" 10000.0 |
+init "[B.11]{tl1p^*}" 10000.0 |
+init "[l1p]:[tl2^ d]:[td^ l2]{ta.6^*}" 10000.0 |
+init "<d td^>" 10000.0 |
+init "{td^*}[l2]" 10000.0 |
+init "{tl2^*}[d]" 10000.0 |
+init "<c.9 tB.10^ B.11>" 10.0 |
+init "<c.9>[tB.10^ B.11]:<B.11>[tl1p^]:[l1p tl2^]:[l2 ta.6^]:[a.7 tl1^]<l1>:[b.8 tl2p^]<l2p>:[c.9 tB.10^]<B.11>" 0.0 |
+init "<c.9>[tB.10^ B.11]{tl1p^*}:[l1p tl2^]:[l2 ta.6^]:[a.7 tl1^]<l1>:[b.8 tl2p^]<l2p>:[c.9 tB.10^]<B.11>" 0.0 |
+init "<B.11 tl1p^>" 0.0 |
+init "[B.11 tl1p^]" 0.0 |
+init "<B.11>" 0.0 |
+init "{tB.18^*}[B.19 tl2p^]:[l2p tl3^]:[l3 ta.12^]:[a.13 tl2^]<l2>:[b.14 tl3p^]<l3p>:[c.15 tB.18^]<B.19>" 10000.0 |
+init "<ta.12^ a.13 tl2^ b.14 tl3p^ c.15 tB.18^>" 10000.0 |
+init "[B.19]{tl2p^*}" 10000.0 |
+init "[l2p]:[tl3^ d.17]:[td.16^ l3]{ta.12^*}" 10000.0 |
+init "<d.17 td.16^>" 10000.0 |
+init "{td.16^*}[l3]" 10000.0 |
+init "{tl3^*}[d.17]" 10000.0 |
+init "<c.15 tB.18^ B.19>" 10.0 |
+init "<c.15>[tB.18^ B.19]:<B.19>[tl2p^]:[l2p tl3^]:[l3 ta.12^]:[a.13 tl2^]<l2>:[b.14 tl3p^]<l3p>:[c.15 tB.18^]<B.19>" 0.0 |
+init "<c.15>[tB.18^ B.19]{tl2p^*}:[l2p tl3^]:[l3 ta.12^]:[a.13 tl2^]<l2>:[b.14 tl3p^]<l3p>:[c.15 tB.18^]<B.19>" 0.0 |
+init "<B.19 tl2p^>" 0.0 |
+init "[B.19 tl2p^]" 0.0 |
+init "<B.19>" 0.0 |
+init "{tB.4^*}[B.5 tl1^]:[l1 ta.1^]:[a.2 tl1p^]<l1p>:[b.3 tB.4^]<B.5>" 10000.0 |
+init "<ta.1^ a.2 tl1p^ b.3 tB.4^>" 10000.0 |
+init "[l1]{ta.1^*}" 10000.0 |
+init "[B.5]{tl1^*}" 10000.0 |
+init "<b.3 tB.4^ B.5>" 10.0 |
+init "<b.3>[tB.4^ B.5]:<B.5>[tl1^]:[l1 ta.1^]:[a.2 tl1p^]<l1p>:[b.3 tB.4^]<B.5>" 0.0 |
+init "<b.3>[tB.4^ B.5]{tl1^*}:[l1 ta.1^]:[a.2 tl1p^]<l1p>:[b.3 tB.4^]<B.5>" 0.0 |
+init "<b.3>[tB.4^ B.5]:<a>[tl1^ l1]:<l1>[ta.1^]:[a.2 tl1p^]<l1p>:[b.3 tB.4^]<B.5>" 0.0 |
+init "<b.3>[tB.4^ B.5]:<a>[tl1^ l1]{ta.1^*}:[a.2 tl1p^]<l1p>:[b.3 tB.4^]<B.5>" 0.0 |
+init "<b.3>[tB.4^ B.5]:<a>[tl1^ l1]:[ta.1^ a.2 tl1p^ b.3 tB.4^]" 0.0 |
+init "<a.2 tl1p^ l1p>" 0.0 |
+init "<c.9>[tB.10^ B.11]:<a.2>[tl1p^ l1p]:<l1p>[tl2^]:[l2 ta.6^]:[a.7 tl1^]<l1>:[b.8 tl2p^]<l2p>:[c.9 tB.10^]<B.11>" 0.0 |
+init "<c.9>[tB.10^ B.11]:<a.2>[tl1p^ l1p]{tl2^*}:[l2 ta.6^]:[a.7 tl1^]<l1>:[b.8 tl2p^]<l2p>:[c.9 tB.10^]<B.11>" 0.0 |
+init "<c.9>[tB.10^ B.11]:<a.2>[tl1p^ l1p]:<hl2>[tl2^ l2]:<l2>[ta.6^]:[a.7 tl1^]<l1>:[b.8 tl2p^]<l2p>:[c.9 tB.10^]<B.11>" 0.0 |
+init "<c.9>[tB.10^ B.11]:<a.2>[tl1p^ l1p]:<hl2>[tl2^ l2]{ta.6^*}:[a.7 tl1^]<l1>:[b.8 tl2p^]<l2p>:[c.9 tB.10^]<B.11>" 0.0 |
+init "<c.9>[tB.10^ B.11]:<a.2>[tl1p^ l1p]:<hl2>[tl2^ l2]:[ta.6^ a.7 tl1^ b.8 tl2p^ c.9 tB.10^]" 0.0 |
+init "<a.7 tl1^ l1>" 0.0 |
+init "<b.3>[tB.4^ B.5]:<a.7>[tl1^ l1]:<l1>[ta.1^]:[a.2 tl1p^]<l1p>:[b.3 tB.4^]<B.5>" 0.0 |
+init "<b.3>[tB.4^ B.5]:<a.7>[tl1^ l1]{ta.1^*}:[a.2 tl1p^]<l1p>:[b.3 tB.4^]<B.5>" 0.0 |
+init "<b.3>[tB.4^ B.5]:<a.7>[tl1^ l1]:[ta.1^ a.2 tl1p^ b.3 tB.4^]" 0.0 |
+init "<l1 ta.1^>" 0.0 |
+init "[l1 ta.1^]" 0.0 |
+init "<l1>" 0.0 |
+init "<b.8 tl2p^ l2p>" 0.0 |
+init "<c.15>[tB.18^ B.19]:<b.8>[tl2p^ l2p]:<l2p>[tl3^]:[l3 ta.12^]:[a.13 tl2^]<l2>:[b.14 tl3p^]<l3p>:[c.15 tB.18^]<B.19>" 0.0 |
+init "<c.15>[tB.18^ B.19]:<b.8>[tl2p^ l2p]{tl3^*}:[l3 ta.12^]:[a.13 tl2^]<l2>:[b.14 tl3p^]<l3p>:[c.15 tB.18^]<B.19>" 0.0 |
+init "<c.15>[tB.18^ B.19]:<b.8>[tl2p^ l2p]:<hl3>[tl3^ l3]:<l3>[ta.12^]:[a.13 tl2^]<l2>:[b.14 tl3p^]<l3p>:[c.15 tB.18^]<B.19>" 0.0 |
+init "<c.15>[tB.18^ B.19]:<b.8>[tl2p^ l2p]:<hl3>[tl3^ l3]{ta.12^*}:[a.13 tl2^]<l2>:[b.14 tl3p^]<l3p>:[c.15 tB.18^]<B.19>" 0.0 |
+init "<c.15>[tB.18^ B.19]:<b.8>[tl2p^ l2p]:<hl3>[tl3^ l3]:[ta.12^ a.13 tl2^ b.14 tl3p^ c.15 tB.18^]" 0.0 |
+init "<a.13 tl2^ l2>" 0.0 |
+init "<c.9>[tB.10^ B.11]:<a.2>[tl1p^ l1p]:<a.13>[tl2^ l2]:<l2>[ta.6^]:[a.7 tl1^]<l1>:[b.8 tl2p^]<l2p>:[c.9 tB.10^]<B.11>" 0.0 |
+init "<c.9>[tB.10^ B.11]:<a.2>[tl1p^ l1p]:<a.13>[tl2^ l2]{ta.6^*}:[a.7 tl1^]<l1>:[b.8 tl2p^]<l2p>:[c.9 tB.10^]<B.11>" 0.0 |
+init "<c.9>[tB.10^ B.11]:<a.2>[tl1p^ l1p]:<a.13>[tl2^ l2]:[ta.6^ a.7 tl1^ b.8 tl2p^ c.9 tB.10^]" 0.0 |
+init "<l2 ta.6^>" 0.0 |
+init "[l1p]:[tl2^ d]:[td^ l2]:<l2>[ta.6^]" 0.0 |
+init "[l1p]:[tl2^ d]{td^*}:[l2 ta.6^]" 0.0 |
+init "[l1p]:[tl2^ d]:<d>[td^]:[l2 ta.6^]" 0.0 |
+init "[l1p]{tl2^*}:[d td^]:[l2 ta.6^]" 0.0 |
+init "<tl2^ d>" 0.0 |
+init "[tl2^ d]" 0.0 |
+init "<d>" 0.0 |
+init "<td^ l2>" 0.0 |
+init "[td^ l2]" 0.0 |
+init "<l2>" 0.0 |
+init "<b.14 tl3p^ l3p>" 0.0 |
+init "<l3 ta.12^>" 0.0 |
+init "[l2p]:[tl3^ d.17]:[td.16^ l3]:<l3>[ta.12^]" 0.0 |
+init "[l2p]:[tl3^ d.17]{td.16^*}:[l3 ta.12^]" 0.0 |
+init "[l2p]:[tl3^ d.17]:<d.17>[td.16^]:[l3 ta.12^]" 0.0 |
+init "[l2p]{tl3^*}:[d.17 td.16^]:[l3 ta.12^]" 0.0 |
+init "<tl3^ d.17>" 0.0 |
+init "[tl3^ d.17]" 0.0 |
+init "<d.17>" 0.0 |
+init "<td.16^ l3>" 0.0 |
+init "[td.16^ l3]" 0.0 |
+init "<l3>" 0.0 |
+init "<l2p tl3^>" 0.0 |
+init "[l2p tl3^]:[d.17 td.16^]:[l3 ta.12^]" 0.0 |
+init "<l2p>" 0.0 |
+init "<l1p tl2^>" 0.0 |
+init "[l1p tl2^]:[d td^]:[l2 ta.6^]" 0.0 |
+init "<l1p>" 0.0 |
+init "<B.5 tl1^>" 0.0 |
+init "[B.5 tl1^]" 0.0 |
+init "<B.5>" 0.0 |
+init "{tB.23^*}[B.24 tl3p^]:[l3p ta.20^]:[a.21 tl3^]<l3>:[b.22 tB.23^]<B.24>" 10000.0 |
+init "<ta.20^ a.21 tl3^ b.22 tB.23^>" 10000.0 |
+init "[l3p]{ta.20^*}" 10000.0 |
+init "[B.24]{tl3p^*}" 10000.0 |
+init "<b.22 tB.23^ B.24>" 1.0 |
+init "<b.22>[tB.23^ B.24]:<B.24>[tl3p^]:[l3p ta.20^]:[a.21 tl3^]<l3>:[b.22 tB.23^]<B.24>" 0.0 |
+init "<b.22>[tB.23^ B.24]{tl3p^*}:[l3p ta.20^]:[a.21 tl3^]<l3>:[b.22 tB.23^]<B.24>" 0.0 |
+init "<b.22>[tB.23^ B.24]:<b.14>[tl3p^ l3p]:<l3p>[ta.20^]:[a.21 tl3^]<l3>:[b.22 tB.23^]<B.24>" 0.0 |
+init "<b.22>[tB.23^ B.24]:<b.14>[tl3p^ l3p]{ta.20^*}:[a.21 tl3^]<l3>:[b.22 tB.23^]<B.24>" 0.0 |
+init "<b.22>[tB.23^ B.24]:<b.14>[tl3p^ l3p]:[ta.20^ a.21 tl3^ b.22 tB.23^]" 0.0 |
+init "<a.21 tl3^ l3>" 0.0 |
+init "<c.15>[tB.18^ B.19]:<b.8>[tl2p^ l2p]:<a.21>[tl3^ l3]:<l3>[ta.12^]:[a.13 tl2^]<l2>:[b.14 tl3p^]<l3p>:[c.15 tB.18^]<B.19>" 0.0 |
+init "<c.15>[tB.18^ B.19]:<b.8>[tl2p^ l2p]:<a.21>[tl3^ l3]{ta.12^*}:[a.13 tl2^]<l2>:[b.14 tl3p^]<l3p>:[c.15 tB.18^]<B.19>" 0.0 |
+init "<c.15>[tB.18^ B.19]:<b.8>[tl2p^ l2p]:<a.21>[tl3^ l3]:[ta.12^ a.13 tl2^ b.14 tl3p^ c.15 tB.18^]" 0.0 |
+init "<l3p ta.20^>" 0.0 |
+init "[l3p ta.20^]" 0.0 |
+init "<l3p>" 0.0 |
+init "<B.24 tl3p^>" 0.0 |
+init "[B.24 tl3p^]" 0.0 |
+init "<B.24>" 0.0 |
+"{tB^*}[B tstim^]:[stim ta^]:[a tl1^]<l1>:[b tstim^]<stim>:[c tB^]<B>" + "<c tB^ B>" <->{3E-05}{0.1126} "<c>[tB^ B]:<B>[tstim^]:[stim ta^]:[a tl1^]<l1>:[b tstim^]<stim>:[c tB^]<B>" |
+"<c>[tB^ B]{tstim^*}:[stim ta^]:[a tl1^]<l1>:[b tstim^]<stim>:[c tB^]<B>" + "<hstim tstim^ stim>" <->{3E-05}{0.1126} "<c>[tB^ B]:<hstim>[tstim^ stim]:<stim>[ta^]:[a tl1^]<l1>:[b tstim^]<stim>:[c tB^]<B>" |
+"<c>[tB^ B]:<hstim>[tstim^ stim]{ta^*}:[a tl1^]<l1>:[b tstim^]<stim>:[c tB^]<B>" + "<ta^ a tl1^ b tstim^ c tB^>" ->{3E-05} "<c>[tB^ B]:<hstim>[tstim^ stim]:[ta^ a tl1^ b tstim^ c tB^]" + "<a tl1^ l1>" + "<b tstim^ stim>" + "<c tB^ B>" |
+"<c>[tB^ B]{tstim^*}:[stim ta^]:[a tl1^]<l1>:[b tstim^]<stim>:[c tB^]<B>" + "<b tstim^ stim>" <->{3E-05}{0.1126} "<c>[tB^ B]:<b>[tstim^ stim]:<stim>[ta^]:[a tl1^]<l1>:[b tstim^]<stim>:[c tB^]<B>" |
+"<c>[tB^ B]:<b>[tstim^ stim]{ta^*}:[a tl1^]<l1>:[b tstim^]<stim>:[c tB^]<B>" + "<ta^ a tl1^ b tstim^ c tB^>" ->{3E-05} "<c>[tB^ B]:<b>[tstim^ stim]:[ta^ a tl1^ b tstim^ c tB^]" + "<a tl1^ l1>" + "<b tstim^ stim>" + "<c tB^ B>" |
+"[stim]{ta^*}" + "<stim ta^>" ->{3E-05} "[stim ta^]" + "<stim>" |
+"<c>[tB^ B]:<hstim>[tstim^ stim]:<stim>[ta^]:[a tl1^]<l1>:[b tstim^]<stim>:[c tB^]<B>" <->{0.1126}{3E-05} "<c>[tB^ B]:<hstim>[tstim^ stim]{ta^*}:[a tl1^]<l1>:[b tstim^]<stim>:[c tB^]<B>" + "<stim ta^>" |
+"<c>[tB^ B]:<b>[tstim^ stim]:<stim>[ta^]:[a tl1^]<l1>:[b tstim^]<stim>:[c tB^]<B>" <->{0.1126}{3E-05} "<c>[tB^ B]:<b>[tstim^ stim]{ta^*}:[a tl1^]<l1>:[b tstim^]<stim>:[c tB^]<B>" + "<stim ta^>" |
+"[B]{tstim^*}" + "<B tstim^>" ->{3E-05} "[B tstim^]" + "<B>" |
+"<c>[tB^ B]:<B>[tstim^]:[stim ta^]:[a tl1^]<l1>:[b tstim^]<stim>:[c tB^]<B>" <->{0.1126}{3E-05} "<c>[tB^ B]{tstim^*}:[stim ta^]:[a tl1^]<l1>:[b tstim^]<stim>:[c tB^]<B>" + "<B tstim^>" |
+"{tB.10^*}[B.11 tl1p^]:[l1p tl2^]:[l2 ta.6^]:[a.7 tl1^]<l1>:[b.8 tl2p^]<l2p>:[c.9 tB.10^]<B.11>" + "<c.9 tB.10^ B.11>" <->{3E-05}{0.1126} "<c.9>[tB.10^ B.11]:<B.11>[tl1p^]:[l1p tl2^]:[l2 ta.6^]:[a.7 tl1^]<l1>:[b.8 tl2p^]<l2p>:[c.9 tB.10^]<B.11>" |
+"[B.11]{tl1p^*}" + "<B.11 tl1p^>" ->{3E-05} "[B.11 tl1p^]" + "<B.11>" |
+"<c.9>[tB.10^ B.11]:<B.11>[tl1p^]:[l1p tl2^]:[l2 ta.6^]:[a.7 tl1^]<l1>:[b.8 tl2p^]<l2p>:[c.9 tB.10^]<B.11>" <->{0.1126}{3E-05} "<c.9>[tB.10^ B.11]{tl1p^*}:[l1p tl2^]:[l2 ta.6^]:[a.7 tl1^]<l1>:[b.8 tl2p^]<l2p>:[c.9 tB.10^]<B.11>" + "<B.11 tl1p^>" |
+"{tB.18^*}[B.19 tl2p^]:[l2p tl3^]:[l3 ta.12^]:[a.13 tl2^]<l2>:[b.14 tl3p^]<l3p>:[c.15 tB.18^]<B.19>" + "<c.15 tB.18^ B.19>" <->{3E-05}{0.1126} "<c.15>[tB.18^ B.19]:<B.19>[tl2p^]:[l2p tl3^]:[l3 ta.12^]:[a.13 tl2^]<l2>:[b.14 tl3p^]<l3p>:[c.15 tB.18^]<B.19>" |
+"[B.19]{tl2p^*}" + "<B.19 tl2p^>" ->{3E-05} "[B.19 tl2p^]" + "<B.19>" |
+"<c.15>[tB.18^ B.19]:<B.19>[tl2p^]:[l2p tl3^]:[l3 ta.12^]:[a.13 tl2^]<l2>:[b.14 tl3p^]<l3p>:[c.15 tB.18^]<B.19>" <->{0.1126}{3E-05} "<c.15>[tB.18^ B.19]{tl2p^*}:[l2p tl3^]:[l3 ta.12^]:[a.13 tl2^]<l2>:[b.14 tl3p^]<l3p>:[c.15 tB.18^]<B.19>" + "<B.19 tl2p^>" |
+"{tB.4^*}[B.5 tl1^]:[l1 ta.1^]:[a.2 tl1p^]<l1p>:[b.3 tB.4^]<B.5>" + "<b.3 tB.4^ B.5>" <->{3E-05}{0.1126} "<b.3>[tB.4^ B.5]:<B.5>[tl1^]:[l1 ta.1^]:[a.2 tl1p^]<l1p>:[b.3 tB.4^]<B.5>" |
+"<b.3>[tB.4^ B.5]{tl1^*}:[l1 ta.1^]:[a.2 tl1p^]<l1p>:[b.3 tB.4^]<B.5>" + "<a tl1^ l1>" <->{3E-05}{0.1126} "<b.3>[tB.4^ B.5]:<a>[tl1^ l1]:<l1>[ta.1^]:[a.2 tl1p^]<l1p>:[b.3 tB.4^]<B.5>" |
+"<b.3>[tB.4^ B.5]:<a>[tl1^ l1]{ta.1^*}:[a.2 tl1p^]<l1p>:[b.3 tB.4^]<B.5>" + "<ta.1^ a.2 tl1p^ b.3 tB.4^>" ->{3E-05} "<b.3>[tB.4^ B.5]:<a>[tl1^ l1]:[ta.1^ a.2 tl1p^ b.3 tB.4^]" + "<a.2 tl1p^ l1p>" + "<b.3 tB.4^ B.5>" |
+"<c.9>[tB.10^ B.11]{tl1p^*}:[l1p tl2^]:[l2 ta.6^]:[a.7 tl1^]<l1>:[b.8 tl2p^]<l2p>:[c.9 tB.10^]<B.11>" + "<a.2 tl1p^ l1p>" <->{3E-05}{0.1126} "<c.9>[tB.10^ B.11]:<a.2>[tl1p^ l1p]:<l1p>[tl2^]:[l2 ta.6^]:[a.7 tl1^]<l1>:[b.8 tl2p^]<l2p>:[c.9 tB.10^]<B.11>" |
+"<c.9>[tB.10^ B.11]:<a.2>[tl1p^ l1p]{tl2^*}:[l2 ta.6^]:[a.7 tl1^]<l1>:[b.8 tl2p^]<l2p>:[c.9 tB.10^]<B.11>" + "<hl2 tl2^ l2>" <->{3E-05}{0.1126} "<c.9>[tB.10^ B.11]:<a.2>[tl1p^ l1p]:<hl2>[tl2^ l2]:<l2>[ta.6^]:[a.7 tl1^]<l1>:[b.8 tl2p^]<l2p>:[c.9 tB.10^]<B.11>" |
+"<c.9>[tB.10^ B.11]:<a.2>[tl1p^ l1p]:<hl2>[tl2^ l2]{ta.6^*}:[a.7 tl1^]<l1>:[b.8 tl2p^]<l2p>:[c.9 tB.10^]<B.11>" + "<ta.6^ a.7 tl1^ b.8 tl2p^ c.9 tB.10^>" ->{3E-05} "<c.9>[tB.10^ B.11]:<a.2>[tl1p^ l1p]:<hl2>[tl2^ l2]:[ta.6^ a.7 tl1^ b.8 tl2p^ c.9 tB.10^]" + "<a.7 tl1^ l1>" + "<b.8 tl2p^ l2p>" + "<c.9 tB.10^ B.11>" |
+"<b.3>[tB.4^ B.5]{tl1^*}:[l1 ta.1^]:[a.2 tl1p^]<l1p>:[b.3 tB.4^]<B.5>" + "<a.7 tl1^ l1>" <->{3E-05}{0.1126} "<b.3>[tB.4^ B.5]:<a.7>[tl1^ l1]:<l1>[ta.1^]:[a.2 tl1p^]<l1p>:[b.3 tB.4^]<B.5>" |
+"<b.3>[tB.4^ B.5]:<a.7>[tl1^ l1]{ta.1^*}:[a.2 tl1p^]<l1p>:[b.3 tB.4^]<B.5>" + "<ta.1^ a.2 tl1p^ b.3 tB.4^>" ->{3E-05} "<b.3>[tB.4^ B.5]:<a.7>[tl1^ l1]:[ta.1^ a.2 tl1p^ b.3 tB.4^]" + "<a.2 tl1p^ l1p>" + "<b.3 tB.4^ B.5>" |
+"[l1]{ta.1^*}" + "<l1 ta.1^>" ->{3E-05} "[l1 ta.1^]" + "<l1>" |
+"<b.3>[tB.4^ B.5]:<a>[tl1^ l1]:<l1>[ta.1^]:[a.2 tl1p^]<l1p>:[b.3 tB.4^]<B.5>" <->{0.1126}{3E-05} "<b.3>[tB.4^ B.5]:<a>[tl1^ l1]{ta.1^*}:[a.2 tl1p^]<l1p>:[b.3 tB.4^]<B.5>" + "<l1 ta.1^>" |
+"<b.3>[tB.4^ B.5]:<a.7>[tl1^ l1]:<l1>[ta.1^]:[a.2 tl1p^]<l1p>:[b.3 tB.4^]<B.5>" <->{0.1126}{3E-05} "<b.3>[tB.4^ B.5]:<a.7>[tl1^ l1]{ta.1^*}:[a.2 tl1p^]<l1p>:[b.3 tB.4^]<B.5>" + "<l1 ta.1^>" |
+"<c.15>[tB.18^ B.19]{tl2p^*}:[l2p tl3^]:[l3 ta.12^]:[a.13 tl2^]<l2>:[b.14 tl3p^]<l3p>:[c.15 tB.18^]<B.19>" + "<b.8 tl2p^ l2p>" <->{3E-05}{0.1126} "<c.15>[tB.18^ B.19]:<b.8>[tl2p^ l2p]:<l2p>[tl3^]:[l3 ta.12^]:[a.13 tl2^]<l2>:[b.14 tl3p^]<l3p>:[c.15 tB.18^]<B.19>" |
+"<c.15>[tB.18^ B.19]:<b.8>[tl2p^ l2p]{tl3^*}:[l3 ta.12^]:[a.13 tl2^]<l2>:[b.14 tl3p^]<l3p>:[c.15 tB.18^]<B.19>" + "<hl3 tl3^ l3>" <->{3E-05}{0.1126} "<c.15>[tB.18^ B.19]:<b.8>[tl2p^ l2p]:<hl3>[tl3^ l3]:<l3>[ta.12^]:[a.13 tl2^]<l2>:[b.14 tl3p^]<l3p>:[c.15 tB.18^]<B.19>" |
+"<c.15>[tB.18^ B.19]:<b.8>[tl2p^ l2p]:<hl3>[tl3^ l3]{ta.12^*}:[a.13 tl2^]<l2>:[b.14 tl3p^]<l3p>:[c.15 tB.18^]<B.19>" + "<ta.12^ a.13 tl2^ b.14 tl3p^ c.15 tB.18^>" ->{3E-05} "<c.15>[tB.18^ B.19]:<b.8>[tl2p^ l2p]:<hl3>[tl3^ l3]:[ta.12^ a.13 tl2^ b.14 tl3p^ c.15 tB.18^]" + "<a.13 tl2^ l2>" + "<b.14 tl3p^ l3p>" + "<c.15 tB.18^ B.19>" |
+"<c.9>[tB.10^ B.11]:<a.2>[tl1p^ l1p]{tl2^*}:[l2 ta.6^]:[a.7 tl1^]<l1>:[b.8 tl2p^]<l2p>:[c.9 tB.10^]<B.11>" + "<a.13 tl2^ l2>" <->{3E-05}{0.1126} "<c.9>[tB.10^ B.11]:<a.2>[tl1p^ l1p]:<a.13>[tl2^ l2]:<l2>[ta.6^]:[a.7 tl1^]<l1>:[b.8 tl2p^]<l2p>:[c.9 tB.10^]<B.11>" |
+"<c.9>[tB.10^ B.11]:<a.2>[tl1p^ l1p]:<a.13>[tl2^ l2]{ta.6^*}:[a.7 tl1^]<l1>:[b.8 tl2p^]<l2p>:[c.9 tB.10^]<B.11>" + "<ta.6^ a.7 tl1^ b.8 tl2p^ c.9 tB.10^>" ->{3E-05} "<c.9>[tB.10^ B.11]:<a.2>[tl1p^ l1p]:<a.13>[tl2^ l2]:[ta.6^ a.7 tl1^ b.8 tl2p^ c.9 tB.10^]" + "<a.7 tl1^ l1>" + "<b.8 tl2p^ l2p>" + "<c.9 tB.10^ B.11>" |
+"<c.9>[tB.10^ B.11]:<a.2>[tl1p^ l1p]:<hl2>[tl2^ l2]:<l2>[ta.6^]:[a.7 tl1^]<l1>:[b.8 tl2p^]<l2p>:[c.9 tB.10^]<B.11>" <->{0.1126}{3E-05} "<c.9>[tB.10^ B.11]:<a.2>[tl1p^ l1p]:<hl2>[tl2^ l2]{ta.6^*}:[a.7 tl1^]<l1>:[b.8 tl2p^]<l2p>:[c.9 tB.10^]<B.11>" + "<l2 ta.6^>" |
+"<c.9>[tB.10^ B.11]:<a.2>[tl1p^ l1p]:<a.13>[tl2^ l2]:<l2>[ta.6^]:[a.7 tl1^]<l1>:[b.8 tl2p^]<l2p>:[c.9 tB.10^]<B.11>" <->{0.1126}{3E-05} "<c.9>[tB.10^ B.11]:<a.2>[tl1p^ l1p]:<a.13>[tl2^ l2]{ta.6^*}:[a.7 tl1^]<l1>:[b.8 tl2p^]<l2p>:[c.9 tB.10^]<B.11>" + "<l2 ta.6^>" |
+"[l1p]:[tl2^ d]:[td^ l2]{ta.6^*}" + "<l2 ta.6^>" <->{3E-05}{0.1126} "[l1p]:[tl2^ d]:[td^ l2]:<l2>[ta.6^]" |
+"[l1p]:[tl2^ d]{td^*}:[l2 ta.6^]" + "<d td^>" <->{3E-05}{0.1126} "[l1p]:[tl2^ d]:<d>[td^]:[l2 ta.6^]" |
+"{tl2^*}[d]" + "<tl2^ d>" ->{3E-05} "[tl2^ d]" + "<d>" |
+"[l1p]:[tl2^ d]:<d>[td^]:[l2 ta.6^]" <->{0.1126}{3E-05} "[l1p]{tl2^*}:[d td^]:[l2 ta.6^]" + "<tl2^ d>" |
+"{td^*}[l2]" + "<td^ l2>" ->{3E-05} "[td^ l2]" + "<l2>" |
+"[l1p]:[tl2^ d]:[td^ l2]:<l2>[ta.6^]" <->{0.1126}{3E-05} "[l1p]:[tl2^ d]{td^*}:[l2 ta.6^]" + "<td^ l2>" |
+"<c.15>[tB.18^ B.19]:<b.8>[tl2p^ l2p]:<hl3>[tl3^ l3]:<l3>[ta.12^]:[a.13 tl2^]<l2>:[b.14 tl3p^]<l3p>:[c.15 tB.18^]<B.19>" <->{0.1126}{3E-05} "<c.15>[tB.18^ B.19]:<b.8>[tl2p^ l2p]:<hl3>[tl3^ l3]{ta.12^*}:[a.13 tl2^]<l2>:[b.14 tl3p^]<l3p>:[c.15 tB.18^]<B.19>" + "<l3 ta.12^>" |
+"[l2p]:[tl3^ d.17]:[td.16^ l3]{ta.12^*}" + "<l3 ta.12^>" <->{3E-05}{0.1126} "[l2p]:[tl3^ d.17]:[td.16^ l3]:<l3>[ta.12^]" |
+"[l2p]:[tl3^ d.17]{td.16^*}:[l3 ta.12^]" + "<d.17 td.16^>" <->{3E-05}{0.1126} "[l2p]:[tl3^ d.17]:<d.17>[td.16^]:[l3 ta.12^]" |
+"{tl3^*}[d.17]" + "<tl3^ d.17>" ->{3E-05} "[tl3^ d.17]" + "<d.17>" |
+"[l2p]:[tl3^ d.17]:<d.17>[td.16^]:[l3 ta.12^]" <->{0.1126}{3E-05} "[l2p]{tl3^*}:[d.17 td.16^]:[l3 ta.12^]" + "<tl3^ d.17>" |
+"{td.16^*}[l3]" + "<td.16^ l3>" ->{3E-05} "[td.16^ l3]" + "<l3>" |
+"[l2p]:[tl3^ d.17]:[td.16^ l3]:<l3>[ta.12^]" <->{0.1126}{3E-05} "[l2p]:[tl3^ d.17]{td.16^*}:[l3 ta.12^]" + "<td.16^ l3>" |
+"<c.15>[tB.18^ B.19]:<b.8>[tl2p^ l2p]:<l2p>[tl3^]:[l3 ta.12^]:[a.13 tl2^]<l2>:[b.14 tl3p^]<l3p>:[c.15 tB.18^]<B.19>" <->{0.1126}{3E-05} "<c.15>[tB.18^ B.19]:<b.8>[tl2p^ l2p]{tl3^*}:[l3 ta.12^]:[a.13 tl2^]<l2>:[b.14 tl3p^]<l3p>:[c.15 tB.18^]<B.19>" + "<l2p tl3^>" |
+"[l2p]{tl3^*}:[d.17 td.16^]:[l3 ta.12^]" + "<l2p tl3^>" ->{3E-05} "[l2p tl3^]:[d.17 td.16^]:[l3 ta.12^]" + "<l2p>" |
+"<c.9>[tB.10^ B.11]:<a.2>[tl1p^ l1p]:<l1p>[tl2^]:[l2 ta.6^]:[a.7 tl1^]<l1>:[b.8 tl2p^]<l2p>:[c.9 tB.10^]<B.11>" <->{0.1126}{3E-05} "<c.9>[tB.10^ B.11]:<a.2>[tl1p^ l1p]{tl2^*}:[l2 ta.6^]:[a.7 tl1^]<l1>:[b.8 tl2p^]<l2p>:[c.9 tB.10^]<B.11>" + "<l1p tl2^>" |
+"[l1p]{tl2^*}:[d td^]:[l2 ta.6^]" + "<l1p tl2^>" ->{3E-05} "[l1p tl2^]:[d td^]:[l2 ta.6^]" + "<l1p>" |
+"[B.5]{tl1^*}" + "<B.5 tl1^>" ->{3E-05} "[B.5 tl1^]" + "<B.5>" |
+"<b.3>[tB.4^ B.5]:<B.5>[tl1^]:[l1 ta.1^]:[a.2 tl1p^]<l1p>:[b.3 tB.4^]<B.5>" <->{0.1126}{3E-05} "<b.3>[tB.4^ B.5]{tl1^*}:[l1 ta.1^]:[a.2 tl1p^]<l1p>:[b.3 tB.4^]<B.5>" + "<B.5 tl1^>" |
+"{tB.23^*}[B.24 tl3p^]:[l3p ta.20^]:[a.21 tl3^]<l3>:[b.22 tB.23^]<B.24>" + "<b.22 tB.23^ B.24>" <->{3E-05}{0.1126} "<b.22>[tB.23^ B.24]:<B.24>[tl3p^]:[l3p ta.20^]:[a.21 tl3^]<l3>:[b.22 tB.23^]<B.24>" |
+"<b.22>[tB.23^ B.24]{tl3p^*}:[l3p ta.20^]:[a.21 tl3^]<l3>:[b.22 tB.23^]<B.24>" + "<b.14 tl3p^ l3p>" <->{3E-05}{0.1126} "<b.22>[tB.23^ B.24]:<b.14>[tl3p^ l3p]:<l3p>[ta.20^]:[a.21 tl3^]<l3>:[b.22 tB.23^]<B.24>" |
+"<b.22>[tB.23^ B.24]:<b.14>[tl3p^ l3p]{ta.20^*}:[a.21 tl3^]<l3>:[b.22 tB.23^]<B.24>" + "<ta.20^ a.21 tl3^ b.22 tB.23^>" ->{3E-05} "<b.22>[tB.23^ B.24]:<b.14>[tl3p^ l3p]:[ta.20^ a.21 tl3^ b.22 tB.23^]" + "<a.21 tl3^ l3>" + "<b.22 tB.23^ B.24>" |
+"<c.15>[tB.18^ B.19]:<b.8>[tl2p^ l2p]{tl3^*}:[l3 ta.12^]:[a.13 tl2^]<l2>:[b.14 tl3p^]<l3p>:[c.15 tB.18^]<B.19>" + "<a.21 tl3^ l3>" <->{3E-05}{0.1126} "<c.15>[tB.18^ B.19]:<b.8>[tl2p^ l2p]:<a.21>[tl3^ l3]:<l3>[ta.12^]:[a.13 tl2^]<l2>:[b.14 tl3p^]<l3p>:[c.15 tB.18^]<B.19>" |
+"<c.15>[tB.18^ B.19]:<b.8>[tl2p^ l2p]:<a.21>[tl3^ l3]{ta.12^*}:[a.13 tl2^]<l2>:[b.14 tl3p^]<l3p>:[c.15 tB.18^]<B.19>" + "<ta.12^ a.13 tl2^ b.14 tl3p^ c.15 tB.18^>" ->{3E-05} "<c.15>[tB.18^ B.19]:<b.8>[tl2p^ l2p]:<a.21>[tl3^ l3]:[ta.12^ a.13 tl2^ b.14 tl3p^ c.15 tB.18^]" + "<a.13 tl2^ l2>" + "<b.14 tl3p^ l3p>" + "<c.15 tB.18^ B.19>" |
+"<c.15>[tB.18^ B.19]:<b.8>[tl2p^ l2p]:<a.21>[tl3^ l3]:<l3>[ta.12^]:[a.13 tl2^]<l2>:[b.14 tl3p^]<l3p>:[c.15 tB.18^]<B.19>" <->{0.1126}{3E-05} "<c.15>[tB.18^ B.19]:<b.8>[tl2p^ l2p]:<a.21>[tl3^ l3]{ta.12^*}:[a.13 tl2^]<l2>:[b.14 tl3p^]<l3p>:[c.15 tB.18^]<B.19>" + "<l3 ta.12^>" |
+"[l3p]{ta.20^*}" + "<l3p ta.20^>" ->{3E-05} "[l3p ta.20^]" + "<l3p>" |
+"<b.22>[tB.23^ B.24]:<b.14>[tl3p^ l3p]:<l3p>[ta.20^]:[a.21 tl3^]<l3>:[b.22 tB.23^]<B.24>" <->{0.1126}{3E-05} "<b.22>[tB.23^ B.24]:<b.14>[tl3p^ l3p]{ta.20^*}:[a.21 tl3^]<l3>:[b.22 tB.23^]<B.24>" + "<l3p ta.20^>" |
+"[B.24]{tl3p^*}" + "<B.24 tl3p^>" ->{3E-05} "[B.24 tl3p^]" + "<B.24>" |
+"<b.22>[tB.23^ B.24]:<B.24>[tl3p^]:[l3p ta.20^]:[a.21 tl3^]<l3>:[b.22 tB.23^]<B.24>" <->{0.1126}{3E-05} "<b.22>[tB.23^ B.24]{tl3p^*}:[l3p ta.20^]:[a.21 tl3^]<l3>:[b.22 tB.23^]<B.24>" + "<B.24 tl3p^>"

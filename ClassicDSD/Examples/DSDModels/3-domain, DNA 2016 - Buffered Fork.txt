@@ -1,0 +1,22 @@
+directive simulation {initial=0; final=30000; points=1000; plots=[sum([<_ tx^ x>]); [B]:<h>[tx^]<x>; sum([<_ ty^ y>]); sum([<_ tz^ z>]); <c>[tB^ B]{tx^}:[x ta^]:[a ty]<y>:[b tz^]<z>:[c tB^]<B>]}
+directive stochastic {scale = 100.000000; trajectories = 1}
+def bind = 0.0003
+def unbind = 0.1126
+def Buff = 100.0
+new tx  @ bind, unbind
+new ty  @ bind, unbind
+new tz  @ bind, unbind
+def BF2(M, N, tx, x, ty, y, tz, z) = 
+  (new ta @ bind, unbind
+  new a
+  new b
+  new c
+  new tB @ bind, unbind
+  new B
+  ( M * {tB^*}[B tx^]:[x ta^]:[a ty^]<y>:[b tz^]<z>:[c tB^]<B>
+  | M * <ta^ a ty^ b tz^ c tB^>
+  | M * [x]{ta^*}
+  | M * [B]{tx^*}
+  | N * <c tB^ B>))
+( BF2(Buff,1.0,tx,x,ty,y,tz,z)
+| 1.0 * <h tx^ x>)

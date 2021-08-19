@@ -1,0 +1,55 @@
+directive simulation {initial=0; final=300000; points=1000; plots=[<t^ x>; <t^ y>; <t^ b>]}
+directive compilation infinite
+def kt = 1000000.0
+def exp_DeltaG_over_RT = 3.75479E-07
+def bind = (kt * 1E-09)
+def unbind = (kt * exp_DeltaG_over_RT)
+new t  @ bind, unbind
+def S(N, x) = N * <t^ x>
+def T(N, x, y) = 
+  (new c
+  ( N * <t^ c a>
+  | N * <y c t^>
+  | N * {t^*}[x t^]:[c]:[a t^]:[a]
+  | N * [x]:[t^ y]:[c]:[t^ a]{t^*}))
+def T2(N, x, y) = 
+  (new a
+  new c
+  ( N * <t^ c a>
+  | N * <y c t^>
+  | N * {t^*}[x t^]:[c]:[a t^]:[a]
+  | N * [x]:[t^ y]:[c]:[t^ a]{t^*}))
+def C(N, x, y, z) = 
+  (new a
+  new c
+  ( N * {t^*}[x t^]:[y t^]:[c]:[a t^]:[a]
+  | N * <t^ c a>
+  | N * [x]:[t^ z]:[c]:[t^ y]:[t^ a]{t^*}
+  | N * <z c t^>))
+def C_NoGC(N, x, y, z) = 
+  (new a
+  new c
+  ( N * {t^*}[x t^]:[y t^]:[c]:[a t^]
+  | N * <t^ c a>
+  | N * [t^ z]:[c]:[t^ y]:[t^ a]{t^*}
+  | N * <z c t^>))
+def C_NoGC_Constant(N, x, y, z) = 
+  (new a
+  new c
+  ( constant N * {t^*}[x t^]:[y t^]:[c]:[a t^]
+  | constant N * <t^ c a>
+  | constant N * <t^ a>
+  | constant N * [t^ z]:[c]:[t^ y]:[t^ a]{t^*}
+  | constant N * <z c t^>
+  | constant N * [t^ x]:[t^ y]:[t^ c a]{t^*}
+  | constant N * {t^*}[z c t^]:[y t^]:[a t^]
+  | constant N * <x>
+  | constant N * <c>
+  | constant N * <x t^>))
+new x0 
+new x1 
+new x2 
+def N = 1.0
+( S(N,x0)
+| T(N,x0,x1)
+| T(N,x1,x2))

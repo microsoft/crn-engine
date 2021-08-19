@@ -1,0 +1,14 @@
+directive sample 0.0,3600.0 2000
+directive plot OUTPUT
+directive parameters
+  [ e = 2.71828183
+  ; R = 0.0019872
+  ; T = 298.15 ]
+
+init FANOUT_1 2.0 |
+init FANOUT 1.0 |
+init INPUT 1.0 |
+init REPORTER 10.0 |
+FANOUT_1 + INPUT ->{0.0003} sp_2 + sp_1 + sp_0 |
+sp_2 + FANOUT <->{0.0003}{0.0003} sp_3 + INPUT |
+REPORTER + sp_0 ->{0.0003} sp_4 + OUTPUT

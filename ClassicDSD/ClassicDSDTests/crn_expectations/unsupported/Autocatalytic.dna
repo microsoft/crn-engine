@@ -1,0 +1,124 @@
+directive sample 72000.0 1000
+directive compilation infinite
+directive simulation deterministic
+directive time s
+directive concentration nM
+directive plot <_ fl^>; <fl^ _>
+
+directive event <tb^ b> auto*50.0*(1.0-badJoinBX_B) @ T1_Rep
+directive event <tx^ x> auto*50.0*N*(1.0-badJoinBX_X) @ T1_Rep
+directive event <rbx u1^> auto*NG*leakJoinBX_B @ T1_Rep
+directive event <tb^ b> inB*10.0*N * (1.0-badJoinBX_B) @ T1
+directive event <tx^ x> inX*10.0*N * (1.0-badJoinBX_X) @ T1
+directive event <trbx^ rbx> inH * 10.0 * N * (1.0-badJoinBX_H) @ T1
+directive event <rbx u1^> inRepR * 4.0 * N * (1.0-badRepR) @ T1_Rep
+directive event <rbx u1^> inR * 10.0 * N * (1.0-badForkXX_R) @ T1
+directive event <x u2^> inH1 * 10.0 * N * (1.0-badForkXX_H1) @ T1
+directive event <px tx^> inH2 * 10.0 * N * (1.0-badForkXX_H2) @ T1
+directive event <u3^ px> inRepL * 4.0 * N * (1.0-badRepL) @ T1_Rep
+directive parameters [
+kint,(1.0e-5,2.0e-3),0.00003,log,random;
+kextL,(1.0e-6,2.0e-3),0.0001,log,random;
+kextR,(1.0e-6,2.0e-3),0.0003,log,random;
+
+JoinOn = 0.0; ForkOn = 0.0; NRepJ = 0.0; NRepF = 0.0; NMi = 100.0; NG = 30.0;
+inB = 0.0; inX = 0.0; inH = 0.0; inRepL = 0.0; inRepR = 0.0;
+inR = 0.0; inH1 = 0.0; inH2 = 0.0; auto = 0.0;
+
+leakJoinBX_B,(0.0,0.05),0.002,real,random;
+badJoinBX_B,(0.0,0.3),0.0,real,random;
+leakJoinBX_X,(0.0,0.05),0.01,real,random;
+badJoinBX_X,(0.0,0.3),0.2,real,random;
+leakJoinBX_H,(0.0,0.05),0.01,real,random;
+badJoinBX_H,(0.0,0.3),0.2,real,random;
+leakForkXX_R,(0.0,0.05),0.01,real,random;
+badForkXX_R,(0.0,0.3),0.2,real,random;
+leakForkXX_H1,(0.0,0.05),0.01,real,random;
+badForkXX_H1,(0.0,0.3),0.2,real,random;
+leakForkXX_H2,(0.0,0.05),0.01,real,random;
+badForkXX_H2,(0.0,0.3),0.2,real,random;
+badRepR,(0.0,0.3),0.2,real,random;
+badRepL,(0.0,0.3),0.2,real,random;
+
+T1,(7000.0,8000.0),7400.0,real,random;
+T1_Rep,(3600.0,4000.0),3800.0,real,random;
+N,(0.0,1.0),0.6,real,fixed
+]
+
+(* Directives for parameter inference *)
+directive fit_run { burnin = 5000
+                  ; samples = 50000
+                  ; mle_burnin = 2000
+                  ; mle_samples = 2000
+                  ; thin = 10 }
+directive sweep sweepJoin_AddB = { N = [0.0,0.2,0.4,0.6], inB = [1.0], JoinOn = [1.0], NRepJ = [30.0] }
+directive fit { sweepJoin_AddB; JoinBX_AddB; <fl^ rbx> }
+directive sweep sweepJoin_AddX = { N = [0.0,0.2,0.4,0.6], inX = [1.0], JoinOn = [1.0], NRepJ = [30.0] }
+directive fit { sweepJoin_AddX; JoinBX_AddX; <fl^ rbx> }
+directive sweep sweepJoin_AddH = { N = [0.0,0.2,0.4,0.6], inH = [1.0], JoinOn = [1.0], NRepJ = [30.0] }
+directive fit { sweepJoin_AddH; JoinBX_AddH; <fl^ rbx> }
+directive sweep sweepRepR = { N = [0.2,0.4,0.6,0.8], inRepR = [1.0], NRepJ = [30.0] }
+directive fit { sweepRepR; Rep_rbxu1; <fl^ rbx> }
+directive sweep sweepFork_AddR = { N = [0.0,0.2,0.4,0.6], inR = [1.0], ForkOn = [1.0], NRepF = [30.0] }
+directive fit { sweepFork_AddR; ForkXX_AddR; <px fl^> }
+directive sweep sweepFork_AddH1 = { N = [0.0,0.2,0.4,0.6], inH1 = [1.0], ForkOn = [1.0], NRepF = [30.0] }
+directive fit { sweepFork_AddH1; ForkXX_AddH1; <px fl^> }
+directive sweep sweepFork_AddH2 = { N = [0.0,0.2,0.4,0.6], inH2 = [1.0], ForkOn = [1.0], NRepF = [30.0] }
+directive fit { sweepFork_AddH2; ForkXX_AddH2; <px fl^> }
+directive sweep sweepRepL = { N = [0.2,0.4,0.6,0.8], inRepL = [1.0], NRepF = [30.0] }
+directive fit { sweepRepL; Rep_u3px; <px fl^> }
+directive sweep sweepBX2X = { N = [0.0, 0.1, 0.3, 1.0], auto = [1.0], NRepF = [150.0], JoinOn = [1.0], ForkOn = [1.0], NG = [75.0] }
+directive fit { sweepBX2X; AutoCatBX; <px fl^> }
+
+new fl@0.0,0.0
+new tb@kextL,0.0
+new tx@kint,0.0
+new trbx@kint,0.0
+new u1@kextR,0.0
+new u2@kint,0.0
+new u3@kint,0.0
+
+def Input(ta,a) = <ta^ a>
+def Catalyst(tb,b) = <tb^ b>
+def Helper(tr,r) = <tr^ r>
+def Translator(x,tx) = <x tx^>
+def Signal(c,fl) = <c fl^>
+def Rep(tx,x) = {tx^*}[x]<fl^>
+def InputR(h,th) = <h th^>
+def CatalystR(h,th) = <h th^>
+def HelperR(r,tr) = <r tr^>
+def Output(tz,z) = <tz^ z>
+def SignalR(fl,c) = <fl^ c>
+def RepR(x,tx) = <fl^>[x]{tx^*}
+def Join_AB(ta,a,tb,b,tr,r,tq) = {ta^*}[a tb^]:[b tr^]:[r tq^]
+def Fork_ABC(i,tc,c,tb,b,ta,a,tr,r,tq) = [i]:[tc^ c]:[tb^ b]:[ta^ a]:[tr^ r]{tq^*}
+
+def Join(NA,NB,NH,NG,Leak,ta,a,tb,b,tr,r,tq) =
+( NG*(1.0-Leak) * Join_AB(ta,a,tb,b,tr,r,tq)
+| NG*Leak * Translator(r,tq)
+| NA * Input(ta,a)
+| NB * Catalyst(tb,b)
+| NH * Helper(tr,r) )
+def Fork(NHA,NHB,NHC,NHD,NHI,NG,Leak,i,tc,c,tb,b,ta,a,tr,r,tq) =
+( NG*(1.0-Leak) * Fork_ABC(i,tc,c,tb,b,ta,a,tr,r,tq)
+| NG*Leak * Output(tb,b)
+| NHA * Translator(r,tq)
+| NHB * HelperR(a,tr)
+| NHC * HelperR(b,ta)
+| NHD * HelperR(c,tb)
+| NHI * HelperR(i,tc) )
+
+def RepJoin(N,NR,r,tq) =
+( N * Translator(r,tq)
+| NR * RepR(r,tq)
+| 0 * SignalR(fl,r) )
+def RepFork(N,NR,tc,c) =
+( N * Output(tc,c)
+| NR * Rep(tc,c)
+| 0 * Signal(c,fl) )
+
+( RepJoin(0.0,NRepJ,rbx,u1)
+| RepFork(0.0,NRepF,u3,px)
+| JoinOn * Join((1.0-auto)*(1.0-inB)*NMi,(1.0-auto)*(1.0-inX)*NMi,(1.0-inH)*NMi,NG,inB*leakJoinBX_B+inX*leakJoinBX_X+inH*leakJoinBX_H,tb,b,tx,x,trbx,rbx,u1)
+| ForkOn * Fork((1.0-auto)*(1.0-inR)*NMi,(1.0-inH1)*NMi,(1.0-inH2)*NMi,NMi,NMi,NG,inR*leakForkXX_R+inH1*leakForkXX_H1+inH2*leakForkXX_H2,ig,tx,x,u3,px,tx,x,u2,rbx,u1)
+)

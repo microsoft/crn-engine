@@ -1,0 +1,16 @@
+directive plot fuel; sp_1
+directive parameters
+  [ e = 2.71828183
+  ; R = 0.0019872
+  ; T = 298.15 ]
+
+init catalyst 10.0 |
+init fuel 100.0 |
+init substrate 100.0 |
+substrate ->{0.1126} sp_2 + sp_1 |
+sp_2 + fuel ->{0.0003} sp_4 + sp_3 |
+sp_2 + catalyst <->{0.0003}{0.1126} sp_5 |
+sp_5 + fuel ->{0.0003} sp_6 + sp_3 |
+sp_6 <->{0.1126}{0.0003} sp_4 + catalyst |
+sp_0 ->{0.1126} sp_5 + sp_1 |
+substrate + catalyst <->{0.0003}{0.1126} sp_0

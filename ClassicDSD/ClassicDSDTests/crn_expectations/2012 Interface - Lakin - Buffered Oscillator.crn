@@ -1,0 +1,593 @@
+directive sample 0.0,250000.0 1000
+(*directive plot sum("<Ah t^ A>";"<Ch.10 t^ A>";"<Dh.11 t^ A>"); sum("<Bh t^ B>";"<Ch.1 t^ B>";"<Dh t^ B>"); sum("<Ch t^ C>";"<Ch.5 t^ C>";"<Dh.6 t^ C>")*)
+directive reltolerance 0.0001
+directive scale 100.0
+
+init "{t^*}[K t^]:[A t^]<I>:[B t^]<K>:[Ch.1 t^]<B>:[Dh t^]<B>:[J t^]:[I]" 100.0 |
+init "<t^ Ch.1 t^ Dh t^ J>" 1000.0 |
+init "[J]{t^*}" 1000.0 |
+init "[K]{t^*}" 1000.0 |
+init "<A t^ I>" 100.0 |
+init "<B t^ K>" 10.0 |
+init "<B>[t^ K]:<K>[t^]:[A t^]<I>:[B t^]<K>:[Ch.1 t^]<B>:[Dh t^]<B>:[J t^]:[I]" 0.0 |
+init "<B>[t^ K]{t^*}:[A t^]<I>:[B t^]<K>:[Ch.1 t^]<B>:[Dh t^]<B>:[J t^]:[I]" 0.0 |
+init "<K t^>" 0.0 |
+init "[K t^]" 0.0 |
+init "<K>" 0.0 |
+init "{t^*}[K.4 t^]:[B t^]<I.2>:[C t^]<K.4>:[Ch.5 t^]<C>:[Dh.6 t^]<C>:[J.3 t^]:[I.2]" 100.0 |
+init "<t^ Ch.5 t^ Dh.6 t^ J.3>" 1000.0 |
+init "[J.3]{t^*}" 1000.0 |
+init "[K.4]{t^*}" 1000.0 |
+init "<B t^ I.2>" 100.0 |
+init "<C t^ K.4>" 10.0 |
+init "<C>[t^ K.4]:<K.4>[t^]:[B t^]<I.2>:[C t^]<K.4>:[Ch.5 t^]<C>:[Dh.6 t^]<C>:[J.3 t^]:[I.2]" 0.0 |
+init "<C>[t^ K.4]{t^*}:[B t^]<I.2>:[C t^]<K.4>:[Ch.5 t^]<C>:[Dh.6 t^]<C>:[J.3 t^]:[I.2]" 0.0 |
+init "<K.4 t^>" 0.0 |
+init "[K.4 t^]" 0.0 |
+init "<K.4>" 0.0 |
+init "{t^*}[K.9 t^]:[C t^]<I.7>:[A t^]<K.9>:[Ch.10 t^]<A>:[Dh.11 t^]<A>:[J.8 t^]:[I.7]" 100.0 |
+init "<t^ Ch.10 t^ Dh.11 t^ J.8>" 1000.0 |
+init "[J.8]{t^*}" 1000.0 |
+init "[K.9]{t^*}" 1000.0 |
+init "<C t^ I.7>" 100.0 |
+init "<A t^ K.9>" 10.0 |
+init "<A>[t^ K.9]:<K.9>[t^]:[C t^]<I.7>:[A t^]<K.9>:[Ch.10 t^]<A>:[Dh.11 t^]<A>:[J.8 t^]:[I.7]" 0.0 |
+init "<A>[t^ K.9]{t^*}:[C t^]<I.7>:[A t^]<K.9>:[Ch.10 t^]<A>:[Dh.11 t^]<A>:[J.8 t^]:[I.7]" 0.0 |
+init "<K.9 t^>" 0.0 |
+init "[K.9 t^]" 0.0 |
+init "<K.9>" 0.0 |
+init "<Ah t^ A>" 2.0 |
+init "<B>[t^ K]:<Ah>[t^ A]:<A>[t^]<I>:[B t^]<K>:[Ch.1 t^]<B>:[Dh t^]<B>:[J t^]:[I]" 0.0 |
+init "<B>[t^ K]:<Ah>[t^ A]{t^*}:[B t^]<K>:[Ch.1 t^]<B>:[Dh t^]<B>:[J t^]:[I]" 0.0 |
+init "<B>[t^ K]:<Ah>[t^ A]:<A>[t^]<K.9>:[B t^]<K>:[Ch.1 t^]<B>:[Dh t^]<B>:[J t^]:[I]" 0.0 |
+init "<B>[t^ K]{t^*}:[A t^]<K.9>:[B t^]<K>:[Ch.1 t^]<B>:[Dh t^]<B>:[J t^]:[I]" 0.0 |
+init "<B>[t^ K]:<K>[t^]:[A t^]<K.9>:[B t^]<K>:[Ch.1 t^]<B>:[Dh t^]<B>:[J t^]:[I]" 0.0 |
+init "{t^*}[K t^]:[A t^]<K.9>:[B t^]<K>:[Ch.1 t^]<B>:[Dh t^]<B>:[J t^]:[I]" 0.0 |
+init "<Bh t^ B>" 4.0 |
+init "<C>[t^ K.4]:<Bh>[t^ B]:<B>[t^]<I.2>:[C t^]<K.4>:[Ch.5 t^]<C>:[Dh.6 t^]<C>:[J.3 t^]:[I.2]" 0.0 |
+init "<C>[t^ K.4]:<Bh>[t^ B]{t^*}:[C t^]<K.4>:[Ch.5 t^]<C>:[Dh.6 t^]<C>:[J.3 t^]:[I.2]" 0.0 |
+init "<C>[t^ K.4]:<Bh>[t^ B]:<B>[t^]<K>:[C t^]<K.4>:[Ch.5 t^]<C>:[Dh.6 t^]<C>:[J.3 t^]:[I.2]" 0.0 |
+init "<C>[t^ K.4]{t^*}:[B t^]<K>:[C t^]<K.4>:[Ch.5 t^]<C>:[Dh.6 t^]<C>:[J.3 t^]:[I.2]" 0.0 |
+init "<C>[t^ K.4]:<K.4>[t^]:[B t^]<K>:[C t^]<K.4>:[Ch.5 t^]<C>:[Dh.6 t^]<C>:[J.3 t^]:[I.2]" 0.0 |
+init "{t^*}[K.4 t^]:[B t^]<K>:[C t^]<K.4>:[Ch.5 t^]<C>:[Dh.6 t^]<C>:[J.3 t^]:[I.2]" 0.0 |
+init "<B>[t^ K]:<Ah>[t^ A]:<Bh>[t^ B]:<B>[t^]<K>:[Ch.1 t^]<B>:[Dh t^]<B>:[J t^]:[I]" 0.0 |
+init "<B>[t^ K]:<Ah>[t^ A]:<Bh>[t^ B]{t^*}:[Ch.1 t^]<B>:[Dh t^]<B>:[J t^]:[I]" 0.0 |
+init "<B>[t^ K]:<Ah>[t^ A]:<Bh>[t^ B]:[t^ Ch.1 t^ Dh t^ J]:<J>[t^]:[I]" 0.0 |
+init "<B>[t^ K]:<Ah>[t^ A]:<Bh>[t^ B]:[t^ Ch.1 t^ Dh t^ J]{t^*}:[I]" 0.0 |
+init "<B>[t^ K]:<Ah>[t^ A]:<Bh>[t^ B]:[t^ Ch.1 t^ Dh t^ J]:<A>[t^ I]" 0.0 |
+init "<I>" 0.0 |
+init "<J t^>" 0.0 |
+init "[J t^]" 0.0 |
+init "<J>" 0.0 |
+init "<Ch.1 t^ B>" 0.0 |
+init "<C>[t^ K.4]:<Ch.1>[t^ B]:<B>[t^]<I.2>:[C t^]<K.4>:[Ch.5 t^]<C>:[Dh.6 t^]<C>:[J.3 t^]:[I.2]" 0.0 |
+init "<C>[t^ K.4]:<Ch.1>[t^ B]{t^*}:[C t^]<K.4>:[Ch.5 t^]<C>:[Dh.6 t^]<C>:[J.3 t^]:[I.2]" 0.0 |
+init "<C>[t^ K.4]:<Ch.1>[t^ B]:<B>[t^]<K>:[C t^]<K.4>:[Ch.5 t^]<C>:[Dh.6 t^]<C>:[J.3 t^]:[I.2]" 0.0 |
+init "<B>[t^ K]:<Ah>[t^ A]:<Ch.1>[t^ B]:<B>[t^]<K>:[Ch.1 t^]<B>:[Dh t^]<B>:[J t^]:[I]" 0.0 |
+init "<B>[t^ K]:<Ah>[t^ A]:<Ch.1>[t^ B]{t^*}:[Ch.1 t^]<B>:[Dh t^]<B>:[J t^]:[I]" 0.0 |
+init "<B>[t^ K]:<Ah>[t^ A]:<Ch.1>[t^ B]:[t^ Ch.1 t^ Dh t^ J]:<J>[t^]:[I]" 0.0 |
+init "<B>[t^ K]:<Ah>[t^ A]:<Ch.1>[t^ B]:[t^ Ch.1 t^ Dh t^ J]{t^*}:[I]" 0.0 |
+init "<B>[t^ K]:<Ah>[t^ A]:<Ch.1>[t^ B]:[t^ Ch.1 t^ Dh t^ J]:<A>[t^ I]" 0.0 |
+init "<Dh t^ B>" 0.0 |
+init "<C>[t^ K.4]:<Dh>[t^ B]:<B>[t^]<I.2>:[C t^]<K.4>:[Ch.5 t^]<C>:[Dh.6 t^]<C>:[J.3 t^]:[I.2]" 0.0 |
+init "<C>[t^ K.4]:<Dh>[t^ B]{t^*}:[C t^]<K.4>:[Ch.5 t^]<C>:[Dh.6 t^]<C>:[J.3 t^]:[I.2]" 0.0 |
+init "<C>[t^ K.4]:<Dh>[t^ B]:<B>[t^]<K>:[C t^]<K.4>:[Ch.5 t^]<C>:[Dh.6 t^]<C>:[J.3 t^]:[I.2]" 0.0 |
+init "<B>[t^ K]:<Ah>[t^ A]:<Dh>[t^ B]:<B>[t^]<K>:[Ch.1 t^]<B>:[Dh t^]<B>:[J t^]:[I]" 0.0 |
+init "<B>[t^ K]:<Ah>[t^ A]:<Dh>[t^ B]{t^*}:[Ch.1 t^]<B>:[Dh t^]<B>:[J t^]:[I]" 0.0 |
+init "<B>[t^ K]:<Ah>[t^ A]:<Dh>[t^ B]:[t^ Ch.1 t^ Dh t^ J]:<J>[t^]:[I]" 0.0 |
+init "<B>[t^ K]:<Ah>[t^ A]:<Dh>[t^ B]:[t^ Ch.1 t^ Dh t^ J]{t^*}:[I]" 0.0 |
+init "<B>[t^ K]:<Ah>[t^ A]:<Dh>[t^ B]:[t^ Ch.1 t^ Dh t^ J]:<A>[t^ I]" 0.0 |
+init "<B>[t^ K]:<Ah>[t^ A]:<Dh>[t^ B]:<B>[t^]<I.2>:[Ch.1 t^]<B>:[Dh t^]<B>:[J t^]:[I]" 0.0 |
+init "<B>[t^ K]:<Ah>[t^ A]{t^*}:[B t^]<I.2>:[Ch.1 t^]<B>:[Dh t^]<B>:[J t^]:[I]" 0.0 |
+init "<B>[t^ K]:<Ah>[t^ A]:<A>[t^]<I>:[B t^]<I.2>:[Ch.1 t^]<B>:[Dh t^]<B>:[J t^]:[I]" 0.0 |
+init "<B>[t^ K]{t^*}:[A t^]<I>:[B t^]<I.2>:[Ch.1 t^]<B>:[Dh t^]<B>:[J t^]:[I]" 0.0 |
+init "<B>[t^ K]:<K>[t^]:[A t^]<I>:[B t^]<I.2>:[Ch.1 t^]<B>:[Dh t^]<B>:[J t^]:[I]" 0.0 |
+init "{t^*}[K t^]:[A t^]<I>:[B t^]<I.2>:[Ch.1 t^]<B>:[Dh t^]<B>:[J t^]:[I]" 0.0 |
+init "<B>[t^ K]:<Ah>[t^ A]:<A>[t^]<K.9>:[B t^]<I.2>:[Ch.1 t^]<B>:[Dh t^]<B>:[J t^]:[I]" 0.0 |
+init "<B>[t^ K]{t^*}:[A t^]<K.9>:[B t^]<I.2>:[Ch.1 t^]<B>:[Dh t^]<B>:[J t^]:[I]" 0.0 |
+init "<B>[t^ K]:<K>[t^]:[A t^]<K.9>:[B t^]<I.2>:[Ch.1 t^]<B>:[Dh t^]<B>:[J t^]:[I]" 0.0 |
+init "{t^*}[K t^]:[A t^]<K.9>:[B t^]<I.2>:[Ch.1 t^]<B>:[Dh t^]<B>:[J t^]:[I]" 0.0 |
+init "<B>[t^ K]:<Ah>[t^ A]:<Bh>[t^ B]:<B>[t^]<I.2>:[Ch.1 t^]<B>:[Dh t^]<B>:[J t^]:[I]" 0.0 |
+init "<B>[t^ K]:<Ah>[t^ A]:<Ch.1>[t^ B]:<B>[t^]<I.2>:[Ch.1 t^]<B>:[Dh t^]<B>:[J t^]:[I]" 0.0 |
+init "<Ch t^ C>" 2.0 |
+init "<A>[t^ K.9]:<Ch>[t^ C]:<C>[t^]<I.7>:[A t^]<K.9>:[Ch.10 t^]<A>:[Dh.11 t^]<A>:[J.8 t^]:[I.7]" 0.0 |
+init "<A>[t^ K.9]:<Ch>[t^ C]{t^*}:[A t^]<K.9>:[Ch.10 t^]<A>:[Dh.11 t^]<A>:[J.8 t^]:[I.7]" 0.0 |
+init "<A>[t^ K.9]:<Ch>[t^ C]:<C>[t^]<K.4>:[A t^]<K.9>:[Ch.10 t^]<A>:[Dh.11 t^]<A>:[J.8 t^]:[I.7]" 0.0 |
+init "<A>[t^ K.9]{t^*}:[C t^]<K.4>:[A t^]<K.9>:[Ch.10 t^]<A>:[Dh.11 t^]<A>:[J.8 t^]:[I.7]" 0.0 |
+init "<A>[t^ K.9]:<K.9>[t^]:[C t^]<K.4>:[A t^]<K.9>:[Ch.10 t^]<A>:[Dh.11 t^]<A>:[J.8 t^]:[I.7]" 0.0 |
+init "{t^*}[K.9 t^]:[C t^]<K.4>:[A t^]<K.9>:[Ch.10 t^]<A>:[Dh.11 t^]<A>:[J.8 t^]:[I.7]" 0.0 |
+init "<A>[t^ K.9]:<Ch>[t^ C]:<Ah>[t^ A]:<A>[t^]<K.9>:[Ch.10 t^]<A>:[Dh.11 t^]<A>:[J.8 t^]:[I.7]" 0.0 |
+init "<A>[t^ K.9]:<Ch>[t^ C]:<Ah>[t^ A]{t^*}:[Ch.10 t^]<A>:[Dh.11 t^]<A>:[J.8 t^]:[I.7]" 0.0 |
+init "<A>[t^ K.9]:<Ch>[t^ C]:<Ah>[t^ A]:<A>[t^]<I>:[Ch.10 t^]<A>:[Dh.11 t^]<A>:[J.8 t^]:[I.7]" 0.0 |
+init "<A>[t^ K.9]:<Ch>[t^ C]{t^*}:[A t^]<I>:[Ch.10 t^]<A>:[Dh.11 t^]<A>:[J.8 t^]:[I.7]" 0.0 |
+init "<A>[t^ K.9]:<Ch>[t^ C]:<C>[t^]<K.4>:[A t^]<I>:[Ch.10 t^]<A>:[Dh.11 t^]<A>:[J.8 t^]:[I.7]" 0.0 |
+init "<A>[t^ K.9]{t^*}:[C t^]<K.4>:[A t^]<I>:[Ch.10 t^]<A>:[Dh.11 t^]<A>:[J.8 t^]:[I.7]" 0.0 |
+init "<A>[t^ K.9]:<K.9>[t^]:[C t^]<K.4>:[A t^]<I>:[Ch.10 t^]<A>:[Dh.11 t^]<A>:[J.8 t^]:[I.7]" 0.0 |
+init "{t^*}[K.9 t^]:[C t^]<K.4>:[A t^]<I>:[Ch.10 t^]<A>:[Dh.11 t^]<A>:[J.8 t^]:[I.7]" 0.0 |
+init "<A>[t^ K.9]:<Ch>[t^ C]:<C>[t^]<I.7>:[A t^]<I>:[Ch.10 t^]<A>:[Dh.11 t^]<A>:[J.8 t^]:[I.7]" 0.0 |
+init "<A>[t^ K.9]{t^*}:[C t^]<I.7>:[A t^]<I>:[Ch.10 t^]<A>:[Dh.11 t^]<A>:[J.8 t^]:[I.7]" 0.0 |
+init "<A>[t^ K.9]:<K.9>[t^]:[C t^]<I.7>:[A t^]<I>:[Ch.10 t^]<A>:[Dh.11 t^]<A>:[J.8 t^]:[I.7]" 0.0 |
+init "{t^*}[K.9 t^]:[C t^]<I.7>:[A t^]<I>:[Ch.10 t^]<A>:[Dh.11 t^]<A>:[J.8 t^]:[I.7]" 0.0 |
+init "<A>[t^ K.9]:<Ch>[t^ C]:<Ah>[t^ A]:[t^ Ch.10 t^ Dh.11 t^ J.8]:<J.8>[t^]:[I.7]" 0.0 |
+init "<A>[t^ K.9]:<Ch>[t^ C]:<Ah>[t^ A]:[t^ Ch.10 t^ Dh.11 t^ J.8]{t^*}:[I.7]" 0.0 |
+init "<A>[t^ K.9]:<Ch>[t^ C]:<Ah>[t^ A]:[t^ Ch.10 t^ Dh.11 t^ J.8]:<C>[t^ I.7]" 0.0 |
+init "<I.7>" 0.0 |
+init "<J.8 t^>" 0.0 |
+init "[J.8 t^]" 0.0 |
+init "<J.8>" 0.0 |
+init "<Ch.10 t^ A>" 0.0 |
+init "<B>[t^ K]:<Ch.10>[t^ A]:<A>[t^]<I>:[B t^]<K>:[Ch.1 t^]<B>:[Dh t^]<B>:[J t^]:[I]" 0.0 |
+init "<B>[t^ K]:<Ch.10>[t^ A]{t^*}:[B t^]<K>:[Ch.1 t^]<B>:[Dh t^]<B>:[J t^]:[I]" 0.0 |
+init "<B>[t^ K]:<Ch.10>[t^ A]:<A>[t^]<K.9>:[B t^]<K>:[Ch.1 t^]<B>:[Dh t^]<B>:[J t^]:[I]" 0.0 |
+init "<B>[t^ K]:<Ch.10>[t^ A]:<Bh>[t^ B]:<B>[t^]<K>:[Ch.1 t^]<B>:[Dh t^]<B>:[J t^]:[I]" 0.0 |
+init "<B>[t^ K]:<Ch.10>[t^ A]:<Bh>[t^ B]{t^*}:[Ch.1 t^]<B>:[Dh t^]<B>:[J t^]:[I]" 0.0 |
+init "<B>[t^ K]:<Ch.10>[t^ A]:<Bh>[t^ B]:[t^ Ch.1 t^ Dh t^ J]:<J>[t^]:[I]" 0.0 |
+init "<B>[t^ K]:<Ch.10>[t^ A]:<Bh>[t^ B]:[t^ Ch.1 t^ Dh t^ J]{t^*}:[I]" 0.0 |
+init "<B>[t^ K]:<Ch.10>[t^ A]:<Bh>[t^ B]:[t^ Ch.1 t^ Dh t^ J]:<A>[t^ I]" 0.0 |
+init "<B>[t^ K]:<Ch.10>[t^ A]:<Bh>[t^ B]:<B>[t^]<I.2>:[Ch.1 t^]<B>:[Dh t^]<B>:[J t^]:[I]" 0.0 |
+init "<B>[t^ K]:<Ch.10>[t^ A]{t^*}:[B t^]<I.2>:[Ch.1 t^]<B>:[Dh t^]<B>:[J t^]:[I]" 0.0 |
+init "<B>[t^ K]:<Ch.10>[t^ A]:<A>[t^]<I>:[B t^]<I.2>:[Ch.1 t^]<B>:[Dh t^]<B>:[J t^]:[I]" 0.0 |
+init "<B>[t^ K]:<Ch.10>[t^ A]:<A>[t^]<K.9>:[B t^]<I.2>:[Ch.1 t^]<B>:[Dh t^]<B>:[J t^]:[I]" 0.0 |
+init "<B>[t^ K]:<Ch.10>[t^ A]:<Ch.1>[t^ B]:<B>[t^]<I.2>:[Ch.1 t^]<B>:[Dh t^]<B>:[J t^]:[I]" 0.0 |
+init "<B>[t^ K]:<Ch.10>[t^ A]:<Ch.1>[t^ B]{t^*}:[Ch.1 t^]<B>:[Dh t^]<B>:[J t^]:[I]" 0.0 |
+init "<B>[t^ K]:<Ch.10>[t^ A]:<Ch.1>[t^ B]:[t^ Ch.1 t^ Dh t^ J]:<J>[t^]:[I]" 0.0 |
+init "<B>[t^ K]:<Ch.10>[t^ A]:<Ch.1>[t^ B]:[t^ Ch.1 t^ Dh t^ J]{t^*}:[I]" 0.0 |
+init "<B>[t^ K]:<Ch.10>[t^ A]:<Ch.1>[t^ B]:[t^ Ch.1 t^ Dh t^ J]:<A>[t^ I]" 0.0 |
+init "<B>[t^ K]:<Ch.10>[t^ A]:<Ch.1>[t^ B]:<B>[t^]<K>:[Ch.1 t^]<B>:[Dh t^]<B>:[J t^]:[I]" 0.0 |
+init "<B>[t^ K]:<Ch.10>[t^ A]:<Dh>[t^ B]:<B>[t^]<I.2>:[Ch.1 t^]<B>:[Dh t^]<B>:[J t^]:[I]" 0.0 |
+init "<B>[t^ K]:<Ch.10>[t^ A]:<Dh>[t^ B]{t^*}:[Ch.1 t^]<B>:[Dh t^]<B>:[J t^]:[I]" 0.0 |
+init "<B>[t^ K]:<Ch.10>[t^ A]:<Dh>[t^ B]:[t^ Ch.1 t^ Dh t^ J]:<J>[t^]:[I]" 0.0 |
+init "<B>[t^ K]:<Ch.10>[t^ A]:<Dh>[t^ B]:[t^ Ch.1 t^ Dh t^ J]{t^*}:[I]" 0.0 |
+init "<B>[t^ K]:<Ch.10>[t^ A]:<Dh>[t^ B]:[t^ Ch.1 t^ Dh t^ J]:<A>[t^ I]" 0.0 |
+init "<B>[t^ K]:<Ch.10>[t^ A]:<Dh>[t^ B]:<B>[t^]<K>:[Ch.1 t^]<B>:[Dh t^]<B>:[J t^]:[I]" 0.0 |
+init "<A>[t^ K.9]:<Ch>[t^ C]:<Ch.10>[t^ A]:<A>[t^]<K.9>:[Ch.10 t^]<A>:[Dh.11 t^]<A>:[J.8 t^]:[I.7]" 0.0 |
+init "<A>[t^ K.9]:<Ch>[t^ C]:<Ch.10>[t^ A]{t^*}:[Ch.10 t^]<A>:[Dh.11 t^]<A>:[J.8 t^]:[I.7]" 0.0 |
+init "<A>[t^ K.9]:<Ch>[t^ C]:<Ch.10>[t^ A]:<A>[t^]<I>:[Ch.10 t^]<A>:[Dh.11 t^]<A>:[J.8 t^]:[I.7]" 0.0 |
+init "<A>[t^ K.9]:<Ch>[t^ C]:<Ch.10>[t^ A]:[t^ Ch.10 t^ Dh.11 t^ J.8]:<J.8>[t^]:[I.7]" 0.0 |
+init "<A>[t^ K.9]:<Ch>[t^ C]:<Ch.10>[t^ A]:[t^ Ch.10 t^ Dh.11 t^ J.8]{t^*}:[I.7]" 0.0 |
+init "<A>[t^ K.9]:<Ch>[t^ C]:<Ch.10>[t^ A]:[t^ Ch.10 t^ Dh.11 t^ J.8]:<C>[t^ I.7]" 0.0 |
+init "<Dh.11 t^ A>" 0.0 |
+init "<B>[t^ K]:<Dh.11>[t^ A]:<A>[t^]<I>:[B t^]<K>:[Ch.1 t^]<B>:[Dh t^]<B>:[J t^]:[I]" 0.0 |
+init "<B>[t^ K]:<Dh.11>[t^ A]{t^*}:[B t^]<K>:[Ch.1 t^]<B>:[Dh t^]<B>:[J t^]:[I]" 0.0 |
+init "<B>[t^ K]:<Dh.11>[t^ A]:<A>[t^]<K.9>:[B t^]<K>:[Ch.1 t^]<B>:[Dh t^]<B>:[J t^]:[I]" 0.0 |
+init "<B>[t^ K]:<Dh.11>[t^ A]:<Bh>[t^ B]:<B>[t^]<K>:[Ch.1 t^]<B>:[Dh t^]<B>:[J t^]:[I]" 0.0 |
+init "<B>[t^ K]:<Dh.11>[t^ A]:<Bh>[t^ B]{t^*}:[Ch.1 t^]<B>:[Dh t^]<B>:[J t^]:[I]" 0.0 |
+init "<B>[t^ K]:<Dh.11>[t^ A]:<Bh>[t^ B]:[t^ Ch.1 t^ Dh t^ J]:<J>[t^]:[I]" 0.0 |
+init "<B>[t^ K]:<Dh.11>[t^ A]:<Bh>[t^ B]:[t^ Ch.1 t^ Dh t^ J]{t^*}:[I]" 0.0 |
+init "<B>[t^ K]:<Dh.11>[t^ A]:<Bh>[t^ B]:[t^ Ch.1 t^ Dh t^ J]:<A>[t^ I]" 0.0 |
+init "<B>[t^ K]:<Dh.11>[t^ A]:<Bh>[t^ B]:<B>[t^]<I.2>:[Ch.1 t^]<B>:[Dh t^]<B>:[J t^]:[I]" 0.0 |
+init "<B>[t^ K]:<Dh.11>[t^ A]{t^*}:[B t^]<I.2>:[Ch.1 t^]<B>:[Dh t^]<B>:[J t^]:[I]" 0.0 |
+init "<B>[t^ K]:<Dh.11>[t^ A]:<A>[t^]<I>:[B t^]<I.2>:[Ch.1 t^]<B>:[Dh t^]<B>:[J t^]:[I]" 0.0 |
+init "<B>[t^ K]:<Dh.11>[t^ A]:<A>[t^]<K.9>:[B t^]<I.2>:[Ch.1 t^]<B>:[Dh t^]<B>:[J t^]:[I]" 0.0 |
+init "<B>[t^ K]:<Dh.11>[t^ A]:<Ch.1>[t^ B]:<B>[t^]<I.2>:[Ch.1 t^]<B>:[Dh t^]<B>:[J t^]:[I]" 0.0 |
+init "<B>[t^ K]:<Dh.11>[t^ A]:<Ch.1>[t^ B]{t^*}:[Ch.1 t^]<B>:[Dh t^]<B>:[J t^]:[I]" 0.0 |
+init "<B>[t^ K]:<Dh.11>[t^ A]:<Ch.1>[t^ B]:[t^ Ch.1 t^ Dh t^ J]:<J>[t^]:[I]" 0.0 |
+init "<B>[t^ K]:<Dh.11>[t^ A]:<Ch.1>[t^ B]:[t^ Ch.1 t^ Dh t^ J]{t^*}:[I]" 0.0 |
+init "<B>[t^ K]:<Dh.11>[t^ A]:<Ch.1>[t^ B]:[t^ Ch.1 t^ Dh t^ J]:<A>[t^ I]" 0.0 |
+init "<B>[t^ K]:<Dh.11>[t^ A]:<Ch.1>[t^ B]:<B>[t^]<K>:[Ch.1 t^]<B>:[Dh t^]<B>:[J t^]:[I]" 0.0 |
+init "<B>[t^ K]:<Dh.11>[t^ A]:<Dh>[t^ B]:<B>[t^]<I.2>:[Ch.1 t^]<B>:[Dh t^]<B>:[J t^]:[I]" 0.0 |
+init "<B>[t^ K]:<Dh.11>[t^ A]:<Dh>[t^ B]{t^*}:[Ch.1 t^]<B>:[Dh t^]<B>:[J t^]:[I]" 0.0 |
+init "<B>[t^ K]:<Dh.11>[t^ A]:<Dh>[t^ B]:[t^ Ch.1 t^ Dh t^ J]:<J>[t^]:[I]" 0.0 |
+init "<B>[t^ K]:<Dh.11>[t^ A]:<Dh>[t^ B]:[t^ Ch.1 t^ Dh t^ J]{t^*}:[I]" 0.0 |
+init "<B>[t^ K]:<Dh.11>[t^ A]:<Dh>[t^ B]:[t^ Ch.1 t^ Dh t^ J]:<A>[t^ I]" 0.0 |
+init "<B>[t^ K]:<Dh.11>[t^ A]:<Dh>[t^ B]:<B>[t^]<K>:[Ch.1 t^]<B>:[Dh t^]<B>:[J t^]:[I]" 0.0 |
+init "<A>[t^ K.9]:<Ch>[t^ C]:<Dh.11>[t^ A]:<A>[t^]<K.9>:[Ch.10 t^]<A>:[Dh.11 t^]<A>:[J.8 t^]:[I.7]" 0.0 |
+init "<A>[t^ K.9]:<Ch>[t^ C]:<Dh.11>[t^ A]{t^*}:[Ch.10 t^]<A>:[Dh.11 t^]<A>:[J.8 t^]:[I.7]" 0.0 |
+init "<A>[t^ K.9]:<Ch>[t^ C]:<Dh.11>[t^ A]:<A>[t^]<I>:[Ch.10 t^]<A>:[Dh.11 t^]<A>:[J.8 t^]:[I.7]" 0.0 |
+init "<A>[t^ K.9]:<Ch>[t^ C]:<Dh.11>[t^ A]:[t^ Ch.10 t^ Dh.11 t^ J.8]:<J.8>[t^]:[I.7]" 0.0 |
+init "<A>[t^ K.9]:<Ch>[t^ C]:<Dh.11>[t^ A]:[t^ Ch.10 t^ Dh.11 t^ J.8]{t^*}:[I.7]" 0.0 |
+init "<A>[t^ K.9]:<Ch>[t^ C]:<Dh.11>[t^ A]:[t^ Ch.10 t^ Dh.11 t^ J.8]:<C>[t^ I.7]" 0.0 |
+init "<C>[t^ K.4]:<Bh>[t^ B]:<Ch>[t^ C]:<C>[t^]<K.4>:[Ch.5 t^]<C>:[Dh.6 t^]<C>:[J.3 t^]:[I.2]" 0.0 |
+init "<C>[t^ K.4]:<Bh>[t^ B]:<Ch>[t^ C]{t^*}:[Ch.5 t^]<C>:[Dh.6 t^]<C>:[J.3 t^]:[I.2]" 0.0 |
+init "<C>[t^ K.4]:<Bh>[t^ B]:<Ch>[t^ C]:[t^ Ch.5 t^ Dh.6 t^ J.3]:<J.3>[t^]:[I.2]" 0.0 |
+init "<C>[t^ K.4]:<Bh>[t^ B]:<Ch>[t^ C]:[t^ Ch.5 t^ Dh.6 t^ J.3]{t^*}:[I.2]" 0.0 |
+init "<C>[t^ K.4]:<Bh>[t^ B]:<Ch>[t^ C]:[t^ Ch.5 t^ Dh.6 t^ J.3]:<B>[t^ I.2]" 0.0 |
+init "<I.2>" 0.0 |
+init "<J.3 t^>" 0.0 |
+init "[J.3 t^]" 0.0 |
+init "<J.3>" 0.0 |
+init "<Ch.5 t^ C>" 0.0 |
+init "<A>[t^ K.9]:<Ch.5>[t^ C]:<C>[t^]<I.7>:[A t^]<K.9>:[Ch.10 t^]<A>:[Dh.11 t^]<A>:[J.8 t^]:[I.7]" 0.0 |
+init "<A>[t^ K.9]:<Ch.5>[t^ C]{t^*}:[A t^]<K.9>:[Ch.10 t^]<A>:[Dh.11 t^]<A>:[J.8 t^]:[I.7]" 0.0 |
+init "<A>[t^ K.9]:<Ch.5>[t^ C]:<C>[t^]<K.4>:[A t^]<K.9>:[Ch.10 t^]<A>:[Dh.11 t^]<A>:[J.8 t^]:[I.7]" 0.0 |
+init "<A>[t^ K.9]:<Ch.5>[t^ C]:<Ah>[t^ A]:<A>[t^]<K.9>:[Ch.10 t^]<A>:[Dh.11 t^]<A>:[J.8 t^]:[I.7]" 0.0 |
+init "<A>[t^ K.9]:<Ch.5>[t^ C]:<Ah>[t^ A]{t^*}:[Ch.10 t^]<A>:[Dh.11 t^]<A>:[J.8 t^]:[I.7]" 0.0 |
+init "<A>[t^ K.9]:<Ch.5>[t^ C]:<Ah>[t^ A]:<A>[t^]<I>:[Ch.10 t^]<A>:[Dh.11 t^]<A>:[J.8 t^]:[I.7]" 0.0 |
+init "<A>[t^ K.9]:<Ch.5>[t^ C]{t^*}:[A t^]<I>:[Ch.10 t^]<A>:[Dh.11 t^]<A>:[J.8 t^]:[I.7]" 0.0 |
+init "<A>[t^ K.9]:<Ch.5>[t^ C]:<C>[t^]<K.4>:[A t^]<I>:[Ch.10 t^]<A>:[Dh.11 t^]<A>:[J.8 t^]:[I.7]" 0.0 |
+init "<A>[t^ K.9]:<Ch.5>[t^ C]:<C>[t^]<I.7>:[A t^]<I>:[Ch.10 t^]<A>:[Dh.11 t^]<A>:[J.8 t^]:[I.7]" 0.0 |
+init "<A>[t^ K.9]:<Ch.5>[t^ C]:<Ch.10>[t^ A]:<A>[t^]<I>:[Ch.10 t^]<A>:[Dh.11 t^]<A>:[J.8 t^]:[I.7]" 0.0 |
+init "<A>[t^ K.9]:<Ch.5>[t^ C]:<Ch.10>[t^ A]{t^*}:[Ch.10 t^]<A>:[Dh.11 t^]<A>:[J.8 t^]:[I.7]" 0.0 |
+init "<A>[t^ K.9]:<Ch.5>[t^ C]:<Ch.10>[t^ A]:[t^ Ch.10 t^ Dh.11 t^ J.8]:<J.8>[t^]:[I.7]" 0.0 |
+init "<A>[t^ K.9]:<Ch.5>[t^ C]:<Ch.10>[t^ A]:[t^ Ch.10 t^ Dh.11 t^ J.8]{t^*}:[I.7]" 0.0 |
+init "<A>[t^ K.9]:<Ch.5>[t^ C]:<Ch.10>[t^ A]:[t^ Ch.10 t^ Dh.11 t^ J.8]:<C>[t^ I.7]" 0.0 |
+init "<A>[t^ K.9]:<Ch.5>[t^ C]:<Ch.10>[t^ A]:<A>[t^]<K.9>:[Ch.10 t^]<A>:[Dh.11 t^]<A>:[J.8 t^]:[I.7]" 0.0 |
+init "<A>[t^ K.9]:<Ch.5>[t^ C]:<Dh.11>[t^ A]:<A>[t^]<I>:[Ch.10 t^]<A>:[Dh.11 t^]<A>:[J.8 t^]:[I.7]" 0.0 |
+init "<A>[t^ K.9]:<Ch.5>[t^ C]:<Dh.11>[t^ A]{t^*}:[Ch.10 t^]<A>:[Dh.11 t^]<A>:[J.8 t^]:[I.7]" 0.0 |
+init "<A>[t^ K.9]:<Ch.5>[t^ C]:<Dh.11>[t^ A]:[t^ Ch.10 t^ Dh.11 t^ J.8]:<J.8>[t^]:[I.7]" 0.0 |
+init "<A>[t^ K.9]:<Ch.5>[t^ C]:<Dh.11>[t^ A]:[t^ Ch.10 t^ Dh.11 t^ J.8]{t^*}:[I.7]" 0.0 |
+init "<A>[t^ K.9]:<Ch.5>[t^ C]:<Dh.11>[t^ A]:[t^ Ch.10 t^ Dh.11 t^ J.8]:<C>[t^ I.7]" 0.0 |
+init "<A>[t^ K.9]:<Ch.5>[t^ C]:<Dh.11>[t^ A]:<A>[t^]<K.9>:[Ch.10 t^]<A>:[Dh.11 t^]<A>:[J.8 t^]:[I.7]" 0.0 |
+init "<A>[t^ K.9]:<Ch.5>[t^ C]:<Ah>[t^ A]:[t^ Ch.10 t^ Dh.11 t^ J.8]:<J.8>[t^]:[I.7]" 0.0 |
+init "<A>[t^ K.9]:<Ch.5>[t^ C]:<Ah>[t^ A]:[t^ Ch.10 t^ Dh.11 t^ J.8]{t^*}:[I.7]" 0.0 |
+init "<A>[t^ K.9]:<Ch.5>[t^ C]:<Ah>[t^ A]:[t^ Ch.10 t^ Dh.11 t^ J.8]:<C>[t^ I.7]" 0.0 |
+init "<C>[t^ K.4]:<Bh>[t^ B]:<Ch.5>[t^ C]:<C>[t^]<K.4>:[Ch.5 t^]<C>:[Dh.6 t^]<C>:[J.3 t^]:[I.2]" 0.0 |
+init "<C>[t^ K.4]:<Bh>[t^ B]:<Ch.5>[t^ C]{t^*}:[Ch.5 t^]<C>:[Dh.6 t^]<C>:[J.3 t^]:[I.2]" 0.0 |
+init "<C>[t^ K.4]:<Bh>[t^ B]:<Ch.5>[t^ C]:[t^ Ch.5 t^ Dh.6 t^ J.3]:<J.3>[t^]:[I.2]" 0.0 |
+init "<C>[t^ K.4]:<Bh>[t^ B]:<Ch.5>[t^ C]:[t^ Ch.5 t^ Dh.6 t^ J.3]{t^*}:[I.2]" 0.0 |
+init "<C>[t^ K.4]:<Bh>[t^ B]:<Ch.5>[t^ C]:[t^ Ch.5 t^ Dh.6 t^ J.3]:<B>[t^ I.2]" 0.0 |
+init "<Dh.6 t^ C>" 0.0 |
+init "<A>[t^ K.9]:<Dh.6>[t^ C]:<C>[t^]<I.7>:[A t^]<K.9>:[Ch.10 t^]<A>:[Dh.11 t^]<A>:[J.8 t^]:[I.7]" 0.0 |
+init "<A>[t^ K.9]:<Dh.6>[t^ C]{t^*}:[A t^]<K.9>:[Ch.10 t^]<A>:[Dh.11 t^]<A>:[J.8 t^]:[I.7]" 0.0 |
+init "<A>[t^ K.9]:<Dh.6>[t^ C]:<C>[t^]<K.4>:[A t^]<K.9>:[Ch.10 t^]<A>:[Dh.11 t^]<A>:[J.8 t^]:[I.7]" 0.0 |
+init "<A>[t^ K.9]:<Dh.6>[t^ C]:<Ah>[t^ A]:<A>[t^]<K.9>:[Ch.10 t^]<A>:[Dh.11 t^]<A>:[J.8 t^]:[I.7]" 0.0 |
+init "<A>[t^ K.9]:<Dh.6>[t^ C]:<Ah>[t^ A]{t^*}:[Ch.10 t^]<A>:[Dh.11 t^]<A>:[J.8 t^]:[I.7]" 0.0 |
+init "<A>[t^ K.9]:<Dh.6>[t^ C]:<Ah>[t^ A]:<A>[t^]<I>:[Ch.10 t^]<A>:[Dh.11 t^]<A>:[J.8 t^]:[I.7]" 0.0 |
+init "<A>[t^ K.9]:<Dh.6>[t^ C]{t^*}:[A t^]<I>:[Ch.10 t^]<A>:[Dh.11 t^]<A>:[J.8 t^]:[I.7]" 0.0 |
+init "<A>[t^ K.9]:<Dh.6>[t^ C]:<C>[t^]<K.4>:[A t^]<I>:[Ch.10 t^]<A>:[Dh.11 t^]<A>:[J.8 t^]:[I.7]" 0.0 |
+init "<A>[t^ K.9]:<Dh.6>[t^ C]:<C>[t^]<I.7>:[A t^]<I>:[Ch.10 t^]<A>:[Dh.11 t^]<A>:[J.8 t^]:[I.7]" 0.0 |
+init "<A>[t^ K.9]:<Dh.6>[t^ C]:<Ch.10>[t^ A]:<A>[t^]<I>:[Ch.10 t^]<A>:[Dh.11 t^]<A>:[J.8 t^]:[I.7]" 0.0 |
+init "<A>[t^ K.9]:<Dh.6>[t^ C]:<Ch.10>[t^ A]{t^*}:[Ch.10 t^]<A>:[Dh.11 t^]<A>:[J.8 t^]:[I.7]" 0.0 |
+init "<A>[t^ K.9]:<Dh.6>[t^ C]:<Ch.10>[t^ A]:[t^ Ch.10 t^ Dh.11 t^ J.8]:<J.8>[t^]:[I.7]" 0.0 |
+init "<A>[t^ K.9]:<Dh.6>[t^ C]:<Ch.10>[t^ A]:[t^ Ch.10 t^ Dh.11 t^ J.8]{t^*}:[I.7]" 0.0 |
+init "<A>[t^ K.9]:<Dh.6>[t^ C]:<Ch.10>[t^ A]:[t^ Ch.10 t^ Dh.11 t^ J.8]:<C>[t^ I.7]" 0.0 |
+init "<A>[t^ K.9]:<Dh.6>[t^ C]:<Ch.10>[t^ A]:<A>[t^]<K.9>:[Ch.10 t^]<A>:[Dh.11 t^]<A>:[J.8 t^]:[I.7]" 0.0 |
+init "<A>[t^ K.9]:<Dh.6>[t^ C]:<Dh.11>[t^ A]:<A>[t^]<I>:[Ch.10 t^]<A>:[Dh.11 t^]<A>:[J.8 t^]:[I.7]" 0.0 |
+init "<A>[t^ K.9]:<Dh.6>[t^ C]:<Dh.11>[t^ A]{t^*}:[Ch.10 t^]<A>:[Dh.11 t^]<A>:[J.8 t^]:[I.7]" 0.0 |
+init "<A>[t^ K.9]:<Dh.6>[t^ C]:<Dh.11>[t^ A]:[t^ Ch.10 t^ Dh.11 t^ J.8]:<J.8>[t^]:[I.7]" 0.0 |
+init "<A>[t^ K.9]:<Dh.6>[t^ C]:<Dh.11>[t^ A]:[t^ Ch.10 t^ Dh.11 t^ J.8]{t^*}:[I.7]" 0.0 |
+init "<A>[t^ K.9]:<Dh.6>[t^ C]:<Dh.11>[t^ A]:[t^ Ch.10 t^ Dh.11 t^ J.8]:<C>[t^ I.7]" 0.0 |
+init "<A>[t^ K.9]:<Dh.6>[t^ C]:<Dh.11>[t^ A]:<A>[t^]<K.9>:[Ch.10 t^]<A>:[Dh.11 t^]<A>:[J.8 t^]:[I.7]" 0.0 |
+init "<A>[t^ K.9]:<Dh.6>[t^ C]:<Ah>[t^ A]:[t^ Ch.10 t^ Dh.11 t^ J.8]:<J.8>[t^]:[I.7]" 0.0 |
+init "<A>[t^ K.9]:<Dh.6>[t^ C]:<Ah>[t^ A]:[t^ Ch.10 t^ Dh.11 t^ J.8]{t^*}:[I.7]" 0.0 |
+init "<A>[t^ K.9]:<Dh.6>[t^ C]:<Ah>[t^ A]:[t^ Ch.10 t^ Dh.11 t^ J.8]:<C>[t^ I.7]" 0.0 |
+init "<C>[t^ K.4]:<Bh>[t^ B]:<Dh.6>[t^ C]:<C>[t^]<K.4>:[Ch.5 t^]<C>:[Dh.6 t^]<C>:[J.3 t^]:[I.2]" 0.0 |
+init "<C>[t^ K.4]:<Bh>[t^ B]:<Dh.6>[t^ C]{t^*}:[Ch.5 t^]<C>:[Dh.6 t^]<C>:[J.3 t^]:[I.2]" 0.0 |
+init "<C>[t^ K.4]:<Bh>[t^ B]:<Dh.6>[t^ C]:[t^ Ch.5 t^ Dh.6 t^ J.3]:<J.3>[t^]:[I.2]" 0.0 |
+init "<C>[t^ K.4]:<Bh>[t^ B]:<Dh.6>[t^ C]:[t^ Ch.5 t^ Dh.6 t^ J.3]{t^*}:[I.2]" 0.0 |
+init "<C>[t^ K.4]:<Bh>[t^ B]:<Dh.6>[t^ C]:[t^ Ch.5 t^ Dh.6 t^ J.3]:<B>[t^ I.2]" 0.0 |
+init "<C>[t^ K.4]:<Bh>[t^ B]:<Dh.6>[t^ C]:<C>[t^]<I.7>:[Ch.5 t^]<C>:[Dh.6 t^]<C>:[J.3 t^]:[I.2]" 0.0 |
+init "<C>[t^ K.4]:<Bh>[t^ B]{t^*}:[C t^]<I.7>:[Ch.5 t^]<C>:[Dh.6 t^]<C>:[J.3 t^]:[I.2]" 0.0 |
+init "<C>[t^ K.4]:<Bh>[t^ B]:<B>[t^]<K>:[C t^]<I.7>:[Ch.5 t^]<C>:[Dh.6 t^]<C>:[J.3 t^]:[I.2]" 0.0 |
+init "<C>[t^ K.4]{t^*}:[B t^]<K>:[C t^]<I.7>:[Ch.5 t^]<C>:[Dh.6 t^]<C>:[J.3 t^]:[I.2]" 0.0 |
+init "<C>[t^ K.4]:<K.4>[t^]:[B t^]<K>:[C t^]<I.7>:[Ch.5 t^]<C>:[Dh.6 t^]<C>:[J.3 t^]:[I.2]" 0.0 |
+init "{t^*}[K.4 t^]:[B t^]<K>:[C t^]<I.7>:[Ch.5 t^]<C>:[Dh.6 t^]<C>:[J.3 t^]:[I.2]" 0.0 |
+init "<C>[t^ K.4]:<Ch.1>[t^ B]:<B>[t^]<K>:[C t^]<I.7>:[Ch.5 t^]<C>:[Dh.6 t^]<C>:[J.3 t^]:[I.2]" 0.0 |
+init "<C>[t^ K.4]:<Ch.1>[t^ B]{t^*}:[C t^]<I.7>:[Ch.5 t^]<C>:[Dh.6 t^]<C>:[J.3 t^]:[I.2]" 0.0 |
+init "<C>[t^ K.4]:<Ch.1>[t^ B]:<B>[t^]<I.2>:[C t^]<I.7>:[Ch.5 t^]<C>:[Dh.6 t^]<C>:[J.3 t^]:[I.2]" 0.0 |
+init "<C>[t^ K.4]{t^*}:[B t^]<I.2>:[C t^]<I.7>:[Ch.5 t^]<C>:[Dh.6 t^]<C>:[J.3 t^]:[I.2]" 0.0 |
+init "<C>[t^ K.4]:<K.4>[t^]:[B t^]<I.2>:[C t^]<I.7>:[Ch.5 t^]<C>:[Dh.6 t^]<C>:[J.3 t^]:[I.2]" 0.0 |
+init "{t^*}[K.4 t^]:[B t^]<I.2>:[C t^]<I.7>:[Ch.5 t^]<C>:[Dh.6 t^]<C>:[J.3 t^]:[I.2]" 0.0 |
+init "<C>[t^ K.4]:<Bh>[t^ B]:<B>[t^]<I.2>:[C t^]<I.7>:[Ch.5 t^]<C>:[Dh.6 t^]<C>:[J.3 t^]:[I.2]" 0.0 |
+init "<C>[t^ K.4]:<Dh>[t^ B]:<B>[t^]<I.2>:[C t^]<I.7>:[Ch.5 t^]<C>:[Dh.6 t^]<C>:[J.3 t^]:[I.2]" 0.0 |
+init "<C>[t^ K.4]:<Dh>[t^ B]{t^*}:[C t^]<I.7>:[Ch.5 t^]<C>:[Dh.6 t^]<C>:[J.3 t^]:[I.2]" 0.0 |
+init "<C>[t^ K.4]:<Dh>[t^ B]:<B>[t^]<K>:[C t^]<I.7>:[Ch.5 t^]<C>:[Dh.6 t^]<C>:[J.3 t^]:[I.2]" 0.0 |
+init "<C>[t^ K.4]:<Dh>[t^ B]:<Ch>[t^ C]:<C>[t^]<I.7>:[Ch.5 t^]<C>:[Dh.6 t^]<C>:[J.3 t^]:[I.2]" 0.0 |
+init "<C>[t^ K.4]:<Dh>[t^ B]:<Ch>[t^ C]{t^*}:[Ch.5 t^]<C>:[Dh.6 t^]<C>:[J.3 t^]:[I.2]" 0.0 |
+init "<C>[t^ K.4]:<Dh>[t^ B]:<Ch>[t^ C]:[t^ Ch.5 t^ Dh.6 t^ J.3]:<J.3>[t^]:[I.2]" 0.0 |
+init "<C>[t^ K.4]:<Dh>[t^ B]:<Ch>[t^ C]:[t^ Ch.5 t^ Dh.6 t^ J.3]{t^*}:[I.2]" 0.0 |
+init "<C>[t^ K.4]:<Dh>[t^ B]:<Ch>[t^ C]:[t^ Ch.5 t^ Dh.6 t^ J.3]:<B>[t^ I.2]" 0.0 |
+init "<C>[t^ K.4]:<Dh>[t^ B]:<Ch>[t^ C]:<C>[t^]<K.4>:[Ch.5 t^]<C>:[Dh.6 t^]<C>:[J.3 t^]:[I.2]" 0.0 |
+init "<C>[t^ K.4]:<Dh>[t^ B]:<Ch.5>[t^ C]:<C>[t^]<I.7>:[Ch.5 t^]<C>:[Dh.6 t^]<C>:[J.3 t^]:[I.2]" 0.0 |
+init "<C>[t^ K.4]:<Dh>[t^ B]:<Ch.5>[t^ C]{t^*}:[Ch.5 t^]<C>:[Dh.6 t^]<C>:[J.3 t^]:[I.2]" 0.0 |
+init "<C>[t^ K.4]:<Dh>[t^ B]:<Ch.5>[t^ C]:[t^ Ch.5 t^ Dh.6 t^ J.3]:<J.3>[t^]:[I.2]" 0.0 |
+init "<C>[t^ K.4]:<Dh>[t^ B]:<Ch.5>[t^ C]:[t^ Ch.5 t^ Dh.6 t^ J.3]{t^*}:[I.2]" 0.0 |
+init "<C>[t^ K.4]:<Dh>[t^ B]:<Ch.5>[t^ C]:[t^ Ch.5 t^ Dh.6 t^ J.3]:<B>[t^ I.2]" 0.0 |
+init "<C>[t^ K.4]:<Dh>[t^ B]:<Ch.5>[t^ C]:<C>[t^]<K.4>:[Ch.5 t^]<C>:[Dh.6 t^]<C>:[J.3 t^]:[I.2]" 0.0 |
+init "<C>[t^ K.4]:<Dh>[t^ B]:<Dh.6>[t^ C]:<C>[t^]<I.7>:[Ch.5 t^]<C>:[Dh.6 t^]<C>:[J.3 t^]:[I.2]" 0.0 |
+init "<C>[t^ K.4]:<Dh>[t^ B]:<Dh.6>[t^ C]{t^*}:[Ch.5 t^]<C>:[Dh.6 t^]<C>:[J.3 t^]:[I.2]" 0.0 |
+init "<C>[t^ K.4]:<Dh>[t^ B]:<Dh.6>[t^ C]:[t^ Ch.5 t^ Dh.6 t^ J.3]:<J.3>[t^]:[I.2]" 0.0 |
+init "<C>[t^ K.4]:<Dh>[t^ B]:<Dh.6>[t^ C]:[t^ Ch.5 t^ Dh.6 t^ J.3]{t^*}:[I.2]" 0.0 |
+init "<C>[t^ K.4]:<Dh>[t^ B]:<Dh.6>[t^ C]:[t^ Ch.5 t^ Dh.6 t^ J.3]:<B>[t^ I.2]" 0.0 |
+init "<C>[t^ K.4]:<Dh>[t^ B]:<Dh.6>[t^ C]:<C>[t^]<K.4>:[Ch.5 t^]<C>:[Dh.6 t^]<C>:[J.3 t^]:[I.2]" 0.0 |
+init "<C>[t^ K.4]:<Ch.1>[t^ B]:<Ch>[t^ C]:<C>[t^]<I.7>:[Ch.5 t^]<C>:[Dh.6 t^]<C>:[J.3 t^]:[I.2]" 0.0 |
+init "<C>[t^ K.4]:<Ch.1>[t^ B]:<Ch>[t^ C]{t^*}:[Ch.5 t^]<C>:[Dh.6 t^]<C>:[J.3 t^]:[I.2]" 0.0 |
+init "<C>[t^ K.4]:<Ch.1>[t^ B]:<Ch>[t^ C]:[t^ Ch.5 t^ Dh.6 t^ J.3]:<J.3>[t^]:[I.2]" 0.0 |
+init "<C>[t^ K.4]:<Ch.1>[t^ B]:<Ch>[t^ C]:[t^ Ch.5 t^ Dh.6 t^ J.3]{t^*}:[I.2]" 0.0 |
+init "<C>[t^ K.4]:<Ch.1>[t^ B]:<Ch>[t^ C]:[t^ Ch.5 t^ Dh.6 t^ J.3]:<B>[t^ I.2]" 0.0 |
+init "<C>[t^ K.4]:<Ch.1>[t^ B]:<Ch>[t^ C]:<C>[t^]<K.4>:[Ch.5 t^]<C>:[Dh.6 t^]<C>:[J.3 t^]:[I.2]" 0.0 |
+init "<C>[t^ K.4]:<Ch.1>[t^ B]:<Ch.5>[t^ C]:<C>[t^]<I.7>:[Ch.5 t^]<C>:[Dh.6 t^]<C>:[J.3 t^]:[I.2]" 0.0 |
+init "<C>[t^ K.4]:<Ch.1>[t^ B]:<Ch.5>[t^ C]{t^*}:[Ch.5 t^]<C>:[Dh.6 t^]<C>:[J.3 t^]:[I.2]" 0.0 |
+init "<C>[t^ K.4]:<Ch.1>[t^ B]:<Ch.5>[t^ C]:[t^ Ch.5 t^ Dh.6 t^ J.3]:<J.3>[t^]:[I.2]" 0.0 |
+init "<C>[t^ K.4]:<Ch.1>[t^ B]:<Ch.5>[t^ C]:[t^ Ch.5 t^ Dh.6 t^ J.3]{t^*}:[I.2]" 0.0 |
+init "<C>[t^ K.4]:<Ch.1>[t^ B]:<Ch.5>[t^ C]:[t^ Ch.5 t^ Dh.6 t^ J.3]:<B>[t^ I.2]" 0.0 |
+init "<C>[t^ K.4]:<Ch.1>[t^ B]:<Ch.5>[t^ C]:<C>[t^]<K.4>:[Ch.5 t^]<C>:[Dh.6 t^]<C>:[J.3 t^]:[I.2]" 0.0 |
+init "<C>[t^ K.4]:<Ch.1>[t^ B]:<Dh.6>[t^ C]:<C>[t^]<I.7>:[Ch.5 t^]<C>:[Dh.6 t^]<C>:[J.3 t^]:[I.2]" 0.0 |
+init "<C>[t^ K.4]:<Ch.1>[t^ B]:<Dh.6>[t^ C]{t^*}:[Ch.5 t^]<C>:[Dh.6 t^]<C>:[J.3 t^]:[I.2]" 0.0 |
+init "<C>[t^ K.4]:<Ch.1>[t^ B]:<Dh.6>[t^ C]:[t^ Ch.5 t^ Dh.6 t^ J.3]:<J.3>[t^]:[I.2]" 0.0 |
+init "<C>[t^ K.4]:<Ch.1>[t^ B]:<Dh.6>[t^ C]:[t^ Ch.5 t^ Dh.6 t^ J.3]{t^*}:[I.2]" 0.0 |
+init "<C>[t^ K.4]:<Ch.1>[t^ B]:<Dh.6>[t^ C]:[t^ Ch.5 t^ Dh.6 t^ J.3]:<B>[t^ I.2]" 0.0 |
+init "<C>[t^ K.4]:<Ch.1>[t^ B]:<Dh.6>[t^ C]:<C>[t^]<K.4>:[Ch.5 t^]<C>:[Dh.6 t^]<C>:[J.3 t^]:[I.2]" 0.0 |
+init "<C>[t^ K.4]:<Bh>[t^ B]:<Ch>[t^ C]:<C>[t^]<I.7>:[Ch.5 t^]<C>:[Dh.6 t^]<C>:[J.3 t^]:[I.2]" 0.0 |
+init "<C>[t^ K.4]:<Bh>[t^ B]:<Ch.5>[t^ C]:<C>[t^]<I.7>:[Ch.5 t^]<C>:[Dh.6 t^]<C>:[J.3 t^]:[I.2]" 0.0 |
+"{t^*}[K t^]:[A t^]<I>:[B t^]<K>:[Ch.1 t^]<B>:[Dh t^]<B>:[J t^]:[I]" + "<B t^ K>" <->{0.0003}{0.1126} "<B>[t^ K]:<K>[t^]:[A t^]<I>:[B t^]<K>:[Ch.1 t^]<B>:[Dh t^]<B>:[J t^]:[I]" |
+"[K]{t^*}" + "<K t^>" ->{0.0003} "[K t^]" + "<K>" |
+"<B>[t^ K]:<K>[t^]:[A t^]<I>:[B t^]<K>:[Ch.1 t^]<B>:[Dh t^]<B>:[J t^]:[I]" <->{0.1126}{0.0003} "<B>[t^ K]{t^*}:[A t^]<I>:[B t^]<K>:[Ch.1 t^]<B>:[Dh t^]<B>:[J t^]:[I]" + "<K t^>" |
+"{t^*}[K.4 t^]:[B t^]<I.2>:[C t^]<K.4>:[Ch.5 t^]<C>:[Dh.6 t^]<C>:[J.3 t^]:[I.2]" + "<C t^ K.4>" <->{0.0003}{0.1126} "<C>[t^ K.4]:<K.4>[t^]:[B t^]<I.2>:[C t^]<K.4>:[Ch.5 t^]<C>:[Dh.6 t^]<C>:[J.3 t^]:[I.2]" |
+"[K.4]{t^*}" + "<K.4 t^>" ->{0.0003} "[K.4 t^]" + "<K.4>" |
+"<C>[t^ K.4]:<K.4>[t^]:[B t^]<I.2>:[C t^]<K.4>:[Ch.5 t^]<C>:[Dh.6 t^]<C>:[J.3 t^]:[I.2]" <->{0.1126}{0.0003} "<C>[t^ K.4]{t^*}:[B t^]<I.2>:[C t^]<K.4>:[Ch.5 t^]<C>:[Dh.6 t^]<C>:[J.3 t^]:[I.2]" + "<K.4 t^>" |
+"{t^*}[K.9 t^]:[C t^]<I.7>:[A t^]<K.9>:[Ch.10 t^]<A>:[Dh.11 t^]<A>:[J.8 t^]:[I.7]" + "<A t^ K.9>" <->{0.0003}{0.1126} "<A>[t^ K.9]:<K.9>[t^]:[C t^]<I.7>:[A t^]<K.9>:[Ch.10 t^]<A>:[Dh.11 t^]<A>:[J.8 t^]:[I.7]" |
+"[K.9]{t^*}" + "<K.9 t^>" ->{0.0003} "[K.9 t^]" + "<K.9>" |
+"<A>[t^ K.9]:<K.9>[t^]:[C t^]<I.7>:[A t^]<K.9>:[Ch.10 t^]<A>:[Dh.11 t^]<A>:[J.8 t^]:[I.7]" <->{0.1126}{0.0003} "<A>[t^ K.9]{t^*}:[C t^]<I.7>:[A t^]<K.9>:[Ch.10 t^]<A>:[Dh.11 t^]<A>:[J.8 t^]:[I.7]" + "<K.9 t^>" |
+"<B>[t^ K]{t^*}:[A t^]<I>:[B t^]<K>:[Ch.1 t^]<B>:[Dh t^]<B>:[J t^]:[I]" + "<Ah t^ A>" <->{0.0003}{0.1126} "<B>[t^ K]:<Ah>[t^ A]:<A>[t^]<I>:[B t^]<K>:[Ch.1 t^]<B>:[Dh t^]<B>:[J t^]:[I]" |
+"<B>[t^ K]:<Ah>[t^ A]:<A>[t^]<I>:[B t^]<K>:[Ch.1 t^]<B>:[Dh t^]<B>:[J t^]:[I]" <->{0.1126}{0.0003} "<B>[t^ K]:<Ah>[t^ A]{t^*}:[B t^]<K>:[Ch.1 t^]<B>:[Dh t^]<B>:[J t^]:[I]" + "<A t^ I>" |
+"<B>[t^ K]:<Ah>[t^ A]{t^*}:[B t^]<K>:[Ch.1 t^]<B>:[Dh t^]<B>:[J t^]:[I]" + "<A t^ K.9>" <->{0.0003}{0.1126} "<B>[t^ K]:<Ah>[t^ A]:<A>[t^]<K.9>:[B t^]<K>:[Ch.1 t^]<B>:[Dh t^]<B>:[J t^]:[I]" |
+"<B>[t^ K]:<Ah>[t^ A]:<A>[t^]<K.9>:[B t^]<K>:[Ch.1 t^]<B>:[Dh t^]<B>:[J t^]:[I]" <->{0.1126}{0.0003} "<B>[t^ K]{t^*}:[A t^]<K.9>:[B t^]<K>:[Ch.1 t^]<B>:[Dh t^]<B>:[J t^]:[I]" + "<Ah t^ A>" |
+"<B>[t^ K]{t^*}:[A t^]<K.9>:[B t^]<K>:[Ch.1 t^]<B>:[Dh t^]<B>:[J t^]:[I]" + "<K t^>" <->{0.0003}{0.1126} "<B>[t^ K]:<K>[t^]:[A t^]<K.9>:[B t^]<K>:[Ch.1 t^]<B>:[Dh t^]<B>:[J t^]:[I]" |
+"<B>[t^ K]:<K>[t^]:[A t^]<K.9>:[B t^]<K>:[Ch.1 t^]<B>:[Dh t^]<B>:[J t^]:[I]" <->{0.1126}{0.0003} "{t^*}[K t^]:[A t^]<K.9>:[B t^]<K>:[Ch.1 t^]<B>:[Dh t^]<B>:[J t^]:[I]" + "<B t^ K>" |
+"<C>[t^ K.4]{t^*}:[B t^]<I.2>:[C t^]<K.4>:[Ch.5 t^]<C>:[Dh.6 t^]<C>:[J.3 t^]:[I.2]" + "<Bh t^ B>" <->{0.0003}{0.1126} "<C>[t^ K.4]:<Bh>[t^ B]:<B>[t^]<I.2>:[C t^]<K.4>:[Ch.5 t^]<C>:[Dh.6 t^]<C>:[J.3 t^]:[I.2]" |
+"<C>[t^ K.4]:<Bh>[t^ B]:<B>[t^]<I.2>:[C t^]<K.4>:[Ch.5 t^]<C>:[Dh.6 t^]<C>:[J.3 t^]:[I.2]" <->{0.1126}{0.0003} "<C>[t^ K.4]:<Bh>[t^ B]{t^*}:[C t^]<K.4>:[Ch.5 t^]<C>:[Dh.6 t^]<C>:[J.3 t^]:[I.2]" + "<B t^ I.2>" |
+"<C>[t^ K.4]:<Bh>[t^ B]{t^*}:[C t^]<K.4>:[Ch.5 t^]<C>:[Dh.6 t^]<C>:[J.3 t^]:[I.2]" + "<B t^ K>" <->{0.0003}{0.1126} "<C>[t^ K.4]:<Bh>[t^ B]:<B>[t^]<K>:[C t^]<K.4>:[Ch.5 t^]<C>:[Dh.6 t^]<C>:[J.3 t^]:[I.2]" |
+"<C>[t^ K.4]:<Bh>[t^ B]:<B>[t^]<K>:[C t^]<K.4>:[Ch.5 t^]<C>:[Dh.6 t^]<C>:[J.3 t^]:[I.2]" <->{0.1126}{0.0003} "<C>[t^ K.4]{t^*}:[B t^]<K>:[C t^]<K.4>:[Ch.5 t^]<C>:[Dh.6 t^]<C>:[J.3 t^]:[I.2]" + "<Bh t^ B>" |
+"<C>[t^ K.4]{t^*}:[B t^]<K>:[C t^]<K.4>:[Ch.5 t^]<C>:[Dh.6 t^]<C>:[J.3 t^]:[I.2]" + "<K.4 t^>" <->{0.0003}{0.1126} "<C>[t^ K.4]:<K.4>[t^]:[B t^]<K>:[C t^]<K.4>:[Ch.5 t^]<C>:[Dh.6 t^]<C>:[J.3 t^]:[I.2]" |
+"<C>[t^ K.4]:<K.4>[t^]:[B t^]<K>:[C t^]<K.4>:[Ch.5 t^]<C>:[Dh.6 t^]<C>:[J.3 t^]:[I.2]" <->{0.1126}{0.0003} "{t^*}[K.4 t^]:[B t^]<K>:[C t^]<K.4>:[Ch.5 t^]<C>:[Dh.6 t^]<C>:[J.3 t^]:[I.2]" + "<C t^ K.4>" |
+"<B>[t^ K]:<Ah>[t^ A]{t^*}:[B t^]<K>:[Ch.1 t^]<B>:[Dh t^]<B>:[J t^]:[I]" + "<Bh t^ B>" <->{0.0003}{0.1126} "<B>[t^ K]:<Ah>[t^ A]:<Bh>[t^ B]:<B>[t^]<K>:[Ch.1 t^]<B>:[Dh t^]<B>:[J t^]:[I]" |
+"<B>[t^ K]:<Ah>[t^ A]:<Bh>[t^ B]{t^*}:[Ch.1 t^]<B>:[Dh t^]<B>:[J t^]:[I]" + "<t^ Ch.1 t^ Dh t^ J>" ->{0.0003} "<B>[t^ K]:<Ah>[t^ A]:<Bh>[t^ B]:[t^ Ch.1 t^ Dh t^ J]:<J>[t^]:[I]" + "<Ch.1 t^ B>" + "<Dh t^ B>" |
+"<B>[t^ K]:<Ah>[t^ A]:<Bh>[t^ B]:<B>[t^]<K>:[Ch.1 t^]<B>:[Dh t^]<B>:[J t^]:[I]" <->{0.1126}{0.0003} "<B>[t^ K]:<Ah>[t^ A]:<Bh>[t^ B]{t^*}:[Ch.1 t^]<B>:[Dh t^]<B>:[J t^]:[I]" + "<B t^ K>" |
+"<B>[t^ K]:<Ah>[t^ A]:<Bh>[t^ B]:[t^ Ch.1 t^ Dh t^ J]{t^*}:[I]" + "<A t^ I>" ->{0.0003} "<B>[t^ K]:<Ah>[t^ A]:<Bh>[t^ B]:[t^ Ch.1 t^ Dh t^ J]:<A>[t^ I]" + "<I>" |
+"[J]{t^*}" + "<J t^>" ->{0.0003} "[J t^]" + "<J>" |
+"<B>[t^ K]:<Ah>[t^ A]:<Bh>[t^ B]:[t^ Ch.1 t^ Dh t^ J]:<J>[t^]:[I]" <->{0.1126}{0.0003} "<B>[t^ K]:<Ah>[t^ A]:<Bh>[t^ B]:[t^ Ch.1 t^ Dh t^ J]{t^*}:[I]" + "<J t^>" |
+"<C>[t^ K.4]{t^*}:[B t^]<I.2>:[C t^]<K.4>:[Ch.5 t^]<C>:[Dh.6 t^]<C>:[J.3 t^]:[I.2]" + "<Ch.1 t^ B>" <->{0.0003}{0.1126} "<C>[t^ K.4]:<Ch.1>[t^ B]:<B>[t^]<I.2>:[C t^]<K.4>:[Ch.5 t^]<C>:[Dh.6 t^]<C>:[J.3 t^]:[I.2]" |
+"<C>[t^ K.4]:<Ch.1>[t^ B]:<B>[t^]<I.2>:[C t^]<K.4>:[Ch.5 t^]<C>:[Dh.6 t^]<C>:[J.3 t^]:[I.2]" <->{0.1126}{0.0003} "<C>[t^ K.4]:<Ch.1>[t^ B]{t^*}:[C t^]<K.4>:[Ch.5 t^]<C>:[Dh.6 t^]<C>:[J.3 t^]:[I.2]" + "<B t^ I.2>" |
+"<C>[t^ K.4]{t^*}:[B t^]<K>:[C t^]<K.4>:[Ch.5 t^]<C>:[Dh.6 t^]<C>:[J.3 t^]:[I.2]" + "<Ch.1 t^ B>" <->{0.0003}{0.1126} "<C>[t^ K.4]:<Ch.1>[t^ B]:<B>[t^]<K>:[C t^]<K.4>:[Ch.5 t^]<C>:[Dh.6 t^]<C>:[J.3 t^]:[I.2]" |
+"<C>[t^ K.4]:<Ch.1>[t^ B]{t^*}:[C t^]<K.4>:[Ch.5 t^]<C>:[Dh.6 t^]<C>:[J.3 t^]:[I.2]" + "<B t^ K>" <->{0.0003}{0.1126} "<C>[t^ K.4]:<Ch.1>[t^ B]:<B>[t^]<K>:[C t^]<K.4>:[Ch.5 t^]<C>:[Dh.6 t^]<C>:[J.3 t^]:[I.2]" |
+"<B>[t^ K]:<Ah>[t^ A]{t^*}:[B t^]<K>:[Ch.1 t^]<B>:[Dh t^]<B>:[J t^]:[I]" + "<Ch.1 t^ B>" <->{0.0003}{0.1126} "<B>[t^ K]:<Ah>[t^ A]:<Ch.1>[t^ B]:<B>[t^]<K>:[Ch.1 t^]<B>:[Dh t^]<B>:[J t^]:[I]" |
+"<B>[t^ K]:<Ah>[t^ A]:<Ch.1>[t^ B]{t^*}:[Ch.1 t^]<B>:[Dh t^]<B>:[J t^]:[I]" + "<t^ Ch.1 t^ Dh t^ J>" ->{0.0003} "<B>[t^ K]:<Ah>[t^ A]:<Ch.1>[t^ B]:[t^ Ch.1 t^ Dh t^ J]:<J>[t^]:[I]" + "<Ch.1 t^ B>" + "<Dh t^ B>" |
+"<B>[t^ K]:<Ah>[t^ A]:<Ch.1>[t^ B]:<B>[t^]<K>:[Ch.1 t^]<B>:[Dh t^]<B>:[J t^]:[I]" <->{0.1126}{0.0003} "<B>[t^ K]:<Ah>[t^ A]:<Ch.1>[t^ B]{t^*}:[Ch.1 t^]<B>:[Dh t^]<B>:[J t^]:[I]" + "<B t^ K>" |
+"<B>[t^ K]:<Ah>[t^ A]:<Ch.1>[t^ B]:[t^ Ch.1 t^ Dh t^ J]{t^*}:[I]" + "<A t^ I>" ->{0.0003} "<B>[t^ K]:<Ah>[t^ A]:<Ch.1>[t^ B]:[t^ Ch.1 t^ Dh t^ J]:<A>[t^ I]" + "<I>" |
+"<B>[t^ K]:<Ah>[t^ A]:<Ch.1>[t^ B]:[t^ Ch.1 t^ Dh t^ J]:<J>[t^]:[I]" <->{0.1126}{0.0003} "<B>[t^ K]:<Ah>[t^ A]:<Ch.1>[t^ B]:[t^ Ch.1 t^ Dh t^ J]{t^*}:[I]" + "<J t^>" |
+"<C>[t^ K.4]{t^*}:[B t^]<I.2>:[C t^]<K.4>:[Ch.5 t^]<C>:[Dh.6 t^]<C>:[J.3 t^]:[I.2]" + "<Dh t^ B>" <->{0.0003}{0.1126} "<C>[t^ K.4]:<Dh>[t^ B]:<B>[t^]<I.2>:[C t^]<K.4>:[Ch.5 t^]<C>:[Dh.6 t^]<C>:[J.3 t^]:[I.2]" |
+"<C>[t^ K.4]:<Dh>[t^ B]:<B>[t^]<I.2>:[C t^]<K.4>:[Ch.5 t^]<C>:[Dh.6 t^]<C>:[J.3 t^]:[I.2]" <->{0.1126}{0.0003} "<C>[t^ K.4]:<Dh>[t^ B]{t^*}:[C t^]<K.4>:[Ch.5 t^]<C>:[Dh.6 t^]<C>:[J.3 t^]:[I.2]" + "<B t^ I.2>" |
+"<C>[t^ K.4]{t^*}:[B t^]<K>:[C t^]<K.4>:[Ch.5 t^]<C>:[Dh.6 t^]<C>:[J.3 t^]:[I.2]" + "<Dh t^ B>" <->{0.0003}{0.1126} "<C>[t^ K.4]:<Dh>[t^ B]:<B>[t^]<K>:[C t^]<K.4>:[Ch.5 t^]<C>:[Dh.6 t^]<C>:[J.3 t^]:[I.2]" |
+"<C>[t^ K.4]:<Dh>[t^ B]{t^*}:[C t^]<K.4>:[Ch.5 t^]<C>:[Dh.6 t^]<C>:[J.3 t^]:[I.2]" + "<B t^ K>" <->{0.0003}{0.1126} "<C>[t^ K.4]:<Dh>[t^ B]:<B>[t^]<K>:[C t^]<K.4>:[Ch.5 t^]<C>:[Dh.6 t^]<C>:[J.3 t^]:[I.2]" |
+"<B>[t^ K]:<Ah>[t^ A]{t^*}:[B t^]<K>:[Ch.1 t^]<B>:[Dh t^]<B>:[J t^]:[I]" + "<Dh t^ B>" <->{0.0003}{0.1126} "<B>[t^ K]:<Ah>[t^ A]:<Dh>[t^ B]:<B>[t^]<K>:[Ch.1 t^]<B>:[Dh t^]<B>:[J t^]:[I]" |
+"<B>[t^ K]:<Ah>[t^ A]:<Dh>[t^ B]{t^*}:[Ch.1 t^]<B>:[Dh t^]<B>:[J t^]:[I]" + "<t^ Ch.1 t^ Dh t^ J>" ->{0.0003} "<B>[t^ K]:<Ah>[t^ A]:<Dh>[t^ B]:[t^ Ch.1 t^ Dh t^ J]:<J>[t^]:[I]" + "<Ch.1 t^ B>" + "<Dh t^ B>" |
+"<B>[t^ K]:<Ah>[t^ A]:<Dh>[t^ B]:<B>[t^]<K>:[Ch.1 t^]<B>:[Dh t^]<B>:[J t^]:[I]" <->{0.1126}{0.0003} "<B>[t^ K]:<Ah>[t^ A]:<Dh>[t^ B]{t^*}:[Ch.1 t^]<B>:[Dh t^]<B>:[J t^]:[I]" + "<B t^ K>" |
+"<B>[t^ K]:<Ah>[t^ A]:<Dh>[t^ B]:[t^ Ch.1 t^ Dh t^ J]{t^*}:[I]" + "<A t^ I>" ->{0.0003} "<B>[t^ K]:<Ah>[t^ A]:<Dh>[t^ B]:[t^ Ch.1 t^ Dh t^ J]:<A>[t^ I]" + "<I>" |
+"<B>[t^ K]:<Ah>[t^ A]:<Dh>[t^ B]:[t^ Ch.1 t^ Dh t^ J]:<J>[t^]:[I]" <->{0.1126}{0.0003} "<B>[t^ K]:<Ah>[t^ A]:<Dh>[t^ B]:[t^ Ch.1 t^ Dh t^ J]{t^*}:[I]" + "<J t^>" |
+"<B>[t^ K]:<Ah>[t^ A]:<Dh>[t^ B]{t^*}:[Ch.1 t^]<B>:[Dh t^]<B>:[J t^]:[I]" + "<B t^ I.2>" <->{0.0003}{0.1126} "<B>[t^ K]:<Ah>[t^ A]:<Dh>[t^ B]:<B>[t^]<I.2>:[Ch.1 t^]<B>:[Dh t^]<B>:[J t^]:[I]" |
+"<B>[t^ K]:<Ah>[t^ A]:<Dh>[t^ B]:<B>[t^]<I.2>:[Ch.1 t^]<B>:[Dh t^]<B>:[J t^]:[I]" <->{0.1126}{0.0003} "<B>[t^ K]:<Ah>[t^ A]{t^*}:[B t^]<I.2>:[Ch.1 t^]<B>:[Dh t^]<B>:[J t^]:[I]" + "<Dh t^ B>" |
+"<B>[t^ K]:<Ah>[t^ A]{t^*}:[B t^]<I.2>:[Ch.1 t^]<B>:[Dh t^]<B>:[J t^]:[I]" + "<A t^ I>" <->{0.0003}{0.1126} "<B>[t^ K]:<Ah>[t^ A]:<A>[t^]<I>:[B t^]<I.2>:[Ch.1 t^]<B>:[Dh t^]<B>:[J t^]:[I]" |
+"<B>[t^ K]:<Ah>[t^ A]:<A>[t^]<I>:[B t^]<I.2>:[Ch.1 t^]<B>:[Dh t^]<B>:[J t^]:[I]" <->{0.1126}{0.0003} "<B>[t^ K]{t^*}:[A t^]<I>:[B t^]<I.2>:[Ch.1 t^]<B>:[Dh t^]<B>:[J t^]:[I]" + "<Ah t^ A>" |
+"<B>[t^ K]{t^*}:[A t^]<I>:[B t^]<I.2>:[Ch.1 t^]<B>:[Dh t^]<B>:[J t^]:[I]" + "<K t^>" <->{0.0003}{0.1126} "<B>[t^ K]:<K>[t^]:[A t^]<I>:[B t^]<I.2>:[Ch.1 t^]<B>:[Dh t^]<B>:[J t^]:[I]" |
+"<B>[t^ K]:<K>[t^]:[A t^]<I>:[B t^]<I.2>:[Ch.1 t^]<B>:[Dh t^]<B>:[J t^]:[I]" <->{0.1126}{0.0003} "{t^*}[K t^]:[A t^]<I>:[B t^]<I.2>:[Ch.1 t^]<B>:[Dh t^]<B>:[J t^]:[I]" + "<B t^ K>" |
+"<B>[t^ K]:<Ah>[t^ A]{t^*}:[B t^]<I.2>:[Ch.1 t^]<B>:[Dh t^]<B>:[J t^]:[I]" + "<A t^ K.9>" <->{0.0003}{0.1126} "<B>[t^ K]:<Ah>[t^ A]:<A>[t^]<K.9>:[B t^]<I.2>:[Ch.1 t^]<B>:[Dh t^]<B>:[J t^]:[I]" |
+"<B>[t^ K]:<Ah>[t^ A]:<A>[t^]<K.9>:[B t^]<I.2>:[Ch.1 t^]<B>:[Dh t^]<B>:[J t^]:[I]" <->{0.1126}{0.0003} "<B>[t^ K]{t^*}:[A t^]<K.9>:[B t^]<I.2>:[Ch.1 t^]<B>:[Dh t^]<B>:[J t^]:[I]" + "<Ah t^ A>" |
+"<B>[t^ K]{t^*}:[A t^]<K.9>:[B t^]<I.2>:[Ch.1 t^]<B>:[Dh t^]<B>:[J t^]:[I]" + "<K t^>" <->{0.0003}{0.1126} "<B>[t^ K]:<K>[t^]:[A t^]<K.9>:[B t^]<I.2>:[Ch.1 t^]<B>:[Dh t^]<B>:[J t^]:[I]" |
+"<B>[t^ K]:<K>[t^]:[A t^]<K.9>:[B t^]<I.2>:[Ch.1 t^]<B>:[Dh t^]<B>:[J t^]:[I]" <->{0.1126}{0.0003} "{t^*}[K t^]:[A t^]<K.9>:[B t^]<I.2>:[Ch.1 t^]<B>:[Dh t^]<B>:[J t^]:[I]" + "<B t^ K>" |
+"<B>[t^ K]:<Ah>[t^ A]{t^*}:[B t^]<I.2>:[Ch.1 t^]<B>:[Dh t^]<B>:[J t^]:[I]" + "<Bh t^ B>" <->{0.0003}{0.1126} "<B>[t^ K]:<Ah>[t^ A]:<Bh>[t^ B]:<B>[t^]<I.2>:[Ch.1 t^]<B>:[Dh t^]<B>:[J t^]:[I]" |
+"<B>[t^ K]:<Ah>[t^ A]:<Bh>[t^ B]{t^*}:[Ch.1 t^]<B>:[Dh t^]<B>:[J t^]:[I]" + "<B t^ I.2>" <->{0.0003}{0.1126} "<B>[t^ K]:<Ah>[t^ A]:<Bh>[t^ B]:<B>[t^]<I.2>:[Ch.1 t^]<B>:[Dh t^]<B>:[J t^]:[I]" |
+"<B>[t^ K]:<Ah>[t^ A]{t^*}:[B t^]<I.2>:[Ch.1 t^]<B>:[Dh t^]<B>:[J t^]:[I]" + "<Ch.1 t^ B>" <->{0.0003}{0.1126} "<B>[t^ K]:<Ah>[t^ A]:<Ch.1>[t^ B]:<B>[t^]<I.2>:[Ch.1 t^]<B>:[Dh t^]<B>:[J t^]:[I]" |
+"<B>[t^ K]:<Ah>[t^ A]:<Ch.1>[t^ B]{t^*}:[Ch.1 t^]<B>:[Dh t^]<B>:[J t^]:[I]" + "<B t^ I.2>" <->{0.0003}{0.1126} "<B>[t^ K]:<Ah>[t^ A]:<Ch.1>[t^ B]:<B>[t^]<I.2>:[Ch.1 t^]<B>:[Dh t^]<B>:[J t^]:[I]" |
+"<A>[t^ K.9]{t^*}:[C t^]<I.7>:[A t^]<K.9>:[Ch.10 t^]<A>:[Dh.11 t^]<A>:[J.8 t^]:[I.7]" + "<Ch t^ C>" <->{0.0003}{0.1126} "<A>[t^ K.9]:<Ch>[t^ C]:<C>[t^]<I.7>:[A t^]<K.9>:[Ch.10 t^]<A>:[Dh.11 t^]<A>:[J.8 t^]:[I.7]" |
+"<A>[t^ K.9]:<Ch>[t^ C]:<C>[t^]<I.7>:[A t^]<K.9>:[Ch.10 t^]<A>:[Dh.11 t^]<A>:[J.8 t^]:[I.7]" <->{0.1126}{0.0003} "<A>[t^ K.9]:<Ch>[t^ C]{t^*}:[A t^]<K.9>:[Ch.10 t^]<A>:[Dh.11 t^]<A>:[J.8 t^]:[I.7]" + "<C t^ I.7>" |
+"<A>[t^ K.9]:<Ch>[t^ C]{t^*}:[A t^]<K.9>:[Ch.10 t^]<A>:[Dh.11 t^]<A>:[J.8 t^]:[I.7]" + "<C t^ K.4>" <->{0.0003}{0.1126} "<A>[t^ K.9]:<Ch>[t^ C]:<C>[t^]<K.4>:[A t^]<K.9>:[Ch.10 t^]<A>:[Dh.11 t^]<A>:[J.8 t^]:[I.7]" |
+"<A>[t^ K.9]:<Ch>[t^ C]:<C>[t^]<K.4>:[A t^]<K.9>:[Ch.10 t^]<A>:[Dh.11 t^]<A>:[J.8 t^]:[I.7]" <->{0.1126}{0.0003} "<A>[t^ K.9]{t^*}:[C t^]<K.4>:[A t^]<K.9>:[Ch.10 t^]<A>:[Dh.11 t^]<A>:[J.8 t^]:[I.7]" + "<Ch t^ C>" |
+"<A>[t^ K.9]{t^*}:[C t^]<K.4>:[A t^]<K.9>:[Ch.10 t^]<A>:[Dh.11 t^]<A>:[J.8 t^]:[I.7]" + "<K.9 t^>" <->{0.0003}{0.1126} "<A>[t^ K.9]:<K.9>[t^]:[C t^]<K.4>:[A t^]<K.9>:[Ch.10 t^]<A>:[Dh.11 t^]<A>:[J.8 t^]:[I.7]" |
+"<A>[t^ K.9]:<K.9>[t^]:[C t^]<K.4>:[A t^]<K.9>:[Ch.10 t^]<A>:[Dh.11 t^]<A>:[J.8 t^]:[I.7]" <->{0.1126}{0.0003} "{t^*}[K.9 t^]:[C t^]<K.4>:[A t^]<K.9>:[Ch.10 t^]<A>:[Dh.11 t^]<A>:[J.8 t^]:[I.7]" + "<A t^ K.9>" |
+"<A>[t^ K.9]:<Ch>[t^ C]{t^*}:[A t^]<K.9>:[Ch.10 t^]<A>:[Dh.11 t^]<A>:[J.8 t^]:[I.7]" + "<Ah t^ A>" <->{0.0003}{0.1126} "<A>[t^ K.9]:<Ch>[t^ C]:<Ah>[t^ A]:<A>[t^]<K.9>:[Ch.10 t^]<A>:[Dh.11 t^]<A>:[J.8 t^]:[I.7]" |
+"<A>[t^ K.9]:<Ch>[t^ C]:<Ah>[t^ A]{t^*}:[Ch.10 t^]<A>:[Dh.11 t^]<A>:[J.8 t^]:[I.7]" + "<t^ Ch.10 t^ Dh.11 t^ J.8>" ->{0.0003} "<A>[t^ K.9]:<Ch>[t^ C]:<Ah>[t^ A]:[t^ Ch.10 t^ Dh.11 t^ J.8]:<J.8>[t^]:[I.7]" + "<Ch.10 t^ A>" + "<Dh.11 t^ A>" |
+"<A>[t^ K.9]:<Ch>[t^ C]:<Ah>[t^ A]:<A>[t^]<K.9>:[Ch.10 t^]<A>:[Dh.11 t^]<A>:[J.8 t^]:[I.7]" <->{0.1126}{0.0003} "<A>[t^ K.9]:<Ch>[t^ C]:<Ah>[t^ A]{t^*}:[Ch.10 t^]<A>:[Dh.11 t^]<A>:[J.8 t^]:[I.7]" + "<A t^ K.9>" |
+"<A>[t^ K.9]:<Ch>[t^ C]:<Ah>[t^ A]{t^*}:[Ch.10 t^]<A>:[Dh.11 t^]<A>:[J.8 t^]:[I.7]" + "<A t^ I>" <->{0.0003}{0.1126} "<A>[t^ K.9]:<Ch>[t^ C]:<Ah>[t^ A]:<A>[t^]<I>:[Ch.10 t^]<A>:[Dh.11 t^]<A>:[J.8 t^]:[I.7]" |
+"<A>[t^ K.9]:<Ch>[t^ C]:<Ah>[t^ A]:<A>[t^]<I>:[Ch.10 t^]<A>:[Dh.11 t^]<A>:[J.8 t^]:[I.7]" <->{0.1126}{0.0003} "<A>[t^ K.9]:<Ch>[t^ C]{t^*}:[A t^]<I>:[Ch.10 t^]<A>:[Dh.11 t^]<A>:[J.8 t^]:[I.7]" + "<Ah t^ A>" |
+"<A>[t^ K.9]:<Ch>[t^ C]{t^*}:[A t^]<I>:[Ch.10 t^]<A>:[Dh.11 t^]<A>:[J.8 t^]:[I.7]" + "<C t^ K.4>" <->{0.0003}{0.1126} "<A>[t^ K.9]:<Ch>[t^ C]:<C>[t^]<K.4>:[A t^]<I>:[Ch.10 t^]<A>:[Dh.11 t^]<A>:[J.8 t^]:[I.7]" |
+"<A>[t^ K.9]:<Ch>[t^ C]:<C>[t^]<K.4>:[A t^]<I>:[Ch.10 t^]<A>:[Dh.11 t^]<A>:[J.8 t^]:[I.7]" <->{0.1126}{0.0003} "<A>[t^ K.9]{t^*}:[C t^]<K.4>:[A t^]<I>:[Ch.10 t^]<A>:[Dh.11 t^]<A>:[J.8 t^]:[I.7]" + "<Ch t^ C>" |
+"<A>[t^ K.9]{t^*}:[C t^]<K.4>:[A t^]<I>:[Ch.10 t^]<A>:[Dh.11 t^]<A>:[J.8 t^]:[I.7]" + "<K.9 t^>" <->{0.0003}{0.1126} "<A>[t^ K.9]:<K.9>[t^]:[C t^]<K.4>:[A t^]<I>:[Ch.10 t^]<A>:[Dh.11 t^]<A>:[J.8 t^]:[I.7]" |
+"<A>[t^ K.9]:<K.9>[t^]:[C t^]<K.4>:[A t^]<I>:[Ch.10 t^]<A>:[Dh.11 t^]<A>:[J.8 t^]:[I.7]" <->{0.1126}{0.0003} "{t^*}[K.9 t^]:[C t^]<K.4>:[A t^]<I>:[Ch.10 t^]<A>:[Dh.11 t^]<A>:[J.8 t^]:[I.7]" + "<A t^ K.9>" |
+"<A>[t^ K.9]:<Ch>[t^ C]{t^*}:[A t^]<I>:[Ch.10 t^]<A>:[Dh.11 t^]<A>:[J.8 t^]:[I.7]" + "<C t^ I.7>" <->{0.0003}{0.1126} "<A>[t^ K.9]:<Ch>[t^ C]:<C>[t^]<I.7>:[A t^]<I>:[Ch.10 t^]<A>:[Dh.11 t^]<A>:[J.8 t^]:[I.7]" |
+"<A>[t^ K.9]:<Ch>[t^ C]:<C>[t^]<I.7>:[A t^]<I>:[Ch.10 t^]<A>:[Dh.11 t^]<A>:[J.8 t^]:[I.7]" <->{0.1126}{0.0003} "<A>[t^ K.9]{t^*}:[C t^]<I.7>:[A t^]<I>:[Ch.10 t^]<A>:[Dh.11 t^]<A>:[J.8 t^]:[I.7]" + "<Ch t^ C>" |
+"<A>[t^ K.9]{t^*}:[C t^]<I.7>:[A t^]<I>:[Ch.10 t^]<A>:[Dh.11 t^]<A>:[J.8 t^]:[I.7]" + "<K.9 t^>" <->{0.0003}{0.1126} "<A>[t^ K.9]:<K.9>[t^]:[C t^]<I.7>:[A t^]<I>:[Ch.10 t^]<A>:[Dh.11 t^]<A>:[J.8 t^]:[I.7]" |
+"<A>[t^ K.9]:<K.9>[t^]:[C t^]<I.7>:[A t^]<I>:[Ch.10 t^]<A>:[Dh.11 t^]<A>:[J.8 t^]:[I.7]" <->{0.1126}{0.0003} "{t^*}[K.9 t^]:[C t^]<I.7>:[A t^]<I>:[Ch.10 t^]<A>:[Dh.11 t^]<A>:[J.8 t^]:[I.7]" + "<A t^ K.9>" |
+"<A>[t^ K.9]:<Ch>[t^ C]:<Ah>[t^ A]:[t^ Ch.10 t^ Dh.11 t^ J.8]{t^*}:[I.7]" + "<C t^ I.7>" ->{0.0003} "<A>[t^ K.9]:<Ch>[t^ C]:<Ah>[t^ A]:[t^ Ch.10 t^ Dh.11 t^ J.8]:<C>[t^ I.7]" + "<I.7>" |
+"[J.8]{t^*}" + "<J.8 t^>" ->{0.0003} "[J.8 t^]" + "<J.8>" |
+"<A>[t^ K.9]:<Ch>[t^ C]:<Ah>[t^ A]:[t^ Ch.10 t^ Dh.11 t^ J.8]:<J.8>[t^]:[I.7]" <->{0.1126}{0.0003} "<A>[t^ K.9]:<Ch>[t^ C]:<Ah>[t^ A]:[t^ Ch.10 t^ Dh.11 t^ J.8]{t^*}:[I.7]" + "<J.8 t^>" |
+"<B>[t^ K]{t^*}:[A t^]<I>:[B t^]<K>:[Ch.1 t^]<B>:[Dh t^]<B>:[J t^]:[I]" + "<Ch.10 t^ A>" <->{0.0003}{0.1126} "<B>[t^ K]:<Ch.10>[t^ A]:<A>[t^]<I>:[B t^]<K>:[Ch.1 t^]<B>:[Dh t^]<B>:[J t^]:[I]" |
+"<B>[t^ K]:<Ch.10>[t^ A]:<A>[t^]<I>:[B t^]<K>:[Ch.1 t^]<B>:[Dh t^]<B>:[J t^]:[I]" <->{0.1126}{0.0003} "<B>[t^ K]:<Ch.10>[t^ A]{t^*}:[B t^]<K>:[Ch.1 t^]<B>:[Dh t^]<B>:[J t^]:[I]" + "<A t^ I>" |
+"<B>[t^ K]{t^*}:[A t^]<K.9>:[B t^]<K>:[Ch.1 t^]<B>:[Dh t^]<B>:[J t^]:[I]" + "<Ch.10 t^ A>" <->{0.0003}{0.1126} "<B>[t^ K]:<Ch.10>[t^ A]:<A>[t^]<K.9>:[B t^]<K>:[Ch.1 t^]<B>:[Dh t^]<B>:[J t^]:[I]" |
+"<B>[t^ K]:<Ch.10>[t^ A]{t^*}:[B t^]<K>:[Ch.1 t^]<B>:[Dh t^]<B>:[J t^]:[I]" + "<A t^ K.9>" <->{0.0003}{0.1126} "<B>[t^ K]:<Ch.10>[t^ A]:<A>[t^]<K.9>:[B t^]<K>:[Ch.1 t^]<B>:[Dh t^]<B>:[J t^]:[I]" |
+"<B>[t^ K]:<Ch.10>[t^ A]{t^*}:[B t^]<K>:[Ch.1 t^]<B>:[Dh t^]<B>:[J t^]:[I]" + "<Bh t^ B>" <->{0.0003}{0.1126} "<B>[t^ K]:<Ch.10>[t^ A]:<Bh>[t^ B]:<B>[t^]<K>:[Ch.1 t^]<B>:[Dh t^]<B>:[J t^]:[I]" |
+"<B>[t^ K]:<Ch.10>[t^ A]:<Bh>[t^ B]{t^*}:[Ch.1 t^]<B>:[Dh t^]<B>:[J t^]:[I]" + "<t^ Ch.1 t^ Dh t^ J>" ->{0.0003} "<B>[t^ K]:<Ch.10>[t^ A]:<Bh>[t^ B]:[t^ Ch.1 t^ Dh t^ J]:<J>[t^]:[I]" + "<Ch.1 t^ B>" + "<Dh t^ B>" |
+"<B>[t^ K]:<Ch.10>[t^ A]:<Bh>[t^ B]:<B>[t^]<K>:[Ch.1 t^]<B>:[Dh t^]<B>:[J t^]:[I]" <->{0.1126}{0.0003} "<B>[t^ K]:<Ch.10>[t^ A]:<Bh>[t^ B]{t^*}:[Ch.1 t^]<B>:[Dh t^]<B>:[J t^]:[I]" + "<B t^ K>" |
+"<B>[t^ K]:<Ch.10>[t^ A]:<Bh>[t^ B]:[t^ Ch.1 t^ Dh t^ J]{t^*}:[I]" + "<A t^ I>" ->{0.0003} "<B>[t^ K]:<Ch.10>[t^ A]:<Bh>[t^ B]:[t^ Ch.1 t^ Dh t^ J]:<A>[t^ I]" + "<I>" |
+"<B>[t^ K]:<Ch.10>[t^ A]:<Bh>[t^ B]:[t^ Ch.1 t^ Dh t^ J]:<J>[t^]:[I]" <->{0.1126}{0.0003} "<B>[t^ K]:<Ch.10>[t^ A]:<Bh>[t^ B]:[t^ Ch.1 t^ Dh t^ J]{t^*}:[I]" + "<J t^>" |
+"<B>[t^ K]:<Ch.10>[t^ A]:<Bh>[t^ B]{t^*}:[Ch.1 t^]<B>:[Dh t^]<B>:[J t^]:[I]" + "<B t^ I.2>" <->{0.0003}{0.1126} "<B>[t^ K]:<Ch.10>[t^ A]:<Bh>[t^ B]:<B>[t^]<I.2>:[Ch.1 t^]<B>:[Dh t^]<B>:[J t^]:[I]" |
+"<B>[t^ K]:<Ch.10>[t^ A]:<Bh>[t^ B]:<B>[t^]<I.2>:[Ch.1 t^]<B>:[Dh t^]<B>:[J t^]:[I]" <->{0.1126}{0.0003} "<B>[t^ K]:<Ch.10>[t^ A]{t^*}:[B t^]<I.2>:[Ch.1 t^]<B>:[Dh t^]<B>:[J t^]:[I]" + "<Bh t^ B>" |
+"<B>[t^ K]{t^*}:[A t^]<I>:[B t^]<I.2>:[Ch.1 t^]<B>:[Dh t^]<B>:[J t^]:[I]" + "<Ch.10 t^ A>" <->{0.0003}{0.1126} "<B>[t^ K]:<Ch.10>[t^ A]:<A>[t^]<I>:[B t^]<I.2>:[Ch.1 t^]<B>:[Dh t^]<B>:[J t^]:[I]" |
+"<B>[t^ K]:<Ch.10>[t^ A]{t^*}:[B t^]<I.2>:[Ch.1 t^]<B>:[Dh t^]<B>:[J t^]:[I]" + "<A t^ I>" <->{0.0003}{0.1126} "<B>[t^ K]:<Ch.10>[t^ A]:<A>[t^]<I>:[B t^]<I.2>:[Ch.1 t^]<B>:[Dh t^]<B>:[J t^]:[I]" |
+"<B>[t^ K]{t^*}:[A t^]<K.9>:[B t^]<I.2>:[Ch.1 t^]<B>:[Dh t^]<B>:[J t^]:[I]" + "<Ch.10 t^ A>" <->{0.0003}{0.1126} "<B>[t^ K]:<Ch.10>[t^ A]:<A>[t^]<K.9>:[B t^]<I.2>:[Ch.1 t^]<B>:[Dh t^]<B>:[J t^]:[I]" |
+"<B>[t^ K]:<Ch.10>[t^ A]{t^*}:[B t^]<I.2>:[Ch.1 t^]<B>:[Dh t^]<B>:[J t^]:[I]" + "<A t^ K.9>" <->{0.0003}{0.1126} "<B>[t^ K]:<Ch.10>[t^ A]:<A>[t^]<K.9>:[B t^]<I.2>:[Ch.1 t^]<B>:[Dh t^]<B>:[J t^]:[I]" |
+"<B>[t^ K]:<Ch.10>[t^ A]{t^*}:[B t^]<I.2>:[Ch.1 t^]<B>:[Dh t^]<B>:[J t^]:[I]" + "<Ch.1 t^ B>" <->{0.0003}{0.1126} "<B>[t^ K]:<Ch.10>[t^ A]:<Ch.1>[t^ B]:<B>[t^]<I.2>:[Ch.1 t^]<B>:[Dh t^]<B>:[J t^]:[I]" |
+"<B>[t^ K]:<Ch.10>[t^ A]:<Ch.1>[t^ B]{t^*}:[Ch.1 t^]<B>:[Dh t^]<B>:[J t^]:[I]" + "<t^ Ch.1 t^ Dh t^ J>" ->{0.0003} "<B>[t^ K]:<Ch.10>[t^ A]:<Ch.1>[t^ B]:[t^ Ch.1 t^ Dh t^ J]:<J>[t^]:[I]" + "<Ch.1 t^ B>" + "<Dh t^ B>" |
+"<B>[t^ K]:<Ch.10>[t^ A]:<Ch.1>[t^ B]:<B>[t^]<I.2>:[Ch.1 t^]<B>:[Dh t^]<B>:[J t^]:[I]" <->{0.1126}{0.0003} "<B>[t^ K]:<Ch.10>[t^ A]:<Ch.1>[t^ B]{t^*}:[Ch.1 t^]<B>:[Dh t^]<B>:[J t^]:[I]" + "<B t^ I.2>" |
+"<B>[t^ K]:<Ch.10>[t^ A]:<Ch.1>[t^ B]:[t^ Ch.1 t^ Dh t^ J]{t^*}:[I]" + "<A t^ I>" ->{0.0003} "<B>[t^ K]:<Ch.10>[t^ A]:<Ch.1>[t^ B]:[t^ Ch.1 t^ Dh t^ J]:<A>[t^ I]" + "<I>" |
+"<B>[t^ K]:<Ch.10>[t^ A]:<Ch.1>[t^ B]:[t^ Ch.1 t^ Dh t^ J]:<J>[t^]:[I]" <->{0.1126}{0.0003} "<B>[t^ K]:<Ch.10>[t^ A]:<Ch.1>[t^ B]:[t^ Ch.1 t^ Dh t^ J]{t^*}:[I]" + "<J t^>" |
+"<B>[t^ K]:<Ch.10>[t^ A]{t^*}:[B t^]<K>:[Ch.1 t^]<B>:[Dh t^]<B>:[J t^]:[I]" + "<Ch.1 t^ B>" <->{0.0003}{0.1126} "<B>[t^ K]:<Ch.10>[t^ A]:<Ch.1>[t^ B]:<B>[t^]<K>:[Ch.1 t^]<B>:[Dh t^]<B>:[J t^]:[I]" |
+"<B>[t^ K]:<Ch.10>[t^ A]:<Ch.1>[t^ B]{t^*}:[Ch.1 t^]<B>:[Dh t^]<B>:[J t^]:[I]" + "<B t^ K>" <->{0.0003}{0.1126} "<B>[t^ K]:<Ch.10>[t^ A]:<Ch.1>[t^ B]:<B>[t^]<K>:[Ch.1 t^]<B>:[Dh t^]<B>:[J t^]:[I]" |
+"<B>[t^ K]:<Ch.10>[t^ A]{t^*}:[B t^]<I.2>:[Ch.1 t^]<B>:[Dh t^]<B>:[J t^]:[I]" + "<Dh t^ B>" <->{0.0003}{0.1126} "<B>[t^ K]:<Ch.10>[t^ A]:<Dh>[t^ B]:<B>[t^]<I.2>:[Ch.1 t^]<B>:[Dh t^]<B>:[J t^]:[I]" |
+"<B>[t^ K]:<Ch.10>[t^ A]:<Dh>[t^ B]{t^*}:[Ch.1 t^]<B>:[Dh t^]<B>:[J t^]:[I]" + "<t^ Ch.1 t^ Dh t^ J>" ->{0.0003} "<B>[t^ K]:<Ch.10>[t^ A]:<Dh>[t^ B]:[t^ Ch.1 t^ Dh t^ J]:<J>[t^]:[I]" + "<Ch.1 t^ B>" + "<Dh t^ B>" |
+"<B>[t^ K]:<Ch.10>[t^ A]:<Dh>[t^ B]:<B>[t^]<I.2>:[Ch.1 t^]<B>:[Dh t^]<B>:[J t^]:[I]" <->{0.1126}{0.0003} "<B>[t^ K]:<Ch.10>[t^ A]:<Dh>[t^ B]{t^*}:[Ch.1 t^]<B>:[Dh t^]<B>:[J t^]:[I]" + "<B t^ I.2>" |
+"<B>[t^ K]:<Ch.10>[t^ A]:<Dh>[t^ B]:[t^ Ch.1 t^ Dh t^ J]{t^*}:[I]" + "<A t^ I>" ->{0.0003} "<B>[t^ K]:<Ch.10>[t^ A]:<Dh>[t^ B]:[t^ Ch.1 t^ Dh t^ J]:<A>[t^ I]" + "<I>" |
+"<B>[t^ K]:<Ch.10>[t^ A]:<Dh>[t^ B]:[t^ Ch.1 t^ Dh t^ J]:<J>[t^]:[I]" <->{0.1126}{0.0003} "<B>[t^ K]:<Ch.10>[t^ A]:<Dh>[t^ B]:[t^ Ch.1 t^ Dh t^ J]{t^*}:[I]" + "<J t^>" |
+"<B>[t^ K]:<Ch.10>[t^ A]{t^*}:[B t^]<K>:[Ch.1 t^]<B>:[Dh t^]<B>:[J t^]:[I]" + "<Dh t^ B>" <->{0.0003}{0.1126} "<B>[t^ K]:<Ch.10>[t^ A]:<Dh>[t^ B]:<B>[t^]<K>:[Ch.1 t^]<B>:[Dh t^]<B>:[J t^]:[I]" |
+"<B>[t^ K]:<Ch.10>[t^ A]:<Dh>[t^ B]{t^*}:[Ch.1 t^]<B>:[Dh t^]<B>:[J t^]:[I]" + "<B t^ K>" <->{0.0003}{0.1126} "<B>[t^ K]:<Ch.10>[t^ A]:<Dh>[t^ B]:<B>[t^]<K>:[Ch.1 t^]<B>:[Dh t^]<B>:[J t^]:[I]" |
+"<A>[t^ K.9]:<Ch>[t^ C]{t^*}:[A t^]<K.9>:[Ch.10 t^]<A>:[Dh.11 t^]<A>:[J.8 t^]:[I.7]" + "<Ch.10 t^ A>" <->{0.0003}{0.1126} "<A>[t^ K.9]:<Ch>[t^ C]:<Ch.10>[t^ A]:<A>[t^]<K.9>:[Ch.10 t^]<A>:[Dh.11 t^]<A>:[J.8 t^]:[I.7]" |
+"<A>[t^ K.9]:<Ch>[t^ C]:<Ch.10>[t^ A]{t^*}:[Ch.10 t^]<A>:[Dh.11 t^]<A>:[J.8 t^]:[I.7]" + "<t^ Ch.10 t^ Dh.11 t^ J.8>" ->{0.0003} "<A>[t^ K.9]:<Ch>[t^ C]:<Ch.10>[t^ A]:[t^ Ch.10 t^ Dh.11 t^ J.8]:<J.8>[t^]:[I.7]" + "<Ch.10 t^ A>" + "<Dh.11 t^ A>" |
+"<A>[t^ K.9]:<Ch>[t^ C]:<Ch.10>[t^ A]:<A>[t^]<K.9>:[Ch.10 t^]<A>:[Dh.11 t^]<A>:[J.8 t^]:[I.7]" <->{0.1126}{0.0003} "<A>[t^ K.9]:<Ch>[t^ C]:<Ch.10>[t^ A]{t^*}:[Ch.10 t^]<A>:[Dh.11 t^]<A>:[J.8 t^]:[I.7]" + "<A t^ K.9>" |
+"<A>[t^ K.9]:<Ch>[t^ C]{t^*}:[A t^]<I>:[Ch.10 t^]<A>:[Dh.11 t^]<A>:[J.8 t^]:[I.7]" + "<Ch.10 t^ A>" <->{0.0003}{0.1126} "<A>[t^ K.9]:<Ch>[t^ C]:<Ch.10>[t^ A]:<A>[t^]<I>:[Ch.10 t^]<A>:[Dh.11 t^]<A>:[J.8 t^]:[I.7]" |
+"<A>[t^ K.9]:<Ch>[t^ C]:<Ch.10>[t^ A]{t^*}:[Ch.10 t^]<A>:[Dh.11 t^]<A>:[J.8 t^]:[I.7]" + "<A t^ I>" <->{0.0003}{0.1126} "<A>[t^ K.9]:<Ch>[t^ C]:<Ch.10>[t^ A]:<A>[t^]<I>:[Ch.10 t^]<A>:[Dh.11 t^]<A>:[J.8 t^]:[I.7]" |
+"<A>[t^ K.9]:<Ch>[t^ C]:<Ch.10>[t^ A]:[t^ Ch.10 t^ Dh.11 t^ J.8]{t^*}:[I.7]" + "<C t^ I.7>" ->{0.0003} "<A>[t^ K.9]:<Ch>[t^ C]:<Ch.10>[t^ A]:[t^ Ch.10 t^ Dh.11 t^ J.8]:<C>[t^ I.7]" + "<I.7>" |
+"<A>[t^ K.9]:<Ch>[t^ C]:<Ch.10>[t^ A]:[t^ Ch.10 t^ Dh.11 t^ J.8]:<J.8>[t^]:[I.7]" <->{0.1126}{0.0003} "<A>[t^ K.9]:<Ch>[t^ C]:<Ch.10>[t^ A]:[t^ Ch.10 t^ Dh.11 t^ J.8]{t^*}:[I.7]" + "<J.8 t^>" |
+"<B>[t^ K]{t^*}:[A t^]<I>:[B t^]<K>:[Ch.1 t^]<B>:[Dh t^]<B>:[J t^]:[I]" + "<Dh.11 t^ A>" <->{0.0003}{0.1126} "<B>[t^ K]:<Dh.11>[t^ A]:<A>[t^]<I>:[B t^]<K>:[Ch.1 t^]<B>:[Dh t^]<B>:[J t^]:[I]" |
+"<B>[t^ K]:<Dh.11>[t^ A]:<A>[t^]<I>:[B t^]<K>:[Ch.1 t^]<B>:[Dh t^]<B>:[J t^]:[I]" <->{0.1126}{0.0003} "<B>[t^ K]:<Dh.11>[t^ A]{t^*}:[B t^]<K>:[Ch.1 t^]<B>:[Dh t^]<B>:[J t^]:[I]" + "<A t^ I>" |
+"<B>[t^ K]{t^*}:[A t^]<K.9>:[B t^]<K>:[Ch.1 t^]<B>:[Dh t^]<B>:[J t^]:[I]" + "<Dh.11 t^ A>" <->{0.0003}{0.1126} "<B>[t^ K]:<Dh.11>[t^ A]:<A>[t^]<K.9>:[B t^]<K>:[Ch.1 t^]<B>:[Dh t^]<B>:[J t^]:[I]" |
+"<B>[t^ K]:<Dh.11>[t^ A]{t^*}:[B t^]<K>:[Ch.1 t^]<B>:[Dh t^]<B>:[J t^]:[I]" + "<A t^ K.9>" <->{0.0003}{0.1126} "<B>[t^ K]:<Dh.11>[t^ A]:<A>[t^]<K.9>:[B t^]<K>:[Ch.1 t^]<B>:[Dh t^]<B>:[J t^]:[I]" |
+"<B>[t^ K]:<Dh.11>[t^ A]{t^*}:[B t^]<K>:[Ch.1 t^]<B>:[Dh t^]<B>:[J t^]:[I]" + "<Bh t^ B>" <->{0.0003}{0.1126} "<B>[t^ K]:<Dh.11>[t^ A]:<Bh>[t^ B]:<B>[t^]<K>:[Ch.1 t^]<B>:[Dh t^]<B>:[J t^]:[I]" |
+"<B>[t^ K]:<Dh.11>[t^ A]:<Bh>[t^ B]{t^*}:[Ch.1 t^]<B>:[Dh t^]<B>:[J t^]:[I]" + "<t^ Ch.1 t^ Dh t^ J>" ->{0.0003} "<B>[t^ K]:<Dh.11>[t^ A]:<Bh>[t^ B]:[t^ Ch.1 t^ Dh t^ J]:<J>[t^]:[I]" + "<Ch.1 t^ B>" + "<Dh t^ B>" |
+"<B>[t^ K]:<Dh.11>[t^ A]:<Bh>[t^ B]:<B>[t^]<K>:[Ch.1 t^]<B>:[Dh t^]<B>:[J t^]:[I]" <->{0.1126}{0.0003} "<B>[t^ K]:<Dh.11>[t^ A]:<Bh>[t^ B]{t^*}:[Ch.1 t^]<B>:[Dh t^]<B>:[J t^]:[I]" + "<B t^ K>" |
+"<B>[t^ K]:<Dh.11>[t^ A]:<Bh>[t^ B]:[t^ Ch.1 t^ Dh t^ J]{t^*}:[I]" + "<A t^ I>" ->{0.0003} "<B>[t^ K]:<Dh.11>[t^ A]:<Bh>[t^ B]:[t^ Ch.1 t^ Dh t^ J]:<A>[t^ I]" + "<I>" |
+"<B>[t^ K]:<Dh.11>[t^ A]:<Bh>[t^ B]:[t^ Ch.1 t^ Dh t^ J]:<J>[t^]:[I]" <->{0.1126}{0.0003} "<B>[t^ K]:<Dh.11>[t^ A]:<Bh>[t^ B]:[t^ Ch.1 t^ Dh t^ J]{t^*}:[I]" + "<J t^>" |
+"<B>[t^ K]:<Dh.11>[t^ A]:<Bh>[t^ B]{t^*}:[Ch.1 t^]<B>:[Dh t^]<B>:[J t^]:[I]" + "<B t^ I.2>" <->{0.0003}{0.1126} "<B>[t^ K]:<Dh.11>[t^ A]:<Bh>[t^ B]:<B>[t^]<I.2>:[Ch.1 t^]<B>:[Dh t^]<B>:[J t^]:[I]" |
+"<B>[t^ K]:<Dh.11>[t^ A]:<Bh>[t^ B]:<B>[t^]<I.2>:[Ch.1 t^]<B>:[Dh t^]<B>:[J t^]:[I]" <->{0.1126}{0.0003} "<B>[t^ K]:<Dh.11>[t^ A]{t^*}:[B t^]<I.2>:[Ch.1 t^]<B>:[Dh t^]<B>:[J t^]:[I]" + "<Bh t^ B>" |
+"<B>[t^ K]{t^*}:[A t^]<I>:[B t^]<I.2>:[Ch.1 t^]<B>:[Dh t^]<B>:[J t^]:[I]" + "<Dh.11 t^ A>" <->{0.0003}{0.1126} "<B>[t^ K]:<Dh.11>[t^ A]:<A>[t^]<I>:[B t^]<I.2>:[Ch.1 t^]<B>:[Dh t^]<B>:[J t^]:[I]" |
+"<B>[t^ K]:<Dh.11>[t^ A]{t^*}:[B t^]<I.2>:[Ch.1 t^]<B>:[Dh t^]<B>:[J t^]:[I]" + "<A t^ I>" <->{0.0003}{0.1126} "<B>[t^ K]:<Dh.11>[t^ A]:<A>[t^]<I>:[B t^]<I.2>:[Ch.1 t^]<B>:[Dh t^]<B>:[J t^]:[I]" |
+"<B>[t^ K]{t^*}:[A t^]<K.9>:[B t^]<I.2>:[Ch.1 t^]<B>:[Dh t^]<B>:[J t^]:[I]" + "<Dh.11 t^ A>" <->{0.0003}{0.1126} "<B>[t^ K]:<Dh.11>[t^ A]:<A>[t^]<K.9>:[B t^]<I.2>:[Ch.1 t^]<B>:[Dh t^]<B>:[J t^]:[I]" |
+"<B>[t^ K]:<Dh.11>[t^ A]{t^*}:[B t^]<I.2>:[Ch.1 t^]<B>:[Dh t^]<B>:[J t^]:[I]" + "<A t^ K.9>" <->{0.0003}{0.1126} "<B>[t^ K]:<Dh.11>[t^ A]:<A>[t^]<K.9>:[B t^]<I.2>:[Ch.1 t^]<B>:[Dh t^]<B>:[J t^]:[I]" |
+"<B>[t^ K]:<Dh.11>[t^ A]{t^*}:[B t^]<I.2>:[Ch.1 t^]<B>:[Dh t^]<B>:[J t^]:[I]" + "<Ch.1 t^ B>" <->{0.0003}{0.1126} "<B>[t^ K]:<Dh.11>[t^ A]:<Ch.1>[t^ B]:<B>[t^]<I.2>:[Ch.1 t^]<B>:[Dh t^]<B>:[J t^]:[I]" |
+"<B>[t^ K]:<Dh.11>[t^ A]:<Ch.1>[t^ B]{t^*}:[Ch.1 t^]<B>:[Dh t^]<B>:[J t^]:[I]" + "<t^ Ch.1 t^ Dh t^ J>" ->{0.0003} "<B>[t^ K]:<Dh.11>[t^ A]:<Ch.1>[t^ B]:[t^ Ch.1 t^ Dh t^ J]:<J>[t^]:[I]" + "<Ch.1 t^ B>" + "<Dh t^ B>" |
+"<B>[t^ K]:<Dh.11>[t^ A]:<Ch.1>[t^ B]:<B>[t^]<I.2>:[Ch.1 t^]<B>:[Dh t^]<B>:[J t^]:[I]" <->{0.1126}{0.0003} "<B>[t^ K]:<Dh.11>[t^ A]:<Ch.1>[t^ B]{t^*}:[Ch.1 t^]<B>:[Dh t^]<B>:[J t^]:[I]" + "<B t^ I.2>" |
+"<B>[t^ K]:<Dh.11>[t^ A]:<Ch.1>[t^ B]:[t^ Ch.1 t^ Dh t^ J]{t^*}:[I]" + "<A t^ I>" ->{0.0003} "<B>[t^ K]:<Dh.11>[t^ A]:<Ch.1>[t^ B]:[t^ Ch.1 t^ Dh t^ J]:<A>[t^ I]" + "<I>" |
+"<B>[t^ K]:<Dh.11>[t^ A]:<Ch.1>[t^ B]:[t^ Ch.1 t^ Dh t^ J]:<J>[t^]:[I]" <->{0.1126}{0.0003} "<B>[t^ K]:<Dh.11>[t^ A]:<Ch.1>[t^ B]:[t^ Ch.1 t^ Dh t^ J]{t^*}:[I]" + "<J t^>" |
+"<B>[t^ K]:<Dh.11>[t^ A]{t^*}:[B t^]<K>:[Ch.1 t^]<B>:[Dh t^]<B>:[J t^]:[I]" + "<Ch.1 t^ B>" <->{0.0003}{0.1126} "<B>[t^ K]:<Dh.11>[t^ A]:<Ch.1>[t^ B]:<B>[t^]<K>:[Ch.1 t^]<B>:[Dh t^]<B>:[J t^]:[I]" |
+"<B>[t^ K]:<Dh.11>[t^ A]:<Ch.1>[t^ B]{t^*}:[Ch.1 t^]<B>:[Dh t^]<B>:[J t^]:[I]" + "<B t^ K>" <->{0.0003}{0.1126} "<B>[t^ K]:<Dh.11>[t^ A]:<Ch.1>[t^ B]:<B>[t^]<K>:[Ch.1 t^]<B>:[Dh t^]<B>:[J t^]:[I]" |
+"<B>[t^ K]:<Dh.11>[t^ A]{t^*}:[B t^]<I.2>:[Ch.1 t^]<B>:[Dh t^]<B>:[J t^]:[I]" + "<Dh t^ B>" <->{0.0003}{0.1126} "<B>[t^ K]:<Dh.11>[t^ A]:<Dh>[t^ B]:<B>[t^]<I.2>:[Ch.1 t^]<B>:[Dh t^]<B>:[J t^]:[I]" |
+"<B>[t^ K]:<Dh.11>[t^ A]:<Dh>[t^ B]{t^*}:[Ch.1 t^]<B>:[Dh t^]<B>:[J t^]:[I]" + "<t^ Ch.1 t^ Dh t^ J>" ->{0.0003} "<B>[t^ K]:<Dh.11>[t^ A]:<Dh>[t^ B]:[t^ Ch.1 t^ Dh t^ J]:<J>[t^]:[I]" + "<Ch.1 t^ B>" + "<Dh t^ B>" |
+"<B>[t^ K]:<Dh.11>[t^ A]:<Dh>[t^ B]:<B>[t^]<I.2>:[Ch.1 t^]<B>:[Dh t^]<B>:[J t^]:[I]" <->{0.1126}{0.0003} "<B>[t^ K]:<Dh.11>[t^ A]:<Dh>[t^ B]{t^*}:[Ch.1 t^]<B>:[Dh t^]<B>:[J t^]:[I]" + "<B t^ I.2>" |
+"<B>[t^ K]:<Dh.11>[t^ A]:<Dh>[t^ B]:[t^ Ch.1 t^ Dh t^ J]{t^*}:[I]" + "<A t^ I>" ->{0.0003} "<B>[t^ K]:<Dh.11>[t^ A]:<Dh>[t^ B]:[t^ Ch.1 t^ Dh t^ J]:<A>[t^ I]" + "<I>" |
+"<B>[t^ K]:<Dh.11>[t^ A]:<Dh>[t^ B]:[t^ Ch.1 t^ Dh t^ J]:<J>[t^]:[I]" <->{0.1126}{0.0003} "<B>[t^ K]:<Dh.11>[t^ A]:<Dh>[t^ B]:[t^ Ch.1 t^ Dh t^ J]{t^*}:[I]" + "<J t^>" |
+"<B>[t^ K]:<Dh.11>[t^ A]{t^*}:[B t^]<K>:[Ch.1 t^]<B>:[Dh t^]<B>:[J t^]:[I]" + "<Dh t^ B>" <->{0.0003}{0.1126} "<B>[t^ K]:<Dh.11>[t^ A]:<Dh>[t^ B]:<B>[t^]<K>:[Ch.1 t^]<B>:[Dh t^]<B>:[J t^]:[I]" |
+"<B>[t^ K]:<Dh.11>[t^ A]:<Dh>[t^ B]{t^*}:[Ch.1 t^]<B>:[Dh t^]<B>:[J t^]:[I]" + "<B t^ K>" <->{0.0003}{0.1126} "<B>[t^ K]:<Dh.11>[t^ A]:<Dh>[t^ B]:<B>[t^]<K>:[Ch.1 t^]<B>:[Dh t^]<B>:[J t^]:[I]" |
+"<A>[t^ K.9]:<Ch>[t^ C]{t^*}:[A t^]<K.9>:[Ch.10 t^]<A>:[Dh.11 t^]<A>:[J.8 t^]:[I.7]" + "<Dh.11 t^ A>" <->{0.0003}{0.1126} "<A>[t^ K.9]:<Ch>[t^ C]:<Dh.11>[t^ A]:<A>[t^]<K.9>:[Ch.10 t^]<A>:[Dh.11 t^]<A>:[J.8 t^]:[I.7]" |
+"<A>[t^ K.9]:<Ch>[t^ C]:<Dh.11>[t^ A]{t^*}:[Ch.10 t^]<A>:[Dh.11 t^]<A>:[J.8 t^]:[I.7]" + "<t^ Ch.10 t^ Dh.11 t^ J.8>" ->{0.0003} "<A>[t^ K.9]:<Ch>[t^ C]:<Dh.11>[t^ A]:[t^ Ch.10 t^ Dh.11 t^ J.8]:<J.8>[t^]:[I.7]" + "<Ch.10 t^ A>" + "<Dh.11 t^ A>" |
+"<A>[t^ K.9]:<Ch>[t^ C]:<Dh.11>[t^ A]:<A>[t^]<K.9>:[Ch.10 t^]<A>:[Dh.11 t^]<A>:[J.8 t^]:[I.7]" <->{0.1126}{0.0003} "<A>[t^ K.9]:<Ch>[t^ C]:<Dh.11>[t^ A]{t^*}:[Ch.10 t^]<A>:[Dh.11 t^]<A>:[J.8 t^]:[I.7]" + "<A t^ K.9>" |
+"<A>[t^ K.9]:<Ch>[t^ C]{t^*}:[A t^]<I>:[Ch.10 t^]<A>:[Dh.11 t^]<A>:[J.8 t^]:[I.7]" + "<Dh.11 t^ A>" <->{0.0003}{0.1126} "<A>[t^ K.9]:<Ch>[t^ C]:<Dh.11>[t^ A]:<A>[t^]<I>:[Ch.10 t^]<A>:[Dh.11 t^]<A>:[J.8 t^]:[I.7]" |
+"<A>[t^ K.9]:<Ch>[t^ C]:<Dh.11>[t^ A]{t^*}:[Ch.10 t^]<A>:[Dh.11 t^]<A>:[J.8 t^]:[I.7]" + "<A t^ I>" <->{0.0003}{0.1126} "<A>[t^ K.9]:<Ch>[t^ C]:<Dh.11>[t^ A]:<A>[t^]<I>:[Ch.10 t^]<A>:[Dh.11 t^]<A>:[J.8 t^]:[I.7]" |
+"<A>[t^ K.9]:<Ch>[t^ C]:<Dh.11>[t^ A]:[t^ Ch.10 t^ Dh.11 t^ J.8]{t^*}:[I.7]" + "<C t^ I.7>" ->{0.0003} "<A>[t^ K.9]:<Ch>[t^ C]:<Dh.11>[t^ A]:[t^ Ch.10 t^ Dh.11 t^ J.8]:<C>[t^ I.7]" + "<I.7>" |
+"<A>[t^ K.9]:<Ch>[t^ C]:<Dh.11>[t^ A]:[t^ Ch.10 t^ Dh.11 t^ J.8]:<J.8>[t^]:[I.7]" <->{0.1126}{0.0003} "<A>[t^ K.9]:<Ch>[t^ C]:<Dh.11>[t^ A]:[t^ Ch.10 t^ Dh.11 t^ J.8]{t^*}:[I.7]" + "<J.8 t^>" |
+"<C>[t^ K.4]:<Bh>[t^ B]{t^*}:[C t^]<K.4>:[Ch.5 t^]<C>:[Dh.6 t^]<C>:[J.3 t^]:[I.2]" + "<Ch t^ C>" <->{0.0003}{0.1126} "<C>[t^ K.4]:<Bh>[t^ B]:<Ch>[t^ C]:<C>[t^]<K.4>:[Ch.5 t^]<C>:[Dh.6 t^]<C>:[J.3 t^]:[I.2]" |
+"<C>[t^ K.4]:<Bh>[t^ B]:<Ch>[t^ C]{t^*}:[Ch.5 t^]<C>:[Dh.6 t^]<C>:[J.3 t^]:[I.2]" + "<t^ Ch.5 t^ Dh.6 t^ J.3>" ->{0.0003} "<C>[t^ K.4]:<Bh>[t^ B]:<Ch>[t^ C]:[t^ Ch.5 t^ Dh.6 t^ J.3]:<J.3>[t^]:[I.2]" + "<Ch.5 t^ C>" + "<Dh.6 t^ C>" |
+"<C>[t^ K.4]:<Bh>[t^ B]:<Ch>[t^ C]:<C>[t^]<K.4>:[Ch.5 t^]<C>:[Dh.6 t^]<C>:[J.3 t^]:[I.2]" <->{0.1126}{0.0003} "<C>[t^ K.4]:<Bh>[t^ B]:<Ch>[t^ C]{t^*}:[Ch.5 t^]<C>:[Dh.6 t^]<C>:[J.3 t^]:[I.2]" + "<C t^ K.4>" |
+"<C>[t^ K.4]:<Bh>[t^ B]:<Ch>[t^ C]:[t^ Ch.5 t^ Dh.6 t^ J.3]{t^*}:[I.2]" + "<B t^ I.2>" ->{0.0003} "<C>[t^ K.4]:<Bh>[t^ B]:<Ch>[t^ C]:[t^ Ch.5 t^ Dh.6 t^ J.3]:<B>[t^ I.2]" + "<I.2>" |
+"[J.3]{t^*}" + "<J.3 t^>" ->{0.0003} "[J.3 t^]" + "<J.3>" |
+"<C>[t^ K.4]:<Bh>[t^ B]:<Ch>[t^ C]:[t^ Ch.5 t^ Dh.6 t^ J.3]:<J.3>[t^]:[I.2]" <->{0.1126}{0.0003} "<C>[t^ K.4]:<Bh>[t^ B]:<Ch>[t^ C]:[t^ Ch.5 t^ Dh.6 t^ J.3]{t^*}:[I.2]" + "<J.3 t^>" |
+"<A>[t^ K.9]{t^*}:[C t^]<I.7>:[A t^]<K.9>:[Ch.10 t^]<A>:[Dh.11 t^]<A>:[J.8 t^]:[I.7]" + "<Ch.5 t^ C>" <->{0.0003}{0.1126} "<A>[t^ K.9]:<Ch.5>[t^ C]:<C>[t^]<I.7>:[A t^]<K.9>:[Ch.10 t^]<A>:[Dh.11 t^]<A>:[J.8 t^]:[I.7]" |
+"<A>[t^ K.9]:<Ch.5>[t^ C]:<C>[t^]<I.7>:[A t^]<K.9>:[Ch.10 t^]<A>:[Dh.11 t^]<A>:[J.8 t^]:[I.7]" <->{0.1126}{0.0003} "<A>[t^ K.9]:<Ch.5>[t^ C]{t^*}:[A t^]<K.9>:[Ch.10 t^]<A>:[Dh.11 t^]<A>:[J.8 t^]:[I.7]" + "<C t^ I.7>" |
+"<A>[t^ K.9]{t^*}:[C t^]<K.4>:[A t^]<K.9>:[Ch.10 t^]<A>:[Dh.11 t^]<A>:[J.8 t^]:[I.7]" + "<Ch.5 t^ C>" <->{0.0003}{0.1126} "<A>[t^ K.9]:<Ch.5>[t^ C]:<C>[t^]<K.4>:[A t^]<K.9>:[Ch.10 t^]<A>:[Dh.11 t^]<A>:[J.8 t^]:[I.7]" |
+"<A>[t^ K.9]:<Ch.5>[t^ C]{t^*}:[A t^]<K.9>:[Ch.10 t^]<A>:[Dh.11 t^]<A>:[J.8 t^]:[I.7]" + "<C t^ K.4>" <->{0.0003}{0.1126} "<A>[t^ K.9]:<Ch.5>[t^ C]:<C>[t^]<K.4>:[A t^]<K.9>:[Ch.10 t^]<A>:[Dh.11 t^]<A>:[J.8 t^]:[I.7]" |
+"<A>[t^ K.9]:<Ch.5>[t^ C]{t^*}:[A t^]<K.9>:[Ch.10 t^]<A>:[Dh.11 t^]<A>:[J.8 t^]:[I.7]" + "<Ah t^ A>" <->{0.0003}{0.1126} "<A>[t^ K.9]:<Ch.5>[t^ C]:<Ah>[t^ A]:<A>[t^]<K.9>:[Ch.10 t^]<A>:[Dh.11 t^]<A>:[J.8 t^]:[I.7]" |
+"<A>[t^ K.9]:<Ch.5>[t^ C]:<Ah>[t^ A]{t^*}:[Ch.10 t^]<A>:[Dh.11 t^]<A>:[J.8 t^]:[I.7]" + "<t^ Ch.10 t^ Dh.11 t^ J.8>" ->{0.0003} "<A>[t^ K.9]:<Ch.5>[t^ C]:<Ah>[t^ A]:[t^ Ch.10 t^ Dh.11 t^ J.8]:<J.8>[t^]:[I.7]" + "<Ch.10 t^ A>" + "<Dh.11 t^ A>" |
+"<A>[t^ K.9]:<Ch.5>[t^ C]:<Ah>[t^ A]:<A>[t^]<K.9>:[Ch.10 t^]<A>:[Dh.11 t^]<A>:[J.8 t^]:[I.7]" <->{0.1126}{0.0003} "<A>[t^ K.9]:<Ch.5>[t^ C]:<Ah>[t^ A]{t^*}:[Ch.10 t^]<A>:[Dh.11 t^]<A>:[J.8 t^]:[I.7]" + "<A t^ K.9>" |
+"<A>[t^ K.9]:<Ch.5>[t^ C]:<Ah>[t^ A]{t^*}:[Ch.10 t^]<A>:[Dh.11 t^]<A>:[J.8 t^]:[I.7]" + "<A t^ I>" <->{0.0003}{0.1126} "<A>[t^ K.9]:<Ch.5>[t^ C]:<Ah>[t^ A]:<A>[t^]<I>:[Ch.10 t^]<A>:[Dh.11 t^]<A>:[J.8 t^]:[I.7]" |
+"<A>[t^ K.9]:<Ch.5>[t^ C]:<Ah>[t^ A]:<A>[t^]<I>:[Ch.10 t^]<A>:[Dh.11 t^]<A>:[J.8 t^]:[I.7]" <->{0.1126}{0.0003} "<A>[t^ K.9]:<Ch.5>[t^ C]{t^*}:[A t^]<I>:[Ch.10 t^]<A>:[Dh.11 t^]<A>:[J.8 t^]:[I.7]" + "<Ah t^ A>" |
+"<A>[t^ K.9]{t^*}:[C t^]<K.4>:[A t^]<I>:[Ch.10 t^]<A>:[Dh.11 t^]<A>:[J.8 t^]:[I.7]" + "<Ch.5 t^ C>" <->{0.0003}{0.1126} "<A>[t^ K.9]:<Ch.5>[t^ C]:<C>[t^]<K.4>:[A t^]<I>:[Ch.10 t^]<A>:[Dh.11 t^]<A>:[J.8 t^]:[I.7]" |
+"<A>[t^ K.9]:<Ch.5>[t^ C]{t^*}:[A t^]<I>:[Ch.10 t^]<A>:[Dh.11 t^]<A>:[J.8 t^]:[I.7]" + "<C t^ K.4>" <->{0.0003}{0.1126} "<A>[t^ K.9]:<Ch.5>[t^ C]:<C>[t^]<K.4>:[A t^]<I>:[Ch.10 t^]<A>:[Dh.11 t^]<A>:[J.8 t^]:[I.7]" |
+"<A>[t^ K.9]{t^*}:[C t^]<I.7>:[A t^]<I>:[Ch.10 t^]<A>:[Dh.11 t^]<A>:[J.8 t^]:[I.7]" + "<Ch.5 t^ C>" <->{0.0003}{0.1126} "<A>[t^ K.9]:<Ch.5>[t^ C]:<C>[t^]<I.7>:[A t^]<I>:[Ch.10 t^]<A>:[Dh.11 t^]<A>:[J.8 t^]:[I.7]" |
+"<A>[t^ K.9]:<Ch.5>[t^ C]{t^*}:[A t^]<I>:[Ch.10 t^]<A>:[Dh.11 t^]<A>:[J.8 t^]:[I.7]" + "<C t^ I.7>" <->{0.0003}{0.1126} "<A>[t^ K.9]:<Ch.5>[t^ C]:<C>[t^]<I.7>:[A t^]<I>:[Ch.10 t^]<A>:[Dh.11 t^]<A>:[J.8 t^]:[I.7]" |
+"<A>[t^ K.9]:<Ch.5>[t^ C]{t^*}:[A t^]<I>:[Ch.10 t^]<A>:[Dh.11 t^]<A>:[J.8 t^]:[I.7]" + "<Ch.10 t^ A>" <->{0.0003}{0.1126} "<A>[t^ K.9]:<Ch.5>[t^ C]:<Ch.10>[t^ A]:<A>[t^]<I>:[Ch.10 t^]<A>:[Dh.11 t^]<A>:[J.8 t^]:[I.7]" |
+"<A>[t^ K.9]:<Ch.5>[t^ C]:<Ch.10>[t^ A]:<A>[t^]<I>:[Ch.10 t^]<A>:[Dh.11 t^]<A>:[J.8 t^]:[I.7]" <->{0.1126}{0.0003} "<A>[t^ K.9]:<Ch.5>[t^ C]:<Ch.10>[t^ A]{t^*}:[Ch.10 t^]<A>:[Dh.11 t^]<A>:[J.8 t^]:[I.7]" + "<A t^ I>" |
+"<A>[t^ K.9]:<Ch.5>[t^ C]:<Ch.10>[t^ A]{t^*}:[Ch.10 t^]<A>:[Dh.11 t^]<A>:[J.8 t^]:[I.7]" + "<t^ Ch.10 t^ Dh.11 t^ J.8>" ->{0.0003} "<A>[t^ K.9]:<Ch.5>[t^ C]:<Ch.10>[t^ A]:[t^ Ch.10 t^ Dh.11 t^ J.8]:<J.8>[t^]:[I.7]" + "<Ch.10 t^ A>" + "<Dh.11 t^ A>" |
+"<A>[t^ K.9]:<Ch.5>[t^ C]:<Ch.10>[t^ A]:[t^ Ch.10 t^ Dh.11 t^ J.8]{t^*}:[I.7]" + "<C t^ I.7>" ->{0.0003} "<A>[t^ K.9]:<Ch.5>[t^ C]:<Ch.10>[t^ A]:[t^ Ch.10 t^ Dh.11 t^ J.8]:<C>[t^ I.7]" + "<I.7>" |
+"<A>[t^ K.9]:<Ch.5>[t^ C]:<Ch.10>[t^ A]:[t^ Ch.10 t^ Dh.11 t^ J.8]:<J.8>[t^]:[I.7]" <->{0.1126}{0.0003} "<A>[t^ K.9]:<Ch.5>[t^ C]:<Ch.10>[t^ A]:[t^ Ch.10 t^ Dh.11 t^ J.8]{t^*}:[I.7]" + "<J.8 t^>" |
+"<A>[t^ K.9]:<Ch.5>[t^ C]{t^*}:[A t^]<K.9>:[Ch.10 t^]<A>:[Dh.11 t^]<A>:[J.8 t^]:[I.7]" + "<Ch.10 t^ A>" <->{0.0003}{0.1126} "<A>[t^ K.9]:<Ch.5>[t^ C]:<Ch.10>[t^ A]:<A>[t^]<K.9>:[Ch.10 t^]<A>:[Dh.11 t^]<A>:[J.8 t^]:[I.7]" |
+"<A>[t^ K.9]:<Ch.5>[t^ C]:<Ch.10>[t^ A]{t^*}:[Ch.10 t^]<A>:[Dh.11 t^]<A>:[J.8 t^]:[I.7]" + "<A t^ K.9>" <->{0.0003}{0.1126} "<A>[t^ K.9]:<Ch.5>[t^ C]:<Ch.10>[t^ A]:<A>[t^]<K.9>:[Ch.10 t^]<A>:[Dh.11 t^]<A>:[J.8 t^]:[I.7]" |
+"<A>[t^ K.9]:<Ch.5>[t^ C]{t^*}:[A t^]<I>:[Ch.10 t^]<A>:[Dh.11 t^]<A>:[J.8 t^]:[I.7]" + "<Dh.11 t^ A>" <->{0.0003}{0.1126} "<A>[t^ K.9]:<Ch.5>[t^ C]:<Dh.11>[t^ A]:<A>[t^]<I>:[Ch.10 t^]<A>:[Dh.11 t^]<A>:[J.8 t^]:[I.7]" |
+"<A>[t^ K.9]:<Ch.5>[t^ C]:<Dh.11>[t^ A]:<A>[t^]<I>:[Ch.10 t^]<A>:[Dh.11 t^]<A>:[J.8 t^]:[I.7]" <->{0.1126}{0.0003} "<A>[t^ K.9]:<Ch.5>[t^ C]:<Dh.11>[t^ A]{t^*}:[Ch.10 t^]<A>:[Dh.11 t^]<A>:[J.8 t^]:[I.7]" + "<A t^ I>" |
+"<A>[t^ K.9]:<Ch.5>[t^ C]:<Dh.11>[t^ A]{t^*}:[Ch.10 t^]<A>:[Dh.11 t^]<A>:[J.8 t^]:[I.7]" + "<t^ Ch.10 t^ Dh.11 t^ J.8>" ->{0.0003} "<A>[t^ K.9]:<Ch.5>[t^ C]:<Dh.11>[t^ A]:[t^ Ch.10 t^ Dh.11 t^ J.8]:<J.8>[t^]:[I.7]" + "<Ch.10 t^ A>" + "<Dh.11 t^ A>" |
+"<A>[t^ K.9]:<Ch.5>[t^ C]:<Dh.11>[t^ A]:[t^ Ch.10 t^ Dh.11 t^ J.8]{t^*}:[I.7]" + "<C t^ I.7>" ->{0.0003} "<A>[t^ K.9]:<Ch.5>[t^ C]:<Dh.11>[t^ A]:[t^ Ch.10 t^ Dh.11 t^ J.8]:<C>[t^ I.7]" + "<I.7>" |
+"<A>[t^ K.9]:<Ch.5>[t^ C]:<Dh.11>[t^ A]:[t^ Ch.10 t^ Dh.11 t^ J.8]:<J.8>[t^]:[I.7]" <->{0.1126}{0.0003} "<A>[t^ K.9]:<Ch.5>[t^ C]:<Dh.11>[t^ A]:[t^ Ch.10 t^ Dh.11 t^ J.8]{t^*}:[I.7]" + "<J.8 t^>" |
+"<A>[t^ K.9]:<Ch.5>[t^ C]{t^*}:[A t^]<K.9>:[Ch.10 t^]<A>:[Dh.11 t^]<A>:[J.8 t^]:[I.7]" + "<Dh.11 t^ A>" <->{0.0003}{0.1126} "<A>[t^ K.9]:<Ch.5>[t^ C]:<Dh.11>[t^ A]:<A>[t^]<K.9>:[Ch.10 t^]<A>:[Dh.11 t^]<A>:[J.8 t^]:[I.7]" |
+"<A>[t^ K.9]:<Ch.5>[t^ C]:<Dh.11>[t^ A]{t^*}:[Ch.10 t^]<A>:[Dh.11 t^]<A>:[J.8 t^]:[I.7]" + "<A t^ K.9>" <->{0.0003}{0.1126} "<A>[t^ K.9]:<Ch.5>[t^ C]:<Dh.11>[t^ A]:<A>[t^]<K.9>:[Ch.10 t^]<A>:[Dh.11 t^]<A>:[J.8 t^]:[I.7]" |
+"<A>[t^ K.9]:<Ch.5>[t^ C]:<Ah>[t^ A]:[t^ Ch.10 t^ Dh.11 t^ J.8]{t^*}:[I.7]" + "<C t^ I.7>" ->{0.0003} "<A>[t^ K.9]:<Ch.5>[t^ C]:<Ah>[t^ A]:[t^ Ch.10 t^ Dh.11 t^ J.8]:<C>[t^ I.7]" + "<I.7>" |
+"<A>[t^ K.9]:<Ch.5>[t^ C]:<Ah>[t^ A]:[t^ Ch.10 t^ Dh.11 t^ J.8]:<J.8>[t^]:[I.7]" <->{0.1126}{0.0003} "<A>[t^ K.9]:<Ch.5>[t^ C]:<Ah>[t^ A]:[t^ Ch.10 t^ Dh.11 t^ J.8]{t^*}:[I.7]" + "<J.8 t^>" |
+"<C>[t^ K.4]:<Bh>[t^ B]{t^*}:[C t^]<K.4>:[Ch.5 t^]<C>:[Dh.6 t^]<C>:[J.3 t^]:[I.2]" + "<Ch.5 t^ C>" <->{0.0003}{0.1126} "<C>[t^ K.4]:<Bh>[t^ B]:<Ch.5>[t^ C]:<C>[t^]<K.4>:[Ch.5 t^]<C>:[Dh.6 t^]<C>:[J.3 t^]:[I.2]" |
+"<C>[t^ K.4]:<Bh>[t^ B]:<Ch.5>[t^ C]{t^*}:[Ch.5 t^]<C>:[Dh.6 t^]<C>:[J.3 t^]:[I.2]" + "<t^ Ch.5 t^ Dh.6 t^ J.3>" ->{0.0003} "<C>[t^ K.4]:<Bh>[t^ B]:<Ch.5>[t^ C]:[t^ Ch.5 t^ Dh.6 t^ J.3]:<J.3>[t^]:[I.2]" + "<Ch.5 t^ C>" + "<Dh.6 t^ C>" |
+"<C>[t^ K.4]:<Bh>[t^ B]:<Ch.5>[t^ C]:<C>[t^]<K.4>:[Ch.5 t^]<C>:[Dh.6 t^]<C>:[J.3 t^]:[I.2]" <->{0.1126}{0.0003} "<C>[t^ K.4]:<Bh>[t^ B]:<Ch.5>[t^ C]{t^*}:[Ch.5 t^]<C>:[Dh.6 t^]<C>:[J.3 t^]:[I.2]" + "<C t^ K.4>" |
+"<C>[t^ K.4]:<Bh>[t^ B]:<Ch.5>[t^ C]:[t^ Ch.5 t^ Dh.6 t^ J.3]{t^*}:[I.2]" + "<B t^ I.2>" ->{0.0003} "<C>[t^ K.4]:<Bh>[t^ B]:<Ch.5>[t^ C]:[t^ Ch.5 t^ Dh.6 t^ J.3]:<B>[t^ I.2]" + "<I.2>" |
+"<C>[t^ K.4]:<Bh>[t^ B]:<Ch.5>[t^ C]:[t^ Ch.5 t^ Dh.6 t^ J.3]:<J.3>[t^]:[I.2]" <->{0.1126}{0.0003} "<C>[t^ K.4]:<Bh>[t^ B]:<Ch.5>[t^ C]:[t^ Ch.5 t^ Dh.6 t^ J.3]{t^*}:[I.2]" + "<J.3 t^>" |
+"<A>[t^ K.9]{t^*}:[C t^]<I.7>:[A t^]<K.9>:[Ch.10 t^]<A>:[Dh.11 t^]<A>:[J.8 t^]:[I.7]" + "<Dh.6 t^ C>" <->{0.0003}{0.1126} "<A>[t^ K.9]:<Dh.6>[t^ C]:<C>[t^]<I.7>:[A t^]<K.9>:[Ch.10 t^]<A>:[Dh.11 t^]<A>:[J.8 t^]:[I.7]" |
+"<A>[t^ K.9]:<Dh.6>[t^ C]:<C>[t^]<I.7>:[A t^]<K.9>:[Ch.10 t^]<A>:[Dh.11 t^]<A>:[J.8 t^]:[I.7]" <->{0.1126}{0.0003} "<A>[t^ K.9]:<Dh.6>[t^ C]{t^*}:[A t^]<K.9>:[Ch.10 t^]<A>:[Dh.11 t^]<A>:[J.8 t^]:[I.7]" + "<C t^ I.7>" |
+"<A>[t^ K.9]{t^*}:[C t^]<K.4>:[A t^]<K.9>:[Ch.10 t^]<A>:[Dh.11 t^]<A>:[J.8 t^]:[I.7]" + "<Dh.6 t^ C>" <->{0.0003}{0.1126} "<A>[t^ K.9]:<Dh.6>[t^ C]:<C>[t^]<K.4>:[A t^]<K.9>:[Ch.10 t^]<A>:[Dh.11 t^]<A>:[J.8 t^]:[I.7]" |
+"<A>[t^ K.9]:<Dh.6>[t^ C]{t^*}:[A t^]<K.9>:[Ch.10 t^]<A>:[Dh.11 t^]<A>:[J.8 t^]:[I.7]" + "<C t^ K.4>" <->{0.0003}{0.1126} "<A>[t^ K.9]:<Dh.6>[t^ C]:<C>[t^]<K.4>:[A t^]<K.9>:[Ch.10 t^]<A>:[Dh.11 t^]<A>:[J.8 t^]:[I.7]" |
+"<A>[t^ K.9]:<Dh.6>[t^ C]{t^*}:[A t^]<K.9>:[Ch.10 t^]<A>:[Dh.11 t^]<A>:[J.8 t^]:[I.7]" + "<Ah t^ A>" <->{0.0003}{0.1126} "<A>[t^ K.9]:<Dh.6>[t^ C]:<Ah>[t^ A]:<A>[t^]<K.9>:[Ch.10 t^]<A>:[Dh.11 t^]<A>:[J.8 t^]:[I.7]" |
+"<A>[t^ K.9]:<Dh.6>[t^ C]:<Ah>[t^ A]{t^*}:[Ch.10 t^]<A>:[Dh.11 t^]<A>:[J.8 t^]:[I.7]" + "<t^ Ch.10 t^ Dh.11 t^ J.8>" ->{0.0003} "<A>[t^ K.9]:<Dh.6>[t^ C]:<Ah>[t^ A]:[t^ Ch.10 t^ Dh.11 t^ J.8]:<J.8>[t^]:[I.7]" + "<Ch.10 t^ A>" + "<Dh.11 t^ A>" |
+"<A>[t^ K.9]:<Dh.6>[t^ C]:<Ah>[t^ A]:<A>[t^]<K.9>:[Ch.10 t^]<A>:[Dh.11 t^]<A>:[J.8 t^]:[I.7]" <->{0.1126}{0.0003} "<A>[t^ K.9]:<Dh.6>[t^ C]:<Ah>[t^ A]{t^*}:[Ch.10 t^]<A>:[Dh.11 t^]<A>:[J.8 t^]:[I.7]" + "<A t^ K.9>" |
+"<A>[t^ K.9]:<Dh.6>[t^ C]:<Ah>[t^ A]{t^*}:[Ch.10 t^]<A>:[Dh.11 t^]<A>:[J.8 t^]:[I.7]" + "<A t^ I>" <->{0.0003}{0.1126} "<A>[t^ K.9]:<Dh.6>[t^ C]:<Ah>[t^ A]:<A>[t^]<I>:[Ch.10 t^]<A>:[Dh.11 t^]<A>:[J.8 t^]:[I.7]" |
+"<A>[t^ K.9]:<Dh.6>[t^ C]:<Ah>[t^ A]:<A>[t^]<I>:[Ch.10 t^]<A>:[Dh.11 t^]<A>:[J.8 t^]:[I.7]" <->{0.1126}{0.0003} "<A>[t^ K.9]:<Dh.6>[t^ C]{t^*}:[A t^]<I>:[Ch.10 t^]<A>:[Dh.11 t^]<A>:[J.8 t^]:[I.7]" + "<Ah t^ A>" |
+"<A>[t^ K.9]{t^*}:[C t^]<K.4>:[A t^]<I>:[Ch.10 t^]<A>:[Dh.11 t^]<A>:[J.8 t^]:[I.7]" + "<Dh.6 t^ C>" <->{0.0003}{0.1126} "<A>[t^ K.9]:<Dh.6>[t^ C]:<C>[t^]<K.4>:[A t^]<I>:[Ch.10 t^]<A>:[Dh.11 t^]<A>:[J.8 t^]:[I.7]" |
+"<A>[t^ K.9]:<Dh.6>[t^ C]{t^*}:[A t^]<I>:[Ch.10 t^]<A>:[Dh.11 t^]<A>:[J.8 t^]:[I.7]" + "<C t^ K.4>" <->{0.0003}{0.1126} "<A>[t^ K.9]:<Dh.6>[t^ C]:<C>[t^]<K.4>:[A t^]<I>:[Ch.10 t^]<A>:[Dh.11 t^]<A>:[J.8 t^]:[I.7]" |
+"<A>[t^ K.9]{t^*}:[C t^]<I.7>:[A t^]<I>:[Ch.10 t^]<A>:[Dh.11 t^]<A>:[J.8 t^]:[I.7]" + "<Dh.6 t^ C>" <->{0.0003}{0.1126} "<A>[t^ K.9]:<Dh.6>[t^ C]:<C>[t^]<I.7>:[A t^]<I>:[Ch.10 t^]<A>:[Dh.11 t^]<A>:[J.8 t^]:[I.7]" |
+"<A>[t^ K.9]:<Dh.6>[t^ C]{t^*}:[A t^]<I>:[Ch.10 t^]<A>:[Dh.11 t^]<A>:[J.8 t^]:[I.7]" + "<C t^ I.7>" <->{0.0003}{0.1126} "<A>[t^ K.9]:<Dh.6>[t^ C]:<C>[t^]<I.7>:[A t^]<I>:[Ch.10 t^]<A>:[Dh.11 t^]<A>:[J.8 t^]:[I.7]" |
+"<A>[t^ K.9]:<Dh.6>[t^ C]{t^*}:[A t^]<I>:[Ch.10 t^]<A>:[Dh.11 t^]<A>:[J.8 t^]:[I.7]" + "<Ch.10 t^ A>" <->{0.0003}{0.1126} "<A>[t^ K.9]:<Dh.6>[t^ C]:<Ch.10>[t^ A]:<A>[t^]<I>:[Ch.10 t^]<A>:[Dh.11 t^]<A>:[J.8 t^]:[I.7]" |
+"<A>[t^ K.9]:<Dh.6>[t^ C]:<Ch.10>[t^ A]:<A>[t^]<I>:[Ch.10 t^]<A>:[Dh.11 t^]<A>:[J.8 t^]:[I.7]" <->{0.1126}{0.0003} "<A>[t^ K.9]:<Dh.6>[t^ C]:<Ch.10>[t^ A]{t^*}:[Ch.10 t^]<A>:[Dh.11 t^]<A>:[J.8 t^]:[I.7]" + "<A t^ I>" |
+"<A>[t^ K.9]:<Dh.6>[t^ C]:<Ch.10>[t^ A]{t^*}:[Ch.10 t^]<A>:[Dh.11 t^]<A>:[J.8 t^]:[I.7]" + "<t^ Ch.10 t^ Dh.11 t^ J.8>" ->{0.0003} "<A>[t^ K.9]:<Dh.6>[t^ C]:<Ch.10>[t^ A]:[t^ Ch.10 t^ Dh.11 t^ J.8]:<J.8>[t^]:[I.7]" + "<Ch.10 t^ A>" + "<Dh.11 t^ A>" |
+"<A>[t^ K.9]:<Dh.6>[t^ C]:<Ch.10>[t^ A]:[t^ Ch.10 t^ Dh.11 t^ J.8]{t^*}:[I.7]" + "<C t^ I.7>" ->{0.0003} "<A>[t^ K.9]:<Dh.6>[t^ C]:<Ch.10>[t^ A]:[t^ Ch.10 t^ Dh.11 t^ J.8]:<C>[t^ I.7]" + "<I.7>" |
+"<A>[t^ K.9]:<Dh.6>[t^ C]:<Ch.10>[t^ A]:[t^ Ch.10 t^ Dh.11 t^ J.8]:<J.8>[t^]:[I.7]" <->{0.1126}{0.0003} "<A>[t^ K.9]:<Dh.6>[t^ C]:<Ch.10>[t^ A]:[t^ Ch.10 t^ Dh.11 t^ J.8]{t^*}:[I.7]" + "<J.8 t^>" |
+"<A>[t^ K.9]:<Dh.6>[t^ C]{t^*}:[A t^]<K.9>:[Ch.10 t^]<A>:[Dh.11 t^]<A>:[J.8 t^]:[I.7]" + "<Ch.10 t^ A>" <->{0.0003}{0.1126} "<A>[t^ K.9]:<Dh.6>[t^ C]:<Ch.10>[t^ A]:<A>[t^]<K.9>:[Ch.10 t^]<A>:[Dh.11 t^]<A>:[J.8 t^]:[I.7]" |
+"<A>[t^ K.9]:<Dh.6>[t^ C]:<Ch.10>[t^ A]{t^*}:[Ch.10 t^]<A>:[Dh.11 t^]<A>:[J.8 t^]:[I.7]" + "<A t^ K.9>" <->{0.0003}{0.1126} "<A>[t^ K.9]:<Dh.6>[t^ C]:<Ch.10>[t^ A]:<A>[t^]<K.9>:[Ch.10 t^]<A>:[Dh.11 t^]<A>:[J.8 t^]:[I.7]" |
+"<A>[t^ K.9]:<Dh.6>[t^ C]{t^*}:[A t^]<I>:[Ch.10 t^]<A>:[Dh.11 t^]<A>:[J.8 t^]:[I.7]" + "<Dh.11 t^ A>" <->{0.0003}{0.1126} "<A>[t^ K.9]:<Dh.6>[t^ C]:<Dh.11>[t^ A]:<A>[t^]<I>:[Ch.10 t^]<A>:[Dh.11 t^]<A>:[J.8 t^]:[I.7]" |
+"<A>[t^ K.9]:<Dh.6>[t^ C]:<Dh.11>[t^ A]:<A>[t^]<I>:[Ch.10 t^]<A>:[Dh.11 t^]<A>:[J.8 t^]:[I.7]" <->{0.1126}{0.0003} "<A>[t^ K.9]:<Dh.6>[t^ C]:<Dh.11>[t^ A]{t^*}:[Ch.10 t^]<A>:[Dh.11 t^]<A>:[J.8 t^]:[I.7]" + "<A t^ I>" |
+"<A>[t^ K.9]:<Dh.6>[t^ C]:<Dh.11>[t^ A]{t^*}:[Ch.10 t^]<A>:[Dh.11 t^]<A>:[J.8 t^]:[I.7]" + "<t^ Ch.10 t^ Dh.11 t^ J.8>" ->{0.0003} "<A>[t^ K.9]:<Dh.6>[t^ C]:<Dh.11>[t^ A]:[t^ Ch.10 t^ Dh.11 t^ J.8]:<J.8>[t^]:[I.7]" + "<Ch.10 t^ A>" + "<Dh.11 t^ A>" |
+"<A>[t^ K.9]:<Dh.6>[t^ C]:<Dh.11>[t^ A]:[t^ Ch.10 t^ Dh.11 t^ J.8]{t^*}:[I.7]" + "<C t^ I.7>" ->{0.0003} "<A>[t^ K.9]:<Dh.6>[t^ C]:<Dh.11>[t^ A]:[t^ Ch.10 t^ Dh.11 t^ J.8]:<C>[t^ I.7]" + "<I.7>" |
+"<A>[t^ K.9]:<Dh.6>[t^ C]:<Dh.11>[t^ A]:[t^ Ch.10 t^ Dh.11 t^ J.8]:<J.8>[t^]:[I.7]" <->{0.1126}{0.0003} "<A>[t^ K.9]:<Dh.6>[t^ C]:<Dh.11>[t^ A]:[t^ Ch.10 t^ Dh.11 t^ J.8]{t^*}:[I.7]" + "<J.8 t^>" |
+"<A>[t^ K.9]:<Dh.6>[t^ C]{t^*}:[A t^]<K.9>:[Ch.10 t^]<A>:[Dh.11 t^]<A>:[J.8 t^]:[I.7]" + "<Dh.11 t^ A>" <->{0.0003}{0.1126} "<A>[t^ K.9]:<Dh.6>[t^ C]:<Dh.11>[t^ A]:<A>[t^]<K.9>:[Ch.10 t^]<A>:[Dh.11 t^]<A>:[J.8 t^]:[I.7]" |
+"<A>[t^ K.9]:<Dh.6>[t^ C]:<Dh.11>[t^ A]{t^*}:[Ch.10 t^]<A>:[Dh.11 t^]<A>:[J.8 t^]:[I.7]" + "<A t^ K.9>" <->{0.0003}{0.1126} "<A>[t^ K.9]:<Dh.6>[t^ C]:<Dh.11>[t^ A]:<A>[t^]<K.9>:[Ch.10 t^]<A>:[Dh.11 t^]<A>:[J.8 t^]:[I.7]" |
+"<A>[t^ K.9]:<Dh.6>[t^ C]:<Ah>[t^ A]:[t^ Ch.10 t^ Dh.11 t^ J.8]{t^*}:[I.7]" + "<C t^ I.7>" ->{0.0003} "<A>[t^ K.9]:<Dh.6>[t^ C]:<Ah>[t^ A]:[t^ Ch.10 t^ Dh.11 t^ J.8]:<C>[t^ I.7]" + "<I.7>" |
+"<A>[t^ K.9]:<Dh.6>[t^ C]:<Ah>[t^ A]:[t^ Ch.10 t^ Dh.11 t^ J.8]:<J.8>[t^]:[I.7]" <->{0.1126}{0.0003} "<A>[t^ K.9]:<Dh.6>[t^ C]:<Ah>[t^ A]:[t^ Ch.10 t^ Dh.11 t^ J.8]{t^*}:[I.7]" + "<J.8 t^>" |
+"<C>[t^ K.4]:<Bh>[t^ B]{t^*}:[C t^]<K.4>:[Ch.5 t^]<C>:[Dh.6 t^]<C>:[J.3 t^]:[I.2]" + "<Dh.6 t^ C>" <->{0.0003}{0.1126} "<C>[t^ K.4]:<Bh>[t^ B]:<Dh.6>[t^ C]:<C>[t^]<K.4>:[Ch.5 t^]<C>:[Dh.6 t^]<C>:[J.3 t^]:[I.2]" |
+"<C>[t^ K.4]:<Bh>[t^ B]:<Dh.6>[t^ C]{t^*}:[Ch.5 t^]<C>:[Dh.6 t^]<C>:[J.3 t^]:[I.2]" + "<t^ Ch.5 t^ Dh.6 t^ J.3>" ->{0.0003} "<C>[t^ K.4]:<Bh>[t^ B]:<Dh.6>[t^ C]:[t^ Ch.5 t^ Dh.6 t^ J.3]:<J.3>[t^]:[I.2]" + "<Ch.5 t^ C>" + "<Dh.6 t^ C>" |
+"<C>[t^ K.4]:<Bh>[t^ B]:<Dh.6>[t^ C]:<C>[t^]<K.4>:[Ch.5 t^]<C>:[Dh.6 t^]<C>:[J.3 t^]:[I.2]" <->{0.1126}{0.0003} "<C>[t^ K.4]:<Bh>[t^ B]:<Dh.6>[t^ C]{t^*}:[Ch.5 t^]<C>:[Dh.6 t^]<C>:[J.3 t^]:[I.2]" + "<C t^ K.4>" |
+"<C>[t^ K.4]:<Bh>[t^ B]:<Dh.6>[t^ C]:[t^ Ch.5 t^ Dh.6 t^ J.3]{t^*}:[I.2]" + "<B t^ I.2>" ->{0.0003} "<C>[t^ K.4]:<Bh>[t^ B]:<Dh.6>[t^ C]:[t^ Ch.5 t^ Dh.6 t^ J.3]:<B>[t^ I.2]" + "<I.2>" |
+"<C>[t^ K.4]:<Bh>[t^ B]:<Dh.6>[t^ C]:[t^ Ch.5 t^ Dh.6 t^ J.3]:<J.3>[t^]:[I.2]" <->{0.1126}{0.0003} "<C>[t^ K.4]:<Bh>[t^ B]:<Dh.6>[t^ C]:[t^ Ch.5 t^ Dh.6 t^ J.3]{t^*}:[I.2]" + "<J.3 t^>" |
+"<C>[t^ K.4]:<Bh>[t^ B]:<Dh.6>[t^ C]{t^*}:[Ch.5 t^]<C>:[Dh.6 t^]<C>:[J.3 t^]:[I.2]" + "<C t^ I.7>" <->{0.0003}{0.1126} "<C>[t^ K.4]:<Bh>[t^ B]:<Dh.6>[t^ C]:<C>[t^]<I.7>:[Ch.5 t^]<C>:[Dh.6 t^]<C>:[J.3 t^]:[I.2]" |
+"<C>[t^ K.4]:<Bh>[t^ B]:<Dh.6>[t^ C]:<C>[t^]<I.7>:[Ch.5 t^]<C>:[Dh.6 t^]<C>:[J.3 t^]:[I.2]" <->{0.1126}{0.0003} "<C>[t^ K.4]:<Bh>[t^ B]{t^*}:[C t^]<I.7>:[Ch.5 t^]<C>:[Dh.6 t^]<C>:[J.3 t^]:[I.2]" + "<Dh.6 t^ C>" |
+"<C>[t^ K.4]:<Bh>[t^ B]{t^*}:[C t^]<I.7>:[Ch.5 t^]<C>:[Dh.6 t^]<C>:[J.3 t^]:[I.2]" + "<B t^ K>" <->{0.0003}{0.1126} "<C>[t^ K.4]:<Bh>[t^ B]:<B>[t^]<K>:[C t^]<I.7>:[Ch.5 t^]<C>:[Dh.6 t^]<C>:[J.3 t^]:[I.2]" |
+"<C>[t^ K.4]:<Bh>[t^ B]:<B>[t^]<K>:[C t^]<I.7>:[Ch.5 t^]<C>:[Dh.6 t^]<C>:[J.3 t^]:[I.2]" <->{0.1126}{0.0003} "<C>[t^ K.4]{t^*}:[B t^]<K>:[C t^]<I.7>:[Ch.5 t^]<C>:[Dh.6 t^]<C>:[J.3 t^]:[I.2]" + "<Bh t^ B>" |
+"<C>[t^ K.4]{t^*}:[B t^]<K>:[C t^]<I.7>:[Ch.5 t^]<C>:[Dh.6 t^]<C>:[J.3 t^]:[I.2]" + "<K.4 t^>" <->{0.0003}{0.1126} "<C>[t^ K.4]:<K.4>[t^]:[B t^]<K>:[C t^]<I.7>:[Ch.5 t^]<C>:[Dh.6 t^]<C>:[J.3 t^]:[I.2]" |
+"<C>[t^ K.4]:<K.4>[t^]:[B t^]<K>:[C t^]<I.7>:[Ch.5 t^]<C>:[Dh.6 t^]<C>:[J.3 t^]:[I.2]" <->{0.1126}{0.0003} "{t^*}[K.4 t^]:[B t^]<K>:[C t^]<I.7>:[Ch.5 t^]<C>:[Dh.6 t^]<C>:[J.3 t^]:[I.2]" + "<C t^ K.4>" |
+"<C>[t^ K.4]{t^*}:[B t^]<K>:[C t^]<I.7>:[Ch.5 t^]<C>:[Dh.6 t^]<C>:[J.3 t^]:[I.2]" + "<Ch.1 t^ B>" <->{0.0003}{0.1126} "<C>[t^ K.4]:<Ch.1>[t^ B]:<B>[t^]<K>:[C t^]<I.7>:[Ch.5 t^]<C>:[Dh.6 t^]<C>:[J.3 t^]:[I.2]" |
+"<C>[t^ K.4]:<Ch.1>[t^ B]:<B>[t^]<K>:[C t^]<I.7>:[Ch.5 t^]<C>:[Dh.6 t^]<C>:[J.3 t^]:[I.2]" <->{0.1126}{0.0003} "<C>[t^ K.4]:<Ch.1>[t^ B]{t^*}:[C t^]<I.7>:[Ch.5 t^]<C>:[Dh.6 t^]<C>:[J.3 t^]:[I.2]" + "<B t^ K>" |
+"<C>[t^ K.4]:<Ch.1>[t^ B]{t^*}:[C t^]<I.7>:[Ch.5 t^]<C>:[Dh.6 t^]<C>:[J.3 t^]:[I.2]" + "<B t^ I.2>" <->{0.0003}{0.1126} "<C>[t^ K.4]:<Ch.1>[t^ B]:<B>[t^]<I.2>:[C t^]<I.7>:[Ch.5 t^]<C>:[Dh.6 t^]<C>:[J.3 t^]:[I.2]" |
+"<C>[t^ K.4]:<Ch.1>[t^ B]:<B>[t^]<I.2>:[C t^]<I.7>:[Ch.5 t^]<C>:[Dh.6 t^]<C>:[J.3 t^]:[I.2]" <->{0.1126}{0.0003} "<C>[t^ K.4]{t^*}:[B t^]<I.2>:[C t^]<I.7>:[Ch.5 t^]<C>:[Dh.6 t^]<C>:[J.3 t^]:[I.2]" + "<Ch.1 t^ B>" |
+"<C>[t^ K.4]{t^*}:[B t^]<I.2>:[C t^]<I.7>:[Ch.5 t^]<C>:[Dh.6 t^]<C>:[J.3 t^]:[I.2]" + "<K.4 t^>" <->{0.0003}{0.1126} "<C>[t^ K.4]:<K.4>[t^]:[B t^]<I.2>:[C t^]<I.7>:[Ch.5 t^]<C>:[Dh.6 t^]<C>:[J.3 t^]:[I.2]" |
+"<C>[t^ K.4]:<K.4>[t^]:[B t^]<I.2>:[C t^]<I.7>:[Ch.5 t^]<C>:[Dh.6 t^]<C>:[J.3 t^]:[I.2]" <->{0.1126}{0.0003} "{t^*}[K.4 t^]:[B t^]<I.2>:[C t^]<I.7>:[Ch.5 t^]<C>:[Dh.6 t^]<C>:[J.3 t^]:[I.2]" + "<C t^ K.4>" |
+"<C>[t^ K.4]{t^*}:[B t^]<I.2>:[C t^]<I.7>:[Ch.5 t^]<C>:[Dh.6 t^]<C>:[J.3 t^]:[I.2]" + "<Bh t^ B>" <->{0.0003}{0.1126} "<C>[t^ K.4]:<Bh>[t^ B]:<B>[t^]<I.2>:[C t^]<I.7>:[Ch.5 t^]<C>:[Dh.6 t^]<C>:[J.3 t^]:[I.2]" |
+"<C>[t^ K.4]:<Bh>[t^ B]{t^*}:[C t^]<I.7>:[Ch.5 t^]<C>:[Dh.6 t^]<C>:[J.3 t^]:[I.2]" + "<B t^ I.2>" <->{0.0003}{0.1126} "<C>[t^ K.4]:<Bh>[t^ B]:<B>[t^]<I.2>:[C t^]<I.7>:[Ch.5 t^]<C>:[Dh.6 t^]<C>:[J.3 t^]:[I.2]" |
+"<C>[t^ K.4]{t^*}:[B t^]<I.2>:[C t^]<I.7>:[Ch.5 t^]<C>:[Dh.6 t^]<C>:[J.3 t^]:[I.2]" + "<Dh t^ B>" <->{0.0003}{0.1126} "<C>[t^ K.4]:<Dh>[t^ B]:<B>[t^]<I.2>:[C t^]<I.7>:[Ch.5 t^]<C>:[Dh.6 t^]<C>:[J.3 t^]:[I.2]" |
+"<C>[t^ K.4]:<Dh>[t^ B]:<B>[t^]<I.2>:[C t^]<I.7>:[Ch.5 t^]<C>:[Dh.6 t^]<C>:[J.3 t^]:[I.2]" <->{0.1126}{0.0003} "<C>[t^ K.4]:<Dh>[t^ B]{t^*}:[C t^]<I.7>:[Ch.5 t^]<C>:[Dh.6 t^]<C>:[J.3 t^]:[I.2]" + "<B t^ I.2>" |
+"<C>[t^ K.4]{t^*}:[B t^]<K>:[C t^]<I.7>:[Ch.5 t^]<C>:[Dh.6 t^]<C>:[J.3 t^]:[I.2]" + "<Dh t^ B>" <->{0.0003}{0.1126} "<C>[t^ K.4]:<Dh>[t^ B]:<B>[t^]<K>:[C t^]<I.7>:[Ch.5 t^]<C>:[Dh.6 t^]<C>:[J.3 t^]:[I.2]" |
+"<C>[t^ K.4]:<Dh>[t^ B]{t^*}:[C t^]<I.7>:[Ch.5 t^]<C>:[Dh.6 t^]<C>:[J.3 t^]:[I.2]" + "<B t^ K>" <->{0.0003}{0.1126} "<C>[t^ K.4]:<Dh>[t^ B]:<B>[t^]<K>:[C t^]<I.7>:[Ch.5 t^]<C>:[Dh.6 t^]<C>:[J.3 t^]:[I.2]" |
+"<C>[t^ K.4]:<Dh>[t^ B]{t^*}:[C t^]<I.7>:[Ch.5 t^]<C>:[Dh.6 t^]<C>:[J.3 t^]:[I.2]" + "<Ch t^ C>" <->{0.0003}{0.1126} "<C>[t^ K.4]:<Dh>[t^ B]:<Ch>[t^ C]:<C>[t^]<I.7>:[Ch.5 t^]<C>:[Dh.6 t^]<C>:[J.3 t^]:[I.2]" |
+"<C>[t^ K.4]:<Dh>[t^ B]:<Ch>[t^ C]{t^*}:[Ch.5 t^]<C>:[Dh.6 t^]<C>:[J.3 t^]:[I.2]" + "<t^ Ch.5 t^ Dh.6 t^ J.3>" ->{0.0003} "<C>[t^ K.4]:<Dh>[t^ B]:<Ch>[t^ C]:[t^ Ch.5 t^ Dh.6 t^ J.3]:<J.3>[t^]:[I.2]" + "<Ch.5 t^ C>" + "<Dh.6 t^ C>" |
+"<C>[t^ K.4]:<Dh>[t^ B]:<Ch>[t^ C]:<C>[t^]<I.7>:[Ch.5 t^]<C>:[Dh.6 t^]<C>:[J.3 t^]:[I.2]" <->{0.1126}{0.0003} "<C>[t^ K.4]:<Dh>[t^ B]:<Ch>[t^ C]{t^*}:[Ch.5 t^]<C>:[Dh.6 t^]<C>:[J.3 t^]:[I.2]" + "<C t^ I.7>" |
+"<C>[t^ K.4]:<Dh>[t^ B]:<Ch>[t^ C]:[t^ Ch.5 t^ Dh.6 t^ J.3]{t^*}:[I.2]" + "<B t^ I.2>" ->{0.0003} "<C>[t^ K.4]:<Dh>[t^ B]:<Ch>[t^ C]:[t^ Ch.5 t^ Dh.6 t^ J.3]:<B>[t^ I.2]" + "<I.2>" |
+"<C>[t^ K.4]:<Dh>[t^ B]:<Ch>[t^ C]:[t^ Ch.5 t^ Dh.6 t^ J.3]:<J.3>[t^]:[I.2]" <->{0.1126}{0.0003} "<C>[t^ K.4]:<Dh>[t^ B]:<Ch>[t^ C]:[t^ Ch.5 t^ Dh.6 t^ J.3]{t^*}:[I.2]" + "<J.3 t^>" |
+"<C>[t^ K.4]:<Dh>[t^ B]{t^*}:[C t^]<K.4>:[Ch.5 t^]<C>:[Dh.6 t^]<C>:[J.3 t^]:[I.2]" + "<Ch t^ C>" <->{0.0003}{0.1126} "<C>[t^ K.4]:<Dh>[t^ B]:<Ch>[t^ C]:<C>[t^]<K.4>:[Ch.5 t^]<C>:[Dh.6 t^]<C>:[J.3 t^]:[I.2]" |
+"<C>[t^ K.4]:<Dh>[t^ B]:<Ch>[t^ C]{t^*}:[Ch.5 t^]<C>:[Dh.6 t^]<C>:[J.3 t^]:[I.2]" + "<C t^ K.4>" <->{0.0003}{0.1126} "<C>[t^ K.4]:<Dh>[t^ B]:<Ch>[t^ C]:<C>[t^]<K.4>:[Ch.5 t^]<C>:[Dh.6 t^]<C>:[J.3 t^]:[I.2]" |
+"<C>[t^ K.4]:<Dh>[t^ B]{t^*}:[C t^]<I.7>:[Ch.5 t^]<C>:[Dh.6 t^]<C>:[J.3 t^]:[I.2]" + "<Ch.5 t^ C>" <->{0.0003}{0.1126} "<C>[t^ K.4]:<Dh>[t^ B]:<Ch.5>[t^ C]:<C>[t^]<I.7>:[Ch.5 t^]<C>:[Dh.6 t^]<C>:[J.3 t^]:[I.2]" |
+"<C>[t^ K.4]:<Dh>[t^ B]:<Ch.5>[t^ C]{t^*}:[Ch.5 t^]<C>:[Dh.6 t^]<C>:[J.3 t^]:[I.2]" + "<t^ Ch.5 t^ Dh.6 t^ J.3>" ->{0.0003} "<C>[t^ K.4]:<Dh>[t^ B]:<Ch.5>[t^ C]:[t^ Ch.5 t^ Dh.6 t^ J.3]:<J.3>[t^]:[I.2]" + "<Ch.5 t^ C>" + "<Dh.6 t^ C>" |
+"<C>[t^ K.4]:<Dh>[t^ B]:<Ch.5>[t^ C]:<C>[t^]<I.7>:[Ch.5 t^]<C>:[Dh.6 t^]<C>:[J.3 t^]:[I.2]" <->{0.1126}{0.0003} "<C>[t^ K.4]:<Dh>[t^ B]:<Ch.5>[t^ C]{t^*}:[Ch.5 t^]<C>:[Dh.6 t^]<C>:[J.3 t^]:[I.2]" + "<C t^ I.7>" |
+"<C>[t^ K.4]:<Dh>[t^ B]:<Ch.5>[t^ C]:[t^ Ch.5 t^ Dh.6 t^ J.3]{t^*}:[I.2]" + "<B t^ I.2>" ->{0.0003} "<C>[t^ K.4]:<Dh>[t^ B]:<Ch.5>[t^ C]:[t^ Ch.5 t^ Dh.6 t^ J.3]:<B>[t^ I.2]" + "<I.2>" |
+"<C>[t^ K.4]:<Dh>[t^ B]:<Ch.5>[t^ C]:[t^ Ch.5 t^ Dh.6 t^ J.3]:<J.3>[t^]:[I.2]" <->{0.1126}{0.0003} "<C>[t^ K.4]:<Dh>[t^ B]:<Ch.5>[t^ C]:[t^ Ch.5 t^ Dh.6 t^ J.3]{t^*}:[I.2]" + "<J.3 t^>" |
+"<C>[t^ K.4]:<Dh>[t^ B]{t^*}:[C t^]<K.4>:[Ch.5 t^]<C>:[Dh.6 t^]<C>:[J.3 t^]:[I.2]" + "<Ch.5 t^ C>" <->{0.0003}{0.1126} "<C>[t^ K.4]:<Dh>[t^ B]:<Ch.5>[t^ C]:<C>[t^]<K.4>:[Ch.5 t^]<C>:[Dh.6 t^]<C>:[J.3 t^]:[I.2]" |
+"<C>[t^ K.4]:<Dh>[t^ B]:<Ch.5>[t^ C]{t^*}:[Ch.5 t^]<C>:[Dh.6 t^]<C>:[J.3 t^]:[I.2]" + "<C t^ K.4>" <->{0.0003}{0.1126} "<C>[t^ K.4]:<Dh>[t^ B]:<Ch.5>[t^ C]:<C>[t^]<K.4>:[Ch.5 t^]<C>:[Dh.6 t^]<C>:[J.3 t^]:[I.2]" |
+"<C>[t^ K.4]:<Dh>[t^ B]{t^*}:[C t^]<I.7>:[Ch.5 t^]<C>:[Dh.6 t^]<C>:[J.3 t^]:[I.2]" + "<Dh.6 t^ C>" <->{0.0003}{0.1126} "<C>[t^ K.4]:<Dh>[t^ B]:<Dh.6>[t^ C]:<C>[t^]<I.7>:[Ch.5 t^]<C>:[Dh.6 t^]<C>:[J.3 t^]:[I.2]" |
+"<C>[t^ K.4]:<Dh>[t^ B]:<Dh.6>[t^ C]{t^*}:[Ch.5 t^]<C>:[Dh.6 t^]<C>:[J.3 t^]:[I.2]" + "<t^ Ch.5 t^ Dh.6 t^ J.3>" ->{0.0003} "<C>[t^ K.4]:<Dh>[t^ B]:<Dh.6>[t^ C]:[t^ Ch.5 t^ Dh.6 t^ J.3]:<J.3>[t^]:[I.2]" + "<Ch.5 t^ C>" + "<Dh.6 t^ C>" |
+"<C>[t^ K.4]:<Dh>[t^ B]:<Dh.6>[t^ C]:<C>[t^]<I.7>:[Ch.5 t^]<C>:[Dh.6 t^]<C>:[J.3 t^]:[I.2]" <->{0.1126}{0.0003} "<C>[t^ K.4]:<Dh>[t^ B]:<Dh.6>[t^ C]{t^*}:[Ch.5 t^]<C>:[Dh.6 t^]<C>:[J.3 t^]:[I.2]" + "<C t^ I.7>" |
+"<C>[t^ K.4]:<Dh>[t^ B]:<Dh.6>[t^ C]:[t^ Ch.5 t^ Dh.6 t^ J.3]{t^*}:[I.2]" + "<B t^ I.2>" ->{0.0003} "<C>[t^ K.4]:<Dh>[t^ B]:<Dh.6>[t^ C]:[t^ Ch.5 t^ Dh.6 t^ J.3]:<B>[t^ I.2]" + "<I.2>" |
+"<C>[t^ K.4]:<Dh>[t^ B]:<Dh.6>[t^ C]:[t^ Ch.5 t^ Dh.6 t^ J.3]:<J.3>[t^]:[I.2]" <->{0.1126}{0.0003} "<C>[t^ K.4]:<Dh>[t^ B]:<Dh.6>[t^ C]:[t^ Ch.5 t^ Dh.6 t^ J.3]{t^*}:[I.2]" + "<J.3 t^>" |
+"<C>[t^ K.4]:<Dh>[t^ B]{t^*}:[C t^]<K.4>:[Ch.5 t^]<C>:[Dh.6 t^]<C>:[J.3 t^]:[I.2]" + "<Dh.6 t^ C>" <->{0.0003}{0.1126} "<C>[t^ K.4]:<Dh>[t^ B]:<Dh.6>[t^ C]:<C>[t^]<K.4>:[Ch.5 t^]<C>:[Dh.6 t^]<C>:[J.3 t^]:[I.2]" |
+"<C>[t^ K.4]:<Dh>[t^ B]:<Dh.6>[t^ C]{t^*}:[Ch.5 t^]<C>:[Dh.6 t^]<C>:[J.3 t^]:[I.2]" + "<C t^ K.4>" <->{0.0003}{0.1126} "<C>[t^ K.4]:<Dh>[t^ B]:<Dh.6>[t^ C]:<C>[t^]<K.4>:[Ch.5 t^]<C>:[Dh.6 t^]<C>:[J.3 t^]:[I.2]" |
+"<C>[t^ K.4]:<Ch.1>[t^ B]{t^*}:[C t^]<I.7>:[Ch.5 t^]<C>:[Dh.6 t^]<C>:[J.3 t^]:[I.2]" + "<Ch t^ C>" <->{0.0003}{0.1126} "<C>[t^ K.4]:<Ch.1>[t^ B]:<Ch>[t^ C]:<C>[t^]<I.7>:[Ch.5 t^]<C>:[Dh.6 t^]<C>:[J.3 t^]:[I.2]" |
+"<C>[t^ K.4]:<Ch.1>[t^ B]:<Ch>[t^ C]{t^*}:[Ch.5 t^]<C>:[Dh.6 t^]<C>:[J.3 t^]:[I.2]" + "<t^ Ch.5 t^ Dh.6 t^ J.3>" ->{0.0003} "<C>[t^ K.4]:<Ch.1>[t^ B]:<Ch>[t^ C]:[t^ Ch.5 t^ Dh.6 t^ J.3]:<J.3>[t^]:[I.2]" + "<Ch.5 t^ C>" + "<Dh.6 t^ C>" |
+"<C>[t^ K.4]:<Ch.1>[t^ B]:<Ch>[t^ C]:<C>[t^]<I.7>:[Ch.5 t^]<C>:[Dh.6 t^]<C>:[J.3 t^]:[I.2]" <->{0.1126}{0.0003} "<C>[t^ K.4]:<Ch.1>[t^ B]:<Ch>[t^ C]{t^*}:[Ch.5 t^]<C>:[Dh.6 t^]<C>:[J.3 t^]:[I.2]" + "<C t^ I.7>" |
+"<C>[t^ K.4]:<Ch.1>[t^ B]:<Ch>[t^ C]:[t^ Ch.5 t^ Dh.6 t^ J.3]{t^*}:[I.2]" + "<B t^ I.2>" ->{0.0003} "<C>[t^ K.4]:<Ch.1>[t^ B]:<Ch>[t^ C]:[t^ Ch.5 t^ Dh.6 t^ J.3]:<B>[t^ I.2]" + "<I.2>" |
+"<C>[t^ K.4]:<Ch.1>[t^ B]:<Ch>[t^ C]:[t^ Ch.5 t^ Dh.6 t^ J.3]:<J.3>[t^]:[I.2]" <->{0.1126}{0.0003} "<C>[t^ K.4]:<Ch.1>[t^ B]:<Ch>[t^ C]:[t^ Ch.5 t^ Dh.6 t^ J.3]{t^*}:[I.2]" + "<J.3 t^>" |
+"<C>[t^ K.4]:<Ch.1>[t^ B]{t^*}:[C t^]<K.4>:[Ch.5 t^]<C>:[Dh.6 t^]<C>:[J.3 t^]:[I.2]" + "<Ch t^ C>" <->{0.0003}{0.1126} "<C>[t^ K.4]:<Ch.1>[t^ B]:<Ch>[t^ C]:<C>[t^]<K.4>:[Ch.5 t^]<C>:[Dh.6 t^]<C>:[J.3 t^]:[I.2]" |
+"<C>[t^ K.4]:<Ch.1>[t^ B]:<Ch>[t^ C]{t^*}:[Ch.5 t^]<C>:[Dh.6 t^]<C>:[J.3 t^]:[I.2]" + "<C t^ K.4>" <->{0.0003}{0.1126} "<C>[t^ K.4]:<Ch.1>[t^ B]:<Ch>[t^ C]:<C>[t^]<K.4>:[Ch.5 t^]<C>:[Dh.6 t^]<C>:[J.3 t^]:[I.2]" |
+"<C>[t^ K.4]:<Ch.1>[t^ B]{t^*}:[C t^]<I.7>:[Ch.5 t^]<C>:[Dh.6 t^]<C>:[J.3 t^]:[I.2]" + "<Ch.5 t^ C>" <->{0.0003}{0.1126} "<C>[t^ K.4]:<Ch.1>[t^ B]:<Ch.5>[t^ C]:<C>[t^]<I.7>:[Ch.5 t^]<C>:[Dh.6 t^]<C>:[J.3 t^]:[I.2]" |
+"<C>[t^ K.4]:<Ch.1>[t^ B]:<Ch.5>[t^ C]{t^*}:[Ch.5 t^]<C>:[Dh.6 t^]<C>:[J.3 t^]:[I.2]" + "<t^ Ch.5 t^ Dh.6 t^ J.3>" ->{0.0003} "<C>[t^ K.4]:<Ch.1>[t^ B]:<Ch.5>[t^ C]:[t^ Ch.5 t^ Dh.6 t^ J.3]:<J.3>[t^]:[I.2]" + "<Ch.5 t^ C>" + "<Dh.6 t^ C>" |
+"<C>[t^ K.4]:<Ch.1>[t^ B]:<Ch.5>[t^ C]:<C>[t^]<I.7>:[Ch.5 t^]<C>:[Dh.6 t^]<C>:[J.3 t^]:[I.2]" <->{0.1126}{0.0003} "<C>[t^ K.4]:<Ch.1>[t^ B]:<Ch.5>[t^ C]{t^*}:[Ch.5 t^]<C>:[Dh.6 t^]<C>:[J.3 t^]:[I.2]" + "<C t^ I.7>" |
+"<C>[t^ K.4]:<Ch.1>[t^ B]:<Ch.5>[t^ C]:[t^ Ch.5 t^ Dh.6 t^ J.3]{t^*}:[I.2]" + "<B t^ I.2>" ->{0.0003} "<C>[t^ K.4]:<Ch.1>[t^ B]:<Ch.5>[t^ C]:[t^ Ch.5 t^ Dh.6 t^ J.3]:<B>[t^ I.2]" + "<I.2>" |
+"<C>[t^ K.4]:<Ch.1>[t^ B]:<Ch.5>[t^ C]:[t^ Ch.5 t^ Dh.6 t^ J.3]:<J.3>[t^]:[I.2]" <->{0.1126}{0.0003} "<C>[t^ K.4]:<Ch.1>[t^ B]:<Ch.5>[t^ C]:[t^ Ch.5 t^ Dh.6 t^ J.3]{t^*}:[I.2]" + "<J.3 t^>" |
+"<C>[t^ K.4]:<Ch.1>[t^ B]{t^*}:[C t^]<K.4>:[Ch.5 t^]<C>:[Dh.6 t^]<C>:[J.3 t^]:[I.2]" + "<Ch.5 t^ C>" <->{0.0003}{0.1126} "<C>[t^ K.4]:<Ch.1>[t^ B]:<Ch.5>[t^ C]:<C>[t^]<K.4>:[Ch.5 t^]<C>:[Dh.6 t^]<C>:[J.3 t^]:[I.2]" |
+"<C>[t^ K.4]:<Ch.1>[t^ B]:<Ch.5>[t^ C]{t^*}:[Ch.5 t^]<C>:[Dh.6 t^]<C>:[J.3 t^]:[I.2]" + "<C t^ K.4>" <->{0.0003}{0.1126} "<C>[t^ K.4]:<Ch.1>[t^ B]:<Ch.5>[t^ C]:<C>[t^]<K.4>:[Ch.5 t^]<C>:[Dh.6 t^]<C>:[J.3 t^]:[I.2]" |
+"<C>[t^ K.4]:<Ch.1>[t^ B]{t^*}:[C t^]<I.7>:[Ch.5 t^]<C>:[Dh.6 t^]<C>:[J.3 t^]:[I.2]" + "<Dh.6 t^ C>" <->{0.0003}{0.1126} "<C>[t^ K.4]:<Ch.1>[t^ B]:<Dh.6>[t^ C]:<C>[t^]<I.7>:[Ch.5 t^]<C>:[Dh.6 t^]<C>:[J.3 t^]:[I.2]" |
+"<C>[t^ K.4]:<Ch.1>[t^ B]:<Dh.6>[t^ C]{t^*}:[Ch.5 t^]<C>:[Dh.6 t^]<C>:[J.3 t^]:[I.2]" + "<t^ Ch.5 t^ Dh.6 t^ J.3>" ->{0.0003} "<C>[t^ K.4]:<Ch.1>[t^ B]:<Dh.6>[t^ C]:[t^ Ch.5 t^ Dh.6 t^ J.3]:<J.3>[t^]:[I.2]" + "<Ch.5 t^ C>" + "<Dh.6 t^ C>" |
+"<C>[t^ K.4]:<Ch.1>[t^ B]:<Dh.6>[t^ C]:<C>[t^]<I.7>:[Ch.5 t^]<C>:[Dh.6 t^]<C>:[J.3 t^]:[I.2]" <->{0.1126}{0.0003} "<C>[t^ K.4]:<Ch.1>[t^ B]:<Dh.6>[t^ C]{t^*}:[Ch.5 t^]<C>:[Dh.6 t^]<C>:[J.3 t^]:[I.2]" + "<C t^ I.7>" |
+"<C>[t^ K.4]:<Ch.1>[t^ B]:<Dh.6>[t^ C]:[t^ Ch.5 t^ Dh.6 t^ J.3]{t^*}:[I.2]" + "<B t^ I.2>" ->{0.0003} "<C>[t^ K.4]:<Ch.1>[t^ B]:<Dh.6>[t^ C]:[t^ Ch.5 t^ Dh.6 t^ J.3]:<B>[t^ I.2]" + "<I.2>" |
+"<C>[t^ K.4]:<Ch.1>[t^ B]:<Dh.6>[t^ C]:[t^ Ch.5 t^ Dh.6 t^ J.3]:<J.3>[t^]:[I.2]" <->{0.1126}{0.0003} "<C>[t^ K.4]:<Ch.1>[t^ B]:<Dh.6>[t^ C]:[t^ Ch.5 t^ Dh.6 t^ J.3]{t^*}:[I.2]" + "<J.3 t^>" |
+"<C>[t^ K.4]:<Ch.1>[t^ B]{t^*}:[C t^]<K.4>:[Ch.5 t^]<C>:[Dh.6 t^]<C>:[J.3 t^]:[I.2]" + "<Dh.6 t^ C>" <->{0.0003}{0.1126} "<C>[t^ K.4]:<Ch.1>[t^ B]:<Dh.6>[t^ C]:<C>[t^]<K.4>:[Ch.5 t^]<C>:[Dh.6 t^]<C>:[J.3 t^]:[I.2]" |
+"<C>[t^ K.4]:<Ch.1>[t^ B]:<Dh.6>[t^ C]{t^*}:[Ch.5 t^]<C>:[Dh.6 t^]<C>:[J.3 t^]:[I.2]" + "<C t^ K.4>" <->{0.0003}{0.1126} "<C>[t^ K.4]:<Ch.1>[t^ B]:<Dh.6>[t^ C]:<C>[t^]<K.4>:[Ch.5 t^]<C>:[Dh.6 t^]<C>:[J.3 t^]:[I.2]" |
+"<C>[t^ K.4]:<Bh>[t^ B]{t^*}:[C t^]<I.7>:[Ch.5 t^]<C>:[Dh.6 t^]<C>:[J.3 t^]:[I.2]" + "<Ch t^ C>" <->{0.0003}{0.1126} "<C>[t^ K.4]:<Bh>[t^ B]:<Ch>[t^ C]:<C>[t^]<I.7>:[Ch.5 t^]<C>:[Dh.6 t^]<C>:[J.3 t^]:[I.2]" |
+"<C>[t^ K.4]:<Bh>[t^ B]:<Ch>[t^ C]{t^*}:[Ch.5 t^]<C>:[Dh.6 t^]<C>:[J.3 t^]:[I.2]" + "<C t^ I.7>" <->{0.0003}{0.1126} "<C>[t^ K.4]:<Bh>[t^ B]:<Ch>[t^ C]:<C>[t^]<I.7>:[Ch.5 t^]<C>:[Dh.6 t^]<C>:[J.3 t^]:[I.2]" |
+"<C>[t^ K.4]:<Bh>[t^ B]{t^*}:[C t^]<I.7>:[Ch.5 t^]<C>:[Dh.6 t^]<C>:[J.3 t^]:[I.2]" + "<Ch.5 t^ C>" <->{0.0003}{0.1126} "<C>[t^ K.4]:<Bh>[t^ B]:<Ch.5>[t^ C]:<C>[t^]<I.7>:[Ch.5 t^]<C>:[Dh.6 t^]<C>:[J.3 t^]:[I.2]" |
+"<C>[t^ K.4]:<Bh>[t^ B]:<Ch.5>[t^ C]{t^*}:[Ch.5 t^]<C>:[Dh.6 t^]<C>:[J.3 t^]:[I.2]" + "<C t^ I.7>" <->{0.0003}{0.1126} "<C>[t^ K.4]:<Bh>[t^ B]:<Ch.5>[t^ C]:<C>[t^]<I.7>:[Ch.5 t^]<C>:[Dh.6 t^]<C>:[J.3 t^]:[I.2]"

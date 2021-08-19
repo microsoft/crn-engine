@@ -1,0 +1,33 @@
+directive duration 18000.0 points 1000
+directive simulation cme
+directive compilation infinite
+
+directive leaks
+directive leak 1.0E-9*c
+directive tau 1.0 (* Branch migration rate 1/s (from Zhang and Winfree 2009)*)
+
+(* Plots the reporter strand's concentration *)
+directive plot <Ca Cb>
+
+(* Different combinations of inputs *)
+directive parameters [in1 = 0.0; in2 = 0.0; c = 50.0]
+directive sweep mysweep = { in1 = [0.0, 1.0], in2 = [0.0, 1.0] }
+
+(* Winfree's parameters*)
+def bind = 5.0E-5 (* Short toehold binding rate constant 5x10^-5/nM/s *)
+def unbind = 26.0 (* Short toehold dissociation rate constant 26/s *)
+
+(* Definition of the OR, AND, FANOUT and WIRE gates, reporter complex and input strands *)
+def STRAND (T, sa, sb) = <T^ sa sb>
+def OR (Ti1, Input1a, Input1b, Ti2, Input2a, Input2b, To, Outputa, Outputb) = ({Ti1^*}[Input1a]:[Input1b To^]<Outputa Outputb>
+  | {Ti2^*}[Input2a]:[Input2b To^]<Outputa Outputb>)
+def REPORTER (Ti, Inputa, Inputb) =  {Ti^*}[Inputa Inputb]
+
+new T@ c * bind, unbind
+
+( 
+in1*STRAND(T, Aa, Ab)
+| in2*STRAND(T, Ba, Bb)
+| OR(T, Aa, Ab, T, Ba, Bb, T, Ca, Cb)
+| REPORTER(T, Ca, Cb)
+)

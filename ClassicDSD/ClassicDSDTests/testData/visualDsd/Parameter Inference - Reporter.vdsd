@@ -1,0 +1,25 @@
+directive sample 6000.0 1000
+directive compilation infinite
+directive simulation deterministic
+directive plot <fl^ rbx>
+directive event <rbx u1^> 4.0 * N * (1.0-bad) @ T1
+directive parameters [
+    k,(1.0e-5,2.0e-3),0.0003,log,random;
+    bad,(0.0,0.3),0.2,real,random;
+    T1,(0.0,1800.0),600.0,real,random;
+    N=0.6
+  ]
+
+(* Directives for parameter inference *)
+directive fit_run { burnin = 2000
+                  ; samples = 10000
+                  ; thin = 10 }
+directive sweep sweepRepR = { N = [0.2,0.4,0.6,0.8] }
+directive fit { sweepRepR; Rep_Simulated; <fl^ rbx> }
+
+new fl@0.0,0.0
+new u1@k,0.0
+
+( 0.0 * <rbx u1^>
+| 0.0 * <fl^ rbx>
+| 30.0 * <fl^>[rbx]{u1^*} ) 

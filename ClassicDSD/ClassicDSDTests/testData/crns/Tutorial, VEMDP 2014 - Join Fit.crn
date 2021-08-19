@@ -1,0 +1,30 @@
+directive sample 0.0,6000.0 1000
+directive plot Signal
+directive scale 10.0
+directive simulation deterministic
+directive parameters
+  [ N = 1.0
+  ; ktb, (1E-05, 0.002), 0.0003, log, random
+  ; ktx, (1E-05, 0.002), 0.0003, log, random
+  ; kto, (1E-05, 0.002), 0.0003, log, random
+  ; T1, (0.0, 1800.0), 600.0, real, random
+  ; e = 2.71828183
+  ; R = 0.0019872
+  ; T = 298.15 ]
+directive sweep s1 =
+  { N = [0.0, 0.2, 0.4, 0.6] }
+directive fit {s1; Join_Simulated; [Signal] }
+directive fit_run { burnin      = 2000
+                  ; samples     = 10000
+                  ; mle_burnin  = 0
+                  ; mle_samples = 0
+                  ; thin        = 10
+                  ; separatenoise = true
+                  ; noisemodel = 0 }
+
+init Input2 30.0 |
+init Join 30.0 |
+init Reporter 30.0 |
+sp_1 + Input2 <->{ktx}{kto} sp_3 + sp_2 |
+Join + Input1 <->{ktb}{ktx} sp_1 + sp_0 |
+Reporter + sp_2 ->{kto} sp_4 + Signal

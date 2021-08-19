@@ -1,0 +1,176 @@
+directive sample 0.0,20000.0 1000
+directive plot "<kkks t^ kkksr>"; "<kkppl t^ kkpp x^>"; "<kpp t^ kppr>"; "<kkk t^ kkkr>"; "<kkl t^ kk x^>"; "<k t^ kr>"; "<kkpl t^ kkp x^>"; "<kp t^ kpr>"
+directive scale 10.0
+
+init constant "{t^*}[e1 x^ kkk]<i e1l t^ i t^ kkksr>{t^*}" 50.0 |
+init constant "{x^*}[kkk i]:[e1l t^]<e1 x^>:[i]:<kkks>[t^ kkksr]" 5000.0 |
+init constant "{t^*}[e2 x^ kkks]<i.1 e2l t^ i.1 t^ kkkr>{t^*}" 1.0 |
+init constant "{x^*}[kkks i.1]:[e2l t^]<e2 x^>:[i.1]:<kkk>[t^ kkkr]" 100.0 |
+init constant "{t^*}[kk x^ kkks]<i.2 kkpl t^ i.2 t^ kkksr>{t^*}" 50.0 |
+init constant "{x^*}[kkks i.2]:[kkpl t^]<kkp x^>:[i.2]:<kkks>[t^ kkksr]" 5000.0 |
+init constant "{t^*}[kkp x^ kkks]<i.3 kkppl t^ i.3 t^ kkksr>{t^*}" 50.0 |
+init constant "{x^*}[kkks i.3]:[kkppl t^]<kkpp x^>:[i.3]:<kkks>[t^ kkksr]" 5000.0 |
+init constant "{t^*}[kkpp x^ kkpase]<i.4 kkpl t^ i.4 t^ kkpaser>{t^*}" 1.0 |
+init constant "{x^*}[kkpase i.4]:[kkpl t^]<kkp x^>:[i.4]:<kkpase>[t^ kkpaser]" 100.0 |
+init constant "{t^*}[kkp x^ kkpase]<i.5 kkl t^ i.5 t^ kkpaser>{t^*}" 1.0 |
+init constant "{x^*}[kkpase i.5]:[kkl t^]<kk x^>:[i.5]:<kkpase>[t^ kkpaser]" 100.0 |
+init constant "{t^*}[kkpp x^ k]<i.6 kkppl t^ i.6 t^ kpr>{t^*}" 50.0 |
+init constant "{x^*}[k i.6]:[kkppl t^]<kkpp x^>:[i.6]:<kp>[t^ kpr]" 5000.0 |
+init constant "{t^*}[kkpp x^ kp]<i.7 kkppl t^ i.7 t^ kppr>{t^*}" 50.0 |
+init constant "{x^*}[kp i.7]:[kkppl t^]<kkpp x^>:[i.7]:<kpp>[t^ kppr]" 5000.0 |
+init constant "{t^*}[kpase x^ kpp]<i.8 kpasel t^ i.8 t^ kpr>{t^*}" 1.0 |
+init constant "{x^*}[kpp i.8]:[kpasel t^]<kpase x^>:[i.8]:<kp>[t^ kpr]" 100.0 |
+init constant "{t^*}[kpase x^ kp]<i.9 kpasel t^ i.9 t^ kr>{t^*}" 1.0 |
+init constant "{x^*}[kp i.9]:[kpasel t^]<kpase x^>:[i.9]:<k>[t^ kr]" 100.0 |
+init "<e1l t^ e1 x^>" 1.0 |
+init "<e1l>[t^ e1 x^]:<e1 x^>[kkk]<i e1l t^ i t^ kkksr>{t^*}" 0.0 |
+init "<kkl t^ kk x^>" 100.0 |
+init "<kkl>[t^ kk x^]:<kk x^>[kkks]<i.2 kkpl t^ i.2 t^ kkksr>{t^*}" 0.0 |
+init "<e2l t^ e2 x^>" 1.0 |
+init "<e2l>[t^ e2 x^]:<e2 x^>[kkks]<i.1 e2l t^ i.1 t^ kkkr>{t^*}" 0.0 |
+init "<kpasel t^ kpase x^>" 1.0 |
+init "<kpasel>[t^ kpase x^]:<kpase x^>[kpp]<i.8 kpasel t^ i.8 t^ kpr>{t^*}" 0.0 |
+init "<kpasel>[t^ kpase x^]:<kpase x^>[kp]<i.9 kpasel t^ i.9 t^ kr>{t^*}" 0.0 |
+init "<kkk t^ kkkr>" 10.0 |
+init "{t^*}[e1 x^ kkk]<i e1l t^ i t^ kkksr>:<kkk>[t^]<kkkr>" 0.0 |
+init "<e1l>[t^ e1 x^]:[kkk t^]<kkkr>" 0.0 |
+init "<e1 x^ kkk i e1l t^ i t^ kkksr>" 0.0 |
+init "<e1>[x^ kkk i e1l t^ i t^ kkksr]" 0.0 |
+init "<kkk i>" 0.0 |
+init "<i>" 0.0 |
+init "<kkks t^ kkksr>" 0.0 |
+init "{t^*}[e2 x^ kkks]<i.1 e2l t^ i.1 t^ kkkr>:<kkks>[t^]<kkksr>" 0.0 |
+init "<e2l>[t^ e2 x^]:[kkks t^]<kkksr>" 0.0 |
+init "<e2 x^ kkks i.1 e2l t^ i.1 t^ kkkr>" 0.0 |
+init "<e2>[x^ kkks i.1 e2l t^ i.1 t^ kkkr]" 0.0 |
+init "<kkks i.1>" 0.0 |
+init "<i.1>" 0.0 |
+init "<e2>[x^ kkks]<i.1 e2l t^ i.1 t^ kkkr>:<kkks>[i.2]:[kkpl t^]<kkp x^>:[i.2]:<kkks>[t^ kkksr]" 0.0 |
+init "<e2>[x^ kkks]<i.1 e2l t^ i.1 t^ kkkr>:<kkks>[i.3]:[kkppl t^]<kkpp x^>:[i.3]:<kkks>[t^ kkksr]" 0.0 |
+init "{t^*}[kk x^ kkks]<i.2 kkpl t^ i.2 t^ kkksr>:<kkks>[t^]<kkksr>" 0.0 |
+init "<kkl>[t^ kk x^]:[kkks t^]<kkksr>" 0.0 |
+init "<kk x^ kkks i.2 kkpl t^ i.2 t^ kkksr>" 0.0 |
+init "<kk>[x^ kkks]<i.2 kkpl t^ i.2 t^ kkksr>:<kkks>[i.1]:[e2l t^]<e2 x^>:[i.1]:<kkk>[t^ kkkr]" 0.0 |
+init "<kk>[x^ kkks i.2 kkpl t^ i.2 t^ kkksr]" 0.0 |
+init "<kkks i.2>" 0.0 |
+init "<kkpl t^ kkp x^>" 0.0 |
+init "<kkpl>[t^ kkp x^]:<kkp x^>[kkks]<i.3 kkppl t^ i.3 t^ kkksr>{t^*}" 0.0 |
+init "<kkpl>[t^ kkp x^]:[kkks t^]<kkksr>" 0.0 |
+init "<kkp x^ kkks i.3 kkppl t^ i.3 t^ kkksr>" 0.0 |
+init "<kkp>[x^ kkks]<i.3 kkppl t^ i.3 t^ kkksr>:<kkks>[i.1]:[e2l t^]<e2 x^>:[i.1]:<kkk>[t^ kkkr]" 0.0 |
+init "<kkp>[x^ kkks]<i.3 kkppl t^ i.3 t^ kkksr>:<kkks>[i.2]:[kkpl t^]<kkp x^>:[i.2]:<kkks>[t^ kkksr]" 0.0 |
+init "<kkp>[x^ kkks i.3 kkppl t^ i.3 t^ kkksr]" 0.0 |
+init "<kkks i.3>" 0.0 |
+init "<kkppl t^ kkpp x^>" 0.0 |
+init "<kkppl>[t^ kkpp x^]:<kkpp x^>[kkpase]<i.4 kkpl t^ i.4 t^ kkpaser>{t^*}" 0.0 |
+init "<kkppl>[t^ kkpp x^]:<kkpp x^>[k]<i.6 kkppl t^ i.6 t^ kpr>{t^*}" 0.0 |
+init "<kkppl>[t^ kkpp x^]:<kkpp x^>[kp]<i.7 kkppl t^ i.7 t^ kppr>{t^*}" 0.0 |
+init "<i.3>" 0.0 |
+init "<kkpl>[t^ kkp x^]:<kkp x^>[kkpase]<i.5 kkl t^ i.5 t^ kkpaser>{t^*}" 0.0 |
+init "<i.2>" 0.0 |
+init "<kk>[x^ kkks]<i.2 kkpl t^ i.2 t^ kkksr>:<kkks>[i.3]:[kkppl t^]<kkpp x^>:[i.3]:<kkks>[t^ kkksr]" 0.0 |
+init "{t^*}[kkp x^ kkks]<i.3 kkppl t^ i.3 t^ kkksr>:<kkks>[t^]<kkksr>" 0.0 |
+init "<k t^ kr>" 100.0 |
+init "{t^*}[kkpp x^ k]<i.6 kkppl t^ i.6 t^ kpr>:<k>[t^]<kr>" 0.0 |
+init "<kkppl>[t^ kkpp x^]:[k t^]<kr>" 0.0 |
+init "<kkpp x^ k i.6 kkppl t^ i.6 t^ kpr>" 0.0 |
+init "<kkpp>[x^ k i.6 kkppl t^ i.6 t^ kpr]" 0.0 |
+init "<k i.6>" 0.0 |
+init "<i.6>" 0.0 |
+init "<kp t^ kpr>" 0.0 |
+init "{t^*}[kkpp x^ kp]<i.7 kkppl t^ i.7 t^ kppr>:<kp>[t^]<kpr>" 0.0 |
+init "<kkppl>[t^ kkpp x^]:[kp t^]<kpr>" 0.0 |
+init "<kkpp x^ kp i.7 kkppl t^ i.7 t^ kppr>" 0.0 |
+init "<kkpp>[x^ kp i.7 kkppl t^ i.7 t^ kppr]" 0.0 |
+init "<kp i.7>" 0.0 |
+init "<i.7>" 0.0 |
+init "<kpp t^ kppr>" 0.0 |
+init "{t^*}[kpase x^ kpp]<i.8 kpasel t^ i.8 t^ kpr>:<kpp>[t^]<kppr>" 0.0 |
+init "<kpasel>[t^ kpase x^]:[kpp t^]<kppr>" 0.0 |
+init "<kpase x^ kpp i.8 kpasel t^ i.8 t^ kpr>" 0.0 |
+init "<kpase>[x^ kpp i.8 kpasel t^ i.8 t^ kpr]" 0.0 |
+init "<kpp i.8>" 0.0 |
+init "<i.8>" 0.0 |
+init "<kkpp>[x^ kp]<i.7 kkppl t^ i.7 t^ kppr>:<kp>[i.9]:[kpasel t^]<kpase x^>:[i.9]:<k>[t^ kr]" 0.0 |
+init "{t^*}[kpase x^ kp]<i.9 kpasel t^ i.9 t^ kr>:<kp>[t^]<kpr>" 0.0 |
+init "<kpasel>[t^ kpase x^]:[kp t^]<kpr>" 0.0 |
+init "<kpase x^ kp i.9 kpasel t^ i.9 t^ kr>" 0.0 |
+init "<kpase>[x^ kp]<i.9 kpasel t^ i.9 t^ kr>:<kp>[i.7]:[kkppl t^]<kkpp x^>:[i.7]:<kpp>[t^ kppr]" 0.0 |
+init "<kpase>[x^ kp i.9 kpasel t^ i.9 t^ kr]" 0.0 |
+init "<kp i.9>" 0.0 |
+init "<i.9>" 0.0 |
+init "<kkpase t^ kkpaser>" 1.0 |
+init "{t^*}[kkpp x^ kkpase]<i.4 kkpl t^ i.4 t^ kkpaser>:<kkpase>[t^]<kkpaser>" 0.0 |
+init "<kkppl>[t^ kkpp x^]:[kkpase t^]<kkpaser>" 0.0 |
+init "<kkpp x^ kkpase i.4 kkpl t^ i.4 t^ kkpaser>" 0.0 |
+init "<kkpp>[x^ kkpase i.4 kkpl t^ i.4 t^ kkpaser]" 0.0 |
+init "<kkpase i.4>" 0.0 |
+init "<i.4>" 0.0 |
+init "<kkpp>[x^ kkpase]<i.4 kkpl t^ i.4 t^ kkpaser>:<kkpase>[i.5]:[kkl t^]<kk x^>:[i.5]:<kkpase>[t^ kkpaser]" 0.0 |
+init "{t^*}[kkp x^ kkpase]<i.5 kkl t^ i.5 t^ kkpaser>:<kkpase>[t^]<kkpaser>" 0.0 |
+init "<kkpl>[t^ kkp x^]:[kkpase t^]<kkpaser>" 0.0 |
+init "<kkp x^ kkpase i.5 kkl t^ i.5 t^ kkpaser>" 0.0 |
+init "<kkp>[x^ kkpase]<i.5 kkl t^ i.5 t^ kkpaser>:<kkpase>[i.4]:[kkpl t^]<kkp x^>:[i.4]:<kkpase>[t^ kkpaser]" 0.0 |
+init "<kkp>[x^ kkpase i.5 kkl t^ i.5 t^ kkpaser]" 0.0 |
+init "<kkpase i.5>" 0.0 |
+init "<i.5>" 0.0 |
+"{t^*}[e1 x^ kkk]<i e1l t^ i t^ kkksr>{t^*}" + "<e1l t^ e1 x^>" <->{0.0003}{0.1126} "<e1l>[t^ e1 x^]:<e1 x^>[kkk]<i e1l t^ i t^ kkksr>{t^*}" |
+"{t^*}[kk x^ kkks]<i.2 kkpl t^ i.2 t^ kkksr>{t^*}" + "<kkl t^ kk x^>" <->{0.0003}{0.1126} "<kkl>[t^ kk x^]:<kk x^>[kkks]<i.2 kkpl t^ i.2 t^ kkksr>{t^*}" |
+"{t^*}[e2 x^ kkks]<i.1 e2l t^ i.1 t^ kkkr>{t^*}" + "<e2l t^ e2 x^>" <->{0.0003}{0.1126} "<e2l>[t^ e2 x^]:<e2 x^>[kkks]<i.1 e2l t^ i.1 t^ kkkr>{t^*}" |
+"{t^*}[kpase x^ kpp]<i.8 kpasel t^ i.8 t^ kpr>{t^*}" + "<kpasel t^ kpase x^>" <->{0.0003}{0.1126} "<kpasel>[t^ kpase x^]:<kpase x^>[kpp]<i.8 kpasel t^ i.8 t^ kpr>{t^*}" |
+"{t^*}[kpase x^ kp]<i.9 kpasel t^ i.9 t^ kr>{t^*}" + "<kpasel t^ kpase x^>" <->{0.0003}{0.1126} "<kpasel>[t^ kpase x^]:<kpase x^>[kp]<i.9 kpasel t^ i.9 t^ kr>{t^*}" |
+"<e1l>[t^ e1 x^]:<e1 x^>[kkk]<i e1l t^ i t^ kkksr>{t^*}" + "<kkk t^ kkkr>" ->{0.0003} "<e1l>[t^ e1 x^]:[kkk t^]<kkkr>" + "<e1 x^ kkk i e1l t^ i t^ kkksr>" |
+"{t^*}[e1 x^ kkk]<i e1l t^ i t^ kkksr>{t^*}" + "<kkk t^ kkkr>" <->{0.0003}{0.1126} "{t^*}[e1 x^ kkk]<i e1l t^ i t^ kkksr>:<kkk>[t^]<kkkr>" |
+"{t^*}[e1 x^ kkk]<i e1l t^ i t^ kkksr>:<kkk>[t^]<kkkr>" + "<e1l t^ e1 x^>" ->{0.0003} "<e1l>[t^ e1 x^]:[kkk t^]<kkkr>" + "<e1 x^ kkk i e1l t^ i t^ kkksr>" |
+"{x^*}[kkk i]:[e1l t^]<e1 x^>:[i]:<kkks>[t^ kkksr]" + "<e1 x^ kkk i e1l t^ i t^ kkksr>" ->{0.0003} "<e1>[x^ kkk i e1l t^ i t^ kkksr]" + "<kkk i>" + "<e1l t^ e1 x^>" + "<i>" + "<kkks t^ kkksr>" |
+"<kkl>[t^ kk x^]:<kk x^>[kkks]<i.2 kkpl t^ i.2 t^ kkksr>{t^*}" + "<kkks t^ kkksr>" ->{0.0003} "<kkl>[t^ kk x^]:[kkks t^]<kkksr>" + "<kk x^ kkks i.2 kkpl t^ i.2 t^ kkksr>" |
+"<e2l>[t^ e2 x^]:<e2 x^>[kkks]<i.1 e2l t^ i.1 t^ kkkr>{t^*}" + "<kkks t^ kkksr>" ->{0.0003} "<e2l>[t^ e2 x^]:[kkks t^]<kkksr>" + "<e2 x^ kkks i.1 e2l t^ i.1 t^ kkkr>" |
+"{t^*}[e2 x^ kkks]<i.1 e2l t^ i.1 t^ kkkr>{t^*}" + "<kkks t^ kkksr>" <->{0.0003}{0.1126} "{t^*}[e2 x^ kkks]<i.1 e2l t^ i.1 t^ kkkr>:<kkks>[t^]<kkksr>" |
+"{t^*}[e2 x^ kkks]<i.1 e2l t^ i.1 t^ kkkr>:<kkks>[t^]<kkksr>" + "<e2l t^ e2 x^>" ->{0.0003} "<e2l>[t^ e2 x^]:[kkks t^]<kkksr>" + "<e2 x^ kkks i.1 e2l t^ i.1 t^ kkkr>" |
+"{x^*}[kkks i.1]:[e2l t^]<e2 x^>:[i.1]:<kkk>[t^ kkkr]" + "<e2 x^ kkks i.1 e2l t^ i.1 t^ kkkr>" ->{0.0003} "<e2>[x^ kkks i.1 e2l t^ i.1 t^ kkkr]" + "<kkks i.1>" + "<e2l t^ e2 x^>" + "<i.1>" + "<kkk t^ kkkr>" |
+"{x^*}[kkks i.2]:[kkpl t^]<kkp x^>:[i.2]:<kkks>[t^ kkksr]" + "<e2 x^ kkks i.1 e2l t^ i.1 t^ kkkr>" <->{0.0003}{0.1126} "<e2>[x^ kkks]<i.1 e2l t^ i.1 t^ kkkr>:<kkks>[i.2]:[kkpl t^]<kkp x^>:[i.2]:<kkks>[t^ kkksr]" |
+"{x^*}[kkks i.3]:[kkppl t^]<kkpp x^>:[i.3]:<kkks>[t^ kkksr]" + "<e2 x^ kkks i.1 e2l t^ i.1 t^ kkkr>" <->{0.0003}{0.1126} "<e2>[x^ kkks]<i.1 e2l t^ i.1 t^ kkkr>:<kkks>[i.3]:[kkppl t^]<kkpp x^>:[i.3]:<kkks>[t^ kkksr]" |
+"{t^*}[kk x^ kkks]<i.2 kkpl t^ i.2 t^ kkksr>{t^*}" + "<kkks t^ kkksr>" <->{0.0003}{0.1126} "{t^*}[kk x^ kkks]<i.2 kkpl t^ i.2 t^ kkksr>:<kkks>[t^]<kkksr>" |
+"{t^*}[kk x^ kkks]<i.2 kkpl t^ i.2 t^ kkksr>:<kkks>[t^]<kkksr>" + "<kkl t^ kk x^>" ->{0.0003} "<kkl>[t^ kk x^]:[kkks t^]<kkksr>" + "<kk x^ kkks i.2 kkpl t^ i.2 t^ kkksr>" |
+"{x^*}[kkks i.2]:[kkpl t^]<kkp x^>:[i.2]:<kkks>[t^ kkksr]" + "<kk x^ kkks i.2 kkpl t^ i.2 t^ kkksr>" ->{0.0003} "<kk>[x^ kkks i.2 kkpl t^ i.2 t^ kkksr]" + "<kkks i.2>" + "<kkpl t^ kkp x^>" + "<i.2>" + "<kkks t^ kkksr>" |
+"{x^*}[kkks i.1]:[e2l t^]<e2 x^>:[i.1]:<kkk>[t^ kkkr]" + "<kk x^ kkks i.2 kkpl t^ i.2 t^ kkksr>" <->{0.0003}{0.1126} "<kk>[x^ kkks]<i.2 kkpl t^ i.2 t^ kkksr>:<kkks>[i.1]:[e2l t^]<e2 x^>:[i.1]:<kkk>[t^ kkkr]" |
+"{t^*}[kkp x^ kkks]<i.3 kkppl t^ i.3 t^ kkksr>{t^*}" + "<kkpl t^ kkp x^>" <->{0.0003}{0.1126} "<kkpl>[t^ kkp x^]:<kkp x^>[kkks]<i.3 kkppl t^ i.3 t^ kkksr>{t^*}" |
+"<kkpl>[t^ kkp x^]:<kkp x^>[kkks]<i.3 kkppl t^ i.3 t^ kkksr>{t^*}" + "<kkks t^ kkksr>" ->{0.0003} "<kkpl>[t^ kkp x^]:[kkks t^]<kkksr>" + "<kkp x^ kkks i.3 kkppl t^ i.3 t^ kkksr>" |
+"{x^*}[kkks i.3]:[kkppl t^]<kkpp x^>:[i.3]:<kkks>[t^ kkksr]" + "<kkp x^ kkks i.3 kkppl t^ i.3 t^ kkksr>" ->{0.0003} "<kkp>[x^ kkks i.3 kkppl t^ i.3 t^ kkksr]" + "<kkks i.3>" + "<kkppl t^ kkpp x^>" + "<i.3>" + "<kkks t^ kkksr>" |
+"{x^*}[kkks i.1]:[e2l t^]<e2 x^>:[i.1]:<kkk>[t^ kkkr]" + "<kkp x^ kkks i.3 kkppl t^ i.3 t^ kkksr>" <->{0.0003}{0.1126} "<kkp>[x^ kkks]<i.3 kkppl t^ i.3 t^ kkksr>:<kkks>[i.1]:[e2l t^]<e2 x^>:[i.1]:<kkk>[t^ kkkr]" |
+"{x^*}[kkks i.2]:[kkpl t^]<kkp x^>:[i.2]:<kkks>[t^ kkksr]" + "<kkp x^ kkks i.3 kkppl t^ i.3 t^ kkksr>" <->{0.0003}{0.1126} "<kkp>[x^ kkks]<i.3 kkppl t^ i.3 t^ kkksr>:<kkks>[i.2]:[kkpl t^]<kkp x^>:[i.2]:<kkks>[t^ kkksr]" |
+"{t^*}[kkpp x^ kkpase]<i.4 kkpl t^ i.4 t^ kkpaser>{t^*}" + "<kkppl t^ kkpp x^>" <->{0.0003}{0.1126} "<kkppl>[t^ kkpp x^]:<kkpp x^>[kkpase]<i.4 kkpl t^ i.4 t^ kkpaser>{t^*}" |
+"{t^*}[kkpp x^ k]<i.6 kkppl t^ i.6 t^ kpr>{t^*}" + "<kkppl t^ kkpp x^>" <->{0.0003}{0.1126} "<kkppl>[t^ kkpp x^]:<kkpp x^>[k]<i.6 kkppl t^ i.6 t^ kpr>{t^*}" |
+"{t^*}[kkpp x^ kp]<i.7 kkppl t^ i.7 t^ kppr>{t^*}" + "<kkppl t^ kkpp x^>" <->{0.0003}{0.1126} "<kkppl>[t^ kkpp x^]:<kkpp x^>[kp]<i.7 kkppl t^ i.7 t^ kppr>{t^*}" |
+"{t^*}[kkp x^ kkpase]<i.5 kkl t^ i.5 t^ kkpaser>{t^*}" + "<kkpl t^ kkp x^>" <->{0.0003}{0.1126} "<kkpl>[t^ kkp x^]:<kkp x^>[kkpase]<i.5 kkl t^ i.5 t^ kkpaser>{t^*}" |
+"{x^*}[kkks i.3]:[kkppl t^]<kkpp x^>:[i.3]:<kkks>[t^ kkksr]" + "<kk x^ kkks i.2 kkpl t^ i.2 t^ kkksr>" <->{0.0003}{0.1126} "<kk>[x^ kkks]<i.2 kkpl t^ i.2 t^ kkksr>:<kkks>[i.3]:[kkppl t^]<kkpp x^>:[i.3]:<kkks>[t^ kkksr]" |
+"{t^*}[kkp x^ kkks]<i.3 kkppl t^ i.3 t^ kkksr>{t^*}" + "<kkks t^ kkksr>" <->{0.0003}{0.1126} "{t^*}[kkp x^ kkks]<i.3 kkppl t^ i.3 t^ kkksr>:<kkks>[t^]<kkksr>" |
+"{t^*}[kkp x^ kkks]<i.3 kkppl t^ i.3 t^ kkksr>:<kkks>[t^]<kkksr>" + "<kkpl t^ kkp x^>" ->{0.0003} "<kkpl>[t^ kkp x^]:[kkks t^]<kkksr>" + "<kkp x^ kkks i.3 kkppl t^ i.3 t^ kkksr>" |
+"<kkppl>[t^ kkpp x^]:<kkpp x^>[k]<i.6 kkppl t^ i.6 t^ kpr>{t^*}" + "<k t^ kr>" ->{0.0003} "<kkppl>[t^ kkpp x^]:[k t^]<kr>" + "<kkpp x^ k i.6 kkppl t^ i.6 t^ kpr>" |
+"{t^*}[kkpp x^ k]<i.6 kkppl t^ i.6 t^ kpr>{t^*}" + "<k t^ kr>" <->{0.0003}{0.1126} "{t^*}[kkpp x^ k]<i.6 kkppl t^ i.6 t^ kpr>:<k>[t^]<kr>" |
+"{t^*}[kkpp x^ k]<i.6 kkppl t^ i.6 t^ kpr>:<k>[t^]<kr>" + "<kkppl t^ kkpp x^>" ->{0.0003} "<kkppl>[t^ kkpp x^]:[k t^]<kr>" + "<kkpp x^ k i.6 kkppl t^ i.6 t^ kpr>" |
+"{x^*}[k i.6]:[kkppl t^]<kkpp x^>:[i.6]:<kp>[t^ kpr]" + "<kkpp x^ k i.6 kkppl t^ i.6 t^ kpr>" ->{0.0003} "<kkpp>[x^ k i.6 kkppl t^ i.6 t^ kpr]" + "<k i.6>" + "<kkppl t^ kkpp x^>" + "<i.6>" + "<kp t^ kpr>" |
+"<kpasel>[t^ kpase x^]:<kpase x^>[kp]<i.9 kpasel t^ i.9 t^ kr>{t^*}" + "<kp t^ kpr>" ->{0.0003} "<kpasel>[t^ kpase x^]:[kp t^]<kpr>" + "<kpase x^ kp i.9 kpasel t^ i.9 t^ kr>" |
+"<kkppl>[t^ kkpp x^]:<kkpp x^>[kp]<i.7 kkppl t^ i.7 t^ kppr>{t^*}" + "<kp t^ kpr>" ->{0.0003} "<kkppl>[t^ kkpp x^]:[kp t^]<kpr>" + "<kkpp x^ kp i.7 kkppl t^ i.7 t^ kppr>" |
+"{t^*}[kkpp x^ kp]<i.7 kkppl t^ i.7 t^ kppr>{t^*}" + "<kp t^ kpr>" <->{0.0003}{0.1126} "{t^*}[kkpp x^ kp]<i.7 kkppl t^ i.7 t^ kppr>:<kp>[t^]<kpr>" |
+"{t^*}[kkpp x^ kp]<i.7 kkppl t^ i.7 t^ kppr>:<kp>[t^]<kpr>" + "<kkppl t^ kkpp x^>" ->{0.0003} "<kkppl>[t^ kkpp x^]:[kp t^]<kpr>" + "<kkpp x^ kp i.7 kkppl t^ i.7 t^ kppr>" |
+"{x^*}[kp i.7]:[kkppl t^]<kkpp x^>:[i.7]:<kpp>[t^ kppr]" + "<kkpp x^ kp i.7 kkppl t^ i.7 t^ kppr>" ->{0.0003} "<kkpp>[x^ kp i.7 kkppl t^ i.7 t^ kppr]" + "<kp i.7>" + "<kkppl t^ kkpp x^>" + "<i.7>" + "<kpp t^ kppr>" |
+"<kpasel>[t^ kpase x^]:<kpase x^>[kpp]<i.8 kpasel t^ i.8 t^ kpr>{t^*}" + "<kpp t^ kppr>" ->{0.0003} "<kpasel>[t^ kpase x^]:[kpp t^]<kppr>" + "<kpase x^ kpp i.8 kpasel t^ i.8 t^ kpr>" |
+"{t^*}[kpase x^ kpp]<i.8 kpasel t^ i.8 t^ kpr>{t^*}" + "<kpp t^ kppr>" <->{0.0003}{0.1126} "{t^*}[kpase x^ kpp]<i.8 kpasel t^ i.8 t^ kpr>:<kpp>[t^]<kppr>" |
+"{t^*}[kpase x^ kpp]<i.8 kpasel t^ i.8 t^ kpr>:<kpp>[t^]<kppr>" + "<kpasel t^ kpase x^>" ->{0.0003} "<kpasel>[t^ kpase x^]:[kpp t^]<kppr>" + "<kpase x^ kpp i.8 kpasel t^ i.8 t^ kpr>" |
+"{x^*}[kpp i.8]:[kpasel t^]<kpase x^>:[i.8]:<kp>[t^ kpr]" + "<kpase x^ kpp i.8 kpasel t^ i.8 t^ kpr>" ->{0.0003} "<kpase>[x^ kpp i.8 kpasel t^ i.8 t^ kpr]" + "<kpp i.8>" + "<kpasel t^ kpase x^>" + "<i.8>" + "<kp t^ kpr>" |
+"{x^*}[kp i.9]:[kpasel t^]<kpase x^>:[i.9]:<k>[t^ kr]" + "<kkpp x^ kp i.7 kkppl t^ i.7 t^ kppr>" <->{0.0003}{0.1126} "<kkpp>[x^ kp]<i.7 kkppl t^ i.7 t^ kppr>:<kp>[i.9]:[kpasel t^]<kpase x^>:[i.9]:<k>[t^ kr]" |
+"{t^*}[kpase x^ kp]<i.9 kpasel t^ i.9 t^ kr>{t^*}" + "<kp t^ kpr>" <->{0.0003}{0.1126} "{t^*}[kpase x^ kp]<i.9 kpasel t^ i.9 t^ kr>:<kp>[t^]<kpr>" |
+"{t^*}[kpase x^ kp]<i.9 kpasel t^ i.9 t^ kr>:<kp>[t^]<kpr>" + "<kpasel t^ kpase x^>" ->{0.0003} "<kpasel>[t^ kpase x^]:[kp t^]<kpr>" + "<kpase x^ kp i.9 kpasel t^ i.9 t^ kr>" |
+"{x^*}[kp i.9]:[kpasel t^]<kpase x^>:[i.9]:<k>[t^ kr]" + "<kpase x^ kp i.9 kpasel t^ i.9 t^ kr>" ->{0.0003} "<kpase>[x^ kp i.9 kpasel t^ i.9 t^ kr]" + "<kp i.9>" + "<kpasel t^ kpase x^>" + "<i.9>" + "<k t^ kr>" |
+"{x^*}[kp i.7]:[kkppl t^]<kkpp x^>:[i.7]:<kpp>[t^ kppr]" + "<kpase x^ kp i.9 kpasel t^ i.9 t^ kr>" <->{0.0003}{0.1126} "<kpase>[x^ kp]<i.9 kpasel t^ i.9 t^ kr>:<kp>[i.7]:[kkppl t^]<kkpp x^>:[i.7]:<kpp>[t^ kppr]" |
+"<kkppl>[t^ kkpp x^]:<kkpp x^>[kkpase]<i.4 kkpl t^ i.4 t^ kkpaser>{t^*}" + "<kkpase t^ kkpaser>" ->{0.0003} "<kkppl>[t^ kkpp x^]:[kkpase t^]<kkpaser>" + "<kkpp x^ kkpase i.4 kkpl t^ i.4 t^ kkpaser>" |
+"<kkpl>[t^ kkp x^]:<kkp x^>[kkpase]<i.5 kkl t^ i.5 t^ kkpaser>{t^*}" + "<kkpase t^ kkpaser>" ->{0.0003} "<kkpl>[t^ kkp x^]:[kkpase t^]<kkpaser>" + "<kkp x^ kkpase i.5 kkl t^ i.5 t^ kkpaser>" |
+"{t^*}[kkpp x^ kkpase]<i.4 kkpl t^ i.4 t^ kkpaser>{t^*}" + "<kkpase t^ kkpaser>" <->{0.0003}{0.1126} "{t^*}[kkpp x^ kkpase]<i.4 kkpl t^ i.4 t^ kkpaser>:<kkpase>[t^]<kkpaser>" |
+"{t^*}[kkpp x^ kkpase]<i.4 kkpl t^ i.4 t^ kkpaser>:<kkpase>[t^]<kkpaser>" + "<kkppl t^ kkpp x^>" ->{0.0003} "<kkppl>[t^ kkpp x^]:[kkpase t^]<kkpaser>" + "<kkpp x^ kkpase i.4 kkpl t^ i.4 t^ kkpaser>" |
+"{x^*}[kkpase i.4]:[kkpl t^]<kkp x^>:[i.4]:<kkpase>[t^ kkpaser]" + "<kkpp x^ kkpase i.4 kkpl t^ i.4 t^ kkpaser>" ->{0.0003} "<kkpp>[x^ kkpase i.4 kkpl t^ i.4 t^ kkpaser]" + "<kkpase i.4>" + "<kkpl t^ kkp x^>" + "<i.4>" + "<kkpase t^ kkpaser>" |
+"{x^*}[kkpase i.5]:[kkl t^]<kk x^>:[i.5]:<kkpase>[t^ kkpaser]" + "<kkpp x^ kkpase i.4 kkpl t^ i.4 t^ kkpaser>" <->{0.0003}{0.1126} "<kkpp>[x^ kkpase]<i.4 kkpl t^ i.4 t^ kkpaser>:<kkpase>[i.5]:[kkl t^]<kk x^>:[i.5]:<kkpase>[t^ kkpaser]" |
+"{t^*}[kkp x^ kkpase]<i.5 kkl t^ i.5 t^ kkpaser>{t^*}" + "<kkpase t^ kkpaser>" <->{0.0003}{0.1126} "{t^*}[kkp x^ kkpase]<i.5 kkl t^ i.5 t^ kkpaser>:<kkpase>[t^]<kkpaser>" |
+"{t^*}[kkp x^ kkpase]<i.5 kkl t^ i.5 t^ kkpaser>:<kkpase>[t^]<kkpaser>" + "<kkpl t^ kkp x^>" ->{0.0003} "<kkpl>[t^ kkp x^]:[kkpase t^]<kkpaser>" + "<kkp x^ kkpase i.5 kkl t^ i.5 t^ kkpaser>" |
+"{x^*}[kkpase i.5]:[kkl t^]<kk x^>:[i.5]:<kkpase>[t^ kkpaser]" + "<kkp x^ kkpase i.5 kkl t^ i.5 t^ kkpaser>" ->{0.0003} "<kkp>[x^ kkpase i.5 kkl t^ i.5 t^ kkpaser]" + "<kkpase i.5>" + "<kkl t^ kk x^>" + "<i.5>" + "<kkpase t^ kkpaser>" |
+"{x^*}[kkpase i.4]:[kkpl t^]<kkp x^>:[i.4]:<kkpase>[t^ kkpaser]" + "<kkp x^ kkpase i.5 kkl t^ i.5 t^ kkpaser>" <->{0.0003}{0.1126} "<kkp>[x^ kkpase]<i.5 kkl t^ i.5 t^ kkpaser>:<kkpase>[i.4]:[kkpl t^]<kkp x^>:[i.4]:<kkpase>[t^ kkpaser]"

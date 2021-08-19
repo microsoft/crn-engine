@@ -1,0 +1,12 @@
+directive duration 10000.0 points 1000
+directive plot Input1(); Input2(); Output()
+directive scale 10.0
+def Input1() = <tb^ b>
+def Input2() = <tx^ x>
+def Output() = <x to^>
+def Join() = {tb^*}[b tx^]:[x to^]
+( 10*Input1()
+| 10*Input2()
+| 100*Join()
+| 0*Output()
+)

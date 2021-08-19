@@ -1,0 +1,190 @@
+directive sample 0.0,5000.0 200
+directive plot "<t^ x>"; "<t^ y>"; "<t^ b>"
+directive simulation deterministic
+directive parameters
+  [ ka, (1E-05, 0.002), 0.0003, log, random
+  ; kq, (1E-05, 0.002), 0.0003, log, random
+  ; kr, (1E-05, 0.002), 0.0003, log, random
+  ; kb, (1E-05, 0.002), 0.0003, log, random
+  ; kc, (1E-05, 0.002), 0.0003, log, random
+  ; ua,(1.0e-4,2.0e+1),0.1,log,fixed
+  ; ub,(1.0e-4,2.0e+1),0.1,log,fixed
+  ; ur,(1.0e-4,2.0e+1),0.1,log,fixed
+  ; uq,(1.0e-4,2.0e+1),0.1,log,fixed
+  ; uc,(1.0e-4,2.0e+1),0.1,log,fixed
+  ; kt, (1E-05, 0.002), 0.0003, log, random
+  ; ku1, (1E-05, 0.002), 0.0003, log, random
+  ; ku2, (1E-05, 0.002), 0.0003, log, random
+  ; ku3, (1E-05, 0.002), 0.0003, log, random
+  ; ut,(1.0e-4,2.0e+1),0.1,log,fixed
+  ; uu1,(1.0e-4,2.0e+1),0.1,log,fixed
+  ; uu2,(1.0e-4,2.0e+1),0.1,log,fixed
+  ; uu3,(1.0e-4,2.0e+1),0.1,log,fixed
+  ; X = 50.0
+  ; NG = 75.0
+  ; NH = 100.0
+  ; NR = 150.0
+  ; Xv = 40.0
+  ; NGv = 120.0
+  ; NHv = 120.0
+  ; NRv = 120.0
+  ; Xh = 10.0
+  ; NGh = 15.0
+  ; NHh = 20.0
+  ; NRh = 30.0
+  ; Xi = 10.0
+  ; NGi = 30.0
+  ; NHi = 30.0
+  ; NRi = 30.0
+  ; NMi = 100.0
+  ; Xr = 1.0
+  ; NRr = 3.0
+  ; Xm = 40.0
+  ; NGm = 80.0
+  ; NHm = 80.0
+  ; NRm = 120.0
+  ; leakXY2B_J,(0.0,0.1),0.01,real,fixed
+  ; badXY2B_X,(0.0,0.3),0.01,real,fixed
+  ; leakXY2B_F,(0.0,0.1),0.01,real,fixed
+  ; badXY2B_Y,(0.0,0.3),0.01,real,fixed
+  ; leakBX2X_J,(0.0,0.1),0.01,real,fixed
+  ; badBX2X_B,(0.0,0.3),0.01,real,fixed
+  ; leakBX2X_F,(0.0,0.1),0.01,real,fixed
+  ; badBX2X_X,(0.0,0.3),0.01,real,fixed
+  ; leakBY2Y_J,(0.0,0.1),0.01,real,fixed
+  ; badBY2Y_B,(0.0,0.3),0.01,real,fixed
+  ; leakBY2Y_F,(0.0,0.1),0.01,real,fixed
+  ; badBY2Y_Y,(0.0,0.3),0.01,real,fixed
+  ; leakJoinBX_B,(0.0,0.1),0.01,real,fixed
+  ; badJoinBX_B,(0.0,0.3),0.01,real,fixed
+  ; leakJoinBX_X,(0.0,0.1),0.01,real,fixed
+  ; badJoinBX_X,(0.0,0.3),0.01,real,fixed
+  ; leakJoinBX_H,(0.0,0.1),0.01,real,fixed
+  ; badJoinBX_H,(0.0,0.3),0.01,real,fixed
+  ; leakJoinBY_B,(0.0,0.1),0.01,real,fixed
+  ; badJoinBY_B,(0.0,0.3),0.01,real,fixed
+  ; leakJoinBY_Y,(0.0,0.1),0.01,real,fixed
+  ; badJoinBY_Y,(0.0,0.3),0.01,real,fixed
+  ; leakJoinBY_H,(0.0,0.1),0.01,real,fixed
+  ; badJoinBY_H,(0.0,0.3),0.01,real,fixed
+  ; leakJoinXY_X,(0.0,0.1),0.01,real,fixed
+  ; badJoinXY_X,(0.0,0.3),0.01,real,fixed
+  ; leakJoinXY_Y,(0.0,0.1),0.01,real,fixed
+  ; badJoinXY_Y,(0.0,0.3),0.01,real,fixed
+  ; leakJoinXY_H,(0.0,0.1),0.01,real,fixed
+  ; badJoinXY_H,(0.0,0.3),0.01,real,fixed
+  ; leakFork2B_R,(0.0,0.1),0.01,real,fixed
+  ; badFork2B_R,(0.0,0.3),0.01,real,fixed
+  ; leakFork2B_H1,(0.0,0.1),0.01,real,fixed
+  ; badFork2B_H1,(0.0,0.3),0.01,real,fixed
+  ; leakFork2B_H2,(0.0,0.1),0.01,real,fixed
+  ; badFork2B_H2,(0.0,0.3),0.01,real,fixed
+  ; leakFork2X_R,(0.0,0.1),0.01,real,fixed
+  ; badFork2X_R,(0.0,0.3),0.01,real,fixed
+  ; leakFork2X_H1,(0.0,0.1),0.01,real,fixed
+  ; badFork2X_H1,(0.0,0.3),0.01,real,fixed
+  ; leakFork2X_H2,(0.0,0.1),0.01,real,fixed
+  ; badFork2X_H2,(0.0,0.3),0.01,real,fixed
+  ; leakFork2Y_R,(0.0,0.1),0.01,real,fixed
+  ; badFork2Y_R,(0.0,0.3),0.01,real,fixed
+  ; leakFork2Y_H1,(0.0,0.1),0.01,real,fixed
+  ; badFork2Y_H1,(0.0,0.3),0.01,real,fixed
+  ; leakFork2Y_H2,(0.0,0.1),0.01,real,fixed
+  ; badFork2Y_H2,(0.0,0.3),0.01,real,fixed
+]
+
+init "<t^ y>" ((Xm * 0.7) * (1.0 - badXY2B_Y)) |
+init "<y t^>" 0.0 |
+init "<ig t^>" (4.0 * NHm) |
+init "[ig]:[t^ b]:[u3^ pb]:[t^ b]:[u2^ rxy]{u1^*}" (NGm * (1.0 - leakXY2B_F)) |
+init "[ig]:[t^ x]:[u3^ px]:[t^ x]:[u2^ rbx]{u1^*}" (NGm * (1.0 - leakBX2X_F)) |
+init "[ig]:[t^ y]:[u3^ py]:[t^ y]:[u2^ rby]{u1^*}" ((NGm * 1.2) * (1.0 - leakBY2Y_F)) |
+init "<t^ rxy>" NHm |
+init "<u2^ rxy>" 0.0 |
+init "<t^ rbx>" NHm |
+init "<u2^ rbx>" 0.0 |
+init "<t^ rby>" (NHm * 1.2) |
+init "<u2^ rby>" 0.0 |
+init "<t^ x>" ((Xm * 0.3) * (1.0 - badXY2B_X)) |
+init "<x t^>" 0.0 |
+init "<b t^>" 0.0 |
+init "{t^*}[x t^]:[y t^]:[rxy u1^]" (NGm * (1.0 - leakXY2B_J)) |
+init "[t^ x]{t^*}:[y t^]:[rxy u1^]" 0.0 |
+init "[t^ x]:[t^ y]{t^*}:[rxy u1^]" 0.0 |
+init "[t^ x]:[t^ y]:[t^ rxy]{u1^*}" 0.0 |
+init "<rxy u1^>" (NGm * leakXY2B_J) |
+init "[ig]:[t^ b]:[u3^ pb]:[t^ b]{u2^*}:[rxy u1^]" 0.0 |
+init "{t^*}[b t^]:[x t^]:[rbx u1^]" (NGm * (1.0 - leakBX2X_J)) |
+init "{t^*}[b t^]:[y t^]:[rby u1^]" ((NGm * 1.2) * (1.0 - leakBY2Y_J)) |
+init "<t^ b>" (NGm * leakXY2B_F) |
+init "[t^ b]{t^*}:[x t^]:[rbx u1^]" 0.0 |
+init "[t^ b]:[t^ x]{t^*}:[rbx u1^]" 0.0 |
+init "[t^ b]:[t^ x]:[t^ rbx]{u1^*}" 0.0 |
+init "<rbx u1^>" (NGm * leakBX2X_J) |
+init "[ig]:[t^ x]:[u3^ px]:[t^ x]{u2^*}:[rbx u1^]" 0.0 |
+init "[t^ b]{t^*}:[y t^]:[rby u1^]" 0.0 |
+init "[t^ b]:[t^ y]{t^*}:[rby u1^]" 0.0 |
+init "[t^ b]:[t^ y]:[t^ rby]{u1^*}" 0.0 |
+init "<rby u1^>" ((NGm * 1.2) * leakBY2Y_J) |
+init "[ig]:[t^ y]:[u3^ py]:[t^ y]{u2^*}:[rby u1^]" 0.0 |
+init "<u3^ px>" (NGm * leakBX2X_F) |
+init "<u3^ py>" ((NGm * 1.2) * leakBY2Y_F) |
+init "<b u2^>" NHm |
+init "[ig]:[t^ b]:[u3^ pb]{t^*}:[b u2^]:[rxy u1^]" 0.0 |
+init "<x u2^>" NHm |
+init "[ig]:[t^ x]:[u3^ px]{t^*}:[x u2^]:[rbx u1^]" 0.0 |
+init "<y u2^>" (NHm * 1.2) |
+init "[ig]:[t^ y]:[u3^ py]{t^*}:[y u2^]:[rby u1^]" 0.0 |
+init "<pb t^>" NHm |
+init "[ig]:[t^ b]{u3^*}:[pb t^]:[b u2^]:[rxy u1^]" 0.0 |
+init "<u3^ pb>" 0.0 |
+init "<px t^>" NHm |
+init "[ig]:[t^ x]{u3^*}:[px t^]:[x u2^]:[rbx u1^]" 0.0 |
+init "<py t^>" (NHm * 1.2) |
+init "[ig]:[t^ y]{u3^*}:[py t^]:[y u2^]:[rby u1^]" 0.0 |
+init "<b u3^>" NHm |
+init "[ig]{t^*}:[b u3^]:[pb t^]:[b u2^]:[rxy u1^]" 0.0 |
+init "[ig t^]:[b u3^]:[pb t^]:[b u2^]:[rxy u1^]" 0.0 |
+init "<ig>" 0.0 |
+init "<x u3^>" NHm |
+init "[ig]{t^*}:[x u3^]:[px t^]:[x u2^]:[rbx u1^]" 0.0 |
+init "[ig t^]:[x u3^]:[px t^]:[x u2^]:[rbx u1^]" 0.0 |
+init "<y u3^>" (NHm * 1.2) |
+init "[ig]{t^*}:[y u3^]:[py t^]:[y u2^]:[rby u1^]" 0.0 |
+init "[ig t^]:[y u3^]:[py t^]:[y u2^]:[rby u1^]" 0.0 |
+init "{t^*}[b]<fl^>" NRm |
+init "[t^ b]" 0.0 |
+init "<b fl^>" 0.0 |
+init "{u3^*}[px]<fl^>" NRm |
+init "[u3^ px]" 0.0 |
+init "<px fl^>" 0.0 |
+init "{u3^*}[py]<fl^>" NRm |
+init "[u3^ py]" 0.0 |
+init "<py fl^>" 0.0 |
+"{t^*}[x t^]:[y t^]:[rxy u1^]" + "<t^ x>" <->{kt}{kt} "[t^ x]{t^*}:[y t^]:[rxy u1^]" + "<x t^>" |
+"[t^ x]{t^*}:[y t^]:[rxy u1^]" + "<t^ y>" <->{kt}{kt} "[t^ x]:[t^ y]{t^*}:[rxy u1^]" + "<y t^>" |
+"[t^ x]:[t^ y]{t^*}:[rxy u1^]" + "<t^ rxy>" <->{kt}{ku1} "[t^ x]:[t^ y]:[t^ rxy]{u1^*}" + "<rxy u1^>" |
+"[ig]:[t^ b]:[u3^ pb]:[t^ b]:[u2^ rxy]{u1^*}" + "<rxy u1^>" <->{ku1}{ku2} "[ig]:[t^ b]:[u3^ pb]:[t^ b]{u2^*}:[rxy u1^]" + "<u2^ rxy>" |
+"{t^*}[b t^]:[x t^]:[rbx u1^]" + "<t^ b>" <->{kt}{kt} "[t^ b]{t^*}:[x t^]:[rbx u1^]" + "<b t^>" |
+"[t^ b]{t^*}:[x t^]:[rbx u1^]" + "<t^ x>" <->{kt}{kt} "[t^ b]:[t^ x]{t^*}:[rbx u1^]" + "<x t^>" |
+"[t^ b]:[t^ x]{t^*}:[rbx u1^]" + "<t^ rbx>" <->{kt}{ku1} "[t^ b]:[t^ x]:[t^ rbx]{u1^*}" + "<rbx u1^>" |
+"[ig]:[t^ x]:[u3^ px]:[t^ x]:[u2^ rbx]{u1^*}" + "<rbx u1^>" <->{ku1}{ku2} "[ig]:[t^ x]:[u3^ px]:[t^ x]{u2^*}:[rbx u1^]" + "<u2^ rbx>" |
+"{t^*}[b t^]:[y t^]:[rby u1^]" + "<t^ b>" <->{kt}{kt} "[t^ b]{t^*}:[y t^]:[rby u1^]" + "<b t^>" |
+"[t^ b]{t^*}:[y t^]:[rby u1^]" + "<t^ y>" <->{kt}{kt} "[t^ b]:[t^ y]{t^*}:[rby u1^]" + "<y t^>" |
+"[t^ b]:[t^ y]{t^*}:[rby u1^]" + "<t^ rby>" <->{kt}{ku1} "[t^ b]:[t^ y]:[t^ rby]{u1^*}" + "<rby u1^>" |
+"[ig]:[t^ y]:[u3^ py]:[t^ y]:[u2^ rby]{u1^*}" + "<rby u1^>" <->{ku1}{ku2} "[ig]:[t^ y]:[u3^ py]:[t^ y]{u2^*}:[rby u1^]" + "<u2^ rby>" |
+"[ig]:[t^ b]:[u3^ pb]:[t^ b]{u2^*}:[rxy u1^]" + "<b u2^>" <->{ku2}{kt} "[ig]:[t^ b]:[u3^ pb]{t^*}:[b u2^]:[rxy u1^]" + "<t^ b>" |
+"[ig]:[t^ x]:[u3^ px]:[t^ x]{u2^*}:[rbx u1^]" + "<x u2^>" <->{ku2}{kt} "[ig]:[t^ x]:[u3^ px]{t^*}:[x u2^]:[rbx u1^]" + "<t^ x>" |
+"[ig]:[t^ y]:[u3^ py]:[t^ y]{u2^*}:[rby u1^]" + "<y u2^>" <->{ku2}{kt} "[ig]:[t^ y]:[u3^ py]{t^*}:[y u2^]:[rby u1^]" + "<t^ y>" |
+"[ig]:[t^ b]:[u3^ pb]{t^*}:[b u2^]:[rxy u1^]" + "<pb t^>" <->{kt}{ku3} "[ig]:[t^ b]{u3^*}:[pb t^]:[b u2^]:[rxy u1^]" + "<u3^ pb>" |
+"[ig]:[t^ x]:[u3^ px]{t^*}:[x u2^]:[rbx u1^]" + "<px t^>" <->{kt}{ku3} "[ig]:[t^ x]{u3^*}:[px t^]:[x u2^]:[rbx u1^]" + "<u3^ px>" |
+"[ig]:[t^ y]:[u3^ py]{t^*}:[y u2^]:[rby u1^]" + "<py t^>" <->{kt}{ku3} "[ig]:[t^ y]{u3^*}:[py t^]:[y u2^]:[rby u1^]" + "<u3^ py>" |
+"[ig]{t^*}:[b u3^]:[pb t^]:[b u2^]:[rxy u1^]" + "<ig t^>" ->{kt} "[ig t^]:[b u3^]:[pb t^]:[b u2^]:[rxy u1^]" + "<ig>" |
+"[ig]:[t^ b]{u3^*}:[pb t^]:[b u2^]:[rxy u1^]" + "<b u3^>" <->{ku3}{kt} "[ig]{t^*}:[b u3^]:[pb t^]:[b u2^]:[rxy u1^]" + "<t^ b>" |
+"[ig]{t^*}:[x u3^]:[px t^]:[x u2^]:[rbx u1^]" + "<ig t^>" ->{kt} "[ig t^]:[x u3^]:[px t^]:[x u2^]:[rbx u1^]" + "<ig>" |
+"[ig]:[t^ x]{u3^*}:[px t^]:[x u2^]:[rbx u1^]" + "<x u3^>" <->{ku3}{kt} "[ig]{t^*}:[x u3^]:[px t^]:[x u2^]:[rbx u1^]" + "<t^ x>" |
+"[ig]:[t^ y]{u3^*}:[py t^]:[y u2^]:[rby u1^]" + "<y u3^>" <->{ku3}{kt} "[ig]{t^*}:[y u3^]:[py t^]:[y u2^]:[rby u1^]" + "<t^ y>" |
+"[ig]{t^*}:[y u3^]:[py t^]:[y u2^]:[rby u1^]" + "<ig t^>" ->{kt} "[ig t^]:[y u3^]:[py t^]:[y u2^]:[rby u1^]" + "<ig>" |
+"{t^*}[b]<fl^>" + "<t^ b>" ->{kt} "[t^ b]" + "<b fl^>" |
+"{u3^*}[px]<fl^>" + "<u3^ px>" ->{ku3} "[u3^ px]" + "<px fl^>" |
+"{u3^*}[py]<fl^>" + "<u3^ py>" ->{ku3} "[u3^ py]" + "<py fl^>"

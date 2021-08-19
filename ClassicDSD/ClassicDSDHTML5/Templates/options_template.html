@@ -1,0 +1,23 @@
+﻿<dropdown class="c-toolbar__item">
+    <dropdownheader>Options</dropdownheader>
+    <dropdowncontent>
+        <div class="c-dropdown__item" style="display: none" data-bind="visible: IsCloudCapable">
+            <input type="checkbox" id="cloud" data-bind="checked: Cloud" />
+            <label for="cloud"><strong>Cloud</strong> <span data-bind="text: '('+Account()+')'"></span></label>
+        </div>
+        <div class="c-dropdown__item" style="display: none" data-bind="visible: IsCloudCapable">
+            <label for="pools">Pool:</label>
+            <!-- ko foreach: Pools -->
+            <input name="Pool" type="radio" data-bind="value: $data, checked: $root.Pool" />
+            <label data-bind="text: $data"></label>
+            <!-- /ko -->
+        </div>
+        <div class="c-dropdown__item" style="display: none" data-bind="visible: IsCloudCapable">
+            <button data-bind="click: openJobsManager">Jobs</button>
+        </div>
+        <div class="c-dropdown__item">
+            <input type="checkbox" id="oldSyntax" data-bind="checked: oldSyntax" />
+            <label for="oldSyntax"><strong>Old syntax</strong></label>
+        </div>
+    </dropdowncontent>
+</dropdown>

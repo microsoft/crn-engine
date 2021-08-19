@@ -1,0 +1,126 @@
+directive sample 0.0,250000.0 1000
+directive plot ("<r^ rs>" - "<r^* rs'>"); ("<v^ vs>" - "<v^* vs'>"); ("<y^ ys>" - "<y^* ys'>"); ("<load>" - "<load'>")
+directive simulation deterministicstiff
+directive parameters
+  [ deg = 0.0008
+  ; pol = 0.0167
+  ; nick = 0.0167
+  ; x0 = 4.0
+  ; ann = 0.01
+  ; bind = 0.001
+  ; unbind = 0.1126
+  ; Cmax = 1000.0
+  ; k = 0.05 ]
+
+event "<load'>" 1.0 @ 200000.0 |
+event "<load>" 2.0 @ 150000.0 |
+event "<r^ rs>" (2.0 * x0) @ 100000.0 |
+event "<r^* rs'>" (2.0 * x0) @ 50000.0 |
+init "<u^ rs>" Cmax |
+init "<u^ es>" (2.0 * Cmax) |
+init "<u^ xs>" Cmax |
+init "<u^ rs'>" Cmax |
+init "<u^ es'>" (2.0 * Cmax) |
+init "<u^ xs'>" Cmax |
+init "<u^ ys>" Cmax |
+init "<u^ ys'>" Cmax |
+init "<load>" 0.0 |
+init "<load'>" 0.0 |
+init "<r^ rs>" x0 |
+init "<r^* rs'>" 0.0 |
+init "[u^ rs]{t^*}:[prom e^ es]" Cmax |
+init "[u^ es]{t^*}:[prom x^ xs]" Cmax |
+init "[u^ es]{t^*}:[prom v^ vs]" Cmax |
+init "[u^ xs]{t^*}:[prom v^ vs]" Cmax |
+init "[u^ rs']{t^*}:[prom e^* es']" Cmax |
+init "[u^ es']{t^*}:[prom x^* xs']" Cmax |
+init "[u^ es']{t^*}:[prom v^* vs']" Cmax |
+init "[u^ xs']{t^*}:[prom v^* vs']" Cmax |
+init "[u^ ys]{t^*}:[prom e^* es']" Cmax |
+init "[u^ ys']{t^*}:[prom e^ es]" Cmax |
+init "{r^*}[rs t^]" Cmax |
+init "[r^ rs]{t^*}" Cmax |
+init "<rs t^>" 0.0 |
+init "{u^*}[rs t^]:[prom e^ es]" 0.0 |
+init "{y^*}[ys t^]" Cmax |
+init "{e^*}[es t^]" (2.0 * Cmax) |
+init "{x^*}[xs t^]" Cmax |
+init "{r^}[rs' t^]" Cmax |
+init "[r^* rs']{t^*}" Cmax |
+init "<rs' t^>" 0.0 |
+init "{u^*}[rs' t^]:[prom e^* es']" 0.0 |
+init "{y^}[ys' t^]" Cmax |
+init "{e^}[es' t^]" (2.0 * Cmax) |
+init "{x^}[xs' t^]" Cmax |
+init "[y^ ys]{t^*}" Cmax |
+init "[e^ es]{t^*}" (2.0 * Cmax) |
+init "[x^ xs]{t^*}" Cmax |
+init "[y^* ys']{t^*}" Cmax |
+init "[e^* es']{t^*}" (2.0 * Cmax) |
+init "[x^* xs']{t^*}" Cmax |
+init "<v^ vs>" 0.0 |
+init "<v^* vs'>" 0.0 |
+init "<y^ ys>" 0.0 |
+init "<ys t^>" 0.0 |
+init "{u^*}[ys t^]:[prom e^* es']" 0.0 |
+init "<y^* ys'>" 0.0 |
+init "<ys' t^>" 0.0 |
+init "{u^*}[ys' t^]:[prom e^ es]" 0.0 |
+init "<e^ es>" 0.0 |
+init "<es t^>" 0.0 |
+init "{u^*}[es t^]:[prom x^ xs]" 0.0 |
+init "{u^*}[es t^]:[prom v^ vs]" 0.0 |
+init "<e^* es'>" 0.0 |
+init "<es' t^>" 0.0 |
+init "{u^*}[es' t^]:[prom x^* xs']" 0.0 |
+init "{u^*}[es' t^]:[prom v^* vs']" 0.0 |
+init "<x^ xs>" 0.0 |
+init "<xs t^>" 0.0 |
+init "{u^*}[xs t^]:[prom v^ vs]" 0.0 |
+init "<x^* xs'>" 0.0 |
+init "<xs' t^>" 0.0 |
+init "{u^*}[xs' t^]:[prom v^* vs']" 0.0 |
+"{u^*}[rs t^]:[prom e^ es]" ->{pol} "{u^*}[rs t^]:[prom e^ es]" + "<e^ es>" |
+"{u^*}[rs' t^]:[prom e^* es']" ->{pol} "{u^*}[rs' t^]:[prom e^* es']" + "<e^* es'>" |
+"{u^*}[ys t^]:[prom e^* es']" ->{pol} "{u^*}[ys t^]:[prom e^* es']" + "<e^* es'>" |
+"{u^*}[ys' t^]:[prom e^ es]" ->{pol} "{u^*}[ys' t^]:[prom e^ es]" + "<e^ es>" |
+"<e^ es>" ->{deg} |
+"<e^* es'>" ->{deg} |
+"{u^*}[es t^]:[prom x^ xs]" ->{pol} "{u^*}[es t^]:[prom x^ xs]" + "<x^ xs>" |
+"{u^*}[es' t^]:[prom x^* xs']" ->{pol} "{u^*}[es' t^]:[prom x^* xs']" + "<x^* xs'>" |
+"{u^*}[es t^]:[prom v^ vs]" ->{pol} "{u^*}[es t^]:[prom v^ vs]" + "<v^ vs>" |
+"{u^*}[es' t^]:[prom v^* vs']" ->{pol} "{u^*}[es' t^]:[prom v^* vs']" + "<v^* vs'>" |
+"{u^*}[xs t^]:[prom v^ vs]" ->{pol} "{u^*}[xs t^]:[prom v^ vs]" + "<v^ vs>" |
+"{u^*}[xs' t^]:[prom v^* vs']" ->{pol} "{u^*}[xs' t^]:[prom v^* vs']" + "<v^* vs'>" |
+"<v^ vs>" ->{deg} |
+"<v^* vs'>" ->{deg} |
+"<x^ xs>" + "<x^* xs'>" ->{ann} |
+"<v^ vs>" ->{0.2} "<v^ vs>" + "<y^ ys>" |
+"<v^* vs'>" ->{0.2} "<v^* vs'>" + "<y^* ys'>" |
+"<y^ ys>" ->{0.1} |
+"<y^* ys'>" ->{0.1} |
+"<load>" + "<y^ ys>" ->{0.01} "<load>" |
+"<load'>" + "<y^* ys'>" ->{0.01} "<load'>" |
+"<load>" + "<load'>" ->{1.0} |
+"<r^ rs>" + "<r^* rs'>" ->{ann} |
+"<y^ ys>" + "<y^* ys'>" ->{ann} |
+"<v^ vs>" + "<v^* vs'>" ->{ann} |
+"<e^ es>" + "<e^* es'>" ->{ann} |
+"{r^*}[rs t^]" + "<r^ rs>" <->{(k * bind)}{bind} "[r^ rs]{t^*}" + "<rs t^>" |
+"[u^ rs]{t^*}:[prom e^ es]" + "<rs t^>" <->{bind}{bind} "{u^*}[rs t^]:[prom e^ es]" + "<u^ rs>" |
+"{r^}[rs' t^]" + "<r^* rs'>" <->{(k * bind)}{bind} "[r^* rs']{t^*}" + "<rs' t^>" |
+"[u^ rs']{t^*}:[prom e^* es']" + "<rs' t^>" <->{bind}{bind} "{u^*}[rs' t^]:[prom e^* es']" + "<u^ rs'>" |
+"{y^*}[ys t^]" + "<y^ ys>" <->{(k * bind)}{bind} "[y^ ys]{t^*}" + "<ys t^>" |
+"[u^ ys]{t^*}:[prom e^* es']" + "<ys t^>" <->{bind}{bind} "{u^*}[ys t^]:[prom e^* es']" + "<u^ ys>" |
+"{y^}[ys' t^]" + "<y^* ys'>" <->{(k * bind)}{bind} "[y^* ys']{t^*}" + "<ys' t^>" |
+"[u^ ys']{t^*}:[prom e^ es]" + "<ys' t^>" <->{bind}{bind} "{u^*}[ys' t^]:[prom e^ es]" + "<u^ ys'>" |
+"{e^*}[es t^]" + "<e^ es>" <->{(k * bind)}{bind} "[e^ es]{t^*}" + "<es t^>" |
+"[u^ es]{t^*}:[prom x^ xs]" + "<es t^>" <->{bind}{bind} "{u^*}[es t^]:[prom x^ xs]" + "<u^ es>" |
+"[u^ es]{t^*}:[prom v^ vs]" + "<es t^>" <->{bind}{bind} "{u^*}[es t^]:[prom v^ vs]" + "<u^ es>" |
+"{e^}[es' t^]" + "<e^* es'>" <->{(k * bind)}{bind} "[e^* es']{t^*}" + "<es' t^>" |
+"[u^ es']{t^*}:[prom x^* xs']" + "<es' t^>" <->{bind}{bind} "{u^*}[es' t^]:[prom x^* xs']" + "<u^ es'>" |
+"[u^ es']{t^*}:[prom v^* vs']" + "<es' t^>" <->{bind}{bind} "{u^*}[es' t^]:[prom v^* vs']" + "<u^ es'>" |
+"{x^*}[xs t^]" + "<x^ xs>" <->{(k * bind)}{bind} "[x^ xs]{t^*}" + "<xs t^>" |
+"[u^ xs]{t^*}:[prom v^ vs]" + "<xs t^>" <->{bind}{bind} "{u^*}[xs t^]:[prom v^ vs]" + "<u^ xs>" |
+"{x^}[xs' t^]" + "<x^* xs'>" <->{(k * bind)}{bind} "[x^* xs']{t^*}" + "<xs' t^>" |
+"[u^ xs']{t^*}:[prom v^* vs']" + "<xs' t^>" <->{bind}{bind} "{u^*}[xs' t^]:[prom v^* vs']" + "<u^ xs'>"

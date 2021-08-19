@@ -1,0 +1,446 @@
+directive sample 0.0,36000.0 10000
+directive plot "<S54L^ S54 S54R^ y1_1>"; "<S52L^ S52 S52R^ y1_0>"; "<S50L^ S50 S50R^ y2_1>"; "<S48L^ S48 S48R^ y2_0>"
+directive scale 20.0
+
+init "{t^*}[S20L^ S20 S20R^ t^]<S21L^ S21 S21R^>" 100.0 |
+init "{t^*}[S21L^ S21 S21R^ t^]<S38L^ S38 S38R^>" 50.0 |
+init "{t^*}[S21L^ S21 S21R^ t^]<S40L^ S40 S40R^>" 50.0 |
+init "{t^*}[S22L^ S22 S22R^ t^]<S23L^ S23 S23R^>" 100.0 |
+init "{t^*}[S23L^ S23 S23R^ t^]<S36L^ S36 S36R^>" 50.0 |
+init "{t^*}[S23L^ S23 S23R^ t^]<S42L^ S42 S42R^>" 50.0 |
+init "{t^*}[S28L^ S28 S28R^ t^]<S29L^ S29 S29R^>" 100.0 |
+init "{t^*}[S29L^ S29 S29R^ t^]<S40L^ S40 S40R^>" 50.0 |
+init "{t^*}[S30L^ S30 S30R^ t^]<S31L^ S31 S31R^>" 100.0 |
+init "{t^*}[S31L^ S31 S31R^ t^]<S42L^ S42 S42R^>" 50.0 |
+init "{t^*}[S32L^ S32 S32R^ t^]<S33L^ S33 S33R^>" 100.0 |
+init "{t^*}[S33L^ S33 S33R^ t^]<S48L^ S48 S48R^>" 50.0 |
+init "{t^*}[S34L^ S34 S34R^ t^]<S35L^ S35 S35R^>" 100.0 |
+init "{t^*}[S35L^ S35 S35R^ t^]<S50L^ S50 S50R^>" 50.0 |
+init "{t^*}[S36L^ S36 S36R^ t^]<S37L^ S37 S37R^>" 150.0 |
+init "{t^*}[S37L^ S37 S37R^ t^]<S46L^ S46 S46R^>" 50.0 |
+init "{t^*}[S38L^ S38 S38R^ t^]<S39L^ S39 S39R^>" 150.0 |
+init "{t^*}[S39L^ S39 S39R^ t^]<S44L^ S44 S44R^>" 50.0 |
+init "{t^*}[S40L^ S40 S40R^ t^]<S41L^ S41 S41R^>" 100.0 |
+init "{t^*}[S41L^ S41 S41R^ t^]<S46L^ S46 S46R^>" 50.0 |
+init "{t^*}[S42L^ S42 S42R^ t^]<S43L^ S43 S43R^>" 100.0 |
+init "{t^*}[S43L^ S43 S43R^ t^]<S44L^ S44 S44R^>" 50.0 |
+init "{t^*}[S44L^ S44 S44R^ t^]<S45L^ S45 S45R^>" 100.0 |
+init "{t^*}[S45L^ S45 S45R^ t^]<S52L^ S52 S52R^>" 50.0 |
+init "{t^*}[S46L^ S46 S46R^ t^]<S47L^ S47 S47R^>" 100.0 |
+init "{t^*}[S47L^ S47 S47R^ t^]<S54L^ S54 S54R^>" 50.0 |
+init "{t^*}[S13L^ S13 S13R^ t^]<S28L^ S28 S28R^>" 50.0 |
+init "{t^*}[S13L^ S13 S13R^ t^]<S32L^ S32 S32R^>" 50.0 |
+init "{t^*}[S13L^ S13 S13R^ t^]<S38L^ S38 S38R^>" 50.0 |
+init "{t^*}[S15L^ S15 S15R^ t^]<S30L^ S30 S30R^>" 50.0 |
+init "{t^*}[S15L^ S15 S15R^ t^]<S34L^ S34 S34R^>" 50.0 |
+init "{t^*}[S15L^ S15 S15R^ t^]<S36L^ S36 S36R^>" 50.0 |
+init "{t^*}[S17L^ S17 S17R^ t^]<S30L^ S30 S30R^>" 50.0 |
+init "{t^*}[S17L^ S17 S17R^ t^]<S32L^ S32 S32R^>" 50.0 |
+init "{t^*}[S17L^ S17 S17R^ t^]<S38L^ S38 S38R^>" 50.0 |
+init "{t^*}[S19L^ S19 S19R^ t^]<S28L^ S28 S28R^>" 50.0 |
+init "{t^*}[S19L^ S19 S19R^ t^]<S34L^ S34 S34R^>" 50.0 |
+init "{t^*}[S19L^ S19 S19R^ t^]<S36L^ S36 S36R^>" 50.0 |
+init "{t^*}[S48L^ S48 S48R^]<y2_0>" 75.0 |
+init "{t^*}[S50L^ S50 S50R^]<y2_1>" 75.0 |
+init "{t^*}[S52L^ S52 S52R^]<y1_0>" 75.0 |
+init "{t^*}[S54L^ S54 S54R^]<y1_1>" 75.0 |
+init "<S5L^ S5 S5R^ t^ S22L^ S22 S22R^>" 45.0 |
+init "<S5L^ S5 S5R^>[t^ S22L^ S22 S22R^]:<S22L^ S22 S22R^>[t^]<S23L^ S23 S23R^>" 0.0 |
+init "<S5L^ S5 S5R^>[t^ S22L^ S22 S22R^]{t^*}" 0.0 |
+init "<S22L^ S22 S22R^ t^ S23L^ S23 S23R^>" 0.0 |
+init "<S22L^ S22 S22R^>[t^ S23L^ S23 S23R^]:<S23L^ S23 S23R^>[t^]<S36L^ S36 S36R^>" 0.0 |
+init "<S22L^ S22 S22R^>[t^ S23L^ S23 S23R^]{t^*}" 0.0 |
+init "<S23L^ S23 S23R^ t^ S36L^ S36 S36R^>" 0.0 |
+init "<S23L^ S23 S23R^>[t^ S36L^ S36 S36R^]:<S36L^ S36 S36R^>[t^]<S37L^ S37 S37R^>" 0.0 |
+init "<S23L^ S23 S23R^>[t^ S36L^ S36 S36R^]{t^*}" 0.0 |
+init "<S36L^ S36 S36R^ t^ S37L^ S37 S37R^>" 0.0 |
+init "<S36L^ S36 S36R^>[t^ S37L^ S37 S37R^]:<S37L^ S37 S37R^>[t^]<S46L^ S46 S46R^>" 0.0 |
+init "<S36L^ S36 S36R^>[t^ S37L^ S37 S37R^]{t^*}" 0.0 |
+init "<S37L^ S37 S37R^ t^ S46L^ S46 S46R^>" 0.0 |
+init "<S37L^ S37 S37R^>[t^ S46L^ S46 S46R^]:<S46L^ S46 S46R^>[t^]<S47L^ S47 S47R^>" 0.0 |
+init "<S37L^ S37 S37R^>[t^ S46L^ S46 S46R^]{t^*}" 0.0 |
+init "<S46L^ S46 S46R^ t^ S47L^ S47 S47R^>" 0.0 |
+init "<S46L^ S46 S46R^>[t^ S47L^ S47 S47R^]:<S47L^ S47 S47R^>[t^]<S54L^ S54 S54R^>" 0.0 |
+init "<S46L^ S46 S46R^>[t^ S47L^ S47 S47R^]{t^*}" 0.0 |
+init "<S47L^ S47 S47R^ t^ S54L^ S54 S54R^>" 0.0 |
+init "<S47L^ S47 S47R^>[t^ S54L^ S54 S54R^]" 0.0 |
+init "<S54L^ S54 S54R^ y1_1>" 0.0 |
+init "<S22L^ S22 S22R^>[t^ S23L^ S23 S23R^]:<S23L^ S23 S23R^>[t^]<S42L^ S42 S42R^>" 0.0 |
+init "<S23L^ S23 S23R^ t^ S42L^ S42 S42R^>" 0.0 |
+init "<S23L^ S23 S23R^>[t^ S42L^ S42 S42R^]:<S42L^ S42 S42R^>[t^]<S43L^ S43 S43R^>" 0.0 |
+init "<S23L^ S23 S23R^>[t^ S42L^ S42 S42R^]{t^*}" 0.0 |
+init "<S42L^ S42 S42R^ t^ S43L^ S43 S43R^>" 0.0 |
+init "<S42L^ S42 S42R^>[t^ S43L^ S43 S43R^]:<S43L^ S43 S43R^>[t^]<S44L^ S44 S44R^>" 0.0 |
+init "<S42L^ S42 S42R^>[t^ S43L^ S43 S43R^]{t^*}" 0.0 |
+init "<S43L^ S43 S43R^ t^ S44L^ S44 S44R^>" 0.0 |
+init "<S43L^ S43 S43R^>[t^ S44L^ S44 S44R^]:<S44L^ S44 S44R^>[t^]<S45L^ S45 S45R^>" 0.0 |
+init "<S43L^ S43 S43R^>[t^ S44L^ S44 S44R^]{t^*}" 0.0 |
+init "<S44L^ S44 S44R^ t^ S45L^ S45 S45R^>" 0.0 |
+init "<S44L^ S44 S44R^>[t^ S45L^ S45 S45R^]:<S45L^ S45 S45R^>[t^]<S52L^ S52 S52R^>" 0.0 |
+init "<S44L^ S44 S44R^>[t^ S45L^ S45 S45R^]{t^*}" 0.0 |
+init "<S45L^ S45 S45R^ t^ S52L^ S52 S52R^>" 0.0 |
+init "<S45L^ S45 S45R^>[t^ S52L^ S52 S52R^]" 0.0 |
+init "<S52L^ S52 S52R^ y1_0>" 0.0 |
+init "<S7L^ S7 S7R^ t^ S20L^ S20 S20R^>" 5.0 |
+init "<S7L^ S7 S7R^>[t^ S20L^ S20 S20R^]:<S20L^ S20 S20R^>[t^]<S21L^ S21 S21R^>" 0.0 |
+init "<S7L^ S7 S7R^>[t^ S20L^ S20 S20R^]{t^*}" 0.0 |
+init "<S20L^ S20 S20R^ t^ S21L^ S21 S21R^>" 0.0 |
+init "<S20L^ S20 S20R^>[t^ S21L^ S21 S21R^]:<S21L^ S21 S21R^>[t^]<S38L^ S38 S38R^>" 0.0 |
+init "<S20L^ S20 S20R^>[t^ S21L^ S21 S21R^]{t^*}" 0.0 |
+init "<S21L^ S21 S21R^ t^ S38L^ S38 S38R^>" 0.0 |
+init "<S21L^ S21 S21R^>[t^ S38L^ S38 S38R^]:<S38L^ S38 S38R^>[t^]<S39L^ S39 S39R^>" 0.0 |
+init "<S21L^ S21 S21R^>[t^ S38L^ S38 S38R^]{t^*}" 0.0 |
+init "<S38L^ S38 S38R^ t^ S39L^ S39 S39R^>" 0.0 |
+init "<S38L^ S38 S38R^>[t^ S39L^ S39 S39R^]:<S39L^ S39 S39R^>[t^]<S44L^ S44 S44R^>" 0.0 |
+init "<S38L^ S38 S38R^>[t^ S39L^ S39 S39R^]{t^*}" 0.0 |
+init "<S39L^ S39 S39R^ t^ S44L^ S44 S44R^>" 0.0 |
+init "<S39L^ S39 S39R^>[t^ S44L^ S44 S44R^]:<S44L^ S44 S44R^>[t^]<S45L^ S45 S45R^>" 0.0 |
+init "<S39L^ S39 S39R^>[t^ S44L^ S44 S44R^]{t^*}" 0.0 |
+init "<S20L^ S20 S20R^>[t^ S21L^ S21 S21R^]:<S21L^ S21 S21R^>[t^]<S40L^ S40 S40R^>" 0.0 |
+init "<S21L^ S21 S21R^ t^ S40L^ S40 S40R^>" 0.0 |
+init "<S21L^ S21 S21R^>[t^ S40L^ S40 S40R^]:<S40L^ S40 S40R^>[t^]<S41L^ S41 S41R^>" 0.0 |
+init "<S21L^ S21 S21R^>[t^ S40L^ S40 S40R^]{t^*}" 0.0 |
+init "<S40L^ S40 S40R^ t^ S41L^ S41 S41R^>" 0.0 |
+init "<S40L^ S40 S40R^>[t^ S41L^ S41 S41R^]:<S41L^ S41 S41R^>[t^]<S46L^ S46 S46R^>" 0.0 |
+init "<S40L^ S40 S40R^>[t^ S41L^ S41 S41R^]{t^*}" 0.0 |
+init "<S41L^ S41 S41R^ t^ S46L^ S46 S46R^>" 0.0 |
+init "<S41L^ S41 S41R^>[t^ S46L^ S46 S46R^]:<S46L^ S46 S46R^>[t^]<S47L^ S47 S47R^>" 0.0 |
+init "<S41L^ S41 S41R^>[t^ S46L^ S46 S46R^]{t^*}" 0.0 |
+init "<S9L^ S9 S9R^ t^ S22L^ S22 S22R^>" 45.0 |
+init "<S9L^ S9 S9R^>[t^ S22L^ S22 S22R^]:<S22L^ S22 S22R^>[t^]<S23L^ S23 S23R^>" 0.0 |
+init "<S9L^ S9 S9R^>[t^ S22L^ S22 S22R^]{t^*}" 0.0 |
+init "<S11L^ S11 S11R^ t^ S20L^ S20 S20R^>" 5.0 |
+init "<S11L^ S11 S11R^>[t^ S20L^ S20 S20R^]:<S20L^ S20 S20R^>[t^]<S21L^ S21 S21R^>" 0.0 |
+init "<S11L^ S11 S11R^>[t^ S20L^ S20 S20R^]{t^*}" 0.0 |
+init "<S12L^ S12 S12R^ t^ S13L^ S13 S13R^>" 5.0 |
+init "<S12L^ S12 S12R^>[t^ S13L^ S13 S13R^]:<S13L^ S13 S13R^>[t^]<S28L^ S28 S28R^>" 0.0 |
+init "<S12L^ S12 S12R^>[t^ S13L^ S13 S13R^]{t^*}" 0.0 |
+init "<S13L^ S13 S13R^ t^ S28L^ S28 S28R^>" 0.0 |
+init "<S13L^ S13 S13R^>[t^ S28L^ S28 S28R^]:<S28L^ S28 S28R^>[t^]<S29L^ S29 S29R^>" 0.0 |
+init "<S13L^ S13 S13R^>[t^ S28L^ S28 S28R^]{t^*}" 0.0 |
+init "<S28L^ S28 S28R^ t^ S29L^ S29 S29R^>" 0.0 |
+init "<S28L^ S28 S28R^>[t^ S29L^ S29 S29R^]:<S29L^ S29 S29R^>[t^]<S40L^ S40 S40R^>" 0.0 |
+init "<S28L^ S28 S28R^>[t^ S29L^ S29 S29R^]{t^*}" 0.0 |
+init "<S29L^ S29 S29R^ t^ S40L^ S40 S40R^>" 0.0 |
+init "<S29L^ S29 S29R^>[t^ S40L^ S40 S40R^]:<S40L^ S40 S40R^>[t^]<S41L^ S41 S41R^>" 0.0 |
+init "<S29L^ S29 S29R^>[t^ S40L^ S40 S40R^]{t^*}" 0.0 |
+init "<S12L^ S12 S12R^>[t^ S13L^ S13 S13R^]:<S13L^ S13 S13R^>[t^]<S32L^ S32 S32R^>" 0.0 |
+init "<S13L^ S13 S13R^ t^ S32L^ S32 S32R^>" 0.0 |
+init "<S13L^ S13 S13R^>[t^ S32L^ S32 S32R^]:<S32L^ S32 S32R^>[t^]<S33L^ S33 S33R^>" 0.0 |
+init "<S13L^ S13 S13R^>[t^ S32L^ S32 S32R^]{t^*}" 0.0 |
+init "<S32L^ S32 S32R^ t^ S33L^ S33 S33R^>" 0.0 |
+init "<S32L^ S32 S32R^>[t^ S33L^ S33 S33R^]:<S33L^ S33 S33R^>[t^]<S48L^ S48 S48R^>" 0.0 |
+init "<S32L^ S32 S32R^>[t^ S33L^ S33 S33R^]{t^*}" 0.0 |
+init "<S33L^ S33 S33R^ t^ S48L^ S48 S48R^>" 0.0 |
+init "<S33L^ S33 S33R^>[t^ S48L^ S48 S48R^]" 0.0 |
+init "<S48L^ S48 S48R^ y2_0>" 0.0 |
+init "<S12L^ S12 S12R^>[t^ S13L^ S13 S13R^]:<S13L^ S13 S13R^>[t^]<S38L^ S38 S38R^>" 0.0 |
+init "<S13L^ S13 S13R^ t^ S38L^ S38 S38R^>" 0.0 |
+init "<S13L^ S13 S13R^>[t^ S38L^ S38 S38R^]:<S38L^ S38 S38R^>[t^]<S39L^ S39 S39R^>" 0.0 |
+init "<S13L^ S13 S13R^>[t^ S38L^ S38 S38R^]{t^*}" 0.0 |
+init "<S14L^ S14 S14R^ t^ S15L^ S15 S15R^>" 45.0 |
+init "<S14L^ S14 S14R^>[t^ S15L^ S15 S15R^]:<S15L^ S15 S15R^>[t^]<S30L^ S30 S30R^>" 0.0 |
+init "<S14L^ S14 S14R^>[t^ S15L^ S15 S15R^]{t^*}" 0.0 |
+init "<S15L^ S15 S15R^ t^ S30L^ S30 S30R^>" 0.0 |
+init "<S15L^ S15 S15R^>[t^ S30L^ S30 S30R^]:<S30L^ S30 S30R^>[t^]<S31L^ S31 S31R^>" 0.0 |
+init "<S15L^ S15 S15R^>[t^ S30L^ S30 S30R^]{t^*}" 0.0 |
+init "<S30L^ S30 S30R^ t^ S31L^ S31 S31R^>" 0.0 |
+init "<S30L^ S30 S30R^>[t^ S31L^ S31 S31R^]:<S31L^ S31 S31R^>[t^]<S42L^ S42 S42R^>" 0.0 |
+init "<S30L^ S30 S30R^>[t^ S31L^ S31 S31R^]{t^*}" 0.0 |
+init "<S31L^ S31 S31R^ t^ S42L^ S42 S42R^>" 0.0 |
+init "<S31L^ S31 S31R^>[t^ S42L^ S42 S42R^]:<S42L^ S42 S42R^>[t^]<S43L^ S43 S43R^>" 0.0 |
+init "<S31L^ S31 S31R^>[t^ S42L^ S42 S42R^]{t^*}" 0.0 |
+init "<S14L^ S14 S14R^>[t^ S15L^ S15 S15R^]:<S15L^ S15 S15R^>[t^]<S34L^ S34 S34R^>" 0.0 |
+init "<S15L^ S15 S15R^ t^ S34L^ S34 S34R^>" 0.0 |
+init "<S15L^ S15 S15R^>[t^ S34L^ S34 S34R^]:<S34L^ S34 S34R^>[t^]<S35L^ S35 S35R^>" 0.0 |
+init "<S15L^ S15 S15R^>[t^ S34L^ S34 S34R^]{t^*}" 0.0 |
+init "<S34L^ S34 S34R^ t^ S35L^ S35 S35R^>" 0.0 |
+init "<S34L^ S34 S34R^>[t^ S35L^ S35 S35R^]:<S35L^ S35 S35R^>[t^]<S50L^ S50 S50R^>" 0.0 |
+init "<S34L^ S34 S34R^>[t^ S35L^ S35 S35R^]{t^*}" 0.0 |
+init "<S35L^ S35 S35R^ t^ S50L^ S50 S50R^>" 0.0 |
+init "<S35L^ S35 S35R^>[t^ S50L^ S50 S50R^]" 0.0 |
+init "<S50L^ S50 S50R^ y2_1>" 0.0 |
+init "<S14L^ S14 S14R^>[t^ S15L^ S15 S15R^]:<S15L^ S15 S15R^>[t^]<S36L^ S36 S36R^>" 0.0 |
+init "<S15L^ S15 S15R^ t^ S36L^ S36 S36R^>" 0.0 |
+init "<S15L^ S15 S15R^>[t^ S36L^ S36 S36R^]:<S36L^ S36 S36R^>[t^]<S37L^ S37 S37R^>" 0.0 |
+init "<S15L^ S15 S15R^>[t^ S36L^ S36 S36R^]{t^*}" 0.0 |
+init "<S16L^ S16 S16R^ t^ S17L^ S17 S17R^>" 45.0 |
+init "<S16L^ S16 S16R^>[t^ S17L^ S17 S17R^]:<S17L^ S17 S17R^>[t^]<S30L^ S30 S30R^>" 0.0 |
+init "<S16L^ S16 S16R^>[t^ S17L^ S17 S17R^]{t^*}" 0.0 |
+init "<S17L^ S17 S17R^ t^ S30L^ S30 S30R^>" 0.0 |
+init "<S17L^ S17 S17R^>[t^ S30L^ S30 S30R^]:<S30L^ S30 S30R^>[t^]<S31L^ S31 S31R^>" 0.0 |
+init "<S17L^ S17 S17R^>[t^ S30L^ S30 S30R^]{t^*}" 0.0 |
+init "<S16L^ S16 S16R^>[t^ S17L^ S17 S17R^]:<S17L^ S17 S17R^>[t^]<S32L^ S32 S32R^>" 0.0 |
+init "<S17L^ S17 S17R^ t^ S32L^ S32 S32R^>" 0.0 |
+init "<S17L^ S17 S17R^>[t^ S32L^ S32 S32R^]:<S32L^ S32 S32R^>[t^]<S33L^ S33 S33R^>" 0.0 |
+init "<S17L^ S17 S17R^>[t^ S32L^ S32 S32R^]{t^*}" 0.0 |
+init "<S16L^ S16 S16R^>[t^ S17L^ S17 S17R^]:<S17L^ S17 S17R^>[t^]<S38L^ S38 S38R^>" 0.0 |
+init "<S17L^ S17 S17R^ t^ S38L^ S38 S38R^>" 0.0 |
+init "<S17L^ S17 S17R^>[t^ S38L^ S38 S38R^]:<S38L^ S38 S38R^>[t^]<S39L^ S39 S39R^>" 0.0 |
+init "<S17L^ S17 S17R^>[t^ S38L^ S38 S38R^]{t^*}" 0.0 |
+init "<S18L^ S18 S18R^ t^ S19L^ S19 S19R^>" 5.0 |
+init "<S18L^ S18 S18R^>[t^ S19L^ S19 S19R^]:<S19L^ S19 S19R^>[t^]<S28L^ S28 S28R^>" 0.0 |
+init "<S18L^ S18 S18R^>[t^ S19L^ S19 S19R^]{t^*}" 0.0 |
+init "<S19L^ S19 S19R^ t^ S28L^ S28 S28R^>" 0.0 |
+init "<S19L^ S19 S19R^>[t^ S28L^ S28 S28R^]:<S28L^ S28 S28R^>[t^]<S29L^ S29 S29R^>" 0.0 |
+init "<S19L^ S19 S19R^>[t^ S28L^ S28 S28R^]{t^*}" 0.0 |
+init "<S18L^ S18 S18R^>[t^ S19L^ S19 S19R^]:<S19L^ S19 S19R^>[t^]<S34L^ S34 S34R^>" 0.0 |
+init "<S19L^ S19 S19R^ t^ S34L^ S34 S34R^>" 0.0 |
+init "<S19L^ S19 S19R^>[t^ S34L^ S34 S34R^]:<S34L^ S34 S34R^>[t^]<S35L^ S35 S35R^>" 0.0 |
+init "<S19L^ S19 S19R^>[t^ S34L^ S34 S34R^]{t^*}" 0.0 |
+init "<S18L^ S18 S18R^>[t^ S19L^ S19 S19R^]:<S19L^ S19 S19R^>[t^]<S36L^ S36 S36R^>" 0.0 |
+init "<S19L^ S19 S19R^ t^ S36L^ S36 S36R^>" 0.0 |
+init "<S19L^ S19 S19R^>[t^ S36L^ S36 S36R^]:<S36L^ S36 S36R^>[t^]<S37L^ S37 S37R^>" 0.0 |
+init "<S19L^ S19 S19R^>[t^ S36L^ S36 S36R^]{t^*}" 0.0 |
+init "<S21L^ S21 S21R^ t^ fL^ f fR^>" 200.0 |
+init "<S20L^ S20 S20R^>[t^ S21L^ S21 S21R^]:<S21L^ S21 S21R^>[t^]<fL^ f fR^>" 0.0 |
+init "{t^*}[S21L^ S21 S21R^ t^]<fL^ f fR^>" 0.0 |
+init "<S23L^ S23 S23R^ t^ fL^ f fR^>" 200.0 |
+init "<S22L^ S22 S22R^>[t^ S23L^ S23 S23R^]:<S23L^ S23 S23R^>[t^]<fL^ f fR^>" 0.0 |
+init "{t^*}[S23L^ S23 S23R^ t^]<fL^ f fR^>" 0.0 |
+init "<S29L^ S29 S29R^ t^ fL^ f fR^>" 100.0 |
+init "<S28L^ S28 S28R^>[t^ S29L^ S29 S29R^]:<S29L^ S29 S29R^>[t^]<fL^ f fR^>" 0.0 |
+init "{t^*}[S29L^ S29 S29R^ t^]<fL^ f fR^>" 0.0 |
+init "<S31L^ S31 S31R^ t^ fL^ f fR^>" 100.0 |
+init "<S30L^ S30 S30R^>[t^ S31L^ S31 S31R^]:<S31L^ S31 S31R^>[t^]<fL^ f fR^>" 0.0 |
+init "{t^*}[S31L^ S31 S31R^ t^]<fL^ f fR^>" 0.0 |
+init "<S33L^ S33 S33R^ t^ fL^ f fR^>" 100.0 |
+init "<S32L^ S32 S32R^>[t^ S33L^ S33 S33R^]:<S33L^ S33 S33R^>[t^]<fL^ f fR^>" 0.0 |
+init "{t^*}[S33L^ S33 S33R^ t^]<fL^ f fR^>" 0.0 |
+init "<S35L^ S35 S35R^ t^ fL^ f fR^>" 100.0 |
+init "<S34L^ S34 S34R^>[t^ S35L^ S35 S35R^]:<S35L^ S35 S35R^>[t^]<fL^ f fR^>" 0.0 |
+init "{t^*}[S35L^ S35 S35R^ t^]<fL^ f fR^>" 0.0 |
+init "<S37L^ S37 S37R^ t^ fL^ f fR^>" 100.0 |
+init "<S36L^ S36 S36R^>[t^ S37L^ S37 S37R^]:<S37L^ S37 S37R^>[t^]<fL^ f fR^>" 0.0 |
+init "{t^*}[S37L^ S37 S37R^ t^]<fL^ f fR^>" 0.0 |
+init "<S39L^ S39 S39R^ t^ fL^ f fR^>" 100.0 |
+init "<S38L^ S38 S38R^>[t^ S39L^ S39 S39R^]:<S39L^ S39 S39R^>[t^]<fL^ f fR^>" 0.0 |
+init "{t^*}[S39L^ S39 S39R^ t^]<fL^ f fR^>" 0.0 |
+init "<S41L^ S41 S41R^ t^ fL^ f fR^>" 100.0 |
+init "<S40L^ S40 S40R^>[t^ S41L^ S41 S41R^]:<S41L^ S41 S41R^>[t^]<fL^ f fR^>" 0.0 |
+init "{t^*}[S41L^ S41 S41R^ t^]<fL^ f fR^>" 0.0 |
+init "<S43L^ S43 S43R^ t^ fL^ f fR^>" 100.0 |
+init "<S42L^ S42 S42R^>[t^ S43L^ S43 S43R^]:<S43L^ S43 S43R^>[t^]<fL^ f fR^>" 0.0 |
+init "{t^*}[S43L^ S43 S43R^ t^]<fL^ f fR^>" 0.0 |
+init "<S45L^ S45 S45R^ t^ fL^ f fR^>" 100.0 |
+init "<S44L^ S44 S44R^>[t^ S45L^ S45 S45R^]:<S45L^ S45 S45R^>[t^]<fL^ f fR^>" 0.0 |
+init "{t^*}[S45L^ S45 S45R^ t^]<fL^ f fR^>" 0.0 |
+init "<S47L^ S47 S47R^ t^ fL^ f fR^>" 100.0 |
+init "<S46L^ S46 S46R^>[t^ S47L^ S47 S47R^]:<S47L^ S47 S47R^>[t^]<fL^ f fR^>" 0.0 |
+init "{t^*}[S47L^ S47 S47R^ t^]<fL^ f fR^>" 0.0 |
+init "<S13L^ S13 S13R^ t^ fL^ f fR^>" 300.0 |
+init "<S12L^ S12 S12R^>[t^ S13L^ S13 S13R^]:<S13L^ S13 S13R^>[t^]<fL^ f fR^>" 0.0 |
+init "{t^*}[S13L^ S13 S13R^ t^]<fL^ f fR^>" 0.0 |
+init "<S15L^ S15 S15R^ t^ fL^ f fR^>" 300.0 |
+init "<S14L^ S14 S14R^>[t^ S15L^ S15 S15R^]:<S15L^ S15 S15R^>[t^]<fL^ f fR^>" 0.0 |
+init "{t^*}[S15L^ S15 S15R^ t^]<fL^ f fR^>" 0.0 |
+init "<S17L^ S17 S17R^ t^ fL^ f fR^>" 300.0 |
+init "<S16L^ S16 S16R^>[t^ S17L^ S17 S17R^]:<S17L^ S17 S17R^>[t^]<fL^ f fR^>" 0.0 |
+init "{t^*}[S17L^ S17 S17R^ t^]<fL^ f fR^>" 0.0 |
+init "<S19L^ S19 S19R^ t^ fL^ f fR^>" 300.0 |
+init "<S18L^ S18 S18R^>[t^ S19L^ S19 S19R^]:<S19L^ S19 S19R^>[t^]<fL^ f fR^>" 0.0 |
+init "{t^*}[S19L^ S19 S19R^ t^]<fL^ f fR^>" 0.0 |
+init "{S20R^* t^*}[S21L^ S21 S21R^]" 30.0 |
+init "<S20L^ S20>[S20R^ t^ S21L^ S21 S21R^]" 0.0 |
+init "<S21L^ S21 S21R^>" 0.0 |
+init "{S22R^* t^*}[S23L^ S23 S23R^]" 60.0 |
+init "<S22L^ S22>[S22R^ t^ S23L^ S23 S23R^]" 0.0 |
+init "<S23L^ S23 S23R^>" 0.0 |
+init "{S28R^* t^*}[S29L^ S29 S29R^]" 30.0 |
+init "<S28L^ S28>[S28R^ t^ S29L^ S29 S29R^]" 0.0 |
+init "<S29L^ S29 S29R^>" 0.0 |
+init "{S30R^* t^*}[S31L^ S31 S31R^]" 60.0 |
+init "<S30L^ S30>[S30R^ t^ S31L^ S31 S31R^]" 0.0 |
+init "<S31L^ S31 S31R^>" 0.0 |
+init "{S32R^* t^*}[S33L^ S33 S33R^]" 60.0 |
+init "<S32L^ S32>[S32R^ t^ S33L^ S33 S33R^]" 0.0 |
+init "<S33L^ S33 S33R^>" 0.0 |
+init "{S34R^* t^*}[S35L^ S35 S35R^]" 30.0 |
+init "<S34L^ S34>[S34R^ t^ S35L^ S35 S35R^]" 0.0 |
+init "<S35L^ S35 S35R^>" 0.0 |
+init "{S36R^* t^*}[S37L^ S37 S37R^]" 110.0 |
+init "<S36L^ S36>[S36R^ t^ S37L^ S37 S37R^]" 0.0 |
+init "<S37L^ S37 S37R^>" 0.0 |
+init "{S38R^* t^*}[S39L^ S39 S39R^]" 30.0 |
+init "<S38L^ S38>[S38R^ t^ S39L^ S39 S39R^]" 0.0 |
+init "<S39L^ S39 S39R^>" 0.0 |
+init "{S40R^* t^*}[S41L^ S41 S41R^]" 60.0 |
+init "<S40L^ S40>[S40R^ t^ S41L^ S41 S41R^]" 0.0 |
+init "<S41L^ S41 S41R^>" 0.0 |
+init "{S42R^* t^*}[S43L^ S43 S43R^]" 30.0 |
+init "<S42L^ S42>[S42R^ t^ S43L^ S43 S43R^]" 0.0 |
+init "<S43L^ S43 S43R^>" 0.0 |
+init "{S44R^* t^*}[S45L^ S45 S45R^]" 60.0 |
+init "<S44L^ S44>[S44R^ t^ S45L^ S45 S45R^]" 0.0 |
+init "<S45L^ S45 S45R^>" 0.0 |
+init "{S46R^* t^*}[S47L^ S47 S47R^]" 30.0 |
+init "<S46L^ S46>[S46R^ t^ S47L^ S47 S47R^]" 0.0 |
+init "<S47L^ S47 S47R^>" 0.0 |
+init "{S12R^* t^*}[S13L^ S13 S13R^]" 10.0 |
+init "<S12L^ S12>[S12R^ t^ S13L^ S13 S13R^]" 0.0 |
+init "<S13L^ S13 S13R^>" 0.0 |
+init "{S14R^* t^*}[S15L^ S15 S15R^]" 10.0 |
+init "<S14L^ S14>[S14R^ t^ S15L^ S15 S15R^]" 0.0 |
+init "<S15L^ S15 S15R^>" 0.0 |
+init "{S16R^* t^*}[S17L^ S17 S17R^]" 10.0 |
+init "<S16L^ S16>[S16R^ t^ S17L^ S17 S17R^]" 0.0 |
+init "<S17L^ S17 S17R^>" 0.0 |
+init "{S18R^* t^*}[S19L^ S19 S19R^]" 10.0 |
+init "<S18L^ S18>[S18R^ t^ S19L^ S19 S19R^]" 0.0 |
+init "<S19L^ S19 S19R^>" 0.0 |
+"{t^*}[S22L^ S22 S22R^ t^]<S23L^ S23 S23R^>" + "<S5L^ S5 S5R^ t^ S22L^ S22 S22R^>" <->{5E-05}{26.0} "<S5L^ S5 S5R^>[t^ S22L^ S22 S22R^]:<S22L^ S22 S22R^>[t^]<S23L^ S23 S23R^>" |
+"<S5L^ S5 S5R^>[t^ S22L^ S22 S22R^]:<S22L^ S22 S22R^>[t^]<S23L^ S23 S23R^>" <->{26.0}{5E-05} "<S5L^ S5 S5R^>[t^ S22L^ S22 S22R^]{t^*}" + "<S22L^ S22 S22R^ t^ S23L^ S23 S23R^>" |
+"{t^*}[S23L^ S23 S23R^ t^]<S36L^ S36 S36R^>" + "<S22L^ S22 S22R^ t^ S23L^ S23 S23R^>" <->{5E-05}{26.0} "<S22L^ S22 S22R^>[t^ S23L^ S23 S23R^]:<S23L^ S23 S23R^>[t^]<S36L^ S36 S36R^>" |
+"<S22L^ S22 S22R^>[t^ S23L^ S23 S23R^]:<S23L^ S23 S23R^>[t^]<S36L^ S36 S36R^>" <->{26.0}{5E-05} "<S22L^ S22 S22R^>[t^ S23L^ S23 S23R^]{t^*}" + "<S23L^ S23 S23R^ t^ S36L^ S36 S36R^>" |
+"{t^*}[S36L^ S36 S36R^ t^]<S37L^ S37 S37R^>" + "<S23L^ S23 S23R^ t^ S36L^ S36 S36R^>" <->{5E-05}{26.0} "<S23L^ S23 S23R^>[t^ S36L^ S36 S36R^]:<S36L^ S36 S36R^>[t^]<S37L^ S37 S37R^>" |
+"<S23L^ S23 S23R^>[t^ S36L^ S36 S36R^]:<S36L^ S36 S36R^>[t^]<S37L^ S37 S37R^>" <->{26.0}{5E-05} "<S23L^ S23 S23R^>[t^ S36L^ S36 S36R^]{t^*}" + "<S36L^ S36 S36R^ t^ S37L^ S37 S37R^>" |
+"{t^*}[S37L^ S37 S37R^ t^]<S46L^ S46 S46R^>" + "<S36L^ S36 S36R^ t^ S37L^ S37 S37R^>" <->{5E-05}{26.0} "<S36L^ S36 S36R^>[t^ S37L^ S37 S37R^]:<S37L^ S37 S37R^>[t^]<S46L^ S46 S46R^>" |
+"<S36L^ S36 S36R^>[t^ S37L^ S37 S37R^]:<S37L^ S37 S37R^>[t^]<S46L^ S46 S46R^>" <->{26.0}{5E-05} "<S36L^ S36 S36R^>[t^ S37L^ S37 S37R^]{t^*}" + "<S37L^ S37 S37R^ t^ S46L^ S46 S46R^>" |
+"{t^*}[S46L^ S46 S46R^ t^]<S47L^ S47 S47R^>" + "<S37L^ S37 S37R^ t^ S46L^ S46 S46R^>" <->{5E-05}{26.0} "<S37L^ S37 S37R^>[t^ S46L^ S46 S46R^]:<S46L^ S46 S46R^>[t^]<S47L^ S47 S47R^>" |
+"<S37L^ S37 S37R^>[t^ S46L^ S46 S46R^]:<S46L^ S46 S46R^>[t^]<S47L^ S47 S47R^>" <->{26.0}{5E-05} "<S37L^ S37 S37R^>[t^ S46L^ S46 S46R^]{t^*}" + "<S46L^ S46 S46R^ t^ S47L^ S47 S47R^>" |
+"{t^*}[S47L^ S47 S47R^ t^]<S54L^ S54 S54R^>" + "<S46L^ S46 S46R^ t^ S47L^ S47 S47R^>" <->{5E-05}{26.0} "<S46L^ S46 S46R^>[t^ S47L^ S47 S47R^]:<S47L^ S47 S47R^>[t^]<S54L^ S54 S54R^>" |
+"{t^*}[S54L^ S54 S54R^]<y1_1>" + "<S47L^ S47 S47R^ t^ S54L^ S54 S54R^>" ->{5E-05} "<S47L^ S47 S47R^>[t^ S54L^ S54 S54R^]" + "<S54L^ S54 S54R^ y1_1>" |
+"<S46L^ S46 S46R^>[t^ S47L^ S47 S47R^]:<S47L^ S47 S47R^>[t^]<S54L^ S54 S54R^>" <->{26.0}{5E-05} "<S46L^ S46 S46R^>[t^ S47L^ S47 S47R^]{t^*}" + "<S47L^ S47 S47R^ t^ S54L^ S54 S54R^>" |
+"{t^*}[S23L^ S23 S23R^ t^]<S42L^ S42 S42R^>" + "<S22L^ S22 S22R^ t^ S23L^ S23 S23R^>" <->{5E-05}{26.0} "<S22L^ S22 S22R^>[t^ S23L^ S23 S23R^]:<S23L^ S23 S23R^>[t^]<S42L^ S42 S42R^>" |
+"<S22L^ S22 S22R^>[t^ S23L^ S23 S23R^]:<S23L^ S23 S23R^>[t^]<S42L^ S42 S42R^>" <->{26.0}{5E-05} "<S22L^ S22 S22R^>[t^ S23L^ S23 S23R^]{t^*}" + "<S23L^ S23 S23R^ t^ S42L^ S42 S42R^>" |
+"{t^*}[S42L^ S42 S42R^ t^]<S43L^ S43 S43R^>" + "<S23L^ S23 S23R^ t^ S42L^ S42 S42R^>" <->{5E-05}{26.0} "<S23L^ S23 S23R^>[t^ S42L^ S42 S42R^]:<S42L^ S42 S42R^>[t^]<S43L^ S43 S43R^>" |
+"<S23L^ S23 S23R^>[t^ S42L^ S42 S42R^]:<S42L^ S42 S42R^>[t^]<S43L^ S43 S43R^>" <->{26.0}{5E-05} "<S23L^ S23 S23R^>[t^ S42L^ S42 S42R^]{t^*}" + "<S42L^ S42 S42R^ t^ S43L^ S43 S43R^>" |
+"{t^*}[S43L^ S43 S43R^ t^]<S44L^ S44 S44R^>" + "<S42L^ S42 S42R^ t^ S43L^ S43 S43R^>" <->{5E-05}{26.0} "<S42L^ S42 S42R^>[t^ S43L^ S43 S43R^]:<S43L^ S43 S43R^>[t^]<S44L^ S44 S44R^>" |
+"<S42L^ S42 S42R^>[t^ S43L^ S43 S43R^]:<S43L^ S43 S43R^>[t^]<S44L^ S44 S44R^>" <->{26.0}{5E-05} "<S42L^ S42 S42R^>[t^ S43L^ S43 S43R^]{t^*}" + "<S43L^ S43 S43R^ t^ S44L^ S44 S44R^>" |
+"{t^*}[S44L^ S44 S44R^ t^]<S45L^ S45 S45R^>" + "<S43L^ S43 S43R^ t^ S44L^ S44 S44R^>" <->{5E-05}{26.0} "<S43L^ S43 S43R^>[t^ S44L^ S44 S44R^]:<S44L^ S44 S44R^>[t^]<S45L^ S45 S45R^>" |
+"<S43L^ S43 S43R^>[t^ S44L^ S44 S44R^]:<S44L^ S44 S44R^>[t^]<S45L^ S45 S45R^>" <->{26.0}{5E-05} "<S43L^ S43 S43R^>[t^ S44L^ S44 S44R^]{t^*}" + "<S44L^ S44 S44R^ t^ S45L^ S45 S45R^>" |
+"{t^*}[S45L^ S45 S45R^ t^]<S52L^ S52 S52R^>" + "<S44L^ S44 S44R^ t^ S45L^ S45 S45R^>" <->{5E-05}{26.0} "<S44L^ S44 S44R^>[t^ S45L^ S45 S45R^]:<S45L^ S45 S45R^>[t^]<S52L^ S52 S52R^>" |
+"{t^*}[S52L^ S52 S52R^]<y1_0>" + "<S45L^ S45 S45R^ t^ S52L^ S52 S52R^>" ->{5E-05} "<S45L^ S45 S45R^>[t^ S52L^ S52 S52R^]" + "<S52L^ S52 S52R^ y1_0>" |
+"<S44L^ S44 S44R^>[t^ S45L^ S45 S45R^]:<S45L^ S45 S45R^>[t^]<S52L^ S52 S52R^>" <->{26.0}{5E-05} "<S44L^ S44 S44R^>[t^ S45L^ S45 S45R^]{t^*}" + "<S45L^ S45 S45R^ t^ S52L^ S52 S52R^>" |
+"{t^*}[S20L^ S20 S20R^ t^]<S21L^ S21 S21R^>" + "<S7L^ S7 S7R^ t^ S20L^ S20 S20R^>" <->{5E-05}{26.0} "<S7L^ S7 S7R^>[t^ S20L^ S20 S20R^]:<S20L^ S20 S20R^>[t^]<S21L^ S21 S21R^>" |
+"<S7L^ S7 S7R^>[t^ S20L^ S20 S20R^]:<S20L^ S20 S20R^>[t^]<S21L^ S21 S21R^>" <->{26.0}{5E-05} "<S7L^ S7 S7R^>[t^ S20L^ S20 S20R^]{t^*}" + "<S20L^ S20 S20R^ t^ S21L^ S21 S21R^>" |
+"{t^*}[S21L^ S21 S21R^ t^]<S38L^ S38 S38R^>" + "<S20L^ S20 S20R^ t^ S21L^ S21 S21R^>" <->{5E-05}{26.0} "<S20L^ S20 S20R^>[t^ S21L^ S21 S21R^]:<S21L^ S21 S21R^>[t^]<S38L^ S38 S38R^>" |
+"<S20L^ S20 S20R^>[t^ S21L^ S21 S21R^]:<S21L^ S21 S21R^>[t^]<S38L^ S38 S38R^>" <->{26.0}{5E-05} "<S20L^ S20 S20R^>[t^ S21L^ S21 S21R^]{t^*}" + "<S21L^ S21 S21R^ t^ S38L^ S38 S38R^>" |
+"{t^*}[S38L^ S38 S38R^ t^]<S39L^ S39 S39R^>" + "<S21L^ S21 S21R^ t^ S38L^ S38 S38R^>" <->{5E-05}{26.0} "<S21L^ S21 S21R^>[t^ S38L^ S38 S38R^]:<S38L^ S38 S38R^>[t^]<S39L^ S39 S39R^>" |
+"<S21L^ S21 S21R^>[t^ S38L^ S38 S38R^]:<S38L^ S38 S38R^>[t^]<S39L^ S39 S39R^>" <->{26.0}{5E-05} "<S21L^ S21 S21R^>[t^ S38L^ S38 S38R^]{t^*}" + "<S38L^ S38 S38R^ t^ S39L^ S39 S39R^>" |
+"{t^*}[S39L^ S39 S39R^ t^]<S44L^ S44 S44R^>" + "<S38L^ S38 S38R^ t^ S39L^ S39 S39R^>" <->{5E-05}{26.0} "<S38L^ S38 S38R^>[t^ S39L^ S39 S39R^]:<S39L^ S39 S39R^>[t^]<S44L^ S44 S44R^>" |
+"<S38L^ S38 S38R^>[t^ S39L^ S39 S39R^]:<S39L^ S39 S39R^>[t^]<S44L^ S44 S44R^>" <->{26.0}{5E-05} "<S38L^ S38 S38R^>[t^ S39L^ S39 S39R^]{t^*}" + "<S39L^ S39 S39R^ t^ S44L^ S44 S44R^>" |
+"{t^*}[S44L^ S44 S44R^ t^]<S45L^ S45 S45R^>" + "<S39L^ S39 S39R^ t^ S44L^ S44 S44R^>" <->{5E-05}{26.0} "<S39L^ S39 S39R^>[t^ S44L^ S44 S44R^]:<S44L^ S44 S44R^>[t^]<S45L^ S45 S45R^>" |
+"<S39L^ S39 S39R^>[t^ S44L^ S44 S44R^]:<S44L^ S44 S44R^>[t^]<S45L^ S45 S45R^>" <->{26.0}{5E-05} "<S39L^ S39 S39R^>[t^ S44L^ S44 S44R^]{t^*}" + "<S44L^ S44 S44R^ t^ S45L^ S45 S45R^>" |
+"{t^*}[S21L^ S21 S21R^ t^]<S40L^ S40 S40R^>" + "<S20L^ S20 S20R^ t^ S21L^ S21 S21R^>" <->{5E-05}{26.0} "<S20L^ S20 S20R^>[t^ S21L^ S21 S21R^]:<S21L^ S21 S21R^>[t^]<S40L^ S40 S40R^>" |
+"<S20L^ S20 S20R^>[t^ S21L^ S21 S21R^]:<S21L^ S21 S21R^>[t^]<S40L^ S40 S40R^>" <->{26.0}{5E-05} "<S20L^ S20 S20R^>[t^ S21L^ S21 S21R^]{t^*}" + "<S21L^ S21 S21R^ t^ S40L^ S40 S40R^>" |
+"{t^*}[S40L^ S40 S40R^ t^]<S41L^ S41 S41R^>" + "<S21L^ S21 S21R^ t^ S40L^ S40 S40R^>" <->{5E-05}{26.0} "<S21L^ S21 S21R^>[t^ S40L^ S40 S40R^]:<S40L^ S40 S40R^>[t^]<S41L^ S41 S41R^>" |
+"<S21L^ S21 S21R^>[t^ S40L^ S40 S40R^]:<S40L^ S40 S40R^>[t^]<S41L^ S41 S41R^>" <->{26.0}{5E-05} "<S21L^ S21 S21R^>[t^ S40L^ S40 S40R^]{t^*}" + "<S40L^ S40 S40R^ t^ S41L^ S41 S41R^>" |
+"{t^*}[S41L^ S41 S41R^ t^]<S46L^ S46 S46R^>" + "<S40L^ S40 S40R^ t^ S41L^ S41 S41R^>" <->{5E-05}{26.0} "<S40L^ S40 S40R^>[t^ S41L^ S41 S41R^]:<S41L^ S41 S41R^>[t^]<S46L^ S46 S46R^>" |
+"<S40L^ S40 S40R^>[t^ S41L^ S41 S41R^]:<S41L^ S41 S41R^>[t^]<S46L^ S46 S46R^>" <->{26.0}{5E-05} "<S40L^ S40 S40R^>[t^ S41L^ S41 S41R^]{t^*}" + "<S41L^ S41 S41R^ t^ S46L^ S46 S46R^>" |
+"{t^*}[S46L^ S46 S46R^ t^]<S47L^ S47 S47R^>" + "<S41L^ S41 S41R^ t^ S46L^ S46 S46R^>" <->{5E-05}{26.0} "<S41L^ S41 S41R^>[t^ S46L^ S46 S46R^]:<S46L^ S46 S46R^>[t^]<S47L^ S47 S47R^>" |
+"<S41L^ S41 S41R^>[t^ S46L^ S46 S46R^]:<S46L^ S46 S46R^>[t^]<S47L^ S47 S47R^>" <->{26.0}{5E-05} "<S41L^ S41 S41R^>[t^ S46L^ S46 S46R^]{t^*}" + "<S46L^ S46 S46R^ t^ S47L^ S47 S47R^>" |
+"{t^*}[S22L^ S22 S22R^ t^]<S23L^ S23 S23R^>" + "<S9L^ S9 S9R^ t^ S22L^ S22 S22R^>" <->{5E-05}{26.0} "<S9L^ S9 S9R^>[t^ S22L^ S22 S22R^]:<S22L^ S22 S22R^>[t^]<S23L^ S23 S23R^>" |
+"<S9L^ S9 S9R^>[t^ S22L^ S22 S22R^]:<S22L^ S22 S22R^>[t^]<S23L^ S23 S23R^>" <->{26.0}{5E-05} "<S9L^ S9 S9R^>[t^ S22L^ S22 S22R^]{t^*}" + "<S22L^ S22 S22R^ t^ S23L^ S23 S23R^>" |
+"{t^*}[S20L^ S20 S20R^ t^]<S21L^ S21 S21R^>" + "<S11L^ S11 S11R^ t^ S20L^ S20 S20R^>" <->{5E-05}{26.0} "<S11L^ S11 S11R^>[t^ S20L^ S20 S20R^]:<S20L^ S20 S20R^>[t^]<S21L^ S21 S21R^>" |
+"<S11L^ S11 S11R^>[t^ S20L^ S20 S20R^]:<S20L^ S20 S20R^>[t^]<S21L^ S21 S21R^>" <->{26.0}{5E-05} "<S11L^ S11 S11R^>[t^ S20L^ S20 S20R^]{t^*}" + "<S20L^ S20 S20R^ t^ S21L^ S21 S21R^>" |
+"{t^*}[S13L^ S13 S13R^ t^]<S28L^ S28 S28R^>" + "<S12L^ S12 S12R^ t^ S13L^ S13 S13R^>" <->{5E-05}{26.0} "<S12L^ S12 S12R^>[t^ S13L^ S13 S13R^]:<S13L^ S13 S13R^>[t^]<S28L^ S28 S28R^>" |
+"<S12L^ S12 S12R^>[t^ S13L^ S13 S13R^]:<S13L^ S13 S13R^>[t^]<S28L^ S28 S28R^>" <->{26.0}{5E-05} "<S12L^ S12 S12R^>[t^ S13L^ S13 S13R^]{t^*}" + "<S13L^ S13 S13R^ t^ S28L^ S28 S28R^>" |
+"{t^*}[S28L^ S28 S28R^ t^]<S29L^ S29 S29R^>" + "<S13L^ S13 S13R^ t^ S28L^ S28 S28R^>" <->{5E-05}{26.0} "<S13L^ S13 S13R^>[t^ S28L^ S28 S28R^]:<S28L^ S28 S28R^>[t^]<S29L^ S29 S29R^>" |
+"<S13L^ S13 S13R^>[t^ S28L^ S28 S28R^]:<S28L^ S28 S28R^>[t^]<S29L^ S29 S29R^>" <->{26.0}{5E-05} "<S13L^ S13 S13R^>[t^ S28L^ S28 S28R^]{t^*}" + "<S28L^ S28 S28R^ t^ S29L^ S29 S29R^>" |
+"{t^*}[S29L^ S29 S29R^ t^]<S40L^ S40 S40R^>" + "<S28L^ S28 S28R^ t^ S29L^ S29 S29R^>" <->{5E-05}{26.0} "<S28L^ S28 S28R^>[t^ S29L^ S29 S29R^]:<S29L^ S29 S29R^>[t^]<S40L^ S40 S40R^>" |
+"<S28L^ S28 S28R^>[t^ S29L^ S29 S29R^]:<S29L^ S29 S29R^>[t^]<S40L^ S40 S40R^>" <->{26.0}{5E-05} "<S28L^ S28 S28R^>[t^ S29L^ S29 S29R^]{t^*}" + "<S29L^ S29 S29R^ t^ S40L^ S40 S40R^>" |
+"{t^*}[S40L^ S40 S40R^ t^]<S41L^ S41 S41R^>" + "<S29L^ S29 S29R^ t^ S40L^ S40 S40R^>" <->{5E-05}{26.0} "<S29L^ S29 S29R^>[t^ S40L^ S40 S40R^]:<S40L^ S40 S40R^>[t^]<S41L^ S41 S41R^>" |
+"<S29L^ S29 S29R^>[t^ S40L^ S40 S40R^]:<S40L^ S40 S40R^>[t^]<S41L^ S41 S41R^>" <->{26.0}{5E-05} "<S29L^ S29 S29R^>[t^ S40L^ S40 S40R^]{t^*}" + "<S40L^ S40 S40R^ t^ S41L^ S41 S41R^>" |
+"{t^*}[S13L^ S13 S13R^ t^]<S32L^ S32 S32R^>" + "<S12L^ S12 S12R^ t^ S13L^ S13 S13R^>" <->{5E-05}{26.0} "<S12L^ S12 S12R^>[t^ S13L^ S13 S13R^]:<S13L^ S13 S13R^>[t^]<S32L^ S32 S32R^>" |
+"<S12L^ S12 S12R^>[t^ S13L^ S13 S13R^]:<S13L^ S13 S13R^>[t^]<S32L^ S32 S32R^>" <->{26.0}{5E-05} "<S12L^ S12 S12R^>[t^ S13L^ S13 S13R^]{t^*}" + "<S13L^ S13 S13R^ t^ S32L^ S32 S32R^>" |
+"{t^*}[S32L^ S32 S32R^ t^]<S33L^ S33 S33R^>" + "<S13L^ S13 S13R^ t^ S32L^ S32 S32R^>" <->{5E-05}{26.0} "<S13L^ S13 S13R^>[t^ S32L^ S32 S32R^]:<S32L^ S32 S32R^>[t^]<S33L^ S33 S33R^>" |
+"<S13L^ S13 S13R^>[t^ S32L^ S32 S32R^]:<S32L^ S32 S32R^>[t^]<S33L^ S33 S33R^>" <->{26.0}{5E-05} "<S13L^ S13 S13R^>[t^ S32L^ S32 S32R^]{t^*}" + "<S32L^ S32 S32R^ t^ S33L^ S33 S33R^>" |
+"{t^*}[S33L^ S33 S33R^ t^]<S48L^ S48 S48R^>" + "<S32L^ S32 S32R^ t^ S33L^ S33 S33R^>" <->{5E-05}{26.0} "<S32L^ S32 S32R^>[t^ S33L^ S33 S33R^]:<S33L^ S33 S33R^>[t^]<S48L^ S48 S48R^>" |
+"{t^*}[S48L^ S48 S48R^]<y2_0>" + "<S33L^ S33 S33R^ t^ S48L^ S48 S48R^>" ->{5E-05} "<S33L^ S33 S33R^>[t^ S48L^ S48 S48R^]" + "<S48L^ S48 S48R^ y2_0>" |
+"<S32L^ S32 S32R^>[t^ S33L^ S33 S33R^]:<S33L^ S33 S33R^>[t^]<S48L^ S48 S48R^>" <->{26.0}{5E-05} "<S32L^ S32 S32R^>[t^ S33L^ S33 S33R^]{t^*}" + "<S33L^ S33 S33R^ t^ S48L^ S48 S48R^>" |
+"{t^*}[S13L^ S13 S13R^ t^]<S38L^ S38 S38R^>" + "<S12L^ S12 S12R^ t^ S13L^ S13 S13R^>" <->{5E-05}{26.0} "<S12L^ S12 S12R^>[t^ S13L^ S13 S13R^]:<S13L^ S13 S13R^>[t^]<S38L^ S38 S38R^>" |
+"<S12L^ S12 S12R^>[t^ S13L^ S13 S13R^]:<S13L^ S13 S13R^>[t^]<S38L^ S38 S38R^>" <->{26.0}{5E-05} "<S12L^ S12 S12R^>[t^ S13L^ S13 S13R^]{t^*}" + "<S13L^ S13 S13R^ t^ S38L^ S38 S38R^>" |
+"{t^*}[S38L^ S38 S38R^ t^]<S39L^ S39 S39R^>" + "<S13L^ S13 S13R^ t^ S38L^ S38 S38R^>" <->{5E-05}{26.0} "<S13L^ S13 S13R^>[t^ S38L^ S38 S38R^]:<S38L^ S38 S38R^>[t^]<S39L^ S39 S39R^>" |
+"<S13L^ S13 S13R^>[t^ S38L^ S38 S38R^]:<S38L^ S38 S38R^>[t^]<S39L^ S39 S39R^>" <->{26.0}{5E-05} "<S13L^ S13 S13R^>[t^ S38L^ S38 S38R^]{t^*}" + "<S38L^ S38 S38R^ t^ S39L^ S39 S39R^>" |
+"{t^*}[S15L^ S15 S15R^ t^]<S30L^ S30 S30R^>" + "<S14L^ S14 S14R^ t^ S15L^ S15 S15R^>" <->{5E-05}{26.0} "<S14L^ S14 S14R^>[t^ S15L^ S15 S15R^]:<S15L^ S15 S15R^>[t^]<S30L^ S30 S30R^>" |
+"<S14L^ S14 S14R^>[t^ S15L^ S15 S15R^]:<S15L^ S15 S15R^>[t^]<S30L^ S30 S30R^>" <->{26.0}{5E-05} "<S14L^ S14 S14R^>[t^ S15L^ S15 S15R^]{t^*}" + "<S15L^ S15 S15R^ t^ S30L^ S30 S30R^>" |
+"{t^*}[S30L^ S30 S30R^ t^]<S31L^ S31 S31R^>" + "<S15L^ S15 S15R^ t^ S30L^ S30 S30R^>" <->{5E-05}{26.0} "<S15L^ S15 S15R^>[t^ S30L^ S30 S30R^]:<S30L^ S30 S30R^>[t^]<S31L^ S31 S31R^>" |
+"<S15L^ S15 S15R^>[t^ S30L^ S30 S30R^]:<S30L^ S30 S30R^>[t^]<S31L^ S31 S31R^>" <->{26.0}{5E-05} "<S15L^ S15 S15R^>[t^ S30L^ S30 S30R^]{t^*}" + "<S30L^ S30 S30R^ t^ S31L^ S31 S31R^>" |
+"{t^*}[S31L^ S31 S31R^ t^]<S42L^ S42 S42R^>" + "<S30L^ S30 S30R^ t^ S31L^ S31 S31R^>" <->{5E-05}{26.0} "<S30L^ S30 S30R^>[t^ S31L^ S31 S31R^]:<S31L^ S31 S31R^>[t^]<S42L^ S42 S42R^>" |
+"<S30L^ S30 S30R^>[t^ S31L^ S31 S31R^]:<S31L^ S31 S31R^>[t^]<S42L^ S42 S42R^>" <->{26.0}{5E-05} "<S30L^ S30 S30R^>[t^ S31L^ S31 S31R^]{t^*}" + "<S31L^ S31 S31R^ t^ S42L^ S42 S42R^>" |
+"{t^*}[S42L^ S42 S42R^ t^]<S43L^ S43 S43R^>" + "<S31L^ S31 S31R^ t^ S42L^ S42 S42R^>" <->{5E-05}{26.0} "<S31L^ S31 S31R^>[t^ S42L^ S42 S42R^]:<S42L^ S42 S42R^>[t^]<S43L^ S43 S43R^>" |
+"<S31L^ S31 S31R^>[t^ S42L^ S42 S42R^]:<S42L^ S42 S42R^>[t^]<S43L^ S43 S43R^>" <->{26.0}{5E-05} "<S31L^ S31 S31R^>[t^ S42L^ S42 S42R^]{t^*}" + "<S42L^ S42 S42R^ t^ S43L^ S43 S43R^>" |
+"{t^*}[S15L^ S15 S15R^ t^]<S34L^ S34 S34R^>" + "<S14L^ S14 S14R^ t^ S15L^ S15 S15R^>" <->{5E-05}{26.0} "<S14L^ S14 S14R^>[t^ S15L^ S15 S15R^]:<S15L^ S15 S15R^>[t^]<S34L^ S34 S34R^>" |
+"<S14L^ S14 S14R^>[t^ S15L^ S15 S15R^]:<S15L^ S15 S15R^>[t^]<S34L^ S34 S34R^>" <->{26.0}{5E-05} "<S14L^ S14 S14R^>[t^ S15L^ S15 S15R^]{t^*}" + "<S15L^ S15 S15R^ t^ S34L^ S34 S34R^>" |
+"{t^*}[S34L^ S34 S34R^ t^]<S35L^ S35 S35R^>" + "<S15L^ S15 S15R^ t^ S34L^ S34 S34R^>" <->{5E-05}{26.0} "<S15L^ S15 S15R^>[t^ S34L^ S34 S34R^]:<S34L^ S34 S34R^>[t^]<S35L^ S35 S35R^>" |
+"<S15L^ S15 S15R^>[t^ S34L^ S34 S34R^]:<S34L^ S34 S34R^>[t^]<S35L^ S35 S35R^>" <->{26.0}{5E-05} "<S15L^ S15 S15R^>[t^ S34L^ S34 S34R^]{t^*}" + "<S34L^ S34 S34R^ t^ S35L^ S35 S35R^>" |
+"{t^*}[S35L^ S35 S35R^ t^]<S50L^ S50 S50R^>" + "<S34L^ S34 S34R^ t^ S35L^ S35 S35R^>" <->{5E-05}{26.0} "<S34L^ S34 S34R^>[t^ S35L^ S35 S35R^]:<S35L^ S35 S35R^>[t^]<S50L^ S50 S50R^>" |
+"{t^*}[S50L^ S50 S50R^]<y2_1>" + "<S35L^ S35 S35R^ t^ S50L^ S50 S50R^>" ->{5E-05} "<S35L^ S35 S35R^>[t^ S50L^ S50 S50R^]" + "<S50L^ S50 S50R^ y2_1>" |
+"<S34L^ S34 S34R^>[t^ S35L^ S35 S35R^]:<S35L^ S35 S35R^>[t^]<S50L^ S50 S50R^>" <->{26.0}{5E-05} "<S34L^ S34 S34R^>[t^ S35L^ S35 S35R^]{t^*}" + "<S35L^ S35 S35R^ t^ S50L^ S50 S50R^>" |
+"{t^*}[S15L^ S15 S15R^ t^]<S36L^ S36 S36R^>" + "<S14L^ S14 S14R^ t^ S15L^ S15 S15R^>" <->{5E-05}{26.0} "<S14L^ S14 S14R^>[t^ S15L^ S15 S15R^]:<S15L^ S15 S15R^>[t^]<S36L^ S36 S36R^>" |
+"<S14L^ S14 S14R^>[t^ S15L^ S15 S15R^]:<S15L^ S15 S15R^>[t^]<S36L^ S36 S36R^>" <->{26.0}{5E-05} "<S14L^ S14 S14R^>[t^ S15L^ S15 S15R^]{t^*}" + "<S15L^ S15 S15R^ t^ S36L^ S36 S36R^>" |
+"{t^*}[S36L^ S36 S36R^ t^]<S37L^ S37 S37R^>" + "<S15L^ S15 S15R^ t^ S36L^ S36 S36R^>" <->{5E-05}{26.0} "<S15L^ S15 S15R^>[t^ S36L^ S36 S36R^]:<S36L^ S36 S36R^>[t^]<S37L^ S37 S37R^>" |
+"<S15L^ S15 S15R^>[t^ S36L^ S36 S36R^]:<S36L^ S36 S36R^>[t^]<S37L^ S37 S37R^>" <->{26.0}{5E-05} "<S15L^ S15 S15R^>[t^ S36L^ S36 S36R^]{t^*}" + "<S36L^ S36 S36R^ t^ S37L^ S37 S37R^>" |
+"{t^*}[S17L^ S17 S17R^ t^]<S30L^ S30 S30R^>" + "<S16L^ S16 S16R^ t^ S17L^ S17 S17R^>" <->{5E-05}{26.0} "<S16L^ S16 S16R^>[t^ S17L^ S17 S17R^]:<S17L^ S17 S17R^>[t^]<S30L^ S30 S30R^>" |
+"<S16L^ S16 S16R^>[t^ S17L^ S17 S17R^]:<S17L^ S17 S17R^>[t^]<S30L^ S30 S30R^>" <->{26.0}{5E-05} "<S16L^ S16 S16R^>[t^ S17L^ S17 S17R^]{t^*}" + "<S17L^ S17 S17R^ t^ S30L^ S30 S30R^>" |
+"{t^*}[S30L^ S30 S30R^ t^]<S31L^ S31 S31R^>" + "<S17L^ S17 S17R^ t^ S30L^ S30 S30R^>" <->{5E-05}{26.0} "<S17L^ S17 S17R^>[t^ S30L^ S30 S30R^]:<S30L^ S30 S30R^>[t^]<S31L^ S31 S31R^>" |
+"<S17L^ S17 S17R^>[t^ S30L^ S30 S30R^]:<S30L^ S30 S30R^>[t^]<S31L^ S31 S31R^>" <->{26.0}{5E-05} "<S17L^ S17 S17R^>[t^ S30L^ S30 S30R^]{t^*}" + "<S30L^ S30 S30R^ t^ S31L^ S31 S31R^>" |
+"{t^*}[S17L^ S17 S17R^ t^]<S32L^ S32 S32R^>" + "<S16L^ S16 S16R^ t^ S17L^ S17 S17R^>" <->{5E-05}{26.0} "<S16L^ S16 S16R^>[t^ S17L^ S17 S17R^]:<S17L^ S17 S17R^>[t^]<S32L^ S32 S32R^>" |
+"<S16L^ S16 S16R^>[t^ S17L^ S17 S17R^]:<S17L^ S17 S17R^>[t^]<S32L^ S32 S32R^>" <->{26.0}{5E-05} "<S16L^ S16 S16R^>[t^ S17L^ S17 S17R^]{t^*}" + "<S17L^ S17 S17R^ t^ S32L^ S32 S32R^>" |
+"{t^*}[S32L^ S32 S32R^ t^]<S33L^ S33 S33R^>" + "<S17L^ S17 S17R^ t^ S32L^ S32 S32R^>" <->{5E-05}{26.0} "<S17L^ S17 S17R^>[t^ S32L^ S32 S32R^]:<S32L^ S32 S32R^>[t^]<S33L^ S33 S33R^>" |
+"<S17L^ S17 S17R^>[t^ S32L^ S32 S32R^]:<S32L^ S32 S32R^>[t^]<S33L^ S33 S33R^>" <->{26.0}{5E-05} "<S17L^ S17 S17R^>[t^ S32L^ S32 S32R^]{t^*}" + "<S32L^ S32 S32R^ t^ S33L^ S33 S33R^>" |
+"{t^*}[S17L^ S17 S17R^ t^]<S38L^ S38 S38R^>" + "<S16L^ S16 S16R^ t^ S17L^ S17 S17R^>" <->{5E-05}{26.0} "<S16L^ S16 S16R^>[t^ S17L^ S17 S17R^]:<S17L^ S17 S17R^>[t^]<S38L^ S38 S38R^>" |
+"<S16L^ S16 S16R^>[t^ S17L^ S17 S17R^]:<S17L^ S17 S17R^>[t^]<S38L^ S38 S38R^>" <->{26.0}{5E-05} "<S16L^ S16 S16R^>[t^ S17L^ S17 S17R^]{t^*}" + "<S17L^ S17 S17R^ t^ S38L^ S38 S38R^>" |
+"{t^*}[S38L^ S38 S38R^ t^]<S39L^ S39 S39R^>" + "<S17L^ S17 S17R^ t^ S38L^ S38 S38R^>" <->{5E-05}{26.0} "<S17L^ S17 S17R^>[t^ S38L^ S38 S38R^]:<S38L^ S38 S38R^>[t^]<S39L^ S39 S39R^>" |
+"<S17L^ S17 S17R^>[t^ S38L^ S38 S38R^]:<S38L^ S38 S38R^>[t^]<S39L^ S39 S39R^>" <->{26.0}{5E-05} "<S17L^ S17 S17R^>[t^ S38L^ S38 S38R^]{t^*}" + "<S38L^ S38 S38R^ t^ S39L^ S39 S39R^>" |
+"{t^*}[S19L^ S19 S19R^ t^]<S28L^ S28 S28R^>" + "<S18L^ S18 S18R^ t^ S19L^ S19 S19R^>" <->{5E-05}{26.0} "<S18L^ S18 S18R^>[t^ S19L^ S19 S19R^]:<S19L^ S19 S19R^>[t^]<S28L^ S28 S28R^>" |
+"<S18L^ S18 S18R^>[t^ S19L^ S19 S19R^]:<S19L^ S19 S19R^>[t^]<S28L^ S28 S28R^>" <->{26.0}{5E-05} "<S18L^ S18 S18R^>[t^ S19L^ S19 S19R^]{t^*}" + "<S19L^ S19 S19R^ t^ S28L^ S28 S28R^>" |
+"{t^*}[S28L^ S28 S28R^ t^]<S29L^ S29 S29R^>" + "<S19L^ S19 S19R^ t^ S28L^ S28 S28R^>" <->{5E-05}{26.0} "<S19L^ S19 S19R^>[t^ S28L^ S28 S28R^]:<S28L^ S28 S28R^>[t^]<S29L^ S29 S29R^>" |
+"<S19L^ S19 S19R^>[t^ S28L^ S28 S28R^]:<S28L^ S28 S28R^>[t^]<S29L^ S29 S29R^>" <->{26.0}{5E-05} "<S19L^ S19 S19R^>[t^ S28L^ S28 S28R^]{t^*}" + "<S28L^ S28 S28R^ t^ S29L^ S29 S29R^>" |
+"{t^*}[S19L^ S19 S19R^ t^]<S34L^ S34 S34R^>" + "<S18L^ S18 S18R^ t^ S19L^ S19 S19R^>" <->{5E-05}{26.0} "<S18L^ S18 S18R^>[t^ S19L^ S19 S19R^]:<S19L^ S19 S19R^>[t^]<S34L^ S34 S34R^>" |
+"<S18L^ S18 S18R^>[t^ S19L^ S19 S19R^]:<S19L^ S19 S19R^>[t^]<S34L^ S34 S34R^>" <->{26.0}{5E-05} "<S18L^ S18 S18R^>[t^ S19L^ S19 S19R^]{t^*}" + "<S19L^ S19 S19R^ t^ S34L^ S34 S34R^>" |
+"{t^*}[S34L^ S34 S34R^ t^]<S35L^ S35 S35R^>" + "<S19L^ S19 S19R^ t^ S34L^ S34 S34R^>" <->{5E-05}{26.0} "<S19L^ S19 S19R^>[t^ S34L^ S34 S34R^]:<S34L^ S34 S34R^>[t^]<S35L^ S35 S35R^>" |
+"<S19L^ S19 S19R^>[t^ S34L^ S34 S34R^]:<S34L^ S34 S34R^>[t^]<S35L^ S35 S35R^>" <->{26.0}{5E-05} "<S19L^ S19 S19R^>[t^ S34L^ S34 S34R^]{t^*}" + "<S34L^ S34 S34R^ t^ S35L^ S35 S35R^>" |
+"{t^*}[S19L^ S19 S19R^ t^]<S36L^ S36 S36R^>" + "<S18L^ S18 S18R^ t^ S19L^ S19 S19R^>" <->{5E-05}{26.0} "<S18L^ S18 S18R^>[t^ S19L^ S19 S19R^]:<S19L^ S19 S19R^>[t^]<S36L^ S36 S36R^>" |
+"<S18L^ S18 S18R^>[t^ S19L^ S19 S19R^]:<S19L^ S19 S19R^>[t^]<S36L^ S36 S36R^>" <->{26.0}{5E-05} "<S18L^ S18 S18R^>[t^ S19L^ S19 S19R^]{t^*}" + "<S19L^ S19 S19R^ t^ S36L^ S36 S36R^>" |
+"{t^*}[S36L^ S36 S36R^ t^]<S37L^ S37 S37R^>" + "<S19L^ S19 S19R^ t^ S36L^ S36 S36R^>" <->{5E-05}{26.0} "<S19L^ S19 S19R^>[t^ S36L^ S36 S36R^]:<S36L^ S36 S36R^>[t^]<S37L^ S37 S37R^>" |
+"<S19L^ S19 S19R^>[t^ S36L^ S36 S36R^]:<S36L^ S36 S36R^>[t^]<S37L^ S37 S37R^>" <->{26.0}{5E-05} "<S19L^ S19 S19R^>[t^ S36L^ S36 S36R^]{t^*}" + "<S36L^ S36 S36R^ t^ S37L^ S37 S37R^>" |
+"<S20L^ S20 S20R^>[t^ S21L^ S21 S21R^]{t^*}" + "<S21L^ S21 S21R^ t^ fL^ f fR^>" <->{5E-05}{26.0} "<S20L^ S20 S20R^>[t^ S21L^ S21 S21R^]:<S21L^ S21 S21R^>[t^]<fL^ f fR^>" |
+"<S20L^ S20 S20R^>[t^ S21L^ S21 S21R^]:<S21L^ S21 S21R^>[t^]<fL^ f fR^>" <->{26.0}{5E-05} "{t^*}[S21L^ S21 S21R^ t^]<fL^ f fR^>" + "<S20L^ S20 S20R^ t^ S21L^ S21 S21R^>" |
+"<S22L^ S22 S22R^>[t^ S23L^ S23 S23R^]{t^*}" + "<S23L^ S23 S23R^ t^ fL^ f fR^>" <->{5E-05}{26.0} "<S22L^ S22 S22R^>[t^ S23L^ S23 S23R^]:<S23L^ S23 S23R^>[t^]<fL^ f fR^>" |
+"<S22L^ S22 S22R^>[t^ S23L^ S23 S23R^]:<S23L^ S23 S23R^>[t^]<fL^ f fR^>" <->{26.0}{5E-05} "{t^*}[S23L^ S23 S23R^ t^]<fL^ f fR^>" + "<S22L^ S22 S22R^ t^ S23L^ S23 S23R^>" |
+"<S28L^ S28 S28R^>[t^ S29L^ S29 S29R^]{t^*}" + "<S29L^ S29 S29R^ t^ fL^ f fR^>" <->{5E-05}{26.0} "<S28L^ S28 S28R^>[t^ S29L^ S29 S29R^]:<S29L^ S29 S29R^>[t^]<fL^ f fR^>" |
+"<S28L^ S28 S28R^>[t^ S29L^ S29 S29R^]:<S29L^ S29 S29R^>[t^]<fL^ f fR^>" <->{26.0}{5E-05} "{t^*}[S29L^ S29 S29R^ t^]<fL^ f fR^>" + "<S28L^ S28 S28R^ t^ S29L^ S29 S29R^>" |
+"<S30L^ S30 S30R^>[t^ S31L^ S31 S31R^]{t^*}" + "<S31L^ S31 S31R^ t^ fL^ f fR^>" <->{5E-05}{26.0} "<S30L^ S30 S30R^>[t^ S31L^ S31 S31R^]:<S31L^ S31 S31R^>[t^]<fL^ f fR^>" |
+"<S30L^ S30 S30R^>[t^ S31L^ S31 S31R^]:<S31L^ S31 S31R^>[t^]<fL^ f fR^>" <->{26.0}{5E-05} "{t^*}[S31L^ S31 S31R^ t^]<fL^ f fR^>" + "<S30L^ S30 S30R^ t^ S31L^ S31 S31R^>" |
+"<S32L^ S32 S32R^>[t^ S33L^ S33 S33R^]{t^*}" + "<S33L^ S33 S33R^ t^ fL^ f fR^>" <->{5E-05}{26.0} "<S32L^ S32 S32R^>[t^ S33L^ S33 S33R^]:<S33L^ S33 S33R^>[t^]<fL^ f fR^>" |
+"<S32L^ S32 S32R^>[t^ S33L^ S33 S33R^]:<S33L^ S33 S33R^>[t^]<fL^ f fR^>" <->{26.0}{5E-05} "{t^*}[S33L^ S33 S33R^ t^]<fL^ f fR^>" + "<S32L^ S32 S32R^ t^ S33L^ S33 S33R^>" |
+"<S34L^ S34 S34R^>[t^ S35L^ S35 S35R^]{t^*}" + "<S35L^ S35 S35R^ t^ fL^ f fR^>" <->{5E-05}{26.0} "<S34L^ S34 S34R^>[t^ S35L^ S35 S35R^]:<S35L^ S35 S35R^>[t^]<fL^ f fR^>" |
+"<S34L^ S34 S34R^>[t^ S35L^ S35 S35R^]:<S35L^ S35 S35R^>[t^]<fL^ f fR^>" <->{26.0}{5E-05} "{t^*}[S35L^ S35 S35R^ t^]<fL^ f fR^>" + "<S34L^ S34 S34R^ t^ S35L^ S35 S35R^>" |
+"<S36L^ S36 S36R^>[t^ S37L^ S37 S37R^]{t^*}" + "<S37L^ S37 S37R^ t^ fL^ f fR^>" <->{5E-05}{26.0} "<S36L^ S36 S36R^>[t^ S37L^ S37 S37R^]:<S37L^ S37 S37R^>[t^]<fL^ f fR^>" |
+"<S36L^ S36 S36R^>[t^ S37L^ S37 S37R^]:<S37L^ S37 S37R^>[t^]<fL^ f fR^>" <->{26.0}{5E-05} "{t^*}[S37L^ S37 S37R^ t^]<fL^ f fR^>" + "<S36L^ S36 S36R^ t^ S37L^ S37 S37R^>" |
+"<S38L^ S38 S38R^>[t^ S39L^ S39 S39R^]{t^*}" + "<S39L^ S39 S39R^ t^ fL^ f fR^>" <->{5E-05}{26.0} "<S38L^ S38 S38R^>[t^ S39L^ S39 S39R^]:<S39L^ S39 S39R^>[t^]<fL^ f fR^>" |
+"<S38L^ S38 S38R^>[t^ S39L^ S39 S39R^]:<S39L^ S39 S39R^>[t^]<fL^ f fR^>" <->{26.0}{5E-05} "{t^*}[S39L^ S39 S39R^ t^]<fL^ f fR^>" + "<S38L^ S38 S38R^ t^ S39L^ S39 S39R^>" |
+"<S40L^ S40 S40R^>[t^ S41L^ S41 S41R^]{t^*}" + "<S41L^ S41 S41R^ t^ fL^ f fR^>" <->{5E-05}{26.0} "<S40L^ S40 S40R^>[t^ S41L^ S41 S41R^]:<S41L^ S41 S41R^>[t^]<fL^ f fR^>" |
+"<S40L^ S40 S40R^>[t^ S41L^ S41 S41R^]:<S41L^ S41 S41R^>[t^]<fL^ f fR^>" <->{26.0}{5E-05} "{t^*}[S41L^ S41 S41R^ t^]<fL^ f fR^>" + "<S40L^ S40 S40R^ t^ S41L^ S41 S41R^>" |
+"<S42L^ S42 S42R^>[t^ S43L^ S43 S43R^]{t^*}" + "<S43L^ S43 S43R^ t^ fL^ f fR^>" <->{5E-05}{26.0} "<S42L^ S42 S42R^>[t^ S43L^ S43 S43R^]:<S43L^ S43 S43R^>[t^]<fL^ f fR^>" |
+"<S42L^ S42 S42R^>[t^ S43L^ S43 S43R^]:<S43L^ S43 S43R^>[t^]<fL^ f fR^>" <->{26.0}{5E-05} "{t^*}[S43L^ S43 S43R^ t^]<fL^ f fR^>" + "<S42L^ S42 S42R^ t^ S43L^ S43 S43R^>" |
+"<S44L^ S44 S44R^>[t^ S45L^ S45 S45R^]{t^*}" + "<S45L^ S45 S45R^ t^ fL^ f fR^>" <->{5E-05}{26.0} "<S44L^ S44 S44R^>[t^ S45L^ S45 S45R^]:<S45L^ S45 S45R^>[t^]<fL^ f fR^>" |
+"<S44L^ S44 S44R^>[t^ S45L^ S45 S45R^]:<S45L^ S45 S45R^>[t^]<fL^ f fR^>" <->{26.0}{5E-05} "{t^*}[S45L^ S45 S45R^ t^]<fL^ f fR^>" + "<S44L^ S44 S44R^ t^ S45L^ S45 S45R^>" |
+"<S46L^ S46 S46R^>[t^ S47L^ S47 S47R^]{t^*}" + "<S47L^ S47 S47R^ t^ fL^ f fR^>" <->{5E-05}{26.0} "<S46L^ S46 S46R^>[t^ S47L^ S47 S47R^]:<S47L^ S47 S47R^>[t^]<fL^ f fR^>" |
+"<S46L^ S46 S46R^>[t^ S47L^ S47 S47R^]:<S47L^ S47 S47R^>[t^]<fL^ f fR^>" <->{26.0}{5E-05} "{t^*}[S47L^ S47 S47R^ t^]<fL^ f fR^>" + "<S46L^ S46 S46R^ t^ S47L^ S47 S47R^>" |
+"<S12L^ S12 S12R^>[t^ S13L^ S13 S13R^]{t^*}" + "<S13L^ S13 S13R^ t^ fL^ f fR^>" <->{5E-05}{26.0} "<S12L^ S12 S12R^>[t^ S13L^ S13 S13R^]:<S13L^ S13 S13R^>[t^]<fL^ f fR^>" |
+"<S12L^ S12 S12R^>[t^ S13L^ S13 S13R^]:<S13L^ S13 S13R^>[t^]<fL^ f fR^>" <->{26.0}{5E-05} "{t^*}[S13L^ S13 S13R^ t^]<fL^ f fR^>" + "<S12L^ S12 S12R^ t^ S13L^ S13 S13R^>" |
+"<S14L^ S14 S14R^>[t^ S15L^ S15 S15R^]{t^*}" + "<S15L^ S15 S15R^ t^ fL^ f fR^>" <->{5E-05}{26.0} "<S14L^ S14 S14R^>[t^ S15L^ S15 S15R^]:<S15L^ S15 S15R^>[t^]<fL^ f fR^>" |
+"<S14L^ S14 S14R^>[t^ S15L^ S15 S15R^]:<S15L^ S15 S15R^>[t^]<fL^ f fR^>" <->{26.0}{5E-05} "{t^*}[S15L^ S15 S15R^ t^]<fL^ f fR^>" + "<S14L^ S14 S14R^ t^ S15L^ S15 S15R^>" |
+"<S16L^ S16 S16R^>[t^ S17L^ S17 S17R^]{t^*}" + "<S17L^ S17 S17R^ t^ fL^ f fR^>" <->{5E-05}{26.0} "<S16L^ S16 S16R^>[t^ S17L^ S17 S17R^]:<S17L^ S17 S17R^>[t^]<fL^ f fR^>" |
+"<S16L^ S16 S16R^>[t^ S17L^ S17 S17R^]:<S17L^ S17 S17R^>[t^]<fL^ f fR^>" <->{26.0}{5E-05} "{t^*}[S17L^ S17 S17R^ t^]<fL^ f fR^>" + "<S16L^ S16 S16R^ t^ S17L^ S17 S17R^>" |
+"<S18L^ S18 S18R^>[t^ S19L^ S19 S19R^]{t^*}" + "<S19L^ S19 S19R^ t^ fL^ f fR^>" <->{5E-05}{26.0} "<S18L^ S18 S18R^>[t^ S19L^ S19 S19R^]:<S19L^ S19 S19R^>[t^]<fL^ f fR^>" |
+"<S18L^ S18 S18R^>[t^ S19L^ S19 S19R^]:<S19L^ S19 S19R^>[t^]<fL^ f fR^>" <->{26.0}{5E-05} "{t^*}[S19L^ S19 S19R^ t^]<fL^ f fR^>" + "<S18L^ S18 S18R^ t^ S19L^ S19 S19R^>" |
+"{S20R^* t^*}[S21L^ S21 S21R^]" + "<S20L^ S20 S20R^ t^ S21L^ S21 S21R^>" ->{0.00205} "<S20L^ S20>[S20R^ t^ S21L^ S21 S21R^]" + "<S21L^ S21 S21R^>" |
+"{S22R^* t^*}[S23L^ S23 S23R^]" + "<S22L^ S22 S22R^ t^ S23L^ S23 S23R^>" ->{0.00205} "<S22L^ S22>[S22R^ t^ S23L^ S23 S23R^]" + "<S23L^ S23 S23R^>" |
+"{S28R^* t^*}[S29L^ S29 S29R^]" + "<S28L^ S28 S28R^ t^ S29L^ S29 S29R^>" ->{0.00205} "<S28L^ S28>[S28R^ t^ S29L^ S29 S29R^]" + "<S29L^ S29 S29R^>" |
+"{S30R^* t^*}[S31L^ S31 S31R^]" + "<S30L^ S30 S30R^ t^ S31L^ S31 S31R^>" ->{0.00205} "<S30L^ S30>[S30R^ t^ S31L^ S31 S31R^]" + "<S31L^ S31 S31R^>" |
+"{S32R^* t^*}[S33L^ S33 S33R^]" + "<S32L^ S32 S32R^ t^ S33L^ S33 S33R^>" ->{0.00205} "<S32L^ S32>[S32R^ t^ S33L^ S33 S33R^]" + "<S33L^ S33 S33R^>" |
+"{S34R^* t^*}[S35L^ S35 S35R^]" + "<S34L^ S34 S34R^ t^ S35L^ S35 S35R^>" ->{0.00205} "<S34L^ S34>[S34R^ t^ S35L^ S35 S35R^]" + "<S35L^ S35 S35R^>" |
+"{S36R^* t^*}[S37L^ S37 S37R^]" + "<S36L^ S36 S36R^ t^ S37L^ S37 S37R^>" ->{0.00205} "<S36L^ S36>[S36R^ t^ S37L^ S37 S37R^]" + "<S37L^ S37 S37R^>" |
+"{S38R^* t^*}[S39L^ S39 S39R^]" + "<S38L^ S38 S38R^ t^ S39L^ S39 S39R^>" ->{0.00205} "<S38L^ S38>[S38R^ t^ S39L^ S39 S39R^]" + "<S39L^ S39 S39R^>" |
+"{S40R^* t^*}[S41L^ S41 S41R^]" + "<S40L^ S40 S40R^ t^ S41L^ S41 S41R^>" ->{0.00205} "<S40L^ S40>[S40R^ t^ S41L^ S41 S41R^]" + "<S41L^ S41 S41R^>" |
+"{S42R^* t^*}[S43L^ S43 S43R^]" + "<S42L^ S42 S42R^ t^ S43L^ S43 S43R^>" ->{0.00205} "<S42L^ S42>[S42R^ t^ S43L^ S43 S43R^]" + "<S43L^ S43 S43R^>" |
+"{S44R^* t^*}[S45L^ S45 S45R^]" + "<S44L^ S44 S44R^ t^ S45L^ S45 S45R^>" ->{0.00205} "<S44L^ S44>[S44R^ t^ S45L^ S45 S45R^]" + "<S45L^ S45 S45R^>" |
+"{S46R^* t^*}[S47L^ S47 S47R^]" + "<S46L^ S46 S46R^ t^ S47L^ S47 S47R^>" ->{0.00205} "<S46L^ S46>[S46R^ t^ S47L^ S47 S47R^]" + "<S47L^ S47 S47R^>" |
+"{S12R^* t^*}[S13L^ S13 S13R^]" + "<S12L^ S12 S12R^ t^ S13L^ S13 S13R^>" ->{0.00205} "<S12L^ S12>[S12R^ t^ S13L^ S13 S13R^]" + "<S13L^ S13 S13R^>" |
+"{S14R^* t^*}[S15L^ S15 S15R^]" + "<S14L^ S14 S14R^ t^ S15L^ S15 S15R^>" ->{0.00205} "<S14L^ S14>[S14R^ t^ S15L^ S15 S15R^]" + "<S15L^ S15 S15R^>" |
+"{S16R^* t^*}[S17L^ S17 S17R^]" + "<S16L^ S16 S16R^ t^ S17L^ S17 S17R^>" ->{0.00205} "<S16L^ S16>[S16R^ t^ S17L^ S17 S17R^]" + "<S17L^ S17 S17R^>" |
+"{S18R^* t^*}[S19L^ S19 S19R^]" + "<S18L^ S18 S18R^ t^ S19L^ S19 S19R^>" ->{0.00205} "<S18L^ S18>[S18R^ t^ S19L^ S19 S19R^]" + "<S19L^ S19 S19R^>"

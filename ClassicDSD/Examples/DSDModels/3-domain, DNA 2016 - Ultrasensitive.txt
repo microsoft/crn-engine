@@ -1,0 +1,62 @@
+directive simulation {
+  initial=0; final=500000; points=1000; 
+  plots=[ sum([<_ tl1p^ l1p>]); sum([<_ tl2p^ l2p>]); sum([<_ tl3p^ l3p>]) ]
+}
+def bind = 3E-05
+def unbind = 0.1126
+def Buff = 10000.0
+new tstim  @ bind, unbind
+new tl1  @ bind, unbind
+new tl1p  @ bind, unbind
+new tl2  @ bind, unbind
+new tl2p  @ bind, unbind
+new tl3  @ bind, unbind
+new tl3p  @ bind, unbind
+def BTr(M, N, tx, x, ty, y) = 
+  (new ta @ bind, unbind
+  new a
+  new b
+  new tB @ bind, unbind
+  new B
+  ( M * {tB^*}[B tx^]:[x ta^]:[a ty^]<y>:[b tB^]<B>
+  | M * <ta^ a ty^ b tB^>
+  | M * [x]{ta^*}
+  | M * [B]{tx^*}
+  | N * <b tB^ B>))
+def BF2(M, N, tx, x, ty, y, tz, z) = 
+  (new ta @ bind, unbind
+  new a
+  new b
+  new c
+  new tB @ bind, unbind
+  new B
+  ( M * {tB^*}[B tx^]:[x ta^]:[a ty^]<y>:[b tz^]<z>:[c tB^]<B>
+  | M * <ta^ a ty^ b tz^ c tB^>
+  | M * [x]{ta^*}
+  | M * [B]{tx^*}
+  | N * <c tB^ B>))
+def BJ2x2(M, N, tx, x, ty, y, tz, z, tw, w) = 
+  (new ta @ bind, unbind
+  new a
+  new b
+  new c
+  new td @ bind, unbind
+  new d
+  new tB @ bind, unbind
+  new B
+  ( M * {tB^*}[B tx^]:[x ty^]:[y ta^]:[a tz^]<z>:[b tw^]<w>:[c tB^]<B>
+  | M * <ta^ a tz^ b tw^ c tB^>
+  | M * [B]{tx^*}
+  | M * [x]:[ty^ d]:[td^ y]{ta^*}
+  | M * <d td^>
+  | M * {td^*}[y]
+  | M * {ty^*}[d]
+  | N * <c tB^ B>))
+( BF2(Buff,10.0,tstim,stim,tl1,l1,tstim,stim)
+| BTr(Buff,10.0,tl1,l1,tl1p,l1p)
+| BJ2x2(Buff,10.0,tl1p,l1p,tl2,l2,tl1,l1,tl2p,l2p)
+| BJ2x2(Buff,10.0,tl2p,l2p,tl3,l3,tl2,l2,tl3p,l3p)
+| BTr(Buff,1.0,tl3p,l3p,tl3,l3)
+| 1000.0 * <hl2 tl2^ l2>
+| 1000.0 * <hl3 tl3^ l3>
+| 10.0 * <hstim tstim^ stim>)

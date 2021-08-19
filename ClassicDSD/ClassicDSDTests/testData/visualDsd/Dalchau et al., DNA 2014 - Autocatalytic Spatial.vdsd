@@ -1,0 +1,102 @@
+directive sample 48.0*3600.0 1000
+directive compilation infinite
+directive declare 
+directive plot <t^ x>; <t^ y>; <t^ b>
+
+directive parameters [
+	  (* Rates *)
+	  kJ1 = 9.3389e-06; kJ1r = 5.8863e-05;
+	  kJ2 = 8.1539e-05; kJ2r = 6.9742e-05;
+	  kJ3 = 4.0619e-04; kJ3r = 3.3053e-06;
+	  kF1 = 1.2135e-05; kF1r = 1.2982e-04;
+	  kF2 = 4.5807e-05; kF2r = 4.7890e-04;
+	  kF3 = 1.2031e-04; kF3r = 1.1956e-06;
+	  kF4 = 3.5970e-06; kF4r = 4.7890e-04;
+	  kF5 = 7.1967e-06;
+	  kFRpx = 6.6487e-04;
+
+	  (* Leaks *)
+	  (*leakBX2X_J = 0.0107; leakBX2X_F = 5.7837e-07;*)	(* Leaks *)
+	  leakBX2X_J = 0.0; leakBX2X_F = 0.0;					(* No Leaks *)
+	
+	  (* Concentrations *)
+	  NG = 200.0; NH = 200.0
+  ]
+
+(* Spatial simulation directives *)
+directive simulation spatial1d 
+directive spatialbc zeroflux
+directive spatialic centralcore { width=0.1; species=<t^ x>; inner=1.0 }
+directive defaultdiffusion 1e-10
+directive dt 20.0
+directive xmax 0.1
+directive nx 101
+directive spatialplot <t^ x>
+
+def NB = 5.0
+
+new t@0.0,0.0 new u1@0.0,0.0 new u2@0.0,0.0 new u3@0.0,0.0
+new b new x new y new rbx new rby new rxy 
+new pb new px new py new ig
+new fl@0.0,0.0
+
+def Input(ta,a) = <ta^ a>
+def Catalyst(tb,b) = <tb^ b>
+def Helper(tr,r) = <tr^ r>
+def Output(tx,x) = <tx^ x>
+
+def Translator(r,tq) = <r tq^>
+def Output1R(b,tr) = <b tr^>
+def Output2R(c,tb) = <c tb^>
+def Output3R(d,tc) = <d tc^>
+def End(i,tc) = <i tc^>
+def Signal_Fork(c,fl) = <c fl^>
+def Signal_Join(fl,r) = <fl^ r>
+def Join(ta,a,tb,b,tr,r,tq) = {ta^*}[a tb^]:[b tr^]:[r tq^]
+def Join1(ta,a,tb,b,tr,r,tq) = [ta^ a]:{tb^*}[b tr^]:[r tq^]
+def Join2(ta,a,tb,b,tr,r,tq) = [ta^ a]:[tb^ b]:{tr^*}[r tq^]
+def Join3(ta,a,tb,b,tr,r,tq) = [ta^ a]:[tb^ b]:[tr^ r]{tq^*}
+def Fork(i,td,d,tc,c,tb,b,tr,r,tq) = [i]:[td^ d]:[tc^ c]:[tb^ b]:[tr^ r]{tq^*}
+def Fork1(i,td,d,tc,c,tb,b,tr,r,tq) = [i]:[td^ d]:[tc^ c]:[tb^ b]:{tr^*}[r tq^]
+def Fork2(i,td,d,tc,c,tb,b,tr,r,tq) = [i]:[td^ d]:[tc^ c]:{tb^*}[b tr^]:[r tq^]
+def Fork3(i,td,d,tc,c,tb,b,tr,r,tq) = [i]:[td^ d]:{tc^*}[c tb^]:[b tr^]:[r tq^]
+def Fork4(i,td,d,tc,c,tb,b,tr,r,tq) = [i]:{td^*}[d tc^]:[c tb^]:[b tr^]:[r tq^]
+def Fork5(i,td,d,tc,c,tb,b,tr,r,tq) = [i td^]:[d tc^]:[c tb^]:[b tr^]:[r tq^]
+
+(* Module definitions *)
+def JoinAB(NA,NB,NH,NG,NV,Leak,ta,a,tb,b,tr,r,tq) =
+( NG*(1.0-Leak) * Join(ta,a,tb,b,tr,r,tq)
+| NG*Leak * Translator(r,tq)
+| NA * Input(ta,a)
+| NB * Catalyst(tb,b)
+| NH * Helper(tr,r)
+| rxn <ta^ a> + Join(ta,a,tb,b,tr,r,tq) <->{kJ1,kJ1r} <a tb^> + Join1(ta,a,tb,b,tr,r,tq)
+| rxn <tb^ b> + Join1(ta,a,tb,b,tr,r,tq) <->{kJ2,kJ2r} <b tr^> + Join2(ta,a,tb,b,tr,r,tq)
+| rxn <tr^ r> + Join2(ta,a,tb,b,tr,r,tq) <->{kJ3,kJ3r} <r tq^> + Join3(ta,a,tb,b,tr,r,tq)
+)
+def ForkXYZ(N,NH1,NH2,NH3,NH4,NG,Leak,i,tz,z,ty,y,tx,x,tr,r,tq,k1) =
+( NG*(1.0-Leak) * Fork(i,tz,z,ty,y,tx,x,tr,r,tq)
+| NG*Leak * Output(ty,y)
+| NH1 * Output1R(x,tr)
+| NH2 * Output2R(y,tx)
+| NH3 * Output3R(z,ty)
+| NH4 * End(i,tz)
+| rxn <r tq^> + Fork(i,tz,z,ty,y,tx,x,tr,r,tq) <->{k1,kF1r} <tr^ r> + Fork1(i,tz,z,ty,y,tx,x,tr,r,tq)
+| rxn <x tr^> + Fork1(i,tz,z,ty,y,tx,x,tr,r,tq) <->{kF2,kF2r} <tx^ x> + Fork2(i,tz,z,ty,y,tx,x,tr,r,tq)
+| rxn <y tx^> + Fork2(i,tz,z,ty,y,tx,x,tr,r,tq) <->{kF3,kF3r} <ty^ y> + Fork3(i,tz,z,ty,y,tx,x,tr,r,tq)
+| rxn <z ty^> + Fork3(i,tz,z,ty,y,tx,x,tr,r,tq) <->{kF4,kF2r} <tz^ z> + Fork4(i,tz,z,ty,y,tx,x,tr,r,tq)
+| rxn <i t^> + Fork4(i,tz,z,ty,y,tx,x,tr,r,tq) ->{kF5} Fork5(i,tz,z,ty,y,tx,x,tr,r,tq) + <i>
+)
+def Rep(NR,t,r,k) = 
+( NR * {t^*}[r fl^] 
+| rxn <t^ r> + {t^*}[r fl^] ->{k} [t^ r] + <r fl^> )
+
+(* Components *)
+def JoinBX(NB,NX,NH,NG,Leak) = JoinAB(NB,NX,NH,NG,0.0,Leak,t,b,t,x,t,rbx,u1)
+def ForkXX(NT,NH1,NH2,NH3,NH4,NG,Leak) = ForkXYZ(NT,NH1,NH2,NH3,NH4,NG,Leak,ig,t,x,u3,px,t,x,u2,rbx,u1,kF1)
+def RepX(NG) = Rep(NG,u3,px,kFRpx)
+
+( JoinBX(0.0,0.0,NH,NG,leakBX2X_J) 
+| ForkXX(0.0,NH,NH,NH,NH,NG,leakBX2X_F)
+| RepX(NG) 
+| NB * <t^ b> )

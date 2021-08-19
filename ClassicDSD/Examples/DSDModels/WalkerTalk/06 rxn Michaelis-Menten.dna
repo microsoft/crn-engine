@@ -1,0 +1,15 @@
+//old_syntax
+directive parameters
+  [ k1 = 0.07
+  ; k2 = 0.17
+  ; k3 = 0.02 ]
+directive simulation deterministic
+directive duration 0,100
+directive scale 500.0
+
+( {e1} | <x>
+| {e2} | <y>
+| rxn {e1} + <x> <->{k1,k3} {es1}
+| rxn {es1} ->{k2} {e1} + [x]
+| rxn {e2} + <y> ->[(k2 * [<y>]) / ((k2+k3)/k1 + [<y>])] {e2} + [y]
+)

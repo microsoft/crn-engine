@@ -1,0 +1,23 @@
+directive sample 3000.0,8000.0 1000
+directive simulation deterministic
+directive parameters
+  [ k, (1E-05, 0.002), 0.0003, log, random
+  ; bad, (0.0, 0.3), 0.2, real, random
+  ; T1, (3600.0, 4000.0), 3800.0, real, random
+  ; N = 0.6 ]
+directive sweep sweepRepR =
+  { N = [0.2, 0.4, 0.6, 0.8] }
+directive fit {sweepRepR; Rep_rbxu1; ["<fl^ rbx>"] }
+directive fit_run { burnin      = 2000
+                  ; samples     = 20000
+                  ; mle_burnin  = 1000
+                  ; mle_samples = 1000
+                  ; thin        = 10
+                  ; separatenoise = false }
+
+event "<rbx u1^>" ((4.0 * N) * (1.0 - bad)) @ T1 |
+init "<rbx u1^>" 0.0 |
+init "<fl^ rbx>" 0.0 |
+init "<fl^>[rbx]{u1^*}" 30.0 |
+init "[rbx u1^]" 0.0 |
+"<fl^>[rbx]{u1^*}" + "<rbx u1^>" ->{k} "[rbx u1^]" + "<fl^ rbx>"

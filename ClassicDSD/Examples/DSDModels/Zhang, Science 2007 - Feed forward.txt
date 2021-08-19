@@ -1,0 +1,30 @@
+directive simulation {initial=0; final=1000; points=1000; plots=[F0(); F1(); <S1 S2a>]}
+dom S1  = {seq = CTTTCCTACA}
+dom S2a  = {seq = CCTACG}
+dom S2b  = {seq = TCTCCA; bind = 0.00042; unbind = 0.04}
+dom S2c  = {seq = ACTAACTTACGG}
+dom S3  = {seq = CCCT; bind = 0.00042; unbind = 0.04}
+dom S4a  = {seq = CATTCAATAC}
+dom S4b  = {seq = CCTACG}
+dom S5  = {seq = TCTCCA; bind = 0.00065; unbind = 0.004}
+dom S6  = {seq = CCACATACATCATATT}
+dom S7  = {seq = TACTTATTAGCC}
+dom S8  = {seq = GACA; bind = 0.0005; unbind = 0.00019}
+dom S9a  = {seq = CTACTTTCAC}
+dom S9b  = {seq = CCTACG}
+dom S10  = {seq = TCTCCA; bind = 0.00065; unbind = 0.004}
+def F0() = <S4b^ S5^ S7 S8^ S9a S9b^>
+def F1() = <S2a S2b^ S2c S3^ S4a S4b^>
+def OBSB0() = <S4a>[S4b^ S5^ S7]:[S8^ S9a S9b^]{S10^*}
+def C0() = <S9a S9b^ S10^>
+def OBSB1() = <S1>[S2a S2b^ S2c]:<S6>[S3^ S4a S4b^]{S5^*}
+def Feedforward(N) = 
+  (( N * F0()
+  | N * OBSB0()
+  | N * C0()
+  | N * F1()
+  | N * OBSB1()))
+def FluorescingFeedforward(N) = 
+  (( Feedforward(N)
+  | N * [S1 S2a]{S2b^*}))
+FluorescingFeedforward(100.0)

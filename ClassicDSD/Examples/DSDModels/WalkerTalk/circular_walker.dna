@@ -1,0 +1,27 @@
+(* 4-stator Circular Walker *)
+
+(* Click CRN, then click states when warned of a big graph. Both take a bit of time *)
+
+//old_syntax
+directive sample 40000.0 1000
+directive simulation jit
+directive compilation infinite
+directive polymers
+directive localconcentrations [ (a, 10000); (b, 10000); (c, 10000); (d, 10000) ]
+
+dom r = { colour = "red" }
+dom l = { colour = "green" }
+
+def walker() = [[ {tether(d,a) a^*}[s l^]<r^ s>
+                | {r^*}[s]<ma^ s>{b^* tether(a,b)}
+                | {tether(b,c) c^*}<s mb^>[s]{l^*}
+                | {r^*}[s]<mc^ s>{d^* tether(c,d)} ]]
+def fuels()  = [[ {tether(0) ma^*}[s]<a^ s>
+                | {tether(1) mb^*}[s]<b^ s>
+                | {tether(2) mc^*}[s]<c^ s>
+                | {tether(3) md^*}[s]<d^ s> ]]
+
+( walker()
+| fuels()
+)
+  

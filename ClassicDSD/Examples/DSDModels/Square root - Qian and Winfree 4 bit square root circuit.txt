@@ -1,0 +1,273 @@
+directive simulation {initial=0; final=36000; points=10000; plots=[<_ _ _ y1_1>; <_ _ _ y1_0>; <_ _ _ y2_1>; <_ _ _ y2_0>]}
+directive stochastic {scale = 20.000000; trajectories = 1}
+directive toeholds 0.002 1.3
+directive leak 1E-08
+directive tau 1
+def shorttoeholdunbind = 26.0
+def shorttoeholdbind = 5E-05
+dom t  = {seq = TCT; bind = shorttoeholdbind; unbind = shorttoeholdunbind}
+dom S1  = {seq = CATCCATTCCACTCA}
+dom S2  = {seq = CAAAACAAAACCTCA}
+dom S3  = {seq = CACCCTAAAATCTCA}
+dom S4  = {seq = CACATAACAACCACA}
+dom S5L  = {seq = CACC}
+dom S5  = {seq = ACCAAAC}
+dom S5R  = {seq = TTCA}
+dom S6  = {seq = CATAACACAATCACA}
+dom S7L  = {seq = CAAC}
+dom S7  = {seq = ATATCAA}
+dom S7R  = {seq = TTCA}
+dom S8  = {seq = CACTAACATACAACA}
+dom S9L  = {seq = CACC}
+dom S9  = {seq = ATCAAAT}
+dom S9R  = {seq = AACA}
+dom S10  = {seq = CATACAACATCTACA}
+dom S11L  = {seq = CAAT}
+dom S11  = {seq = ATCCATA}
+dom S11R  = {seq = ACCA}
+dom S12L  = {seq = CATC}
+dom S12  = {seq = AATCAAC}
+dom S12R  = {seq = ACCA}
+dom S13L  = {seq = CACA}
+dom S13  = {seq = ACTCATT}
+dom S13R  = {seq = ACCA}
+dom S14L  = {seq = CATT}
+dom S14  = {seq = ATTCAAA}
+dom S14R  = {seq = CCCA}
+dom S15L  = {seq = CACA}
+dom S15  = {seq = CTATAAT}
+dom S15R  = {seq = TCCA}
+dom S16L  = {seq = CACT}
+dom S16  = {seq = TCATAAA}
+dom S16R  = {seq = TCCA}
+dom S17L  = {seq = CAAC}
+dom S17  = {seq = TCCTAAT}
+dom S17R  = {seq = ATCA}
+dom S18L  = {seq = CATC}
+dom S18  = {seq = TTCTAAC}
+dom S18R  = {seq = ATCA}
+dom S19L  = {seq = CACC}
+dom S19  = {seq = TCTTAAA}
+dom S19R  = {seq = CACA}
+dom S20L  = {seq = CAAT}
+dom S20  = {seq = CTAACAC}
+dom S20R  = {seq = TCCA}
+dom S21L  = {seq = CAAC}
+dom S21  = {seq = CATACTA}
+dom S21R  = {seq = AACA}
+dom S22L  = {seq = CATT}
+dom S22  = {seq = CCTACAT}
+dom S22R  = {seq = TTCA}
+dom S23L  = {seq = CAAA}
+dom S23  = {seq = TCTTCAT}
+dom S23R  = {seq = CCCA}
+dom S24  = {seq = CACTCATCCTTTACA}
+dom S25  = {seq = CAATTCACTCAATCA}
+dom S26  = {seq = CATTCATTACCTCCA}
+dom S27  = {seq = CAAACACTCTATTCA}
+dom S28L  = {seq = CATC}
+dom S28  = {seq = TACAATT}
+dom S28R  = {seq = CACA}
+dom S29L  = {seq = CACC}
+dom S29  = {seq = AATACTC}
+dom S29R  = {seq = CTCA}
+dom S30L  = {seq = CACC}
+dom S30  = {seq = ATTACAA}
+dom S30R  = {seq = TCCA}
+dom S31L  = {seq = CAAT}
+dom S31  = {seq = CCACACT}
+dom S31R  = {seq = TCCA}
+dom S32L  = {seq = CACA}
+dom S32  = {seq = CTTCAAA}
+dom S32R  = {seq = CTCA}
+dom S33L  = {seq = CAAC}
+dom S33  = {seq = TCAAACA}
+dom S33R  = {seq = TACA}
+dom S34L  = {seq = CACA}
+dom S34  = {seq = TAACAAA}
+dom S34R  = {seq = ACCA}
+dom S35L  = {seq = CACT}
+dom S35  = {seq = CTCCATC}
+dom S35R  = {seq = ACCA}
+dom S36L  = {seq = CAAA}
+dom S36  = {seq = CTAAACA}
+dom S36R  = {seq = ACCA}
+dom S37L  = {seq = CACC}
+dom S37  = {seq = TCTTCCC}
+dom S37R  = {seq = TTCA}
+dom S38L  = {seq = CATA}
+dom S38  = {seq = CCCTTTT}
+dom S38R  = {seq = CTCA}
+dom S39L  = {seq = CACT}
+dom S39  = {seq = ATACACA}
+dom S39R  = {seq = CCCA}
+dom S40L  = {seq = CAAT}
+dom S40  = {seq = ACAAATC}
+dom S40R  = {seq = CACA}
+dom S41L  = {seq = CAAC}
+dom S41  = {seq = AAACCAT}
+dom S41R  = {seq = TACA}
+dom S42L  = {seq = CACT}
+dom S42  = {seq = TTTCACT}
+dom S42R  = {seq = ATCA}
+dom S43L  = {seq = CATC}
+dom S43  = {seq = ATACCTA}
+dom S43R  = {seq = CTCA}
+dom S44L  = {seq = CAAA}
+dom S44  = {seq = ACTCTCT}
+dom S44R  = {seq = CTCA}
+dom S45L  = {seq = CACC}
+dom S45  = {seq = CAAAACC}
+dom S45R  = {seq = CACA}
+dom S46L  = {seq = CAAA}
+dom S46  = {seq = CCCAACT}
+dom S46R  = {seq = CACA}
+dom S47L  = {seq = CATT}
+dom S47  = {seq = CTCCCAC}
+dom S47R  = {seq = CTCA}
+dom S48L  = {seq = CATC}
+dom S48  = {seq = ACCACTA}
+dom S48R  = {seq = TACA}
+dom S49L  = {seq = CATC}
+dom S49  = {seq = CTTAACT}
+dom S49R  = {seq = CCCA}
+dom S50L  = {seq = CATT}
+dom S50  = {seq = ACCAACC}
+dom S50R  = {seq = ACCA}
+dom S51L  = {seq = CACA}
+dom S51  = {seq = AACTACA}
+dom S51R  = {seq = TCCA}
+dom S52L  = {seq = CACT}
+dom S52  = {seq = TCACAAC}
+dom S52R  = {seq = TACA}
+dom S53L  = {seq = CATA}
+dom S53  = {seq = TCTAATC}
+dom S53R  = {seq = TCCA}
+dom fL  = {seq = CATT}
+dom f  = {seq = TTTTTTT}
+dom fR  = {seq = TTCA}
+def N = 5.0
+def OFF = (1.0 * N)
+def ON = (9.0 * N)
+def signal(N, (iL, i, iR), (jL, j, jR)) = ( N * <iL^ i iR^ t^ jL^ j jR^>)
+def gateL(N, (iL, i, iR), (jL, j, jR)) = ( N * {t^*}[iL^ i iR^ t^]<jL^ j jR^>)
+def gateR(N, (iL, i, iR), (jL, j, jR)) = ( N * <iL^ i iR^>[t^ jL^ j jR^]{t^*})
+def thresholdL(N, (iL, i, iR), (jL, j, jR)) = ( N * {iR^* t^*}[jL^ j jR^])
+def thresholdR(N, (iL, i, iR), (jL, j, jR)) = ( N * [iL^ i iR^]{t^* jL^*})
+def reporter(N, (iL, i, iR), Fluor) = ( N * {t^*}[iL^ i iR^]<Fluor>)
+def F = (fL,f,fR)
+def seesawOR2I2O(I1, I2, K1, K2) = 
+  (( gateL((20.0 * N),I1,I2)
+  | thresholdL((6.0 * N),I1,I2)
+  | gateL((10.0 * N),I2,K1)
+  | gateL((10.0 * N),I2,K2)
+  | signal((40.0 * N),I2,F)))
+def seesawAND2I2O(I1, I2, K1, K2) = 
+  (( gateL((20.0 * N),I1,I2)
+  | thresholdL((12.0 * N),I1,I2)
+  | gateL((10.0 * N),I2,K1)
+  | gateL((10.0 * N),I2,K2)
+  | signal((40.0 * N),I2,F)))
+def seesawOR2I1O(I1, I2, K1) = 
+  (( gateL((20.0 * N),I1,I2)
+  | thresholdL((6.0 * N),I1,I2)
+  | gateL((10.0 * N),I2,K1)
+  | signal((20.0 * N),I2,F)))
+def seesawAND2I1O(I1, I2, K1) = 
+  (( gateL((20.0 * N),I1,I2)
+  | thresholdL((12.0 * N),I1,I2)
+  | gateL((10.0 * N),I2,K1)
+  | signal((20.0 * N),I2,F)))
+def seesawAND3I1O(I1, I2, K1) = 
+  (( gateL((30.0 * N),I1,I2)
+  | thresholdL((22.0 * N),I1,I2)
+  | gateL((10.0 * N),I2,K1)
+  | signal((20.0 * N),I2,F)))
+def seesawOR3I1O(I1, I2, K1) = 
+  (( gateL((30.0 * N),I1,I2)
+  | thresholdL((6.0 * N),I1,I2)
+  | gateL((10.0 * N),I2,K1)
+  | signal((20.0 * N),I2,F)))
+def inputfanout3O(J, I, K1, K2, K3) = 
+  (( thresholdL((2.0 * N),J,I)
+  | gateL((10.0 * N),I,K1)
+  | gateL((10.0 * N),I,K2)
+  | gateL((10.0 * N),I,K3)
+  | signal((60.0 * N),I,F)))
+def reporterREST(I1, I2, I3) = 
+  (( gateL((10.0 * N),I1,I2)
+  | thresholdL((4.0 * N),I1,I2)
+  | gateL((10.0 * N),I2,I3)
+  | signal((20.0 * N),I2,F)))
+def X5 = (S5L,S5,S5R)
+def X7 = (S7L,S7,S7R)
+def X9 = (S9L,S9,S9R)
+def X11 = (S11L,S11,S11R)
+def X12 = (S12L,S12,S12R)
+def X13 = (S13L,S13,S13R)
+def X14 = (S14L,S14,S14R)
+def X15 = (S15L,S15,S15R)
+def X16 = (S16L,S16,S16R)
+def X17 = (S17L,S17,S17R)
+def X18 = (S18L,S18,S18R)
+def X19 = (S19L,S19,S19R)
+def X20 = (S20L,S20,S20R)
+def X21 = (S21L,S21,S21R)
+def X22 = (S22L,S22,S22R)
+def X23 = (S23L,S23,S23R)
+def X28 = (S28L,S28,S28R)
+def X29 = (S29L,S29,S29R)
+def X30 = (S30L,S30,S30R)
+def X31 = (S31L,S31,S31R)
+def X32 = (S32L,S32,S32R)
+def X33 = (S33L,S33,S33R)
+def X34 = (S34L,S34,S34R)
+def X35 = (S35L,S35,S35R)
+def X36 = (S36L,S36,S36R)
+def X37 = (S37L,S37,S37R)
+def X38 = (S38L,S38,S38R)
+def X39 = (S39L,S39,S39R)
+def X40 = (S40L,S40,S40R)
+def X41 = (S41L,S41,S41R)
+def X42 = (S42L,S42,S42R)
+def X43 = (S43L,S43,S43R)
+def X44 = (S44L,S44,S44R)
+def X45 = (S45L,S45,S45R)
+def X46 = (S46L,S46,S46R)
+def X47 = (S47L,S47,S47R)
+def X48 = (S48L,S48,S48R)
+def X49 = (S49L,S49,S49R)
+def X50 = (S50L,S50,S50R)
+def X52 = (S52L,S52,S52R)
+new S54L 
+new S54 
+new S54R 
+def X54 = (S54L,S54,S54R)
+( signal(ON,X5,X22)
+| signal(OFF,X7,X20)
+| signal(ON,X9,X22)
+| signal(OFF,X11,X20)
+| signal(OFF,X12,X13)
+| signal(ON,X14,X15)
+| signal(ON,X16,X17)
+| signal(OFF,X18,X19)
+| seesawOR2I2O(X20,X21,X38,X40)
+| seesawAND2I2O(X22,X23,X36,X42)
+| seesawOR2I1O(X28,X29,X40)
+| seesawAND2I1O(X30,X31,X42)
+| seesawAND2I1O(X32,X33,X48)
+| seesawOR2I1O(X34,X35,X50)
+| seesawAND3I1O(X36,X37,X46)
+| seesawOR3I1O(X38,X39,X44)
+| seesawAND2I1O(X40,X41,X46)
+| seesawOR2I1O(X42,X43,X44)
+| seesawAND2I1O(X44,X45,X52)
+| seesawOR2I1O(X46,X47,X54)
+| inputfanout3O(X12,X13,X28,X32,X38)
+| inputfanout3O(X14,X15,X30,X34,X36)
+| inputfanout3O(X16,X17,X30,X32,X38)
+| inputfanout3O(X18,X19,X28,X34,X36)
+| reporter((15.0 * N),X48,y2_0)
+| reporter((15.0 * N),X50,y2_1)
+| reporter((15.0 * N),X52,y1_0)
+| reporter((15.0 * N),X54,y1_1))

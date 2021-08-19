@@ -1,0 +1,31 @@
+directive simulation {final=5000000; points=5000; plots=[sum([<_ t^ A>]); sum([<_ t^ B>]); sum([<_ t^ C>]); {t^*}[A t^]<I>:[B t^]<K>:[Ch t^]<B>:[Dh t^]<B>; {t^*}[B t^]<I>:[C t^]<K>:[Ch t^]<C>:[Dh t^]<C>; {t^*}[C t^]<I>:[A t^]<K>:[Ch t^]<A>:[Dh t^]<A>]; }
+directive simulator deterministic
+directive stochastic {scale=100}
+directive deterministic {stiff=true; reltolerance=0.0001}
+def bind = 0.0003
+def unbind = 0.1126
+new t  @ bind, unbind
+def Species(M, h, A) = M * <h t^ A>
+def J2x2_NoGC(Fuel, N, A, B, C, D) = 
+  (new I
+  new J
+  new K
+  new Ch
+  new Dh
+  ( N * {t^*}[A t^]<I>:[B t^]<K>:[Ch t^]<C>:[Dh t^]<D>
+  | Fuel * <t^ Ch t^ Dh t^>
+  | (N * 10.0) * <A t^ I>))
+def N = 100.0
+def Fuel = 1000.0
+new Ah 
+new A 
+new Bh 
+new B 
+new Ch 
+new C 
+( J2x2_NoGC(Fuel,N,A,B,B,B)
+| J2x2_NoGC(Fuel,N,B,C,C,C)
+| J2x2_NoGC(Fuel,N,C,A,A,A)
+| Species(2.0,Ah,A)
+| Species(4.0,Bh,B)
+| Species(2.0,Ch,C))

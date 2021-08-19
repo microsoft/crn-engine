@@ -1,0 +1,40 @@
+directive sample 0.0,1000.0 100
+directive plot "<S4b^ S2b^ S2c S3^ S4a^ S4b^>"; "<S4a^ S4b^ S2b^ S2c>"; "<S6 S3^>"
+directive scale 500.0
+
+init "<S4a^ S4b^ S2b^ S2c>" 100.0 |
+init "[S6 S3^]{S4a^* S4b^*}" 100.0 |
+init "[S6 S3^]:[S4a^ S4b^]<S2b^ S2c>" 0.0 |
+init "<S4b^ S2b^ S2c S3^ S4a^ S4b^>" 100.0 |
+init "[S6 S3^]:<S4b^ S2b^ S2c S3^>[S4a^ S4b^]" 0.0 |
+init "<S4a^>[S4b^ S2b^ S2c]:<S6>[S3^ S4a^ S4b^]{S2b^*}" 100.0 |
+init "<S4a^>[S4b^ S2b^ S2c]:<S6>[S3^ S4a^ S4b^]:<S4a^ S4b^>[S2b^]<S2c>" 0.0 |
+init "<S4a^>[S4b^ S2b^ S2c]{S3^*}:[S4a^ S4b^ S2b^]<S2c>" 0.0 |
+init "[S4b^ S2b^ S2c S3^ S4a^ S4b^]:<S4a^ S4b^>[S2b^]<S2c>" 0.0 |
+init "[S4b^ S2b^ S2c S3^ S4a^ S4b^]{S2b^*}" 0.0 |
+init "[S4b^ S2b^ S2c S3^ S4a^ S4b^]:<S4b^>[S2b^]<S2c S3^ S4a^ S4b^>" 0.0 |
+init "[S6 S3^]:[S4a^ S4b^]::{S4b^*}[S2b^ S2c]{S3^*}:[S4a^ S4b^ S2b^]<S2c>" 0.0 |
+init "<S6 S3^ S4a^ S4b^>" 0.0 |
+init "[S6 S3^ S4a^ S4b^]" 0.0 |
+init "<S6 S3^>" 0.0 |
+init "[S6 S3^]:[S4a^ S4b^]::{S4b^*}[S2b^ S2c]:<S6>[S3^ S4a^ S4b^]:<S4a^ S4b^>[S2b^]<S2c>" 0.0 |
+init "[S6 S3^]:[S4a^ S4b^]::{S4b^*}[S2b^ S2c]:<S6>[S3^ S4a^ S4b^]{S2b^*}" 0.0 |
+init "[S6 S3^]:[S4a^ S4b^]::{S4b^*}[S2b^ S2c]:<S6>[S3^ S4a^ S4b^]:<S4b^>[S2b^]<S2c S3^ S4a^ S4b^>" 0.0 |
+init "<S4a^>[S4b^ S2b^ S2c]:<S6>[S3^ S4a^ S4b^]:<S4b^>[S2b^]<S2c S3^ S4a^ S4b^>" 0.0 |
+"[S6 S3^]{S4a^* S4b^*}" + "<S4a^ S4b^ S2b^ S2c>" ->{0.0006} "[S6 S3^]:[S4a^ S4b^]<S2b^ S2c>" |
+"[S6 S3^]{S4a^* S4b^*}" + "<S4b^ S2b^ S2c S3^ S4a^ S4b^>" ->{0.0006} "[S6 S3^]:<S4b^ S2b^ S2c S3^>[S4a^ S4b^]" |
+"<S4a^>[S4b^ S2b^ S2c]:<S6>[S3^ S4a^ S4b^]{S2b^*}" + "<S4a^ S4b^ S2b^ S2c>" <->{0.0003}{0.1126} "<S4a^>[S4b^ S2b^ S2c]:<S6>[S3^ S4a^ S4b^]:<S4a^ S4b^>[S2b^]<S2c>" |
+"<S4a^>[S4b^ S2b^ S2c]{S3^*}:[S4a^ S4b^ S2b^]<S2c>" + "<S4b^ S2b^ S2c S3^ S4a^ S4b^>" ->{0.00042} "[S4b^ S2b^ S2c S3^ S4a^ S4b^]:<S4a^ S4b^>[S2b^]<S2c>" + "<S4a^ S4b^ S2b^ S2c>" |
+"[S4b^ S2b^ S2c S3^ S4a^ S4b^]:<S4a^ S4b^>[S2b^]<S2c>" <->{0.1126}{0.0003} "[S4b^ S2b^ S2c S3^ S4a^ S4b^]{S2b^*}" + "<S4a^ S4b^ S2b^ S2c>" |
+"[S4b^ S2b^ S2c S3^ S4a^ S4b^]{S2b^*}" + "<S4b^ S2b^ S2c S3^ S4a^ S4b^>" <->{0.0003}{0.1126} "[S4b^ S2b^ S2c S3^ S4a^ S4b^]:<S4b^>[S2b^]<S2c S3^ S4a^ S4b^>" |
+"<S4a^>[S4b^ S2b^ S2c]{S3^*}:[S4a^ S4b^ S2b^]<S2c>" + "[S6 S3^]{S4a^* S4b^*}" <->{0.0003}{0.1126} "[S6 S3^]:[S4a^ S4b^]::{S4b^*}[S2b^ S2c]{S3^*}:[S4a^ S4b^ S2b^]<S2c>" |
+"[S6 S3^]:[S4a^ S4b^]::{S4b^*}[S2b^ S2c]{S3^*}:[S4a^ S4b^ S2b^]<S2c>" + "<S4b^ S2b^ S2c S3^ S4a^ S4b^>" ->{0.00042} "[S6 S3^]:[S4a^ S4b^]<S2b^ S2c>" + "[S4b^ S2b^ S2c S3^ S4a^ S4b^]:<S4a^ S4b^>[S2b^]<S2c>" |
+"[S6 S3^]{S4a^* S4b^*}" + "<S6 S3^ S4a^ S4b^>" ->{0.0006} "[S6 S3^ S4a^ S4b^]" + "<S6 S3^>" |
+"<S4a^>[S4b^ S2b^ S2c]:<S6>[S3^ S4a^ S4b^]:<S4a^ S4b^>[S2b^]<S2c>" <->{0.04}{0.00042} "<S4a^>[S4b^ S2b^ S2c]{S3^*}:[S4a^ S4b^ S2b^]<S2c>" + "<S6 S3^ S4a^ S4b^>" |
+"<S4a^>[S4b^ S2b^ S2c]:<S6>[S3^ S4a^ S4b^]:<S4a^ S4b^>[S2b^]<S2c>" + "[S6 S3^]{S4a^* S4b^*}" <->{0.0003}{0.1126} "[S6 S3^]:[S4a^ S4b^]::{S4b^*}[S2b^ S2c]:<S6>[S3^ S4a^ S4b^]:<S4a^ S4b^>[S2b^]<S2c>" |
+"[S6 S3^]:[S4a^ S4b^]::{S4b^*}[S2b^ S2c]{S3^*}:[S4a^ S4b^ S2b^]<S2c>" + "<S6 S3^ S4a^ S4b^>" <->{0.00042}{0.04} "[S6 S3^]:[S4a^ S4b^]::{S4b^*}[S2b^ S2c]:<S6>[S3^ S4a^ S4b^]:<S4a^ S4b^>[S2b^]<S2c>" |
+"<S4a^>[S4b^ S2b^ S2c]:<S6>[S3^ S4a^ S4b^]{S2b^*}" + "[S6 S3^]{S4a^* S4b^*}" <->{0.0003}{0.1126} "[S6 S3^]:[S4a^ S4b^]::{S4b^*}[S2b^ S2c]:<S6>[S3^ S4a^ S4b^]{S2b^*}" |
+"[S6 S3^]:[S4a^ S4b^]::{S4b^*}[S2b^ S2c]:<S6>[S3^ S4a^ S4b^]:<S4a^ S4b^>[S2b^]<S2c>" <->{0.1126}{0.0003} "[S6 S3^]:[S4a^ S4b^]::{S4b^*}[S2b^ S2c]:<S6>[S3^ S4a^ S4b^]{S2b^*}" + "<S4a^ S4b^ S2b^ S2c>" |
+"[S6 S3^]:[S4a^ S4b^]::{S4b^*}[S2b^ S2c]:<S6>[S3^ S4a^ S4b^]{S2b^*}" + "<S4b^ S2b^ S2c S3^ S4a^ S4b^>" <->{0.0003}{0.1126} "[S6 S3^]:[S4a^ S4b^]::{S4b^*}[S2b^ S2c]:<S6>[S3^ S4a^ S4b^]:<S4b^>[S2b^]<S2c S3^ S4a^ S4b^>" |
+"<S4a^>[S4b^ S2b^ S2c]:<S6>[S3^ S4a^ S4b^]{S2b^*}" + "<S4b^ S2b^ S2c S3^ S4a^ S4b^>" <->{0.0003}{0.1126} "<S4a^>[S4b^ S2b^ S2c]:<S6>[S3^ S4a^ S4b^]:<S4b^>[S2b^]<S2c S3^ S4a^ S4b^>" |
+"[S6 S3^]:[S4a^ S4b^]::{S4b^*}[S2b^ S2c]:<S6>[S3^ S4a^ S4b^]:<S4b^>[S2b^]<S2c S3^ S4a^ S4b^>" <->{0.1126}{0.0003} "[S6 S3^]{S4a^* S4b^*}" + "<S4a^>[S4b^ S2b^ S2c]:<S6>[S3^ S4a^ S4b^]:<S4b^>[S2b^]<S2c S3^ S4a^ S4b^>"

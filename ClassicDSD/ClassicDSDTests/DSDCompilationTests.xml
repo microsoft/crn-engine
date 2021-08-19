@@ -1,0 +1,1971 @@
+﻿<!-- DSD unit tests: code and expected output. -->
+<Tests>
+
+  <!-- Unsticking reaction test -->
+  <Test Name="unstick">
+    <Code>
+      ( &lt;s1>[s2]:&lt;s6>[s3^ s4]:&lt;s4>[s5^] )
+    </Code>
+    <ExpectedSpecies>
+      <Species>&lt;s6 s3^ s4></Species>
+      <Species>&lt;s4 s5^></Species>
+      <Species>&lt;s1>[s2]:&lt;s6>[s3^ s4]:&lt;s4>[s5^]</Species>
+      <Species>&lt;s1>[s2]:&lt;s6>[s3^ s4]:s5^</Species>
+      <Species>&lt;s1>[s2]:s3^:[s4 s5^]</Species>
+    </ExpectedSpecies>
+    <ExpectedReactions>
+      <Reaction FwdLabel="s3^" BwdLabel="s3^" Reversible="true">
+        <Reactants>
+          <Reactant>&lt;s1>[s2]:&lt;s6>[s3^ s4]:&lt;s4>[s5^]</Reactant>
+        </Reactants>
+        <Products>
+          <Product>&lt;s1>[s2]:s3^:[s4 s5^]</Product>
+          <Product>&lt;s6 s3^ s4></Product>
+        </Products>
+      </Reaction>
+      <Reaction FwdLabel="s5^" BwdLabel="s5^" Reversible="true">
+        <Reactants>
+          <Reactant>&lt;s1>[s2]:&lt;s6>[s3^ s4]:&lt;s4>[s5^]</Reactant>
+        </Reactants>
+        <Products>
+          <Product>&lt;s1>[s2]:&lt;s6>[s3^ s4]:s5^</Product>
+          <Product>&lt;s4 s5^></Product>
+        </Products>
+      </Reaction>
+    </ExpectedReactions>
+  </Test>
+
+  <!-- Catalytic gate example from DSD -->
+  <Test Name="Catalytic">
+    <Code>
+      directive sample 7000.0 1000
+      new s3@ 4.2E-7 , 4.0E-2
+      new s5@ 6.5E-7 , 4.0E-3
+      ( 7800 * &lt;s2 s3^ s4>
+      | 6000 * &lt;s4 s5^>
+      | 6000 * &lt;s1>[s2]:&lt;s6>[s3^ s4]:s5^
+      )
+    </Code>
+    <ExpectedSpecies>
+      <Species>&lt;s6 s3^ s4></Species>
+      <Species>&lt;s1 s2></Species>
+      <Species>&lt;s4 s5^></Species>
+      <Species>&lt;s2 s3^ s4></Species>
+      <Species>&lt;s1>[s2]:&lt;s6>[s3^ s4]:s5^</Species>
+      <Species>&lt;s1>[s2]:&lt;s6>[s3^ s4]:&lt;s4>[s5^]</Species>
+      <Species>&lt;s1>[s2]:s3^:[s4 s5^]</Species>
+      <Species>[s2 s3^ s4]:&lt;s4>[s5^]</Species>
+      <Species>[s2 s3^ s4]:s5^</Species>
+    </ExpectedSpecies>
+    <ExpectedReactions>
+      <Reaction FwdLabel="s5^" BwdLabel="s5^" Reversible="true">
+        <Reactants>
+          <Reactant>&lt;s1>[s2]:&lt;s6>[s3^ s4]:s5^</Reactant>
+          <Reactant>&lt;s4 s5^></Reactant>
+        </Reactants>
+        <Products>
+          <Product>&lt;s1>[s2]:&lt;s6>[s3^ s4]:&lt;s4>[s5^]</Product>
+        </Products>
+      </Reaction>
+      <Reaction FwdLabel="s3^" BwdLabel="s3^" Reversible="true">
+        <Reactants>
+          <Reactant>&lt;s1>[s2]:&lt;s6>[s3^ s4]:&lt;s4>[s5^]</Reactant>
+        </Reactants>
+        <Products>
+          <Product>&lt;s1>[s2]:s3^:[s4 s5^]</Product>
+          <Product>&lt;s6 s3^ s4></Product>
+        </Products>
+      </Reaction>
+      <Reaction FwdLabel="s3^" Reversible="false">
+        <Reactants>
+          <Reactant>&lt;s1>[s2]:s3^:[s4 s5^]</Reactant>
+          <Reactant>&lt;s2 s3^ s4></Reactant>
+        </Reactants>
+        <Products>
+          <Product>[s2 s3^ s4]:&lt;s4>[s5^]</Product>
+          <Product>&lt;s1 s2></Product>
+        </Products>
+      </Reaction>
+      <Reaction FwdLabel="s5^" BwdLabel="s5^" Reversible="true">
+        <Reactants>
+          <Reactant>[s2 s3^ s4]:&lt;s4>[s5^]</Reactant>
+        </Reactants>
+        <Products>
+          <Product>[s2 s3^ s4]:s5^</Product>
+          <Product>&lt;s4 s5^></Product>
+        </Products>
+      </Reaction>
+    </ExpectedReactions>
+  </Test>
+
+  <!-- Join gate example from DSD -->
+  <Test Name="Join">
+    <Code>
+      directive sample 10.0 1000
+      def fork(N, xt,xb, yt,yb, zt,zb) =
+      new a
+      ( N* xt^:[xb yt^]&lt;yb>:[a zt^]&lt;zb>
+      | N* &lt;yt^ a zt^>
+      )
+      def join(N, xt,xb, yt,yb, zt,zb) =
+      new a new b
+      ( N* xt^:[xb yt^]:[yb a^]:[b zt^]&lt;zb>
+      | N* &lt;a^ b zt^>
+      )
+      new xt new yt new zt
+      ( constant join(100, xt,xb, yt,yb, zt,zb)
+      | constant join(100, xt,xb, yt,yb, zt,zb)
+      | 100 * &lt;xh xt^ xb>
+      | 100 * &lt;yh yt^ yb>
+      )
+    </Code>
+    <ExpectedSpecies>
+      <Species>&lt;yb a.1^></Species>
+      <Species>&lt;b.2 zt^ zb></Species>
+      <Species>&lt;yb a^></Species>
+      <Species>&lt;b zt^ zb></Species>
+      <Species>&lt;yh yt^ yb></Species>
+      <Species>&lt;xb yt^></Species>
+      <Species>&lt;xh xt^ xb></Species>
+      <Species>&lt;a.1^ b.2 zt^></Species>
+      <Species>&lt;a^ b zt^></Species>
+      <Species>xt^:[xb yt^]:[yb a^]:[b zt^]&lt;zb></Species>
+      <Species>xt^:[xb yt^]:[yb a.1^]:[b.2 zt^]&lt;zb></Species>
+      <Species>&lt;xh>[xt^ xb]:&lt;xb>[yt^]:[yb a.1^]:[b.2 zt^]&lt;zb></Species>
+      <Species>&lt;xh>[xt^ xb]:yt^:[yb a.1^]:[b.2 zt^]&lt;zb></Species>
+      <Species>&lt;xh>[xt^ xb]:&lt;xb>[yt^]:[yb a^]:[b zt^]&lt;zb></Species>
+      <Species>&lt;xh>[xt^ xb]:yt^:[yb a^]:[b zt^]&lt;zb></Species>
+      <Species>&lt;xh>[xt^ xb]:&lt;yh>[yt^ yb]:&lt;yb>[a^]:[b zt^]&lt;zb></Species>
+      <Species>&lt;xh>[xt^ xb]:&lt;yh>[yt^ yb]:a^:[b zt^]&lt;zb></Species>
+      <Species>&lt;xh>[xt^ xb]:&lt;yh>[yt^ yb]:[a^ b zt^]</Species>
+      <Species>&lt;xh>[xt^ xb]:&lt;yh>[yt^ yb]:&lt;yb>[a.1^]:[b.2 zt^]&lt;zb></Species>
+      <Species>&lt;xh>[xt^ xb]:&lt;yh>[yt^ yb]:a.1^:[b.2 zt^]&lt;zb></Species>
+      <Species>&lt;xh>[xt^ xb]:&lt;yh>[yt^ yb]:[a.1^ b.2 zt^]</Species>
+    </ExpectedSpecies>
+    <ExpectedReactions>
+      <Reaction FwdLabel="xt^" BwdLabel="xt^" Reversible="true">
+        <Reactants>
+          <Reactant>xt^:[xb yt^]:[yb a^]:[b zt^]&lt;zb></Reactant>
+          <Reactant>&lt;xh xt^ xb></Reactant>
+        </Reactants>
+        <Products>
+          <Product>&lt;xh>[xt^ xb]:&lt;xb>[yt^]:[yb a^]:[b zt^]&lt;zb></Product>
+        </Products>
+      </Reaction>
+      <Reaction FwdLabel="xt^" BwdLabel="xt^" Reversible="true">
+        <Reactants>
+          <Reactant>xt^:[xb yt^]:[yb a.1^]:[b.2 zt^]&lt;zb></Reactant>
+          <Reactant>&lt;xh xt^ xb></Reactant>
+        </Reactants>
+        <Products>
+          <Product>&lt;xh>[xt^ xb]:&lt;xb>[yt^]:[yb a.1^]:[b.2 zt^]&lt;zb></Product>
+        </Products>
+      </Reaction>
+      <Reaction FwdLabel="yt^" BwdLabel="yt^" Reversible="true">
+        <Reactants>
+          <Reactant>&lt;xh>[xt^ xb]:&lt;xb>[yt^]:[yb a.1^]:[b.2 zt^]&lt;zb></Reactant>
+        </Reactants>
+        <Products>
+          <Product>&lt;xh>[xt^ xb]:yt^:[yb a.1^]:[b.2 zt^]&lt;zb></Product>
+          <Product>&lt;xb yt^></Product>
+        </Products>
+      </Reaction>
+      <Reaction FwdLabel="yt^" BwdLabel="yt^" Reversible="true">
+        <Reactants>
+          <Reactant>&lt;xh>[xt^ xb]:&lt;xb>[yt^]:[yb a^]:[b zt^]&lt;zb></Reactant>
+        </Reactants>
+        <Products>
+          <Product>&lt;xh>[xt^ xb]:yt^:[yb a^]:[b zt^]&lt;zb></Product>
+          <Product>&lt;xb yt^></Product>
+        </Products>
+      </Reaction>
+      <Reaction FwdLabel="yt^" BwdLabel="yt^" Reversible="true">
+        <Reactants>
+          <Reactant>&lt;xh>[xt^ xb]:yt^:[yb a.1^]:[b.2 zt^]&lt;zb></Reactant>
+          <Reactant>&lt;yh yt^ yb></Reactant>
+        </Reactants>
+        <Products>
+          <Product>&lt;xh>[xt^ xb]:&lt;yh>[yt^ yb]:&lt;yb>[a.1^]:[b.2 zt^]&lt;zb></Product>
+        </Products>
+      </Reaction>
+      <Reaction FwdLabel="yt^" BwdLabel="yt^" Reversible="true">
+        <Reactants>
+          <Reactant>&lt;xh>[xt^ xb]:yt^:[yb a^]:[b zt^]&lt;zb></Reactant>
+          <Reactant>&lt;yh yt^ yb></Reactant>
+        </Reactants>
+        <Products>
+          <Product>&lt;xh>[xt^ xb]:&lt;yh>[yt^ yb]:&lt;yb>[a^]:[b zt^]&lt;zb></Product>
+        </Products>
+      </Reaction>
+      <Reaction FwdLabel="a^" BwdLabel="a^" Reversible="true">
+        <Reactants>
+          <Reactant>&lt;xh>[xt^ xb]:&lt;yh>[yt^ yb]:&lt;yb>[a^]:[b zt^]&lt;zb></Reactant>
+        </Reactants>
+        <Products>
+          <Product>&lt;xh>[xt^ xb]:&lt;yh>[yt^ yb]:a^:[b zt^]&lt;zb></Product>
+          <Product>&lt;yb a^></Product>
+        </Products>
+      </Reaction>
+      <Reaction FwdLabel="a^" Reversible="false">
+        <Reactants>
+          <Reactant>&lt;xh>[xt^ xb]:&lt;yh>[yt^ yb]:a^:[b zt^]&lt;zb></Reactant>
+          <Reactant>&lt;a^ b zt^></Reactant>
+        </Reactants>
+        <Products>
+          <Product>&lt;xh>[xt^ xb]:&lt;yh>[yt^ yb]:[a^ b zt^]</Product>
+          <Product>&lt;b zt^ zb></Product>
+        </Products>
+      </Reaction>
+      <Reaction FwdLabel="a.1^" BwdLabel="a.1^" Reversible="true">
+        <Reactants>
+          <Reactant>&lt;xh>[xt^ xb]:&lt;yh>[yt^ yb]:&lt;yb>[a.1^]:[b.2 zt^]&lt;zb></Reactant>
+        </Reactants>
+        <Products>
+          <Product>&lt;xh>[xt^ xb]:&lt;yh>[yt^ yb]:a.1^:[b.2 zt^]&lt;zb></Product>
+          <Product>&lt;yb a.1^></Product>
+        </Products>
+      </Reaction>
+      <Reaction FwdLabel="a.1^" Reversible="false">
+        <Reactants>
+          <Reactant>&lt;xh>[xt^ xb]:&lt;yh>[yt^ yb]:a.1^:[b.2 zt^]&lt;zb></Reactant>
+          <Reactant>&lt;a.1^ b.2 zt^></Reactant>
+        </Reactants>
+        <Products>
+          <Product>&lt;xh>[xt^ xb]:&lt;yh>[yt^ yb]:[a.1^ b.2 zt^]</Product>
+          <Product>&lt;b.2 zt^ zb></Product>
+        </Products>
+      </Reaction>
+    </ExpectedReactions>
+  </Test>
+
+  <!-- central_1 -->
+  <Test Name="central_1">
+    <Code>
+      ( &lt;t^ a> | t^:[a b]:[c]:[d]:e^ | &lt;b c d e^> )
+    </Code>
+    <ExpectedSpecies>
+      <Species>&lt;d></Species>
+      <Species>&lt;c></Species>
+      <Species>&lt;a b></Species>
+      <Species>&lt;b c d e^></Species>
+      <Species>&lt;t^ a></Species>
+      <Species>t^:[a b]:[c]:[d]:e^</Species>
+      <Species>[t^ a]:&lt;a>[b]:[c]:[d]:e^</Species>
+      <Species>[t^ a]:[b c d e^]</Species>
+      <Species>t^:[a b]:&lt;b>[c d e^]</Species>
+    </ExpectedSpecies>
+    <ExpectedReactions>
+      <Reaction FwdLabel="t^" BwdLabel="t^" Reversible="true">
+        <Reactants>
+          <Reactant>t^:[a b]:[c]:[d]:e^</Reactant>
+          <Reactant>&lt;t^ a></Reactant>
+        </Reactants>
+        <Products>
+          <Product>[t^ a]:&lt;a>[b]:[c]:[d]:e^</Product>
+        </Products>
+      </Reaction>
+      <Reaction FwdLabel="e^" Reversible="false">
+        <Reactants>
+          <Reactant>t^:[a b]:[c]:[d]:e^</Reactant>
+          <Reactant>&lt;b c d e^></Reactant>
+        </Reactants>
+        <Products>
+          <Product>t^:[a b]:&lt;b>[c d e^]</Product>
+          <Product>&lt;c></Product>
+          <Product>&lt;d></Product>
+        </Products>
+      </Reaction>
+      <Reaction FwdLabel="e^" Reversible="false">
+        <Reactants>
+          <Reactant>[t^ a]:&lt;a>[b]:[c]:[d]:e^</Reactant>
+          <Reactant>&lt;b c d e^></Reactant>
+        </Reactants>
+        <Products>
+          <Product>[t^ a]:[b c d e^]</Product>
+          <Product>&lt;a b></Product>
+          <Product>&lt;c></Product>
+          <Product>&lt;d></Product>
+        </Products>
+      </Reaction>
+      <Reaction FwdLabel="t^" Reversible="false">
+        <Reactants>
+          <Reactant>t^:[a b]:&lt;b>[c d e^]</Reactant>
+          <Reactant>&lt;t^ a></Reactant>
+        </Reactants>
+        <Products>
+          <Product>[t^ a]:[b c d e^]</Product>
+          <Product>&lt;a b></Product>
+        </Products>
+      </Reaction>
+    </ExpectedReactions>
+  </Test>
+
+  <!-- central_2 -->
+  <Test Name="central_2">
+    <Code>
+      ( &lt;t^ a> | t^:[a b]:&lt;q b>[c] )
+    </Code>
+    <ExpectedSpecies>
+      <Species>&lt;a b></Species>
+      <Species>&lt;t^ a></Species>
+      <Species>t^:[a b]:&lt;q b>[c]</Species>
+      <Species>[t^ a]:&lt;q>[b c]</Species>
+    </ExpectedSpecies>
+    <ExpectedReactions>
+      <Reaction FwdLabel="t^" Reversible="false">
+        <Reactants>
+          <Reactant>&lt;t^ a></Reactant>
+          <Reactant>t^:[a b]:&lt;q b>[c]</Reactant>
+        </Reactants>
+        <Products>
+          <Product>[t^ a]:&lt;q>[b c]</Product>
+          <Product>&lt;a b></Product>
+        </Products>
+      </Reaction>
+    </ExpectedReactions>
+  </Test>
+
+  <!-- central_3 -->
+  <Test Name="central_3">
+    <Code>
+      ( &lt;t^ a> | t^:[a b]:&lt;a b>[c] )
+    </Code>
+    <ExpectedSpecies>
+      <Species>&lt;a b></Species>
+      <Species>&lt;t^ a></Species>
+      <Species>t^:[a b c]</Species>
+      <Species>[t^ a]:&lt;a>[b c]</Species>
+    </ExpectedSpecies>
+    <ExpectedReactions>
+      <Reaction FwdLabel="t^" BwdLabel="t^" Reversible="true">
+        <Reactants>
+          <Reactant>&lt;t^ a></Reactant>
+          <Reactant>t^:[a b c]</Reactant>
+        </Reactants>
+        <Products>
+          <Product>[t^ a]:&lt;a>[b c]</Product>
+        </Products>
+      </Reaction>
+    </ExpectedReactions>
+  </Test>
+
+  <!-- central_4 -->
+  <Test Name="central_4">
+    <Code>
+      ( &lt;t^ a> | t^:[a b]:&lt;q>[c d]:&lt;z b c d>[e] )
+    </Code>
+    <ExpectedSpecies>
+      <Species>&lt;a b></Species>
+      <Species>&lt;q c d></Species>
+      <Species>&lt;t^ a></Species>
+      <Species>t^:[a b]:&lt;z b>[c d e]</Species>
+      <Species>[t^ a]:&lt;z>[b c d e]</Species>
+    </ExpectedSpecies>
+    <ExpectedReactions>
+      <Reaction FwdLabel="t^" Reversible="false">
+        <Reactants>
+          <Reactant>&lt;t^ a></Reactant>
+          <Reactant>t^:[a b]:&lt;z b>[c d e]</Reactant>
+        </Reactants>
+        <Products>
+          <Product>[t^ a]:&lt;z>[b c d e]</Product>
+          <Product>&lt;a b></Product>
+        </Products>
+      </Reaction>
+    </ExpectedReactions>
+  </Test>
+
+  <!-- central_5 -->
+  <Test Name="central_5">
+    <Code>
+      ( &lt;t^ a> | t^:[a b]:&lt;q>[c d]&lt;x>:&lt;b c d>[e] )
+    </Code>
+    <ExpectedSpecies>
+      <Species>&lt;a b></Species>
+      <Species>&lt;q c d x></Species>
+      <Species>&lt;t^ a></Species>
+      <Species>t^:[a b]:&lt;b>[c d e]</Species>
+      <Species>[t^ a]:[b c d e]</Species>
+    </ExpectedSpecies>
+    <ExpectedReactions>
+      <Reaction FwdLabel="t^" Reversible="false">
+        <Reactants>
+          <Reactant>&lt;t^ a></Reactant>
+          <Reactant>t^:[a b]:&lt;b>[c d e]</Reactant>
+        </Reactants>
+        <Products>
+          <Product>[t^ a]:[b c d e]</Product>
+          <Product>&lt;a b></Product>
+        </Products>
+      </Reaction>
+    </ExpectedReactions>
+  </Test>
+
+  <!-- central_6 -->
+  <Test Name="central_6">
+    <Code>
+      ( &lt;t^ a> | t^:[a b]&lt;h>:[c d]&lt;e>:&lt;b c d>[f g] )
+    </Code>
+    <ExpectedSpecies>
+      <Species>&lt;a b h></Species>
+      <Species>&lt;c d e></Species>
+      <Species>&lt;t^ a></Species>
+      <Species>t^:[a b]&lt;h>:&lt;b>[c d f g]</Species>
+      <Species>[t^ a]:[b c d f g]</Species>
+    </ExpectedSpecies>
+    <ExpectedReactions>
+      <Reaction FwdLabel="t^" Reversible="false">
+        <Reactants>
+          <Reactant>&lt;t^ a></Reactant>
+          <Reactant>t^:[a b]&lt;h>:&lt;b>[c d f g]</Reactant>
+        </Reactants>
+        <Products>
+          <Product>[t^ a]:[b c d f g]</Product>
+          <Product>&lt;a b h></Product>
+        </Products>
+      </Reaction>
+    </ExpectedReactions>
+  </Test>
+
+  <!-- central_7 -->
+  <Test Name="central_7">
+    <Code>
+      ( &lt;t^ a> | t^:[a b]:[c d]&lt;e>:&lt;b c d>[f g] )
+    </Code>
+    <ExpectedSpecies>
+      <Species>&lt;a b></Species>
+      <Species>&lt;c d e></Species>
+      <Species>&lt;t^ a></Species>
+      <Species>t^:[a b]:&lt;b>[c d f g]</Species>
+      <Species>[t^ a]:[b c d f g]</Species>
+    </ExpectedSpecies>
+    <ExpectedReactions>
+      <Reaction FwdLabel="t^" Reversible="false">
+        <Reactants>
+          <Reactant>&lt;t^ a></Reactant>
+          <Reactant>t^:[a b]:&lt;b>[c d f g]</Reactant>
+        </Reactants>
+        <Products>
+          <Product>[t^ a]:[b c d f g]</Product>
+          <Product>&lt;a b></Product>
+        </Products>
+      </Reaction>
+    </ExpectedReactions>
+  </Test>
+
+  <!-- central_8 -->
+  <Test Name="central_8">
+    <Code>
+      ( &lt;t^ a> | t^:[a b]:&lt;b>[c]:&lt;b c>[d] )
+    </Code>
+    <ExpectedSpecies>
+      <Species>&lt;a b></Species>
+      <Species>&lt;b c></Species>
+      <Species>&lt;t^ a></Species>
+      <Species>t^:[a b]:&lt;b>[c d]</Species>
+      <Species>[t^ a]:[b c d]</Species>
+    </ExpectedSpecies>
+    <ExpectedReactions>
+      <Reaction FwdLabel="t^" Reversible="false">
+        <Reactants>
+          <Reactant>&lt;t^ a></Reactant>
+          <Reactant>t^:[a b]:&lt;b>[c d]</Reactant>
+        </Reactants>
+        <Products>
+          <Product>[t^ a]:[b c d]</Product>
+          <Product>&lt;a b></Product>
+        </Products>
+      </Reaction>
+    </ExpectedReactions>
+  </Test>
+
+  <!-- displace_both -->
+  <Test Name="displace_both">
+    <Code>
+      ( &lt;a b t^ c d> | [b]:t^:[c] )
+    </Code>
+    <ExpectedSpecies>
+      <Species>&lt;c></Species>
+      <Species>&lt;b></Species>
+      <Species>&lt;a b t^ c d></Species>
+      <Species>[b]:t^:[c]</Species>
+      <Species>&lt;a>[b t^ c]&lt;d></Species>
+    </ExpectedSpecies>
+    <ExpectedReactions>
+      <Reaction FwdLabel="t^" Reversible="false">
+        <Reactants>
+          <Reactant>&lt;a b t^ c d></Reactant>
+          <Reactant>[b]:t^:[c]</Reactant>
+        </Reactants>
+        <Products>
+          <Product>&lt;a>[b t^ c]&lt;d></Product>
+          <Product>&lt;b></Product>
+          <Product>&lt;c></Product>
+        </Products>
+      </Reaction>
+    </ExpectedReactions>
+  </Test>
+
+  <!-- standard_form_displace -->
+  <Test Name="standard_form_displace">
+    <Code>
+      ( &lt;a t^ b> | [q]&lt;z>:[z a]:t^ )
+    </Code>
+    <ExpectedSpecies>
+      <Species>&lt;z a></Species>
+      <Species>&lt;a t^ b></Species>
+      <Species>[q z]:&lt;z>[a]:t^</Species>
+      <Species>[q z]:[a t^]&lt;b></Species>
+    </ExpectedSpecies>
+    <ExpectedReactions>
+      <Reaction FwdLabel="t^" Reversible="false">
+        <Reactants>
+          <Reactant>&lt;a t^ b></Reactant>
+          <Reactant>[q z]:&lt;z>[a]:t^</Reactant>
+        </Reactants>
+        <Products>
+          <Product>[q z]:[a t^]&lt;b></Product>
+          <Product>&lt;z a></Product>
+        </Products>
+      </Reaction>
+    </ExpectedReactions>
+  </Test>
+
+  <!-- multiple_bind -->
+  <Test Name="multiple_bind">
+    <Code>
+      ( &lt;a t^ b> | [a]:t^:&lt;z>[b]:t^:[b]&lt;x y z> )
+    </Code>
+    <ExpectedSpecies>
+      <Species>&lt;z b></Species>
+      <Species>&lt;a></Species>
+      <Species>&lt;b x y z></Species>
+      <Species>&lt;a t^ b></Species>
+      <Species>[a]:t^:&lt;z>[b]:t^:[b]&lt;x y z></Species>
+      <Species>[a t^ b]:t^:[b]&lt;x y z></Species>
+      <Species>[a t^ b]:&lt;a>[t^ b]</Species>
+      <Species>[a]:t^:&lt;z>[b]:&lt;a>[t^ b]</Species>
+    </ExpectedSpecies>
+    <ExpectedReactions>
+      <Reaction FwdLabel="t^" Reversible="false">
+        <Reactants>
+          <Reactant>&lt;a t^ b></Reactant>
+          <Reactant>[a]:t^:&lt;z>[b]:t^:[b]&lt;x y z></Reactant>
+        </Reactants>
+        <Products>
+          <Product>[a]:t^:&lt;z>[b]:&lt;a>[t^ b]</Product>
+          <Product>&lt;b x y z></Product>
+        </Products>
+      </Reaction>
+      <Reaction FwdLabel="t^" Reversible="false">
+        <Reactants>
+          <Reactant>&lt;a t^ b></Reactant>
+          <Reactant>[a]:t^:&lt;z>[b]:t^:[b]&lt;x y z></Reactant>
+        </Reactants>
+        <Products>
+          <Product>[a t^ b]:t^:[b]&lt;x y z></Product>
+          <Product>&lt;a></Product>
+          <Product>&lt;z b></Product>
+        </Products>
+      </Reaction>
+      <Reaction FwdLabel="t^" Reversible="false">
+        <Reactants>
+          <Reactant>&lt;a t^ b></Reactant>
+          <Reactant>[a t^ b]:t^:[b]&lt;x y z></Reactant>
+        </Reactants>
+        <Products>
+          <Product>[a t^ b]:&lt;a>[t^ b]</Product>
+          <Product>&lt;b x y z></Product>
+        </Products>
+      </Reaction>
+      <Reaction FwdLabel="t^" Reversible="false">
+        <Reactants>
+          <Reactant>&lt;a t^ b></Reactant>
+          <Reactant>[a]:t^:&lt;z>[b]:&lt;a>[t^ b]</Reactant>
+        </Reactants>
+        <Products>
+          <Product>[a t^ b]:&lt;a>[t^ b]</Product>
+          <Product>&lt;a></Product>
+          <Product>&lt;z b></Product>
+        </Products>
+      </Reaction>
+    </ExpectedReactions>
+  </Test>
+
+  <!-- displace_both -->
+  <Test Name="displace_both">
+    <Code>
+      ( &lt; t^ b> | t^:[b c] )
+    </Code>
+    <ExpectedSpecies>
+      <Species>&lt;t^ b></Species>
+      <Species>t^:[b c]</Species>
+      <Species>[t^ b]:&lt;b>[c]</Species>
+    </ExpectedSpecies>
+    <ExpectedReactions>
+      <Reaction FwdLabel="t^" BwdLabel="t^" Reversible="true">
+        <Reactants>
+          <Reactant>&lt;t^ b></Reactant>
+          <Reactant>t^:[b c]</Reactant>
+        </Reactants>
+        <Products>
+          <Product>[t^ b]:&lt;b>[c]</Product>
+        </Products>
+      </Reaction>
+    </ExpectedReactions>
+  </Test>
+
+  <!-- no_reactions -->
+  <Test Name="no_reactions">
+    <Code>
+      ( [b]:&lt;b>[c] )
+    </Code>
+    <ExpectedSpecies>
+      <Species>&lt;b></Species>
+      <Species>[b c]</Species>
+    </ExpectedSpecies>
+    <ExpectedReactions>
+    </ExpectedReactions>
+  </Test>
+
+  <!-- andrew -->
+  <Test Name="andrew">
+    <Code>
+      ( &lt;t^ a> | t^:[a]:[b]&lt;c>:[c] )
+    </Code>
+    <ExpectedSpecies>
+      <Species>&lt;a></Species>
+      <Species>&lt;c></Species>
+      <Species>&lt;t^ a></Species>
+      <Species>t^:[a]:[b c]</Species>
+      <Species>[t^ a]:[b c]</Species>
+    </ExpectedSpecies>
+    <ExpectedReactions>
+      <Reaction FwdLabel="t^" Reversible="false">
+        <Reactants>
+          <Reactant>&lt;t^ a></Reactant>
+          <Reactant>t^:[a]:[b c]</Reactant>
+        </Reactants>
+        <Products>
+          <Product>[t^ a]:[b c]</Product>
+          <Product>&lt;a></Product>
+        </Products>
+      </Reaction>
+    </ExpectedReactions>
+  </Test>
+
+  <!-- csd_initial -->
+  <Test Name="csd_initial">
+    <Code>
+      ( [a]&lt;b>:[b c]:&lt;c>[e] )
+    </Code>
+    <ExpectedSpecies>
+      <Species>&lt;b c></Species>
+      <Species>[a b]:[c e]</Species>
+    </ExpectedSpecies>
+    <ExpectedReactions>
+    </ExpectedReactions>
+  </Test>
+
+  <!-- cover_1 -->
+  <Test Name="cover_1">
+    <Code>
+      ( [a]&lt;b^>:b^ )
+    </Code>
+    <ExpectedSpecies>
+      <Species>[a b^]</Species>
+    </ExpectedSpecies>
+    <ExpectedReactions>
+    </ExpectedReactions>
+  </Test>
+
+  <!-- cover_2_csd -->
+  <Test Name="cover_2_csd">
+    <Code>
+      ( &lt;t^ a> | t^:[a b]:u^:&lt;b u^>[c d] )
+    </Code>
+    <ExpectedSpecies>
+      <Species>&lt;a b></Species>
+      <Species>&lt;t^ a></Species>
+      <Species>t^:[a b]:&lt;b>[u^ c d]</Species>
+      <Species>[t^ a]:[b u^ c d]</Species>
+    </ExpectedSpecies>
+    <ExpectedReactions>
+      <Reaction FwdLabel="t^" Reversible="false">
+        <Reactants>
+          <Reactant>&lt;t^ a></Reactant>
+          <Reactant>t^:[a b]:&lt;b>[u^ c d]</Reactant>
+        </Reactants>
+        <Products>
+          <Product>[t^ a]:[b u^ c d]</Product>
+          <Product>&lt;a b></Product>
+        </Products>
+      </Reaction>
+    </ExpectedReactions>
+  </Test>
+
+  <!-- cover_3 -->
+  <Test Name="cover_3">
+    <Code>
+      ( [a]&lt;z u^ b>:[z]:u^:[b c]:t^ | &lt;c t^> )
+    </Code>
+    <ExpectedSpecies>
+      <Species>&lt;b c></Species>
+      <Species>&lt;c t^></Species>
+      <Species>&lt;z></Species>
+      <Species>[a z u^ b]:&lt;b>[c]:t^</Species>
+      <Species>[a z u^ b]:[c t^]</Species>
+    </ExpectedSpecies>
+    <ExpectedReactions>
+      <Reaction FwdLabel="t^" Reversible="false">
+        <Reactants>
+          <Reactant>&lt;c t^></Reactant>
+          <Reactant>[a z u^ b]:&lt;b>[c]:t^</Reactant>
+        </Reactants>
+        <Products>
+          <Product>[a z u^ b]:[c t^]</Product>
+          <Product>&lt;b c></Product>
+        </Products>
+      </Reaction>
+    </ExpectedReactions>
+  </Test>
+
+  <!-- cover_4 -->
+  <Test Name="cover_4">
+    <Code>
+      ([a]&lt;u^ b>:u^:[b])
+    </Code>
+    <ExpectedSpecies>
+      <Species>&lt;b></Species>
+      <Species>[a u^ b]</Species>
+    </ExpectedSpecies>
+    <ExpectedReactions>
+    </ExpectedReactions>
+  </Test>
+
+  <!-- cover_5 -->
+  <Test Name="cover_5">
+    <Code>
+      ( t^:u^:[a] | &lt;t^ u^ a> )
+    </Code>
+    <ExpectedSpecies>
+      <Species>&lt;a></Species>
+      <Species>&lt;t^ u^ a></Species>
+      <Species>t^:u^:[a]</Species>
+      <Species>[t^ u^ a]</Species>
+    </ExpectedSpecies>
+    <ExpectedReactions>
+      <Reaction FwdLabel="t^" Reversible="false">
+        <Reactants>
+          <Reactant>&lt;t^ u^ a></Reactant>
+          <Reactant>t^:u^:[a]</Reactant>
+        </Reactants>
+        <Products>
+          <Product>[t^ u^ a]</Product>
+          <Product>&lt;a></Product>
+        </Products>
+      </Reaction>
+      <Reaction FwdLabel="u^" Reversible="false">
+        <Reactants>
+          <Reactant>&lt;t^ u^ a></Reactant>
+          <Reactant>t^:u^:[a]</Reactant>
+        </Reactants>
+        <Products>
+          <Product>[t^ u^ a]</Product>
+          <Product>&lt;a></Product>
+        </Products>
+      </Reaction>
+    </ExpectedReactions>
+  </Test>
+
+  <!-- cover_6 -->
+  <Test Name="cover_6">
+    <Code>
+      ( [a]&lt;t^ b c d>:t^:[b c d e] )
+    </Code>
+    <ExpectedSpecies>
+      <Species>[a t^ b c d]:&lt;b c d>[e]</Species>
+    </ExpectedSpecies>
+    <ExpectedReactions>
+    </ExpectedReactions>
+  </Test>
+
+  <!-- cover_7 -->
+  <Test Name="cover_7">
+    <Code>
+      ( &lt;t^ a u^> | t^:&lt;q>[a]&lt;b>:u^ )
+    </Code>
+    <ExpectedSpecies>
+      <Species>&lt;t^ a u^></Species>
+      <Species>t^:&lt;q>[a]&lt;b>:u^</Species>
+      <Species>[t^ a u^]</Species>
+      <Species>&lt;q a b></Species>
+    </ExpectedSpecies>
+    <ExpectedReactions>
+      <Reaction FwdLabel="t^" Reversible="false">
+        <Reactants>
+          <Reactant>&lt;t^ a u^></Reactant>
+          <Reactant>t^:&lt;q>[a]&lt;b>:u^</Reactant>
+        </Reactants>
+        <Products>
+          <Product>[t^ a u^]</Product>
+          <Product>&lt;q a b></Product>
+        </Products>
+      </Reaction>
+      <Reaction FwdLabel="u^" Reversible="false">
+        <Reactants>
+          <Reactant>&lt;t^ a u^></Reactant>
+          <Reactant>t^:&lt;q>[a]&lt;b>:u^</Reactant>
+        </Reactants>
+        <Products>
+          <Product>[t^ a u^]</Product>
+          <Product>&lt;q a b></Product>
+        </Products>
+      </Reaction>
+    </ExpectedReactions>
+  </Test>
+
+  <!-- covers_displaces -->
+  <Test Name="covers_displaces">
+    <Code>
+      ( &lt;t^ a u^ b> | t^:[a]:u^:[b] )
+    </Code>
+    <ExpectedSpecies>
+      <Species>&lt;t^ a u^ b></Species>
+      <Species>t^:[a]:u^:[b]</Species>
+      <Species>[t^ a u^ b]</Species>
+      <Species>&lt;a></Species>
+      <Species>&lt;b></Species>
+    </ExpectedSpecies>
+    <ExpectedReactions>
+      <Reaction FwdLabel="t^" Reversible="false">
+        <Reactants>
+          <Reactant>&lt;t^ a u^ b></Reactant>
+          <Reactant>t^:[a]:u^:[b]</Reactant>
+        </Reactants>
+        <Products>
+          <Product>[t^ a u^ b]</Product>
+          <Product>&lt;a></Product>
+          <Product>&lt;b></Product>
+        </Products>
+      </Reaction>
+      <Reaction FwdLabel="u^" Reversible="false">
+        <Reactants>
+          <Reactant>&lt;t^ a u^ b></Reactant>
+          <Reactant>t^:[a]:u^:[b]</Reactant>
+        </Reactants>
+        <Products>
+          <Product>[t^ a u^ b]</Product>
+          <Product>&lt;a></Product>
+          <Product>&lt;b></Product>
+        </Products>
+      </Reaction>
+    </ExpectedReactions>
+  </Test>
+
+  <!-- cover_after_initial_displace -->
+  <Test Name="cover_after_initial_displace">
+    <Code>
+      ( [a]&lt;b c u^>:[b c]:u^:[d] )
+    </Code>
+    <ExpectedSpecies>
+      <Species>&lt;b c></Species>
+      <Species>[a b c u^]:[d]</Species>
+    </ExpectedSpecies>
+    <ExpectedReactions>
+    </ExpectedReactions>
+  </Test>
+
+  <!-- cover_before_initial_displace -->
+  <Test Name="cover_before_initial_displace">
+    <Code>
+      ( [a]&lt;t^ b c d e>:t^:[b c d e] )
+    </Code>
+    <ExpectedSpecies>
+      <Species>&lt;b c d e></Species>
+      <Species>[a t^ b c d e]</Species>
+    </ExpectedSpecies>
+    <ExpectedReactions>
+    </ExpectedReactions>
+  </Test>
+
+  <!-- cover_between_initial_displaces -->
+  <Test Name="cover_between_initial_displaces">
+    <Code>
+      ( [a]&lt;b c t^ d e>:[b c]:t^:[d] )
+    </Code>
+    <ExpectedSpecies>
+      <Species>[a b c t^ d]&lt;e></Species>
+      <Species>&lt;b c></Species>
+      <Species>&lt;d></Species>
+    </ExpectedSpecies>
+    <ExpectedReactions>
+    </ExpectedReactions>
+  </Test>
+
+  <!-- cover_after_displace -->
+  <Test Name="cover_after_displace">
+    <Code>
+      ( a^:[b c]:u^:[d] | &lt;a^ b c u^> )
+    </Code>
+    <ExpectedSpecies>
+      <Species>a^:[b c]:u^:[d]</Species>
+      <Species>&lt;a^ b c u^></Species>
+      <Species>[a^ b c u^]:[d]</Species>
+      <Species>&lt;b c></Species>
+    </ExpectedSpecies>
+    <ExpectedReactions>
+      <Reaction FwdLabel="a^" Reversible="false">
+        <Reactants>
+          <Reactant>a^:[b c]:u^:[d]</Reactant>
+          <Reactant>&lt;a^ b c u^></Reactant>
+        </Reactants>
+        <Products>
+          <Product>[a^ b c u^]:[d]</Product>
+          <Product>&lt;b c></Product>
+        </Products>
+      </Reaction>
+      <Reaction FwdLabel="u^" Reversible="false">
+        <Reactants>
+          <Reactant>a^:[b c]:u^:[d]</Reactant>
+          <Reactant>&lt;a^ b c u^></Reactant>
+        </Reactants>
+        <Products>
+          <Product>[a^ b c u^]:[d]</Product>
+          <Product>&lt;b c></Product>
+        </Products>
+      </Reaction>
+    </ExpectedReactions>
+  </Test>
+
+  <!-- cover_before_displace -->
+  <Test Name="cover_before_displace">
+    <Code>
+      ( a^:t^:[b c d e] | &lt;a^ t^ b c d e> )
+    </Code>
+    <ExpectedSpecies>
+      <Species>a^:t^:[b c d e]</Species>
+      <Species>&lt;a^ t^ b c d e></Species>
+      <Species>[a^ t^ b c d e]</Species>
+      <Species>&lt;b c d e></Species>
+    </ExpectedSpecies>
+    <ExpectedReactions>
+      <Reaction FwdLabel="a^" Reversible="false">
+        <Reactants>
+          <Reactant>a^:t^:[b c d e]</Reactant>
+          <Reactant>&lt;a^ t^ b c d e></Reactant>
+        </Reactants>
+        <Products>
+          <Product>[a^ t^ b c d e]</Product>
+          <Product>&lt;b c d e></Product>
+        </Products>
+      </Reaction>
+      <Reaction FwdLabel="t^" Reversible="false">
+        <Reactants>
+          <Reactant>a^:t^:[b c d e]</Reactant>
+          <Reactant>&lt;a^ t^ b c d e></Reactant>
+        </Reactants>
+        <Products>
+          <Product>[a^ t^ b c d e]</Product>
+          <Product>&lt;b c d e></Product>
+        </Products>
+      </Reaction>
+    </ExpectedReactions>
+  </Test>
+
+  <!-- cover_between_displaces -->
+  <Test Name="cover_between_displaces">
+    <Code>
+      ( a^:[b c]:t^:[d] | &lt;a^ b c t^ d e> )
+    </Code>
+    <ExpectedSpecies>
+      <Species>a^:[b c]:t^:[d]</Species>
+      <Species>&lt;a^ b c t^ d e></Species>
+      <Species>[a^ b c t^ d]&lt;e></Species>
+      <Species>&lt;b c></Species>
+      <Species>&lt;d></Species>
+    </ExpectedSpecies>
+    <ExpectedReactions>
+      <Reaction FwdLabel="a^" Reversible="false">
+        <Reactants>
+          <Reactant>a^:[b c]:t^:[d]</Reactant>
+          <Reactant>&lt;a^ b c t^ d e></Reactant>
+        </Reactants>
+        <Products>
+          <Product>[a^ b c t^ d]&lt;e></Product>
+          <Product>&lt;b c></Product>
+          <Product>&lt;d></Product>
+        </Products>
+      </Reaction>
+      <Reaction FwdLabel="t^" Reversible="false">
+        <Reactants>
+          <Reactant>a^:[b c]:t^:[d]</Reactant>
+          <Reactant>&lt;a^ b c t^ d e></Reactant>
+        </Reactants>
+        <Products>
+          <Product>[a^ b c t^ d]&lt;e></Product>
+          <Product>&lt;b c></Product>
+          <Product>&lt;d></Product>
+        </Products>
+      </Reaction>
+    </ExpectedReactions>
+  </Test>
+
+  <!-- reversible_order -->
+  <Test Name="reversible_order" Unproductive="true">
+    <Code>
+      ( &lt; a b^ c> | b^ )
+    </Code>
+    <ExpectedSpecies>
+      <Species>&lt;a b^ c></Species>
+      <Species>b^</Species>
+      <Species>&lt;a>[b^]&lt;c></Species>
+    </ExpectedSpecies>
+    <ExpectedReactions>
+      <Reaction FwdLabel="b^" BwdLabel="b^" Reversible="true">
+        <Reactants>
+          <Reactant>&lt;a>[b^]&lt;c></Reactant>
+        </Reactants>
+        <Products>
+          <Product>b^</Product>
+          <Product>&lt;a b^ c></Product>
+        </Products>
+      </Reaction>
+    </ExpectedReactions>
+  </Test>
+
+  <!-- leak_1_basic -->
+  <Test Name="leak_1_basic" Leaks="true">
+    <Code>
+      ( &lt;a>[b c]&lt;d> | &lt;q b c z> )
+    </Code>
+    <ExpectedSpecies>
+      <Species>&lt;q b c z></Species>
+      <Species>&lt;a b c d></Species>
+      <Species>&lt;a>[b c]&lt;d></Species>
+      <Species>&lt;q>[b c]&lt;z></Species>
+    </ExpectedSpecies>
+    <ExpectedReactions>
+      <Reaction FwdLabel="leak_l" BwdLabel="leak_l" Reversible="true">
+        <Reactants>
+          <Reactant>&lt;a>[b c]&lt;d></Reactant>
+          <Reactant>&lt;q b c z></Reactant>
+        </Reactants>
+        <Products>
+          <Product>&lt;q>[b c]&lt;z></Product>
+          <Product>&lt;a b c d></Product>
+        </Products>
+      </Reaction>
+    </ExpectedReactions>
+  </Test>
+
+  <!-- leak_2_migrate_left -->
+  <Test Name="leak_2_migrate_left" Leaks="true">
+    <Code>
+      ( &lt;a>[b c]&lt;d>:&lt;c>[e f] | &lt;q b e> )
+    </Code>
+    <ExpectedSpecies>
+      <Species>&lt;a>[b c]&lt;d>:&lt;c>[e f]</Species>
+      <Species>&lt;q b e></Species>
+      <Species>&lt;q>[b]&lt;e>:[c e f]</Species>
+      <Species>&lt;a b c d></Species>
+    </ExpectedSpecies>
+    <ExpectedReactions>
+      <Reaction FwdLabel="leak_l" BwdLabel="leak_l" Reversible="true">
+        <Reactants>
+          <Reactant>&lt;a>[b c]&lt;d>:&lt;c>[e f]</Reactant>
+          <Reactant>&lt;q b e></Reactant>
+        </Reactants>
+        <Products>
+          <Product>&lt;q>[b]&lt;e>:[c e f]</Product>
+          <Product>&lt;a b c d></Product>
+        </Products>
+      </Reaction>
+    </ExpectedReactions>
+  </Test>
+
+  <!-- leak_3_left -->
+  <Test Name="leak_3_left" Leaks="true">
+    <Code>
+      ( &lt;a>[t^ b]&lt;c> | &lt;y b z> )
+    </Code>
+    <ExpectedSpecies>
+      <Species>&lt;a>[t^ b]&lt;c></Species>
+      <Species>&lt;y b z></Species>
+      <Species>t^:&lt;y>[b]&lt;z></Species>
+      <Species>&lt;a t^ b c></Species>
+    </ExpectedSpecies>
+    <ExpectedReactions>
+      <Reaction FwdLabel="leak_l" Reversible="false">
+        <Reactants>
+          <Reactant>&lt;a>[t^ b]&lt;c></Reactant>
+          <Reactant>&lt;y b z></Reactant>
+        </Reactants>
+        <Products>
+          <Product>t^:&lt;y>[b]&lt;z></Product>
+          <Product>&lt;a t^ b c></Product>
+        </Products>
+      </Reaction>
+      <Reaction FwdLabel="t^" Reversible="false">
+        <Reactants>
+          <Reactant>t^:&lt;y>[b]&lt;z></Reactant>
+          <Reactant>&lt;a t^ b c></Reactant>
+        </Reactants>
+        <Products>
+          <Product>&lt;a>[t^ b]&lt;c></Product>
+          <Product>&lt;y b z></Product>
+        </Products>
+      </Reaction>
+    </ExpectedReactions>
+    <!-- MODIFY EXPECTATIONS AS WE ARE REMOVING LEAKS THAT ARE DUPLICATES
+<ExpectedReactions>
+  <Reaction FwdLabel="leak_l" BwdLabel="leak_l" Reversible="true">
+    <Reactants>
+      <Reactant>&lt;a>[t^ b]&lt;c></Reactant>
+      <Reactant>&lt;y b z></Reactant>
+    </Reactants>
+    <Products>
+      <Product>t^:&lt;y>[b]&lt;z></Product>
+      <Product>&lt;a t^ b c></Product>
+    </Products>
+  </Reaction>
+  <Reaction FwdLabel="t^" Reversible="false">
+    <Reactants>
+      <Reactant>t^:&lt;y>[b]&lt;z></Reactant>
+      <Reactant>&lt;a t^ b c></Reactant>
+    </Reactants>
+    <Products>
+      <Product>&lt;a>[t^ b]&lt;c></Product>
+      <Product>&lt;y b z></Product>
+    </Products>
+  </Reaction>
+</ExpectedReactions>
+-->
+  </Test>
+
+  <!-- leak_4_right -->
+  <Test Name="leak_4_right" Leaks="true">
+    <Code>
+      ( &lt;a>[b c t^]&lt;d> | &lt;q b c> )
+    </Code>
+    <ExpectedSpecies>
+      <Species>&lt;a>[b c t^]&lt;d></Species>
+      <Species>&lt;q b c></Species>
+      <Species>&lt;q>[b c]:t^</Species>
+      <Species>&lt;a b c t^ d></Species>
+    </ExpectedSpecies>
+    <ExpectedReactions>
+      <Reaction FwdLabel="leak_l" Reversible="false">
+        <Reactants>
+          <Reactant>&lt;a>[b c t^]&lt;d></Reactant>
+          <Reactant>&lt;q b c></Reactant>
+        </Reactants>
+        <Products>
+          <Product>&lt;q>[b c]:t^</Product>
+          <Product>&lt;a b c t^ d></Product>
+        </Products>
+      </Reaction>
+      <Reaction FwdLabel="t^" Reversible="false">
+        <Reactants>
+          <Reactant>&lt;q>[b c]:t^</Reactant>
+          <Reactant>&lt;a b c t^ d></Reactant>
+        </Reactants>
+        <Products>
+          <Product>&lt;a>[b c t^]&lt;d></Product>
+          <Product>&lt;q b c></Product>
+        </Products>
+      </Reaction>
+    </ExpectedReactions>
+    <!-- MODIFY EXPECTATIONS AS WE ARE REMOVING LEAKS THAT ARE DUPLICATES
+<ExpectedReactions>
+  <Reaction FwdLabel="leak_l" BwdLabel="leak_l" Reversible="true">
+    <Reactants>
+      <Reactant>&lt;a>[b c t^]&lt;d></Reactant>
+      <Reactant>&lt;q b c></Reactant>
+    </Reactants>
+    <Products>
+      <Product>&lt;q>[b c]:t^</Product>
+      <Product>&lt;a b c t^ d></Product>
+    </Products>
+  </Reaction>
+  <Reaction FwdLabel="t^" Reversible="false">
+    <Reactants>
+      <Reactant>&lt;q>[b c]:t^</Reactant>
+      <Reactant>&lt;a b c t^ d></Reactant>
+    </Reactants>
+    <Products>
+      <Product>&lt;a>[b c t^]&lt;d></Product>
+      <Product>&lt;q b c></Product>
+    </Products>
+  </Reaction>
+</ExpectedReactions>
+-->
+  </Test>
+
+  <!-- leak_5_both -->
+  <Test Name="leak_5_both" Leaks="true">
+    <Code>
+      ( &lt;a>[t^ b u^]&lt;c> | &lt;b> )
+    </Code>
+    <ExpectedSpecies>
+      <Species>&lt;a>[t^ b u^]&lt;c></Species>
+      <Species>&lt;b></Species>
+      <Species>t^:[b]:u^</Species>
+      <Species>&lt;a t^ b u^ c></Species>
+    </ExpectedSpecies>
+    <ExpectedReactions>
+      <Reaction FwdLabel="leak_w" Reversible="false">
+        <Reactants>
+          <Reactant>&lt;a>[t^ b u^]&lt;c></Reactant>
+          <Reactant>&lt;b></Reactant>
+        </Reactants>
+        <Products>
+          <Product>t^:[b]:u^</Product>
+          <Product>&lt;a t^ b u^ c></Product>
+        </Products>
+      </Reaction>
+      <Reaction FwdLabel="t^" Reversible="false">
+        <Reactants>
+          <Reactant>t^:[b]:u^</Reactant>
+          <Reactant>&lt;a t^ b u^ c></Reactant>
+        </Reactants>
+        <Products>
+          <Product>&lt;a>[t^ b u^]&lt;c></Product>
+          <Product>&lt;b></Product>
+        </Products>
+      </Reaction>
+      <Reaction FwdLabel="u^" Reversible="false">
+        <Reactants>
+          <Reactant>t^:[b]:u^</Reactant>
+          <Reactant>&lt;a t^ b u^ c></Reactant>
+        </Reactants>
+        <Products>
+          <Product>&lt;a>[t^ b u^]&lt;c></Product>
+          <Product>&lt;b></Product>
+        </Products>
+      </Reaction>
+    </ExpectedReactions>
+    <!-- MODIFY EXPECTATIONS AS WE ARE REMOVING LEAKS THAT ARE DUPLICATES
+<ExpectedReactions>
+  <Reaction FwdLabel="leak_w" BwdLabel="leak_l" Reversible="true">
+    <Reactants>
+      <Reactant>&lt;a>[t^ b u^]&lt;c></Reactant>
+      <Reactant>&lt;b></Reactant>
+    </Reactants>
+    <Products>
+      <Product>t^:[b]:u^</Product>
+      <Product>&lt;a t^ b u^ c></Product>
+    </Products>
+  </Reaction>
+  <Reaction FwdLabel="t^" Reversible="false">
+    <Reactants>
+      <Reactant>t^:[b]:u^</Reactant>
+      <Reactant>&lt;a t^ b u^ c></Reactant>
+    </Reactants>
+    <Products>
+      <Product>&lt;a>[t^ b u^]&lt;c></Product>
+      <Product>&lt;b></Product>
+    </Products>
+  </Reaction>
+  <Reaction FwdLabel="u^" Reversible="false">
+    <Reactants>
+      <Reactant>t^:[b]:u^</Reactant>
+      <Reactant>&lt;a t^ b u^ c></Reactant>
+    </Reactants>
+    <Products>
+      <Product>&lt;a>[t^ b u^]&lt;c></Product>
+      <Product>&lt;b></Product>
+    </Products>
+  </Reaction>
+</ExpectedReactions>
+-->
+  </Test>
+
+  <!-- leak_6_multiple -->
+  <Test Name="leak_6_multiple" Leaks="true">
+    <Code>
+      ( &lt;a>[t^ u]&lt;c> | &lt;u> | &lt;t^ u z> )
+    </Code>
+    <ExpectedSpecies>
+      <Species>&lt;a>[t^ u]&lt;c></Species>
+      <Species>&lt;u></Species>
+      <Species>&lt;t^ u z></Species>
+      <Species>t^:[u]</Species>
+      <Species>&lt;a t^ u c></Species>
+      <Species>[t^ u]&lt;z></Species>
+    </ExpectedSpecies>
+    <ExpectedReactions>
+      <Reaction FwdLabel="leak_l" Reversible="false">
+        <Reactants>
+          <Reactant>&lt;a>[t^ u]&lt;c></Reactant>
+          <Reactant>&lt;u></Reactant>
+        </Reactants>
+        <Products>
+          <Product>t^:[u]</Product>
+          <Product>&lt;a t^ u c></Product>
+        </Products>
+      </Reaction>
+      <Reaction FwdLabel="leak_l" BwdLabel="leak_l" Reversible="true">
+        <Reactants>
+          <Reactant>&lt;a>[t^ u]&lt;c></Reactant>
+          <Reactant>&lt;t^ u z></Reactant>
+        </Reactants>
+        <Products>
+          <Product>[t^ u]&lt;z></Product>
+          <Product>&lt;a t^ u c></Product>
+        </Products>
+      </Reaction>
+      <Reaction FwdLabel="leak_l" Reversible="false">
+        <Reactants>
+          <Reactant>[t^ u]&lt;z></Reactant>
+          <Reactant>&lt;u></Reactant>
+        </Reactants>
+        <Products>
+          <Product>&lt;t^ u z></Product>
+          <Product>t^:[u]</Product>
+        </Products>
+      </Reaction>
+      <Reaction FwdLabel="t^" Reversible="false">
+        <Reactants>
+          <Reactant>t^:[u]</Reactant>
+          <Reactant>&lt;a t^ u c></Reactant>
+        </Reactants>
+        <Products>
+          <Product>&lt;a>[t^ u]&lt;c></Product>
+          <Product>&lt;u></Product>
+        </Products>
+      </Reaction>
+      <Reaction FwdLabel="t^" Reversible="false">
+        <Reactants>
+          <Reactant>t^:[u]</Reactant>
+          <Reactant>&lt;t^ u z></Reactant>
+        </Reactants>
+        <Products>
+          <Product>[t^ u]&lt;z></Product>
+          <Product>&lt;u></Product>
+        </Products>
+      </Reaction>
+    </ExpectedReactions>
+    <!-- MODIFY EXPECTATIONS AS WE ARE REMOVING LEAKS THAT ARE DUPLICATES
+<ExpectedReactions>
+  <Reaction FwdLabel="leak_l" BwdLabel="leak_l" Reversible="true">
+    <Reactants>
+      <Reactant>&lt;a>[t^ u]&lt;c></Reactant>
+      <Reactant>&lt;u></Reactant>
+    </Reactants>
+    <Products>
+      <Product>t^:[u]</Product>
+      <Product>&lt;a t^ u c></Product>
+    </Products>
+  </Reaction>
+  <Reaction FwdLabel="leak_l" BwdLabel="leak_l" Reversible="true">
+    <Reactants>
+      <Reactant>&lt;a>[t^ u]&lt;c></Reactant>
+      <Reactant>&lt;t^ u z></Reactant>
+    </Reactants>
+    <Products>
+      <Product>[t^ u]&lt;z></Product>
+      <Product>&lt;a t^ u c></Product>
+    </Products>
+  </Reaction>
+  <Reaction FwdLabel="leak_l" BwdLabel="leak_l" Reversible="true">
+    <Reactants>
+      <Reactant>[t^ u]&lt;z></Reactant>
+      <Reactant>&lt;u></Reactant>
+    </Reactants>
+    <Products>
+      <Product>&lt;t^ u z></Product>
+      <Product>t^:[u]</Product>
+    </Products>
+  </Reaction>
+  <Reaction FwdLabel="t^" Reversible="false">
+    <Reactants>
+      <Reactant>t^:[u]</Reactant>
+      <Reactant>&lt;a t^ u c></Reactant>
+    </Reactants>
+    <Products>
+      <Product>&lt;a>[t^ u]&lt;c></Product>
+      <Product>&lt;u></Product>
+    </Products>
+  </Reaction>
+  <Reaction FwdLabel="t^" Reversible="false">
+    <Reactants>
+      <Reactant>t^:[u]</Reactant>
+      <Reactant>&lt;t^ u z></Reactant>
+    </Reactants>
+    <Products>
+      <Product>[t^ u]&lt;z></Product>
+      <Product>&lt;u></Product>
+    </Products>
+  </Reaction>
+</ExpectedReactions>
+-->
+  </Test>
+
+  <!-- leak_7_multiple2 -->
+  <Test Name="leak_7_multiple2" Leaks="true">
+    <Code>
+      ( &lt;a>[b]&lt;c>:&lt;d>[t^ e f] | &lt;b e f> )
+    </Code>
+    <ExpectedSpecies>
+      <Species>&lt;a>[b]&lt;c>:&lt;d>[t^ e f]</Species>
+      <Species>&lt;b e f></Species>
+      <Species>[b]&lt;e f>:&lt;d>[t^ e f]</Species>
+      <Species>&lt;a b c></Species>
+      <Species>&lt;a>[b]&lt;c>:t^:&lt;b>[e f]</Species>
+      <Species>&lt;d t^ e f></Species>
+      <Species>[b]&lt;e f>:t^:&lt;b>[e f]</Species>
+    </ExpectedSpecies>
+    <ExpectedReactions>
+      <Reaction FwdLabel="leak_l" BwdLabel="leak_l" Reversible="true">
+        <Reactants>
+          <Reactant>&lt;a>[b]&lt;c>:&lt;d>[t^ e f]</Reactant>
+          <Reactant>&lt;b e f></Reactant>
+        </Reactants>
+        <Products>
+          <Product>[b]&lt;e f>:&lt;d>[t^ e f]</Product>
+          <Product>&lt;a b c></Product>
+        </Products>
+      </Reaction>
+      <Reaction FwdLabel="leak_l" Reversible="false">
+        <Reactants>
+          <Reactant>&lt;a>[b]&lt;c>:&lt;d>[t^ e f]</Reactant>
+          <Reactant>&lt;b e f></Reactant>
+        </Reactants>
+        <Products>
+          <Product>&lt;a>[b]&lt;c>:t^:&lt;b>[e f]</Product>
+          <Product>&lt;d t^ e f></Product>
+        </Products>
+      </Reaction>
+      <Reaction FwdLabel="leak_l" Reversible="false">
+        <Reactants>
+          <Reactant>&lt;b e f></Reactant>
+          <Reactant>[b]&lt;e f>:&lt;d>[t^ e f]</Reactant>
+        </Reactants>
+        <Products>
+          <Product>&lt;d t^ e f></Product>
+          <Product>[b]&lt;e f>:t^:&lt;b>[e f]</Product>
+        </Products>
+      </Reaction>
+      <Reaction FwdLabel="t^" Reversible="false">
+        <Reactants>
+          <Reactant>&lt;a>[b]&lt;c>:t^:&lt;b>[e f]</Reactant>
+          <Reactant>&lt;d t^ e f></Reactant>
+        </Reactants>
+        <Products>
+          <Product>&lt;a>[b]&lt;c>:&lt;d>[t^ e f]</Product>
+          <Product>&lt;b e f></Product>
+        </Products>
+      </Reaction>
+      <Reaction FwdLabel="t^" Reversible="false">
+        <Reactants>
+          <Reactant>&lt;d t^ e f></Reactant>
+          <Reactant>[b]&lt;e f>:t^:&lt;b>[e f]</Reactant>
+        </Reactants>
+        <Products>
+          <Product>&lt;b e f></Product>
+          <Product>[b]&lt;e f>:&lt;d>[t^ e f]</Product>
+        </Products>
+      </Reaction>
+      <Reaction FwdLabel="leak_l" BwdLabel="leak_l" Reversible="true">
+        <Reactants>
+          <Reactant>&lt;a b c></Reactant>
+          <Reactant>[b]&lt;e f>:t^:&lt;b>[e f]</Reactant>
+        </Reactants>
+        <Products>
+          <Product>&lt;b e f></Product>
+          <Product>&lt;a>[b]&lt;c>:t^:&lt;b>[e f]</Product>
+        </Products>
+      </Reaction>
+    </ExpectedReactions>
+    <!-- MODIFY EXPECTATIONS AS WE ARE REMOVING LEAKS THAT ARE DUPLICATES
+<ExpectedReactions>
+  <Reaction FwdLabel="leak_l" BwdLabel="leak_l" Reversible="true">
+    <Reactants>
+      <Reactant>&lt;a>[b]&lt;c>:&lt;d>[t^ e f]</Reactant>
+      <Reactant>&lt;b e f></Reactant>
+    </Reactants>
+    <Products>
+      <Product>[b]&lt;e f>:&lt;d>[t^ e f]</Product>
+      <Product>&lt;a b c></Product>
+    </Products>
+  </Reaction>
+  <Reaction FwdLabel="leak_l" BwdLabel="leak_l" Reversible="true">
+    <Reactants>
+      <Reactant>&lt;a>[b]&lt;c>:&lt;d>[t^ e f]</Reactant>
+      <Reactant>&lt;b e f></Reactant>
+    </Reactants>
+    <Products>
+      <Product>&lt;a>[b]&lt;c>:t^:&lt;b>[e f]</Product>
+      <Product>&lt;d t^ e f></Product>
+    </Products>
+  </Reaction>
+  <Reaction FwdLabel="leak_l" BwdLabel="leak_l" Reversible="true">
+    <Reactants>
+      <Reactant>&lt;b e f></Reactant>
+      <Reactant>[b]&lt;e f>:&lt;d>[t^ e f]</Reactant>
+    </Reactants>
+    <Products>
+      <Product>&lt;d t^ e f></Product>
+      <Product>[b]&lt;e f>:t^:&lt;b>[e f]</Product>
+    </Products>
+  </Reaction>
+  <Reaction FwdLabel="t^" Reversible="false">
+    <Reactants>
+      <Reactant>&lt;a>[b]&lt;c>:t^:&lt;b>[e f]</Reactant>
+      <Reactant>&lt;d t^ e f></Reactant>
+    </Reactants>
+    <Products>
+      <Product>&lt;a>[b]&lt;c>:&lt;d>[t^ e f]</Product>
+      <Product>&lt;b e f></Product>
+    </Products>
+  </Reaction>
+  <Reaction FwdLabel="t^" Reversible="false">
+    <Reactants>
+      <Reactant>&lt;d t^ e f></Reactant>
+      <Reactant>[b]&lt;e f>:t^:&lt;b>[e f]</Reactant>
+    </Reactants>
+    <Products>
+      <Product>&lt;b e f></Product>
+      <Product>[b]&lt;e f>:&lt;d>[t^ e f]</Product>
+    </Products>
+  </Reaction>
+  <Reaction FwdLabel="leak_l" BwdLabel="leak_l" Reversible="true">
+    <Reactants>
+      <Reactant>&lt;a b c></Reactant>
+      <Reactant>[b]&lt;e f>:t^:&lt;b>[e f]</Reactant>
+    </Reactants>
+    <Products>
+      <Product>&lt;b e f></Product>
+      <Product>&lt;a>[b]&lt;c>:t^:&lt;b>[e f]</Product>
+    </Products>
+  </Reaction>
+</ExpectedReactions>
+-->
+  </Test>
+
+  <!-- leak_nonproductive -->
+  <Test Name="leak_nonproductive" Leaks="true">
+    <Code>
+      ( [a]&lt;b> | &lt;a b> )
+    </Code>
+    <ExpectedSpecies>
+      <Species>[a]&lt;b></Species>
+      <Species>&lt;a b></Species>
+    </ExpectedSpecies>
+    <ExpectedReactions>
+    </ExpectedReactions>
+  </Test>
+
+  <!-- leak_then_migrate -->
+  <Test Name="leak_then_migrate" Leaks="true">
+    <Code>
+      ( [b]&lt;c>:[x y z] | &lt;b x> )
+    </Code>
+    <ExpectedSpecies>
+      <Species>[b]&lt;c>:[x y z]</Species>
+      <Species>&lt;b x></Species>
+      <Species>[b x]:&lt;x>[y z]</Species>
+      <Species>&lt;b c></Species>
+    </ExpectedSpecies>
+    <ExpectedReactions>
+      <Reaction FwdLabel="leak_l" BwdLabel="leak_l" Reversible="true">
+        <Reactants>
+          <Reactant>[b]&lt;c>:[x y z]</Reactant>
+          <Reactant>&lt;b x></Reactant>
+        </Reactants>
+        <Products>
+          <Product>[b x]:&lt;x>[y z]</Product>
+          <Product>&lt;b c></Product>
+        </Products>
+      </Reaction>
+    </ExpectedReactions>
+  </Test>
+
+  <!-- leak_then_displace -->
+  <Test Name="leak_then_displace" Leaks="true">
+    <Code>
+      ( [b]&lt;c>:[x y z] | &lt;b x y z q> )
+    </Code>
+    <ExpectedSpecies>
+      <Species>[b]&lt;c>:[x y z]</Species>
+      <Species>&lt;b x y z q></Species>
+      <Species>[b x y z]&lt;q></Species>
+      <Species>&lt;b c></Species>
+      <Species>&lt;x y z></Species>
+    </ExpectedSpecies>
+    <ExpectedReactions>
+      <Reaction FwdLabel="leak_l" Reversible="false">
+        <Reactants>
+          <Reactant>[b]&lt;c>:[x y z]</Reactant>
+          <Reactant>&lt;b x y z q></Reactant>
+        </Reactants>
+        <Products>
+          <Product>[b x y z]&lt;q></Product>
+          <Product>&lt;b c></Product>
+          <Product>&lt;x y z></Product>
+        </Products>
+      </Reaction>
+    </ExpectedReactions>
+    <!-- MODIFY EXPECTATIONS AS WE ARE REMOVING LEAKS THAT ARE DUPLICATES
+<ExpectedReactions>
+  <Reaction FwdLabel="leak_l" Reversible="false">
+    <Reactants>
+      <Reactant>[b]&lt;c>:[x y z]</Reactant>
+      <Reactant>&lt;b x y z q></Reactant>      
+    </Reactants>
+    <Products>
+      <Product>[b x y z]&lt;q></Product>
+      <Product>&lt;b c></Product>
+      <Product>&lt;x y z></Product>
+    </Products>
+  </Reaction>
+  <Reaction FwdLabel="leak_l" Reversible="false">
+    <Reactants>
+      <Reactant>[b]&lt;c>:[x y z]</Reactant>
+      <Reactant>&lt;b x y z q></Reactant>      
+    </Reactants>
+    <Products>
+      <Product>[b x y z]&lt;q></Product>
+      <Product>&lt;b c></Product>
+      <Product>&lt;x y z></Product>
+    </Products>
+  </Reaction>
+</ExpectedReactions>
+-->
+  </Test>
+
+  <!-- leak_then_cover -->
+  <Test Name="leak_then_cover" Leaks="true">
+    <Code>
+      ( &lt;a>[b]&lt;c>:t^ | &lt;z b t^> )
+    </Code>
+    <ExpectedSpecies>
+      <Species>&lt;a>[b]&lt;c>:t^</Species>
+      <Species>&lt;z b t^></Species>
+      <Species>&lt;z>[b t^]</Species>
+      <Species>&lt;a b c></Species>
+    </ExpectedSpecies>
+    <ExpectedReactions>
+      <Reaction FwdLabel="t^" Reversible="false">
+        <Reactants>
+          <Reactant>&lt;a>[b]&lt;c>:t^</Reactant>
+          <Reactant>&lt;z b t^></Reactant>
+        </Reactants>
+        <Products>
+          <Product>&lt;z>[b t^]</Product>
+          <Product>&lt;a b c></Product>
+        </Products>
+      </Reaction>
+      <Reaction FwdLabel="leak_l" Reversible="false">
+        <Reactants>
+          <Reactant>&lt;z>[b t^]</Reactant>
+          <Reactant>&lt;a b c></Reactant>
+        </Reactants>
+        <Products>
+          <Product>&lt;a>[b]&lt;c>:t^</Product>
+          <Product>&lt;z b t^></Product>
+        </Products>
+      </Reaction>
+    </ExpectedReactions>
+    <!-- MODIFY EXPECTATIONS AS WE ARE REMOVING LEAKS THAT ARE DUPLICATES
+<ExpectedReactions>
+  <Reaction FwdLabel="t^" Reversible="false">
+    <Reactants>
+      <Reactant>&lt;a>[b]&lt;c>:t^</Reactant>
+      <Reactant>&lt;z b t^></Reactant>
+    </Reactants>
+    <Products>
+      <Product>&lt;z>[b t^]</Product>
+      <Product>&lt;a b c></Product>
+    </Products>
+  </Reaction>
+  <Reaction FwdLabel="leak_l" BwdLabel="leak_l" Reversible="true">
+    <Reactants>
+      <Reactant>&lt;a>[b]&lt;c>:t^</Reactant>
+      <Reactant>&lt;z b t^></Reactant>
+    </Reactants>
+    <Products>
+      <Product>&lt;z>[b t^]</Product>
+      <Product>&lt;a b c></Product>
+    </Products>
+  </Reaction>
+</ExpectedReactions>
+-->
+  </Test>
+
+  <!-- catalytic_leak -->
+  <Test Name="catalytic_leak" Leaks="true">
+    <Code>
+      directive sample 7000.0 1000
+      new s3@ 4.2E-7 , 4.0E-2
+      new s5@ 6.5E-7 , 4.0E-3
+      ( 7800 * &lt;s2 s3^ s4>
+      | 6000 * &lt;s4 s5^>
+      | 6000 * &lt;s1>[s2]:&lt;s6>[s3^ s4]:s5^
+      )
+    </Code>
+    <ExpectedSpecies>
+      <Species>&lt;s2 s3^ s4></Species>
+      <Species>&lt;s4 s5^></Species>
+      <Species>&lt;s1 s2></Species>
+      <Species>&lt;s6 s3^ s4></Species>
+      <Species>&lt;s1>[s2]:&lt;s6>[s3^ s4]:s5^</Species>
+      <Species>&lt;s1>[s2]:&lt;s6>[s3^ s4]:&lt;s4>[s5^]</Species>
+      <Species>&lt;s1>[s2]:s3^:[s4 s5^]</Species>
+      <Species>[s2 s3^ s4]:&lt;s4>[s5^]</Species>
+      <Species>[s2 s3^ s4]:s5^</Species>
+    </ExpectedSpecies>
+    <ExpectedReactions>
+      <Reaction FwdLabel="s5^" BwdLabel="s5^" Reversible="true">
+        <Reactants>
+          <Reactant>&lt;s1>[s2]:&lt;s6>[s3^ s4]:s5^</Reactant>
+          <Reactant>&lt;s4 s5^></Reactant>
+        </Reactants>
+        <Products>
+          <Product>&lt;s1>[s2]:&lt;s6>[s3^ s4]:&lt;s4>[s5^]</Product>
+        </Products>
+      </Reaction>
+      <Reaction FwdLabel="s3^" BwdLabel="s3^" Reversible="true">
+        <Reactants>
+          <Reactant>&lt;s1>[s2]:&lt;s6>[s3^ s4]:&lt;s4>[s5^]</Reactant>
+        </Reactants>
+        <Products>
+          <Product>&lt;s1>[s2]:s3^:[s4 s5^]</Product>
+          <Product>&lt;s6 s3^ s4></Product>
+        </Products>
+      </Reaction>
+      <Reaction FwdLabel="s3^" Reversible="false">
+        <Reactants>
+          <Reactant>&lt;s1>[s2]:s3^:[s4 s5^]</Reactant>
+          <Reactant>&lt;s2 s3^ s4></Reactant>
+        </Reactants>
+        <Products>
+          <Product>[s2 s3^ s4]:&lt;s4>[s5^]</Product>
+          <Product>&lt;s1 s2></Product>
+        </Products>
+      </Reaction>
+      <Reaction FwdLabel="s5^" BwdLabel="s5^" Reversible="true">
+        <Reactants>
+          <Reactant>[s2 s3^ s4]:&lt;s4>[s5^]</Reactant>
+        </Reactants>
+        <Products>
+          <Product>[s2 s3^ s4]:s5^</Product>
+          <Product>&lt;s4 s5^></Product>
+        </Products>
+      </Reaction>
+      <Reaction FwdLabel="leak_l" Reversible="false">
+        <Reactants>
+          <Reactant>&lt;s1>[s2]:&lt;s6>[s3^ s4]:s5^</Reactant>
+          <Reactant>&lt;s2 s3^ s4></Reactant>
+        </Reactants>
+        <Products>
+          <Product>[s2 s3^ s4]:s5^</Product>
+          <Product>&lt;s1 s2></Product>
+          <Product>&lt;s6 s3^ s4></Product>
+        </Products>
+      </Reaction>
+      <Reaction FwdLabel="leak_l" BwdLabel="leak_l" Reversible="true">
+        <Reactants>
+          <Reactant>&lt;s1>[s2]:&lt;s6>[s3^ s4]:s5^</Reactant>
+          <Reactant>&lt;s4 s5^></Reactant>
+        </Reactants>
+        <Products>
+          <Product>&lt;s1>[s2]:s3^:[s4 s5^]</Product>
+          <Product>&lt;s6 s3^ s4></Product>
+        </Products>
+      </Reaction>
+      <Reaction FwdLabel="leak_l" Reversible="false">
+        <Reactants>
+          <Reactant>&lt;s1>[s2]:&lt;s6>[s3^ s4]:&lt;s4>[s5^]</Reactant>
+          <Reactant>&lt;s2 s3^ s4></Reactant>
+        </Reactants>
+        <Products>
+          <Product>[s2 s3^ s4]:&lt;s4>[s5^]</Product>
+          <Product>&lt;s1 s2></Product>
+          <Product>&lt;s6 s3^ s4></Product>
+        </Products>
+      </Reaction>
+      <Reaction FwdLabel="leak_l" Reversible="false">
+        <Reactants>
+          <Reactant>[s2 s3^ s4]:&lt;s4>[s5^]</Reactant>
+          <Reactant>&lt;s1 s2></Reactant>
+        </Reactants>
+        <Products>
+          <Product>&lt;s1>[s2]:s3^:[s4 s5^]</Product>
+          <Product>&lt;s2 s3^ s4></Product>
+        </Products>
+      </Reaction>
+      <Reaction FwdLabel="leak_l" Reversible="false">
+        <Reactants>
+          <Reactant>&lt;s1>[s2]:s3^:[s4 s5^]</Reactant>
+          <Reactant>&lt;s2 s3^ s4></Reactant>
+        </Reactants>
+        <Products>
+          <Product>[s2 s3^ s4]:s5^</Product>
+          <Product>&lt;s4 s5^></Product>
+          <Product>&lt;s1 s2></Product>
+        </Products>
+      </Reaction>
+    </ExpectedReactions>
+    <!-- MODIFY EXPECTATIONS AS WE ARE REMOVING LEAKS THAT ARE DUPLICATES
+<ExpectedReactions>
+  <Reaction FwdLabel="s5^" BwdLabel="s5^" Reversible="true">
+    <Reactants>
+      <Reactant>&lt;s1>[s2]:&lt;s6>[s3^ s4]:s5^</Reactant>
+      <Reactant>&lt;s4 s5^></Reactant>
+    </Reactants>
+    <Products>
+      <Product>&lt;s1>[s2]:&lt;s6>[s3^ s4]:&lt;s4>[s5^]</Product>
+    </Products> 
+  </Reaction>
+  <Reaction FwdLabel="s3^" BwdLabel="s3^" Reversible="true">
+    <Reactants>
+      <Reactant>&lt;s1>[s2]:&lt;s6>[s3^ s4]:&lt;s4>[s5^]</Reactant>
+    </Reactants>
+    <Products>
+      <Product>&lt;s1>[s2]:s3^:[s4 s5^]</Product>
+      <Product>&lt;s6 s3^ s4></Product>
+    </Products>
+  </Reaction>
+  <Reaction FwdLabel="s3^" Reversible="false">
+    <Reactants>
+      <Reactant>&lt;s1>[s2]:s3^:[s4 s5^]</Reactant>
+      <Reactant>&lt;s2 s3^ s4></Reactant>
+    </Reactants>
+    <Products>
+      <Product>[s2 s3^ s4]:&lt;s4>[s5^]</Product>
+      <Product>&lt;s1 s2></Product>
+    </Products>
+  </Reaction>
+  <Reaction FwdLabel="s5^" BwdLabel="s5^" Reversible="true">
+    <Reactants>
+      <Reactant>[s2 s3^ s4]:&lt;s4>[s5^]</Reactant>
+    </Reactants>
+    <Products>
+      <Product>[s2 s3^ s4]:s5^</Product>
+      <Product>&lt;s4 s5^></Product>
+    </Products>
+  </Reaction>
+  <Reaction FwdLabel="leak_l" Reversible="false">
+    <Reactants>
+      <Reactant>&lt;s1>[s2]:&lt;s6>[s3^ s4]:s5^</Reactant>
+      <Reactant>&lt;s2 s3^ s4></Reactant>
+    </Reactants>
+    <Products>
+      <Product>[s2 s3^ s4]:s5^</Product>
+      <Product>&lt;s1 s2></Product>
+      <Product>&lt;s6 s3^ s4></Product>
+    </Products>
+  </Reaction>
+  <Reaction FwdLabel="leak_l" Reversible="false">
+    <Reactants>
+      <Reactant>&lt;s1>[s2]:&lt;s6>[s3^ s4]:s5^</Reactant>
+      <Reactant>&lt;s2 s3^ s4></Reactant>
+    </Reactants>
+    <Products>
+      <Product>[s2 s3^ s4]:s5^</Product>
+      <Product>&lt;s6 s3^ s4></Product>
+      <Product>&lt;s1 s2></Product>
+    </Products>
+  </Reaction>
+  <Reaction FwdLabel="leak_l" BwdLabel="leak_l" Reversible="true">
+    <Reactants>
+      <Reactant>&lt;s1>[s2]:&lt;s6>[s3^ s4]:s5^</Reactant>
+      <Reactant>&lt;s4 s5^></Reactant>
+    </Reactants>
+    <Products>
+      <Product>&lt;s1>[s2]:s3^:[s4 s5^]</Product>
+      <Product>&lt;s6 s3^ s4></Product>
+    </Products>
+  </Reaction>
+  <Reaction FwdLabel="leak_l" Reversible="false">
+    <Reactants>
+      <Reactant>&lt;s1>[s2]:&lt;s6>[s3^ s4]:&lt;s4>[s5^]</Reactant>
+      <Reactant>&lt;s2 s3^ s4></Reactant>
+    </Reactants>
+    <Products>
+      <Product>[s2 s3^ s4]:&lt;s4>[s5^]</Product>
+      <Product>&lt;s1 s2></Product>
+      <Product>&lt;s6 s3^ s4></Product>
+    </Products>
+  </Reaction>
+  <Reaction FwdLabel="leak_l" BwdLabel="leak_l" Reversible="true">
+    <Reactants>
+      <Reactant>&lt;s1>[s2]:s3^:[s4 s5^]</Reactant>
+      <Reactant>&lt;s2 s3^ s4></Reactant>
+    </Reactants>
+    <Products>
+      <Product>[s2 s3^ s4]:&lt;s4>[s5^]</Product>
+      <Product>&lt;s1 s2></Product>
+    </Products>
+  </Reaction>
+  <Reaction FwdLabel="leak_l" Reversible="false">
+    <Reactants>
+      <Reactant>&lt;s1>[s2]:s3^:[s4 s5^]</Reactant>
+      <Reactant>&lt;s2 s3^ s4></Reactant>
+    </Reactants>
+    <Products>
+      <Product>[s2 s3^ s4]:s5^</Product>
+      <Product>&lt;s4 s5^></Product>
+      <Product>&lt;s1 s2></Product>
+    </Products>
+  </Reaction>
+</ExpectedReactions>
+-->
+  </Test>
+
+  <!-- leak_context -->
+  <Test Name="leak_context" Leaks="true">
+    <Code>
+      ( &lt;L1>[S1]&lt;N1^ R1>:[N1^ S N2^]:&lt;L2 N2^>[S2]&lt;R2> | &lt;S> )
+    </Code>
+    <ExpectedSpecies>
+      <Species>&lt;S></Species>
+      <Species>&lt;N1^ S N2^></Species>
+      <Species>&lt;L1>[S1 N1^]&lt;R1>:&lt;N1^>[S N2^]:&lt;L2 N2^>[S2]&lt;R2></Species>
+      <Species>&lt;L1>[S1 N1^]&lt;R1>:[S]:&lt;L2>[N2^ S2]&lt;R2></Species>
+    </ExpectedSpecies>
+    <ExpectedReactions>
+      <Reaction FwdLabel="leak_l" BwdLabel="leak_l" Reversible="true">
+        <Reactants>
+          <Reactant>&lt;L1>[S1 N1^]&lt;R1>:&lt;N1^>[S N2^]:&lt;L2 N2^>[S2]&lt;R2></Reactant>
+          <Reactant>&lt;S></Reactant>
+        </Reactants>
+        <Products>
+          <Product>&lt;L1>[S1 N1^]&lt;R1>:[S]:&lt;L2>[N2^ S2]&lt;R2></Product>
+          <Product>&lt;N1^ S N2^></Product>
+        </Products>
+      </Reaction>
+    </ExpectedReactions>
+  </Test>
+
+  <!-- Toehold exchange test -->
+  <Test Name="toehold_exchange">
+    <Code>
+      ( &lt;t^ a> | t^:[a u^]&lt;b> )
+    </Code>
+    <ExpectedSpecies>
+      <Species>&lt;t^ a></Species>
+      <Species>t^:[a u^]&lt;b></Species>
+      <Species>[t^ a]:u^</Species>
+      <Species>&lt;a u^ b></Species>
+    </ExpectedSpecies>
+    <ExpectedReactions>
+      <Reaction FwdLabel="t^" BwdLabel="u^" Reversible="true">
+        <Reactants>
+          <Reactant>&lt;t^ a></Reactant>
+          <Reactant>t^:[a u^]&lt;b></Reactant>
+        </Reactants>
+        <Products>
+          <Product>[t^ a]:u^</Product>
+          <Product>&lt;a u^ b></Product>
+        </Products>
+      </Reaction>
+    </ExpectedReactions>
+  </Test>
+
+  <!-- Another test for toehold exchange... -->
+  <!-- ( [q]:[t^ a]:u^:[z] | &lt;a u^> ) -->
+
+</Tests>

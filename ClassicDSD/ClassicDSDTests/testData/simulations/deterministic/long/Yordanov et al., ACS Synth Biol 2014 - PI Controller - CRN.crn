@@ -1,0 +1,53 @@
+directive sample 0.0,150000.0 1000
+directive plot (R - R'); (V - V'); (Y - Y'); (L - L')
+directive simulation deterministicstiff
+directive reltolerance 1e-5
+directive parameters
+  [ deg = 0.0008
+  ; cat = 0.0008
+  ; pol = 0.0167
+  ; nick = 0.0167
+  ; x0 = 4.0
+  ; ann = 0.01
+  ; bind = 5.4E-06
+  ; bind2 = 0.001
+  ; bind1 = 5E-05
+  ; unbind = 0.1126
+  ; Cmax = 1000.0
+  ; c = 0.0008
+  ; kt = 0.001
+  ; ku = 0.001
+  ; s = 2.0
+  ; e = 2.71828183
+  ; R = 0.0019872
+  ; T = 298.15 ]
+
+event R (2.0 * x0) @ 100000.0 |
+event R' (2.0 * x0) @ 50000.0 |
+init R x0 |
+R ->{cat} R + sp9 |
+R' ->{cat} R' + sp10 |
+Y ->{cat} Y + sp10 |
+Y' ->{cat} Y' + sp9 |
+sp9 ->{deg} |
+sp10 ->{deg} |
+sp9 ->{cat} sp9 + sp11 |
+sp10 ->{cat} sp10 + sp12 |
+sp9 ->{cat} sp9 + V |
+sp10 ->{cat} sp10 + V' |
+sp11 ->{cat} sp11 + V |
+sp12 ->{cat} sp12 + V' |
+V ->{deg} |
+V' ->{deg} |
+sp11 + sp12 ->{ann} |
+V ->{0.2} V + Y |
+V' ->{0.2} V' + Y' |
+Y ->{0.1} |
+Y' ->{0.1} |
+Y' + Y ->{0.1} |
+L + Y ->{0.01} L |
+L' + Y' ->{0.01} L' |
+L + L' ->{1.0} |
+R + R' ->{ann} |
+V + V' ->{ann} |
+sp9 + sp10 ->{ann}

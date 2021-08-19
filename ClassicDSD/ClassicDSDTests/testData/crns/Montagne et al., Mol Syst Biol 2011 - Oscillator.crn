@@ -1,0 +1,53 @@
+directive sample 0.0,100000.0 1000
+directive plot A; B; Inh
+directive simulation deterministicstiff
+directive parameters
+  [ ka = 0.00043333
+  ; kda = 0.0383
+  ; kdb = 0.0135
+  ; kdInhT1 = 9.5E-05
+  ; kdInhT3 = 3.5E-05
+  ; kpol = 0.2833
+  ; kIpol = 0.115
+  ; knick = 0.05
+  ; kexoa = 0.0053
+  ; kexob = 0.0062
+  ; kexoInh = 0.02
+  ; ku = 0.0
+  ; e = 2.71828183
+  ; R = 0.0019872
+  ; T = 298.15 ]
+
+init A 0.1 |
+init B 0.1 |
+init Inh 0.1 |
+init Template_2 30.0 |
+init Template_1 30.0 |
+init Template 5.0 |
+Primed ->{kpol} Extended |
+Extended ->{knick} Nicked |
+Nicked ->{kpol} Extended + B |
+Primed_1 ->{kIpol} Extended_1 |
+Extended_1 ->{knick} Nicked_1 |
+Nicked_1 ->{kIpol} Extended_1 + Inh |
+Primed_2 ->{kpol} Extended_2 |
+Extended_2 ->{knick} Nicked_2 |
+Nicked_2 ->{kpol} Extended_2 + A |
+Inhibited <->{kdInhT1}{ka} Inh + Template_2 |
+Inhibited + A <->{ku}{ka} Inh + Primed_2 |
+Inhibited + A <->{ku}{ka} Inh + sp_0 |
+A ->{kexoa} |
+B ->{kexob} |
+Inh ->{kexoInh} |
+Nicked_2 <->{kda}{ka} sp_0 + A |
+sp_0 <->{kda}{ka} Template_2 + A |
+Template_2 + A <->{ka}{kda} Primed_2 |
+Nicked_2 <->{kda}{ka} Primed_2 + A |
+Nicked_1 <->{kdb}{ka} sp_1 + B |
+sp_1 <->{kdInhT3}{ka} Template_1 + Inh |
+Template_1 + B <->{ka}{kdb} Primed_1 |
+Nicked_1 <->{kdInhT3}{ka} Primed_1 + Inh |
+Nicked <->{kda}{ka} sp_2 + A |
+sp_2 <->{kdb}{ka} Template + B |
+Template + A <->{ka}{kda} Primed |
+Nicked <->{kdb}{ka} Primed + B

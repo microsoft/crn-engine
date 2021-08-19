@@ -1,0 +1,31 @@
+(* A two-stage cascaded circuit, from Fig 3. *)
+directive plot F0(); F1(); <S1 S2a>
+
+dom S1 = { seq=CTTTCCTACA }
+dom S2a = { seq=CCTACG} (* x *)
+dom S2b = { seq=TCTCCA; bind=4.2E-4; unbind=4.0E-2} (* y *)
+dom S2c = { seq=ACTAACTTACGG}
+dom S3 = { seq=CCCT; bind=4.2E-4; unbind=4.0E-2}
+dom S4a = { seq=CATTCAATAC}
+dom S4b = {seq=CCTACG} (* x *)
+dom S5 = {seq=TCTCCA; bind=6.5E-4; unbind=4.0E-3} (* y *)
+dom S6 = {seq=CCACATACATCATATT}
+dom S7 = {seq=TACTTATTAGCC}
+dom S8 = {seq=GACA; bind=5.0E-4; unbind=1.9E-4}
+dom S9a = {seq=CTACTTTCAC}
+dom S9b = {seq=CCTACG} (* x *)
+dom S10 = {seq=TCTCCA; bind=6.5E-4; unbind=4.0E-3} (* y *)
+
+def F0() = <S4b^ S5^ S7 S8^ S9a S9b^>
+def F1() = <S2a S2b^ S2c S3^ S4a S4b^>
+def OBSB0() = <S4a>[S4b^ S5^ S7]:[S8^ S9a S9b^]{S10^*}
+def C0() = <S9a S9b^ S10^>
+def OBSB1() = <S1>[S2a S2b^ S2c]:<S6>[S3^ S4a S4b^]{S5^*}
+
+def Feedforward(N) =
+  ( N*F0() |  N*OBSB0() | N*C0() | N*F1() | N*OBSB1() )
+
+def FluorescingFeedforward(N) =
+  (Feedforward(N) | N*[S1 S2a]{S2b^*} )
+  
+FluorescingFeedforward(100)

@@ -1,0 +1,326 @@
+﻿directive sample 18000.0 1000 
+directive compilation infinite
+directive simulation deterministic
+directive declare
+directive time s
+directive concentration nM
+directive plot <_ fl^>; <fl^ _>
+directive parameters [ 
+(* Rates *)
+ka,(1.0e-5,2.0e-3),0.0003,log,random;
+kq,(1.0e-5,2.0e-3),0.0003,log,random;
+kr,(1.0e-5,2.0e-3),0.0003,log,random;
+kb,(1.0e-5,2.0e-3),0.0003,log,random;
+kc,(1.0e-5,2.0e-3),0.0003,log,random;
+ua,(1.0e-4,2.0e+1),0.1,log,fixed;
+ub,(1.0e-4,2.0e+1),0.1,log,fixed;
+ur,(1.0e-4,2.0e+1),0.1,log,fixed;
+uq,(1.0e-4,2.0e+1),0.1,log,fixed;
+uc,(1.0e-4,2.0e+1),0.1,log,fixed;
+kt,(1.0e-5,2.0e-3),0.0003,log,random;
+ku1,(1.0e-5,2.0e-3),0.0003,log,random;
+ku2,(1.0e-5,2.0e-3),0.0003,log,random;
+ku3,(1.0e-5,2.0e-3),0.0003,log,random;
+ut,(1.0e-4,2.0e+1),0.1,log,fixed;
+uu1,(1.0e-4,2.0e+1),0.1,log,fixed;
+uu2,(1.0e-4,2.0e+1),0.1,log,fixed;
+uu3,(1.0e-4,2.0e+1),0.1,log,fixed;
+
+(*
+katb,(1.0e-5,2.0e-3),0.0003,log,random;
+kbJ,(1.0e-5,2.0e-3),0.0003,log,random;
+kbtrJ,(1.0e-5,2.0e-3),0.0003,log,random;
+krJ,(1.0e-5,2.0e-3),0.0003,log,random;
+kqJ,(1.0e-5,2.0e-3),0.0003,log,random;
+kctr,(1.0e-5,2.0e-3),0.0003,log,random;
+kbtr,(1.0e-5,2.0e-3),0.0003,log,random;
+kctb,(1.0e-5,2.0e-3),0.0003,log,random;
+kbtb,(1.0e-5,2.0e-3),0.0003,log,random;
+kbtc,(1.0e-5,2.0e-3),0.0003,log,random;
+kitc,(1.0e-5,2.0e-3),0.0003,log,random;
+kitb,(1.0e-5,2.0e-3),0.0003,log,random;
+kqR,(1.0e-4,2.0e-3),0.00067,log,fixed;
+kcR,(1.0e-4,2.0e-3),0.00052,log,fixed;
+*)
+
+(* Concentrations *)
+X  = 50.0; NG  = 75.0;  NH  = 100.0; NR  = 150.0; (* Default *)
+Xv = 40.0; NGv = 120.0; NHv = 120.0; NRv = 120.0; (* Reversibles *)
+Xh = 10.0; NGh = 15.0;  NHh = 20.0;  NRh = 30.0;  (* Halves *)
+Xi = 10.0; NGi = 30.0;  NHi = 30.0;  NRi = 30.0; NMi = 100.0; (* Intermediates *)
+Xr = 1.0; NRr = 3.0; (* Reporters *)
+Xm = 40.0; NGm = 80.0; NHm = 80.0; NRm = 120.0; (* Consensus *)
+
+(* Proportions *)
+leakRepT,(0.0,0.1),0.0,real,fixed; badRepT,(0.0,0.3),0.0011,real,fixed; 
+leakRepC,(0.0,0.1),0.0,real,fixed; badRepC,(0.0,0.3),0.017,real,fixed;
+leakJoinAB_A,(0.0,0.1),0.012,real,fixed; badJoinAB_A,(0.0,0.3),0.15,real,fixed;
+leakJoinAB_B,(0.0,0.1),0.011,real,fixed; badJoinAB_B,(0.0,0.3),0.048,real,fixed;
+leakJoinAB_H,(0.0,0.1),0.0076,real,fixed; badJoinAB_H,(0.0,0.3),0.065,real,fixed;
+leakForkC_T,(0.0,0.1),0.0066,real,fixed; badForkC_T,(0.0,0.3),0.19,real,fixed;
+leakForkC_H,(0.0,0.1),0.0049,real,fixed; badForkC_H,(0.0,0.3),0.25,real,fixed;
+leakForkBC_T,(0.0,0.1),0.024,real,fixed; badForkBC_T,(0.0,0.3),0.19,real,fixed;
+leakForkBC_HB,(0.0,0.1),0.015,real,fixed; badForkBC_HB,(0.0,0.3),0.12,real,fixed;
+leakForkBC_HC,(0.0,0.1),0.0059,real,fixed; badForkBC_HC,(0.0,0.3),0.2,real,fixed;
+leakForkCBB_T,(0.0,0.1),0.00977,real,fixed; badForkCBB_T,(0.0,0.3),0.146,real,fixed;
+leakForkCBB_HC,(0.0,0.1),0.000676,real,fixed; badForkCBB_HC,(0.0,0.3),0.161,real,fixed;
+
+leakNon_J,(0.0,0.1),0.025,real,fixed; badNon,(0.0,0.3),0.1,real,fixed;
+leakNon_F,(0.0,0.1),0.0019,real,fixed; 
+leakRev_J,(0.0,0.1),0.01,real,fixed; badRev_A,(0.0,0.3),0.01,real,fixed;
+leakRev_F,(0.0,0.1),0.01,real,fixed; badRev_B,(0.0,0.3),0.01,real,fixed;
+leakMix_J,(0.0,0.1),0.0,real,fixed; badMix_A,(0.0,0.3),0.067,real,fixed;
+leakMix_F,(0.0,0.1),0.0,real,fixed; badMix_B,(0.0,0.3),0.0,real,fixed;
+leakCat_J,(0.0,0.1),0.01,real,fixed; badCat_A,(0.0,0.3),0.01,real,fixed; 
+leakCat_F,(0.0,0.1),0.01,real,fixed; badCat_B,(0.0,0.3),0.01,real,fixed;
+leakBBC_J,(0.0,0.1),0.01,real,fixed; badBBC_A,(0.0,0.3),0.01,real,fixed; 
+leakBBC_F,(0.0,0.1),0.01,real,fixed; badBBC_B,(0.0,0.3),0.01,real,fixed;
+leakBCB_J,(0.0,0.1),0.01,real,fixed; badBCB_A,(0.0,0.3),0.01,real,fixed;
+leakBCB_F,(0.0,0.1),0.01,real,fixed; badBCB_B,(0.0,0.3),0.01,real,fixed;
+leakCBB_J,(0.0,0.1),0.01,real,fixed; badCBB_A,(0.0,0.3),0.01,real,fixed; 
+leakCBB_F,(0.0,0.1),0.01,real,fixed; badCBB_B,(0.0,0.3),0.01,real,fixed;
+
+leakXY2B_J,(0.0,0.1),0.01,real,fixed; badXY2B_X,(0.0,0.3),0.01,real,fixed; 
+leakXY2B_F,(0.0,0.1),0.01,real,fixed; badXY2B_Y,(0.0,0.3),0.01,real,fixed;
+leakBX2X_J,(0.0,0.1),0.01,real,fixed; badBX2X_B,(0.0,0.3),0.01,real,fixed;
+leakBX2X_F,(0.0,0.1),0.01,real,fixed; badBX2X_X,(0.0,0.3),0.01,real,fixed;
+leakBY2Y_J,(0.0,0.1),0.01,real,fixed; badBY2Y_B,(0.0,0.3),0.01,real,fixed; 
+leakBY2Y_F,(0.0,0.1),0.01,real,fixed; badBY2Y_Y,(0.0,0.3),0.01,real,fixed;
+
+leakJoinBX_B,(0.0,0.1),0.01,real,fixed; badJoinBX_B,(0.0,0.3),0.01,real,fixed;
+leakJoinBX_X,(0.0,0.1),0.01,real,fixed; badJoinBX_X,(0.0,0.3),0.01,real,fixed;
+leakJoinBX_H,(0.0,0.1),0.01,real,fixed; badJoinBX_H,(0.0,0.3),0.01,real,fixed;
+leakJoinBY_B,(0.0,0.1),0.01,real,fixed; badJoinBY_B,(0.0,0.3),0.01,real,fixed;
+leakJoinBY_Y,(0.0,0.1),0.01,real,fixed; badJoinBY_Y,(0.0,0.3),0.01,real,fixed;
+leakJoinBY_H,(0.0,0.1),0.01,real,fixed; badJoinBY_H,(0.0,0.3),0.01,real,fixed;
+leakJoinXY_X,(0.0,0.1),0.01,real,fixed; badJoinXY_X,(0.0,0.3),0.01,real,fixed;
+leakJoinXY_Y,(0.0,0.1),0.01,real,fixed; badJoinXY_Y,(0.0,0.3),0.01,real,fixed;
+leakJoinXY_H,(0.0,0.1),0.01,real,fixed; badJoinXY_H,(0.0,0.3),0.01,real,fixed;
+
+leakFork2B_R,(0.0,0.1),0.01,real,fixed; badFork2B_R,(0.0,0.3),0.01,real,fixed;
+leakFork2B_H1,(0.0,0.1),0.01,real,fixed; badFork2B_H1,(0.0,0.3),0.01,real,fixed;
+leakFork2B_H2,(0.0,0.1),0.01,real,fixed; badFork2B_H2,(0.0,0.3),0.01,real,fixed;
+leakFork2X_R,(0.0,0.1),0.01,real,fixed; badFork2X_R,(0.0,0.3),0.01,real,fixed;
+leakFork2X_H1,(0.0,0.1),0.01,real,fixed; badFork2X_H1,(0.0,0.3),0.01,real,fixed;
+leakFork2X_H2,(0.0,0.1),0.01,real,fixed; badFork2X_H2,(0.0,0.3),0.01,real,fixed;
+leakFork2Y_R,(0.0,0.1),0.01,real,fixed; badFork2Y_R,(0.0,0.3),0.01,real,fixed;
+leakFork2Y_H1,(0.0,0.1),0.01,real,fixed; badFork2Y_H1,(0.0,0.3),0.01,real,fixed;
+leakFork2Y_H2,(0.0,0.1),0.01,real,fixed; badFork2Y_H2,(0.0,0.3),0.01,real,fixed
+(*;
+N1 = [0.0,0.2,0.4,0.6];
+N2 = [0.0,0.2,0.4,0.6];
+N3 = [0.0,0.2,0.4,0.6]
+*)
+;N,(0.0,1.0),0.0,real,fixed
+]
+directive sweep N = [0.0,0.2,0.4,0.6]
+directive fit {N; JoinBX_AddB; <fl^ rbx>}
+(*
+directive fit {input = N1; data = JoinBX_AddB; outputs = [<fl^ rbx>]}
+directive fit {input = N2; data = JoinBX_AddX; outputs = [<fl^ rbx>]}
+directive fit {input = N3; data = JoinBX_AddH; outputs = [<fl^ rbx>]}
+
+run JoinBX_AddB(N1)
+run JoinBX_AddX(N2)
+run JoinBX_AddH(N2)
+
+******
+
+paras1 = (NJoinBX_AddB*Xi*(1.0-badJoinBX_B),  NMi,  NMi,  leakJoinBX_B);
+paras2 = (NMi,  NJoinBX_AddX*Xi*(1.0-badJoinBX_X),  NMi,  leakJoinBX_X);
+paras3 = (NMi,  NMi,  NJoinBX_AddH*Xi*(1.0-badJoinBX_H),  leakJoinBX_H);
+paras = [paras1,paras2,paras3];
+
+run ( JoinBX(paras) | RepJoinBX(NRi) )
+
+*)
+
+new fl@0.0,0.0
+
+def Input(ta,a) = <ta^ a>
+def Catalyst(tb,b) = <tb^ b>
+def Helper(tr,r) = <tr^ r>
+def Output(tc,c) = <tc^ c>
+
+def Translator(x,tx) = <x tx^>
+def InputR(h,th) = <h th^>
+def OutputR(h,th) = <h th^>
+def CatalystR(h,th) = <h th^>
+def Output1R(h,th) = <h th^>
+def Output2R(h,th) = <h th^>
+def Output3R(h,th) = <h th^>
+def End(h,th) = <h th^>
+def Signal(c,fl) = <c fl^>
+def SignalR(fl,c) = <fl^ c>
+def Rep(tx,x) = {tx^*}[x]<fl^>
+def RepR(x,tx) = <fl^>[x]{tx^*}
+def Join_AB(ta,a,tb,b,tr,r,tq) = {ta^*}[a tb^]:[b tr^]:[r tq^]
+def Fork_C(i,tc,c,tr,r,tq) = [i]:[tc^ c]:[tr^ r]{tq^*}  
+def Fork_BC(i,tc,c,tb,b,tr,r,tq) = [i]:[tc^ c]:[tb^ b]:[tr^ r]{tq^*}
+def Fork_BCD(i,td,d,tc,c,tb,b,tr,r,tq) = [i]:[td^ d]:[tc^ c]:[tb^ b]:[tr^ r]{tq^*}
+
+def Join(NA,NB,NH,NG,NV,Leak,ta,a,tb,b,tr,r,tq) =
+( NG*(1.0-Leak) * Join_AB(ta,a,tb,b,tr,r,tq)
+| NG*Leak * Translator(r,tq)
+| NA * Input(ta,a)
+| NB * Catalyst(tb,b)
+| NH * Helper(tr,r)
+| NV * InputR(a,tb)
+| NV * CatalystR(b,tr)
+)
+def Fork(N,NH1,NH2,NG,Leak,i,tc,c,tr,r,tq) =
+( NG*(1.0-Leak) * Fork_C(i,tc,c,tr,r,tq)
+| NG*Leak * Output(tc,c)
+| N * Translator(r,tq)
+| NH1 * OutputR(c,tr)
+| NH2 * End(i,tc)
+| 0 * Helper(tr,r)
+)
+def Fork2(N,NH1,NH2,NH3,NG,Leak,i,tc,c,tb,b,tr,r,tq) =
+( NG*(1.0-Leak) * Fork_BC(i,tc,c,tb,b,tr,r,tq)
+| NG*Leak * Output(tc,c)
+| N * Translator(r,tq)
+| NH1 * CatalystR(b,tr)
+| NH2 * OutputR(c,tb)
+| NH3 * End(i,tc)
+| 0 * Helper(tr,r)
+| 0 * Catalyst(tb,b)
+)
+def Fork3(N,NH1,NH2,NH3,NH4,NG,Leak,i,td,d,tc,c,tb,b,tr,r,tq) =
+( NG*(1.0-Leak) * Fork_BCD(i,td,d,tc,c,tb,b,tr,r,tq)
+| N * Translator(r,tq)
+| NH1 * Output1R(b,tr)
+| NH2 * Output2R(c,tb)
+| NH3 * Output3R(d,tc)
+| NH4 * End(i,td)
+| 0 * Helper(tr,r)
+)
+def RepJoin(N,NR,r,tq) = 
+( N * Translator(r,tq)
+| NR * RepR(r,tq)
+| 0 * SignalR(fl,r)
+)
+def RepFork(N,NR,tc,c) = 
+( N * Output(tc,c)
+| NR * Rep(tc,c)
+| 0 * Signal(c,fl)
+)
+
+dom ta = {seq = CTGCTA; bind=ka; unbind=ua}
+dom tb = {seq = TTCCAC; bind=kb; unbind=ub}
+dom tr = {seq = TCCTAC; bind=kr; unbind=ur}
+dom tq = {seq = AACCAG; bind=kq; unbind=uq}
+dom tc = {seq = TACCCA; bind=kc; unbind=uc}
+dom a = {seq = CATTGCTTCTACGAGTCATCC}
+dom b = {seq = CATTGCACCTTAGAGTCCGAA}
+dom c = {seq = CATTGCCACATCGAGTCCCTT}
+dom r = {seq = CATTGCTTAACCGAGTCTCAC}
+dom i = {seq = CTGCCATCATAAGAGTCACCA}
+
+def RepT(N,NR) = RepJoin(N,NR,r,tq)
+def RepC(N,NR) = RepFork(N,NR,tc,c)
+def JoinAB(NA,NB,NH,NG,NV,Leak) =  Join(NA,NB,NH,NG,NV,Leak,ta,a,tb,b,tr,r,tq)
+def ForkC(NT,NH,NI,NG,Leak,NR) = ( Fork(NT,NH,NI,NG,Leak,i,tc,c,tr,r,tq) | RepC(0.0,NR) )
+def ForkBC(NT,NHB,NHC,NHI,NG,Leak,NR) =  ( Fork2(NT,NHB,NHC,NHI,NG,Leak,i,tc,c,tb,b,tr,r,tq) | RepC(0.0,NR) )
+def ForkCBB(NT,NH1,NH2,NH3,NHI,NG,Leak,NR) = ( Fork3(NT,NH1,NH2,NH3,NHI,NG,Leak,i,tb,b,tb,b,tc,c,tr,r,tq) | RepC(NG*Leak,NR) )  
+def ForkBBC(NT,NH1,NH2,NH3,NHI,NG,Leak,NR) = ( Fork3(NT,NH1,NH2,NH3,NHI,NG,Leak,i,tc,c,tb,b,tb,b,tr,r,tq) | RepC(NG*Leak,NR) )
+def ForkBCB(NT,NH1,NH2,NH3,NHI,NG,Leak,NR) = ( Fork3(NT,NH1,NH2,NH3,NHI,NG,Leak,i,tb,b,tc,c,tb,b,tr,r,tq) | RepC(NG*Leak,NR) )
+
+def RepT_AddT(N) = RepT(N*(1.0-badRepT),NRr)
+def RepC_AddC(N) = RepC(N*(1.0-badRepC),NRr)
+def JoinAB_AddA(N) = ( JoinAB(Xi*N*(1.0-badJoinAB_A),NHi,NHi,NGi,0.0,leakJoinAB_A) | RepT(0.0,NRi) )
+def JoinAB_AddB(N) = ( JoinAB(NMi,Xi*N*(1.0-badJoinAB_B),NHi,NGi,0.0,leakJoinAB_B) | RepT(0.0,NRi) )
+def JoinAB_AddH(N) = ( JoinAB(NMi,NMi,Xi*N*(1.0-badJoinAB_H),NGi,0.0,leakJoinAB_H) | RepT(0.0,NRi) )
+def ForkC_AddT(N) = ForkC(Xi*N*(1.0-badForkC_T),NHi,NHi,NGi,leakForkC_T,NRi)
+def ForkC_AddH(N) = ForkC(NMi,Xi*N*(1.0-badForkC_H),NHi,NGi,leakForkC_H,NRi) 
+def ForkBC_AddT(N) = ForkBC(Xi*N*(1.0-badForkBC_T ),NHi,NHi,NHi,NGi,leakForkBC_T,NRi)
+def ForkBC_AddHB(N) = ForkBC(NMi,Xi*N*(1.0-badForkBC_HB),NHi,NHi,NGi,leakForkBC_HB,NRi)
+def ForkBC_AddHC(N) = ForkBC(NMi,NMi,Xi*N*(1.0-badForkBC_HC),NHi,NGi,leakForkBC_HC,NRi)
+def ForkCBB_AddT(N) = ForkCBB(Xi*N*(1.0-badForkCBB_T),NHi,NHi,NHi,NHi,NGi,leakForkCBB_T,NRi)
+def ForkCBB_AddHC(N) = ForkCBB(NMi,Xi*N*(1.0-badForkCBB_HC),NHi,NHi,NHi,NGi,leakForkCBB_HC,NRi) 
+def Non(N) = ( JoinAB(X*N*(1.0-badNon),NH,NH,NG,0.0,leakNon_J) | ForkC(0.0,NH,NH,NG,leakNon_F,NR) )
+def Non_Mix(NA,NB) = ( JoinAB(Xv*NA*(1.0-badMix_A),Xv*NB*(1.0-badMix_B),NHv,NGv,NHv,leakMix_J) | ForkC(0.0,NHv,NHv,NGv,leakMix_F,NRv) )
+def Non_Rev(N,NV) = ( JoinAB(Xv*N*(1.0-badRev_A),Xv*N*(1.0-badRev_B),NHv,NGv,NV,leakRev_J) | ForkC(0.0,NHv,NHv,NGv,leakRev_F,NRv) )
+def Cat(N) = ( JoinAB(X*0.5*(1.0-badCat_A),X*N*(1.0-badCat_B),NH,NG,0.0,leakCat_J) | ForkBC(0.0,NH,NH,NH,NG,leakCat_F,NR) )
+def AutoBBC(N) = ( JoinAB(X*(1.0-badBBC_A),X*N*(1.0-badBBC_B),NH,NG,0.0,leakBBC_J) | ForkBBC(0.0,NH,NH,NH,NH,NG,leakBBC_F,NR) )
+def AutoBCB(N) = ( JoinAB(X*(1.0-badBCB_A),X*N*(1.0-badBCB_B),NH,NG,0.0,leakBCB_J) | ForkBCB(0.0,NH,NH,NH,NH,NG,leakBCB_F,NR) ) 
+def AutoCBB(N) = ( JoinAB(X*(1.0-badCBB_A),X*N*(1.0-badCBB_B),NH,NG,0.0,leakCBB_J) | ForkCBB(0.0,NH,NH,NH,NH,NG,leakCBB_F,NR) )
+
+dom t = {seq = CTGATC; bind=kt; unbind=ut}
+dom u1 = {seq = CTTCAG; bind=ku1; unbind=ut}
+dom u2 = {seq = CCATAC; bind=ku2; unbind=ut}
+dom u3 = {seq = ATACCC; bind=ku3; unbind=ut}
+dom x = {seq = CATTGCTTTATTTACCGAGTCTTAT}
+dom y = {seq = CATTGCCTAACCCACCGAGTCCTTT}
+dom b = {seq = CATTGCCAATTCCTACGAGTCTACC}
+dom pb = {seq = CATTGCATTATATTCCGAGTCCTAC}
+dom px = {seq = CATTGCCTTCCCACTAGAGTCTCAC}
+dom py = {seq = CATTGCACCACCCTAAGAGTCTAAC}
+dom rxy = {seq = CATTGCTACCACCTCCGAGTCTAAC}
+dom rbx = {seq = CATTGCCAAACCATTAGAGTCAAAC}
+dom rby = {seq = CATTGCACCCTAATACGAGTCTCAC}
+dom ig = {seq = CTGAAATAAATAAATAGAGTCTACC}
+
+def RepJoinBX(NR) = RepJoin(0.0,NR,rbx,u1) 
+def RepJoinBY(NR) = RepJoin(0.0,NR,rby,u1)
+def RepJoinXY(NR) = RepJoin(0.0,NR,rxy,u1)
+def JoinBX(NB,NX,NH,NG,Leak) = Join(NB,NX,NH,NG,0.0,Leak,t,b,t,x,t,rbx,u1)
+def JoinBY(NB,NY,NH,NG,Leak) = Join(NB,NY,NH,NG,0.0,Leak,t,b,t,y,t,rby,u1)
+def JoinXY(NX,NY,NH,NG,Leak) = Join(NX,NY,NH,NG,0.0,Leak,t,x,t,y,t,rxy,u1)
+def Fork2B(NT,NH1,NH2,NH3,NH4,NG,Leak,NR) =   ( Fork3(NT,NH1,NH2,NH3,NH4,NG,Leak,ig,t,b,u3,pb,t,b,u2,rxy,u1) | RepFork(NG*Leak,NR,u3,pb) )
+def ForkXY2B(NT,NH1,NH2,NH3,NH4,NG,Leak,NR) = ( Fork3(NT,NH1,NH2,NH3,NH4,NG,Leak,ig,t,b,u3,pb,t,b,u2,rxy,u1) | RepFork(NG*Leak,NR,t,b) )
+def Fork2X(NT,NH1,NH2,NH3,NH4,NG,Leak,NR) = ( Fork3(NT,NH1,NH2,NH3,NH4,NG,Leak,ig,t,x,u3,px,t,x,u2,rbx,u1) | RepFork(NG*Leak,NR,u3,px) )
+def Fork2Y(NT,NH1,NH2,NH3,NH4,NG,Leak,NR) = ( Fork3(NT,NH1,NH2,NH3,NH4,NG,Leak,ig,t,y,u3,py,t,y,u2,rby,u1) | RepFork(NG*Leak,NR,u3,py) )
+
+def JoinBX_AddB(N) = ( JoinBX(N*Xi*(1.0-badJoinBX_B),NMi,NMi,NGi,leakJoinBX_B) | RepJoinBX(NRi) )
+def JoinBX_AddX(N) = ( JoinBX(NMi,N*Xi*(1.0-badJoinBX_X),NMi,NGi,leakJoinBX_X) | RepJoinBX(NRi) )
+def JoinBX_AddH(N) = ( JoinBX(NMi,NMi,N*Xi*(1.0-badJoinBX_H),NGi,leakJoinBX_H) | RepJoinBX(NRi) )
+def JoinBY_AddB(N) = ( JoinBY(N*Xi*(1.0-badJoinBY_B),NMi,NMi,NGi,leakJoinBY_B) | RepJoinBY(NRi) )
+def JoinBY_AddY(N) = ( JoinBY(NMi,N*Xi*(1.0-badJoinBY_Y),NMi,NGi,leakJoinBY_Y) | RepJoinBY(NRi) )
+def JoinBY_AddH(N) = ( JoinBY(NMi,NMi,N*Xi*(1.0-badJoinBY_H),NGi,leakJoinBY_H) | RepJoinBY(NRi) )
+def JoinXY_AddX(N) = ( JoinXY(N*Xi*(1.0-badJoinXY_X),NMi,NMi,NGi,leakJoinXY_X) | RepJoinXY(NRi) )
+def JoinXY_AddY(N) = ( JoinXY(NMi,N*Xi*(1.0-badJoinXY_Y),NMi,NGi,leakJoinXY_Y) | RepJoinXY(NRi) )
+def JoinXY_AddH(N) = ( JoinXY(NMi,NMi,N*Xi*(1.0-badJoinXY_H),NGi,leakJoinXY_H) | RepJoinXY(NRi) )
+def Fork2B_AddR(N) =  ( Fork2B(N*Xi*(1.0-badFork2B_R ),NMi,NMi,NMi,NMi,NGi,leakFork2B_R,NRi) )
+def Fork2B_AddH1(N) = ( Fork2B(NMi,N*Xi*(1.0-badFork2B_H1),NMi,NMi,NMi,NGi,leakFork2B_H1,NRi) )
+def Fork2B_AddH2(N) = ( Fork2B(NMi,NMi,N*Xi*(1.0-badFork2B_H2),NMi,NMi,NGi,leakFork2B_H2,NRi) )
+def Fork2X_AddR(N) =  ( Fork2X(N*Xi*(1.0-badFork2X_R ),NMi,NMi,NMi,NMi,NGi,leakFork2X_R,NRi) )
+def Fork2X_AddH1(N) = ( Fork2X(NMi,N*Xi*(1.0-badFork2X_H1),NMi,NMi,NMi,NGi,leakFork2X_H1,NRi) )
+def Fork2X_AddH2(N) = ( Fork2X(NMi,NMi,N*Xi*(1.0-badFork2X_H2),NMi,NMi,NGi,leakFork2X_H2,NRi) )
+def Fork2Y_AddR(N) =  ( Fork2Y(N*Xi*(1.0-badFork2Y_R ),NMi,NMi,NMi,NMi,NGi,leakFork2Y_R,NRi) )
+def Fork2Y_AddH1(N) = ( Fork2Y(NMi,N*Xi*(1.0-badFork2Y_H1),NMi,NMi,NMi,NGi,leakFork2Y_H1,NRi) )
+def Fork2Y_AddH2(N) = ( Fork2Y(NMi,NMi,N*Xi*(1.0-badFork2Y_H2),NMi,NMi,NGi,leakFork2Y_H2,NRi) )
+def XY2B(Nx,Ny,X,NH,NG,NR) = ( JoinXY(X*Nx*(1.0-badXY2B_X),X*Ny*(1.0-badXY2B_Y),NH,NG,leakXY2B_J) | ForkXY2B(0.0,NH,NH,NH,NH,NG,leakXY2B_F,NR) )
+def BX2X(N,X,NH,NG,NR) = ( JoinBX(X*(1.0-badBX2X_B),X*N*(1.0-badBX2X_B),NH,NG,leakBX2X_J) | Fork2X(0.0,NH,NH,NH,NH,NG,leakBX2X_F,NR) )
+def BY2Y(N,X,NH,NG,NR) = ( JoinBY(X*(1.0-badBY2Y_B),X*N*(1.0-badBY2Y_B),NH,NG,leakBY2Y_J) | Fork2Y(0.0,NH,NH,NH,NH,NG,leakBY2Y_F,NR) )
+def AM(Nx,Ny) = ( XY2B(Nx,Ny,Xm,NHm,NGm,NRm) | BX2X(0.0,0.0,NHm,NGm,NRm) | BY2Y(0.0,0.0,NHm*1.2,NGm*1.2,NRm) | NHm * 0.8 * <ig t^> )
+
+(*
+def N = 0.0
+*)
+def Nx = 0.3
+def Ny = 0.7
+(
+<t^ u1^ u2^ u3^> | {t^*}[u1^ u2^ u3^] |
+JoinBX_AddB(N)
+)
+
+(* **************************************************************
+def Circuit2(NA,NB) = Non_Mix(NA,NB)
+def Circuit(N) = BX2X(N)
+
+def Circuits_Int() = ( Circuit(0.0) | Circuit(0.2) | Circuit(0.4) | Circuit(0.6) )
+def Circuits() = ( Circuit(0.0) | Circuit(0.25) | Circuit(0.5) | Circuit(0.75) | Circuit(1.0) )
+def Circuits_Cat() = ( Circuit(0.0) | Circuit(0.025) | Circuit(0.05) | Circuit(0.1) | Circuit(0.2) | Circuit(1.0) )
+def Circuits_Auto() = ( Circuit(0.0) | Circuit(0.1) | Circuit(0.2) | Circuit(0.3) | Circuit(0.5) | Circuit(1.0) )
+def Circuits_BX2X() = ( BX2X(0.0) | BX2X(0.1) | BX2X(0.3) | BX2X(1.0) )
+def Circuits_BY2Y() = ( BY2Y(0.0) | BY2Y(0.1) | BY2Y(0.3) | BY2Y(1.0) )
+def Circuits2_XY2B() = ( XY2B(0.0,0.0) | XY2B(0.7,0.3) | XY2B(0.3,0.7) | XY2B(0.8,0.2) )
+
+Non_Mix(1.0,1.0) 0.25,0.25; 0.25,0.5 ; 0.5,0.25 ; 0.3,1.0 ; 1.0,0.3 ;  0.5,0.5 ; 0.5,1.0 ; 1.0,0.5
+Non_Rev(1.0,1.0,13.0) 0.5,0.0; 0.25,0.0 ; 0.5,3.0 ; 0.25,3.0 ; 0.5,13.0 ;  0.25,13.0
+AM(0.7,0.3)
+
+<ta^ tb^ tr^ tq^ tc^ fl^> | {ta^*}[tb^ tr^ tq^ tc^ fl^]  |
+<t^ u1^ u2^ u3^> | {t^*}[u1^ u2^ u3^] |
+*)

@@ -1,0 +1,3 @@
+Name,Lower Bound,Upper Bound,Value,Type,Var
+sigma,0.000001,1000000,0.08324363620738623,Log,Random
+k,0.0001,1,0.002991417626280984,Log,Random

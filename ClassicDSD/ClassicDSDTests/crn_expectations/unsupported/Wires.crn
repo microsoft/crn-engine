@@ -1,0 +1,155 @@
+directive sample 0.0,10000.0 1000
+directive plot "<ra rb>"
+directive simulation cme
+directive parameters
+  [ length = 0.0
+  ; c = 50.0 ]
+directive sweep sweep_4 =
+  { length = [0.0, 1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0] }
+
+init "{T^*}[ra rb]" ((floor(((((2.0 ^ length) / 512.0) + 1.0) / 2.0)) - floor(((2.0 ^ length) / 1024.0))) + ((floor(((((2.0 ^ length) / 256.0) + 1.0) / 2.0)) - floor(((2.0 ^ length) / 512.0))) + ((floor(((((2.0 ^ length) / 128.0) + 1.0) / 2.0)) - floor(((2.0 ^ length) / 256.0))) + ((floor(((((2.0 ^ length) / 64.0) + 1.0) / 2.0)) - floor(((2.0 ^ length) / 128.0))) + ((floor(((((2.0 ^ length) / 32.0) + 1.0) / 2.0)) - floor(((2.0 ^ length) / 64.0))) + ((floor(((((2.0 ^ length) / 16.0) + 1.0) / 2.0)) - floor(((2.0 ^ length) / 32.0))) + ((floor(((((2.0 ^ length) / 8.0) + 1.0) / 2.0)) - floor(((2.0 ^ length) / 16.0))) + ((floor(((((2.0 ^ length) / 4.0) + 1.0) / 2.0)) - floor(((2.0 ^ length) / 8.0))) + ((floor(((((2.0 ^ length) / 2.0) + 1.0) / 2.0)) - floor(((2.0 ^ length) / 4.0))) + (floor((((2.0 ^ length) + 1.0) / 2.0)) - floor(((2.0 ^ length) / 2.0)))))))))))) |
+init "<T^ ra rb>" (floor((((2.0 ^ length) + 1.0) / 2.0)) - floor(((2.0 ^ length) / 2.0))) |
+init "[T^ ra rb]" 0.0 |
+init "<ra rb>" 0.0 |
+init "<T^ aa ab>" ((floor(((((2.0 ^ length) / 512.0) + 1.0) / 2.0)) - floor(((2.0 ^ length) / 1024.0))) + ((floor(((((2.0 ^ length) / 256.0) + 1.0) / 2.0)) - floor(((2.0 ^ length) / 512.0))) + ((floor(((((2.0 ^ length) / 128.0) + 1.0) / 2.0)) - floor(((2.0 ^ length) / 256.0))) + ((floor(((((2.0 ^ length) / 64.0) + 1.0) / 2.0)) - floor(((2.0 ^ length) / 128.0))) + ((floor(((((2.0 ^ length) / 32.0) + 1.0) / 2.0)) - floor(((2.0 ^ length) / 64.0))) + ((floor(((((2.0 ^ length) / 16.0) + 1.0) / 2.0)) - floor(((2.0 ^ length) / 32.0))) + ((floor(((((2.0 ^ length) / 8.0) + 1.0) / 2.0)) - floor(((2.0 ^ length) / 16.0))) + ((floor(((((2.0 ^ length) / 4.0) + 1.0) / 2.0)) - floor(((2.0 ^ length) / 8.0))) + (floor(((((2.0 ^ length) / 2.0) + 1.0) / 2.0)) - floor(((2.0 ^ length) / 4.0))))))))))) |
+init "{T^*}[aa]:[ab T^]<ra rb>" (floor(((((2.0 ^ length) / 2.0) + 1.0) / 2.0)) - floor(((2.0 ^ length) / 4.0))) |
+init "[T^ aa ab]{T^*}" 0.0 |
+init "<aa>" 0.0 |
+init "<ab T^ ra rb>" 0.0 |
+init "<ab>[T^ ra rb]" 0.0 |
+init "{T^*}[ba]:[bb T^]<ra rb>" (floor(((((2.0 ^ length) / 4.0) + 1.0) / 2.0)) - floor(((2.0 ^ length) / 8.0))) |
+init "{T^*}[ca]:[cb T^]<ra rb>" (floor(((((2.0 ^ length) / 8.0) + 1.0) / 2.0)) - floor(((2.0 ^ length) / 16.0))) |
+init "{T^*}[da]:[db T^]<ra rb>" (floor(((((2.0 ^ length) / 16.0) + 1.0) / 2.0)) - floor(((2.0 ^ length) / 32.0))) |
+init "{T^*}[ea]:[eb T^]<ra rb>" (floor(((((2.0 ^ length) / 32.0) + 1.0) / 2.0)) - floor(((2.0 ^ length) / 64.0))) |
+init "{T^*}[fa]:[fb T^]<ra rb>" (floor(((((2.0 ^ length) / 64.0) + 1.0) / 2.0)) - floor(((2.0 ^ length) / 128.0))) |
+init "{T^*}[ga]:[gb T^]<ra rb>" (floor(((((2.0 ^ length) / 128.0) + 1.0) / 2.0)) - floor(((2.0 ^ length) / 256.0))) |
+init "{T^*}[ha]:[hb T^]<ra rb>" (floor(((((2.0 ^ length) / 256.0) + 1.0) / 2.0)) - floor(((2.0 ^ length) / 512.0))) |
+init "{T^*}[ia]:[ib T^]<ra rb>" (floor(((((2.0 ^ length) / 512.0) + 1.0) / 2.0)) - floor(((2.0 ^ length) / 1024.0))) |
+init "{T^*}[ha]:[hb T^]<ia ib>" (floor(((((2.0 ^ length) / 512.0) + 1.0) / 2.0)) - floor(((2.0 ^ length) / 1024.0))) |
+init "{T^*}[ga]:[gb T^]<ha hb>" ((floor(((((2.0 ^ length) / 512.0) + 1.0) / 2.0)) - floor(((2.0 ^ length) / 1024.0))) + (floor(((((2.0 ^ length) / 256.0) + 1.0) / 2.0)) - floor(((2.0 ^ length) / 512.0)))) |
+init "{T^*}[fa]:[fb T^]<ga gb>" ((floor(((((2.0 ^ length) / 512.0) + 1.0) / 2.0)) - floor(((2.0 ^ length) / 1024.0))) + ((floor(((((2.0 ^ length) / 256.0) + 1.0) / 2.0)) - floor(((2.0 ^ length) / 512.0))) + (floor(((((2.0 ^ length) / 128.0) + 1.0) / 2.0)) - floor(((2.0 ^ length) / 256.0))))) |
+init "{T^*}[ea]:[eb T^]<fa fb>" ((floor(((((2.0 ^ length) / 512.0) + 1.0) / 2.0)) - floor(((2.0 ^ length) / 1024.0))) + ((floor(((((2.0 ^ length) / 256.0) + 1.0) / 2.0)) - floor(((2.0 ^ length) / 512.0))) + ((floor(((((2.0 ^ length) / 128.0) + 1.0) / 2.0)) - floor(((2.0 ^ length) / 256.0))) + (floor(((((2.0 ^ length) / 64.0) + 1.0) / 2.0)) - floor(((2.0 ^ length) / 128.0)))))) |
+init "{T^*}[da]:[db T^]<ea eb>" ((floor(((((2.0 ^ length) / 512.0) + 1.0) / 2.0)) - floor(((2.0 ^ length) / 1024.0))) + ((floor(((((2.0 ^ length) / 256.0) + 1.0) / 2.0)) - floor(((2.0 ^ length) / 512.0))) + ((floor(((((2.0 ^ length) / 128.0) + 1.0) / 2.0)) - floor(((2.0 ^ length) / 256.0))) + ((floor(((((2.0 ^ length) / 64.0) + 1.0) / 2.0)) - floor(((2.0 ^ length) / 128.0))) + (floor(((((2.0 ^ length) / 32.0) + 1.0) / 2.0)) - floor(((2.0 ^ length) / 64.0))))))) |
+init "{T^*}[ca]:[cb T^]<da db>" ((floor(((((2.0 ^ length) / 512.0) + 1.0) / 2.0)) - floor(((2.0 ^ length) / 1024.0))) + ((floor(((((2.0 ^ length) / 256.0) + 1.0) / 2.0)) - floor(((2.0 ^ length) / 512.0))) + ((floor(((((2.0 ^ length) / 128.0) + 1.0) / 2.0)) - floor(((2.0 ^ length) / 256.0))) + ((floor(((((2.0 ^ length) / 64.0) + 1.0) / 2.0)) - floor(((2.0 ^ length) / 128.0))) + ((floor(((((2.0 ^ length) / 32.0) + 1.0) / 2.0)) - floor(((2.0 ^ length) / 64.0))) + (floor(((((2.0 ^ length) / 16.0) + 1.0) / 2.0)) - floor(((2.0 ^ length) / 32.0)))))))) |
+init "{T^*}[ba]:[bb T^]<ca cb>" ((floor(((((2.0 ^ length) / 512.0) + 1.0) / 2.0)) - floor(((2.0 ^ length) / 1024.0))) + ((floor(((((2.0 ^ length) / 256.0) + 1.0) / 2.0)) - floor(((2.0 ^ length) / 512.0))) + ((floor(((((2.0 ^ length) / 128.0) + 1.0) / 2.0)) - floor(((2.0 ^ length) / 256.0))) + ((floor(((((2.0 ^ length) / 64.0) + 1.0) / 2.0)) - floor(((2.0 ^ length) / 128.0))) + ((floor(((((2.0 ^ length) / 32.0) + 1.0) / 2.0)) - floor(((2.0 ^ length) / 64.0))) + ((floor(((((2.0 ^ length) / 16.0) + 1.0) / 2.0)) - floor(((2.0 ^ length) / 32.0))) + (floor(((((2.0 ^ length) / 8.0) + 1.0) / 2.0)) - floor(((2.0 ^ length) / 16.0))))))))) |
+init "{T^*}[aa]:[ab T^]<ba bb>" ((floor(((((2.0 ^ length) / 512.0) + 1.0) / 2.0)) - floor(((2.0 ^ length) / 1024.0))) + ((floor(((((2.0 ^ length) / 256.0) + 1.0) / 2.0)) - floor(((2.0 ^ length) / 512.0))) + ((floor(((((2.0 ^ length) / 128.0) + 1.0) / 2.0)) - floor(((2.0 ^ length) / 256.0))) + ((floor(((((2.0 ^ length) / 64.0) + 1.0) / 2.0)) - floor(((2.0 ^ length) / 128.0))) + ((floor(((((2.0 ^ length) / 32.0) + 1.0) / 2.0)) - floor(((2.0 ^ length) / 64.0))) + ((floor(((((2.0 ^ length) / 16.0) + 1.0) / 2.0)) - floor(((2.0 ^ length) / 32.0))) + ((floor(((((2.0 ^ length) / 8.0) + 1.0) / 2.0)) - floor(((2.0 ^ length) / 16.0))) + (floor(((((2.0 ^ length) / 4.0) + 1.0) / 2.0)) - floor(((2.0 ^ length) / 8.0)))))))))) |
+init "<ab T^ ba bb>" 0.0 |
+init "<ab>[T^ ba bb]{T^*}" 0.0 |
+init "<ba>" 0.0 |
+init "<bb T^ ra rb>" 0.0 |
+init "<bb>[T^ ra rb]" 0.0 |
+init "<bb T^ ca cb>" 0.0 |
+init "<bb>[T^ ca cb]{T^*}" 0.0 |
+init "<ca>" 0.0 |
+init "<cb T^ ra rb>" 0.0 |
+init "<cb>[T^ ra rb]" 0.0 |
+init "<cb T^ da db>" 0.0 |
+init "<cb>[T^ da db]{T^*}" 0.0 |
+init "<da>" 0.0 |
+init "<db T^ ra rb>" 0.0 |
+init "<db>[T^ ra rb]" 0.0 |
+init "<db T^ ea eb>" 0.0 |
+init "<db>[T^ ea eb]{T^*}" 0.0 |
+init "<ea>" 0.0 |
+init "<eb T^ ra rb>" 0.0 |
+init "<eb>[T^ ra rb]" 0.0 |
+init "<eb T^ fa fb>" 0.0 |
+init "<eb>[T^ fa fb]{T^*}" 0.0 |
+init "<fa>" 0.0 |
+init "<fb T^ ra rb>" 0.0 |
+init "<fb>[T^ ra rb]" 0.0 |
+init "<fb T^ ga gb>" 0.0 |
+init "<fb>[T^ ga gb]{T^*}" 0.0 |
+init "<ga>" 0.0 |
+init "<gb T^ ra rb>" 0.0 |
+init "<gb>[T^ ra rb]" 0.0 |
+init "<gb T^ ha hb>" 0.0 |
+init "<gb>[T^ ha hb]{T^*}" 0.0 |
+init "<ha>" 0.0 |
+init "<hb T^ ra rb>" 0.0 |
+init "<hb>[T^ ra rb]" 0.0 |
+init "<hb T^ ia ib>" 0.0 |
+init "<hb>[T^ ia ib]{T^*}" 0.0 |
+init "<ia>" 0.0 |
+init "<ib T^ ra rb>" 0.0 |
+init "<ib>[T^ ra rb]" 0.0 |
+"{T^*}[ra rb]" + "<T^ ra rb>" <->{(c * 5E-05)}{(1E-09 * c)} "[T^ ra rb]" + "<ra rb>" |
+"{T^*}[aa]:[ab T^]<ra rb>" + "<T^ aa ab>" ->{(c * 5E-05)} "[T^ aa ab]{T^*}" + "<aa>" + "<ab T^ ra rb>" |
+"[T^ ra rb]" + "<ab T^ ra rb>" <->{(1E-09 * c)}{(1E-09 * c)} "<ab>[T^ ra rb]" + "<T^ ra rb>" |
+"{T^*}[ra rb]" + "<ab T^ ra rb>" <->{(c * 5E-05)}{(1E-09 * c)} "<ab>[T^ ra rb]" + "<ra rb>" |
+"{T^*}[aa]:[ab T^]<ba bb>" + "<T^ aa ab>" ->{(c * 5E-05)} "[T^ aa ab]{T^*}" + "<aa>" + "<ab T^ ba bb>" |
+"{T^*}[aa]:[ab T^]<ba bb>" + "<ab T^ ra rb>" <->{(1E-09 * c)}{(1E-09 * c)} "{T^*}[aa]:[ab T^]<ra rb>" + "<ab T^ ba bb>" |
+"{T^*}[ba]:[bb T^]<ra rb>" + "<ab T^ ba bb>" ->{(c * 5E-05)} "<ab>[T^ ba bb]{T^*}" + "<ba>" + "<bb T^ ra rb>" |
+"{T^*}[ba]:[bb T^]<ca cb>" + "<ab T^ ba bb>" ->{(c * 5E-05)} "<ab>[T^ ba bb]{T^*}" + "<ba>" + "<bb T^ ca cb>" |
+"[T^ ra rb]" + "<bb T^ ra rb>" <->{(1E-09 * c)}{(1E-09 * c)} "<bb>[T^ ra rb]" + "<T^ ra rb>" |
+"{T^*}[ra rb]" + "<bb T^ ra rb>" <->{(c * 5E-05)}{(1E-09 * c)} "<bb>[T^ ra rb]" + "<ra rb>" |
+"<ab>[T^ ra rb]" + "<bb T^ ra rb>" <->{(1E-09 * c)}{(1E-09 * c)} "<bb>[T^ ra rb]" + "<ab T^ ra rb>" |
+"{T^*}[ba]:[bb T^]<ca cb>" + "<bb T^ ra rb>" <->{(1E-09 * c)}{(1E-09 * c)} "{T^*}[ba]:[bb T^]<ra rb>" + "<bb T^ ca cb>" |
+"{T^*}[ca]:[cb T^]<ra rb>" + "<bb T^ ca cb>" ->{(c * 5E-05)} "<bb>[T^ ca cb]{T^*}" + "<ca>" + "<cb T^ ra rb>" |
+"{T^*}[ca]:[cb T^]<da db>" + "<bb T^ ca cb>" ->{(c * 5E-05)} "<bb>[T^ ca cb]{T^*}" + "<ca>" + "<cb T^ da db>" |
+"[T^ ra rb]" + "<cb T^ ra rb>" <->{(1E-09 * c)}{(1E-09 * c)} "<cb>[T^ ra rb]" + "<T^ ra rb>" |
+"{T^*}[ra rb]" + "<cb T^ ra rb>" <->{(c * 5E-05)}{(1E-09 * c)} "<cb>[T^ ra rb]" + "<ra rb>" |
+"<ab>[T^ ra rb]" + "<cb T^ ra rb>" <->{(1E-09 * c)}{(1E-09 * c)} "<cb>[T^ ra rb]" + "<ab T^ ra rb>" |
+"<bb>[T^ ra rb]" + "<cb T^ ra rb>" <->{(1E-09 * c)}{(1E-09 * c)} "<cb>[T^ ra rb]" + "<bb T^ ra rb>" |
+"{T^*}[ca]:[cb T^]<da db>" + "<cb T^ ra rb>" <->{(1E-09 * c)}{(1E-09 * c)} "{T^*}[ca]:[cb T^]<ra rb>" + "<cb T^ da db>" |
+"{T^*}[da]:[db T^]<ra rb>" + "<cb T^ da db>" ->{(c * 5E-05)} "<cb>[T^ da db]{T^*}" + "<da>" + "<db T^ ra rb>" |
+"{T^*}[da]:[db T^]<ea eb>" + "<cb T^ da db>" ->{(c * 5E-05)} "<cb>[T^ da db]{T^*}" + "<da>" + "<db T^ ea eb>" |
+"[T^ ra rb]" + "<db T^ ra rb>" <->{(1E-09 * c)}{(1E-09 * c)} "<db>[T^ ra rb]" + "<T^ ra rb>" |
+"{T^*}[ra rb]" + "<db T^ ra rb>" <->{(c * 5E-05)}{(1E-09 * c)} "<db>[T^ ra rb]" + "<ra rb>" |
+"<ab>[T^ ra rb]" + "<db T^ ra rb>" <->{(1E-09 * c)}{(1E-09 * c)} "<db>[T^ ra rb]" + "<ab T^ ra rb>" |
+"<bb>[T^ ra rb]" + "<db T^ ra rb>" <->{(1E-09 * c)}{(1E-09 * c)} "<db>[T^ ra rb]" + "<bb T^ ra rb>" |
+"<cb>[T^ ra rb]" + "<db T^ ra rb>" <->{(1E-09 * c)}{(1E-09 * c)} "<db>[T^ ra rb]" + "<cb T^ ra rb>" |
+"{T^*}[da]:[db T^]<ea eb>" + "<db T^ ra rb>" <->{(1E-09 * c)}{(1E-09 * c)} "{T^*}[da]:[db T^]<ra rb>" + "<db T^ ea eb>" |
+"{T^*}[ea]:[eb T^]<ra rb>" + "<db T^ ea eb>" ->{(c * 5E-05)} "<db>[T^ ea eb]{T^*}" + "<ea>" + "<eb T^ ra rb>" |
+"{T^*}[ea]:[eb T^]<fa fb>" + "<db T^ ea eb>" ->{(c * 5E-05)} "<db>[T^ ea eb]{T^*}" + "<ea>" + "<eb T^ fa fb>" |
+"[T^ ra rb]" + "<eb T^ ra rb>" <->{(1E-09 * c)}{(1E-09 * c)} "<eb>[T^ ra rb]" + "<T^ ra rb>" |
+"{T^*}[ra rb]" + "<eb T^ ra rb>" <->{(c * 5E-05)}{(1E-09 * c)} "<eb>[T^ ra rb]" + "<ra rb>" |
+"<ab>[T^ ra rb]" + "<eb T^ ra rb>" <->{(1E-09 * c)}{(1E-09 * c)} "<eb>[T^ ra rb]" + "<ab T^ ra rb>" |
+"<bb>[T^ ra rb]" + "<eb T^ ra rb>" <->{(1E-09 * c)}{(1E-09 * c)} "<eb>[T^ ra rb]" + "<bb T^ ra rb>" |
+"<cb>[T^ ra rb]" + "<eb T^ ra rb>" <->{(1E-09 * c)}{(1E-09 * c)} "<eb>[T^ ra rb]" + "<cb T^ ra rb>" |
+"<db>[T^ ra rb]" + "<eb T^ ra rb>" <->{(1E-09 * c)}{(1E-09 * c)} "<eb>[T^ ra rb]" + "<db T^ ra rb>" |
+"{T^*}[ea]:[eb T^]<fa fb>" + "<eb T^ ra rb>" <->{(1E-09 * c)}{(1E-09 * c)} "{T^*}[ea]:[eb T^]<ra rb>" + "<eb T^ fa fb>" |
+"{T^*}[fa]:[fb T^]<ra rb>" + "<eb T^ fa fb>" ->{(c * 5E-05)} "<eb>[T^ fa fb]{T^*}" + "<fa>" + "<fb T^ ra rb>" |
+"{T^*}[fa]:[fb T^]<ga gb>" + "<eb T^ fa fb>" ->{(c * 5E-05)} "<eb>[T^ fa fb]{T^*}" + "<fa>" + "<fb T^ ga gb>" |
+"[T^ ra rb]" + "<fb T^ ra rb>" <->{(1E-09 * c)}{(1E-09 * c)} "<fb>[T^ ra rb]" + "<T^ ra rb>" |
+"{T^*}[ra rb]" + "<fb T^ ra rb>" <->{(c * 5E-05)}{(1E-09 * c)} "<fb>[T^ ra rb]" + "<ra rb>" |
+"<ab>[T^ ra rb]" + "<fb T^ ra rb>" <->{(1E-09 * c)}{(1E-09 * c)} "<fb>[T^ ra rb]" + "<ab T^ ra rb>" |
+"<bb>[T^ ra rb]" + "<fb T^ ra rb>" <->{(1E-09 * c)}{(1E-09 * c)} "<fb>[T^ ra rb]" + "<bb T^ ra rb>" |
+"<cb>[T^ ra rb]" + "<fb T^ ra rb>" <->{(1E-09 * c)}{(1E-09 * c)} "<fb>[T^ ra rb]" + "<cb T^ ra rb>" |
+"<db>[T^ ra rb]" + "<fb T^ ra rb>" <->{(1E-09 * c)}{(1E-09 * c)} "<fb>[T^ ra rb]" + "<db T^ ra rb>" |
+"<eb>[T^ ra rb]" + "<fb T^ ra rb>" <->{(1E-09 * c)}{(1E-09 * c)} "<fb>[T^ ra rb]" + "<eb T^ ra rb>" |
+"{T^*}[fa]:[fb T^]<ga gb>" + "<fb T^ ra rb>" <->{(1E-09 * c)}{(1E-09 * c)} "{T^*}[fa]:[fb T^]<ra rb>" + "<fb T^ ga gb>" |
+"{T^*}[ga]:[gb T^]<ra rb>" + "<fb T^ ga gb>" ->{(c * 5E-05)} "<fb>[T^ ga gb]{T^*}" + "<ga>" + "<gb T^ ra rb>" |
+"{T^*}[ga]:[gb T^]<ha hb>" + "<fb T^ ga gb>" ->{(c * 5E-05)} "<fb>[T^ ga gb]{T^*}" + "<ga>" + "<gb T^ ha hb>" |
+"[T^ ra rb]" + "<gb T^ ra rb>" <->{(1E-09 * c)}{(1E-09 * c)} "<gb>[T^ ra rb]" + "<T^ ra rb>" |
+"{T^*}[ra rb]" + "<gb T^ ra rb>" <->{(c * 5E-05)}{(1E-09 * c)} "<gb>[T^ ra rb]" + "<ra rb>" |
+"<ab>[T^ ra rb]" + "<gb T^ ra rb>" <->{(1E-09 * c)}{(1E-09 * c)} "<gb>[T^ ra rb]" + "<ab T^ ra rb>" |
+"<bb>[T^ ra rb]" + "<gb T^ ra rb>" <->{(1E-09 * c)}{(1E-09 * c)} "<gb>[T^ ra rb]" + "<bb T^ ra rb>" |
+"<cb>[T^ ra rb]" + "<gb T^ ra rb>" <->{(1E-09 * c)}{(1E-09 * c)} "<gb>[T^ ra rb]" + "<cb T^ ra rb>" |
+"<db>[T^ ra rb]" + "<gb T^ ra rb>" <->{(1E-09 * c)}{(1E-09 * c)} "<gb>[T^ ra rb]" + "<db T^ ra rb>" |
+"<eb>[T^ ra rb]" + "<gb T^ ra rb>" <->{(1E-09 * c)}{(1E-09 * c)} "<gb>[T^ ra rb]" + "<eb T^ ra rb>" |
+"<fb>[T^ ra rb]" + "<gb T^ ra rb>" <->{(1E-09 * c)}{(1E-09 * c)} "<gb>[T^ ra rb]" + "<fb T^ ra rb>" |
+"{T^*}[ga]:[gb T^]<ha hb>" + "<gb T^ ra rb>" <->{(1E-09 * c)}{(1E-09 * c)} "{T^*}[ga]:[gb T^]<ra rb>" + "<gb T^ ha hb>" |
+"{T^*}[ha]:[hb T^]<ra rb>" + "<gb T^ ha hb>" ->{(c * 5E-05)} "<gb>[T^ ha hb]{T^*}" + "<ha>" + "<hb T^ ra rb>" |
+"{T^*}[ha]:[hb T^]<ia ib>" + "<gb T^ ha hb>" ->{(c * 5E-05)} "<gb>[T^ ha hb]{T^*}" + "<ha>" + "<hb T^ ia ib>" |
+"[T^ ra rb]" + "<hb T^ ra rb>" <->{(1E-09 * c)}{(1E-09 * c)} "<hb>[T^ ra rb]" + "<T^ ra rb>" |
+"{T^*}[ra rb]" + "<hb T^ ra rb>" <->{(c * 5E-05)}{(1E-09 * c)} "<hb>[T^ ra rb]" + "<ra rb>" |
+"<ab>[T^ ra rb]" + "<hb T^ ra rb>" <->{(1E-09 * c)}{(1E-09 * c)} "<hb>[T^ ra rb]" + "<ab T^ ra rb>" |
+"<bb>[T^ ra rb]" + "<hb T^ ra rb>" <->{(1E-09 * c)}{(1E-09 * c)} "<hb>[T^ ra rb]" + "<bb T^ ra rb>" |
+"<cb>[T^ ra rb]" + "<hb T^ ra rb>" <->{(1E-09 * c)}{(1E-09 * c)} "<hb>[T^ ra rb]" + "<cb T^ ra rb>" |
+"<db>[T^ ra rb]" + "<hb T^ ra rb>" <->{(1E-09 * c)}{(1E-09 * c)} "<hb>[T^ ra rb]" + "<db T^ ra rb>" |
+"<eb>[T^ ra rb]" + "<hb T^ ra rb>" <->{(1E-09 * c)}{(1E-09 * c)} "<hb>[T^ ra rb]" + "<eb T^ ra rb>" |
+"<fb>[T^ ra rb]" + "<hb T^ ra rb>" <->{(1E-09 * c)}{(1E-09 * c)} "<hb>[T^ ra rb]" + "<fb T^ ra rb>" |
+"<gb>[T^ ra rb]" + "<hb T^ ra rb>" <->{(1E-09 * c)}{(1E-09 * c)} "<hb>[T^ ra rb]" + "<gb T^ ra rb>" |
+"{T^*}[ha]:[hb T^]<ia ib>" + "<hb T^ ra rb>" <->{(1E-09 * c)}{(1E-09 * c)} "{T^*}[ha]:[hb T^]<ra rb>" + "<hb T^ ia ib>" |
+"{T^*}[ia]:[ib T^]<ra rb>" + "<hb T^ ia ib>" ->{(c * 5E-05)} "<hb>[T^ ia ib]{T^*}" + "<ia>" + "<ib T^ ra rb>" |
+"[T^ ra rb]" + "<ib T^ ra rb>" <->{(1E-09 * c)}{(1E-09 * c)} "<ib>[T^ ra rb]" + "<T^ ra rb>" |
+"{T^*}[ra rb]" + "<ib T^ ra rb>" <->{(c * 5E-05)}{(1E-09 * c)} "<ib>[T^ ra rb]" + "<ra rb>" |
+"<ab>[T^ ra rb]" + "<ib T^ ra rb>" <->{(1E-09 * c)}{(1E-09 * c)} "<ib>[T^ ra rb]" + "<ab T^ ra rb>" |
+"<bb>[T^ ra rb]" + "<ib T^ ra rb>" <->{(1E-09 * c)}{(1E-09 * c)} "<ib>[T^ ra rb]" + "<bb T^ ra rb>" |
+"<cb>[T^ ra rb]" + "<ib T^ ra rb>" <->{(1E-09 * c)}{(1E-09 * c)} "<ib>[T^ ra rb]" + "<cb T^ ra rb>" |
+"<db>[T^ ra rb]" + "<ib T^ ra rb>" <->{(1E-09 * c)}{(1E-09 * c)} "<ib>[T^ ra rb]" + "<db T^ ra rb>" |
+"<eb>[T^ ra rb]" + "<ib T^ ra rb>" <->{(1E-09 * c)}{(1E-09 * c)} "<ib>[T^ ra rb]" + "<eb T^ ra rb>" |
+"<fb>[T^ ra rb]" + "<ib T^ ra rb>" <->{(1E-09 * c)}{(1E-09 * c)} "<ib>[T^ ra rb]" + "<fb T^ ra rb>" |
+"<gb>[T^ ra rb]" + "<ib T^ ra rb>" <->{(1E-09 * c)}{(1E-09 * c)} "<ib>[T^ ra rb]" + "<gb T^ ra rb>" |
+"<hb>[T^ ra rb]" + "<ib T^ ra rb>" <->{(1E-09 * c)}{(1E-09 * c)} "<ib>[T^ ra rb]" + "<hb T^ ra rb>"

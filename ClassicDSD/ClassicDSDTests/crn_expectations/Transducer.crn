@@ -1,0 +1,19 @@
+directive sample 0.0,5000.0 1000
+directive plot "<h tx^ x>"; "<a ty^ y>"
+directive scale 1000.0
+
+init "<h tx^ x>" 1.0 |
+init "{tx^*}[x ta^]:[a ty^]<y>" 10.0 |
+init "<h>[tx^ x]:<x>[ta^]:[a ty^]<y>" 0.0 |
+init "<h>[tx^ x]{ta^*}:[a ty^]<y>" 0.0 |
+init "<x ta^>" 0.0 |
+init "<ta^ a ty^>" 10.0 |
+init "<h>[tx^ x]:[ta^ a ty^]" 0.0 |
+init "<a ty^ y>" 0.0 |
+init "[x]{ta^*}" 10.0 |
+init "[x ta^]" 0.0 |
+init "<x>" 0.0 |
+"{tx^*}[x ta^]:[a ty^]<y>" + "<h tx^ x>" <->{0.0003}{0.1126} "<h>[tx^ x]:<x>[ta^]:[a ty^]<y>" |
+"<h>[tx^ x]:<x>[ta^]:[a ty^]<y>" <->{0.1126}{0.0003} "<h>[tx^ x]{ta^*}:[a ty^]<y>" + "<x ta^>" |
+"<h>[tx^ x]{ta^*}:[a ty^]<y>" + "<ta^ a ty^>" ->{0.0003} "<h>[tx^ x]:[ta^ a ty^]" + "<a ty^ y>" |
+"[x]{ta^*}" + "<x ta^>" ->{0.0003} "[x ta^]" + "<x>"

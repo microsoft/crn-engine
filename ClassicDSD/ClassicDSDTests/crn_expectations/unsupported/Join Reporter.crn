@@ -1,0 +1,64 @@
+directive sample 0.0,20000.0 1000
+directive plot "<fl^ rbx>"
+directive simulation deterministic
+directive parameters
+  [ kint, (1E-05, 0.001), 3E-05, log, random
+  ; kextL, (1E-05, 0.001), 0.0001, log, random
+  ; kextR, (1E-05, 0.001), 0.0003, log, random
+  ; JoinOn = 0.0
+  ; ForkOn = 0.0
+  ; NRepJ = 0.0
+  ; NRepF = 0.0
+  ; NMi = 100.0
+  ; NG = 30.0
+  ; inB = 0.0
+  ; inX = 0.0
+  ; inH = 0.0
+  ; inRepL = 0.0
+  ; inRepR = 0.0
+  ; inR = 0.0
+  ; inH1 = 0.0
+  ; inH2 = 0.0
+  ; leakJoinBX_B, (0.0, 0.05), 0.001, real, random
+  ; badJoinBX_B, (0.0, 0.3), 0.0, real, random
+  ; badRepR, (0.0, 0.3), 0.2, real, random
+  ; T1, (7000.0, 8000.0), 7400.0, real, random
+  ; T1_Rep, (3600.0, 4000.0), 3800.0, real, random
+  ; N = 0.6 ]
+directive sweep sweepRepR =
+  { N = [0.2, 0.4, 0.6, 0.8]
+  , inRepR = [1.0]
+  , NRepJ = [30.0] }
+directive sweep sweepJoin_AddB =
+  { N = [0.0, 0.2, 0.4, 0.6]
+  , inB = [1.0]
+  , JoinOn = [1.0]
+  , NRepJ = [30.0] }
+directive fit {sweepJoin_AddB; JoinBX_AddB; ["<fl^ rbx>"] }
+directive fit {sweepRepR; Rep_rbxu1; ["<fl^ rbx>"] }
+directive fit_run { burnin      = 5000
+                  ; samples     = 20000
+                  ; mle_burnin  = 100
+                  ; mle_samples = 100
+                  ; thin        = 5
+                  ; separatenoise = false }
+
+event "<rbx u1^>" (((inRepR * 4.0) * N) * (1.0 - badRepR)) @ T1_Rep |
+event "<tb^ b>" (((inB * 10.0) * N) * (1.0 - badJoinBX_B)) @ T1 |
+init "<tx^ x>" (JoinOn * ((1.0 - inX) * NMi)) |
+init "<trbx^ rbx>" (JoinOn * ((1.0 - inH) * NMi)) |
+init "<tb^ b>" (JoinOn * ((1.0 - inB) * NMi)) |
+init "{tb^*}[b tx^]:[x trbx^]:[rbx u1^]" (JoinOn * (NG * (1.0 - (inB * leakJoinBX_B)))) |
+init "[tb^ b]{tx^*}:[x trbx^]:[rbx u1^]" 0.0 |
+init "[tb^ b]:[tx^ x]{trbx^*}:[rbx u1^]" 0.0 |
+init "[tb^ b]:[tx^ x]:[trbx^ rbx]{u1^*}" 0.0 |
+init "<rbx u1^>" (JoinOn * (NG * (inB * leakJoinBX_B))) |
+init "<x trbx^>" 0.0 |
+init "<b tx^>" 0.0 |
+init "<fl^>[rbx]{u1^*}" NRepJ |
+init "[rbx u1^]" 0.0 |
+init "<fl^ rbx>" 0.0 |
+"[tb^ b]:[tx^ x]{trbx^*}:[rbx u1^]" + "<trbx^ rbx>" <->{kint}{kextR} "[tb^ b]:[tx^ x]:[trbx^ rbx]{u1^*}" + "<rbx u1^>" |
+"[tb^ b]{tx^*}:[x trbx^]:[rbx u1^]" + "<tx^ x>" <->{kint}{kint} "[tb^ b]:[tx^ x]{trbx^*}:[rbx u1^]" + "<x trbx^>" |
+"{tb^*}[b tx^]:[x trbx^]:[rbx u1^]" + "<tb^ b>" <->{kextL}{kint} "[tb^ b]{tx^*}:[x trbx^]:[rbx u1^]" + "<b tx^>" |
+"<fl^>[rbx]{u1^*}" + "<rbx u1^>" ->{kextR} "[rbx u1^]" + "<fl^ rbx>"

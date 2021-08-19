@@ -1,0 +1,56 @@
+(*------------------------------------------------------------------------------------
+Circuit		:	OR Gate
+Notes		:	Use Compilation: Infinite;
+Source		:	[1]
+Modified by	:	Boyan Yordanov
+
+Biological Computation Group
+Microsoft Research
+Cambridge UK
+2013
+
+[1] H. Chandran, N. Gopalkrishnan, A. Phillips, and J. Reif. Localized hybridization
+circuits. DNA17, pages 64{83, 2011.
+------------------------------------------------------------------------------------*)
+
+(* Setting number of second to be simulated and the number of data points *)
+directive duration 3600.0 points 2000
+directive scale 1.0
+(* directive compilation infinite *)
+directive leak 1.0E-8 (* Leak rate 10^-8 /nM/s at lambda = 1. Manually multiply by lambda *)
+directive tau 1.0 (* Branch migration rate 1/s (from Zhang and Winfree 2009)*)
+(* Plots the reporter strand's concentration *)
+directive plot <Ca Cb>
+directive compilation infinite
+
+(* Defining speedup factor *)
+def lambda = 1.0E+0
+
+(* Winfree's parameters*)
+def shorttoeholdunbind = 26.0 (* Short toehold dissociation rate constant 26/s *)
+def shorttoeholdbind = 50.0 * 5.0E-5 (* Short toehold binding rate constant 5x10^-5/nM/s *)
+
+def untetheredunbind = shorttoeholdunbind (* fast toehold dissociation rate constant /s *)
+def untetheredbind = shorttoeholdbind (* slow toehold binding rate constant /nM/s *)
+
+def tetheredunbind = untetheredunbind (* toehold dissociation rate constant /s *)
+def tetheredbind = untetheredbind*lambda (* toehold binding rate constant /nM/s *)
+
+def ON = 1 (* Input concentration *)
+
+(* Definition of the OR, AND, FANOUT and WIRE gates, reporter complex and input strands *)
+def STRAND (T, sa, sb) = <T^ sa sb>
+def OR (Ti1, Input1a, Input1b, Ti2, Input2a, Input2b, To, Outputa, Outputb) = 
+	({Ti1^*}[Input1a]:[Input1b To^]<Outputa Outputb> 
+	| {Ti2^*}[Input2a]:[Input2b To^]<Outputa Outputb>)
+def REPORTER (Ti, Inputa, Inputb) =  {Ti^*}[Inputa Inputb]
+def OUTPUT() = <Ca Cb>
+def INPUT_A() = <tA^ Aa Ab>
+def INPUT_B() = <tB^ Ba Bb>
+(
+ 0 * OUTPUT()
+|0 * INPUT_A()
+|0 * INPUT_B()
+|10 * OR(tA, Aa, Ab, tB, Ba, Bb, tC, Ca, Cb)
+|10 * REPORTER(tC,Ca,Cb)
+)

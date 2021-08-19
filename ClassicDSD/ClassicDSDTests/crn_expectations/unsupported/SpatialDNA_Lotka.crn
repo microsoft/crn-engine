@@ -1,0 +1,58 @@
+directive sample 0.0,(96.0 * 3600.0) 3000
+directive plot "<t^ x>"; "<t^ y>"
+directive reltolerance 1E-06
+directive simulation spatial1d
+directive dt 25.0
+directive xmax 0.1
+directive spatialplot "<t^ x>"
+directive spatialic centralcore { species = "<t^ y>"; width = 0.1; inner = 1.0 }
+directive spatialic centralcore { species = "<t^ x>"; width = 0.1; inner = 1.0 }
+directive defaultdiffusion 1E-10
+directive parameters
+  [ kt = 0.0001
+  ; NX = 1.0
+  ; NY = 1.0
+  ; NG = 200.0
+  ; NH = 200.0
+  ; c1 = 0.01
+  ; c2 = 0.01 ]
+
+init "{t^c1*}[y]" NG |
+init "[i]:[t^ x]:[t^ x]{u^*}" NG |
+init "[i]:[t^ y]:[t^ y]{u^*}" NG |
+init "{t^c2*}[x u^]:[i]" NG |
+init "{t^*}[x t^]:[y u^]:[i]" NG |
+init "<x t^>" NH |
+init "<y t^>" NH |
+init "<i t^>" (2.0 * NH) |
+init "<t^ x>" NX |
+init "[t^c2 x]{u^*}:[i]" 0.0 |
+init "<x u^>" 0.0 |
+init "[i]:[t^ x]{t^*}:[x u^]" 0.0 |
+init "[i]{t^*}:[x t^]:[x u^]" 0.0 |
+init "[i t^]:[x t^]:[x u^]" 0.0 |
+init "<i>" 0.0 |
+init "[t^ x]{t^*}:[y u^]:[i]" 0.0 |
+init "<t^ y>" NY |
+init "[t^c1 y]" 0.0 |
+init "<y>" 0.0 |
+init "[t^ x]:[t^ y]{u^*}:[i]" 0.0 |
+init "<y u^>" 0.0 |
+init "[i]:[t^ y]{t^*}:[y u^]" 0.0 |
+init "[i]{t^*}:[y t^]:[y u^]" 0.0 |
+init "[i t^]:[y t^]:[y u^]" 0.0 |
+init "<u^ i>" (2.0 * NH) |
+init "[t^c2 x]:[u^ i]" 0.0 |
+init "[t^ x]:[t^ y]:[u^ i]" 0.0 |
+"{t^c2*}[x u^]:[i]" + "<t^ x>" <->{(kt * c2)}{kt} "[t^c2 x]{u^*}:[i]" + "<x u^>" |
+"[i]:[t^ x]:[t^ x]{u^*}" + "<x u^>" <->{kt}{kt} "[i]:[t^ x]{t^*}:[x u^]" + "<t^ x>" |
+"[i]{t^*}:[x t^]:[x u^]" + "<i t^>" ->{kt} "[i t^]:[x t^]:[x u^]" + "<i>" |
+"[i]:[t^ x]{t^*}:[x u^]" + "<x t^>" <->{kt}{kt} "[i]{t^*}:[x t^]:[x u^]" + "<t^ x>" |
+"{t^*}[x t^]:[y u^]:[i]" + "<t^ x>" <->{kt}{kt} "[t^ x]{t^*}:[y u^]:[i]" + "<x t^>" |
+"{t^c1*}[y]" + "<t^ y>" ->{(kt * c1)} "[t^c1 y]" + "<y>" |
+"[t^ x]{t^*}:[y u^]:[i]" + "<t^ y>" <->{kt}{kt} "[t^ x]:[t^ y]{u^*}:[i]" + "<y u^>" |
+"[i]:[t^ y]:[t^ y]{u^*}" + "<y u^>" <->{kt}{kt} "[i]:[t^ y]{t^*}:[y u^]" + "<t^ y>" |
+"[i]{t^*}:[y t^]:[y u^]" + "<i t^>" ->{kt} "[i t^]:[y t^]:[y u^]" + "<i>" |
+"[i]:[t^ y]{t^*}:[y u^]" + "<y t^>" <->{kt}{kt} "[i]{t^*}:[y t^]:[y u^]" + "<t^ y>" |
+"[t^c2 x]{u^*}:[i]" + "<u^ i>" ->{kt} "[t^c2 x]:[u^ i]" + "<i>" |
+"[t^ x]:[t^ y]{u^*}:[i]" + "<u^ i>" ->{kt} "[t^ x]:[t^ y]:[u^ i]" + "<i>"

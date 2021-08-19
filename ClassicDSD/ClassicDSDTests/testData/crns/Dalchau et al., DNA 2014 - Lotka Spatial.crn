@@ -1,0 +1,45 @@
+directive sample 0.0,(96.0 * 3600.0) 3000
+directive plot Strand; Strand_1
+directive reltolerance 1E-06
+directive simulation spatial1d
+directive dt 25.0
+directive xmax 0.1
+directive spatialplot Strand
+directive spatialic centralcore { species = Strand_1; inner = 1.0; width = 0.1 }
+directive spatialic centralcore { species = Strand; inner = 1.0; width = 0.1 }
+directive defaultdiffusion 1E-10
+directive parameters
+  [ kt = 0.0001
+  ; NX = 1.0
+  ; NY = 1.0
+  ; NG = 200.0
+  ; NH = 200.0
+  ; c1 = 0.01
+  ; c2 = 0.01
+  ; e = 2.71828183
+  ; R = 0.0019872
+  ; T = 298.15 ]
+
+init Deg NG |
+init Fork_2_1 NG |
+init Fork_2 NG |
+init Join_1 NG |
+init Join_2 NG |
+init Reverse_2 NH |
+init Reverse_1 (2.0 * NH) |
+init Reverse NH |
+init Strand_1 NY |
+init Strand NX |
+init X2X (2.0 * NH) |
+Deg + Strand_1 ->{(kt * c1)} sp_1 + sp_0 |
+Join_1 + Strand <->{(kt * c2)}{kt} sp_4 + sp_3 |
+Fork_2 + sp_3 <->{kt}{kt} sp_5 + Strand |
+sp_6 + Reverse_1 ->{kt} sp_8 + sp_7 |
+sp_5 + Reverse <->{kt}{kt} sp_6 + Strand |
+Join_2 + Strand <->{kt}{kt} sp_2 + Reverse |
+sp_2 + Strand_1 <->{kt}{kt} sp_10 + sp_9 |
+Fork_2_1 + sp_9 <->{kt}{kt} sp_11 + Strand_1 |
+sp_12 + Reverse_1 ->{kt} sp_13 + sp_7 |
+sp_11 + Reverse_2 <->{kt}{kt} sp_12 + Strand_1 |
+sp_4 + X2X ->{kt} sp_15 + sp_7 |
+sp_10 + X2X ->{kt} sp_14 + sp_7

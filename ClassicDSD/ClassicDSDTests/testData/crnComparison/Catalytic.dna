@@ -1,0 +1,9 @@
+(* A simple catalytic circuit based on Zhang (Science 2007).*)
+directive duration 7000.0 points 1000
+directive scale 500.0
+new 3@ 4.2E-4 , 4.0E-2
+new 5@ 6.5E-4 , 4.0E-3
+( 13 * <2 3^ 4>
+| 10 * <4 5^>
+| 10 * <1>[2]:<6>[3^ 4]{5^*}
+)

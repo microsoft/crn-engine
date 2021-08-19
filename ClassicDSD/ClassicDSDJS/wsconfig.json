@@ -1,0 +1,5 @@
+﻿{
+  "project": "bundle",
+  "outputDir": "Content",
+  "javascriptExport": ["Microsoft.Research.CRNEngine.JSONAPI"]
+}

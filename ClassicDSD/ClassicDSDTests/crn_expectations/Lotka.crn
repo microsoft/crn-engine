@@ -1,0 +1,31 @@
+directive sample 0.0,20000.0 1000
+directive plot "<y1l t^ y1 x^>"; "<y2 t^ y2r>"
+directive reltolerance 1e-07
+
+init constant "{t^*}[y1 x^ y2]<i.1 t^ y2r t^ y2r>{t^*}" 30000.0 |
+init constant "{x^*}[y2 i.1]:<y2>[t^ y2r]:<y2>[t^ y2r]" 3000000.0 |
+init "<y1l t^ y1 x^>" 1000.0 |
+init "<y1l>[t^ y1 x^]:<y1 x^>[y2]<i.1 t^ y2r t^ y2r>{t^*}" 0.0 |
+init "<y2 t^ y2r>" 1000.0 |
+init "{t^*}[y1 x^ y2]<i.1 t^ y2r t^ y2r>:<y2>[t^]<y2r>" 0.0 |
+init "<y1l>[t^ y1 x^]:[y2 t^]<y2r>" 0.0 |
+init "<y1 x^ y2 i.1 t^ y2r t^ y2r>" 0.0 |
+init "<y1>[x^ y2 i.1 t^ y2r t^ y2r]" 0.0 |
+init "<y2 i.1>" 0.0 |
+init constant "{t^*}[y1 x^]<i y1l t^ y1l t^>" 1000.0 |
+init "<y1l>[t^ y1 x^]" 0.0 |
+init "<y1 x^ i y1l t^ y1l t^>" 0.0 |
+init constant "{x^*}[i]:[y1l t^]<y1 x^>:[y1l t^]<y1 x^>" 100000.0 |
+init "<y1>[x^ i y1l t^ y1l t^]" 0.0 |
+init "<i>" 0.0 |
+init constant "[y2]{t^*}" 1000.0 |
+init "[y2 t^]<y2r>" 0.0 |
+init "<y2>" 0.0 |
+"{t^*}[y1 x^ y2]<i.1 t^ y2r t^ y2r>{t^*}" + "<y1l t^ y1 x^>" <->{1E-05}{0.1} "<y1l>[t^ y1 x^]:<y1 x^>[y2]<i.1 t^ y2r t^ y2r>{t^*}" |
+"<y1l>[t^ y1 x^]:<y1 x^>[y2]<i.1 t^ y2r t^ y2r>{t^*}" + "<y2 t^ y2r>" ->{1E-05} "<y1l>[t^ y1 x^]:[y2 t^]<y2r>" + "<y1 x^ y2 i.1 t^ y2r t^ y2r>" |
+"{t^*}[y1 x^ y2]<i.1 t^ y2r t^ y2r>{t^*}" + "<y2 t^ y2r>" <->{1E-05}{0.1} "{t^*}[y1 x^ y2]<i.1 t^ y2r t^ y2r>:<y2>[t^]<y2r>" |
+"{t^*}[y1 x^ y2]<i.1 t^ y2r t^ y2r>:<y2>[t^]<y2r>" + "<y1l t^ y1 x^>" ->{1E-05} "<y1l>[t^ y1 x^]:[y2 t^]<y2r>" + "<y1 x^ y2 i.1 t^ y2r t^ y2r>" |
+"{x^*}[y2 i.1]:<y2>[t^ y2r]:<y2>[t^ y2r]" + "<y1 x^ y2 i.1 t^ y2r t^ y2r>" ->{1E-05} "<y1>[x^ y2 i.1 t^ y2r t^ y2r]" + "<y2 i.1>" + 2"<y2 t^ y2r>" |
+"{t^*}[y1 x^]<i y1l t^ y1l t^>" + "<y1l t^ y1 x^>" ->{1E-05} "<y1l>[t^ y1 x^]" + "<y1 x^ i y1l t^ y1l t^>" |
+"{x^*}[i]:[y1l t^]<y1 x^>:[y1l t^]<y1 x^>" + "<y1 x^ i y1l t^ y1l t^>" ->{1E-05} "<y1>[x^ i y1l t^ y1l t^]" + "<i>" + 2"<y1l t^ y1 x^>" |
+"[y2]{t^*}" + "<y2 t^ y2r>" ->{1E-05} "[y2 t^]<y2r>" + "<y2>"

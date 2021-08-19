@@ -1,0 +1,25 @@
+directive sample 0.0,6000.0 1000
+directive plot sp_1
+directive simulation deterministic
+directive parameters
+  [ k, (1E-05, 0.002), 0.0003, log, random
+  ; bad, (0.0, 0.3), 0.2, real, random
+  ; T1, (0.0, 1800.0), 600.0, real, random
+  ; N = 0.6
+  ; e = 2.71828183
+  ; R = 0.0019872
+  ; T = 298.15 ]
+directive sweep sweepRepR =
+  { N = [0.2, 0.4, 0.6, 0.8] }
+directive fit {sweepRepR; Rep_Simulated; [sp_1] }
+directive fit_run { burnin      = 2000
+                  ; samples     = 10000
+                  ; mle_burnin  = 0
+                  ; mle_samples = 0
+                  ; thin        = 10
+                  ; separatenoise = true
+                  ; noisemodel = 0 }
+
+event sp_0 ((4.0 * N) * (1.0 - bad)) @ T1 |
+init sp_2 30.0 |
+sp_2 + sp_0 ->{k} sp_3 + sp_1

@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Platforms>x64</Platforms>
+    <PlatformTarget>x64</PlatformTarget>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="logicDSD.fs" />
+    <Compile Include="types.fsi" />
+    <Compile Include="types.fs" />
+    <Compile Include="errors.fsi" />
+    <Compile Include="errors.fs" />
+    <Compile Include="value.fsi" />
+    <Compile Include="value.fs" />
+    <Compile Include="measures.fsi" />
+    <Compile Include="measures.fs" />
+    <Compile Include="defaultDatabase.fs" />
+    <Compile Include="options.fsi" />
+    <Compile Include="options.fs" />
+    <Compile Include="domain.fsi" />
+    <Compile Include="domain.fs" />
+    <Compile Include="strand.fsi" />
+    <Compile Include="strand.fs" />
+    <Compile Include="segment.fsi" />
+    <Compile Include="segment.fs" />
+    <Compile Include="gate.fsi" />
+    <Compile Include="gate.fs" />
+    <Compile Include="origami.fsi" />
+    <Compile Include="origami.fs" />
+    <Compile Include="species.fsi" />
+    <Compile Include="species.fs" />
+    <Compile Include="sequence.fsi" />
+    <Compile Include="sequence.fs" />
+    <Compile Include="sequenceCalc.fsi" />
+    <Compile Include="sequenceCalc.fs" />
+    <Compile Include="visualisation.fsi" />
+    <Compile Include="visualisation.fs" />
+    <Compile Include="svg.fsi" />
+    <Compile Include="svg.fs" />
+    <Compile Include="branchesrenderer.fsi" />
+    <Compile Include="branchesrenderer.fs" />
+    <Compile Include="circlesrenderer.fsi" />
+    <Compile Include="circlesrenderer.fs" />
+    <Compile Include="dsdreaction.fsi" />
+    <Compile Include="dsdreaction.fs" />
+    <Compile Include="pattern.fsi" />
+    <Compile Include="pattern.fs" />
+    <Compile Include="process.fsi" />
+    <Compile Include="process.fs" />
+    <Compile Include="syntax.fsi" />
+    <Compile Include="syntax.fs" />
+    <Compile Include="AssemblyInfo.fs" />
+    <Compile Include="DSDParser.fs" />
+    <Compile Include="SLConversion.fs" />
+    <Compile Include="dsd.fsi" />
+    <Compile Include="dsd.fs" />
+    <Compile Include="jsapi.fs" />
+    <None Include="paket.references" />
+    <Content Include="app.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\PDESolvers\ReactionDiffusion\ReactionDiffusion.fsproj" />
+    <ProjectReference Include="..\..\RulesDSD\RulesDSD\RulesDSD.fsproj" />
+    <Reference Include="Oslo.FSharp">
+      <HintPath>..\..\Lib\Oslo.FSharp\Oslo.FSharp.dll</HintPath>
+    </Reference>
+    <ProjectReference Include="..\..\CRNEngine\CRNEngineDotNet\CRNEngineDotNet.fsproj" />
+    <ProjectReference Include="..\..\Filzbach.FSharp\Filzbach.FSharp.Portable.fsproj" />
+    <ProjectReference Include="..\..\ParserCombinators\ParserCombinators\ParserCombinators.fsproj" />
+  </ItemGroup>
+  <Import Project="..\..\.paket\Paket.Restore.targets" />
+</Project>

@@ -1,0 +1,93 @@
+directive sample 0.0,36000.0 2000
+directive plot M0; M1; L0; L1
+directive parameters
+  [ e = 2.71828183
+  ; R = 0.0019872
+  ; T = 298.15 ]
+
+init AND_5 1000.0 |
+init AND_4 1000.0 |
+init AND_3 1000.0 |
+init AND_2 1000.0 |
+init AND_1 1000.0 |
+init AND 1000.0 |
+init FANOUT_3 2000.0 |
+init FANOUT_2 1000.0 |
+init FANOUT_1 2000.0 |
+init FANOUT 1000.0 |
+init OR_11 1000.0 |
+init OR_10 1000.0 |
+init OR_9 1000.0 |
+init OR_8 1000.0 |
+init OR_7 1000.0 |
+init OR_6 1000.0 |
+init OR_5 1000.0 |
+init OR_4 1000.0 |
+init OR_3 1000.0 |
+init OR_2 1000.0 |
+init OR_1 1000.0 |
+init OR 1000.0 |
+init REPORTER_3 1000.0 |
+init REPORTER_2 1000.0 |
+init REPORTER_1 1000.0 |
+init REPORTER 1000.0 |
+init STRAND_7 3000.0 |
+init STRAND_5 3000.0 |
+init STRAND_3 3000.0 |
+init STRAND_1 3000.0 |
+init THREEINPUTAND 1000.0 |
+init THREEINPUTOR_2 1000.0 |
+init THREEINPUTOR_1 1000.0 |
+init THREEINPUTOR 1000.0 |
+OR_4 + STRAND_7 ->{0.0003} sp_4 + sp_1 + sp_3 |
+OR + STRAND_7 ->{0.0003} sp_2 + sp_1 + sp_0 |
+AND_4 + sp_3 ->{0.0003} sp_7 + sp_6 + sp_5 |
+AND_3 + STRAND_6 ->{0.0003} sp_11 + sp_9 + sp_8 |
+AND + STRAND_6 ->{0.0003} sp_10 + sp_9 + sp_8 |
+OR_5 + STRAND_5 ->{0.0003} sp_16 + sp_13 + sp_15 |
+OR_1 + STRAND_5 ->{0.0003} sp_14 + sp_13 + sp_12 |
+AND_4 + sp_15 ->{0.0003} sp_17 + sp_6 + sp_5 |
+sp_11 + STRAND_4 ->{0.0003} sp_22 + sp_19 + sp_21 |
+sp_10 + STRAND_4 ->{0.0003} sp_20 + sp_19 + sp_18 |
+OR_2 + sp_18 ->{0.0003} sp_25 + sp_24 + sp_23 |
+AND_1 + STRAND_3 ->{0.0003} sp_30 + sp_27 + sp_29 |
+OR_10 + STRAND_3 ->{0.0003} sp_28 + sp_27 + sp_26 |
+REPORTER_3 + sp_26 ->{0.0003} sp_31 + M1 |
+AND_5 + STRAND_2 ->{0.0003} sp_36 + sp_33 + sp_35 |
+OR_7 + STRAND_2 ->{0.0003} sp_34 + sp_33 + sp_32 |
+sp_7 + sp_32 ->{0.0003} sp_40 + sp_38 + sp_37 |
+sp_17 + sp_32 ->{0.0003} sp_39 + sp_38 + sp_37 |
+OR_9 + sp_37 ->{0.0003} sp_43 + sp_42 + sp_41 |
+REPORTER_1 + sp_41 ->{0.0003} sp_44 + L1 |
+FANOUT_3 + STRAND_1 ->{0.0003} sp_49 + sp_46 + sp_48 |
+OR_11 + STRAND_1 ->{0.0003} sp_47 + sp_46 + sp_45 |
+sp_49 + FANOUT_2 <->{0.0003}{0.0003} sp_50 + STRAND_1 |
+OR_6 + sp_48 ->{0.0003} sp_53 + sp_52 + sp_51 |
+sp_7 + sp_51 ->{0.0003} sp_55 + sp_38 + sp_37 |
+sp_17 + sp_51 ->{0.0003} sp_54 + sp_38 + sp_37 |
+REPORTER_3 + sp_45 ->{0.0003} sp_56 + M1 |
+FANOUT_1 + STRAND ->{0.0003} sp_61 + sp_58 + sp_60 |
+sp_36 + STRAND ->{0.0003} sp_59 + sp_58 + sp_57 |
+sp_61 + FANOUT <->{0.0003}{0.0003} sp_62 + STRAND |
+sp_30 + sp_60 ->{0.0003} sp_65 + sp_64 + sp_63 |
+OR_3 + sp_63 ->{0.0003} sp_68 + sp_67 + sp_66 |
+REPORTER_2 + sp_57 ->{0.0003} sp_69 + M0 |
+THREEINPUTAND + sp_48 ->{0.0003} sp_71 + sp_52 + sp_70 |
+sp_71 + STRAND_3 ->{0.0003} sp_73 + sp_27 + sp_72 |
+sp_73 + sp_21 ->{0.0003} sp_76 + sp_75 + sp_74 |
+OR_8 + sp_74 ->{0.0003} sp_79 + sp_78 + sp_77 |
+REPORTER_1 + sp_77 ->{0.0003} sp_80 + L1 |
+THREEINPUTOR_2 + sp_60 ->{0.0003} sp_82 + sp_64 + sp_81 |
+AND_2 + sp_81 ->{0.0003} sp_85 + sp_84 + sp_83 |
+sp_85 + sp_23 ->{0.0003} sp_89 + sp_87 + sp_86 |
+sp_85 + sp_66 ->{0.0003} sp_88 + sp_87 + sp_86 |
+REPORTER + sp_86 ->{0.0003} sp_90 + L0 |
+THREEINPUTOR_1 + STRAND_2 ->{0.0003} sp_92 + sp_33 + sp_91 |
+AND_2 + sp_91 ->{0.0003} sp_93 + sp_84 + sp_83 |
+sp_93 + sp_23 ->{0.0003} sp_95 + sp_87 + sp_86 |
+sp_93 + sp_66 ->{0.0003} sp_94 + sp_87 + sp_86 |
+THREEINPUTOR + sp_0 ->{0.0003} sp_99 + sp_97 + sp_96 |
+THREEINPUTOR + sp_12 ->{0.0003} sp_98 + sp_97 + sp_96 |
+AND_2 + sp_96 ->{0.0003} sp_100 + sp_84 + sp_83 |
+sp_100 + sp_23 ->{0.0003} sp_102 + sp_87 + sp_86 |
+sp_100 + sp_66 ->{0.0003} sp_101 + sp_87 + sp_86

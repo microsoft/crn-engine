@@ -1,0 +1,56 @@
+directive plot "<S4a^ x^ y^ S7>"; "<S9a x^ y^ S2c>"; "<S6 S3^>"
+
+init "<x^ y^ S7 S8^ S9a x^>" 10.0 |
+init "<x^ y^ S2c S3^ S4a^ x^>" 10.0 |
+init "<S4a^>[x^ y^ S7]:[S8^ S9a x^]{y^*}" 10.0 |
+init "<S4a^>[x^ y^ S7]:[S8^ S9a x^]:<x^>[y^]<S7 S8^ S9a x^>" 0.0 |
+init "<S4a^>[x^ y^ S7]:[S8^ S9a x^]:<x^>[y^]<S2c S3^ S4a^ x^>" 0.0 |
+init "<S9a>[x^ y^ S2c]:<S6>[S3^ S4a^ x^]{y^*}" 10.0 |
+init "<S9a>[x^ y^ S2c]:<S6>[S3^ S4a^ x^]:<x^>[y^]<S7 S8^ S9a x^>" 0.0 |
+init "<S9a>[x^ y^ S2c]:<S6>[S3^ S4a^ x^]:<x^>[y^]<S2c S3^ S4a^ x^>" 0.0 |
+init "<S4a^ x^ y^ S7>" 5.0 |
+init "<S4a^>[x^ y^ S7]:[S8^ S9a x^]:<S4a^ x^>[y^]<S7>" 0.0 |
+init "<S9a>[x^ y^ S2c]:<S6>[S3^ S4a^ x^]:<S4a^ x^>[y^]<S7>" 0.0 |
+init "<S9a>[x^ y^ S2c]{S3^*}:[S4a^ x^ y^]<S7>" 0.0 |
+init "[x^ y^ S2c S3^ S4a^ x^]:<S4a^ x^>[y^]<S7>" 0.0 |
+init "[x^ y^ S2c S3^ S4a^ x^]{y^*}" 0.0 |
+init "[x^ y^ S2c S3^ S4a^ x^]:<x^>[y^]<S7 S8^ S9a x^>" 0.0 |
+init "[x^ y^ S2c S3^ S4a^ x^]:<x^>[y^]<S2c S3^ S4a^ x^>" 0.0 |
+init "<S9a x^ y^ S2c>" 5.0 |
+init "<S4a^>[x^ y^ S7]:[S8^ S9a x^]:<S9a x^>[y^]<S2c>" 0.0 |
+init "<S4a^>[x^ y^ S7]{S8^*}:[S9a x^ y^]<S2c>" 0.0 |
+init "[x^ y^ S7 S8^ S9a x^]:<S9a x^>[y^]<S2c>" 0.0 |
+init "[x^ y^ S7 S8^ S9a x^]{y^*}" 0.0 |
+init "[x^ y^ S7 S8^ S9a x^]:<x^>[y^]<S7 S8^ S9a x^>" 0.0 |
+init "[x^ y^ S7 S8^ S9a x^]:<x^>[y^]<S2c S3^ S4a^ x^>" 0.0 |
+init "[x^ y^ S7 S8^ S9a x^]:<S4a^ x^>[y^]<S7>" 0.0 |
+init "<S8^ S9a x^>" 0.0 |
+init "<S9a>[x^ y^ S2c]:<S6>[S3^ S4a^ x^]:<S9a x^>[y^]<S2c>" 0.0 |
+init "[x^ y^ S2c S3^ S4a^ x^]:<S9a x^>[y^]<S2c>" 0.0 |
+init "<S6 S3^ S4a^ x^>" 0.0 |
+init "[S6 S3^]{S4a^*}" 10.0 |
+init "[S6 S3^]:<x^ y^ S2c S3^>[S4a^]<x^>" 0.0 |
+init "[S6 S3^ S4a^]<x^>" 0.0 |
+init "<S6 S3^>" 0.0 |
+"<S4a^>[x^ y^ S7]:[S8^ S9a x^]{y^*}" + "<x^ y^ S7 S8^ S9a x^>" <->{0.00065}{0.004} "<S4a^>[x^ y^ S7]:[S8^ S9a x^]:<x^>[y^]<S7 S8^ S9a x^>" |
+"<S4a^>[x^ y^ S7]:[S8^ S9a x^]{y^*}" + "<x^ y^ S2c S3^ S4a^ x^>" <->{0.00065}{0.004} "<S4a^>[x^ y^ S7]:[S8^ S9a x^]:<x^>[y^]<S2c S3^ S4a^ x^>" |
+"<S9a>[x^ y^ S2c]:<S6>[S3^ S4a^ x^]{y^*}" + "<x^ y^ S7 S8^ S9a x^>" <->{0.00065}{0.004} "<S9a>[x^ y^ S2c]:<S6>[S3^ S4a^ x^]:<x^>[y^]<S7 S8^ S9a x^>" |
+"<S9a>[x^ y^ S2c]:<S6>[S3^ S4a^ x^]{y^*}" + "<x^ y^ S2c S3^ S4a^ x^>" <->{0.00065}{0.004} "<S9a>[x^ y^ S2c]:<S6>[S3^ S4a^ x^]:<x^>[y^]<S2c S3^ S4a^ x^>" |
+"<S4a^>[x^ y^ S7]:[S8^ S9a x^]{y^*}" + "<S4a^ x^ y^ S7>" <->{0.00065}{0.004} "<S4a^>[x^ y^ S7]:[S8^ S9a x^]:<S4a^ x^>[y^]<S7>" |
+"<S9a>[x^ y^ S2c]:<S6>[S3^ S4a^ x^]{y^*}" + "<S4a^ x^ y^ S7>" <->{0.00065}{0.004} "<S9a>[x^ y^ S2c]:<S6>[S3^ S4a^ x^]:<S4a^ x^>[y^]<S7>" |
+"<S9a>[x^ y^ S2c]{S3^*}:[S4a^ x^ y^]<S7>" + "<x^ y^ S2c S3^ S4a^ x^>" ->{0.00042} "[x^ y^ S2c S3^ S4a^ x^]:<S4a^ x^>[y^]<S7>" + "<S9a x^ y^ S2c>" |
+"[x^ y^ S2c S3^ S4a^ x^]:<S4a^ x^>[y^]<S7>" <->{0.004}{0.00065} "[x^ y^ S2c S3^ S4a^ x^]{y^*}" + "<S4a^ x^ y^ S7>" |
+"[x^ y^ S2c S3^ S4a^ x^]{y^*}" + "<x^ y^ S7 S8^ S9a x^>" <->{0.00065}{0.004} "[x^ y^ S2c S3^ S4a^ x^]:<x^>[y^]<S7 S8^ S9a x^>" |
+"[x^ y^ S2c S3^ S4a^ x^]{y^*}" + "<x^ y^ S2c S3^ S4a^ x^>" <->{0.00065}{0.004} "[x^ y^ S2c S3^ S4a^ x^]:<x^>[y^]<S2c S3^ S4a^ x^>" |
+"<S4a^>[x^ y^ S7]:[S8^ S9a x^]{y^*}" + "<S9a x^ y^ S2c>" <->{0.00065}{0.004} "<S4a^>[x^ y^ S7]:[S8^ S9a x^]:<S9a x^>[y^]<S2c>" |
+"<S4a^>[x^ y^ S7]{S8^*}:[S9a x^ y^]<S2c>" + "<x^ y^ S7 S8^ S9a x^>" ->{0.0005} "[x^ y^ S7 S8^ S9a x^]:<S9a x^>[y^]<S2c>" + "<S4a^ x^ y^ S7>" |
+"[x^ y^ S7 S8^ S9a x^]:<S9a x^>[y^]<S2c>" <->{0.004}{0.00065} "[x^ y^ S7 S8^ S9a x^]{y^*}" + "<S9a x^ y^ S2c>" |
+"[x^ y^ S7 S8^ S9a x^]{y^*}" + "<x^ y^ S7 S8^ S9a x^>" <->{0.00065}{0.004} "[x^ y^ S7 S8^ S9a x^]:<x^>[y^]<S7 S8^ S9a x^>" |
+"[x^ y^ S7 S8^ S9a x^]{y^*}" + "<x^ y^ S2c S3^ S4a^ x^>" <->{0.00065}{0.004} "[x^ y^ S7 S8^ S9a x^]:<x^>[y^]<S2c S3^ S4a^ x^>" |
+"[x^ y^ S7 S8^ S9a x^]{y^*}" + "<S4a^ x^ y^ S7>" <->{0.00065}{0.004} "[x^ y^ S7 S8^ S9a x^]:<S4a^ x^>[y^]<S7>" |
+"<S4a^>[x^ y^ S7]:[S8^ S9a x^]:<S9a x^>[y^]<S2c>" <->{0.00019}{0.0005} "<S4a^>[x^ y^ S7]{S8^*}:[S9a x^ y^]<S2c>" + "<S8^ S9a x^>" |
+"<S9a>[x^ y^ S2c]:<S6>[S3^ S4a^ x^]{y^*}" + "<S9a x^ y^ S2c>" <->{0.00065}{0.004} "<S9a>[x^ y^ S2c]:<S6>[S3^ S4a^ x^]:<S9a x^>[y^]<S2c>" |
+"[x^ y^ S2c S3^ S4a^ x^]{y^*}" + "<S9a x^ y^ S2c>" <->{0.00065}{0.004} "[x^ y^ S2c S3^ S4a^ x^]:<S9a x^>[y^]<S2c>" |
+"<S9a>[x^ y^ S2c]:<S6>[S3^ S4a^ x^]:<S4a^ x^>[y^]<S7>" <->{0.04}{0.00042} "<S9a>[x^ y^ S2c]{S3^*}:[S4a^ x^ y^]<S7>" + "<S6 S3^ S4a^ x^>" |
+"[S6 S3^]{S4a^*}" + "<S6 S3^ S4a^ x^>" ->{0.0003} "[S6 S3^ S4a^]<x^>" + "<S6 S3^>" |
+"[S6 S3^]{S4a^*}" + "<x^ y^ S2c S3^ S4a^ x^>" <->{0.0003}{0.1126} "[S6 S3^]:<x^ y^ S2c S3^>[S4a^]<x^>"

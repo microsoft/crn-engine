@@ -1,0 +1,130 @@
+directive simulation {final=72000; plots=[T21(); T12()]; }
+directive simulator deterministic
+directive deterministic {stiff=true}
+directive parameters [
+  kTA21 = 7.4E-05, {interval=Real; distribution=Uniform(7.4E-05,7.4E-05); variation=Fixed};
+  kTA12 = 1.4E-05, {interval=Real; distribution=Uniform(1.4E-05,1.4E-05); variation=Fixed};
+  kAI1 = 5.3E-05, {interval=Real; distribution=Uniform(5.3E-05,5.3E-05); variation=Fixed};
+  krAI1 = 2.4E-05, {interval=Real; distribution=Uniform(2.4E-05,2.4E-05); variation=Fixed};
+  kAI2 = 3.1E-05, {interval=Real; distribution=Uniform(3.1E-05,3.1E-05); variation=Fixed};
+  kTAI21 = 2.8E-05, {interval=Real; distribution=Uniform(2.8E-05,2.8E-05); variation=Fixed};
+  kTAI12 = 0.00014, {interval=Real; distribution=Uniform(0.00014,0.00014); variation=Fixed};
+  kAIrA1 = 2.8E-05, {interval=Real; distribution=Uniform(2.8E-05,2.8E-05); variation=Fixed};
+  cRNaseH = 15, {interval=Real; distribution=Uniform(15,15); variation=Fixed};
+  cRNAP = 125, {interval=Real; distribution=Uniform(125,125); variation=Fixed};
+  kRNAP = 0.0323, {interval=Real; distribution=Uniform(0.0323,0.0323); variation=Fixed};
+  kRNaseH = 0.0196, {interval=Real; distribution=Uniform(0.0196,0.0196); variation=Fixed};
+  S = 0.02, {interval=Real; distribution=Uniform(0.02,0.02); variation=Fixed};
+]
+directive compilation infinite
+directive polymers
+dom ta2  = {bind = kTAI12; colour = "lightblue"}
+dom a2  = {bind = kTA12; colour = "red"}
+dom t  = {bind = 0.0; colour = "blue"}
+dom p  = {bind = 0.0; colour = "purple"}
+dom ta1  = {bind = kTAI21; colour = "darkgreen"}
+dom a1  = {bind = kTA21; colour = "magenta"}
+dom tdI1  = {bind = kAIrA1; colour = "black"}
+dom AI1  = {bind = kAI1; subdomains = [ p; a1; ta1 ]}
+dom AI2  = {bind = kAI2; subdomains = [ ta2; a2; t ]}
+dom rAI1  = {bind = krAI1; subdomains = [ a1; ta1; tdI1 ]}
+dom TA12  = {bind = kTA12; subdomains = [ a2; t ]}
+dom TA21  = {bind = kTA21; subdomains = [ t*; p; a1 ]}
+new RNaseH 
+new RNaseHA2rI2 
+new RNaseHrA1dI1 
+new RNAP 
+new RNAPT12A2 
+new RNAPT21A1 
+new RNAPT12 
+new RNAPT21 
+def RNaseH() = <RNaseH>
+def RNaseHA2rI2() = <RNaseHA2rI2>
+def RNaseHrA1dI1() = <RNaseHrA1dI1>
+def RNAP() = <RNAP>
+def RNAPT12A2() = <RNAPT12A2>
+def RNAPT21A1() = <RNAPT21A1>
+def RNAPT12() = <RNAPT12>
+def RNAPT21() = <RNAPT21>
+def rA1() = <tra1 a1^ ta1^ tdI1^ t^ h>
+def A1() = <t^* p^ a1^ ta1^>
+def dI1() = <tdI1^* ta1^* a1^* p^*>
+def A2() = <t^* a2^* ta2^*>
+def rI2() = <trI2 ta2^ a2^ t^ h>
+def A2rI2() = <trI2>[ta2^ a2^ t^]<h>
+def rA1dI1() = {p^*}<tra1>[a1^ ta1^ tdI1^]<t^ h>
+def A1dI1() = <t^*>[p^ a1^ ta1^]{tdI1^*}
+def T12() = <a2^ t^>[prom tra1 a1^ ta1^ tdI1^ t^ h]
+def T12A2() = {ta2^*}[a2^ t^]::[prom tra1 a1^ ta1^ tdI1^ t^ h]
+def T21() = <a1^* p^* t^>[prom trI2 ta2^ a2^ t^ h]
+def T21A1() = {ta1^}[a1^* p^* t^]::[prom trI2 ta2^ a2^ t^ h]
+def T11A2() = {ta2^*}[a2^ t^]::[prom trI2 ta2^ a2^ t^ h]
+def T11() = <a2^ t^>[prom trI2 ta2^ a2^ t^ h]
+def kplus = 0.1
+def kplusH = 0.1
+def kminusON12 = 6.8
+def kminusOFF12 = 262.0
+def kminusON21 = 24.7
+def kminusOFF21 = 267.0
+def kminusH1 = 7.6
+def kminusH2 = 1.6
+def kcatON12 = 0.05
+def kcatOFF12 = 0.002
+def kcatON21 = 0.08
+def kcatOFF21 = 0.02
+def kcatH1 = 0.05
+def kcatH2 = 0.24
+def KMH1 = ((kminusH1 + kcatH1) /  kplusH)
+def KMH2 = ((kminusH2 + kcatH2) /  kplusH)
+def KMON12 = ((kminusON12 + kcatON12) /  kplus)
+def KMON21 = ((kminusON21 + kcatON21) /  kplus)
+def KMOFF12 = ((kminusOFF12 + kcatOFF12) /  kplus)
+def KMOFF21 = ((kminusOFF21 + kcatOFF21) /  kplus)
+def Activation() = 
+  (( 120.0 * T11()
+  | 500.0 * A2()
+  | 0.0 * A2rI2()
+  | 0.0 * T11A2()
+  | rxn A2rI2() ->{kRNaseH} A2()
+  | rxn T11A2() ->{kRNAP} T11A2() + rI2()
+  | 0.0 * rI2()))
+def RNaseH_enzymatic() = 
+  (( 15.0 * RNaseH()
+  | rxn RNaseH() + A2rI2() <->{kplusH}{kminusH2} RNaseHA2rI2()
+  | rxn RNaseHA2rI2() ->{kcatH2} RNaseH() + A2()
+  | rxn RNaseH() + rA1dI1() <->{kplusH}{kminusH1} RNaseHrA1dI1()
+  | rxn RNaseHrA1dI1() ->{kcatH1} RNaseH() + dI1()))
+def RNaseH_firstorder() = 
+  (( rxn A2rI2() ->{((S * kcatH2) * (cRNaseH / KMH2))} A2()
+  | rxn rA1dI1() ->{((S * kcatH1) * (cRNaseH / KMH1))} dI1()))
+def RNAP_enzymatic() = 
+  (( 125.0 * RNAP()
+  | rxn RNAP() + T12A2() <->{kplus}{kminusON12} RNAPT12A2()
+  | rxn RNAPT12A2() ->{kcatON12} RNAP() + T12A2() + rA1()
+  | rxn RNAP() + T21A1() <->{kplus}{kminusON21} RNAPT21A1()
+  | rxn RNAPT21A1() ->{kcatON21} RNAP() + T21A1() + rI2()
+  | rxn RNAP() + T12() <->{kplus}{kminusOFF12} RNAPT12()
+  | rxn RNAPT12() ->{kcatOFF12} RNAP() + T12() + rA1()
+  | rxn RNAP() + T21() <->{kplus}{kminusOFF21} RNAPT21()
+  | rxn RNAPT21() ->{kcatOFF21} RNAP() + T21() + rI2()))
+def RNAP_firstorder() = 
+  (( rxn T12A2() ->{(kcatON12 * (cRNAP / (KMON12 + cRNAP)))} T12A2() + rA1()
+  | rxn T21A1() ->{(kcatON21 * (cRNAP / (KMON21 + cRNAP)))} T21A1() + rI2()
+  | rxn T12() ->{(kcatOFF12 * (cRNAP / (KMOFF12 + cRNAP)))} T12() + rA1()
+  | rxn T21() ->{(kcatOFF21 * (cRNAP / (KMOFF21 + cRNAP)))} T21() + rI2()))
+def System() = 
+  (( 120.0 * T12()
+  | 500.0 * A2()
+  | 250.0 * T21()
+  | 250.0 * A1()
+  | 1000.0 * dI1()
+  | 0.0 * rA1()
+  | 0.0 * rI2()
+  | 0.0 * A2rI2()
+  | 0.0 * T12A2()
+  | 0.0 * T21A1()
+  | 0.0 * rA1dI1()
+  | 0.0 * A1dI1()
+  | RNaseH_firstorder()
+  | RNAP_firstorder()))
+System()

@@ -1,0 +1,35 @@
+directive duration 10000.0 points 1000
+directive plot Input1(); Input2(); Signal()
+directive scale 1.0
+
+directive predicates all
+
+predicate min1 = {Input1() < Input2()} (* Input1 is less than Input2 *)
+predicate min2 = {Input1() >= Input2()} (* Input2 is less than or equal to Input1 *)
+predicate out1 = {Signal() = Input1()@[0]} (* the amount of signal is equal to the initial Input1 *)
+predicate out2 = {Signal() = Input2()@[0]} (* the amount of signal is equal to the initial Input2 *)
+predicate MinFn = {min1 -> out1 and min2 -> out2} (* the signal is equal to the min input *)
+predicate Error = {not MinFn} (* an error is encountered when the min is not computed *)
+
+query correctComputation = {
+abstraction stutter;
+Init@[0] and Terminal@[5] and ConservationOfMass@[5] and MinFn@[5] (* correct computation *)
+}
+
+query errorComputation = {
+abstraction connected;
+Init@[0] and Terminal@[1] and ConservationOfMass@[1] and Error@[1] (* incorrect computation *)
+}
+ 
+def Input1() = <tb^ b>
+def Input2() = <tx^ x>
+def Output() = <x to^>
+def Join() = {tb^*}[b tx^]:[x to^]
+def Reporter() = <fl^>[x]{to^*}
+def Signal() = <fl^ x>
+( 1*Input1()
+| 1*Input2()
+| 3*Join()
+| 3*Reporter()
+| 0*Signal()
+)

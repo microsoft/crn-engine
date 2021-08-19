@@ -1,0 +1,23 @@
+directive sample 0.0,7000.0 1000
+directive plot sum("<S2a S2b^ S2c S3^ S4>"); "[S1 S2a]{S2b^*}"; "<S1 S2a>"
+directive scale 500.0
+
+init "<S4 S5^>" 10.0 |
+init "<S2a S2b^ S2c S3^ S4>" 15.0 |
+init "[S1 S2a]{S2b^*}" 10.0 |
+init "[S1 S2a]:<S2a>[S2b^]<S2c S3^ S4>" 0.0 |
+init "<S1>[S2a S2b^ S2c]:<S6>[S3^ S4]{S5^*}" 10.0 |
+init "<S1>[S2a S2b^ S2c]:<S6>[S3^ S4]:<S4>[S5^]" 0.0 |
+init "<S1>[S2a S2b^ S2c]{S3^*}:[S4 S5^]" 0.0 |
+init "[S2a S2b^ S2c S3^ S4]:<S4>[S5^]" 0.0 |
+init "[S2a S2b^ S2c S3^ S4]{S5^*}" 0.0 |
+init "<S1 S2a S2b^ S2c>" 0.0 |
+init "[S1 S2a S2b^]<S2c>" 0.0 |
+init "<S1 S2a>" 0.0 |
+init "<S6 S3^ S4>" 0.0 |
+"[S1 S2a]{S2b^*}" + "<S2a S2b^ S2c S3^ S4>" <->{0.0003}{0.1126} "[S1 S2a]:<S2a>[S2b^]<S2c S3^ S4>" |
+"<S1>[S2a S2b^ S2c]:<S6>[S3^ S4]{S5^*}" + "<S4 S5^>" <->{0.00065}{0.004} "<S1>[S2a S2b^ S2c]:<S6>[S3^ S4]:<S4>[S5^]" |
+"<S1>[S2a S2b^ S2c]{S3^*}:[S4 S5^]" + "<S2a S2b^ S2c S3^ S4>" ->{0.00042} "[S2a S2b^ S2c S3^ S4]:<S4>[S5^]" + "<S1 S2a S2b^ S2c>" |
+"[S2a S2b^ S2c S3^ S4]:<S4>[S5^]" <->{0.004}{0.00065} "[S2a S2b^ S2c S3^ S4]{S5^*}" + "<S4 S5^>" |
+"[S1 S2a]{S2b^*}" + "<S1 S2a S2b^ S2c>" ->{0.0003} "[S1 S2a S2b^]<S2c>" + "<S1 S2a>" |
+"<S1>[S2a S2b^ S2c]:<S6>[S3^ S4]:<S4>[S5^]" <->{0.04}{0.00042} "<S1>[S2a S2b^ S2c]{S3^*}:[S4 S5^]" + "<S6 S3^ S4>"

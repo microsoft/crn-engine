@@ -1,0 +1,23 @@
+directive simulation {initial=0; final=3600; points=2000; plots=[<Ca Cb>]}
+directive compilation infinite
+directive leak 1E-08
+directive tau 1
+def lambda = 1.0
+def shorttoeholdunbind = 26.0
+def shorttoeholdbind = (50.0 * 5E-05)
+def untetheredunbind = shorttoeholdunbind
+def untetheredbind = shorttoeholdbind
+def tetheredunbind = untetheredunbind
+def tetheredbind = (untetheredbind * lambda)
+def ON = 1.0
+def STRAND(T, sa, sb) = <T^ sa sb>
+def FANOUT(Ti, Ia, Ib, To, Oa, Ob) = 
+  (( <To^ Fa Fb>
+  | {Ti^*}[Ia]:[Ib To^]<Oa Ob>:[Fa]:[Fb To^]<Oa Ob>))
+def REPORTER(Ti, Inputa, Inputb) = {Ti^*}[Inputa Inputb]
+def OUTPUT() = <Ca Cb>
+def INPUT() = <tA^ Aa Ab>
+( 0.0 * OUTPUT()
+| 1.0 * INPUT()
+| 1.0 * FANOUT(tA,Aa,Ab,tC,Ca,Cb)
+| 10.0 * REPORTER(tC,Ca,Cb))

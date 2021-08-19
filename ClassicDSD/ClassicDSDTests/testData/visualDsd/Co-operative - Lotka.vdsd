@@ -1,0 +1,32 @@
+directive duration 20000.0 points 1000
+directive plot <y1l t^ y1 x^>; <y2 t^ y2r>
+directive reltolerance 1e-7
+
+def bind = 0.00001 (* /nM/s *)
+def unbind = 0.1 (* /s *)
+def Excess = 100
+
+new x@ bind,unbind
+new t@ bind,unbind
+
+def SpeciesL(N,al,a) = N * <al t^ a x^>
+def SpeciesR(N,a,ar) = N * <a t^ ar>
+def BinaryLRxRR(N,al,a,b,br,c,cr,d,dr) = (* A + B ->{N} C + D *)
+new i
+( constant N * {t^*}:[a x^ b]<i t^ cr t^ dr>:{t^*}
+| constant N * Excess * {x^*}:[b i]:<c>[t^ cr]:<d>[t^ dr]
+)
+def UnaryLxLL(N,al,a,cl,c,dl,d) = (* A ->{N} C + D *)
+new i
+( constant N * {t^*}:[a x^]<i cl t^ dl t^>
+| constant N * Excess * {x^*}:[i]:[cl t^]<c x^>:[dl t^]<d x^>
+)
+def UnaryRx(N,a,ar) = (* A ->{N} *)
+constant N * [a]:{t^*}
+  
+( UnaryLxLL(1000,y1l,y1,y1l,y1,y1l,y1) (* Y1 -c1-> Y1 + Y1 *)
+| BinaryLRxRR(30000,y1l,y1,y2,y2r,y2,y2r,y2,y2r) (* Y1 + Y2 -c2-> Y2 + Y2 *)
+| UnaryRx(1000,y2,y2r) (* Y2 -c3->  *)
+| SpeciesL(1000,y1l,y1) (* Y1 *) 
+| SpeciesR(1000,y2,y2r) (* Y2 *)
+)

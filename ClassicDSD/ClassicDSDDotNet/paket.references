@@ -1,0 +1,4 @@
+﻿group NETSTANDARD
+
+FSharp.Core
+WebSharper.Core

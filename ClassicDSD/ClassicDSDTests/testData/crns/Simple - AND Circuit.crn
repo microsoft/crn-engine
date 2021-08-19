@@ -1,0 +1,15 @@
+directive sample 0.0,1000000.0 1000
+directive plot Input1; Input2; Output
+directive scale 100.0
+directive parameters
+  [ e = 2.71828183
+  ; R = 0.0019872
+  ; T = 298.15 ]
+
+init AND 10.0 |
+init Input1 1.0 |
+init Input2 1.0 |
+AND + Input1 <->{0.0003}{0.1126} sp_0 |
+sp_0 + Input2 ->{0.0003} sp_1 + Output |
+AND + Input2 <->{0.0003}{0.1126} sp_2 |
+sp_2 + Input1 ->{0.0003} sp_1 + Output

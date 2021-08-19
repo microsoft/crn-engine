@@ -1,0 +1,31 @@
+(* A catalytic converter, with a fluorescent output and declared sequences, from Fig 1*)
+directive duration 7000.0 points 1000
+directive scale 500.0
+directive plot Fuel _; Reporter(); <S1 S2a>
+
+dom S1 = { seq=CTTTCCTACA }
+dom S2a = { seq=CCTACG}
+dom S2b = { seq=TCTCCA}
+dom S2c = { seq=ACTAACTTACGG}
+dom S3 = { seq=CCCT; bind=4.2E-4; unbind=4.0E-2}
+dom S4 = { seq=CATTCAATACCCTACG}
+dom S5 = {seq=TCTCCA; bind=6.5E-4; unbind=4.0E-3}
+dom S6 = {seq=CCACATACATCATATT}
+
+def S2 = (S2a,S2b,S2c)
+
+def Fuel((ta,tb,tc)) = <ta tb^ tc S3^ S4>
+def Substrate(o,(ta,tb,tc),s,t,r,f) = <o>[ta tb^ tc]:<s>[t^ r]:{f^*}
+def Catalyst() = <S4 S5^>
+def Reporter() = [S1 S2a]{S2b^*}
+
+def Catalytic(N) =
+ ( (N+5)*Fuel(S2)
+ | N*Substrate(S1,S2,S6,S3,S4,S5)
+ | N*Catalyst())
+ 
+def FluoresingCatalytic(N) = 
+ ( Catalytic(N)
+ | N*Reporter())
+ 
+ FluoresingCatalytic(10)

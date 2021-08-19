@@ -1,0 +1,149 @@
+directive sample 0.0,250000.0 1000
+directive plot ("<r^>" - "<r^*>"); ("<v^>" - "<v^*>"); ("<y^>" - "<y^*>"); ("<load>" - "<load'>")
+directive simulation deterministicstiff
+directive parameters
+  [ deg = 0.0008
+  ; pol = 0.0167
+  ; nick = 0.0167
+  ; x0 = 4.0
+  ; ann = 0.01
+  ; bind = 5.4E-06
+  ; unbind = 0.1126
+  ; Cmax = 1000.0 ]
+
+ event "<load'>" 1.0 @ 200000.0 
+| event "<load>" 2.0 @ 150000.0 
+| event "<r^>" (2.0 * x0) @ 100000.0 
+| event "<r^*>" (2.0 * x0) @ 50000.0 
+| init "<load>" 0.0 
+| init "<load'>" 0.0 
+| init "<r^>" x0 
+| init "<r^*>" 0.0 
+// | init "{r^* e^*}" Cmax 
+| init "<e^>" 0.0 // (3.0 * Cmax) 
+// | init "{e^* x^*}" Cmax 
+// | init "<x^>" Cmax 
+// | init "{e^* v^*}" Cmax 
+| init "<v^>" 0.0 // (3.0 * Cmax) 
+// | init "{x^* v^*}" Cmax 
+// | init "{r^ e^}" Cmax 
+| init "<e^*>" 0.0 // (3.0 * Cmax) 
+// | init "{e^ x^}" Cmax 
+// | init "<x^*>" Cmax 
+// | init "{e^ v^}" Cmax 
+| init "<v^*>" 0.0 // (3.0 * Cmax) 
+// | init "{x^ v^}" Cmax 
+// | init "{y^* e^}" Cmax 
+// | init "{e^* e^}" Cmax 
+// | init "{v^* v^}" Cmax 
+// | init "{y^ e^*}" Cmax 
+// | init "{e^ e^*}" Cmax 
+// | init "{v^ v^*}" Cmax 
+| init "<y^>" 0.0 
+| init "<y^*>" 0.0 
+| init "<e^*>" 0.0 
+| init "<v^*>" 0.0 
+| init "<y^*>" 0.0 
+| init "<x^*>" 0.0 
+| init "[v^* v^]" 0.0 
+| init "[v^ v^*]" 0.0 
+| init "[x^* v^*]" 0.0 
+| init "[x^ v^]" 0.0 
+| init "[e^* v^*]" 0.0 
+| init "[e^ v^]" 0.0 
+| init "[e^* x^*]" 0.0 
+| init "[e^ x^]" 0.0 
+| init "[e^* e^]" 0.0 
+| init "[e^ e^*]" 0.0 
+| init "[y^* e^]" 0.0 
+| init "[y^ e^*]" 0.0 
+| init "[r^* e^*]" 0.0 
+| init "[r^ e^]" 0.0 
+| init "{r^*}[e^]" Cmax
+| init "[r^]:[e^]" 0.0 
+| init "{r^}[e^*]" Cmax
+| init "[r^*]:[e^*]" 0.0 
+| init "{y^*}[e^*]" Cmax
+| init "[y^]:[e^*]" 0.0 
+| init "{y^}[e^]" Cmax
+| init "[y^*]:[e^]" 0.0 
+| init "{e^*}[e^*]" Cmax
+| init "[e^]:[e^*]" 0.0 
+| init "{e^}[e^]" Cmax
+| init "[e^*]:[e^]" 0.0 
+| init "{e^*}[x^]" Cmax
+| init "[e^]:[x^]" 0.0 
+| init "{e^}[x^*]" Cmax
+| init "[e^*]:[x^*]" 0.0 
+| init "{e^*}[v^]" Cmax
+| init "[e^]:[v^]" 0.0 
+| init "{e^}[v^*]" Cmax
+| init "[e^*]:[v^*]" 0.0 
+| init "{x^*}[v^]" Cmax
+| init "[x^]:[v^]" 0.0 
+| init "{x^}[v^*]" Cmax 
+| init "[x^*]:[v^*]" 0.0 
+| init "{v^*}[v^*]" Cmax
+| init "[v^]:[v^*]" 0.0 
+| init "{v^}[v^]" Cmax 
+| init "[v^*]:[v^]" 0.0 
+| init "[x^]" 0.0 
+| init "[r^]" 0.0 
+| init "[y^]" 0.0 
+| init "[v^]" 0.0 
+| init "[e^]" 0.0 
+|
+"<r^>" + "{r^*}[e^]" <->{bind}{unbind} "[r^]:[e^]" |
+"[r^]:[e^]" ->{pol} "[r^ e^]" + "<e^>" |
+"[r^ e^]" ->{nick} "[r^]:[e^]" |
+"<r^*>" + "{r^}[e^*]" <->{bind}{unbind} "[r^*]:[e^*]" |
+"[r^*]:[e^*]" ->{pol} "[r^* e^*]" + "<e^*>" |
+"[r^* e^*]" ->{nick} "[r^*]:[e^*]" |
+"<y^>" + "{y^*}[e^*]" <->{bind}{unbind} "[y^]:[e^*]" |
+"[y^]:[e^*]" ->{pol} "[y^ e^*]" + "<e^*>" |
+"[y^ e^*]" ->{nick} "[y^]:[e^*]" |
+"<y^*>" + "{y^}[e^]" <->{bind}{unbind} "[y^*]:[e^]" |
+"[y^*]:[e^]" ->{pol} "[y^* e^]" + "<e^>" |
+"[y^* e^]" ->{nick} "[y^*]:[e^]" |
+"<e^>" + "{e^*}[e^*]" <->{bind}{unbind} "[e^]:[e^*]" |
+"[e^]:[e^*]" ->{pol} "[e^ e^*]" + "<e^*>" |
+"[e^ e^*]" ->{nick} "[e^]:[e^*]" |
+"<e^*>" + "{e^}[e^]" <->{bind}{unbind} "[e^*]:[e^]" |
+"[e^*]:[e^]" ->{pol} "[e^* e^]" + "<e^>" |
+"[e^* e^]" ->{nick} "[e^*]:[e^]" |
+"<e^>" + "{e^*}[x^]" <->{bind}{unbind} "[e^]:[x^]" |
+"[e^]:[x^]" ->{pol} "[e^ x^]" + "<x^>" |
+"[e^ x^]" ->{nick} "[e^]:[x^]" |
+"<e^*>" + "{e^}[x^*]" <->{bind}{unbind} "[e^*]:[x^*]" |
+"[e^*]:[x^*]" ->{pol} "[e^* x^*]" + "<x^*>" |
+"[e^* x^*]" ->{nick} "[e^*]:[x^*]" |
+"<e^>" + "{e^*}[v^]" <->{bind}{unbind} "[e^]:[v^]" |
+"[e^]:[v^]" ->{pol} "[e^ v^]" + "<v^>" |
+"[e^ v^]" ->{nick} "[e^]:[v^]" |
+"<e^*>" + "{e^}[v^*]" <->{bind}{unbind} "[e^*]:[v^*]" |
+"[e^*]:[v^*]" ->{pol} "[e^* v^*]" + "<v^*>" |
+"[e^* v^*]" ->{nick} "[e^*]:[v^*]" |
+"<x^>" + "{x^*}[v^]" <->{bind}{unbind} "[x^]:[v^]" |
+"[x^]:[v^]" ->{pol} "[x^ v^]" + "<v^>" |
+"[x^ v^]" ->{nick} "[x^]:[v^]" |
+"<x^*>" + "{x^}[v^*]" <->{bind}{unbind} "[x^*]:[v^*]" |
+"[x^*]:[v^*]" ->{pol} "[x^* v^*]" + "<v^*>" |
+"[x^* v^*]" ->{nick} "[x^*]:[v^*]" |
+"<v^>" + "{v^*}[v^*]" <->{bind}{unbind} "[v^]:[v^*]" |
+"[v^]:[v^*]" ->{pol} "[v^ v^*]" + "<v^*>" |
+"[v^ v^*]" ->{nick} "[v^]:[v^*]" |
+"<v^*>" + "{v^}[v^]" <->{bind}{unbind} "[v^*]:[v^]" |
+"[v^*]:[v^]" ->{pol} "[v^* v^]" + "<v^>" |
+"[v^* v^]" ->{nick} "[v^*]:[v^]" |
+"<x^>" + "<x^*>" ->{ann} "[x^]" |
+"<v^>" ->{0.2} "<v^>" + "<y^>" |
+"<v^*>" ->{0.2} "<v^*>" + "<y^*>" |
+"<y^>" ->{0.1} |
+"<y^*>" ->{0.1} |
+"<load>" + "<y^>" ->{0.01} "<load>" |
+"<load'>" + "<y^*>" ->{0.01} "<load'>" |
+"<load>" + "<load'>" ->{1.0} |
+"<r^>" + "<r^*>" ->{ann} "[r^]" |
+"<y^>" + "<y^*>" ->{ann} "[y^]" |
+"<v^>" + "<v^*>" ->{ann} "[v^]" |
+"<e^>" + "<e^*>" ->{ann} "[e^]"

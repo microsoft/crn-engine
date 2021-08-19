@@ -1,0 +1,61 @@
+directive sample 0.0,6000.0 1000
+directive plot SignalR
+directive simulation deterministic
+directive parameters
+  [ kint, (1E-05, 0.001), 3E-05, log, random
+  ; kextL, (1E-05, 0.001), 0.0001, log, random
+  ; kextR, (1E-05, 0.001), 0.0003, log, random
+  ; JoinOn = 0.0
+  ; ForkOn = 0.0
+  ; NRepJ = 0.0
+  ; NRepF = 0.0
+  ; NMi = 100.0
+  ; NG = 30.0
+  ; inB = 0.0
+  ; inX = 0.0
+  ; inH = 0.0
+  ; inRepL = 0.0
+  ; inRepR = 0.0
+  ; inR = 0.0
+  ; inH1 = 0.0
+  ; inH2 = 0.0
+  ; leakJoinBX_B, (0.0, 0.05), 0.001, real, random
+  ; badJoinBX_B, (0.0, 0.3), 0.0, real, random
+  ; badRepR, (0.0, 0.3), 0.2, real, random
+  ; T1, (0.0, 1800.0), 600.0, real, random
+  ; T1_Rep, (0.0, 1800.0), 600.0, real, random
+  ; N = 0.6
+  ; e = 2.71828183
+  ; R = 0.0019872
+  ; T = 298.15 ]
+directive sweep sweepRepR =
+  { N = [0.2, 0.4, 0.6, 0.8]
+  , inRepR = [1.0]
+  , NRepJ = [30.0] }
+directive sweep sweepJoin_AddB =
+  { N = [0.0, 0.2, 0.4, 0.6]
+  , inB = [1.0]
+  , JoinOn = [1.0]
+  , NRepJ = [30.0] }
+directive fit {sweepJoin_AddB; Join_Simulated; [SignalR] }
+directive fit {sweepRepR; Rep_Simulated; [SignalR] }
+directive fit_run { burnin      = 5000
+                  ; samples     = 20000
+                  ; mle_burnin  = 0
+                  ; mle_samples = 0
+                  ; thin        = 5
+                  ; separatenoise = true
+                  ; noisemodel = 0 }
+
+event Translator (((inRepR * 4.0) * N) * (1.0 - badRepR)) @ T1_Rep |
+event Input (((inB * 10.0) * N) * (1.0 - badJoinBX_B)) @ T1 |
+init Catalyst (JoinOn * ((1.0 - inX) * NMi)) |
+init Helper (JoinOn * ((1.0 - inH) * NMi)) |
+init Input (JoinOn * ((1.0 - inB) * NMi)) |
+init Join_AB (JoinOn * (NG * (1.0 - (inB * leakJoinBX_B)))) |
+init Translator (JoinOn * (NG * (inB * leakJoinBX_B))) |
+init RepR NRepJ |
+sp_3 + Helper <->{kint}{kextR} sp_4 + Translator |
+sp_1 + Catalyst <->{kint}{kint} sp_3 + sp_2 |
+Join_AB + Input <->{kextL}{kint} sp_1 + sp_0 |
+RepR + Translator ->{kextR} sp_5 + SignalR

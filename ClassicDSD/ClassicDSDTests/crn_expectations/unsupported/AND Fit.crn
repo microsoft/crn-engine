@@ -1,0 +1,34 @@
+directive sample 0.0,18000.0 1000
+directive plot "<fl^ x>"
+directive scale 10.0
+directive simulation deterministicstiff
+directive parameters
+  [ N = 1.0
+  ; ktb, (1E-05, 0.002), 0.0003, log, random
+  ; ktx, (1E-05, 0.002), 0.0003, log, random
+  ; kto, (1E-05, 0.002), 0.0003, log, random
+  ; T1, (3600.0, 8000.0), 3800.0, real, random ]
+directive sweep s1 =
+  { N = [0.0, 0.2, 0.4, 0.6] }
+directive fit {s1; JoinBX_AddB; ["<fl^ x>"] }
+directive fit_run { burnin      = 2000
+                  ; samples     = 20000
+                  ; mle_burnin  = 1000
+                  ; mle_samples = 1000
+                  ; thin        = 10
+                  ; separatenoise = false }
+
+event "<tb^ b>" (N * 10.0) @ T1 |
+init "<tb^ b>" 0.0 |
+init "<tx^ x>" 30.0 |
+init "{tb^*}[b tx^]:[x to^]" 30.0 |
+init "[tb^ b]{tx^*}:[x to^]" 0.0 |
+init "[tb^ b]:[tx^ x]{to^*}" 0.0 |
+init "<x to^>" 0.0 |
+init "<b tx^>" 0.0 |
+init "<fl^>[x]{to^*}" 30.0 |
+init "[x to^]" 0.0 |
+init "<fl^ x>" 0.0 |
+"[tb^ b]{tx^*}:[x to^]" + "<tx^ x>" <->{ktx}{kto} "[tb^ b]:[tx^ x]{to^*}" + "<x to^>" |
+"{tb^*}[b tx^]:[x to^]" + "<tb^ b>" <->{ktb}{ktx} "[tb^ b]{tx^*}:[x to^]" + "<b tx^>" |
+"<fl^>[x]{to^*}" + "<x to^>" ->{kto} "[x to^]" + "<fl^ x>"

@@ -1,0 +1,61 @@
+directive sample 18000.0 1000
+directive compilation infinite
+directive simulation deterministic
+directive declare
+directive time s
+directive concentration nM
+directive plot <_ fl^>; <fl^ _>
+directive event <t^ b> 10.0 * N * (1.0-badJoinBX_B) @ T1
+directive parameters [
+  kt,(1.0e-5,2.0e-3),0.0001,log,random;
+  ku1,(1.0e-6,2.0e-3),0.0001,log,random;
+  ut,(0.0,0.0),0.0,real,fixed;
+  Xi = 10.0; NGi = 30.0;  NHi = 30.0;  NRi = 30.0; NMi = 100.0;
+
+  leakJoinBX_B,(0.0,0.1),0.01,real,random;
+  badJoinBX_B,(0.0,0.3),0.20,real,random;
+  T1,(7000.0,8000.0),7400.0,real,random;
+  N,(0.0,1.0),0.6,real,fixed
+]
+directive sweep input = { N = [0.0,0.2,0.4,0.6] }
+directive fit_run { burnin = 500
+                  ; samples = 500
+                  ; mle_burnin = 100
+                  ; mle_samples = 100
+                  ; thin = 10 }
+directive fit {input; JoinBX_AddB; <fl^ rbx>}
+
+new fl@0.0,0.0
+
+def Input(ta,a) =<ta^ a>
+def Catalyst(tb,b) = <tb^ b>
+def Helper(tr,r) = <tr^ r>
+def Translator(x,tx) = <x tx^>
+def InputR(h,th) =<h th^>
+def CatalystR(h,th) = <h th^>
+def SignalR(fl,c) = <fl^ c>
+def RepR(x,tx) = <fl^>[x]{tx^*}
+def Join_AB(ta,a,tb,b,tr,r,tq) = {ta^*}[a tb^]:[b tr^]:[r tq^]
+
+def Join(NA,NB,NH,NG,NV,Leak,ta,a,tb,b,tr,r,tq) =
+( NG*(1.0-Leak) * Join_AB(ta,a,tb,b,tr,r,tq)
+| NG*Leak * Translator(r,tq)
+| NA * Input(ta,a)
+| NB * Catalyst(tb,b)
+| NH * Helper(tr,r)
+| NV * InputR(a,tb)
+| NV * CatalystR(b,tr) )
+def RepJoin(N,NR,r,tq) =
+( N * Translator(r,tq)
+| NR * RepR(r,tq)
+| 0 * SignalR(fl,r) )
+
+dom t = {seq = CTGATC; bind=kt; unbind=ut}
+dom u1 = {seq = CTTCAG; bind=ku1; unbind=ut}
+dom x = {seq = CATTGCTTTATTTACCGAGTCTTAT}
+dom y = {seq = CATTGCCTAACCCACCGAGTCCTTT}
+dom b = {seq = CATTGCCAATTCCTACGAGTCTACC}
+dom rbx = {seq = CATTGCCAAACCATTAGAGTCAAAC}
+
+( RepJoin(0.0,NRi,rbx,u1)
+| Join(0.0,NMi,NMi,NGi,0.0,leakJoinBX_B,t,b,t,x,t,rbx,u1) )

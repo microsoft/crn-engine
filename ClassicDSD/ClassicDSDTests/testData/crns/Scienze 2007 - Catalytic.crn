@@ -1,0 +1,14 @@
+directive sample 0.0,7000.0 1000
+directive scale 500.0
+directive parameters
+  [ e = 2.71828183
+  ; R = 0.0019872
+  ; T = 298.15 ]
+
+init sp_2 10.0 |
+init sp_1 10.0 |
+init sp_0 13.0 |
+sp_2 + sp_1 <->{0.00065}{0.004} sp_3 |
+sp_3 <->{0.04}{0.00042} sp_5 + sp_4 |
+sp_5 + sp_0 ->{0.00042} sp_7 + sp_6 |
+sp_7 <->{0.004}{0.00065} sp_8 + sp_1

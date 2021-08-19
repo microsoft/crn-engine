@@ -1,0 +1,25 @@
+directive simulation {initial=0; final=18000; points=1000; plots=[<Ca Cb>]}
+directive simulator cme
+directive parameters [
+  in1 = 0, {interval=Real; distribution=Uniform(0,0); variation=Fixed};
+  in2 = 0, {interval=Real; distribution=Uniform(0,0); variation=Fixed};
+  c0 = 50, {interval=Real; distribution=Uniform(50,50); variation=Fixed};
+  c = 50, {interval=Real; distribution=Uniform(50,50); variation=Fixed};
+]
+directive sweeps [
+  mysweep = [in1 = [0; 1]; in2 = [0; 1]];
+]
+directive compilation infinite
+directive leaks
+directive leak (1E-09 * c)
+directive tau 1
+def bind = 5E-05
+def unbind = 26.0
+def STRAND(T, sa, sb) = <T^ sa sb>
+def AND(Ti1, Input1a, Input1b, Ti2, Input2a, Input2b, To, Outputa, Outputb) = {Ti1^*}[Input1a]:[Input1b Ti2^]:[Input2a]:[Input2b To^]<Outputa Outputb>
+def REPORTER(Ti, Inputa, Inputb) = {Ti^*}[Inputa Inputb]
+new T  @ (c * bind), unbind
+( in1 * STRAND(T,Aa,Ab)
+| in2 * STRAND(T,Ba,Bb)
+| AND(T,Aa,Ab,T,Ba,Bb,T,Ca,Cb)
+| REPORTER(T,Ca,Cb))

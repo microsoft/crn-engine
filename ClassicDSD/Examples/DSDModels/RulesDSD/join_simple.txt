@@ -1,0 +1,32 @@
+directive rules {
+bind(P1,P2,Q,D!i) :- 
+  P1 = C1 [D], P2 = C2 [D'], compl(D, D'), 
+  Q = C1 [D!i] | C2 [D'!i], freshBond(D!i, P1|P2).
+  
+displace(P,Q,E!j,D!i) :-
+  P = C [E!j D] [D!i] [D'!i E'!j],
+  Q = C [E!j D!i] [D] [D'!i E'!j].
+
+displaceL(P,Q,E!j,D!i) :- 
+  P = C [D!i] [D E!j] [E'!j D'!i],
+  Q = C [D] [D!i E!j] [E'!j D'!i].
+
+unbind(P,Q,D!i) :-
+  P = C [D!i] [D'!i], toehold(D), 
+  Q = C [D] [D'], not adjacent(D!i,_,P).
+
+adjacent(D!i,E!j,P) :- P = C [D!i E!j] [E'!j D'!i].
+adjacent(D!i,E!j,P) :- P = C [E!j D!i] [D'!i E'!j].
+
+reaction([P1;P2], "bind",Q) :- bind(P1,P2,Q,_).
+reaction([P],"displace",Q) :- displace(P,Q,_,_).
+reaction([P],"displace",Q) :- displaceL(P,Q,_,_).
+reaction([P],"unbind",Q) :- unbind(P,Q,_).
+}
+directive parameters [ 
+  bind = 0.003; displace = 1; unbind = 0.1
+]
+( 10 [<tb^ b>]
+| 10 [<tx^ x>]
+| 100 [<to^*!1 x*!2 tx^*!3 b*!4 tb^*> 
+      | <x!2 to^!1> | <b!4 tx^!3>] )

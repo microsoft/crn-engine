@@ -1,0 +1,31 @@
+(* Circuit which cross catalyzes between Substrate0 and Substrate1, from Fig S10 *)
+directive plot catalyst0(); catalyst1(); <S6 S3^>
+
+dom S1 = { seq=CTTTCCTACA }
+dom S2c = { seq=ACTAACTTACGG}
+dom S3 = { seq=CCCT; bind=4.2E-4; unbind=4.0E-2}
+dom S4a = { seq=CATTCAATAC}
+dom S6 = {seq=CCACATACATCATATT}
+dom S7 = {seq=TACTTATTAGCC}
+dom S8 = {seq=GACA; bind=5.0E-4; unbind=1.9E-4}
+dom S9a = {seq=CTACTTTCAC}
+
+dom x = {seq=CCTACG}
+dom y = {seq=TCTCCA; bind=6.5E-4; unbind = 4.0E-3}
+
+def Fuel0() = < x^ y^ S7 S8^ S9a x^>
+def Substrate0() = <S4a^>[x^ y^ S7]:[S8^ S9a x^]{y^*}
+def Fuel1() = <x^ y^ S2c S3^ S4a^ x^>
+def Substrate1() = <S9a>[x^ y^ S2c]:<S6>[S3^ S4a^ x^]{y^*}
+
+def catalyst0() = <S4a^ x^ y^ S7>
+def catalyst1() = <S9a x^ y^ S2c>
+
+def crosscatalytic(N,M) =
+  (N* Fuel0() | N* Substrate0() | 
+   N* Fuel1() | N* Substrate1() | 
+   M* catalyst0() | M*catalyst1())
+ 
+def reporter(N) = N * [S6 S3^]{S4a^*}
+ 
+(crosscatalytic(10,5) | reporter(10) )

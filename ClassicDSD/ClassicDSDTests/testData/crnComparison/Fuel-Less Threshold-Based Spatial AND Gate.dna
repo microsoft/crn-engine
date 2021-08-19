@@ -1,0 +1,28 @@
+(* Simplified threshold-based spatial AND gate *)
+directive sample 40000.0 1000
+directive polymers
+directive simulation deterministic
+directive localconcentrations [ (a, 1000000); (b, 100000); (c, 1000000); (d, 100000) ]
+directive plot reporter()
+
+dom a0 = { colour = "red" }
+dom x  = { colour = "green" }
+dom y  = { colour = "blue" }
+dom b0 = { colour = "purple" }
+dom blank = { colour = "black" }
+
+def input1()   = <a0^ s>
+def input2()   = <b0^ s>
+def probe()    = {y^*}[s]<F>{Q}
+def reporter() = <s F>
+def origami()  = [[ {tether(a,b) a0^*}[s]{x^>
+                  | {tether(c,d) b0^*}[s]{x^>
+                  | <tether(a,c) x^*>[s*]{blank^>
+                  | <tether(b,d) x^*>[s*]{y^> ]]
+
+( input1()
+(*| input2()*)
+| probe()
+| origami()
+| 0 * reporter()
+)

@@ -1,0 +1,149 @@
+directive deterministic { stiff=true }
+directive simulator deterministic
+directive parameters [
+  deg = 0.0008; cat = 0.0008; pol = 0.0167; nick = 0.0167; ann = 0.01; //0.01, 0.001
+  bind = 5.4E-06; bind1 = 5E-05; unbind = 0.1126; bind2 = 0.001; //0.001, 5.4e-6
+  Cmax = 1000 ; c = 0.0008; kt = 0.001; ku = 0.001; s = 2; x0 = 4; //4, 8
+]
+directive declare
+//directive simulation { final=10000; plots=[ X(); X'(); Y(); Y'(); R(); E(); E'(); V(); V'() ] }
+//directive simulation { final=500000; plots=[ [R()]-[R'()]; [V()]-[V'()]; [Y()]-[Y'()] ] }
+directive simulation { final=150000; plots=[ [R()]-[R'()]; [V()]-[V'()]; [Y()]-[Y'()]; [L()]-[L'()] ] }
+
+//------------------ 4Domain DNA Strand Displacement  ------------------
+directive compilation infinite
+
+dom x1 = {colour = "red"; bind = kt} dom x1' = {colour = "red"; bind = kt}
+dom x3 = {colour = "red"; bind = kt} dom x3' = {colour = "red"; bind = kt}
+dom r1 = {colour = "purple"; bind = kt} dom r1' = {colour = "purple"; bind = kt}
+dom r3 = {colour = "purple"; bind = kt} dom r3' = {colour = "purple"; bind = kt}
+dom e1 = {colour = "blue"; bind = kt} dom e1' = {colour = "blue"; bind = kt}
+dom e3 = {colour = "blue"; bind = kt} dom e3' = {colour = "blue"; bind = kt}
+dom v1 = {colour = "orange"; bind = kt} dom v1' = {colour = "orange"; bind = kt}
+dom v3 = {colour = "orange"; bind = kt} dom v3' = {colour = "orange"; bind = kt}
+dom y1 = {colour = "green"; bind = kt} dom y1' = {colour = "green"; bind = kt}
+dom y3 = {colour = "green"; bind = kt} dom y3' = {colour = "green"; bind = kt}
+dom load = {colour = "black"; bind = kt} dom load' = {colour = "black"; bind = kt}
+dom load = {colour = "black"; bind = kt} dom load' = {colour = "black"; bind = kt}
+dom t = {colour = "magenta"; bind = kt; unbind = unbind}
+
+new xh new x2 new xh' new x2' new vh new v2 new vh' new v2' new yh new y2 new yh' new y2' 
+new rh new r2 new rh' new r2' new eh new e2 new eh' new e2' 
+
+def Signal0((xh,x1,x2,x3),x') = <xh x1^ x2 x3^>
+def Degradation0(k,(xh,x1,x2,x3),x') = Cmax/k * {x1^(c)*}[x2 x3^]
+def Annihilation0((xh,x1,x2,x3),(xh',x1',x2',x3')) =  
+( Cmax * {x1^*}[x2 x3^ x1'^]:[x2' x3'^]
+| Cmax * <x2 x3^ x1'^>
+| Cmax * {x1'^*}[x2' x3'^ x1^]:[x2 x3^] 
+| Cmax * <x2' x3'^ x1^>
+)
+def Catalysis0(k,(xh,x1,x2,x3),x',(yh,y1,y2,y3),y') = 
+( Cmax*k * {x1^(c)*}[x2 x3^]<yh y1^ xh x1^>
+| Cmax*k * {x3^*}[yh y1^]<y2 y3^>:[xh x1^]<x2 x3^> 
+)
+def Signal((x,x')) = Signal0(x,x')
+def Degradation(k,(x,x')) = Degradation0(k,x,x')
+def Catalysis(k,(x,x'),(y,y')) = Catalysis0(k,x,x',y,y')
+def Annihilation((x,x')) = Annihilation0(x,x')
+
+def Signal'((x,x')) = Signal((x',x))
+def Degradation'(k,(x,x')) = Degradation(k,(x',x))
+def Catalysis'(k,(x,x'),(y,y')) = Catalysis(k,(x',x),(y',y)) 
+def CatalysisInv(k,x,(y,y')) = Catalysis(k,x,(y',y))
+def CatalysisInv'(k,(x,x'),y) = Catalysis(k,(x',x),y)
+
+def x = ((xh,x1,x2,x3),(xh',x1',x2',x3'))
+def y = ((yh,y1,y2,y3),(yh',y1',y2',y3'))
+def v = ((vh,v1,v2,v3),(vh',v1',v2',v3'))
+def e = ((eh,e1,e2,e3),(eh',e1',e2',e3'))
+def r = ((rh,r1,r2,r3),(rh',r1',r2',r3'))
+
+//------------------ Blocks --------------------------------
+def Catalysis2(k,x,y) = ( Catalysis(k,x,y) | Catalysis'(k,x,y) )
+def Catalysis2Inv(k,x,y) = ( CatalysisInv(k,x,y) | CatalysisInv'(k,x,y) )
+def Degradation2(k,x) = ( Degradation(k,x) | Degradation'(k,x) )   
+def Integration(kI,x,y) = Catalysis2(kI,x,y) 
+def Gain(k,kD,x,y) = ( Catalysis2(k,x,y) | Degradation2(kD,y) )
+def Summation(k1,k2,kD,x1,x2,y) = 
+( Catalysis2(k1,x1,y) 
+| Catalysis2(k2,x2,y)
+| Degradation2(kD,y)
+)
+def SummationInv(k1,k2,kD,x1,x2,y) = 
+( Catalysis2(k1,x1,y) 
+| Catalysis2Inv(k2,x2,y)
+| Degradation2(kD,y)
+)
+def PI(kP,kI, r, y, v,e) = 
+( SummationInv(1,1,1,r,y,e)
+| Integration(kI,e,x)
+| Summation(kP,1,1,e,x,v)
+| Annihilation(x)
+)
+def R()  = Signal(r)
+def R'() = Signal'(r)
+def E()  = Signal(e)
+def E'() = Signal'(e)
+def V()  = Signal(v)
+def V'() = Signal'(v)
+def Y()  = Signal(y)
+def Y'() = Signal'(y)
+def X() = Signal(x)
+def X'() = Signal'(x)
+def L() = <load>
+def L'() = <load'>
+def Plant(v, y) =
+( rxn Signal(v)  ->{0.2} Signal(v)  + Signal(y)
+| rxn Signal'(v) ->{0.2} Signal'(v) + Signal'(y)
+| rxn Signal(y)  ->{0.1}
+| rxn Signal'(y) ->{0.1}
+| rxn Signal'(y) + Signal(y) ->{0.1}
+| rxn L() + Signal(y)   ->{0.01} L()
+| rxn L'() + Signal'(y) ->{0.01} L'()
+| rxn L() + L'() -> {1.0}
+)
+
+//------------------ Full system  ----------------------------
+def System() =
+( 0 * V() | 0 * V'()
+| 0 * Y() | 0 * Y'() 
+| 0 * L() | 0 * L'()
+| x0* R() | 0 * R'() 
+| PI(1,1,r,y,v,e)
+| Plant(v,y)
+| Annihilation(r)
+| Annihilation(v)
+| Annihilation(e)
+)
+def VarySignal() = ( 2*x0 * R'() @ 50000 | 2*x0 * R() @ 100000 )
+def VaryLoad() = ( 2*L() @ 50000 | L'() @ 100000  )
+def VaryLong() =
+( 2*x0 * R'()  @  50000  | 2*x0 * R() @ 100000
+| 2*x0 * R'()  @  150000 | 2*x0 * R() @ 200000
+| 2*x0 * R'()  @  250000 | 2*x0 * R() @ 300000
+| 2*x0 * R'()  @  350000 | 2*x0 * R() @ 400000
+| 2*x0 * R'()  @  450000 
+) 
+
+//------------------ Tests -----------------------------------
+def TestAnnihilation() = ( 2*X() | X'()| Annihilation(x) )
+def TestCatalysis() = ( X() | 0*Y() | Catalysis(1,x,y) )
+def TestDegradation() = ( X() | 0*X'() | Degradation(1,x) )
+def TestGain() = ( X() | 0*Y() | 0*Y'() | Gain(1,2,x,y) | Annihilation(y) )
+def TestSummation() = ( 2*X() | E() | 0*V() | 0*V'() | Summation(1,1,1,x,e,v) | Annihilation(v) )
+def TestSummationInv() = ( 2*Y() | R() | 0*E() | 0*E'() | SummationInv(1,1,1,y,r,e) | Annihilation(e) )
+
+//------------------ Run -------------------------------------
+(*
+( System() | VarySignal() )
+( System() | VaryLoad() )
+( System() | VaryLong() )
+TestAnnihilation()
+TestCatalysis()
+TestDegradation()
+TestGain()
+TestSummation() 
+TestSummationInv()
+*)
+( System() | VarySignal() )

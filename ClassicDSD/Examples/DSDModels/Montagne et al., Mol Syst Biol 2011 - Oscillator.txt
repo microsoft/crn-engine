@@ -1,0 +1,92 @@
+directive simulation { final=100000;  plots=[A(); B(); Inh()] }
+directive deterministic { stiff=true }
+directive simulator deterministic
+directive parameters [ 
+  ka = 4.3333e-04;
+  kda = 0.0383;
+  kdb = 0.0135;
+  kdInhT1 = 9.5e-5;
+  kdInhT3 = 3.5e-5;
+  kpol = 0.2833;
+  kIpol = 0.1150;
+  knick = 0.05;
+  kexoa = 0.0053;
+  kexob = 0.0062;
+  kexoInh = 0.02;
+  ku = 0.0;
+]
+//directive sweeps [ s2 = [inh0 = [0.0;0.1;0.3;0.5;0.8;1.0]] ]
+directive unproductive
+
+dom a = {bind = ka; unbind = kda; colour = "red"}
+dom b = {bind = ka; unbind = kdb; colour = "green"}
+dom inh = {bind = ka; unbind = kdInhT3; colour = "blue"}
+
+def Signal(x) = <x^>
+def Primed(x,y) = [x^]{y^*}
+def Extended(x,y) = [x^ y^]
+def Template(x,y) = {x^* y^*}
+def LHTemplate(x,y) = [x^]{y^*}
+def RHTemplate(x,y) = {x^*}[y^]
+def Nicked(x,y) = [x^]:[y^]
+def Inhibited(x,y) = [y^ x^ y^]
+
+def Activation(N,x,y,kp,kn) = 
+( N * Template(x,y)
+| rxn Primed(x,y) ->{kp} Extended(x,y)
+| rxn Extended(x,y) ->{kn} Nicked(x,y)
+| rxn Nicked(x,y) ->{kp} Extended(x,y) + Signal(y)
+| 0*Primed(x,y)
+| 0*Extended(x,y)
+| 0*Nicked(x,y)
+)
+def Repression(N,x,y,kp,kn) = 
+( Activation(N,y,y,kp,kn)
+| rxn Signal(x) + Template(y,y) <->{ka,kdInhT1} Inhibited(x,y)
+| rxn Signal(x) + LHTemplate(y,y) <->{ka,ku} Inhibited(x,y) + Signal(y)
+| rxn Signal(x) + RHTemplate(y,y) <->{ka,ku} Inhibited(x,y) + Signal(y)
+| 0*Inhibited(x,y)
+)
+def Exo(x,k) =(rxn Signal(x) ->{k} )
+def A() = Signal(a)
+def B() = Signal(b)
+def Inh() = Signal(inh)
+def Oscillator() =
+( 0.1 * A() 
+| 0.1 * B()
+| 0.1 * Inh()
+| Activation(5.0,a,b,kpol,knick) 
+| Activation(30.0,b,inh,kIpol,knick) 
+| Repression(30.0,inh,a,kpol,knick)
+| Exo(a,kexoa)
+| Exo(b,kexob)
+| Exo(inh,kexoInh)
+)
+def Catalysis() = 
+( 0.1 * A() 
+| 0.1 * B()
+| Activation(5.0,a,b,kpol,knick) 
+)
+
+(*
+Oscillator()
+Catalysis()
+(Signal(A) | Activation(1.0,A,A) | Exo(A))
+
+(inh0 * Signal(Inh) 
+|0.01 * Signal(A) 
+| Repression(1.0,Inh,A))
+
+(0.1 * Signal(A) 
+|0.1 * Signal(B)
+|0.1 * Signal(C)
+| Activation(1.0,A,B) 
+| Activation(1.0,B,C) 
+| Repression (10.0,C,A)
+| Exo(A)
+| Exo(B)
+| Exo(C)
+)
+*)
+Oscillator()
+

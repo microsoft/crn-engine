@@ -1,0 +1,64 @@
+directive rules {
+displace(P,Q,E!j,D!i) :-
+  P = C [E!j D] [D!i] [D'!i E'!j],
+  Q = C [E!j D!i] [D] [D'!i E'!j].
+
+displaceL(P,Q,E!j,D!i) :- 
+  P = C [D!i] [D E!j] [E'!j D'!i],
+  Q = C [D] [D!i E!j] [E'!j D'!i].
+
+unbind(P,Q,D!i) :-
+  P = C [D!i] [D'!i], toehold(D), 
+  Q = C [D] [D'], not adjacent(D!i,_,P).
+
+adjacent(D!i,E!j,P) :- P = C [D!i E!j] [E'!j D'!i].
+adjacent(D!i,E!j,P) :- P = C [E!j D!i] [D'!i E'!j].
+
+slow([P1;P2], "bind",Q) :- bind(P1,P2,Q,_).
+fast([P],"displace",Q) :- displace(P,Q,_,_).
+fast([P],"displace",Q) :- displaceL(P,Q,_,_).
+fast([P],"unbind",Q) :- unbind(P,Q,_).
+
+merge(P,P,V) :- not fast([P],_,_).
+merge(P,R,V) :- 
+  fast([P],_,Q), not member(Q,V), merge(Q,R,[Q#V]).
+
+reaction([P1;P2],Rate,R) :- 
+  slow([P1;P2],Rate,Q), merge(Q,R,[(P1|P2);Q]).
+reaction([P],Rate,R) :- 
+  slow([P],Rate,Q), merge(Q,R,[P;Q]).
+
+bindR(P1,P2,Q,D!i) :- 
+  P1 = C1 [D], P2 = C2 [<D' E'!j] [E!j], compl(D, D'), 
+  Q = C1 [D!i] | C2 [<D'!i E'!j] [E!j], freshBond(D!i, P1|P2).
+
+bindL(P1,P2,Q,D!i) :- 
+  P1 = C1 [E'!j D'>] [E!j], P2 = C2 [D], compl(D, D'), 
+  Q = C1 [E'!j D'!i>] [E!j] | C2 [D!i], freshBond(D!i, P1|P2).
+
+bindM(P1,P2,Q,D!i) :- 
+  P1 = C1 [F'!k D' E'!j] [E!j] [F!k], P2 = C2 [D], compl(D, D'), 
+  Q = C1 [F'!k D'!i E'!j] [E!j] [F!k] | C2 [D!i], 
+  freshBond(D!i, P1|P2).
+
+slow([P1;P2],Rate,Q) :- find(D,"bindR",Rate),bindR(P1,P2,Q,_).
+slow([P1;P2],Rate,Q) :- find(D,"bindL",Rate),bindL(P1,P2,Q,_).
+slow([P1;P2],Rate,Q) :- find(D,"bindM",Rate),bindM(P1,P2,Q,_).
+
+find(D,Type,Rate):- rate(D,Type,Rate).
+find(D,Type,Rate):- default(D,Type,Rate), not rate(D,Type,_).
+
+
+default(_,"bindR", 0.003). rate(to^,"bindR","ktoR").
+default(_,"bindL", 0.003). rate(tb^,"bindL","ktbL").
+default(_,"bindM", 0.006). rate(tx^,"bindM","ktxM").
+
+}
+directive parameters [ 
+  bind = 0.003;  displace = 1; unbind = 0.1;
+  ktoR = 0.003; ktxM = 0.006; ktbL = 0.003;
+]
+( 10 [<tb^ b>]
+| 10 [<tx^ x>]
+| 100 [<to^*!1 x*!2 tx^*!3 b*!4 tb^*> 
+      | <x!2 to^!1> | <b!4 tx^!3>] )

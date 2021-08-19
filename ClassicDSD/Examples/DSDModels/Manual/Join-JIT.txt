@@ -1,0 +1,18 @@
+directive simulation {final=600}
+directive simulator stochastic
+directive jit
+directive polymers
+directive parameters [k=0.003;u=0.1]
+directive compilation infinite
+dom tb = {bind=k;unbind=u;colour="red"}
+dom tx = {bind=k;unbind=u;colour="green"}
+dom to = {bind=k;unbind=u;colour="blue"}
+def Input1() = <tb^ x>
+def Input2() = <tx^ x>
+def Join() = {tb^*}[x tx^]:[x]{to^>
+def Reporter() = <tb^}[x]{to^*}
+( 10 Input1()
+| 10 Input2()
+| 10 Join()
+| 5 Reporter()
+)
