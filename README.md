@@ -1,3 +1,5 @@
+[![Windows](https://github.com/microsoft/CRN/actions/workflows/build-cli.yml/badge.svg)](https://github.com/microsoft/CRN/actions/workflows/build-cli.yml)
+
 # Project
 
 > This repo has been populated by an initial template to help get you started. Please
