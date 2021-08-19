@@ -16,13 +16,11 @@
     <Compile Include="Inference.fs" />
     <Compile Include="Simulation.fs" />
     <Compile Include="StateSpace.fs" />
-    <Compile Include="Synthesis.fs" />
     <Compile Include="Server.fs" />
     <None Include="paket.references" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\MomentClosure\MomentClosure\MomentClosure.fsproj" />
-    <ProjectReference Include="..\..\StabilityZ3\StabilityZ3\StabilityZ3.fsproj" />
     <ProjectReference Include="..\CliLibrary\CliLibrary.fsproj" />
     <ProjectReference Include="..\CRNEngineCloudLib\CRNEngineCloudLib.fsproj" />
     <ProjectReference Include="..\CRNEngineDotNet\CRNEngineDotNet.fsproj" />

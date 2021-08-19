@@ -62,8 +62,6 @@ Project("{6EC3EE1D-3C4E-46DD-8F32-0CC8E7565705}") = "CRNIntegrationTestLib", "CR
 EndProject
 Project("{6EC3EE1D-3C4E-46DD-8F32-0CC8E7565705}") = "CRNEngineCloudLib", "CRNEngineCloudLib\CRNEngineCloudLib.fsproj", "{2F834887-65D5-4294-A7A5-4BDCCF08C88F}"
 EndProject
-Project("{6EC3EE1D-3C4E-46DD-8F32-0CC8E7565705}") = "StabilityZ3", "..\StabilityZ3\StabilityZ3\StabilityZ3.fsproj", "{6D301AFE-90D7-453D-9E75-3D04D1EC4EFE}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -165,10 +163,6 @@ Global
 		{2F834887-65D5-4294-A7A5-4BDCCF08C88F}.Debug|x64.Build.0 = Debug|Any CPU
 		{2F834887-65D5-4294-A7A5-4BDCCF08C88F}.Release|x64.ActiveCfg = Release|Any CPU
 		{2F834887-65D5-4294-A7A5-4BDCCF08C88F}.Release|x64.Build.0 = Release|Any CPU
-		{6D301AFE-90D7-453D-9E75-3D04D1EC4EFE}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{6D301AFE-90D7-453D-9E75-3D04D1EC4EFE}.Debug|x64.Build.0 = Debug|Any CPU
-		{6D301AFE-90D7-453D-9E75-3D04D1EC4EFE}.Release|x64.ActiveCfg = Release|Any CPU
-		{6D301AFE-90D7-453D-9E75-3D04D1EC4EFE}.Release|x64.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
