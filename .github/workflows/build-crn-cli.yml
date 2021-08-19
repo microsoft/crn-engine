@@ -16,7 +16,7 @@ jobs:
     - name: Setup MSBuild
       uses: microsoft/setup-msbuild@v1.0.2
     - name: Restore dependencies
-      run: dotnet restore
+      run: dotnet restore CRNEngine/CRNEngineCli.sln
     - name: Build with VS
       shell: cmd
       run: msbuild CRNEngine/CRNEngineCli.sln /p:Configuration=Release /p:Platform=x64
