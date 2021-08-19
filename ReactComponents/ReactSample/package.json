@@ -1,0 +1,51 @@
+{
+  "name": "reactsample",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@types/node": "^12.6.2",
+    "@types/react": "^16.8.23",
+    "@types/react-dom": "^16.8.4",
+    "jquery": "~3.4.0",
+    "monaco-editor-webpack-plugin": "^2.0.0",
+    "msagljs": "../../HTML5SharedGUI/MSAGL_JS",
+    "node-forge": ">=0.8.5",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "react-scripts": "4.0.0",
+    "reactcodepad": "./../ReactCodePad",
+    "reactidd": "./../ReactIDD",
+    "reactmsagl": "./../ReactMsagl",
+    "rx": "~4.1.0",
+    "typescript": "^3.5.3",
+    "webpack": "^4.0.0",
+    "worker-loader": "^3.0.5"
+  },
+  "devDependencies": {
+    "react-app-rewired": "^2.1.6"
+  },
+  "resolutions": {
+    "node-forge": ">=0.8.5"
+  },
+  "scripts": {
+    "start": "react-app-rewired start",
+    "build": "react-app-rewired build",
+    "test": "react-app-rewired test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}

@@ -1,0 +1,104 @@
+/* The codepad component. */
+.c-reactcodepad {
+    display: flex;
+    flex-flow: column;
+    height: 100%
+}
+
+/* The toolbar for the codepad. */
+.c-reactcodepad__toolbar {
+    display: inline-flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin: 1px;
+    flex-wrap: wrap;
+}
+
+.c-reactcodepad__toolbar-button {
+    padding: 0px;
+    vertical-align: middle;
+    cursor: pointer;
+    user-select: none;
+}
+
+button.c-reactcodepad__toolbar-button {
+    width: 20px;
+    height: 20px;
+    position: relative;
+    border-radius: 3px;
+    margin-right: .1em;
+}
+
+/* Set the width of icon-only buttons in the toolbar, to make them square. */
+span.c-reactcodepad__toolbar-button {
+    width: 16px;
+    height: 16px;
+    position: absolute;
+    top: 50%;
+    margin-top: -8px;
+    margin-left: -8px;
+}
+
+/* A button group within the toolbar. */
+.c-reactcodepad__toolbar-button-group {
+    margin-left: 0.2em;
+}
+
+/* The editor widget within a codepad. */
+.c-reactcodepad__editor {
+    display: flex;
+    flex: 1 2 auto;
+    overflow: hidden;
+}
+
+span.btn--new {
+    background-image: url("../src/images/New16.png");
+}
+
+span.btn--open {
+    background-image: url("../src/images/Open16.png");
+}
+
+span.btn--save {
+    background-image: url("../src/images/Save16.png");
+}
+
+span.btn--cut {
+    background-image: url("../src/images/Cut16.png");
+}
+
+span.btn--copy {
+    background-image: url("../src/images/Copy16.png");
+}
+
+span.btn--paste {
+    background-image: url("../src/images/Paste16.png");
+}
+
+span.btn--undo {
+    background-image: url("../src/images/Undo16.png");
+}
+
+span.btn--redo {
+    background-image: url("../src/images/Redo16.png");
+}
+
+span.btn--find {
+    background-image: url("../src/images/Find16.png");
+}
+
+span.btn--replace {
+    background-image: url("../src/images/Replace16.png");
+}
+
+span.btn--outdent {
+    background-image: url("../src/images/IncreaseIndent16.png");
+}
+
+span.btn--indent {
+    background-image: url("../src/images/DecreaseIndent16.png");
+}
+
+span.btn--line-numbers {
+    background-image: url("../src/images/LineNumbers16.png");
+}

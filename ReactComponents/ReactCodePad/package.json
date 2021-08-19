@@ -1,0 +1,21 @@
+{
+  "name": "reactcodepad",
+  "version": "0.1.0",
+  "private": true,
+  "main": "dist/reactcodepad.js",
+  "types": "dist/reactcodepad.d.ts",
+  "dependencies": {
+    "@types/jquery": "^3.3.31",
+    "@types/react": "^16.8.23",
+    "monaco-editor": "^0.21.2",
+    "react-monaco-editor": "^0.40.0",
+    "jquery": "^3.4.0",
+    "react": "^16.x.x",
+    "typescript": "^3.5.3"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "build": "tsc",
+    "install": "tsc"
+  }
+}

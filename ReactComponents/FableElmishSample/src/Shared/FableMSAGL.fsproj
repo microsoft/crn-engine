@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="SharedMSAGL.fs" />
+  </ItemGroup>
+  <!-- Add source files to "fable" folder in the resulting package -->
+  <ItemGroup>
+    <Content Include="*.fsproj; SharedMSAGL.fs" PackagePath="fable\" />
+  </ItemGroup>
+  <Import Project="..\..\..\..\.paket\Paket.Restore.targets" />
+</Project>

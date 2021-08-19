@@ -1,0 +1,3 @@
+group DOTNETCORE
+    FSharp.Core
+    dotnet-fable
