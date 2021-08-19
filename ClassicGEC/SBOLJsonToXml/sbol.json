@@ -1,0 +1,479 @@
+{
+  "componentDefinitions": [
+    {
+      "uri": "http://www.microsoft.com/gec/db/r0040/1",
+      "name": "r0040",
+      "persistentIdentity": "http://www.microsoft.com/gec/db/r0040",
+      "displayId": "r0040",
+      "version": "1",
+      "description": "",
+      "annotations": [],
+      "components": [],
+      "sequenceAnnotations": [],
+      "sequences": [],
+      "types": [ "http://www.biopax.org/release/biopax-level3.owl#DnaRegion" ],
+      "roles": [ "http://identifiers.org/so/SO:0000167" ]
+    },
+    {
+      "uri": "http://www.microsoft.com/gec/db/b0034/1",
+      "name": "b0034",
+      "persistentIdentity": "http://www.microsoft.com/gec/db/b0034",
+      "displayId": "b0034",
+      "version": "1",
+      "description": "",
+      "annotations": [],
+      "components": [],
+      "sequenceAnnotations": [],
+      "sequences": [],
+      "types": [ "http://www.biopax.org/release/biopax-level3.owl#DnaRegion" ],
+      "roles": [ "http://identifiers.org/so/SO:0000139" ]
+    },
+    {
+      "uri": "http://www.microsoft.com/gec/db/c0040/1",
+      "name": "c0040",
+      "persistentIdentity": "http://www.microsoft.com/gec/db/c0040",
+      "displayId": "c0040",
+      "version": "1",
+      "description": "",
+      "annotations": [],
+      "components": [],
+      "sequenceAnnotations": [],
+      "sequences": [],
+      "types": [ "http://www.biopax.org/release/biopax-level3.owl#DnaRegion" ],
+      "roles": [ "http://identifiers.org/so/SO:0000316" ]
+    },
+    {
+      "uri": "http://www.microsoft.com/gec/db/b0015/1",
+      "name": "b0015",
+      "persistentIdentity": "http://www.microsoft.com/gec/db/b0015",
+      "displayId": "b0015",
+      "version": "1",
+      "description": "",
+      "annotations": [],
+      "components": [],
+      "sequenceAnnotations": [],
+      "sequences": [],
+      "types": [ "http://www.biopax.org/release/biopax-level3.owl#DnaRegion" ],
+      "roles": [ "http://identifiers.org/so/SO:0000141" ]
+    },
+    {
+      "uri": "http://www.microsoft.com/gec/db/tetR/1",
+      "name": "tetR",
+      "persistentIdentity": "http://www.microsoft.com/gec/db/tetR",
+      "displayId": "tetR",
+      "version": "1",
+      "description": "",
+      "annotations": [],
+      "components": [],
+      "sequenceAnnotations": [],
+      "sequences": [],
+      "types": [ "http://www.biopax.org/release/biopax-level3.owl#Protein" ],
+      "roles": []
+    },
+    {
+      "uri": "http://www.microsoft.com/gec/db/tu0/1",
+      "name": "tu0",
+      "persistentIdentity": "http://www.microsoft.com/gec/db/tu0",
+      "displayId": "tu0",
+      "version": "1",
+      "description": "",
+      "annotations": [],
+      "components": [
+        {
+          "uri": "http://www.microsoft.com/gec/db/r0040_component/1",
+          "name": "r0040_component",
+          "persistentIdentity": "http://www.microsoft.com/gec/db/r0040_component",
+          "displayId": "r0040_component",
+          "version": "1",
+          "description": "",
+          "annotations": [],
+          "access": "http://sbols.org/v2#private",
+          "definition": "http://www.microsoft.com/gec/db/r0040/1"
+        },
+        {
+          "uri": "http://www.microsoft.com/gec/db/b0034_component/1",
+          "name": "b0034_component",
+          "persistentIdentity": "http://www.microsoft.com/gec/db/b0034_component",
+          "displayId": "b0034_component",
+          "version": "1",
+          "description": "",
+          "annotations": [],
+          "access": "http://sbols.org/v2#private",
+          "definition": "http://www.microsoft.com/gec/db/b0034/1"
+        },
+        {
+          "uri": "http://www.microsoft.com/gec/db/c0040_component/1",
+          "name": "c0040_component",
+          "persistentIdentity": "http://www.microsoft.com/gec/db/c0040_component",
+          "displayId": "c0040_component",
+          "version": "1",
+          "description": "",
+          "annotations": [],
+          "access": "http://sbols.org/v2#private",
+          "definition": "http://www.microsoft.com/gec/db/c0040/1"
+        },
+        {
+          "uri": "http://www.microsoft.com/gec/db/b0015_component/1",
+          "name": "b0015_component",
+          "persistentIdentity": "http://www.microsoft.com/gec/db/b0015_component",
+          "displayId": "b0015_component",
+          "version": "1",
+          "description": "",
+          "annotations": [],
+          "access": "http://sbols.org/v2#private",
+          "definition": "http://www.microsoft.com/gec/db/b0015/1"
+        }
+      ],
+      "sequenceAnnotations": [
+        {
+          "uri": "http://www.microsoft.com/gec/db/annotation1/1",
+          "name": "annotation1",
+          "persistentIdentity": "http://www.microsoft.com/gec/db/annotation1",
+          "displayId": "annotation1",
+          "version": "1",
+          "description": "",
+          "annotations": [],
+          "component": "http://www.microsoft.com/gec/db/r0040_component/1",
+          "locations": [
+            {
+              "Case": "Range",
+              "Fields": [
+                {
+                  "gecDU": "range",
+                  "uri": "http://www.microsoft.com/gec/db/annotation1/range/r0040_range/1",
+                  "name": "range",
+                  "persistentIdentity": "http://www.microsoft.com/gec/db/annotation1/range/r0040_range",
+                  "displayId": "r0040_range",
+                  "version": "1",
+                  "description": "",
+                  "annotations": [],
+                  "startIndex": 1,
+                  "endIndex": 1,
+                  "orientation": "http://sbols.org/v2#inline"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "uri": "http://www.microsoft.com/gec/db/annotation2/1",
+          "name": "annotation2",
+          "persistentIdentity": "http://www.microsoft.com/gec/db/annotation2",
+          "displayId": "annotation2",
+          "version": "1",
+          "description": "",
+          "annotations": [],
+          "component": "http://www.microsoft.com/gec/db/b0034_component/1",
+          "locations": [
+            {
+              "Case": "Range",
+              "Fields": [
+                {
+                  "gecDU": "range",
+                  "uri": "http://www.microsoft.com/gec/db/annotation2/range/b0034_range/1",
+                  "name": "range",
+                  "persistentIdentity": "http://www.microsoft.com/gec/db/annotation2/range/b0034_range",
+                  "displayId": "b0034_range",
+                  "version": "1",
+                  "description": "",
+                  "annotations": [],
+                  "startIndex": 2,
+                  "endIndex": 2,
+                  "orientation": "http://sbols.org/v2#inline"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "uri": "http://www.microsoft.com/gec/db/annotation3/1",
+          "name": "annotation3",
+          "persistentIdentity": "http://www.microsoft.com/gec/db/annotation3",
+          "displayId": "annotation3",
+          "version": "1",
+          "description": "",
+          "annotations": [],
+          "component": "http://www.microsoft.com/gec/db/c0040_component/1",
+          "locations": [
+            {
+              "Case": "Range",
+              "Fields": [
+                {
+                  "gecDU": "range",
+                  "uri": "http://www.microsoft.com/gec/db/annotation3/range/c0040_range/1",
+                  "name": "range",
+                  "persistentIdentity": "http://www.microsoft.com/gec/db/annotation3/range/c0040_range",
+                  "displayId": "c0040_range",
+                  "version": "1",
+                  "description": "",
+                  "annotations": [],
+                  "startIndex": 3,
+                  "endIndex": 3,
+                  "orientation": "http://sbols.org/v2#inline"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "uri": "http://www.microsoft.com/gec/db/annotation4/1",
+          "name": "annotation4",
+          "persistentIdentity": "http://www.microsoft.com/gec/db/annotation4",
+          "displayId": "annotation4",
+          "version": "1",
+          "description": "",
+          "annotations": [],
+          "component": "http://www.microsoft.com/gec/db/b0015_component/1",
+          "locations": [
+            {
+              "Case": "Range",
+              "Fields": [
+                {
+                  "gecDU": "range",
+                  "uri": "http://www.microsoft.com/gec/db/annotation4/range/b0015_range/1",
+                  "name": "range",
+                  "persistentIdentity": "http://www.microsoft.com/gec/db/annotation4/range/b0015_range",
+                  "displayId": "b0015_range",
+                  "version": "1",
+                  "description": "",
+                  "annotations": [],
+                  "startIndex": 4,
+                  "endIndex": 4,
+                  "orientation": "http://sbols.org/v2#inline"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "sequences": [ "http://www.microsoft.com/gec/db/tu0_sequence/1" ],
+      "types": [ "http://www.biopax.org/release/biopax-level3.owl#DnaRegion" ],
+      "roles": [ "http://identifiers.org/so/SO:0000280" ]
+    },
+    {
+      "uri": "http://www.microsoft.com/gec/db/device/1",
+      "name": "device",
+      "persistentIdentity": "http://www.microsoft.com/gec/db/device",
+      "displayId": "device",
+      "version": "1",
+      "description": "",
+      "annotations": [],
+      "components": [
+        {
+          "uri": "http://www.microsoft.com/gec/db/tu0_component/1",
+          "name": "tu0_component",
+          "persistentIdentity": "http://www.microsoft.com/gec/db/tu0_component",
+          "displayId": "tu0_component",
+          "version": "1",
+          "description": "",
+          "annotations": [],
+          "access": "http://sbols.org/v2#private",
+          "definition": "http://www.microsoft.com/gec/db/tu0/1"
+        }
+      ],
+      "sequenceAnnotations": [
+        {
+          "uri": "http://www.microsoft.com/gec/db/annotation1/1",
+          "name": "annotation1",
+          "persistentIdentity": "http://www.microsoft.com/gec/db/annotation1",
+          "displayId": "annotation1",
+          "version": "1",
+          "description": "",
+          "annotations": [],
+          "component": "http://www.microsoft.com/gec/db/tu0_component/1",
+          "locations": [
+            {
+              "Case": "Range",
+              "Fields": [
+                {
+                  "gecDU": "range",
+                  "uri": "http://www.microsoft.com/gec/db/annotation1/range/tu0_range/1",
+                  "name": "range",
+                  "persistentIdentity": "http://www.microsoft.com/gec/db/annotation1/range/tu0_range",
+                  "displayId": "tu0_range",
+                  "version": "1",
+                  "description": "",
+                  "annotations": [],
+                  "startIndex": 1,
+                  "endIndex": 1,
+                  "orientation": "http://sbols.org/v2#inline"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "sequences": [ "http://www.microsoft.com/gec/db/device_sequence/1" ],
+      "types": [ "http://www.biopax.org/release/biopax-level3.owl#DnaRegion" ],
+      "roles": [ "http://identifiers.org/so/SO:0000280" ]
+    }
+  ],
+  "moduleDefinitions": [
+    {
+      "uri": "http://www.microsoft.com/gec/db/c0040_tetR_production_md/1",
+      "name": "c0040_tetR_production_md",
+      "persistentIdentity": "http://www.microsoft.com/gec/db/c0040_tetR_production_md",
+      "displayId": "c0040_tetR_production_md",
+      "version": "1",
+      "description": "",
+      "annotations": [],
+      "functionalComponents": [
+        {
+          "uri": "http://www.microsoft.com/gec/db/c0040_tetR_production_md/c0040_FC/1",
+          "name": "c0040_FC",
+          "persistentIdentity": "http://www.microsoft.com/gec/db/c0040_tetR_production_md/c0040_FC",
+          "displayId": "c0040_FC",
+          "version": "1",
+          "description": "",
+          "annotations": [],
+          "access": "http://sbols.org/v2#private",
+          "direction": "http://sbols.org/v2#inout",
+          "definition": "http://www.microsoft.com/gec/db/c0040/1"
+        },
+        {
+          "uri": "http://www.microsoft.com/gec/db/c0040_tetR_production_md/tetR_protein_FC/1",
+          "name": "tetR_protein_FC",
+          "persistentIdentity": "http://www.microsoft.com/gec/db/c0040_tetR_production_md/tetR_protein_FC",
+          "displayId": "tetR_protein_FC",
+          "version": "1",
+          "description": "",
+          "annotations": [],
+          "access": "http://sbols.org/v2#private",
+          "direction": "http://sbols.org/v2#inout",
+          "definition": "http://www.microsoft.com/gec/db/tetR/1"
+        }
+      ],
+      "interactions": [
+        {
+          "uri": "http://www.microsoft.com/gec/db/c0040_tetR_production_md/c0040_tetR_production_interaction/1",
+          "name": "c0040_tetR_production_interaction",
+          "persistentIdentity": "http://www.microsoft.com/gec/db/c0040_tetR_production_md/c0040_tetR_production_interaction",
+          "displayId": "c0040_tetR_production_interaction",
+          "version": "1",
+          "description": "",
+          "annotations": [],
+          "types": [ "http://identifiers.org/biomodels.sbo/SBO:0000589" ],
+          "participations": [
+            {
+              "uri": "http://www.microsoft.com/gec/db/c0040_tetR_production_md/c0040_tetR_production_interaction/c0040_participation/1",
+              "name": "c0040_participation",
+              "persistentIdentity": "http://www.microsoft.com/gec/db/c0040_tetR_production_md/c0040_tetR_production_interaction/c0040_participation",
+              "displayId": "c0040_participation",
+              "version": "1",
+              "description": "",
+              "annotations": [],
+              "roles": [ "http://identifiers.org/biomodels.sbo/SBO:0000645" ],
+              "participant": "http://www.microsoft.com/gec/db/c0040_tetR_production_md/c0040_FC/1"
+            },
+            {
+              "uri": "http://www.microsoft.com/gec/db/c0040_tetR_production_md/c0040_tetR_production_interaction/tetRp_participation/1",
+              "name": "tetRp_participation",
+              "persistentIdentity": "http://www.microsoft.com/gec/db/c0040_tetR_production_md/c0040_tetR_production_interaction/tetRp_participation",
+              "displayId": "tetRp_participation",
+              "version": "1",
+              "description": "",
+              "annotations": [],
+              "roles": [ "http://identifiers.org/biomodels.sbo/SBO:0000011" ],
+              "participant": "http://www.microsoft.com/gec/db/c0040_tetR_production_md/tetR_protein_FC/1"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "uri": "http://www.microsoft.com/gec/db/tetR_r0040_inhibition_md/1",
+      "name": "tetR_r0040_inhibition_md",
+      "persistentIdentity": "http://www.microsoft.com/gec/db/tetR_r0040_inhibition_md",
+      "displayId": "tetR_r0040_inhibition_md",
+      "version": "1",
+      "description": "",
+      "annotations": [],
+      "functionalComponents": [
+        {
+          "uri": "http://www.microsoft.com/gec/db/tetR_r0040_inhibition_md/tetR_complex_FC/1",
+          "name": "tetR_complex_FC",
+          "persistentIdentity": "http://www.microsoft.com/gec/db/tetR_r0040_inhibition_md/tetR_complex_FC",
+          "displayId": "tetR_complex_FC",
+          "version": "1",
+          "description": "",
+          "annotations": [],
+          "access": "http://sbols.org/v2#private",
+          "direction": "http://sbols.org/v2#inout",
+          "definition": "http://www.microsoft.com/gec/db/tetR/1"
+        },
+        {
+          "uri": "http://www.microsoft.com/gec/db/tetR_r0040_inhibition_md/r0040_FC/1",
+          "name": "r0040_FC",
+          "persistentIdentity": "http://www.microsoft.com/gec/db/tetR_r0040_inhibition_md/r0040_FC",
+          "displayId": "r0040_FC",
+          "version": "1",
+          "description": "",
+          "annotations": [],
+          "access": "http://sbols.org/v2#private",
+          "direction": "http://sbols.org/v2#inout",
+          "definition": "http://www.microsoft.com/gec/db/r0040/1"
+        }
+      ],
+      "interactions": [
+        {
+          "uri": "http://www.microsoft.com/gec/db/tetR_r0040_inhibition_md/tetR_r0040_inhibition_interaction/1",
+          "name": "tetR_r0040_inhibition_interaction",
+          "persistentIdentity": "http://www.microsoft.com/gec/db/tetR_r0040_inhibition_md/tetR_r0040_inhibition_interaction",
+          "displayId": "tetR_r0040_inhibition_interaction",
+          "version": "1",
+          "description": "",
+          "annotations": [],
+          "types": [ "http://identifiers.org/biomodels.sbo/SBO:0000169" ],
+          "participations": [
+            {
+              "uri": "http://www.microsoft.com/gec/db/tetR_r0040_inhibition_md/tetR_r0040_inhibition_interaction/tetRc_participation/1",
+              "name": "tetRc_participation",
+              "persistentIdentity": "http://www.microsoft.com/gec/db/tetR_r0040_inhibition_md/tetR_r0040_inhibition_interaction/tetRc_participation",
+              "displayId": "tetRc_participation",
+              "version": "1",
+              "description": "",
+              "annotations": [],
+              "roles": [ "http://identifiers.org/biomodels.sbo/SBO:0000020" ],
+              "participant": "http://www.microsoft.com/gec/db/tetR_r0040_inhibition_md/tetR_complex_FC/1"
+            },
+            {
+              "uri": "http://www.microsoft.com/gec/db/tetR_r0040_inhibition_md/tetR_r0040_inhibition_interaction/c0040_participation/1",
+              "name": "c0040_participation",
+              "persistentIdentity": "http://www.microsoft.com/gec/db/tetR_r0040_inhibition_md/tetR_r0040_inhibition_interaction/c0040_participation",
+              "displayId": "c0040_participation",
+              "version": "1",
+              "description": "",
+              "annotations": [],
+              "roles": [ "http://identifiers.org/biomodels.sbo/SBO:0000642" ],
+              "participant": "http://www.microsoft.com/gec/db/tetR_r0040_inhibition_md/r0040_FC/1"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "sequences": [
+    {
+      "uri": "http://www.microsoft.com/gec/db/device_sequence/1",
+      "name": "device_sequence",
+      "persistentIdentity": "http://www.microsoft.com/gec/db/device_sequence",
+      "displayId": "device_sequence",
+      "version": "1",
+      "description": "",
+      "annotations": [],
+      "elements": "",
+      "encoding": "http://www.chem.qmul.ac.uk/iubmb/misc/naseq.html"
+    },
+    {
+      "uri": "http://www.microsoft.com/gec/db/tu0_sequence/1",
+      "name": "tu0_sequence",
+      "persistentIdentity": "http://www.microsoft.com/gec/db/tu0_sequence",
+      "displayId": "tu0_sequence",
+      "version": "1",
+      "description": "",
+      "annotations": [],
+      "elements": "",
+      "encoding": "http://www.chem.qmul.ac.uk/iubmb/misc/naseq.html"
+    }
+  ]
+}

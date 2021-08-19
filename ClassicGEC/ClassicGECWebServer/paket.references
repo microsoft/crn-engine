@@ -1,0 +1,10 @@
+﻿group DOTNETCORE
+
+Giraffe
+Microsoft.AspNetCore
+Microsoft.AspNetCore.StaticFiles
+Microsoft.AspNetCore.WebSockets
+Microsoft.AspNetCore.WebSockets.Server
+#Streams
+FSharp.Core
+WebSharper.Core

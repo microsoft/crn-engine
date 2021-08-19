@@ -1,0 +1,23 @@
+Scripts/**/*.js
+!Scripts/VISBOL/visbol/**/*.js
+!Scripts/VISBOL/pathseg.js
+!Scripts/VISBOL/visbolbundle.js
+Scripts/**/*.js.map
+Scripts/**/*.d.ts
+!Scripts/typings/**/*.d.ts
+Tests/**/*.js
+Tests/**/*.js.map
+Tests/**/*.d.ts
+
+#residual files from before webpack
+Scripts/ClassicGEC
+Scripts/CodeEditor
+Scripts/CRN
+Scripts/CrnApp
+Scripts/CRNEngine
+Scripts/IDD
+Scripts/InferenceViewer
+Scripts/KnockoutGrid
+Scripts/MSAGL
+Scripts/SimulationViewer
+vs

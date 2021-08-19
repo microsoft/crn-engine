@@ -1,0 +1,4 @@
+﻿//solution 1 Y = araC
+directive simulation {final = 100000.0; points = 1000}
+
+prom<neg(Y)>; rbs; pcr<codes(Y)>; ter

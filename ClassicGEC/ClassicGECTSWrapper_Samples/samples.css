@@ -1,0 +1,39 @@
+﻿html {
+    height: 97%;
+}
+
+body {
+    height: 100%;
+}
+
+.codeBox {
+    height: 100%;
+    width: 100%;
+}
+
+.headerCodeBox {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    margin-right: 10px;
+    margin-bottom: 5px;
+}
+
+.headerP {
+    font-weight: bold;
+    margin: 0px;
+}
+
+.multiCodeBoxContainer {
+    display: flex;
+    flex-direction: row;
+    height: 45%;
+}
+
+.status {
+    font-family: monospace;
+}
+
+    .status > p {
+        margin: 0px;
+    }

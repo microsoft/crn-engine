@@ -1,0 +1,18 @@
+{
+  "name": "json2xml",
+  "version": "1.0.0",
+  "description": "JS library to convert JSON SBOL representation to XML",
+  "main": "json2xml.js",
+  "scripts": {
+    "test": "make test"
+  },
+  "keywords": [
+    "sbol"
+  ],
+  "author": "Prashant Vaidyanathan <prash@bu.edu>",
+  "license": "ISC",
+  "dependencies": {
+    "fs": "0.0.1-security",
+    "sboljs": "1.11.0"
+  }
+}

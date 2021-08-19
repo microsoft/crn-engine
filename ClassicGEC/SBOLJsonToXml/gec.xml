@@ -1,0 +1,329 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:prov="http://www.w3.org/ns/prov#" xmlns:sbol="http://sbols.org/v2#" xmlns:xsd="http://www.w3.org/2001/XMLSchema#dateTime/">
+  <sbol:ModuleDefinition rdf:about="http://www.microsoft.com/gec/production_md/1">
+    <sbol:persistentIdentity rdf:resource="http://www.microsoft.com/gec/production_md"/>
+    <sbol:displayId>production_md</sbol:displayId>
+    <sbol:version>1</sbol:version>
+    <dcterms:title>TetR_Production</dcterms:title>
+    <sbol:functionalComponent>
+      <sbol:FunctionalComponent rdf:about="http://www.microsoft.com/gec/c0040_FC/1">
+        <sbol:persistentIdentity rdf:resource="http://www.microsoft.com/gec/c0040_FC"/>
+        <sbol:displayId>c0040_FC</sbol:displayId>
+        <sbol:version>1</sbol:version>
+        <dcterms:title>tetR_FC</dcterms:title>
+        <sbol:definition rdf:resource="http://www.microsoft.com/gec/c0040/1"/>
+        <sbol:access rdf:resource="http://sbols.org/v2#private"/>
+        <sbol:direction rdf:resource="http://sbols.org/v2#inout"/>
+      </sbol:FunctionalComponent>
+    </sbol:functionalComponent>
+    <sbol:functionalComponent>
+      <sbol:FunctionalComponent rdf:about="http://www.microsoft.com/gec/c0040p_FC/1">
+        <sbol:persistentIdentity rdf:resource="http://www.microsoft.com/gec/c0040p_FC"/>
+        <sbol:displayId>c0040p_FC</sbol:displayId>
+        <sbol:version>1</sbol:version>
+        <dcterms:title>tetR_protein_FC</dcterms:title>
+        <sbol:definition rdf:resource="http://www.microsoft.com/gec/c0040p/1"/>
+        <sbol:access rdf:resource="http://sbols.org/v2#private"/>
+        <sbol:direction rdf:resource="http://sbols.org/v2#inout"/>
+      </sbol:FunctionalComponent>
+    </sbol:functionalComponent>
+    <sbol:interaction>
+      <sbol:Interaction rdf:about="http://www.microsoft.com/gec/production/1">
+        <sbol:persistentIdentity rdf:resource="http://www.microsoft.com/gec/production"/>
+        <sbol:displayId>production</sbol:displayId>
+        <sbol:version>1</sbol:version>
+        <dcterms:title>tetR_production_interaction</dcterms:title>
+        <sbol:type rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000589"/>
+        <sbol:participation>
+          <sbol:Participation rdf:about="http://www.microsoft.com/gec/c0040_Part/1">
+            <sbol:persistentIdentity rdf:resource="http://www.microsoft.com/gec/c0040_Part"/>
+            <sbol:displayId>c0040_Part</sbol:displayId>
+            <sbol:version>1</sbol:version>
+            <dcterms:title>tetR_P</dcterms:title>
+            <sbol:role rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000645"/>
+            <sbol:participant rdf:resource="http://www.microsoft.com/gec/c0040_FC/1"/>
+          </sbol:Participation>
+        </sbol:participation>
+        <sbol:participation>
+          <sbol:Participation rdf:about="http://www.microsoft.com/gec/c0040p_Part/1">
+            <sbol:persistentIdentity rdf:resource="http://www.microsoft.com/gec/c0040p_Part"/>
+            <sbol:displayId>c0040p_Part</sbol:displayId>
+            <sbol:version>1</sbol:version>
+            <dcterms:title>tetRProt_P</dcterms:title>
+            <sbol:role rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000011"/>
+            <sbol:participant rdf:resource="http://www.microsoft.com/gec/c0040p_FC/1"/>
+          </sbol:Participation>
+        </sbol:participation>
+      </sbol:Interaction>
+    </sbol:interaction>
+  </sbol:ModuleDefinition>
+  <sbol:ModuleDefinition rdf:about="http://www.microsoft.com/gec/inhibition_md/1">
+    <sbol:persistentIdentity rdf:resource="http://www.microsoft.com/gec/inhibition_md"/>
+    <sbol:displayId>inhibition_md</sbol:displayId>
+    <sbol:version>1</sbol:version>
+    <dcterms:title>pTet_Inhibition</dcterms:title>
+    <sbol:functionalComponent>
+      <sbol:FunctionalComponent rdf:about="http://www.microsoft.com/gec/c0040c_FC/1">
+        <sbol:persistentIdentity rdf:resource="http://www.microsoft.com/gec/c0040c_FC"/>
+        <sbol:displayId>c0040c_FC</sbol:displayId>
+        <sbol:version>1</sbol:version>
+        <dcterms:title>tetR_complex_FC</dcterms:title>
+        <sbol:definition rdf:resource="http://www.microsoft.com/gec/c0040p/1"/>
+        <sbol:access rdf:resource="http://sbols.org/v2#private"/>
+        <sbol:direction rdf:resource="http://sbols.org/v2#inout"/>
+      </sbol:FunctionalComponent>
+    </sbol:functionalComponent>
+    <sbol:functionalComponent>
+      <sbol:FunctionalComponent rdf:about="http://www.microsoft.com/gec/r0040_FC/1">
+        <sbol:persistentIdentity rdf:resource="http://www.microsoft.com/gec/r0040_FC"/>
+        <sbol:displayId>r0040_FC</sbol:displayId>
+        <sbol:version>1</sbol:version>
+        <dcterms:title>pTet_FC</dcterms:title>
+        <sbol:definition rdf:resource="http://www.microsoft.com/gec/r0040/1"/>
+        <sbol:access rdf:resource="http://sbols.org/v2#private"/>
+        <sbol:direction rdf:resource="http://sbols.org/v2#inout"/>
+      </sbol:FunctionalComponent>
+    </sbol:functionalComponent>
+    <sbol:interaction>
+      <sbol:Interaction rdf:about="http://www.microsoft.com/gec/inhibition/1">
+        <sbol:persistentIdentity rdf:resource="http://www.microsoft.com/gec/inhibition"/>
+        <sbol:displayId>inhibition</sbol:displayId>
+        <sbol:version>1</sbol:version>
+        <dcterms:title>pTet_inhibition_interaction</dcterms:title>
+        <sbol:type rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000169"/>
+        <sbol:participation>
+          <sbol:Participation rdf:about="http://www.microsoft.com/gec/c0040c_Part/1">
+            <sbol:persistentIdentity rdf:resource="http://www.microsoft.com/gec/c0040c_Part"/>
+            <sbol:displayId>c0040c_Part</sbol:displayId>
+            <sbol:version>1</sbol:version>
+            <dcterms:title>tetRCmplx_P</dcterms:title>
+            <sbol:role rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000020"/>
+            <sbol:participant rdf:resource="http://www.microsoft.com/gec/c0040c_FC/1"/>
+          </sbol:Participation>
+        </sbol:participation>
+        <sbol:participation>
+          <sbol:Participation rdf:about="http://www.microsoft.com/gec/r0040_Part/1">
+            <sbol:persistentIdentity rdf:resource="http://www.microsoft.com/gec/r0040_Part"/>
+            <sbol:displayId>r0040_Part</sbol:displayId>
+            <sbol:version>1</sbol:version>
+            <dcterms:title>pTet_P</dcterms:title>
+            <sbol:role rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000642"/>
+            <sbol:participant rdf:resource="http://www.microsoft.com/gec/r0040_FC/1"/>
+          </sbol:Participation>
+        </sbol:participation>
+      </sbol:Interaction>
+    </sbol:interaction>
+  </sbol:ModuleDefinition>
+  <sbol:ComponentDefinition rdf:about="http://www.microsoft.com/gec/r0040/1">
+    <sbol:persistentIdentity rdf:resource="http://www.microsoft.com/gec/r0040"/>
+    <sbol:displayId>r0040</sbol:displayId>
+    <sbol:version>1</sbol:version>
+    <dcterms:title>pTet</dcterms:title>
+    <sbol:type rdf:resource="http://www.biopax.org/release/biopax-level3.owl#DnaRegion"/>
+    <sbol:role rdf:resource="http://identifiers.org/so/SO:0000167"/>
+    <sbol:sequence rdf:resource="http://www.microsoft.com/gec/r0040_sequence/1"/>
+  </sbol:ComponentDefinition>
+  <sbol:ComponentDefinition rdf:about="http://www.microsoft.com/gec/b0034/1">
+    <sbol:persistentIdentity rdf:resource="http://www.microsoft.com/gec/b0034"/>
+    <sbol:displayId>b0034</sbol:displayId>
+    <sbol:version>1</sbol:version>
+    <dcterms:title>rbs</dcterms:title>
+    <sbol:type rdf:resource="http://www.biopax.org/release/biopax-level3.owl#DnaRegion"/>
+    <sbol:role rdf:resource="http://identifiers.org/so/SO:0000139"/>
+    <sbol:sequence rdf:resource="http://www.microsoft.com/gec/b0034_sequence/1"/>
+  </sbol:ComponentDefinition>
+  <sbol:ComponentDefinition rdf:about="http://www.microsoft.com/gec/c0040/1">
+    <sbol:persistentIdentity rdf:resource="http://www.microsoft.com/gec/c0040"/>
+    <sbol:displayId>c0040</sbol:displayId>
+    <sbol:version>1</sbol:version>
+    <dcterms:title>tetR</dcterms:title>
+    <sbol:type rdf:resource="http://www.biopax.org/release/biopax-level3.owl#DnaRegion"/>
+    <sbol:role rdf:resource="http://identifiers.org/so/SO:0000316"/>
+    <sbol:sequence rdf:resource="http://www.microsoft.com/gec/c0040_sequence/1"/>
+  </sbol:ComponentDefinition>
+  <sbol:ComponentDefinition rdf:about="http://www.microsoft.com/gec/b0015/1">
+    <sbol:persistentIdentity rdf:resource="http://www.microsoft.com/gec/b0015"/>
+    <sbol:displayId>b0015</sbol:displayId>
+    <sbol:version>1</sbol:version>
+    <dcterms:title>term</dcterms:title>
+    <sbol:type rdf:resource="http://www.biopax.org/release/biopax-level3.owl#DnaRegion"/>
+    <sbol:role rdf:resource="http://identifiers.org/so/SO:0000141"/>
+    <sbol:sequence rdf:resource="http://www.microsoft.com/gec/b0015_sequence/1"/>
+  </sbol:ComponentDefinition>
+  <sbol:ComponentDefinition rdf:about="http://www.microsoft.com/gec/c0040p/1">
+    <sbol:persistentIdentity rdf:resource="http://www.microsoft.com/gec/c0040p"/>
+    <sbol:displayId>c0040p</sbol:displayId>
+    <sbol:version>1</sbol:version>
+    <dcterms:title>tetR_protein</dcterms:title>
+    <sbol:type rdf:resource="http://www.biopax.org/release/biopax-level3.owl#Protein"/>
+  </sbol:ComponentDefinition>
+  <sbol:ComponentDefinition rdf:about="http://www.microsoft.com/gec/tu007/1">
+    <sbol:persistentIdentity rdf:resource="http://www.microsoft.com/gec/tu007"/>
+    <sbol:displayId>tu007</sbol:displayId>
+    <sbol:version>1</sbol:version>
+    <dcterms:title>tu1</dcterms:title>
+    <sbol:type rdf:resource="http://www.biopax.org/release/biopax-level3.owl#DnaRegion"/>
+    <sbol:role rdf:resource="http://identifiers.org/so/SO:0000804"/>
+    <sbol:component>
+      <sbol:Component rdf:about="http://www.microsoft.com/gec/r0040_component/1">
+        <sbol:persistentIdentity rdf:resource="http://www.microsoft.com/gec/r0040_component"/>
+        <sbol:displayId>r0040_component</sbol:displayId>
+        <sbol:version>1</sbol:version>
+        <dcterms:title>pTet_component</dcterms:title>
+        <sbol:definition rdf:resource="http://www.microsoft.com/gec/r0040/1"/>
+        <sbol:access rdf:resource="http://sbols.org/v2#private"/>
+      </sbol:Component>
+    </sbol:component>
+    <sbol:component>
+      <sbol:Component rdf:about="http://www.microsoft.com/gec/b0034_component/1">
+        <sbol:persistentIdentity rdf:resource="http://www.microsoft.com/gec/b0034_component"/>
+        <sbol:displayId>b0034_component</sbol:displayId>
+        <sbol:version>1</sbol:version>
+        <dcterms:title>rbs_component</dcterms:title>
+        <sbol:definition rdf:resource="http://www.microsoft.com/gec/b0034/1"/>
+        <sbol:access rdf:resource="http://sbols.org/v2#private"/>
+      </sbol:Component>
+    </sbol:component>
+    <sbol:component>
+      <sbol:Component rdf:about="http://www.microsoft.com/gec/c0040_component/1">
+        <sbol:persistentIdentity rdf:resource="http://www.microsoft.com/gec/c0040_component"/>
+        <sbol:displayId>c0040_component</sbol:displayId>
+        <sbol:version>1</sbol:version>
+        <dcterms:title>tetR_component</dcterms:title>
+        <sbol:definition rdf:resource="http://www.microsoft.com/gec/c0040/1"/>
+        <sbol:access rdf:resource="http://sbols.org/v2#private"/>
+      </sbol:Component>
+    </sbol:component>
+    <sbol:component>
+      <sbol:Component rdf:about="http://www.microsoft.com/gec/b0015_component/1">
+        <sbol:persistentIdentity rdf:resource="http://www.microsoft.com/gec/b0015_component"/>
+        <sbol:displayId>b0015_component</sbol:displayId>
+        <sbol:version>1</sbol:version>
+        <dcterms:title>term_component</dcterms:title>
+        <sbol:definition rdf:resource="http://www.microsoft.com/gec/b0015/1"/>
+        <sbol:access rdf:resource="http://sbols.org/v2#private"/>
+      </sbol:Component>
+    </sbol:component>
+    <sbol:sequenceAnnotation>
+      <sbol:SequenceAnnotation rdf:about="http://www.microsoft.com/gec/annotation1/1">
+        <sbol:persistentIdentity rdf:resource="http://www.microsoft.com/gec/annotation1"/>
+        <sbol:displayId>annotation1</sbol:displayId>
+        <sbol:version>1</sbol:version>
+        <dcterms:title>annotation1</dcterms:title>
+        <sbol:location>
+          <sbol:Range rdf:about="http://www.microsoft.com/gecannotation1/range/r0040_range/1">
+            <sbol:persistentIdentity rdf:resource="http://www.microsoft.com/gecannotation1/range/r0040_range"/>
+            <sbol:displayId>r0040_range</sbol:displayId>
+            <sbol:version>1</sbol:version>
+            <dcterms:title>range</dcterms:title>
+            <sbol:start>1</sbol:start>
+            <sbol:end>14</sbol:end>
+            <sbol:orientation rdf:resource="http://sbols.org/v2#inline"/>
+          </sbol:Range>
+        </sbol:location>
+        <sbol:component rdf:resource="http://www.microsoft.com/gec/r0040_component/1"/>
+      </sbol:SequenceAnnotation>
+    </sbol:sequenceAnnotation>
+    <sbol:sequenceAnnotation>
+      <sbol:SequenceAnnotation rdf:about="http://www.microsoft.com/gec/annotation2/1">
+        <sbol:persistentIdentity rdf:resource="http://www.microsoft.com/gec/annotation2"/>
+        <sbol:displayId>annotation2</sbol:displayId>
+        <sbol:version>1</sbol:version>
+        <dcterms:title>annotation2</dcterms:title>
+        <sbol:location>
+          <sbol:Range rdf:about="http://www.microsoft.com/gecannotation2/range/b0034_range/1">
+            <sbol:persistentIdentity rdf:resource="http://www.microsoft.com/gecannotation2/range/b0034_range"/>
+            <sbol:displayId>b0034_range</sbol:displayId>
+            <sbol:version>1</sbol:version>
+            <dcterms:title>range</dcterms:title>
+            <sbol:start>15</sbol:start>
+            <sbol:end>30</sbol:end>
+            <sbol:orientation rdf:resource="http://sbols.org/v2#inline"/>
+          </sbol:Range>
+        </sbol:location>
+        <sbol:component rdf:resource="http://www.microsoft.com/gec/b0034_component/1"/>
+      </sbol:SequenceAnnotation>
+    </sbol:sequenceAnnotation>
+    <sbol:sequenceAnnotation>
+      <sbol:SequenceAnnotation rdf:about="http://www.microsoft.com/gec/annotation3/1">
+        <sbol:persistentIdentity rdf:resource="http://www.microsoft.com/gec/annotation3"/>
+        <sbol:displayId>annotation3</sbol:displayId>
+        <sbol:version>1</sbol:version>
+        <dcterms:title>annotation3</dcterms:title>
+        <sbol:location>
+          <sbol:Range rdf:about="http://www.microsoft.com/gecannotation3/range/c0040_range/1">
+            <sbol:persistentIdentity rdf:resource="http://www.microsoft.com/gecannotation3/range/c0040_range"/>
+            <sbol:displayId>c0040_range</sbol:displayId>
+            <sbol:version>1</sbol:version>
+            <dcterms:title>range</dcterms:title>
+            <sbol:start>31</sbol:start>
+            <sbol:end>54</sbol:end>
+            <sbol:orientation rdf:resource="http://sbols.org/v2#inline"/>
+          </sbol:Range>
+        </sbol:location>
+        <sbol:component rdf:resource="http://www.microsoft.com/gec/c0040_component/1"/>
+      </sbol:SequenceAnnotation>
+    </sbol:sequenceAnnotation>
+    <sbol:sequenceAnnotation>
+      <sbol:SequenceAnnotation rdf:about="http://www.microsoft.com/gec/annotation4/1">
+        <sbol:persistentIdentity rdf:resource="http://www.microsoft.com/gec/annotation4"/>
+        <sbol:displayId>annotation4</sbol:displayId>
+        <sbol:version>1</sbol:version>
+        <dcterms:title>annotation4</dcterms:title>
+        <sbol:location>
+          <sbol:Range rdf:about="http://www.microsoft.com/gecannotation4/range/b0015_range/1">
+            <sbol:persistentIdentity rdf:resource="http://www.microsoft.com/gecannotation4/range/b0015_range"/>
+            <sbol:displayId>b0015_range</sbol:displayId>
+            <sbol:version>1</sbol:version>
+            <dcterms:title>range</dcterms:title>
+            <sbol:start>55</sbol:start>
+            <sbol:end>68</sbol:end>
+            <sbol:orientation rdf:resource="http://sbols.org/v2#inline"/>
+          </sbol:Range>
+        </sbol:location>
+        <sbol:component rdf:resource="http://www.microsoft.com/gec/b0015_component/1"/>
+      </sbol:SequenceAnnotation>
+    </sbol:sequenceAnnotation>
+    <sbol:sequence rdf:resource="http://www.microsoft.com/gec/tu007_sequence/1"/>
+  </sbol:ComponentDefinition>
+  <sbol:Sequence rdf:about="http://www.microsoft.com/gec/b0015_sequence/1">
+    <sbol:persistentIdentity rdf:resource="http://www.microsoft.com/gec/b0015_sequence"/>
+    <sbol:displayId>b0015_sequence</sbol:displayId>
+    <sbol:version>1</sbol:version>
+    <dcterms:title>term_sequence</dcterms:title>
+    <sbol:elements>aaatttttttttgc</sbol:elements>
+    <sbol:encoding rdf:resource="http://www.chem.qmul.ac.uk/iubmb/misc/naseq.html"/>
+  </sbol:Sequence>
+  <sbol:Sequence rdf:about="http://www.microsoft.com/gec/b0034_sequence/1">
+    <sbol:persistentIdentity rdf:resource="http://www.microsoft.com/gec/b0034_sequence"/>
+    <sbol:displayId>b0034_sequence</sbol:displayId>
+    <sbol:version>1</sbol:version>
+    <dcterms:title>rbs_sequence</dcterms:title>
+    <sbol:elements>aaaaaatttttggggg</sbol:elements>
+    <sbol:encoding rdf:resource="http://www.chem.qmul.ac.uk/iubmb/misc/naseq.html"/>
+  </sbol:Sequence>
+  <sbol:Sequence rdf:about="http://www.microsoft.com/gec/c0040_sequence/1">
+    <sbol:persistentIdentity rdf:resource="http://www.microsoft.com/gec/c0040_sequence"/>
+    <sbol:displayId>c0040_sequence</sbol:displayId>
+    <sbol:version>1</sbol:version>
+    <dcterms:title>tetR_sequence</dcterms:title>
+    <sbol:elements>aatttaaatttatatatatattaa</sbol:elements>
+    <sbol:encoding rdf:resource="http://www.chem.qmul.ac.uk/iubmb/misc/naseq.html"/>
+  </sbol:Sequence>
+  <sbol:Sequence rdf:about="http://www.microsoft.com/gec/r0040_sequence/1">
+    <sbol:persistentIdentity rdf:resource="http://www.microsoft.com/gec/r0040_sequence"/>
+    <sbol:displayId>r0040_sequence</sbol:displayId>
+    <sbol:version>1</sbol:version>
+    <dcterms:title>pTet_sequence</dcterms:title>
+    <sbol:elements>aattccggggaaaa</sbol:elements>
+    <sbol:encoding rdf:resource="http://www.chem.qmul.ac.uk/iubmb/misc/naseq.html"/>
+  </sbol:Sequence>
+  <sbol:Sequence rdf:about="http://www.microsoft.com/gec/tu007_sequence/1">
+    <sbol:persistentIdentity rdf:resource="http://www.microsoft.com/gec/tu007_sequence"/>
+    <sbol:displayId>tu007_sequence</sbol:displayId>
+    <sbol:version>1</sbol:version>
+    <dcterms:title>tu1_sequence</dcterms:title>
+    <sbol:elements>aattccggggaaaaaaaaaatttttgggggaatttaaatttatatatatattaaaaatttttttttgc</sbol:elements>
+    <sbol:encoding rdf:resource="http://www.chem.qmul.ac.uk/iubmb/misc/naseq.html"/>
+  </sbol:Sequence>
+</rdf:RDF>

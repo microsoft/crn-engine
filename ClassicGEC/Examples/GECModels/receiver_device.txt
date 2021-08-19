@@ -1,0 +1,12 @@
+﻿directive simulation {final = 100000.0; points = 1000; plots = [Signal]}
+
+cell
+[ prom; rbs; pcr<codes(Receiver)>; ter
+| prom<pos(Receiver::Signal)>; 
+  rbs; pcr<codes(gfp)>; ter
+| Receiver + Signal -> Receiver::Signal
+| Receiver::Signal -> Receiver + Signal
+]
+| Signal -> cell[Signal]
+| cell[Signal] -> Signal
+| initPop Signal 100.0

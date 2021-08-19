@@ -1,0 +1,12 @@
+﻿directive simulation {final = 100000.0; points = 1000; plots = [A; B; C]}
+
+prom<con(RtA),neg(C,RbA,RubA,RtbA)>;
+rbs<rate(RA)>; pcr<codes(A,RdA)>; ter;
+prom<con(RtB),neg(A,RbB,RubB,RtbB)>;
+rbs<rate(RB)>; pcr<codes(B,RdB)>; ter;
+prom<con(RtC),neg(B,RbC,RubC,RtbC)>;
+rbs<rate(RC)>; pcr<codes(C,RdC)>; ter
+
+| 0.4 < RubB | RubB < 0.6 
+| 0.4 < RubC | RubC < 0.6 
+| 0.4 < RubA | RubA < 0.6

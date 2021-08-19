@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <OutputType>Exe</OutputType>
+    <Platforms>x64</Platforms>
+    <PlatformTarget>x64</PlatformTarget>
+    <PublishChromeDriver>true</PublishChromeDriver>
+  </PropertyGroup>
+  <ItemGroup>
+    <None Include="build.fsx" />
+    <Compile Include="AssemblyInfo.fs" />
+    <Compile Include="Tests.fs" />
+    <Compile Include="Program.fs" />
+    <None Include="paket.references" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\CRNEngine\CRNIntegrationTestLib\CRNIntegrationTestLib.fsproj" />
+    <ProjectReference Include="..\ClassicGECWebServer\ClassicGECWebServer.fsproj" />
+    <Reference Include="Oslo.FSharp">
+      <HintPath>..\..\Lib\Oslo.FSharp\Oslo.FSharp.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <Target Name="AfterBuildFAKE" AfterTargets="AfterBuild">
+    <Message Importance="high" Text="Running FAKE target Build" />
+    <Exec Command="dotnet tool restore" />
+    <Exec Command="dotnet fake build --target Build ProjectDir='$(ProjectDir)' Configuration=$(Configuration) OutDir='$(OutDir)'" />
+  </Target>
+  <Target Name="PublishFAKE" AfterTargets="Publish">
+    <Message Importance="high" Text="Running FAKE target Publish" />
+    <Exec Command="dotnet tool restore" />
+    <Exec Command="dotnet fake build --target Publish ProjectDir='$(ProjectDir)' Configuration=$(Configuration) PublishDir='$(PublishDir)'" />
+  </Target>
+  <Import Project="..\..\.paket\Paket.Restore.targets" />
+</Project>

@@ -1,0 +1,6 @@
+﻿directive simulation {final = 100000.0; points = 1000; plots = [A; B; C]}
+
+template gate(i,o) {
+  prom<neg(i)>; rbs; pcr<codes(o)>; ter
+};
+gate(A,B) | gate(B,C) | gate(C,A)

@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <PlatformTarget>x64</PlatformTarget>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="AssemblyInfo.fs" />
+    <None Include="paket.references" />
+    <Compile Include="logicGEC.fs" />
+    <Compile Include="options.fsi" />
+    <Compile Include="options.fs" />
+    <Compile Include="keywords.fs" />
+    <Compile Include="ast.fs" />
+    <Compile Include="subst.fsi" />
+    <Compile Include="subst.fs" />
+    <Compile Include="gecspecies.fs" />
+    <Compile Include="gecreaction.fsi" />
+    <Compile Include="gecreaction.fs" />
+    <Compile Include="directivesParser.fs" />
+    <Compile Include="settings.fs" />
+    <Compile Include="database.fsi" />
+    <Compile Include="database.fs" />
+    <Compile Include="cssubst.fsi" />
+    <Compile Include="cssubst.fs" />
+    <Compile Include="solver.fsi" />
+    <Compile Include="solver.fs" />
+    <Compile Include="NumUtil.fs" />
+    <Compile Include="trans.fs" />
+    <Compile Include="hypothesis.fs" />
+    <Compile Include="program.fs" />
+    <Compile Include="main.fs" />
+    <Compile Include="transCrn.fs" />
+    <Compile Include="gec.fs" />
+    <Compile Include="Databases.fs" />
+    <Compile Include="jsapi.fs" />
+    <Content Include="app.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\CRNEngine\CRNEngineDotNet\CRNEngineDotNet.fsproj" />
+    <ProjectReference Include="..\..\Filzbach.FSharp\Filzbach.FSharp.Portable.fsproj" />
+    <ProjectReference Include="..\..\FSBOLWrapper\FSBOLWrapper\FSBOLWrapper.fsproj" />
+    <ProjectReference Include="..\..\ParserCombinators\ParserCombinators\ParserCombinators.fsproj" />
+    <ProjectReference Include="..\..\PDESolvers\ReactionDiffusion\ReactionDiffusion.fsproj" />
+    <ProjectReference Include="..\..\RulesDSD\RulesDSD\RulesDSD.fsproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Oslo.FSharp">
+      <HintPath>..\..\Lib\Oslo.FSharp\Oslo.FSharp.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <Import Project="..\..\.paket\Paket.Restore.targets" />
+</Project>
