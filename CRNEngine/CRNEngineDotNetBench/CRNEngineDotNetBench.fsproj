@@ -9,29 +9,12 @@
     <Compile Include="SimulationBenchmark.fs" />
     <Compile Include="InferenceBenchmark.fs" />
     <Compile Include="FunctionalRateBenchmark.fs" />
-    <Compile Include="CharacterizationBenchmark.fs" />
     <Compile Include="LambdaBenchmark.fs" />
     <Compile Include="ExpressionBenchmark.fs" />
     <Compile Include="Program.fs" />
     <None Include="paket.references" />
     <None Include="..\..\Data\AM_obs_noised.csv">
       <Link>AM_obs_noised.csv</Link>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="..\..\Data\Pcat_Y81C76_EYFP_ECFP_proc141006.txt">
-      <Link>Pcat_Y81C76_EYFP_ECFP_proc141006.txt</Link>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="..\..\Data\R33S32_Y81C76_EYFP_ECFP_proc140916.txt">
-      <Link>R33S32_Y81C76_EYFP_ECFP_proc140916.txt</Link>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="..\..\Data\R33S175_Y81C76_EYFP_ECFP_proc141021.txt">
-      <Link>R33S175_Y81C76_EYFP_ECFP_proc141021.txt</Link>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="..\..\Data\RS100S32_Y81C76_EYFP_ECFP_proc140916.txt">
-      <Link>RS100S32_Y81C76_EYFP_ECFP_proc140916.txt</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
