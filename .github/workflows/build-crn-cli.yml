@@ -28,5 +28,7 @@ jobs:
     - name: Build GEC
       shell: cmd
       run: msbuild ClassicGEC/ClassicGECCli.sln /p:Configuration=Release /p:Platform=x64
-    - name: Test CRN
+    - name: Test Classic GEC
+      run: vstest.console.exe .\ClassicGEC\ClassicGECTests\bin\Release\netcoreapp3.1\ClassicGECDotNetTests.dll /Platform:x64
+    - name: Test Logic GEC
       run: vstest.console.exe .\ClassicGEC\ClassicGECTests\bin\Release\netcoreapp3.1\ClassicGECTests.dll /Platform:x64
