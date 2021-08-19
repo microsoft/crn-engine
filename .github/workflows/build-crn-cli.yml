@@ -1,4 +1,4 @@
-name: .NET
+name: CRNEngine
 
 on:
   push:
@@ -8,13 +8,14 @@ on:
 
 jobs:
   build:
-
     runs-on: windows-2019
 
     steps:
     - uses: actions/checkout@v2
     - name: Setup MSBuild
       uses: microsoft/setup-msbuild@v1.0.2
+    - name: Setup VSTest
+      uses: darenm/Setup-VSTest@v1
     - name: Restore tools
       run: dotnet tool restore
     - name: Restore dependencies
@@ -22,3 +23,5 @@ jobs:
     - name: Build with VS
       shell: cmd
       run: msbuild CRNEngine/CRNEngineCli.sln /p:Configuration=Release /p:Platform=x64
+    - name: Tests 
+      run: vstest.console.exe .\CRNEngine\CRNEngineTests\bin\Release\netcoreapp3.1\CRNEngineTests.dll /Platform:x64
