@@ -1,0 +1,35 @@
+﻿open System
+open System.IO
+open Expecto
+open canopy
+open canopy.classic
+open canopy.types
+open Microsoft.AspNetCore.Hosting
+open Microsoft.Research.CRNEngineServerLib
+open Microsoft.Research.ClassicGECWebServer
+open Microsoft.Research.CRNIntegrationTestLib
+
+[<EntryPoint>]
+let main args =
+    System.Globalization.CultureInfo.DefaultThreadCurrentCulture <- System.Globalization.CultureInfo.InvariantCulture
+
+    let (groups,timeout,args) = Program.separateArgs args
+
+    let server = Server.startWebServer Program.processRequest Program.homeFolder Program.jobsFolder Program.port
+    
+    let result =
+        try
+            let url = Server.starturl Program.port
+            BrowserSetup.configureCanopy timeout
+            let tests = Tests.tests groups Tests.Localhost url
+            Program.run args tests
+        finally
+            printfn "Shutting down server..."
+            server.StopAsync() |> ignore
+            canopy.classic.quit()
+
+    if System.Diagnostics.Debugger.IsAttached then
+        printf "Press any key to exit"
+        System.Console.ReadKey() |> ignore
+    
+    result

@@ -1,0 +1,24 @@
+directive simulation {final = 100000.0; points = 1000; plots = [predator_ccdB; prey_ccdB]}
+
+predator
+[ r0051:prom; rbs; pcr<codes(Q2b)>
+; rbs; pcr<codes(Q1a)>; ter
+; prom<pos(Q2b::H2)>; rbs; pcr<codes(A)>; ter
+; r0051:prom; rbs; pcr<codes(ccdB)>; ter
+| Q1a ~-> H1 | Q2b + H2 <-> Q2b::H2
+| A ~ ccdB ->
+| H1 *->{10.0} | H2 *->{10.0}
+| ccdB ~ Q1a *->{10.0}
+] ||
+
+prey
+[ prom<pos(H1::Q1b)>; rbs; pcr<codes(ccdB)>; ter
+; r0051:prom; rbs; pcr<codes(Q1b)>
+; rbs; pcr<codes(Q2a)>; ter
+| Q2a ~-> H2 | H1 + Q1b <-> H1::Q1b
+| H2 *->{10.0} | H1 *->{10.0}
+| ccdB ~ Q2a *->{10.0}
+] ||
+
+predator[H1] -> H1 | H1 -> prey[H1]
+| prey[H2] -> H2 | H2 -> predator[H2]

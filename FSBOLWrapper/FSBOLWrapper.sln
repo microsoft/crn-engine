@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.271
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{6EC3EE1D-3C4E-46DD-8F32-0CC8E7565705}") = "FSBOLWrapper", "FSBOLWrapper\FSBOLWrapper.fsproj", "{BB7BF226-0DD2-412E-8597-C4431A49E44A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Release|x64 = Release|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BB7BF226-0DD2-412E-8597-C4431A49E44A}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{BB7BF226-0DD2-412E-8597-C4431A49E44A}.Debug|x64.Build.0 = Debug|Any CPU
+		{BB7BF226-0DD2-412E-8597-C4431A49E44A}.Release|x64.ActiveCfg = Release|Any CPU
+		{BB7BF226-0DD2-412E-8597-C4431A49E44A}.Release|x64.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {73A3DC6C-8793-40C0-A28F-1905C0951B40}
+	EndGlobalSection
+EndGlobal

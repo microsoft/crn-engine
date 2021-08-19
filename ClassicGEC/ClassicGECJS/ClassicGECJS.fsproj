@@ -1,0 +1,111 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DefineConstants>TRACE;JavaScript</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DefineConstants>TRACE;JavaScript</DefineConstants>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="..\ClassicGECDotNet\logicGEC.fs">
+      <Link>logicGEC.fs</Link>
+    </Compile>
+    <Compile Include="..\ClassicGECDotNet\options.fsi">
+      <Link>options.fsi</Link>
+    </Compile>
+    <Compile Include="..\ClassicGECDotNet\options.fs">
+      <Link>options.fs</Link>
+    </Compile>
+    <Compile Include="..\ClassicGECDotNet\keywords.fs">
+      <Link>keywords.fs</Link>
+    </Compile>
+    <Compile Include="..\ClassicGECDotNet\ast.fs">
+      <Link>ast.fs</Link>
+    </Compile>
+    <Compile Include="..\ClassicGECDotNet\subst.fsi">
+      <Link>subst.fsi</Link>
+    </Compile>
+    <Compile Include="..\ClassicGECDotNet\subst.fs">
+      <Link>subst.fs</Link>
+    </Compile>
+    <Compile Include="..\ClassicGECDotNet\gecspecies.fs">
+      <Link>gecspecies.fs</Link>
+    </Compile>
+    <Compile Include="..\ClassicGECDotNet\gecreaction.fsi">
+      <Link>gecreaction.fsi</Link>
+    </Compile>
+    <Compile Include="..\ClassicGECDotNet\gecreaction.fs">
+      <Link>gecreaction.fs</Link>
+    </Compile>
+    <Compile Include="..\ClassicGECDotNet\directivesParser.fs">
+      <Link>directivesParser.fs</Link>
+    </Compile>
+    <Compile Include="..\ClassicGECDotNet\settings.fs">
+      <Link>settings.fs</Link>
+    </Compile>
+    <Compile Include="..\ClassicGECDotNet\database.fsi">
+      <Link>database.fsi</Link>
+    </Compile>
+    <Compile Include="..\ClassicGECDotNet\database.fs">
+      <Link>database.fs</Link>
+    </Compile>
+    <Compile Include="..\ClassicGECDotNet\cssubst.fsi">
+      <Link>cssubst.fsi</Link>
+    </Compile>
+    <Compile Include="..\ClassicGECDotNet\cssubst.fs">
+      <Link>cssubst.fs</Link>
+    </Compile>
+    <Compile Include="..\ClassicGECDotNet\solver.fsi">
+      <Link>solver.fsi</Link>
+    </Compile>
+    <Compile Include="..\ClassicGECDotNet\solver.fs">
+      <Link>solver.fs</Link>
+    </Compile>
+    <Compile Include="..\ClassicGECDotNet\NumUtil.fs">
+      <Link>NumUtil.fs</Link>
+    </Compile>
+    <Compile Include="..\ClassicGECDotNet\trans.fs">
+      <Link>trans.fs</Link>
+    </Compile>
+    <Compile Include="..\ClassicGECDotNet\hypothesis.fs">
+      <Link>hypothesis.fs</Link>
+    </Compile>
+    <Compile Include="..\ClassicGECDotNet\program.fs">
+      <Link>program.fs</Link>
+    </Compile>
+    <Compile Include="..\ClassicGECDotNet\main.fs">
+      <Link>main.fs</Link>
+    </Compile>
+    <Compile Include="..\ClassicGECDotNet\transCrn.fs">
+      <Link>transCrn.fs</Link>
+    </Compile>
+    <Compile Include="..\ClassicGECDotNet\gec.fs">
+      <Link>gec.fs</Link>
+    </Compile>
+    <Compile Include="..\ClassicGECDotNet\jsapi.fs">
+      <Link>jsapi.fs</Link>
+    </Compile>
+    <Compile Include="jsonapi.fs" />
+    <None Include="paket.references" />
+    <None Include="wsconfig.json" />
+    <Content Include="app.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\FSBOLWrapper\FSBOLWrapperJS\FSBOLWrapperJS.fsproj" />
+    <ProjectReference Include="..\..\PDESolvers\ReactionDiffusionJS\ReactionDiffusionJS.fsproj" />
+    <ProjectReference Include="..\..\CRNEngine\CRNEngineJS\CRNEngineJS.fsproj" />
+    <ProjectReference Include="..\..\Filzbach.FSharp.JS\Filzbach.FSharp.JS.fsproj" />
+    <ProjectReference Include="..\..\ParserCombinators\ParserCombinatorsJS\ParserCombinatorsJS.fsproj" />
+    <ProjectReference Include="..\..\RulesDSD\RulesDSDJS\RulesDSDJS.fsproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Oslo.FSharp.WebSharper">
+      <HintPath>..\..\Lib\Oslo-FSharp.websharper\Oslo.FSharp.WebSharper.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <Import Project="..\..\.paket\Paket.Restore.targets" />
+</Project>

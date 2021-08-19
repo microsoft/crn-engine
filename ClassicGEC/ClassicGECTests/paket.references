@@ -1,0 +1,9 @@
+﻿group DOTNETCORE
+
+FsCheck
+FsUnit.xUnit
+argu
+xunit.core
+xunit.runner.console
+xunit.runner.visualstudio
+FSharp.Core

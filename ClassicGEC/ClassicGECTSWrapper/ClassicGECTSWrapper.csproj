@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk.Web">
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <!-- Prevents CS5001 -->
+    <OutputType>Library</OutputType>
+    <YarnBuildCommand>--mutex file install</YarnBuildCommand>
+    <NodeJsExecutablePath>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\..\packages\javascriptbuild\Node.js.redist\tools\win-x64\node.exe'))</NodeJsExecutablePath>
+  </PropertyGroup>
+  <PropertyGroup>
+    <RunPostBuildEvent>Always</RunPostBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup>
+    <PostBuildEvent>
+      rem this ensures that a file exists in the place where webpack expects it, in cases where we do not run W#.
+      if not exist $(MSBuildProjectDirectory)\..\ClassicGECJS\Content\ClassicGECJS.js copy /Y $(MSBuildProjectDirectory)\..\ClassicGECJS\Content\placeholder.js $(MSBuildProjectDirectory)\..\ClassicGECJS\Content\ClassicGECJS.js
+      if not exist $(MSBuildProjectDirectory)\..\ClassicGECJS\Content\ClassicGECJS.min.js copy /Y $(MSBuildProjectDirectory)\..\ClassicGECJS\Content\placeholder.js $(MSBuildProjectDirectory)\..\ClassicGECJS\Content\ClassicGECJS.min.js
+    </PostBuildEvent>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\CRNEngine\CRNEngineTSWrapper\CRNEngineTSWrapper.csproj" />
+    <ProjectReference Include="..\ClassicGECJS\ClassicGECJS.fsproj">
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="..\..\.paket\Paket.Restore.targets" />
+</Project>

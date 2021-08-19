@@ -1,0 +1,14 @@
+﻿directive simulation {final = 50000.0; points = 500; plots = [receiver_gfp]}
+
+receiver
+[ runknown5:prom; rbs; pcr<codes(luxR)>; ter
+| prom<pos(luxR::Signal)>; rbs; pcr<codes(lacI)>;ter
+| prom<pos(luxR::Signal)>; rbs; pcr<codes(cI)>;ter
+| prom<neg(cI)>;rbs; pcr<codes(lacI)>;ter
+| prom<neg(lacI)>;rbs;pcr<codes(gfp)>;ter
+| luxR + Signal -> luxR::Signal
+| luxR::Signal -> luxR + Signal
+]
+| Signal -> receiver[Signal]
+| receiver[Signal] -> Signal
+| initPop Signal 100.0
