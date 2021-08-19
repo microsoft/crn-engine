@@ -1,6 +1,0 @@
-﻿group NETSTANDARD
-
-FSharp.Core
-MathNet.Numerics
-MathNet.Numerics.FSharp
-Microsoft.Z3.x64
