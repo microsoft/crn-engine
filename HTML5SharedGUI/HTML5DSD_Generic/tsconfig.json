@@ -1,0 +1,9 @@
+{
+  "extends": "../../tsconfig.common",
+  "include": [
+    "*.ts",
+    "Scripts/*.ts",
+    "Scripts/Adapters/*.ts",
+    "Scripts/Operations/*.ts"
+  ]
+}

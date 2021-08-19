@@ -1,0 +1,9 @@
+﻿<div class="c-toolbar">
+    <button data-bind="click: Save" class="c-toolbar__item--btn">Save</button>
+    <!-- ko if: Progress != null -->
+    <!-- ko with: Progress -->
+    <inference-progress class="c-toolbar__item"></inference-progress>
+    <!-- /ko -->
+    <!-- /ko -->
+</div>
+<table-viewer params='config: parametersConfig'></table-viewer>

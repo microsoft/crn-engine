@@ -1,0 +1,10 @@
+group JavaScriptBuild
+
+Yarn.MSBuild
+Node.js.redist
+Microsoft.TypeScript.MSBuild
+
+File:jsclr.js Scripts
+File:jsclr.min.js Scripts
+File:Microsoft.Msagl.js Scripts
+File:Microsoft.Msagl.min.js Scripts

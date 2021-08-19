@@ -1,0 +1,57 @@
+﻿<div class="c-toolbar">
+    <!-- ko with: palette -->
+    <paletteeditor class="c-toolbar__item"></paletteeditor>
+    <!-- /ko -->
+    <div class="c-toolbar__item" style="margin-right: 20px">
+        <label>
+            <input type="checkbox" data-bind="checked:IsLegendVisible" />
+            Legend
+        </label>
+    </div>
+    <!-- ko if: sortedInfos().length > 1 -->
+    <div class="c-toolbar__item" style="margin-right: 20px">
+        <label>
+            Select sim
+            <select data-bind="options: sortedInfos, optionsText: 'InstanceName', value: currentInfo"></select>
+        </label>
+    </div>
+    <!-- /ko -->
+    <div class="c-toolbar__item t-probabilities_species" style="margin-right: 20px">
+        <label>
+            Select species
+            <select data-bind="options: speciesNames, value: currentSpecies"></select>
+        </label>
+    </div>
+    <button data-bind="click: CaptureSVG" class="c-toolbar__item">Save</button>
+</div>
+<div class="c-sim-plot-container c-probability-plot-container" data-idd-style="padding: 0">
+    <div class="j-probability-map c-probability-plot-container__map" data-idd-plot="figure">
+        <div data-idd-plot='grid' data-idd-placement='center'></div>
+
+        <div data-idd-axis="numeric" data-idd-placement="bottom" data-bind="iddAxisSettings:XTicks"></div>
+        <div data-idd-axis="numeric" data-idd-placement="left" data-bind="iddAxisSettings:YTicks"></div>
+
+        <div class="idd-horizontalTitle" data-idd-placement='bottom' data-bind="text: XLabel, style: { fontSize: labelSize() }"></div>
+        <div class="idd-verticalTitle" data-idd-placement="left">
+            <div class="idd-verticalTitle-inner" data-bind="text:YLabel, style: { fontSize: labelSize() }"></div>
+        </div>
+        <div id="heatmapLegend" data-idd-placement='center' class="idd-legend-cover" data-bind="visible:IsLegendVisible"></div>
+        <div data-idd-plot="plot">
+            <div data-idd-plot="heatmap" data-idd-legend="heatmapLegend" data-bind="iddX: times, iddY: values, iddValues: probabilities, iddPlotTitles: {values: ''}, iddColorPalette: palette.IDDPalette, iddLogColors: palette.LogColors"></div>
+        </div>
+        <div data-idd-plot="plot">
+            <div data-idd-plot="polyline" data-bind="iddX: Times, iddY: Counts , iddStroke: 'black', iddThickness: 2"></div>
+        </div>
+        <div class="j-time-selector" data-idd-plot="plot">
+            <div data-idd-plot="polyline" data-bind="iddX: ChosenTimeLocation , iddY: values, iddThickness: 3, iddStroke: 'lightgrey'"></div>
+            <div data-idd-plot="polyline" data-bind="iddX: ChosenTimeLocation , iddY: values, iddThickness: 1, iddStroke: 'white'"></div>
+        </div>
+    </div>
+    <div class="j-probability-bars c-probability-plot-container__bars" data-idd-plot="figure">
+        <div data-idd-axis="numeric" data-idd-placement="bottom" data-bind="iddAxisSettings:ProbabilityTicks"></div>
+        <div class="idd-horizontalTitle" data-idd-placement="bottom" data-bind="text:BarsLabelText, style: { fontSize: labelSize() }"></div>
+        <div data-idd-plot="plot">
+            <div data-idd-plot="markers" data-bind="iddX: BarWidths, iddY:BarLocations, iddColor: 'dimgrey', iddBarWidth: 1.0, iddOrientation: 'h', iddShadow: 'none', iddShape: 'bars'"></div>
+        </div>
+    </div>
+</div>

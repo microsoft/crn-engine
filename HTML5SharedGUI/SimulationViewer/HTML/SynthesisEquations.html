@@ -1,0 +1,29 @@
+﻿<div class="s-full-height" style="display:flex;flex-direction:column">
+    <div class="c-toolbar">
+        <button data-bind="click: SaveEquations" class="c-toolbar__item--btn">Save</button>
+    </div>
+    <!-- ko if: LatexError() == null || LatexError() == "" -->
+    <div>
+        <!-- ko if: LatexEquationsRates() != null && LatexEquationsRates() != '' -->
+        <p class="c-synthesis-equations__header">Rate equations</p>
+        <div data-bind="html: LatexEquationsRates"></div>
+        <!-- /ko -->
+        <!-- ko if: LatexEquationsJacobian() != null && LatexEquationsJacobian() != '' -->
+        <p class="c-synthesis-equations__header">Jacobian</p>
+        <div data-bind="html: LatexEquationsJacobian"></div>
+        <!-- /ko -->
+        <!-- ko if: LatexEquationsDiffusion() != null && LatexEquationsDiffusion() != '' -->
+        <p class="c-synthesis-equations__header">Diffusion</p>
+        <div data-bind="html: LatexEquationsDiffusion"></div>
+        <!-- /ko -->
+        <!-- ko if: LatexEquationsCsts() != null && LatexEquationsCsts() != '' -->
+        <p class="c-synthesis-equations__header">CSTS</p>
+        <div data-bind="html: LatexEquationsCsts"></div>
+        <!-- /ko -->
+    </div>
+    <!-- /ko -->
+    <!-- ko if: LatexError() != null && LatexError() != "" -->
+    <div data-bind="text: LatexError"></div>
+    <textarea readonly data-bind="text: Result().equations" style="flex-grow:1"></textarea>
+    <!-- /ko -->
+</div>

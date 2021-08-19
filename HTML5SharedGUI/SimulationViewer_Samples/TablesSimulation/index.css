@@ -1,0 +1,7 @@
+﻿html, body, div#simViewerDiv {
+    height: 100%;
+}
+
+body {
+    height: calc(100% - (20px))
+}

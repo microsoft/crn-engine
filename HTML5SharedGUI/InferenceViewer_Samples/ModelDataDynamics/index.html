@@ -1,0 +1,136 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Model Data Dynamics</title>
+	<meta charset="utf-8" />
+</head>
+<body>
+    <style>
+        .panel_item {
+            display: inline;
+            vertical-align: central;
+            padding-left: 0;
+            padding-top: 0;
+        }
+
+        ul.dropdown_menu {
+            text-align: center;
+            margin: 0;
+        }
+
+            ul.dropdown_menu li {
+                float: left;
+                display: inline;
+            }
+
+                ul.dropdown_menu li a {
+                    display: block;
+                    padding: 0.2em;
+                    color: #444;
+                    background-color: #f6f6f6;
+                    border-radius: 3px;
+                    border: 1px solid #c5c5c5;
+                    margin: 0.1em;
+                }
+            /* mimicing jquery UI. TODO fetch needed styles*/
+            ul.dropdown_menu > li > a:hover {
+                background-color: #007fff;
+                border: 1px solid #003eff;
+                color: #ffffff;
+            }
+            /* mimicing jquery UI. TODO fetch needed styles*/
+            ul.dropdown_menu li ul {
+                position: absolute;
+                display: flex;
+                flex-direction: column;
+                background: #f6f6f6;
+                z-index: 1510;
+                padding-left: 0;
+                justify-content: flex-start;
+            }
+
+                ul.dropdown_menu li ul li {
+                    margin: 0;
+                    padding: 0;
+                    z-index: 1510;
+                }
+                    /* as idd uses z-index 1000 form some reason */
+                    ul.dropdown_menu li ul li > div {
+                        display: flex;
+                        justify-content: flex-start;
+                        padding: 0.2em;
+                        color: #444;
+                        background-color: #f6f6f6;
+                    }
+
+                        ul.dropdown_menu li ul li > div > label {
+                            padding-left: 0.2em;
+                        }
+
+                    ul.dropdown_menu li ul li div:hover {
+                        background: #ededed;
+                    }
+
+        img.colourEditor {
+            display: inline-block;
+            width: 1em;
+            height: 1em;
+            float: right;
+            vertical-align: middle;
+            margin: 3px;
+            border-radius: 2px;
+        }
+
+        div.colourDemo {
+            display: inline-block;
+            width: 1em;
+            height: 1em;
+            float: right;
+            vertical-align: middle;
+            margin: 3px;
+            border-radius: 2px;
+        }
+
+        .idd-simviewer-legend {
+            cursor: all-scroll;
+            display: block;
+            float: right;
+            position: relative;
+            z-index: 1501;
+        }
+
+        /* Overriding IDD styles */
+        .idd-legend-compact {
+            border-radius: .8em;
+            font-size: smaller;
+            padding: .4em;
+            max-width: none;
+            max-height: none;
+            white-space: nowrap; /*FF bug #513837 fix*/
+        }
+
+        .idd-legend-item-compact {
+            border-style: none;
+            width: auto;
+        }
+
+        .idd-legend-item-title-compact {
+            padding: 0px;
+            width: auto;
+        }
+
+        .idd-legend-item-title-name-compact {
+            overflow: visible;
+            width: auto;
+        }
+
+        .idd-legend-isselected-false {
+            display: none;
+        }
+    </style>
+    <select id="CRNSelector" data-bind="value: SelectedNodeID, options: Nodes"></select>
+    <div id="ModelDynamics" style="height: 800px; width: 1000px">
+        <model-data-dynamics></model-data-dynamics>
+    </div>
+</body>
+</html>

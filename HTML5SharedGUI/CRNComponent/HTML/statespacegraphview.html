@@ -1,0 +1,54 @@
+﻿<div class="c-graph">
+    <div class="c-toolbar">
+        <dropdown class="c-toolbar__item">
+            <dropdownheader>Options</dropdownheader>
+            <dropdowncontent>
+                <div class="c-dropdown__item" data-bind="visible: supportsStructural() || supportsGraphics()">
+                    <label><input type="checkbox" data-bind="checked: showNames" />Names</label>
+                </div>
+                <div class="c-dropdown__item" data-bind="visible: supportsStructural">
+                    <label><input type="checkbox" data-bind="checked: showStructural" />Text</label>
+                </div>
+                <div class="c-dropdown__item" data-bind="visible: supportsGraphics">
+                    <label><input type="checkbox" data-bind="checked: showGraphics" />Graphics</label>
+                </div>
+                <div class="c-dropdown__item">
+                    <label><input type="checkbox" data-bind="checked: showPropensities" />Propensities</label>
+                </div>
+                <div class="c-dropdown__item">
+                    <label><input type="checkbox" data-bind="checked: layeredLayout" />Layered layout</label>
+                </div>
+                <div class="c-dropdown__item" data-bind="visible: layeredLayout">
+                    <label><input type="checkbox" data-bind="checked: horizontalLayout" />Horizontal layout</label>
+                </div>
+                <div class="c-dropdown__item" data-bind="visible: layeredLayout">
+                    <label><input type="checkbox" data-bind="checked: aspectRatio" />Aspect ratio</label>
+                </div>
+            </dropdowncontent>
+        </dropdown>
+        <div class="c-toolbar__item">
+            <label>
+                Edge routing:
+                <select data-bind="value: routing">
+                    <option value="splines">Splines</option>
+                    <option value="splinesbundling">Splines with Bundling</option>
+                    <option value="straightline">Straight Line</option>
+                    <option value="sugiyamasplines" selected>Sugiyama Splines</option>
+                    <option value="rectilinear">Rectilinear</option>
+                    <option value="rectilineartocenter">Rectilinear to Center</option>
+                </select>
+            </label>
+        </div>
+        <div class="c-toolbar__item">
+            <input type="checkbox" id="ssgraph_editmode" data-bind="checked: editMode" />
+            <label for="ssgraph_editmode">Edit</label>
+        </div>
+        <div class="c-toolbar__item">
+            <!-- ko with: zoom -->
+            <zoomslider></zoomslider>
+            <!-- /ko -->
+        </div>
+        <button data-bind="click: saveAsSVG" class="c-toolbar__item">Save</button>
+    </div>
+    <div class="c-graph__graph" data-bind="statespacegraph: $root"></div>
+</div>

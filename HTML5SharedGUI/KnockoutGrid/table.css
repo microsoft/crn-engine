@@ -1,0 +1,41 @@
+.table-bordered { 
+    margin-bottom: 1em; 
+    width: 25em;
+    background-color:White;
+    width: 100%;
+}
+.table-bordered th { 
+    text-align: left;
+    background-color:  rgb(238, 238, 238); 
+    color:black; 
+	border-right: 1px solid rgb(170, 170, 170);
+	border-bottom: 1px solid rgb(170, 170, 170);
+	border-top: 1px solid rgb(170, 170, 170);
+}
+
+.table-nowrap {
+	white-space: nowrap;
+}
+
+.table-bordered thead > tr > th:nth-child(1) { border-left: 1px solid rgb(170, 170, 170); }
+.table-bordered tbody > tr > td:nth-child(1) { border-left: 1px solid rgb(170, 170, 170); }
+	
+.ko-grid-pageLinks a { padding: 0.1em}
+.ko-grid-pageLinks a.selected { 
+    background-color: rgb(170, 170, 170); 
+    color: Black; 
+}
+
+tr.rowSelected {
+	background-color: #ADD8E6;
+}
+
+.table > tbody > tr > td {
+	border-right: 1px solid rgb(170, 170, 170);
+	border-bottom: 1px solid rgb(170, 170, 170);
+}
+
+table, .table-bordered {
+    border-spacing: 0px;
+    margin-top: 0.5em;
+}

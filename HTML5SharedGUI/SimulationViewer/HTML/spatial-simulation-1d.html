@@ -1,0 +1,38 @@
+﻿<div class="c-toolbar">
+    <!-- ko if: Filter != null -->
+    <!-- ko with: Filter.vm -->
+    <single-species-filter-view class="c-toolbar__item"></single-species-filter-view>
+    <!-- /ko -->
+    <!-- /ko -->
+    <!-- ko with: palette -->
+    <paletteeditor class="c-toolbar__item"></paletteeditor>
+    <!-- /ko -->
+    <div class="c-toolbar__item" style="margin-right: 20px">
+        <input type="checkbox" data-bind="checked:IsLegendVisible" />
+        <label>Legend</label>
+    </div>
+    <button class="c-toolbar__item--btn captureSvg" data-bind="click: CaptureSVG">SVG</button>
+    <!-- ko if: Progress != null -->
+    <!-- ko with: Progress -->
+    <sim-progress-view class="c-toolbar__item"></sim-progress-view>
+    <!-- /ko -->
+    <!-- /ko -->
+</div>
+<div data-idd-plot="figure" class="c-sim-plot-container" data-idd-style="padding: 0">
+    <div data-idd-plot='grid' data-idd-placement='center'></div>
+
+    <div class="j-bottom-axis" data-idd-axis="numeric" data-idd-placement="bottom" data-bind="iddAxisSettings:XTicks"></div>
+    <div class="j-left-axis" data-idd-axis="numeric" data-idd-placement="left" data-bind="iddAxisSettings:YTicks"></div>
+
+    <div class="idd-horizontalTitle" data-idd-placement='bottom' data-bind="text:XLabel, style: {fontSize: labelSize()}"></div>
+    <div class="idd-verticalTitle" data-idd-placement="left">
+        <div class="idd-verticalTitle-inner" data-bind="text:YLabel, style: { fontSize: labelSize() }"></div>
+    </div>
+    <div data-idd-placement='center' class="idd-legend-visibility-wrapper">
+        <div class="idd-legend-cover" data-bind="visible: IsLegendVisible"></div>
+    </div>
+    <div data-idd-plot="plot">
+        <div data-idd-plot="heatmap" data-bind="iddX: xAxis, iddY: tAxis, iddValues: data, iddColorPalette: palette.IDDPalette, iddLogColors: palette.LogColors, iddPlotTitles: {values: ''}">
+        </div>
+    </div>
+</div>

@@ -1,0 +1,7 @@
+**/*.js
+!webpack.config.js
+**/*.js.map
+**/*.d.ts
+!declarations.d.ts
+offlineServiceWorker.js
+vs/

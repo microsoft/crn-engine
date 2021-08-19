@@ -1,0 +1,16 @@
+﻿<div class="c-species-table">
+    <style scoped="scoped" data-bind="text: SelectedCRN().svgStyle"></style>
+    <div class="c-toolbar">
+        ﻿<button class="c-toolbar__item--btn" data-bind="click: AddSpecies">Add</button>
+        <button class="c-toolbar__item--btn" data-bind="click: RemoveSpecies">Remove</button>
+        <span class="c-toolbar__item" data-bind="visible: isStructuralAvailable">
+            <input type="checkbox" data-bind="checked: speciesShowStructural" />
+            Text
+        </span>
+        <span class="c-toolbar__item" data-bind="visible: isGraphicAvailable">
+            <input type="checkbox" data-bind="checked: speciesShowGraphic" />
+            Graphics
+        </span>
+    </div>
+    <table-viewer params="config: speciesConfig"></table-viewer>
+</div>

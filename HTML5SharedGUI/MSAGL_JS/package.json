@@ -1,0 +1,25 @@
+{
+  "name": "msagljs",
+  "version": "0.2.2",
+  "private": true,
+  "main": "Scripts/msagl.js",
+  "types": "Scripts/msagl.d.ts",
+  "dependencies": {
+    "@types/jquery": "^3.3.31",
+    "@types/jqueryui": "1.x.x",
+    "@types/requirejs": "2.x.x",
+    "@types/react": "^16.8.23",
+    "@types/rx": "^4.1.1",
+    "@types/file-saver": "2.x.x",
+    "interactive-data-display": "^1.5.39",
+    "jquery": "^3.4.0",
+    "jquery-mousewheel": "3.x.x",
+    "typescript": "^3.5.3",
+    "file-saver": "2.x.x"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "build": "tsc",
+    "install": "tsc"
+  }
+}

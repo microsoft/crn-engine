@@ -1,0 +1,38 @@
+﻿<template id="species-template" type="text/html">
+    <td class="s-crn__cel">
+        <input type="checkbox" class="s-crn__edit crnSpecies crnSpeciesCheckbox" data-bind="checked: plot" />
+    </td>
+    <td class="s-crn__cel">
+        <input type="checkbox" class="s-crn__edit crnSpecies crnSpeciesCheckbox" data-bind="checked: constant" />
+    </td>
+    <td class="s-crn__cell">
+        <input type="text" class="s-crn__edit" size="7" data-bind="value: species, style:{fontWeight:value()==0?'normal':'bold'}" />
+    </td>
+    <td class="s-crn__cell">
+        <input type="text" class="s-crn__edit crnSpecies" size="7" data-bind="value: value, style:{fontWeight:value()==0?'normal':'bold'}" />
+    </td>
+    <td class="s-crn__cell">
+        <input type="text" class="s-crn__edit crnSpecies crnSpeciesTime" size="3" data-bind="value: time, style:{fontWeight:time()==0?'normal':'bold'}" />
+    </td>
+    <!-- ko if: $parent.ViewModel.isGraphicAvailable() && $parent.ViewModel.speciesShowGraphic() -->
+    <td class="s-crn__cell"><span data-bind="svg: svg"></span></td>
+    <!-- /ko -->
+    <!-- ko if: $parent.ViewModel.isStructuralAvailable() && $parent.ViewModel.speciesShowStructural() -->
+    <td class="s-crn__cell--nowrap"><span data-bind="text: structural"></span></td>
+    <!-- /ko -->
+    <td class="s-crn__cell" style="width: 100%"></td>
+</template>
+<template id="species-header" type="text/html">
+    <th class="s-crn__cell">Plot</th>
+    <th class="s-crn__cell">Const</th>
+    <th class="s-crn__cell">Species</th>
+    <th class="s-crn__cell">Population</th>
+    <th class="s-crn__cell">Time</th>
+    <!-- ko if: isGraphicAvailable() && speciesShowGraphic() -->
+    <th class="s-crn__cell">Graphics</th>
+    <!-- /ko -->
+    <!-- ko if: isStructuralAvailable() && speciesShowStructural() -->
+    <th class="s-crn__cell">Text</th>
+    <!-- /ko -->
+    <th class="s-crn__cell" style="width: 100%"></th>
+</template>

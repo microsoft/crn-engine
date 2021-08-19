@@ -1,0 +1,21 @@
+﻿<template id="data-sets-template" type="text/html">
+    <td class="s-crn__cell">
+        <span data-bind="text: $data"></span>
+    </td>
+</template>
+
+<template id="data-sets-header" type="text/html">
+    <th class="s-crn__cell">Name</th>
+</template>
+
+<template id="data-set-template" type="text/html">
+    <!-- ko foreach: $data -->
+    <td class="s-crn__cell"><span type="text" data-bind="text: $data.toString()"></span></td>
+    <!-- /ko -->
+</template>
+
+<template id="data-set-header" type="text/html">    
+    <!-- ko foreach: Names-->
+    <th class="s-crn__cell"><span data-bind="text: $data"></span></th>
+    <!-- /ko -->
+</template>

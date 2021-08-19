@@ -1,0 +1,43 @@
+﻿<div class="c-codepad">
+    <div class="c-codepad__toolbar">
+        <code-examples class="c-codepad__examples" data-bind="visible: examplesVisibility" params="correspondence: examplesCorrespondence, text: editorText, loadEvents: editorLoadEvents"></code-examples>
+        <div class="c-codepad__toolbar-button-group">
+            <button class="btn--new" data-bind="click: newText">New</button>
+            <button class="btn--load" data-bind="click: loadText">Load</button>
+            <button class="btn--save" data-bind="click: saveText" href="data:application/xml;charset=utf-8,your code here" download="filename.html">
+                Save
+            </button>
+        </div>
+        <div class="c-codepad__toolbar-button-group">
+            <button class="btn--find" data-bind="click: findEvent">Find</button>
+            <button class="btn--replace" data-bind="click: replaceEvent">Find and Replace</button>
+        </div>
+        <div class="c-codepad__toolbar-button-group">
+            <button class="btn--cut" data-bind="click: cutEvent">Cut</button>
+            <button class="btn--copy" data-bind="click: copyEvent">Copy</button>
+            <button class="btn--paste" data-bind="click: pasteEvent">Paste</button>
+        </div>
+        <div class="c-codepad__toolbar-button-group">
+            <button class="btn--undo" data-bind="click: undoEvent">Undo</button>
+            <button class="btn--redo" data-bind="click: redoEvent">Redo</button>
+        </div>
+        <div class="c-codepad__toolbar-button-group">
+            <button class="btn--outdent" data-bind="click: outdentEvent">Outdent</button>
+            <button class="btn--indent" data-bind="click: indentEvent">Indent</button>
+        </div>
+        <div class="c-codepad__toolbar-button-group">
+            <button class="btn--line-numbers" data-bind="click: lineNumbersEvent">Line numbers</button>
+        </div>
+    </div>
+    <code-editor-widget class="c-codepad__editor" params="editorText: editorText, highlight: highlight, language:language,
+                        undoEvent:undoEvent, redoEvent:redoEvent,
+                        cutEvent:cutEvent, copyEvent:copyEvent, pasteEvent:pasteEvent,
+                        findEvent:findEvent, replaceEvent:replaceEvent,
+                        outdentEvent:outdentEvent, indentEvent:indentEvent, lineNumbersEvent:lineNumbersEvent"></code-editor-widget>
+    <div class="c-codepad__error-window" data-bind="visible: (errors().length != 0)">
+        <div class="ui-widget-header">Error list:</div>
+        <div class="c-codepad__error-list" data-bind="foreach: errors">
+            <div class="c-codepad__error-text" data-bind="text:$data.text"></div>
+        </div>
+    </div>
+</div>

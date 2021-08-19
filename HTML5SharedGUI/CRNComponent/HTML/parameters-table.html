@@ -1,0 +1,90 @@
+﻿<div class="c-parameters">
+    <div class="c-parameters__table">
+        <div class="c-toolbar">
+            ﻿<button class="c-toolbar__item--btn" data-bind="click: AddParameter">Add</button>
+            <button class="c-toolbar__item--btn" data-bind="click: RemoveParameter">Remove</button>
+        </div>
+        <table-viewer params="config: parametersConfig"></table-viewer>
+    </div>
+
+    <!-- ko with: SelectedCRN().settings -->
+    <div class="c-settings__group">
+        <h4 class="c-settings__group-header">Sweeps:</h4>
+
+        <div class="c-toolbar">
+            <button data-bind="click: AddSweep">Add sweep</button>
+            <button data-bind="event: {mousedown: DeleteSweep}, enable: IsAnyAssignmentFocused">Del sweep</button>
+            <button data-bind="event: {mousedown: AddVariable}, enable: IsAnyAssignmentFocused">Add row</button>
+            <button data-bind="event: {mousedown: DeleteVariable}, enable: IsAssignmentDeletable">Del row</button>
+        </div>
+        <div class="c-sweeps" data-bind="foreach: Sweeps">
+            <div class="c-sweeps_one" data-bind="event: {focusin: $parent.ActivateSweep, focusout: $parent.DeactivateSweep}">
+                <input class="c-sweeps__name" data-bind="value: Name" oninput="this.style.width = ((this.value.length )*0.6) + 'em';">
+                <table class="c-sweeps__table">
+                    <thead>
+                        <tr>
+                            <td><span class="c-sweeps__header">Variables</span></td>
+                            <td><span class="c-sweeps__header">Values</span></td>
+                        </tr>
+                    </thead>
+                    <tbody data-bind="foreach: Assignments">
+                        <tr data-bind="event: {focusin: $parents[1].ActivateAssignments, focusout: $parents[1].DeactivateAssignments}">
+                            <td><input class="c-sweeps__var-name" data-bind="sweepVariableNames: variables" /></td>
+                            <td><input class="c-sweeps__values" data-bind="sweepVariableValues: values" /></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="c-settings__group" data-bind="with: Inference">
+        <h4 class="c-settings__group-header">Inference Settings:</h4>
+        <div class="c-settings__one">
+            <div class="c-settings__header">Burn In:</div>
+            <input class="c-settings__value" type="number" data-bind="value: Burnin" />
+        </div>
+        <div class="c-settings__one">
+            <div class="c-settings__header">Samples:</div>
+            <input class="c-settings__value" type="number" data-bind="value: Samples" />
+        </div>
+        <div class="c-settings__one">
+            <div class="c-settings__header">Thin:</div>
+            <input class="c-settings__value" type="number" data-bind="value: Thin" />
+        </div>
+        <div class="c-settings__one">
+            <div class="c-settings__header">Seed:</div>
+            <input class="c-settings__value" type="number" data-bind="value: Seed" />
+        </div>
+        <div class="c-settings__one">
+            <div class="c-settings__header">Noise Parameter:</div>
+            <select class="c-settings__value" type="number" data-bind="options: NoiseParameterOptions, value: NoiseParameter"></select>
+        </div>
+        <div class="c-settings__one">
+            <div class="c-settings__header">Noise Value:</div>
+            <input class="c-settings__value" type="number" data-bind="value: NoiseParameterValue, enable: NoiseParameter() == 'Fixed'" />
+        </div>
+        <div class="c-settings__one">
+            <div class="c-settings__header">Noise Model:</div>
+            <select class="c-settings__value" type="number" data-bind="options: NoiseModelOptions, value: NoiseModel"></select>
+        </div>
+        <div class="c-settings__one">
+            <div class="c-settings__header">Prune:</div>
+            <input class="c-settings__value--checkbox" type="checkbox" data-bind="checked: Prune" />
+        </div>
+        <div class="c-settings__one">
+            <div class="c-settings__header">Simulator Type:</div>
+            <select class="c-settings__value" type="number" data-bind="options: SimulatorOptions, value: Simulator"></select>
+        </div>
+        <div class="c-settings__one">
+            <div class="c-settings__header">Partial Evaluation:</div>
+            <input class="c-settings__value--checkbox" type="checkbox" data-bind="checked: PartialEvaluation" />
+        </div>
+    </div>
+    <!-- /ko -->
+    <!-- ko with: Files.viewModel -->
+    <div class="c-settings__group">
+        <h4 class="c-settings__group-header">Fit parameters to following observations:</h4>
+        <sortable-data-set></sortable-data-set>
+    </div>
+    <!-- /ko -->
+</div>

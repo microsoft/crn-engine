@@ -1,0 +1,29 @@
+﻿<template id="inferred-parameters-viewer-template" type="text/html">
+    <td class="s-crn__cell">
+        <span data-bind="text: Name"></span>
+    </td>
+    <td class="s-crn__cell">
+        <span data-bind="text: LowerBound"></span>
+    </td>
+    <td class="s-crn__cell">
+        <span data-bind="text: UpperBound"></span>
+    </td>
+    <td class="s-crn__cell">
+        <span data-bind="text: $parent.ViewModel.values()[$parent.ViewModel.currIndex($data)]"></span>
+    </td>
+    <td class="s-crn__cell">
+        <span data-bind="text: $parent.ViewModel.convertType(Type)"></span>
+    </td>
+    <td class="s-crn__cell">
+        <span data-bind="text: $parent.ViewModel.convertVar(Variability)"></span>
+    </td>
+</template>
+
+<template id="inferred-parameters-viewer-header" type="text/html">
+    <th class="s-crn__cell">Name</th>
+    <th class="s-crn__cell">Lower Bound</th>
+    <th class="s-crn__cell">Upper Bound</th>
+    <th class="s-crn__cell">Value</th>
+    <th class="s-crn__cell">Type</th>
+    <th class="s-crn__cell">Var</th>
+</template>

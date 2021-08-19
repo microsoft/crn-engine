@@ -1,0 +1,16 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>MSAGL_JS Zoom controls</title>
+    <meta charset="utf-8" />
+</head>
+<body>
+    <div id="controls">        
+        <span id="working">WORKING...</span>        
+        <input type="range" data-bind="value: zoomLevel, valueUpdate: 'input'" min="-25" max="25" step="1" width="30"/>
+        <input data-bind="textInput: zoomLevel"/>
+        <button id="reinitButton" width="40">Reinit Zoom</button>
+    </div>
+    <div id="graphContainer"><div id="graphView"></div></div>
+</body>
+</html>

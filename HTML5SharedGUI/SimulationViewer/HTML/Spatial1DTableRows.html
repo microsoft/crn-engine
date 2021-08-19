@@ -1,0 +1,14 @@
+﻿<template id="spatial-1d-table-view-template" type="text/html">
+    <td>
+        <span type="text" data-bind="text: t.toString()"></span>
+    </td>
+    <!-- ko foreach: data -->
+    <td><span type="text" data-bind="text: $data.toString()"></span></td>
+    <!-- /ko -->
+</template>
+<template id="spatial-1d-table-view-header" type="text/html">
+    <th>Time</th>
+    <!-- ko foreach: xAxis -->
+        <th><span type="text" data-bind="text: $data"></span></th>
+    <!-- /ko -->
+</template>

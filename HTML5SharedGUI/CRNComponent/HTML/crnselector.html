@@ -1,0 +1,3 @@
+﻿<!-- This component is bound directly to an IG object (from crnVM.ts) -->
+<select class="c-crn-selector" data-bind="value: SelectedNode, options: Nodes, optionsText: function(item){return item.Top().name()}, visible: Nodes().length > 1"></select>
+<select class="c-crn-selector" data-bind="value: SelectedCRN, options: CRNs, optionsText: function(item){return item.name()}, visible: CRNs().length > 1"></select>

@@ -1,0 +1,10 @@
+﻿<template id="table-view-header" type="text/html">
+    <!-- ko foreach: VisibleHeaders -->
+    <th><span type="text" class="c-sim-table__header" data-bind="text: $data"></span></th>
+    <!-- /ko -->
+</template>
+<template id="table-view-template" type="text/html">
+    <!-- ko foreach: $data -->
+    <td><span type="text" class="c-sim-table__cell" data-bind="text: $data==null?'':$data.toString()"></span></td>
+    <!-- /ko -->
+</template>

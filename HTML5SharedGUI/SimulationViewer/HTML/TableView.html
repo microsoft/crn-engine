@@ -1,0 +1,27 @@
+﻿<!-- NOTE: this file is used by TableView, Spatial1DTableView, and Spatial2DTableView. The bindings need to be supported by all three VMs. -->
+<div class="c-toolbar">
+    <!-- ko if: Filter != null && Filter.vm.IsAnyVisible() -->
+    <!-- ko with: Filter.vm -->
+    <multi-instances-filter-view class="c-toolbar__item"></multi-instances-filter-view>
+    <!-- /ko -->
+    <!-- /ko -->
+    <button data-bind="click: Save" class="c-toolbar__item--btn">Save</button>
+    <!-- ko if: SupportsStructural -->
+    <div class="c-toolbar__item" style="margin-right: 20px">
+        <input type="checkbox" data-bind="checked: AreNamesEnabled" />
+        <label>Names</label>
+    </div>
+    <!-- /ko -->
+    <!-- ko if: SupportsBounds -->
+    <div class="c-toolbar__item" style="margin-right: 20px">
+        <input type="checkbox" data-bind="checked: AreBoundsEnabled" />
+        <label>Bounds</label>
+    </div>
+    <!-- /ko -->
+    <!-- ko if: Progress != null -->
+    <!-- ko with: Progress -->
+    <sim-progress-view class="c-toolbar__item"></sim-progress-view>
+    <!-- /ko -->
+    <!-- /ko -->
+</div>
+<table-viewer params="config: tableConfig"></table-viewer>

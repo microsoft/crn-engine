@@ -1,0 +1,4 @@
+﻿<div class="c-sim-progress" data-bind="style: { display: Progress() != null ? 'flex' : 'none' }">
+    <progress class="c-sim-progress__bar" max="1" data-bind="attr: { value: Progress }"></progress>
+    <span data-bind="text: Percentage() == null ? '' : (Percentage() + '%')" style="margin-left: 2px"></span>
+</div>

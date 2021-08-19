@@ -1,0 +1,17 @@
+#Residual files from before webpack. They should be deleted.
+Scripts/FileSaver/**
+Scripts/IDD/**
+Scripts/InferenceViewer/**
+Scripts/KnockoutGrid/**
+Scripts/src/**
+Scripts/SVG/**
+
+Scripts/*.d.ts
+Scripts/*.js
+Scripts/*.js.map
+Tests/*.js
+Tests/*.js.map
+Tests/*.d.ts
+Samples/**/*.js
+Samples/**/*.d.ts
+Samples/**/*.js.map

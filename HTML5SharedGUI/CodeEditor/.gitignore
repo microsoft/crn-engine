@@ -1,0 +1,11 @@
+**/*.js
+**/*.js.map
+**/*.d.ts
+!declarations.d.ts
+bin
+bower_components
+node_modules
+obj
+Scripts/CodeEditor
+samples/vs
+vs

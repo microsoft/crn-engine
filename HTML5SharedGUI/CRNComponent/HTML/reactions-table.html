@@ -1,0 +1,24 @@
+﻿<div class="c-reactions-table">
+    <style scoped="scoped" data-bind="text: SelectedCRN().svgStyle"></style>
+    <div class="c-toolbar">
+        ﻿<button class="c-toolbar__item--btn" data-bind="click: AddReaction">Add</button>
+        <button class="c-toolbar__item--btn" data-bind="click: RemoveReaction">Remove</button>
+        <span class="c-toolbar__item" data-bind="visible: isStructuralAvailable() || isGraphicAvailable()">
+            <input type="checkbox" value="name" data-bind="checked: reactionsShowNames" />
+            Names
+        </span>
+        <span class="c-toolbar__item" data-bind="visible: isStructuralAvailable">
+            <input type="checkbox" value="structural" data-bind="checked: reactionsShowStructural" />
+            Text
+        </span>
+        <span class="c-toolbar__item" data-bind="visible: isGraphicAvailable">
+            <input type="checkbox" value="svg" data-bind="checked: reactionsShowGraphic" />
+            Graphics
+        </span>
+        <span class="c-toolbar__item" data-bind="visible: reactionsShowGraphic">
+            <input type="checkbox" data-bind="checked: showRates" />
+            Rates
+        </span>
+    </div>
+    <table-viewer params="config: reactionsConfig"></table-viewer>
+</div>

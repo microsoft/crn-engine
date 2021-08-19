@@ -1,0 +1,142 @@
+/* The code editor component. */
+.c-code-editor {
+    width: 100%;
+    display: flex;
+}
+
+/* The codepad component. */
+.c-codepad {
+    display: flex;
+    flex-flow: column;
+    height: 100%
+}
+
+/* The toolbar for the codepad. */
+.c-codepad__toolbar {
+    display: inline-flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin: 1px;
+    flex-wrap: wrap;
+}
+
+    /* Set the width of icon-only buttons in the toolbar, to make them square. */
+    .c-codepad__toolbar button.ui-button-icon-only {
+        width: 1.5em;
+        padding: 0px;
+    }
+
+/* A button group within the toolbar. */
+.c-codepad__toolbar-button-group {
+    margin-left: 0.2em;
+}
+
+/* The editor widget within a codepad. */
+.c-codepad__editor {
+    display: flex;
+    flex: 1 2 auto;
+    overflow: hidden;
+}
+
+/* The examples selector within a codepad. */
+.c-codepad__examples {
+    font-size: small;
+}
+
+/* The error area within a codepad. */
+.c-codepad__error-window {
+    display: flex;
+    flex-flow: column nowrap;
+    max-height: 20%;
+}
+
+/* The list of errors within a codepad's error area. */
+.c-codepad__error-list {
+    overflow-y: auto;
+}
+
+/* One error within a codepad's error area. */
+.c-codepad__error-text {
+    color: red;
+}
+
+/* The cut-copy-paste dialog (this class is used on the JS side). This dialog appears when the browser blocks an attempt to paste the clipboard in the text. */
+.c-cpdialog {
+}
+
+/* Info about one chord within the cut-copy-paste dialog. */
+.c-cpdialog__info {
+    display: inline-block;
+}
+
+/* One chord within the cut-copy-paste dialog. */
+.c-cpdialog__chord {
+    color: grey;
+    font-weight: bold;
+    margin-left: 12px;
+    margin-right: 12px;
+    font-size: large;
+}
+
+/* Applied by JS on an error area in the text. */
+.j-codepad-error-highlight {
+    background: pink !important;
+}
+
+/* The examples selector component. */
+.c-examples {
+    width: 10em;
+    margin-right: 0.1em;
+}
+
+.ui-button .ui-icon.codepad-button-clear {
+    background-image: url("../Resources/Images/New16.png");
+}
+
+.ui-button .ui-icon.codepad-button-load {
+    background-image: url("../Resources/Images/Open16.png");
+}
+
+.ui-button .ui-icon.codepad-button-save {
+    background-image: url("../Resources/Images/Save16.png");
+}
+
+.ui-button .ui-icon.codepad-button-cut {
+    background-image: url("../Resources/Images/Cut16.png");
+}
+
+.ui-button .ui-icon.codepad-button-copy {
+    background-image: url("../Resources/Images/Copy16.png");
+}
+
+.ui-button .ui-icon.codepad-button-paste {
+    background-image: url("../Resources/Images/Paste16.png");
+}
+
+.ui-button .ui-icon.codepad-button-undo {
+    background-image: url("../Resources/Images/Undo16.png");
+}
+
+.ui-button .ui-icon.codepad-button-redo {
+    background-image: url("../Resources/Images/Redo16.png");
+}
+
+.ui-button .ui-icon.codepad-button-find {
+    background-image: url("../Resources/Images/Find16.png");
+}
+
+.ui-button .ui-icon.codepad-button-replace {
+    background-image: url("../Resources/Images/Replace16.png");
+}
+
+.ui-button .ui-icon.codepad-button-indent {
+    background-image: url("../Resources/Images/IncreaseIndent16.png");
+}
+
+.ui-button .ui-icon.codepad-button-outdent {
+    background-image: url("../Resources/Images/DecreaseIndent16.png");
+}
+
+.ui-button .ui-icon.codepad-button-line-numbers {
+    background-image: url("../Resources/Images/LineNumbers16.png");
+}

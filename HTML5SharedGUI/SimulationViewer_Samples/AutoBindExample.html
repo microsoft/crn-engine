@@ -1,0 +1,32 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta charset="utf-8" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.2.0/require.min.js" data-main="Bootstrap"></script>
+    <link rel="stylesheet" type="text/css" href="DummySimulation.css" />
+    <style>
+        .cell{
+            width: 600px;
+            height: 800px;
+        }
+        tr {
+            vertical-align: top
+        }
+        table {table-layout: fixed}
+    </style>
+</head>
+<body>
+    <div id="autoBind" class="SimulationViewer">
+        <table>
+            <tr>
+                <td class="cell"><species-barchart-view id="SimulationViewer-bars-tab" class="SimulationViewer_bars" params="vm: $data"></species-barchart-view></td>
+                <td class="cell"><div id="SimulationViewer-table-tab" class="SimulationViewer_table">
+                    <species-table-view></species-table-view>
+                </div></td>
+                <td class="cell"><species-timeseries-view id="SimulationViewer-timeseries-tab" class="SimulationViewer_timeseries" params="vm: $data"></species-timeseries-view></td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>

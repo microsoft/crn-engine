@@ -1,0 +1,15 @@
+#Residual files from before webpack. They should be deleted.
+Scripts/CRN/**
+Scripts/CRNEngine/**
+Scripts/KnockoutGrid/**
+Scripts/MSAGL/**
+
+Scripts/**/*.d.ts
+Scripts/**/*.js
+Scripts/**/*.js.map
+Tests/*.js
+Tests/*.js.map
+Tests/*.d.ts
+Samples/**/*.js
+Samples/**/*.d.ts
+Samples/**/*.js.map

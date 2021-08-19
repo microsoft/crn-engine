@@ -1,0 +1,49 @@
+﻿<div class="c-toolbar">
+    <div class="c-toolbar__item">
+        <label>X: </label>
+        <select data-bind="options: options, value: selectedX, event: { change: onSelectedXChanged }"></select>
+    </div>
+    <div class="c-toolbar__item">
+        <label>Y: </label>
+        <select data-bind="options: options, value: selectedY, event: { change: onSelectedYChanged }"></select>
+    </div>
+    <div class="c-toolbar__item">
+        <label>Show burn-in </label>
+        <input type="checkbox" data-bind="checked: ShowBurnIn" />
+    </div>
+    <div class="c-toolbar__item">
+        <label>log X</label>
+        <input type="checkbox" data-bind="checked: logX, enable: logXavailable" />
+    </div>
+    <div class="c-toolbar__item">
+        <label>log Y</label>
+        <input type="checkbox" data-bind="checked: logY, enable: logYavailable" />
+    </div>
+
+    <button data-bind="click: CaptureSVG" class="c-toolbar__item--btn" style="margin-right: 20px">Save</button>
+
+    <!-- ko if: Progress != null -->
+    <!-- ko with: Progress -->
+    <inference-progress class="c-toolbar__item"></inference-progress>
+    <!-- /ko -->
+    <!-- /ko -->
+</div>
+<div data-idd-plot="figure" class="c-inf-plot-container" data-idd-style="padding: 0"
+     data-bind="event: { frameRendered: onFrameRendered }">
+
+    <div data-idd-name='grid' data-idd-plot='grid' data-idd-placement='center'></div>
+
+    <div class="j-sp__bottomaxis" data-idd-axis="numeric" data-idd-placement="bottom" data-bind="iddAxisSettings:XTicks"></div>
+    <div class="j-sp__leftaxis" data-idd-axis="numeric" data-idd-placement="left" data-bind="iddAxisSettings:YTicks"></div>
+    <div class="idd-horizontalTitle" data-idd-placement='bottom' data-bind="text:selectedX, style: { fontSize: labelSize() }"></div>
+    <div class="idd-verticalTitle" data-idd-placement="left">
+        <div class="idd-verticalTitle-inner" data-bind="text:selectedY, style: { fontSize: labelSize() }"></div>
+    </div>
+    <div data-idd-plot="plot">
+        <div data-idd-plot="markers" data-bind="iddX: currentPlotX, iddXlog:logX, iddY: currentPlotY, iddYlog:logY, iddColor:'black', iddShape: 'circle', iddSize: 6">
+        </div>
+        <div data-idd-plot="markers" data-bind="iddX: currentPlotBurnInX, iddXlog:logX, iddY: currentPlotBurnInY, iddYlog:logY, iddColor:'gray', iddShape: 'circle', iddSize: 6">
+        </div>
+        <div data-idd-plot="polyline" data-idd-style="ignored-by-fit-to-view: true" data-bind="iddX: boundsX, iddXlog:logX, iddYlog:logY, iddY:boundsY, iddStroke: 'blue', iddThickness: 3"></div>
+    </div>
+</div>

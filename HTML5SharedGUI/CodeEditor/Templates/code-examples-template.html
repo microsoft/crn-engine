@@ -1,0 +1,8 @@
+﻿<select class="c-examples" data-bind="value: selectedOptionValue" title="Examples">
+    <option data-bind="text: customValue"></option>
+    <!-- ko foreach: examples -->
+    <optgroup data-bind="attr: {label: Name}, foreach: Object.keys(Correspondence)">
+        <option data-bind="text: $data, value: {Name:$data, Group: $parentContext.$data}"></option>
+    </optgroup>
+    <!-- /ko -->
+</select>

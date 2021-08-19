@@ -1,0 +1,202 @@
+﻿<!-- This component is bound directly to a CRN object (from crnVM.ts) -->
+<div class="c-settings" data-bind="with: SelectedCRN">
+    <div class="c-settings__group">
+        <h4 class="c-settings__group-header">Simulation:</h4>
+        <div class="c-settings__one">
+            <div class="c-settings__header">Methods:</div>
+            <select class="c-settings__value--long" type="text" data-bind="value: settings.ChosenSimulationName, foreach: settings.PossibleMethods">
+                <option data-bind="text: $data.DisplayName, enable: $data.isSelectable"></option>
+            </select>
+        </div>
+        <div class="c-settings__one">
+            <div class="c-settings__header">Kinetics:</div>
+            <select class="c-settings__value--long" type="text" data-bind="value: settings.Sim.Kinetics, options: settings.PossibleKinetics"></select>
+        </div>
+        <div class="c-settings__one">
+            <div class="c-settings__header">Initial time:</div>
+            <input class="c-settings__value" type="number" data-bind="value: settings.Sim.Initial" />
+        </div>
+        <div class="c-settings__one">
+            <div class="c-settings__header">Final time:</div>
+            <input class="c-settings__value" type="number" data-bind="value: settings.Sim.Final" />
+        </div>
+        <div class="c-settings__one">
+            <div class="c-settings__header">Number of points:</div>
+            <input class="c-settings__value" type="number" data-bind="value: settings.Sim.Points" />
+        </div>
+        <div class="c-settings__one">
+            <div class="c-settings__header">Prune:</div>
+            <input class="c-settings__value--checkbox" type="checkbox" data-bind="value: settings.Sim.Prune" />
+        </div>
+    </div>
+
+    <div class="c-settings__group">
+        <h4 class="c-settings__group-header">Stochastic:</h4>
+        <div class="c-settings__one">
+            <div class="c-settings__header">Scale:</div>
+            <input class="c-settings__value" type="number" data-bind="value: settings.SSA.Scale, enable: settings.SSAMethodSelected" />
+        </div>
+        <div class="c-settings__one">
+            <div class="c-settings__header">Trajectories:</div>
+            <input class="c-settings__value" type="number" data-bind="value: settings.SSA.Trajectories, enable: settings.SSAMethodSelected" />
+        </div>
+        <div class="c-settings__one">
+            <div class="c-settings__header">Particular RNG seed:</div>
+            <input class="c-settings__value--checkbox" type="checkbox" data-bind="checked: settings.SSA.IsSeedEnabled, enable: settings.SSAMethodSelected" />
+        </div>
+        <div class="c-settings__one">
+            <div class="c-settings__header">Seed:</div>
+            <input class="c-settings__value" type="number" data-bind="value: settings.SSA.Seed, enable: settings.SSA.IsSeedEnabled, enable: settings.SSAMethodSelected" />
+        </div>
+        <div class="c-settings__one">
+            <div class="c-settings__header">Limit number of steps:</div>
+            <input class="c-settings__value--checkbox" type="checkbox" data-bind="checked: settings.SSA.AreStepsAccounted, enable: settings.SSAMethodSelected" />
+        </div>
+        <div class="c-settings__one">
+            <div class="c-settings__header">Steps:</div>
+            <input class="c-settings__value" type="number" data-bind="value: settings.SSA.Steps, enable: settings.SSA.AreStepsAccounted && settings.SSAMethodSelected" />
+        </div>
+    </div>
+
+    <div class="c-settings__group">
+        <h4 class="c-settings__group-header">Deterministic:</h4>
+        <div class="c-settings__one">
+            <div class="c-settings__header">Absolute tolerance:</div>
+            <input class="c-settings__value" type="text" data-bind="value: settings.ODE.AbsTolerance, enable: settings.ODEMethodSelected" />
+        </div>
+        <div class="c-settings__one">
+            <div class="c-settings__header">Relative tolerance:</div>
+            <input class="c-settings__value" type="text" data-bind="value: settings.ODE.RelTolerance, enable: settings.ODEMethodSelected" />
+        </div>
+    </div>
+
+    <div class="c-settings__group">
+        <h4 class="c-settings__group-header">Spatial:</h4>
+        <div class="c-settings__one">
+            <div class="c-settings__header">Dimensions:</div>
+            <select class="c-settings__value" type="number" data-bind="options: [1,2], value: settings.PDE.Dimensions, enable: settings.PDEMethodSelected" />
+        </div>
+        <div class="c-settings__one">
+            <div class="c-settings__header">Boundary conditions:</div>
+            <select class="c-settings__value" data-bind="value: settings.PDE.Boundary, options: settings.PossiblePDEBoundaryConditions, enable: settings.PDEMethodSelected"></select>
+        </div>
+        <div class="c-settings__one">
+            <div class="c-settings__header">Random:</div>
+            <input class="c-settings__value" type="number" data-bind="value: settings.PDE.Random, enable: settings.PDEMethodSelected" />
+        </div>
+        <div class="c-settings__one">
+            <div class="c-settings__header">Xmax:</div>
+            <input class="c-settings__value" type="number" data-bind="value: settings.PDE.XMax, enable: settings.PDEMethodSelected" />
+        </div>
+        <div class="c-settings__one">
+            <div class="c-settings__header">Nx:</div>
+            <input class="c-settings__value" type="number" data-bind="value: settings.PDE.Nx, enable: settings.PDEMethodSelected" />
+        </div>
+        <div class="c-settings__one">
+            <div class="c-settings__header">Default diffusion:</div>
+            <input class="c-settings__value" type="number" data-bind="value: settings.PDE.DefaultDiffusion, enable: settings.PDEMethodSelected" />
+        </div>
+    </div>
+
+    <div class="c-settings__group">
+        <h4 class="c-settings__group-header">Synthesis:</h4>
+        <div class="c-settings__one">
+            <div class="c-settings__header">Mode:</div>
+            <select class="c-settings__value--long" type="text" data-bind="value: settings.Synthesis.Mode, options: settings.Synthesis.PossibleModes"></select>
+        </div>
+        <div class="c-settings__one">
+            <div class="c-settings__header">Mode:</div>
+            <select class="c-settings__value--long" type="text" data-bind="value: settings.Synthesis.Solver, options: settings.Synthesis.PossibleSolvers"></select>
+        </div>
+        <div class="c-settings__one">
+            <div class="c-settings__header">Timeout:</div>
+            <input class="c-settings__value" type="number" data-bind="value: settings.Timeout" />
+        </div>
+        <div class="c-settings__one">
+            <div class="c-settings__header">Seed:</div>
+            <input class="c-settings__value" type="number" data-bind="value: settings.Seed" />
+        </div>
+    </div>
+
+    <div class="c-settings__group">
+        <h4 class="c-settings__group-header">Plot settings:</h4>
+        <div class="c-settings__one">
+            <div class="c-settings__header">X label:</div>
+            <input class="c-settings__value" type="text" data-bind="value: settings.PlotSettings.XLabel" />
+        </div>
+        <div class="c-settings__one">
+            <div class="c-settings__header">Y label:</div>
+            <input class="c-settings__value" type="text" data-bind="value: settings.PlotSettings.YLabel" />
+        </div>
+        <div class="c-settings__one">
+            <div class="c-settings__header">Title:</div>
+            <input class="c-settings__value" type="text" data-bind="value: settings.PlotSettings.Title" />
+        </div>
+        <div class="c-settings__one">
+            <div class="c-settings__header">Label font size:</div>
+            <input class="c-settings__value" type="number" data-bind="value: settings.PlotSettings.LabelFontSize" />
+        </div>
+        <div class="c-settings__one">
+            <div class="c-settings__header">Ticks font size:</div>
+            <input class="c-settings__value" type="number" data-bind="value: settings.PlotSettings.TickFontSize" />
+        </div>
+        <div class="c-settings__one">
+            <div class="c-settings__header">X ticks:</div>
+            <input class="c-settings__value" type="text" data-bind="value: settings.PlotSettings.XTicks" />
+        </div>
+        <div class="c-settings__one">
+            <div class="c-settings__header">Y ticks:</div>
+            <input class="c-settings__value" type="text" data-bind="value: settings.PlotSettings.YTicks" />
+        </div>
+        <div class="c-settings__one">
+            <div class="c-settings__header">X min:</div>
+            <input class="c-settings__value" type="number" data-bind="value: settings.PlotSettings.XMin" />
+        </div>
+        <div class="c-settings__one">
+            <div class="c-settings__header">X max:</div>
+            <input class="c-settings__value" type="number" data-bind="value: settings.PlotSettings.XMax" />
+        </div>
+        <div class="c-settings__one">
+            <div class="c-settings__header">Y min:</div>
+            <input class="c-settings__value" type="number" data-bind="value: settings.PlotSettings.YMin" />
+        </div>
+        <div class="c-settings__one">
+            <div class="c-settings__header">Y max:</div>
+            <input class="c-settings__value" type="number" data-bind="value: settings.PlotSettings.YMax" />
+        </div>
+        <div class="c-settings__one">
+            <div class="c-settings__header">Horz. boundaries:</div>
+            <input class="c-settings__value" data-bind="value: settings.PlotSettings.HBoundaries" />
+        </div>
+        <div class="c-settings__one">
+            <div class="c-settings__header">Vert. boundaries:</div>
+            <input class="c-settings__value" data-bind="value: settings.PlotSettings.VBoundaries" />
+        </div>
+    </div>
+
+    <div class="c-settings__group">
+        <h4 class="c-settings__group-header">Units (log):</h4>
+        <div class="c-settings__one">
+            <div class="c-settings__header">Concentration (M):</div>
+            <input class="c-settings__value" type="number" data-bind="value: settings.Units.Concentration" />
+        </div>
+        <div class="c-settings__one">
+            <div class="c-settings__header">Space (m):</div>
+            <input class="c-settings__value" type="number" data-bind="value: settings.Units.Space" />
+        </div>
+        <div class="c-settings__one">
+            <div class="c-settings__header">Time (s):</div>
+            <input class="c-settings__value" type="number" data-bind="value: settings.Units.Time" />
+        </div>
+    </div>
+
+    <div class="c-settings__group c-settings__group-plots">
+        <h4 class="c-settings__group-header">Plots:</h4>
+        <textarea class="c-settings__plots" data-bind="plottedSpecies: settings.Sim.Plots"></textarea>
+    </div>
+
+    <!-- ko foreach: externalSettings -->
+    <div class="c-settings__group CRNSettings_External" data-bind="bindHTML: template">
+    </div>
+    <!-- /ko -->
+</div>
