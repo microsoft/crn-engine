@@ -11,7 +11,6 @@
     <Compile Include="simulation.fs" />
     <Compile Include="export.fs" />
     <Compile Include="inference.fs" />
-    <Compile Include="synthesis.fs" />
     <Compile Include="program.fs" />
     <Compile Include="testing.fs" />
     <None Include="paket.references" />
@@ -20,7 +19,6 @@
   <ItemGroup>
     <ProjectReference Include="..\..\MomentClosure\MomentClosure\MomentClosure.fsproj" />
     <ProjectReference Include="..\CRNEngineCloudLib\CRNEngineCloudLib.fsproj" />
-    <ProjectReference Include="..\..\StabilityZ3\StabilityZ3\StabilityZ3.fsproj" />
     <ProjectReference Include="..\CRNEngineDotNet\CRNEngineDotNet.fsproj" />
   </ItemGroup>
   <ItemGroup>

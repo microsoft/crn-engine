@@ -1,0 +1,46 @@
+name: CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  CLI:
+    runs-on: windows-2019
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Setup MSBuild
+      uses: microsoft/setup-msbuild@v1.0.2
+    - name: Setup VSTest
+      uses: darenm/Setup-VSTest@v1
+    - name: Restore tools
+      run: dotnet tool restore
+    
+    - name: Restore CRN dependencies
+      run: dotnet restore CRNEngine/CRNEngineCli.sln
+    - name: Build CRN
+      shell: cmd
+      run: msbuild CRNEngine/CRNEngineCli.sln /p:Configuration=Release /p:Platform=x64
+    - name: Test CRN
+      run: vstest.console.exe .\CRNEngine\CRNEngineTests\bin\Release\netcoreapp3.1\CRNEngineTests.dll /Platform:x64
+    
+    - name: Restore GEC dependencies
+      run: dotnet restore ClassicGEC/ClassicGECCli.sln
+    - name: Build GEC
+      shell: cmd
+      run: msbuild ClassicGEC/ClassicGECCli.sln /p:Configuration=Release /p:Platform=x64
+    - name: Test Classic GEC
+      run: vstest.console.exe .\ClassicGEC\ClassicGECDotNetTests\bin\Release\netcoreapp3.1\ClassicGECDotNetTests.dll /Platform:x64
+    - name: Test Logic GEC
+      run: vstest.console.exe .\ClassicGEC\ClassicGECTests\bin\Release\netcoreapp3.1\ClassicGECTests.dll /Platform:x64
+
+    - name: Restore DSD dependencies
+      run: dotnet restore ClassicDSD/ClassicDSD.sln
+    - name: Build GEC
+      shell: cmd
+      run: msbuild ClassicDSD/ClassicDSD.sln /p:Configuration=Release /p:Platform=x64
+    - name: Test Classic DSD
+      run: vstest.console.exe .\ClassicDSD\ClassicDSDTests\bin\x64\Release\netcoreapp3.1\ClassicDSDTests.dll /Platform:x64

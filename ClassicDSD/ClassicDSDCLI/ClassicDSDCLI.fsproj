@@ -24,7 +24,6 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\CRNEngine\CliLibrary\CliLibrary.fsproj" />
-    <ProjectReference Include="..\..\StabilityZ3\StabilityZ3\StabilityZ3.fsproj" />
     <ProjectReference Include="..\ClassicDSDDotNet\ClassicDSDDotNet.fsproj" />
     <ProjectReference Include="..\..\PDESolvers\ReactionDiffusion\ReactionDiffusion.fsproj" />
     <ProjectReference Include="..\..\RulesDSD\RulesDSD\RulesDSD.fsproj" />
