@@ -1,4 +1,4 @@
-name: CI
+name: Windows CLI
 
 on:
   push:
@@ -39,7 +39,7 @@ jobs:
 
     - name: Restore DSD dependencies
       run: dotnet restore ClassicDSD/ClassicDSD.sln
-    - name: Build GEC
+    - name: Build DSD
       shell: cmd
       run: msbuild ClassicDSD/ClassicDSD.sln /p:Configuration=Release /p:Platform=x64
     - name: Test Classic DSD
