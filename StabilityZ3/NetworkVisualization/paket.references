@@ -1,0 +1,7 @@
+﻿group NETFRAMEWORK
+
+FSharp.Core
+DynamicLanguageRuntime
+Microsoft.Msagl
+Microsoft.Msagl.Drawing
+Microsoft.Msagl.GraphViewerGDI
