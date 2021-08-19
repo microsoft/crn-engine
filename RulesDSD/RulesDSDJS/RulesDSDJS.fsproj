@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DefineConstants>TRACE;JavaScript</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DefineConstants>TRACE;JavaScript</DefineConstants>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="..\RulesDSD\AssemblyInfo.fs">
+      <Link>AssemblyInfo.fs</Link>
+    </Compile>
+    <Compile Include="..\RulesDSD\syntax.fs">
+      <Link>syntax.fs</Link>
+    </Compile>
+    <Compile Include="..\RulesDSD\concreteProcess.fs">
+      <Link>concreteProcess.fs</Link>
+    </Compile>
+    <Compile Include="..\RulesDSD\substitution.fs">
+      <Link>substitution.fs</Link>
+    </Compile>
+    <Compile Include="..\RulesDSD\unification.fs">
+      <Link>unification.fs</Link>
+    </Compile>
+    <Compile Include="..\RulesDSD\processEquality.fs">
+      <Link>processEquality.fs</Link>
+    </Compile>
+    <Compile Include="..\RulesDSD\resolution.fs">
+      <Link>resolution.fs</Link>
+    </Compile>
+    <Compile Include="..\RulesDSD\parser.fs">
+      <Link>parser.fs</Link>
+    </Compile>
+    <Content Include="App.config" />
+    <None Include="paket.references" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\CRNEngine\CRNEngineJS\CRNEngineJS.fsproj" />
+    <ProjectReference Include="..\..\PDESolvers\ReactionDiffusionJS\ReactionDiffusionJS.fsproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Oslo.FSharp.WebSharper">
+      <HintPath>..\..\Lib\Oslo-FSharp.websharper\Oslo.FSharp.WebSharper.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <Import Project="..\..\.paket\Paket.Restore.targets" />
+</Project>
