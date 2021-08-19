@@ -7,7 +7,7 @@ on:
     branches: [ main ]
 
 jobs:
-  build:
+  Prepare:
     runs-on: windows-2019
 
     steps:
@@ -20,7 +20,12 @@ jobs:
       run: dotnet tool restore
     - name: Restore dependencies
       run: dotnet restore CRNEngine/CRNEngineCli.sln
-    - name: Build with VS
+      
+  CRN:
+    runs-on: windows-2019
+    needs: Prepare
+    steps:
+    - name: Build
       shell: cmd
       run: msbuild CRNEngine/CRNEngineCli.sln /p:Configuration=Release /p:Platform=x64
     - name: Tests 
