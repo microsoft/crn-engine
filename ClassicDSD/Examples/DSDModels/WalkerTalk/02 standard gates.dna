@@ -1,0 +1,7 @@
+( <a b c>
+| {1 2 3}
+| [hello world]
+| <upper left>{lower left}[middle]{lower right}<upper right>
+| <ul_1>{ll_1}[m_1]{lr_1}<ur_1>:<ul_2>{ll_2}[m_2]{lr_2}<ur_2>
+| <ul_1>{ll_1}[m_1]{lr_1}<ur_1>::<ul_2>{ll_2}[m_2]{lr_2}<ur_2>
+)

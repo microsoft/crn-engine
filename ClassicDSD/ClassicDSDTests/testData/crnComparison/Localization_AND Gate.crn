@@ -1,0 +1,24 @@
+directive sample 0.0,18000.0 1000
+directive plot "<C>"
+directive simulation cme
+directive parameters
+  [ in1 = 0.0
+  ; in2 = 0.0
+  ; c0 = 50.0 ]
+directive sweep mysweep =
+  { in1 = [0.0, 1.0]
+  , in2 = [0.0, 1.0] }
+
+init "{T^*}[A T^]:[B T^]<C>" 1.0 |
+init "{T^*}[C]" 1.0 |
+init "<T^ A>" in1 |
+init "[T^ A]{T^*}:[B T^]<C>" 0.0 |
+init "<A T^>" 0.0 |
+init "<T^ B>" in2 |
+init "[T^ A]:[T^ B]{T^*}" 0.0 |
+init "<B T^ C>" 0.0 |
+init "<B>[T^ C]" 0.0 |
+init "<C>" 0.0 |
+"{T^*}[A T^]:[B T^]<C>" + "<T^ A>" <->{(c0 * 5E-05)}{(c0 * 5E-05)} "[T^ A]{T^*}:[B T^]<C>" + "<A T^>" |
+"{T^*}[C]" + "<B T^ C>" ->{(c0 * 5E-05)} "<B>[T^ C]" + "<C>" |
+"[T^ A]{T^*}:[B T^]<C>" + "<T^ B>" <->{(c0 * 5E-05)}{(c0 * 5E-05)} "[T^ A]:[T^ B]{T^*}" + "<B T^ C>"

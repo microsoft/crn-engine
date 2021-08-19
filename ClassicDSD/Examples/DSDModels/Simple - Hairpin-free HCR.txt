@@ -1,0 +1,10 @@
+directive simulation {initial=0; final=10000; points=1000; plots=[]}
+directive polymers
+directive jit
+def XS = 1000.0
+def N = 3.0
+( <t^ a>
+| N * {t^*}[a u^]{b*}
+| XS * [a]{u^*}
+| XS * [b]<t^>
+| N * <u^>[b t^]<a>)

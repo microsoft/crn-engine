@@ -1,0 +1,30 @@
+directive sample 0.0,18000.0 1000
+directive plot "<Ca Cb>"
+directive simulation cme
+directive parameters
+  [ in1 = 0.0
+  ; in2 = 0.0
+  ; c = 50.0 ]
+directive sweep mysweep =
+  { in1 = [0.0, 1.0]
+  , in2 = [0.0, 1.0] }
+
+init "{T^*}[Ba]:[Bb T^]<Ca Cb>" 1.0 |
+init "{T^*}[Aa]:[Ab T^]<Ca Cb>" 1.0 |
+init "{T^*}[Ca Cb]" 1.0 |
+init "<T^ Aa Ab>" in1 |
+init "[T^ Aa Ab]{T^*}" 0.0 |
+init "<Aa>" 0.0 |
+init "<Ab T^ Ca Cb>" 0.0 |
+init "<Ab>[T^ Ca Cb]" 0.0 |
+init "<Ca Cb>" 0.0 |
+init "<T^ Ba Bb>" in2 |
+init "[T^ Ba Bb]{T^*}" 0.0 |
+init "<Ba>" 0.0 |
+init "<Bb T^ Ca Cb>" 0.0 |
+init "<Bb>[T^ Ca Cb]" 0.0 |
+"{T^*}[Aa]:[Ab T^]<Ca Cb>" + "<T^ Aa Ab>" ->{(c * 5E-05)} "[T^ Aa Ab]{T^*}" + "<Aa>" + "<Ab T^ Ca Cb>" |
+"{T^*}[Ca Cb]" + "<Ab T^ Ca Cb>" <->{(c * 5E-05)}{(1E-09 * c)} "<Ab>[T^ Ca Cb]" + "<Ca Cb>" |
+"{T^*}[Ba]:[Bb T^]<Ca Cb>" + "<T^ Ba Bb>" ->{(c * 5E-05)} "[T^ Ba Bb]{T^*}" + "<Ba>" + "<Bb T^ Ca Cb>" |
+"<Ab>[T^ Ca Cb]" + "<Bb T^ Ca Cb>" <->{(1E-09 * c)}{(1E-09 * c)} "<Bb>[T^ Ca Cb]" + "<Ab T^ Ca Cb>" |
+"{T^*}[Ca Cb]" + "<Bb T^ Ca Cb>" <->{(c * 5E-05)}{(1E-09 * c)} "<Bb>[T^ Ca Cb]" + "<Ca Cb>"

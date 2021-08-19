@@ -1,0 +1,188 @@
+directive deterministic { stiff=true }
+directive simulator deterministic
+directive parameters [
+  deg = 0.0008; cat = 0.0008; pol = 0.0167; nick = 0.0167; ann = 0.01; //0.01, 0.001
+  bind = 5.4E-06; bind1 = 5E-05; unbind = 0.1126; bind2 = 0.001; //0.001, 5.4e-6
+  Cmax = 1000 ; c = 0.0008; kt = 0.001; ku = 0.001; s = 2; x0 = 4; //4, 8
+]
+directive declare
+//directive simulation { final=10000; plots=[ X(); X'(); Y(); Y'(); R(); E(); E'(); V(); V'() ] }
+//directive simulation { final=500000; plots=[ [R()]-[R'()]; [V()]-[V'()]; [Y()]-[Y'()] ] }
+directive simulation { final=150000; plots=[ [R()]-[R'()]; [V()]-[V'()]; [Y()]-[Y'()]; [L()]-[L'()] ] }
+
+//------------------ RNA Enzymes  ------------------
+directive compilation infinite
+def kbind = bind1
+dom x1 = {colour = "red"; bind = kbind; unbind = unbind}
+dom x2 = {colour = "red"; bind = kbind; unbind = unbind}
+dom r1 = {colour = "purple"; bind = kbind; unbind = unbind}
+dom r2 = {colour = "purple"; bind = kbind; unbind = unbind}
+dom e1 = {colour = "blue"; bind = kbind; unbind = unbind}
+dom e2 = {colour = "blue"; bind = kbind; unbind = unbind}
+dom v1 = {colour = "orange"; bind = kbind; unbind = unbind}
+dom v2 = {colour = "orange"; bind = kbind; unbind = unbind}
+dom y1 = {colour = "green"; bind = kbind; unbind = unbind}
+dom y2 = {colour = "green"; bind = kbind; unbind = unbind}
+dom t = {colour = "cyan"; bind = bind2; unbind = unbind}
+dom u = {colour = "magenta"; bind = bind2; unbind = unbind}
+dom rh = {colour = "brown"}
+dom eh = {colour = "brown"}
+dom vh = {colour = "brown"}
+dom xh = {colour = "brown"}
+dom yh = {colour = "brown"}
+dom dx = {bind = ann; subdomains = [x1;x2]}
+dom dr = {bind = ann; subdomains = [r1;r2]}
+dom de = {bind = ann; subdomains = [e1;e2]}
+dom dv = {bind = ann; subdomains = [v1;v2]}
+dom dy = {bind = ann; subdomains = [y1;y2]}
+
+new rs new rs' new es new es' new vs new vs'
+new xs new xs' new ys new ys' new load new load' new prom
+
+def Signal((x1,x2,xs,xs',xh)) = <xs x1^ x2^ xh>
+def Signal'((x1,x2,xs,xs',xh)) = <xs' x2^* x1^* xh>
+def Template((x1,x2,xs,xs',xh),(y1,y2,ys,ys',yh)) = <u^*>[xs* t^*]::[prom ys y1^ y2^ yh]
+def Template'((x1,x2,xs,xs',xh),(y1,y2,ys,ys',yh)) = <u^*>[xs'* t^*]::[prom ys' y2^* y1^* yh]
+def TemplateOff((x1,x2,xs,xs',xh),(y1,y2,ys,ys',yh)) = [u^* xs*]<t^*>::[prom ys y1^ y2^ yh]
+def TemplateOff'((x1,x2,xs,xs',xh),(y1,y2,ys,ys',yh)) = [u^* xs'*]<t^*>::[prom ys' y2^* y1^* yh]
+def TemplateOffInv((x1,x2,xs,xs',xh),(y1,y2,ys,ys',yh)) = [u^* xs*]<t^*>::[prom ys' y2^* y1^* yh]
+def TemplateOffInv'((x1,x2,xs,xs',xh),(y1,y2,ys,ys',yh)) = [u^* xs'*]<t^*>::[prom ys y1^ y2^ yh]
+def TemplateInv((x1,x2,xs,xs',xh),(y1,y2,ys,ys',yh)) = <u^*>[xs* t^*]::[prom ys' y2^* y1^* yh]
+def TemplateInv'((x1,x2,xs,xs',xh),(y1,y2,ys,ys',yh)) = <u^*>[xs'* t^*]::[prom ys y1^ y2^ yh]
+def Transducer((x1,x2,xs,xs',xh)) = [t^ xs]{x1^*}
+def Transducer'((x1,x2,xs,xs',xh)) = [t^ xs']{x2^}
+def TransducerRev((x1,x2,xs,xs',xh)) = {t^*}[xs x1^]<x2^ xh>
+def TransducerRev'((x1,x2,xs,xs',xh)) = {t^*}[xs' x2^*]<x1^* xh>
+def Rev((x1,x2,xs,xs',xh)) = <xs u^>
+def Rev'((x1,x2,xs,xs',xh)) = <xs' u^>
+def Fwd(t,(x1,x2,xs,xs',xh)) = <t^ xs>
+def Fwd'(t,(x1,x2,xs,xs',xh)) = <t^ xs'>
+def Ann((x1,x2,xs,xs',xh)) = <xs>{xh}[x1^ x2^]{xs'}<xh>
+
+def r = (r1,r2,rs,rs',rh)
+def e = (e1,e2,es,es',eh)
+def v = (v1,v2,vs,vs',vh)
+def y = (y1,y2,ys,ys',yh)
+def x = (x1,x2,xs,xs',xh)
+
+def Catalysis(k,x,y) = 
+( Cmax*k * TemplateOff(x,y)
+| Cmax*k * Transducer(x)
+| Cmax*k * TransducerRev(x)
+| Cmax*k * Rev(x)
+| rxn Template(x,y) ->{pol} Template(x,y) + Signal(y)
+| 0 * Template(x,y) | 0* Fwd(t,x)
+)
+def Catalysis'(k,x,y) = 
+( Cmax*k * TemplateOff'(x,y)
+| Cmax*k * Transducer'(x)
+| Cmax*k * TransducerRev'(x)
+| Cmax*k * Rev'(x)
+| rxn Template'(x,y) ->{pol} Template'(x,y) + Signal'(y)
+)
+def CatalysisInv(k,x,y) = 
+( Cmax*k * TemplateOffInv(x,y)
+| Cmax*k * Transducer(x)
+| Cmax*k * TransducerRev(x)
+| Cmax*k * Rev(x)
+| rxn TemplateInv(x,y) ->{pol} TemplateInv(x,y) + Signal'(y)
+)
+def CatalysisInv'(k,x,y) = 
+( Cmax*k * TemplateOffInv'(x,y)
+| Cmax*k * Transducer'(x)
+| Cmax*k * TransducerRev'(x)
+| Cmax*k * Rev'(x)
+| rxn TemplateInv'(x,y) ->{pol} TemplateInv'(x,y) + Signal(y)
+)
+def Degradation(k,x) = ( rxn Signal(x) ->{deg/k} )
+def Degradation'(k,x) = ( rxn Signal'(x) ->{deg/k} )
+def Annihilation(x) = 0*Ann(x)
+
+//------------------ Blocks --------------------------------
+def Catalysis2(k,x,y) = ( Catalysis(k,x,y) | Catalysis'(k,x,y) )
+def Catalysis2Inv(k,x,y) = ( CatalysisInv(k,x,y) | CatalysisInv'(k,x,y) )
+def Degradation2(k,x) = ( Degradation(k,x) | Degradation'(k,x) )   
+def Integration(kI,x,y) = Catalysis2(kI,x,y) 
+def Gain(k,kD,x,y) = ( Catalysis2(k,x,y) | Degradation2(kD,y) )
+def Summation(k1,k2,kD,x1,x2,y) = 
+( Catalysis2(k1,x1,y) 
+| Catalysis2(k2,x2,y)
+| Degradation2(kD,y)
+)
+def SummationInv(k1,k2,kD,x1,x2,y) = 
+( Catalysis2(k1,x1,y) 
+| Catalysis2Inv(k2,x2,y)
+| Degradation2(kD,y)
+)
+def PI(kP,kI, r, y, v,e) = 
+( SummationInv(1,1,1,r,y,e)
+| Integration(kI,e,x)
+| Summation(kP,1,1,e,x,v)
+| Annihilation(x)
+)
+def R()  = Signal(r)
+def R'() = Signal'(r)
+def E()  = Signal(e)
+def E'() = Signal'(e)
+def V()  = Signal(v)
+def V'() = Signal'(v)
+def Y()  = Signal(y)
+def Y'() = Signal'(y)
+def X() = Signal(x)
+def X'() = Signal'(x)
+def L() = <load>
+def L'() = <load'>
+def Plant(v, y) =
+( rxn Signal(v)  ->{0.2} Signal(v)  + Signal(y)
+| rxn Signal'(v) ->{0.2} Signal'(v) + Signal'(y)
+| rxn Signal(y)  ->{0.1}
+| rxn Signal'(y) ->{0.1}
+| rxn Signal'(y) + Signal(y) ->{0.1}
+| rxn L() + Signal(y)   ->{0.01} L()
+| rxn L'() + Signal'(y) ->{0.01} L'()
+| rxn L() + L'() -> {1.0}
+)
+
+//------------------ Full system  ----------------------------
+def System() =
+( 0 * V() | 0 * V'()
+| 0 * Y() | 0 * Y'() 
+| 0 * L() | 0 * L'()
+| x0* R() | 0 * R'() 
+| PI(1,1,r,y,v,e)
+| Plant(v,y)
+| Annihilation(r)
+| Annihilation(v)
+| Annihilation(e)
+)
+def VarySignal() = ( 2*x0 * R'() @ 50000 | 2*x0 * R() @ 100000 )
+def VaryLoad() = ( 2*L() @ 50000 | L'() @ 100000  )
+def VaryLong() =
+( 2*x0 * R'()  @  50000  | 2*x0 * R() @ 100000
+| 2*x0 * R'()  @  150000 | 2*x0 * R() @ 200000
+| 2*x0 * R'()  @  250000 | 2*x0 * R() @ 300000
+| 2*x0 * R'()  @  350000 | 2*x0 * R() @ 400000
+| 2*x0 * R'()  @  450000 
+) 
+
+//------------------ Tests -----------------------------------
+def TestAnnihilation() = ( 2*X() | X'()| Annihilation(x) )
+def TestCatalysis() = ( X() | 0*Y() | Catalysis(1,x,y) )
+def TestDegradation() = ( X() | 0*X'() | Degradation(1,x) )
+def TestGain() = ( X() | 0*Y() | 0*Y'() | Gain(1,2,x,y) | Annihilation(y) )
+def TestSummation() = ( 2*X() | E() | 0*V() | 0*V'() | Summation(1,1,1,x,e,v) | Annihilation(v) )
+def TestSummationInv() = ( 2*Y() | R() | 0*E() | 0*E'() | SummationInv(1,1,1,y,r,e) | Annihilation(e) )
+
+//------------------ Run -------------------------------------
+(*
+( System() | VarySignal() )
+( System() | VaryLoad() )
+( System() | VaryLong() )
+TestAnnihilation()
+TestCatalysis()
+TestDegradation()
+TestGain()
+TestSummation() 
+TestSummationInv()
+*)
+( System() | VarySignal() )

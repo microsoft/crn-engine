@@ -1,0 +1,5 @@
+(* Example of the JIT state space expansion with a 5-monomer self-assembling chain. *)
+directive duration 1000.0 points 100
+directive simulation jit
+directive polymers
+( 5 * {t^*}:[x]:[y]::<t^ x> )

@@ -1,0 +1,16 @@
+directive sample 0.0,5000.0 1000
+directive plot sp_0; sp_4
+directive scale 1000.0
+directive parameters
+  [ e = 2.71828183
+  ; R = 0.0019872
+  ; T = 298.15 ]
+
+init sp_0 1.0 |
+init Tr_2 10.0 |
+init Tr_1 10.0 |
+init Tr 10.0 |
+Tr + sp_0 <->{0.0003}{0.1126} sp_1 |
+sp_3 + Tr_1 ->{0.0003} sp_5 + sp_4 |
+Tr_2 + sp_2 ->{0.0003} sp_7 + sp_6 |
+sp_1 <->{0.1126}{0.0003} sp_3 + sp_2

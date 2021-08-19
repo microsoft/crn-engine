@@ -1,0 +1,10 @@
+directive sample 0.0,10000.0 1000
+directive simulation jit
+
+init "<t^ a>" 1.0 |
+init "{t^*}[a u^]{b*}" 3.0 |
+init "[a]{u^*}" 1000.0 |
+init "[b]<t^>" 1000.0 |
+init "<u^>[b t^]<a>" 3.0 |
+init "[t^ a]:<a>[u^]{b*}" 0.0 |
+"{t^*}[a u^]{b*}" + "<t^ a>" ->{0.0003} "[t^ a]:<a>[u^]{b*}"

@@ -1,0 +1,21 @@
+*.js
+!webpack.config.js
+*.d.ts
+!declarations.d.ts
+Scripts/**/*.js
+Scripts/**/*.js.map
+Scripts/**/*.d.ts
+
+#residual files from before webpack
+Scripts/ClassicDSD
+Scripts/CodeEditor
+Scripts/CRN
+Scripts/CrnApp
+Scripts/CRNEngine
+Scripts/DsdGeneric
+Scripts/IDD
+Scripts/InferenceViewer
+Scripts/SimulationViewer
+Scripts/KnockoutGrid
+Scripts/MSAGL
+vs

@@ -1,0 +1,257 @@
+directive sample 0.0,250000.0 1000
+directive plot ("<t^ r>" - "<t^ r'>"); ("<t^ v>" - "<t^ v'>"); ("<t^ y>" - "<t^ y'>"); ("<load>" - "<load'>")
+directive simulation deterministicstiff
+directive parameters
+  [ c = 0.0008
+  ; x0 = 4.0
+  ; kt = 0.001
+  ; ku = 0.001
+  ; unbind = 0.1126
+  ; Cmax = 1000.0
+  ; s = 2.0 ]
+
+event "<load'>" 1.0 @ 200000.0 |
+event "<load>" 2.0 @ 150000.0 |
+event "<t^ r>" ((2.0 * s) * x0) @ 100000.0 |
+event "<t^ r'>" ((2.0 * s) * x0) @ 50000.0 |
+init "{t^*}[x t^]:[x']" Cmax |
+init "{t^*}[x' t^]:[x]" Cmax |
+init "<x t^>" Cmax |
+init "<x' t^>" Cmax |
+init "{t^*}[r t^]:[r']" Cmax |
+init "{t^*}[r' t^]:[r]" Cmax |
+init "<r t^>" Cmax |
+init "<r' t^>" Cmax |
+init "{t^*}[y t^]:[y']" Cmax |
+init "{t^*}[y' t^]:[y]" Cmax |
+init "<y t^>" Cmax |
+init "<y' t^>" Cmax |
+init "{t^*}[v t^]:[v']" Cmax |
+init "{t^*}[v' t^]:[v]" Cmax |
+init "<v t^>" Cmax |
+init "<v' t^>" Cmax |
+init "{t^*}[e t^]:[e']" Cmax |
+init "{t^*}[e' t^]:[e]" Cmax |
+init "<e t^>" Cmax |
+init "<e' t^>" Cmax |
+init "{t^(c)*}[r u^]:[e u^]:[i]" Cmax |
+init "[i]:[t^ r]{u^*}" Cmax |
+init "{t^(c)*}[r' u^]:[e' u^]:[i]" Cmax |
+init "[i]:[t^ r']{u^*}" Cmax |
+init "{t^(c)*}[y' u^]:[e u^]:[i]" Cmax |
+init "[i]:[t^ y']{u^*}" Cmax |
+init "<u^ e>" (2.0 * Cmax) |
+init "{t^(c)*}[y u^]:[e' u^]:[i]" Cmax |
+init "[i]:[t^ y]{u^*}" Cmax |
+init "<u^ e'>" (2.0 * Cmax) |
+init "{t^(c)*}[e u^]:[x u^]:[i]" Cmax |
+init "<u^ x>" Cmax |
+init "{t^(c)*}[e' u^]:[x' u^]:[i]" Cmax |
+init "<u^ x'>" Cmax |
+init "{t^(c)*}[e u^]:[v u^]:[i]" Cmax |
+init "[i]:[t^ e]{u^*}" (4.0 * Cmax) |
+init "{t^(c)*}[e' u^]:[v' u^]:[i]" Cmax |
+init "[i]:[t^ e']{u^*}" (4.0 * Cmax) |
+init "{t^(c)*}[x u^]:[v u^]:[i]" Cmax |
+init "[i]:[t^ x]{u^*}" (2.0 * Cmax) |
+init "[i]:[t^ v]{u^*}" (2.0 * Cmax) |
+init "<u^ v>" (2.0 * Cmax) |
+init "{t^(c)*}[x' u^]:[v' u^]:[i]" Cmax |
+init "[i]:[t^ x']{u^*}" (2.0 * Cmax) |
+init "[i]:[t^ v']{u^*}" (2.0 * Cmax) |
+init "<u^ v'>" (2.0 * Cmax) |
+init "<u^ i>" (10.0 * Cmax) |
+init "<i t^>" (10.0 * Cmax) |
+init "{t^(c)*}[e]" Cmax |
+init "{t^(c)*}[e']" Cmax |
+init "{t^(c)*}[v]" Cmax |
+init "{t^(c)*}[v']" Cmax |
+init "<load>" 0.0 |
+init "<load'>" 0.0 |
+init "<t^ r>" (x0 * s) |
+init "[t^ r]{t^*}:[r']" 0.0 |
+init "[t^(c) r]{u^*}:[e u^]:[i]" 0.0 |
+init "[t^(c) r]:[u^ e]{u^*}:[i]" 0.0 |
+init "[t^(c) r]:[u^ e]:[u^ i]" 0.0 |
+init "<i>" 0.0 |
+init "<e u^>" 0.0 |
+init "[i]{t^*}:[e u^]" 0.0 |
+init "[i t^]:[e u^]" 0.0 |
+init "<t^ e>" 0.0 |
+init "[t^ e]{t^*}:[e']" 0.0 |
+init "[t^(c) e]{u^*}:[x u^]:[i]" 0.0 |
+init "[t^(c) e]:[u^ x]{u^*}:[i]" 0.0 |
+init "[t^(c) e]:[u^ x]:[u^ i]" 0.0 |
+init "<x u^>" 0.0 |
+init "[i]{t^*}:[x u^]" 0.0 |
+init "[i t^]:[x u^]" 0.0 |
+init "<t^ x>" 0.0 |
+init "[t^ x]{t^*}:[x']" 0.0 |
+init "[t^(c) x]{u^*}:[v u^]:[i]" 0.0 |
+init "[t^(c) x]:[u^ v]{u^*}:[i]" 0.0 |
+init "[t^(c) x]:[u^ v]:[u^ i]" 0.0 |
+init "<v u^>" 0.0 |
+init "[i]{t^*}:[v u^]" 0.0 |
+init "[i t^]:[v u^]" 0.0 |
+init "<t^ v>" 0.0 |
+init "[t^ v]{t^*}:[v']" 0.0 |
+init "[t^(c) v]" 0.0 |
+init "<v>" 0.0 |
+init "[t^(c) e]{u^*}:[v u^]:[i]" 0.0 |
+init "[t^(c) e]:[u^ v]{u^*}:[i]" 0.0 |
+init "[t^(c) e]:[u^ v]:[u^ i]" 0.0 |
+init "[t^(c) e]" 0.0 |
+init "<e>" 0.0 |
+init "<r u^>" 0.0 |
+init "[i]{t^*}:[r u^]" 0.0 |
+init "[i t^]:[r u^]" 0.0 |
+init "<t^ r'>" 0.0 |
+init "[t^ r']{t^*}:[r]" 0.0 |
+init "[t^ r']:[t^ r]" 0.0 |
+init "<r>" 0.0 |
+init "[t^(c) r']{u^*}:[e' u^]:[i]" 0.0 |
+init "[t^(c) r']:[u^ e']{u^*}:[i]" 0.0 |
+init "[t^(c) r']:[u^ e']:[u^ i]" 0.0 |
+init "<e' u^>" 0.0 |
+init "[i]{t^*}:[e' u^]" 0.0 |
+init "[i t^]:[e' u^]" 0.0 |
+init "<t^ e'>" 0.0 |
+init "[t^ e']{t^*}:[e]" 0.0 |
+init "[t^ e']:[t^ e]" 0.0 |
+init "[t^(c) e']{u^*}:[x' u^]:[i]" 0.0 |
+init "[t^(c) e']:[u^ x']{u^*}:[i]" 0.0 |
+init "[t^(c) e']:[u^ x']:[u^ i]" 0.0 |
+init "<x' u^>" 0.0 |
+init "[i]{t^*}:[x' u^]" 0.0 |
+init "[i t^]:[x' u^]" 0.0 |
+init "<t^ x'>" 0.0 |
+init "[t^ x']{t^*}:[x]" 0.0 |
+init "[t^ x']:[t^ x]" 0.0 |
+init "<x>" 0.0 |
+init "[t^(c) x']{u^*}:[v' u^]:[i]" 0.0 |
+init "[t^(c) x']:[u^ v']{u^*}:[i]" 0.0 |
+init "[t^(c) x']:[u^ v']:[u^ i]" 0.0 |
+init "<v' u^>" 0.0 |
+init "[i]{t^*}:[v' u^]" 0.0 |
+init "[i t^]:[v' u^]" 0.0 |
+init "<t^ v'>" 0.0 |
+init "[t^ v']{t^*}:[v]" 0.0 |
+init "[t^ v']:[t^ v]" 0.0 |
+init "[t^(c) v']" 0.0 |
+init "<v'>" 0.0 |
+init "[t^ v]:[t^ v']" 0.0 |
+init "[t^ x]:[t^ x']" 0.0 |
+init "<x'>" 0.0 |
+init "[t^(c) e']{u^*}:[v' u^]:[i]" 0.0 |
+init "[t^(c) e']:[u^ v']{u^*}:[i]" 0.0 |
+init "[t^(c) e']:[u^ v']:[u^ i]" 0.0 |
+init "[t^(c) e']" 0.0 |
+init "<e'>" 0.0 |
+init "[t^ e]:[t^ e']" 0.0 |
+init "<r' u^>" 0.0 |
+init "[i]{t^*}:[r' u^]" 0.0 |
+init "[i t^]:[r' u^]" 0.0 |
+init "[t^ r]:[t^ r']" 0.0 |
+init "<r'>" 0.0 |
+init "<t^ y>" 0.0 |
+init "[t^ y]{t^*}:[y']" 0.0 |
+init "[t^(c) y]{u^*}:[e' u^]:[i]" 0.0 |
+init "[t^(c) y]:[u^ e']{u^*}:[i]" 0.0 |
+init "[t^(c) y]:[u^ e']:[u^ i]" 0.0 |
+init "<y u^>" 0.0 |
+init "[i]{t^*}:[y u^]" 0.0 |
+init "[i t^]:[y u^]" 0.0 |
+init "<t^ y'>" 0.0 |
+init "[t^ y']{t^*}:[y]" 0.0 |
+init "[t^ y']:[t^ y]" 0.0 |
+init "<y>" 0.0 |
+init "[t^(c) y']{u^*}:[e u^]:[i]" 0.0 |
+init "[t^(c) y']:[u^ e]{u^*}:[i]" 0.0 |
+init "[t^(c) y']:[u^ e]:[u^ i]" 0.0 |
+init "<y' u^>" 0.0 |
+init "[i]{t^*}:[y' u^]" 0.0 |
+init "[i t^]:[y' u^]" 0.0 |
+init "[t^ y]:[t^ y']" 0.0 |
+init "<y'>" 0.0 |
+"<t^ v>" ->{0.2} "<t^ v>" + "<t^ y>" |
+"<t^ v'>" ->{0.2} "<t^ v'>" + "<t^ y'>" |
+"<t^ y>" ->{0.1} |
+"<t^ y'>" ->{0.1} |
+"<t^ y'>" + "<t^ y>" ->{1.0} |
+"<load>" + "<t^ y>" ->{0.01} "<load>" |
+"<load'>" + "<t^ y'>" ->{0.01} "<load'>" |
+"<load>" + "<load'>" ->{1.0} |
+"{t^*}[r t^]:[r']" + "<t^ r>" <->{kt}{kt} "[t^ r]{t^*}:[r']" + "<r t^>" |
+"[t^(c) r]:[u^ e]{u^*}:[i]" + "<u^ i>" ->{ku} "[t^(c) r]:[u^ e]:[u^ i]" + "<i>" |
+"[t^(c) r]{u^*}:[e u^]:[i]" + "<u^ e>" <->{ku}{ku} "[t^(c) r]:[u^ e]{u^*}:[i]" + "<e u^>" |
+"[i]{t^*}:[e u^]" + "<i t^>" ->{kt} "[i t^]:[e u^]" + "<i>" |
+"{t^(c)*}[e]" + "<t^ e>" ->{(kt * c)} "[t^(c) e]" + "<e>" |
+"[i]:[t^ e]{u^*}" + "<e u^>" <->{ku}{kt} "[i]{t^*}:[e u^]" + "<t^ e>" |
+"{t^*}[e t^]:[e']" + "<t^ e>" <->{kt}{kt} "[t^ e]{t^*}:[e']" + "<e t^>" |
+"{t^(c)*}[e u^]:[x u^]:[i]" + "<t^ e>" <->{(kt * c)}{ku} "[t^(c) e]{u^*}:[x u^]:[i]" + "<e u^>" |
+"[t^(c) e]:[u^ x]{u^*}:[i]" + "<u^ i>" ->{ku} "[t^(c) e]:[u^ x]:[u^ i]" + "<i>" |
+"[t^(c) e]{u^*}:[x u^]:[i]" + "<u^ x>" <->{ku}{ku} "[t^(c) e]:[u^ x]{u^*}:[i]" + "<x u^>" |
+"[i]{t^*}:[x u^]" + "<i t^>" ->{kt} "[i t^]:[x u^]" + "<i>" |
+"[i]:[t^ x]{u^*}" + "<x u^>" <->{ku}{kt} "[i]{t^*}:[x u^]" + "<t^ x>" |
+"{t^*}[x t^]:[x']" + "<t^ x>" <->{kt}{kt} "[t^ x]{t^*}:[x']" + "<x t^>" |
+"{t^(c)*}[x u^]:[v u^]:[i]" + "<t^ x>" <->{(kt * c)}{ku} "[t^(c) x]{u^*}:[v u^]:[i]" + "<x u^>" |
+"[t^(c) x]:[u^ v]{u^*}:[i]" + "<u^ i>" ->{ku} "[t^(c) x]:[u^ v]:[u^ i]" + "<i>" |
+"[t^(c) x]{u^*}:[v u^]:[i]" + "<u^ v>" <->{ku}{ku} "[t^(c) x]:[u^ v]{u^*}:[i]" + "<v u^>" |
+"[i]{t^*}:[v u^]" + "<i t^>" ->{kt} "[i t^]:[v u^]" + "<i>" |
+"{t^(c)*}[v]" + "<t^ v>" ->{(kt * c)} "[t^(c) v]" + "<v>" |
+"[i]:[t^ v]{u^*}" + "<v u^>" <->{ku}{kt} "[i]{t^*}:[v u^]" + "<t^ v>" |
+"{t^*}[v t^]:[v']" + "<t^ v>" <->{kt}{kt} "[t^ v]{t^*}:[v']" + "<v t^>" |
+"{t^(c)*}[e u^]:[v u^]:[i]" + "<t^ e>" <->{(kt * c)}{ku} "[t^(c) e]{u^*}:[v u^]:[i]" + "<e u^>" |
+"[t^(c) e]:[u^ v]{u^*}:[i]" + "<u^ i>" ->{ku} "[t^(c) e]:[u^ v]:[u^ i]" + "<i>" |
+"[t^(c) e]{u^*}:[v u^]:[i]" + "<u^ v>" <->{ku}{ku} "[t^(c) e]:[u^ v]{u^*}:[i]" + "<v u^>" |
+"{t^(c)*}[r u^]:[e u^]:[i]" + "<t^ r>" <->{(kt * c)}{ku} "[t^(c) r]{u^*}:[e u^]:[i]" + "<r u^>" |
+"[i]{t^*}:[r u^]" + "<i t^>" ->{kt} "[i t^]:[r u^]" + "<i>" |
+"[i]:[t^ r]{u^*}" + "<r u^>" <->{ku}{kt} "[i]{t^*}:[r u^]" + "<t^ r>" |
+"[t^ r]{t^*}:[r']" + "<t^ r'>" ->{kt} "[t^ r]:[t^ r']" + "<r'>" |
+"{t^*}[r' t^]:[r]" + "<t^ r'>" <->{kt}{kt} "[t^ r']{t^*}:[r]" + "<r' t^>" |
+"[t^ r']{t^*}:[r]" + "<t^ r>" ->{kt} "[t^ r']:[t^ r]" + "<r>" |
+"[t^(c) r']:[u^ e']{u^*}:[i]" + "<u^ i>" ->{ku} "[t^(c) r']:[u^ e']:[u^ i]" + "<i>" |
+"[t^(c) r']{u^*}:[e' u^]:[i]" + "<u^ e'>" <->{ku}{ku} "[t^(c) r']:[u^ e']{u^*}:[i]" + "<e' u^>" |
+"[i]{t^*}:[e' u^]" + "<i t^>" ->{kt} "[i t^]:[e' u^]" + "<i>" |
+"{t^(c)*}[e']" + "<t^ e'>" ->{(kt * c)} "[t^(c) e']" + "<e'>" |
+"[t^ e]{t^*}:[e']" + "<t^ e'>" ->{kt} "[t^ e]:[t^ e']" + "<e'>" |
+"[i]:[t^ e']{u^*}" + "<e' u^>" <->{ku}{kt} "[i]{t^*}:[e' u^]" + "<t^ e'>" |
+"{t^*}[e' t^]:[e]" + "<t^ e'>" <->{kt}{kt} "[t^ e']{t^*}:[e]" + "<e' t^>" |
+"[t^ e']{t^*}:[e]" + "<t^ e>" ->{kt} "[t^ e']:[t^ e]" + "<e>" |
+"{t^(c)*}[e' u^]:[x' u^]:[i]" + "<t^ e'>" <->{(kt * c)}{ku} "[t^(c) e']{u^*}:[x' u^]:[i]" + "<e' u^>" |
+"[t^(c) e']:[u^ x']{u^*}:[i]" + "<u^ i>" ->{ku} "[t^(c) e']:[u^ x']:[u^ i]" + "<i>" |
+"[t^(c) e']{u^*}:[x' u^]:[i]" + "<u^ x'>" <->{ku}{ku} "[t^(c) e']:[u^ x']{u^*}:[i]" + "<x' u^>" |
+"[i]{t^*}:[x' u^]" + "<i t^>" ->{kt} "[i t^]:[x' u^]" + "<i>" |
+"[t^ x]{t^*}:[x']" + "<t^ x'>" ->{kt} "[t^ x]:[t^ x']" + "<x'>" |
+"[i]:[t^ x']{u^*}" + "<x' u^>" <->{ku}{kt} "[i]{t^*}:[x' u^]" + "<t^ x'>" |
+"{t^*}[x' t^]:[x]" + "<t^ x'>" <->{kt}{kt} "[t^ x']{t^*}:[x]" + "<x' t^>" |
+"[t^ x']{t^*}:[x]" + "<t^ x>" ->{kt} "[t^ x']:[t^ x]" + "<x>" |
+"{t^(c)*}[x' u^]:[v' u^]:[i]" + "<t^ x'>" <->{(kt * c)}{ku} "[t^(c) x']{u^*}:[v' u^]:[i]" + "<x' u^>" |
+"[t^(c) x']:[u^ v']{u^*}:[i]" + "<u^ i>" ->{ku} "[t^(c) x']:[u^ v']:[u^ i]" + "<i>" |
+"[t^(c) x']{u^*}:[v' u^]:[i]" + "<u^ v'>" <->{ku}{ku} "[t^(c) x']:[u^ v']{u^*}:[i]" + "<v' u^>" |
+"[i]{t^*}:[v' u^]" + "<i t^>" ->{kt} "[i t^]:[v' u^]" + "<i>" |
+"{t^(c)*}[v']" + "<t^ v'>" ->{(kt * c)} "[t^(c) v']" + "<v'>" |
+"[t^ v]{t^*}:[v']" + "<t^ v'>" ->{kt} "[t^ v]:[t^ v']" + "<v'>" |
+"[i]:[t^ v']{u^*}" + "<v' u^>" <->{ku}{kt} "[i]{t^*}:[v' u^]" + "<t^ v'>" |
+"{t^*}[v' t^]:[v]" + "<t^ v'>" <->{kt}{kt} "[t^ v']{t^*}:[v]" + "<v' t^>" |
+"[t^ v']{t^*}:[v]" + "<t^ v>" ->{kt} "[t^ v']:[t^ v]" + "<v>" |
+"{t^(c)*}[e' u^]:[v' u^]:[i]" + "<t^ e'>" <->{(kt * c)}{ku} "[t^(c) e']{u^*}:[v' u^]:[i]" + "<e' u^>" |
+"[t^(c) e']:[u^ v']{u^*}:[i]" + "<u^ i>" ->{ku} "[t^(c) e']:[u^ v']:[u^ i]" + "<i>" |
+"[t^(c) e']{u^*}:[v' u^]:[i]" + "<u^ v'>" <->{ku}{ku} "[t^(c) e']:[u^ v']{u^*}:[i]" + "<v' u^>" |
+"{t^(c)*}[r' u^]:[e' u^]:[i]" + "<t^ r'>" <->{(kt * c)}{ku} "[t^(c) r']{u^*}:[e' u^]:[i]" + "<r' u^>" |
+"[i]{t^*}:[r' u^]" + "<i t^>" ->{kt} "[i t^]:[r' u^]" + "<i>" |
+"[i]:[t^ r']{u^*}" + "<r' u^>" <->{ku}{kt} "[i]{t^*}:[r' u^]" + "<t^ r'>" |
+"{t^*}[y t^]:[y']" + "<t^ y>" <->{kt}{kt} "[t^ y]{t^*}:[y']" + "<y t^>" |
+"[t^(c) y]:[u^ e']{u^*}:[i]" + "<u^ i>" ->{ku} "[t^(c) y]:[u^ e']:[u^ i]" + "<i>" |
+"[t^(c) y]{u^*}:[e' u^]:[i]" + "<u^ e'>" <->{ku}{ku} "[t^(c) y]:[u^ e']{u^*}:[i]" + "<e' u^>" |
+"{t^(c)*}[y u^]:[e' u^]:[i]" + "<t^ y>" <->{(kt * c)}{ku} "[t^(c) y]{u^*}:[e' u^]:[i]" + "<y u^>" |
+"[i]{t^*}:[y u^]" + "<i t^>" ->{kt} "[i t^]:[y u^]" + "<i>" |
+"[i]:[t^ y]{u^*}" + "<y u^>" <->{ku}{kt} "[i]{t^*}:[y u^]" + "<t^ y>" |
+"[t^ y]{t^*}:[y']" + "<t^ y'>" ->{kt} "[t^ y]:[t^ y']" + "<y'>" |
+"{t^*}[y' t^]:[y]" + "<t^ y'>" <->{kt}{kt} "[t^ y']{t^*}:[y]" + "<y' t^>" |
+"[t^ y']{t^*}:[y]" + "<t^ y>" ->{kt} "[t^ y']:[t^ y]" + "<y>" |
+"[t^(c) y']:[u^ e]{u^*}:[i]" + "<u^ i>" ->{ku} "[t^(c) y']:[u^ e]:[u^ i]" + "<i>" |
+"[t^(c) y']{u^*}:[e u^]:[i]" + "<u^ e>" <->{ku}{ku} "[t^(c) y']:[u^ e]{u^*}:[i]" + "<e u^>" |
+"{t^(c)*}[y' u^]:[e u^]:[i]" + "<t^ y'>" <->{(kt * c)}{ku} "[t^(c) y']{u^*}:[e u^]:[i]" + "<y' u^>" |
+"[i]{t^*}:[y' u^]" + "<i t^>" ->{kt} "[i t^]:[y' u^]" + "<i>" |
+"[i]:[t^ y']{u^*}" + "<y' u^>" <->{ku}{kt} "[i]{t^*}:[y' u^]" + "<t^ y'>"

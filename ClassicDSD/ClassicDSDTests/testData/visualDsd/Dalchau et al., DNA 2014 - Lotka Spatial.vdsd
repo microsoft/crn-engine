@@ -1,0 +1,117 @@
+directive sample 96*3600.0 3000
+directive plot <t^ x>; <t^ y>
+directive compilation infinite
+directive simulation spatial1d
+directive reltolerance 1e-6
+directive time s
+directive concentration nM
+directive declare
+directive parameters [
+    kt = 0.0001; 
+    NX = 1.0; 
+    NY = 1.0; 
+    NG = 200.0; 
+    NH = 200.0; 
+    c1 = 0.01; 
+    c2 = 0.01
+]
+
+directive dt 25.0
+directive xmax 0.1
+directive nx 101
+directive spatialplot <t^ x>
+directive defaultdiffusion 1e-10
+directive spatialic centralcore { width=0.1; species=<t^ x>; inner=1.0 }
+directive spatialic centralcore { width=0.1; species=<t^ y>; inner=1.0 }
+
+def ut = 0.1
+new t @kt,ut
+new u @kt,ut
+new fl@0.0,0.0
+
+def Strand(a) = <t^ a>
+def Reverse(a) = <a t^>
+def End(i) = <i t^>
+def Signal_Fork(c) = <c fl^>
+def Signal_Join(r) = <fl^ r>
+def Rep_Fork(c) = {t^*}[c]<fl^>
+def Rep_Join(r) = <fl^>[r]{t^*}
+def Deg(a) = {t^(c1)*}:[a]
+def Join_1(a,i) = {t^(c2)*}:[a u^]:[i]
+def Join_2(a,b,i) = {t^*}:[a t^]:[b u^]:[i]
+def Fork_2(i,c,b) = [i]:[t^ c]:[t^ b]{u^*}
+
+new x new y new i new rx new ry
+
+def X2X() = 
+( NG*Join_1(x,i)
+| NG*Fork_2(i,x,x)
+| NH*Reverse(x)
+| NH*Reverse(i)
+| NH*<u^ i>
+)
+def XY2Y() = 
+( NG*Join_2(x,y,i)
+| NG*Fork_2(i,y,y)
+| NH*Reverse(y)
+| NH*Reverse(i)
+| NH*<u^ i>
+)
+def DegY() = NG*Deg(y)
+
+def TestDegY(NY) = 
+( DegY()
+| NY*Strand(y)
+)
+def TestJoinX(NX) = 
+( NG*Join_1(x,i)
+| NX*Strand(x)
+| NG*Reverse(x)
+)
+def TestJoinXY(NX,NY) = 
+( NG*Join_2(x,y,i)
+| NX*Strand(x)
+| NY*Strand(y)
+| NG*Reverse(x)
+)
+
+def TestX2X(NX) = 
+( X2X()
+| NX*Strand(x)
+| NG*Reverse(x)
+)
+def TestXY2Y(NX,NY) = 
+( XY2Y()
+| NX*Strand(x)
+| NY*Strand(y)
+| NG*Reverse(x)
+| NG*Reverse(y)
+)
+def TestDegY(NY) = 
+( DegY()
+| NY*Strand(y)
+)
+def Lotka(NX,NY) = 
+( DegY()
+| X2X()
+| XY2Y()
+| NX*Strand(x)
+| NY*Strand(y)
+)
+
+Lotka(NX,NY)
+
+(*
+TestJoinX(NX)
+TestJoinXY(NX,NY)
+Lotka(NX,NY)
+TestDegY(NY)
+TestX2X(NX)
+TestXY2Y(NX,NY)
+*)
+
+(* Gates *)
+(*Join_1(x,i)*)
+(*Fork_2(i,x,x)*)
+(*Join_2(x,y,i)*)
+(*Fork_2(i,y,y)*)

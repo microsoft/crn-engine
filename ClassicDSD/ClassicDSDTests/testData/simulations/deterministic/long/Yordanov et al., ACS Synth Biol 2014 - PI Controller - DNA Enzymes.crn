@@ -1,0 +1,124 @@
+directive sample 0.0,150000.0 1000
+directive plot (R - R'); (V - V'); (Y - Y'); (L - L')
+directive simulation deterministicstiff
+directive reltolerance 1e-5
+directive parameters
+  [ deg = 0.0008
+  ; cat = 0.0008
+  ; pol = 0.0167
+  ; nick = 0.0167
+  ; x0 = 4.0
+  ; ann = 0.01
+  ; bind = 5.4E-06
+  ; bind2 = 0.001
+  ; bind1 = 5E-05
+  ; unbind = 0.1126
+  ; Cmax = 1000.0
+  ; c = 0.0008
+  ; kt = 0.001
+  ; ku = 0.001
+  ; s = 2.0
+  ; e = 2.71828183
+  ; R = 0.0019872
+  ; T = 298.15 ]
+
+event R (2.0 * x0) @ 100000.0 |
+event R' (2.0 * x0) @ 50000.0 |
+init R x0 |
+init TemplateOff_3 Cmax |
+init TemplateOff_2 Cmax |
+init TemplateOff_1 Cmax |
+init TemplateOff Cmax |
+init TemplateOffInv_2 Cmax |
+init TemplateOffInv_1 Cmax |
+init TemplateOffInv Cmax |
+init TemplateOff'_3 Cmax |
+init TemplateOff'_2 Cmax |
+init TemplateOff'_1 Cmax |
+init TemplateOff' Cmax |
+init TemplateOffInv'_2 Cmax |
+init TemplateOffInv'_1 Cmax |
+init TemplateOffInv' Cmax |
+Template ->{pol} TemplateDS + sp_1 |
+TemplateDS ->{nick} Template |
+sp_3 ->{pol} sp_32 + sp_18 |
+sp_32 ->{nick} sp_3 |
+TemplateInv ->{pol} TemplateDSInv + sp_18 |
+TemplateDSInv ->{nick} TemplateInv |
+sp_7 ->{pol} sp_30 + sp_1 |
+sp_30 ->{nick} sp_7 |
+TemplateInv_1 ->{pol} TemplateDSInv_1 + sp_18 |
+TemplateDSInv_1 ->{nick} TemplateInv_1 |
+sp_19 ->{pol} sp_28 + sp_1 |
+sp_28 ->{nick} sp_19 |
+Template_1 ->{pol} TemplateDS_1 + sp_0 |
+TemplateDS_1 ->{nick} Template_1 |
+sp_20 ->{pol} sp_26 + sp_13 |
+sp_26 ->{nick} sp_20 |
+Template_2 ->{pol} TemplateDS_2 + V |
+TemplateDS_2 ->{nick} Template_2 |
+sp_21 ->{pol} sp_17 + V' |
+sp_17 ->{nick} sp_21 |
+Template_3 ->{pol} TemplateDS_3 + V |
+TemplateDS_3 ->{nick} Template_3 |
+sp_14 ->{pol} sp_12 + V' |
+sp_12 ->{nick} sp_14 |
+TemplateInv_2 ->{pol} TemplateDSInv_2 + V' |
+TemplateDSInv_2 ->{nick} TemplateInv_2 |
+sp_4 ->{pol} sp_10 + V |
+sp_10 ->{nick} sp_4 |
+V ->{0.2} V + Y |
+V' ->{0.2} V' + Y' |
+Y ->{0.1} |
+Y' ->{0.1} |
+Y' + Y ->{0.1} |
+L + Y ->{0.01} L |
+L' + Y' ->{0.01} L' |
+L + L' ->{1.0} |
+R' + R ->{ann} Ann_1 |
+Template_3 <->{unbind}{bind} TemplateOff_3 + sp_0 |
+Template_2 <->{unbind}{bind} TemplateOff_2 + sp_1 |
+Template_1 <->{unbind}{bind} TemplateOff_1 + sp_1 |
+Template + R' ->{bind} Ann_1 + TemplateOff |
+Template <->{unbind}{bind} TemplateOff + R |
+TemplateDS + R' <->{bind}{unbind} sp_2 |
+TemplateInv_2 <->{unbind}{bind} TemplateOffInv_2 + V |
+TemplateInv_1 <->{unbind}{bind} TemplateOffInv_1 + sp_1 |
+TemplateInv <->{unbind}{bind} TemplateOffInv + Y |
+TemplateOff' + R' <->{bind}{unbind} sp_3 |
+sp_3 + R ->{bind} Ann_1 + TemplateOff' |
+TemplateInv_2 + V' ->{bind} Ann_2 + TemplateOffInv_2 |
+V' + V ->{ann} Ann_2 |
+TemplateDSInv_2 + V' <->{bind}{unbind} sp_5 |
+TemplateOffInv'_2 + V' <->{bind}{unbind} sp_4 |
+sp_4 + V ->{bind} Ann_2 + TemplateOffInv'_2 |
+TemplateInv + Y' ->{bind} sp_6 + TemplateOffInv |
+Y' + Y ->{ann} sp_6 |
+TemplateDSInv + Y' <->{bind}{unbind} sp_8 |
+TemplateOffInv' + Y' <->{bind}{unbind} sp_7 |
+sp_7 + Y ->{bind} sp_6 + TemplateOffInv' |
+sp_10 + V <->{bind}{unbind} sp_9 |
+sp_12 + sp_0 <->{bind}{unbind} sp_11 |
+sp_14 + sp_0 ->{bind} Ann + TemplateOff'_3 |
+Template_3 + sp_13 ->{bind} Ann + TemplateOff_3 |
+sp_14 <->{unbind}{bind} TemplateOff'_3 + sp_13 |
+sp_13 + sp_0 ->{ann} Ann |
+TemplateDS_3 + sp_13 <->{bind}{unbind} sp_15 |
+sp_17 + sp_1 <->{bind}{unbind} sp_16 |
+sp_21 + sp_1 ->{bind} Ann_3 + TemplateOff'_2 |
+Template_2 + sp_18 ->{bind} Ann_3 + TemplateOff_2 |
+Template_1 + sp_18 ->{bind} Ann_3 + TemplateOff_1 |
+TemplateInv_1 + sp_18 ->{bind} Ann_3 + TemplateOffInv_1 |
+sp_21 <->{unbind}{bind} TemplateOff'_2 + sp_18 |
+sp_18 + sp_1 ->{ann} Ann_3 |
+TemplateDS_2 + sp_18 <->{bind}{unbind} sp_24 |
+TemplateDS_1 + sp_18 <->{bind}{unbind} sp_23 |
+TemplateDSInv_1 + sp_18 <->{bind}{unbind} sp_22 |
+TemplateOff'_1 + sp_18 <->{bind}{unbind} sp_20 |
+sp_20 + sp_1 ->{bind} Ann_3 + TemplateOff'_1 |
+TemplateOffInv'_1 + sp_18 <->{bind}{unbind} sp_19 |
+sp_19 + sp_1 ->{bind} Ann_3 + TemplateOffInv'_1 |
+sp_26 + sp_1 <->{bind}{unbind} sp_25 |
+sp_28 + sp_1 <->{bind}{unbind} sp_27 |
+sp_30 + Y <->{bind}{unbind} sp_29 |
+sp_32 + R <->{bind}{unbind} sp_31

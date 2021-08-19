@@ -1,0 +1,16 @@
+directive simulation {initial=0; final=5000; points=1000; plots=[<_ tx^ x>; <_ ty^ y>; <_ tz^ z>]}
+directive stochastic {scale = 1000.000000; trajectories = 1}
+def bind = 0.0003
+def unbind = 0.1126
+new tx  @ bind, unbind
+new ty  @ bind, unbind
+new tz  @ bind, unbind
+def Tr(N, tx, x, ty, y) = 
+  (new a
+  new ta @ bind, unbind
+  ( N * {tx^*}[x ta^]:[a ty^]<y>
+  | N * <ta^ a ty^>
+  | N * [x]{ta^*}))
+( Tr(10.0,tx,x,ty,y)
+| Tr(10.0,ty,y,tz,z)
+| 1.0 * <h tx^ x>)

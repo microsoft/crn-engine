@@ -1,0 +1,4 @@
+directive simulation {final=1; }
+directive compilation detailed
+( 1000.0 * [a1]<a2 a3>:[a2 a3]
+| 1000.0 * [b1]<b2 b3>:[b2]:[b3])

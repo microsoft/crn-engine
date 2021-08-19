@@ -1,0 +1,18 @@
+directive duration 10000.0 points 1000
+directive compilation infinite
+directive plot <t^ x>; <t^ y>; <t^ z>
+new t
+def T(N,x,y) =
+new a  (* remove for interference *)
+( N * <t^ a>
+| N * <y t^>
+| N * {t^*}:[x t^]:[a t^]:[a] (* Input gate *)
+| N * [x]:[t^ y]:[t^ a]:{t^*} (* Output gate *)
+)
+(*
+( <t^ x> | T(x,y) )
+( 2 * <t^ x> | T(2,x,y) )
+( 2 * <t^ x> | T(2,x,y) | T(2,y,z) )
+( <t^ x> | T(1,x,y) | T(1,y,z) )
+*)
+( <t^ x> | T(1,x,y) )

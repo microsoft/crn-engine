@@ -1,0 +1,8 @@
+directive unproductive
+directive localconcentrations [ (a, 100) ]
+
+( [[ <tether(a) x^>
+   | {tether(a) x^*}
+  ]]
+| {x^*}
+)

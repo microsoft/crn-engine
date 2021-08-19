@@ -1,0 +1,99 @@
+﻿directive simulation { final=8.0; points=1000; plots=[<s* t* Q^>] }
+(*directive time h*)
+directive polymers
+directive compilation infinite
+directive simulator deterministic
+directive deterministic {stiff=true}
+directive localconcentrations [ (l1,local); (l2,local); (l3,local); (l4,local) ]
+directive parameters [ 
+  ka=1.85769618581392;
+  kx=1.25308366310491;
+  kyl=2.06410688539547;
+  ky2=2.06410688539547, {interval=Log; distribution=Uniform(0.005,10.0); variation=Random };
+  kf=1.50017620467483;
+  kl=0.00839768267566365, {interval=Log; distribution=Uniform(0.0001,1.0); variation=Random };
+  local=66041.5482535977;
+  ro=0.154750673030718;
+  
+  full=0.75, { interval=Real; distribution=Uniform(0.5, 1.0); variation=Random };
+  NI_A=2.5, { interval=Real; distribution=Uniform(1.0,5.0);  variation=Random };
+  NI_B=2.5, { interval=Real; distribution=Uniform(1.0,5.0);  variation=Random };
+  T0_A=0.2, { interval=Real; distribution=Uniform(0.1,0.25); variation=Random };
+  T0_B=0.2, { interval=Real; distribution=Uniform(0.1,0.25); variation=Random };
+  
+  ZA=0.0; ZB=0.0;
+  T0=0.1; NS=50.0; NF=100.0; NO=0.0; NR=20.0
+]
+directive sweeps [ cA = [ ZA = [1.0]; NO=[5.0] ]; cB = [ ZB = [1.0]; NO=[4.0] ] ]
+directive data [wireA_FAM_170312; wireB_Cy5_170312]
+
+directive inference { burnin = 50000; samples = 50000; thin = 20 }
+
+dom a0 = { colour = "blue"; bind = ka; unbind = 0.0 }
+dom b0 = { colour = "blue"; bind = ka; unbind = 0.0 }
+dom f  = { colour = "green"; bind = kf; unbind = 0.0 }
+dom fc  = { colour = "purple"; bind = kf; unbind = 0.0 }
+dom x' = { colour = "orange"; bind = kx*ro; unbind = 0.0 }
+dom xc' = { colour = "darkorange"; bind = kx*ro; unbind = 0.0 }
+dom i  = { colour = "orange"}
+dom x  = { colour = "orange"; bind = kx; unbind = 0.0; subdomains = [x';i] }
+dom xc  = { colour = "darkorange"; bind = kx; unbind = 0.0; subdomains = [xc';i] }
+dom y  = { colour = "red"; bind = kyl; unbind = 0.0 }
+dom y2  = { colour = "red"; bind = ky2; unbind = 0.0 }
+dom Q  = { colour = "black" }
+dom F  = { colour = "yellow" }
+new s
+
+(* Species *)
+def input(a0) = {a0^* s*}
+def inter(x,i) = {i^* x^* s*}
+def output(x,r) = <x^>{t*}[s]{r^> 
+def fuel(f,x,i) = {f^*}[s*]{i^* x^*>
+def rep(y) = {y^*}[s*]{F^}<Q^>
+def rept(y) = {y^*}[s* t*]{F^}<Q^>
+def signal() = <s* t* Q^>
+def trigger(y) = <y^ s*>
+def start(l,a0,f) = <tether(l) a0^>[s]{f^>
+def start_input(l,a0,f) = <tether(l)>[a0^ s]<f^ s*>
+def start_input_fuel(l,a0,f,x,i) = <tether(l)>[a0^ s]::[f^ s*]{i^* x^* s*}
+(*def leaked(l,x,y) = {TOP}:<tether(l)>[x^ s]<y^ s* t*>*)
+def mid(l1,l2,x,f) = <tether(l1,l2) i^ x^>[s]{f^>
+def end(l,x,y) = <tether(l) x^>{t*}[s]{y^> 
+def wireA() = 
+	[[ start(l1,a0,f) 
+	 | mid(l1,l2,x',f) 
+	 | mid(l2,l3,x',f) 
+	 | end(l3,x',y) ]]
+def wireB() = 
+	[[ start(l1,b0,fc) 
+	 | mid(l1,l2,xc',fc) 
+	 | mid(l2,l3,xc',fc) 
+	 | mid(l3,l4,xc',f) 
+	 | end(l4,x',y2) ]]
+
+(*def Addition3(NI,NO,full,y,l) = 
+( NI * (1.0-full) * [[ start(l,a0,f) ]]
+| (NO - (NI*full)) * [[ mid(l2,l,x',f) | end(l,x',y) ]] 
+| rxn [[ start_input_fuel(l,a0,f,x',i) ]] + [[ mid(l2,l,x',f) | end(l,x',y) ]] ->{kl*ro + kl} [[ leaked(l,x',y) ]] 
+)*)
+
+(* Modules *)
+def circuitA() = 
+( NI_A * full * wireA() 
+(*| Addition3(NI_A,NO,full,y,l1)*)
+| NS * input(a0) @ T0_A
+| NF * fuel(f,x',i) 
+| NF * fuel(fc,xc',i)
+| NR * rept(y) 
+)
+def circuitB() = 
+( NI_B * full * wireB() 
+(*| Addition3(NI_B,NO,full,y2,l1)*)
+| NS * input(b0) @ T0_B
+| NF * fuel(f,x',i) 
+| NF * fuel(fc,xc',i)
+| NR * rept(y2)
+)
+
+(* Program *)
+circuitA()

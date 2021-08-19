@@ -1,0 +1,13 @@
+directive simulation {initial=0; final=1000; points=1000; plots=[<S11^ S12^>; fuel _]}
+dom S11  = {seq = ACCTAATAGC}
+dom S12  = {seq = ACCACATCAA}
+dom S13  = {seq = TCTCGATCCAGTAC}
+dom S14  = {seq = ACCT}
+dom S15  = {seq = CTTCACGAACATTTCA}
+dom S16  = {seq = TAGCCA}
+def catalyst(N) = N * <S14^ S15^>
+def fuel(N) = N * <S12^ S13 S14^>
+def substrate(N) = N * <S11^>[S12^]:[S13 S14^]{S15^*}
+( fuel(100.0)
+| substrate(100.0)
+| catalyst(10.0))

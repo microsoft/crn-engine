@@ -1,0 +1,16 @@
+﻿.SequencesDatabaseMain {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.SequencesDatabaseSection {
+    width: 100%;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.SequencesDatabaseText {
+    flex-grow: 1;
+}

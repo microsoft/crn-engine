@@ -1,0 +1,31 @@
+directive simulation {initial=0; final=500000; points=1000; plots=[sum([<_ tp^ p>]); sum([<_ tq^ q>]); sum([<_ tr^ r>]); sum([<c tB^ B>]); <c>[tB^ B]{tp^}:[p tq^]:[q ta^]:[a tq^]<q>:[b tq^]<q>:[c tB^]<B>]}
+directive stochastic {scale = 100.000000; trajectories = 1}
+def bind = 0.0003
+def unbind = 0.1126
+def Buff = 100.0
+new tp  @ bind, unbind
+new tq  @ bind, unbind
+new tr  @ bind, unbind
+def BJ2x2(M, N, tx, x, ty, y, tz, z, tw, w) = 
+  (new ta @ bind, unbind
+  new a
+  new b
+  new c
+  new td @ bind, unbind
+  new d
+  new tB @ bind, unbind
+  new B
+  ( M * {tB^*}[B tx^]:[x ty^]:[y ta^]:[a tz^]<z>:[b tw^]<w>:[c tB^]<B>
+  | M * <ta^ a tz^ b tw^ c tB^>
+  | M * [B]{tx^*}
+  | M * [x]:[ty^ d]:[td^ y]{ta^*}
+  | M * <d td^>
+  | M * {td^*}[y]
+  | M * {ty^*}[d]
+  | N * <c tB^ B>))
+( BJ2x2(Buff,1.0,tp,p,tq,q,tq,q,tq,q)
+| BJ2x2(Buff,1.0,tq,q,tr,r,tr,r,tr,r)
+| BJ2x2(Buff,1.0,tr,r,tp,p,tp,p,tp,p)
+| 3.0 * <hp tp^ p>
+| 2.0 * <hq tq^ q>
+| 2.0 * <hr tr^ r>)

@@ -1,0 +1,127 @@
+directive sample 0.0,300000.0 1000
+directive parameters
+  [ e = 2.71828183
+  ; R = 0.0019872
+  ; T = 298.15 ]
+
+query good = {
+enumeration limit 5;
+
+Terminal@[0.0] and Invariant@[0.0] and NoReactiveGates@[0.0]
+} |
+query findGood = {
+abstraction stutter;
+
+Init@[0.0] and Terminal@[100.0] and NoReactiveGates@[100.0] and Invariant@[0.0..100.0]
+} |
+query findBad = {
+abstraction stutter;
+
+Init@[0.0] and Terminal@[10.0] and not NoReactiveGates@[10.0]
+} |
+query bad = {
+enumeration limit 5;
+
+Terminal@[0.0] and Invariant@[0.0] and not NoReactiveGates@[0.0]
+} |
+init S 1.0 |
+init T_39 1.0 |
+init T_38 1.0 |
+init T_37 1.0 |
+init T_36 1.0 |
+init T_35 1.0 |
+init T_34 1.0 |
+init T_33 1.0 |
+init T_32 1.0 |
+init T_31 1.0 |
+init T_30 1.0 |
+init T_29 1.0 |
+init T_28 1.0 |
+init T_27 1.0 |
+init T_26 1.0 |
+init T_25 1.0 |
+init T_24 1.0 |
+init T_23 1.0 |
+init T_22 1.0 |
+init T_21 1.0 |
+init T_20 1.0 |
+init T_19 1.0 |
+init T_18 1.0 |
+init T_17 1.0 |
+init T_16 1.0 |
+init T_15 1.0 |
+init T_14 1.0 |
+init T_13 1.0 |
+init T_12 1.0 |
+init T_11 1.0 |
+init T_10 1.0 |
+init T_9 1.0 |
+init T_8 1.0 |
+init T_7 1.0 |
+init T_6 1.0 |
+init T_5 1.0 |
+init T_4 1.0 |
+init T_3 1.0 |
+init T_2 1.0 |
+init T_1 1.0 |
+init T 1.0 |
+T_2 + S <->{0.001}{0.001} sp_1 + sp_0 |
+sp_1 + T ->{0.001} sp_4 + sp_3 + sp_2 |
+sp_15 + T_37 ->{0.001} sp_18 + sp_17 + sp_16 |
+sp_4 + sp_5 ->{0.001} sp_20 + sp_19 |
+T_39 + sp_2 <->{0.001}{0.001} sp_15 + sp_5 |
+sp_14 + T_33 ->{0.001} sp_23 + sp_22 + sp_21 |
+T_35 + sp_2 <->{0.001}{0.001} sp_14 + sp_5 |
+sp_25 + T_36 ->{0.001} sp_26 + sp_17 + sp_2 |
+sp_26 + sp_5 ->{0.001} sp_27 + sp_19 |
+sp_18 + sp_24 ->{0.001} sp_29 + sp_28 |
+T_38 + sp_21 <->{0.001}{0.001} sp_25 + sp_24 |
+sp_13 + T_29 ->{0.001} sp_32 + sp_31 + sp_30 |
+T_31 + sp_2 <->{0.001}{0.001} sp_13 + sp_5 |
+sp_34 + T_32 ->{0.001} sp_35 + sp_22 + sp_2 |
+sp_35 + sp_5 ->{0.001} sp_36 + sp_19 |
+sp_23 + sp_33 ->{0.001} sp_38 + sp_37 |
+T_34 + sp_30 <->{0.001}{0.001} sp_34 + sp_33 |
+sp_12 + T_25 ->{0.001} sp_41 + sp_40 + sp_39 |
+T_27 + sp_2 <->{0.001}{0.001} sp_12 + sp_5 |
+sp_43 + T_28 ->{0.001} sp_44 + sp_31 + sp_2 |
+sp_44 + sp_5 ->{0.001} sp_45 + sp_19 |
+sp_32 + sp_42 ->{0.001} sp_47 + sp_46 |
+T_30 + sp_39 <->{0.001}{0.001} sp_43 + sp_42 |
+sp_11 + T_21 ->{0.001} sp_50 + sp_49 + sp_48 |
+T_23 + sp_2 <->{0.001}{0.001} sp_11 + sp_5 |
+sp_52 + T_24 ->{0.001} sp_53 + sp_40 + sp_2 |
+sp_53 + sp_5 ->{0.001} sp_54 + sp_19 |
+sp_41 + sp_51 ->{0.001} sp_56 + sp_55 |
+T_26 + sp_48 <->{0.001}{0.001} sp_52 + sp_51 |
+sp_10 + T_17 ->{0.001} sp_59 + sp_58 + sp_57 |
+T_19 + sp_2 <->{0.001}{0.001} sp_10 + sp_5 |
+sp_61 + T_20 ->{0.001} sp_62 + sp_49 + sp_2 |
+sp_62 + sp_5 ->{0.001} sp_63 + sp_19 |
+sp_50 + sp_60 ->{0.001} sp_65 + sp_64 |
+T_22 + sp_57 <->{0.001}{0.001} sp_61 + sp_60 |
+sp_9 + T_13 ->{0.001} sp_68 + sp_67 + sp_66 |
+T_15 + sp_2 <->{0.001}{0.001} sp_9 + sp_5 |
+sp_70 + T_16 ->{0.001} sp_71 + sp_58 + sp_2 |
+sp_71 + sp_5 ->{0.001} sp_72 + sp_19 |
+sp_59 + sp_69 ->{0.001} sp_74 + sp_73 |
+T_18 + sp_66 <->{0.001}{0.001} sp_70 + sp_69 |
+sp_8 + T_9 ->{0.001} sp_77 + sp_76 + sp_75 |
+T_11 + sp_2 <->{0.001}{0.001} sp_8 + sp_5 |
+sp_79 + T_12 ->{0.001} sp_80 + sp_67 + sp_2 |
+sp_80 + sp_5 ->{0.001} sp_81 + sp_19 |
+sp_68 + sp_78 ->{0.001} sp_83 + sp_82 |
+T_14 + sp_75 <->{0.001}{0.001} sp_79 + sp_78 |
+sp_7 + T_5 ->{0.001} sp_86 + sp_85 + sp_84 |
+T_7 + sp_2 <->{0.001}{0.001} sp_7 + sp_5 |
+sp_88 + T_8 ->{0.001} sp_89 + sp_76 + sp_2 |
+sp_89 + sp_5 ->{0.001} sp_90 + sp_19 |
+sp_77 + sp_87 ->{0.001} sp_92 + sp_91 |
+T_10 + sp_84 <->{0.001}{0.001} sp_88 + sp_87 |
+sp_6 + T_1 ->{0.001} sp_94 + sp_3 + sp_93 |
+T_3 + sp_2 <->{0.001}{0.001} sp_6 + sp_5 |
+sp_94 + sp_0 ->{0.001} sp_96 + sp_95 |
+sp_98 + T_4 ->{0.001} sp_99 + sp_85 + sp_2 |
+sp_99 + sp_5 ->{0.001} sp_100 + sp_19 |
+sp_86 + sp_97 ->{0.001} sp_102 + sp_101 |
+T_6 + sp_93 <->{0.001}{0.001} sp_98 + sp_97

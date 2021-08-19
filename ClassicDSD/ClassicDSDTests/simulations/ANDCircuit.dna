@@ -1,0 +1,17 @@
+directive simulation { plots = [<1^ 2>; <3 4^>; <2 3>]
+					 ; points = 1000
+					 ; final = 1000000.0 }
+directive deterministic {reltolerance=0.00001}
+def N1 = 1
+def N2 = 1
+def N = 10
+def Input1() = <1^ 2>
+def Input2() = <3 4^>
+def Output() = <2 3>
+def AND() = {1^*}[2 3]{4^*}
+
+( N1 of Input1()
+| N2 of Input2()
+| N of AND()
+| 0 of Output()
+)

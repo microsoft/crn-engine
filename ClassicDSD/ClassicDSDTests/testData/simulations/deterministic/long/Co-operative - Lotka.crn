@@ -1,0 +1,23 @@
+directive sample 0.0,5000.0 3000
+directive plot SpeciesL; SpeciesR
+directive reltolerance 1E-05
+directive parameters
+  [ e = 2.71828183
+  ; R = 0.0019872
+  ; T = 298.15 ]
+
+constant BinaryLRxRR_1 3000000.0 |
+constant BinaryLRxRR 30000.0 |
+init SpeciesL 1000.0 |
+init SpeciesR 1000.0 |
+constant UnaryLxLL_1 100000.0 |
+constant UnaryLxLL 1000.0 |
+constant UnaryRx 1000.0 |
+BinaryLRxRR + SpeciesL <->{1E-05}{0.1} sp_0 |
+sp_0 + SpeciesR ->{1E-05} sp_2 + sp_1 |
+BinaryLRxRR + SpeciesR <->{1E-05}{0.1} sp_3 |
+sp_3 + SpeciesL ->{1E-05} sp_2 + sp_1 |
+BinaryLRxRR_1 + sp_1 ->{1E-05} sp_5 + sp_4 + 2SpeciesR |
+UnaryLxLL + SpeciesL ->{1E-05} sp_7 + sp_6 |
+UnaryLxLL_1 + sp_6 ->{1E-05} sp_9 + sp_8 + 2SpeciesL |
+UnaryRx + SpeciesR ->{1E-05} sp_11 + sp_10

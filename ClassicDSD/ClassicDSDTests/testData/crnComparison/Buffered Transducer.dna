@@ -1,0 +1,21 @@
+directive duration 30000.0 points 1000
+directive plot sum(<_ tx^ x>); sum(<_ ty^ y>); <b>[tB^ B]:{tx^}:[x ta^]:[a ty^]<y>:[b tB^]<B>
+directive scale 100.0
+def bind = 0.0003 (* /nM/s *)
+def unbind = 0.1126 (* /s *)
+def Buff = 100
+new tx@bind,unbind
+new ty@bind,unbind
+
+def BTr(M,N, tx,x, ty,y) =
+new ta@bind,unbind new a new b new tB@bind,unbind new B
+( M * {tB^*}:[B tx^]:[x ta^]:[a ty^]<y>:[b tB^]<B>
+| M * <ta^ a ty^ b tB^>
+| M * [x]:{ta^*}
+| M * [B]:{tx^*}
+| N * <b tB^ B>
+)
+
+( BTr(Buff,1, tx,x, ty,y)
+| 1 * <h tx^ x>
+)

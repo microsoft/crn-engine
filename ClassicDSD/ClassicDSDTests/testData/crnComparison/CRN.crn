@@ -1,0 +1,52 @@
+directive sample 0.0,250000.0 1000
+directive plot ("<r>" - "<r'>"); ("<v>" - "<v'>"); ("<y>" - "<y'>"); ("<load>" - "<load'>")
+directive simulation deterministicstiff
+directive parameters
+  [ cat = 0.0008
+  ; deg = 0.0008
+  ; ann = 0.001
+  ; x0 = 4.0
+  ; s = 1.0 ]
+
+event "<load'>" 1.0 @ 200000.0 |
+event "<load>" 2.0 @ 150000.0 |
+event "<r>" (2.0 * x0) @ 100000.0 |
+event "<r'>" (2.0 * x0) @ 50000.0 |
+init "<load>" 0.0 |
+init "<load'>" 0.0 |
+init "<r>" x0 |
+init "<r'>" 0.0 |
+init "<v>" 0.0 |
+init "<v'>" 0.0 |
+init "<y>" 0.0 |
+init "<y'>" 0.0 |
+init "<e>" 0.0 |
+init "<e'>" 0.0 |
+init "<x>" 0.0 |
+init "<x'>" 0.0 |
+"<r>" ->{cat} "<r>" + "<e>" |
+"<r'>" ->{cat} "<r'>" + "<e'>" |
+"<y'>" ->{cat} "<y'>" + "<e>" |
+"<y>" ->{cat} "<y>" + "<e'>" |
+"<e>" ->{deg} |
+"<e'>" ->{deg} |
+"<e>" ->{cat} "<e>" + "<x>" |
+"<e'>" ->{cat} "<e'>" + "<x'>" |
+"<e>" ->{cat} "<e>" + "<v>" |
+"<e'>" ->{cat} "<e'>" + "<v'>" |
+"<x>" ->{cat} "<x>" + "<v>" |
+"<x'>" ->{cat} "<x'>" + "<v'>" |
+"<v>" ->{deg} |
+"<v'>" ->{deg} |
+"<x>" + "<x'>" ->{ann} |
+"<v>" ->{0.2} "<v>" + "<y>" |
+"<v'>" ->{0.2} "<v'>" + "<y'>" |
+"<y>" ->{0.1} |
+"<y'>" ->{0.1} |
+"<load>" + "<y>" ->{0.01} "<load>" |
+"<load'>" + "<y'>" ->{0.01} "<load'>" |
+"<load>" + "<load'>" ->{1.0} |
+"<r>" + "<r'>" ->{ann} |
+"<y'>" + "<y>" ->{(1.0 + ann)} |
+"<v>" + "<v'>" ->{ann} |
+"<e>" + "<e'>" ->{ann}

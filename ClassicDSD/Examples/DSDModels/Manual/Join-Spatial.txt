@@ -1,0 +1,35 @@
+directive simulation { 
+  final=600; 
+  plots=[Signal()];
+}
+directive simulator pde
+directive spatial { 
+  boundary = ZeroFlux; 
+  dimensions = 1;
+  diffusibles = [Input1() = 0.5; Input2() = 0.5]; 
+  xmax = 50; 
+  nx = 101; 
+  dt = 1;
+}
+directive parameters [k=0.003;u=0.1]
+directive compilation infinite
+dom tb = {bind=k;unbind=u;colour="red"}
+dom tx = {bind=k;unbind=u;colour="green"}
+dom to = {bind=k;unbind=u;colour="blue"}
+def Input1() = <tb^ b>
+def Input2() = <tx^ x>
+def Output() = <x to^>
+def Join() = {tb^*}[b tx^]:[x to^]
+def Reporter() = <fl^>[x]{to^*}
+def Signal() = <fl^ x>
+( Input1() = { spatial = { points = 
+    [ {x=0.3; y=0.3; width=0.4; value=10.0}] 
+  } }
+| Input2() = { spatial = { points = 
+    [ {x=0.7; y=0.7; width=0.4; value=10.0}] 
+  } }
+| 0 Output()
+| 100 Join()
+| 100 Reporter()
+| 0 Signal()
+)

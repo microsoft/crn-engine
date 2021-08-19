@@ -1,0 +1,20 @@
+directive simulation {initial=0; final=30000; points=1000; plots=[sum([<_ tx^ x>]); sum([<_ ty^ y>]); <b>[tB^ B]{tx^}:[x ta^]:[a ty^]<y>:[b tB^]<B>]}
+directive stochastic {scale = 100.000000; trajectories = 1}
+def bind = 0.0003
+def unbind = 0.1126
+def Buff = 100.0
+new tx  @ bind, unbind
+new ty  @ bind, unbind
+def BTr(M, N, tx, x, ty, y) = 
+  (new ta @ bind, unbind
+  new a
+  new b
+  new tB @ bind, unbind
+  new B
+  ( M * {tB^*}[B tx^]:[x ta^]:[a ty^]<y>:[b tB^]<B>
+  | M * <ta^ a ty^ b tB^>
+  | M * [x]{ta^*}
+  | M * [B]{tx^*}
+  | N * <b tB^ B>))
+( BTr(Buff,1.0,tx,x,ty,y)
+| 1.0 * <h tx^ x>)

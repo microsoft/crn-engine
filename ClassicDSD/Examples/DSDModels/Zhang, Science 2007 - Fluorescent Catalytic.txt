@@ -1,0 +1,23 @@
+directive simulation {initial=0; final=7000; points=1000; plots=[Fuel _; Reporter(); <S1 S2a>]}
+directive stochastic {scale = 500.000000; trajectories = 1}
+dom S1  = {seq = CTTTCCTACA}
+dom S2a  = {seq = CCTACG}
+dom S2b  = {seq = TCTCCA}
+dom S2c  = {seq = ACTAACTTACGG}
+dom S3  = {seq = CCCT; bind = 0.00042; unbind = 0.04}
+dom S4  = {seq = CATTCAATACCCTACG}
+dom S5  = {seq = TCTCCA; bind = 0.00065; unbind = 0.004}
+dom S6  = {seq = CCACATACATCATATT}
+def S2 = (S2a,S2b,S2c)
+def Fuel((ta, tb, tc)) = <ta tb^ tc S3^ S4>
+def Substrate(o, (ta, tb, tc), s, t, r, f) = <o>[ta tb^ tc]:<s>[t^ r]{f^*}
+def Catalyst() = <S4 S5^>
+def Reporter() = [S1 S2a]{S2b^*}
+def Catalytic(N) = 
+  (( (N + 5.0) * Fuel(S2)
+  | N * Substrate(S1,S2,S6,S3,S4,S5)
+  | N * Catalyst()))
+def FluoresingCatalytic(N) = 
+  (( Catalytic(N)
+  | N * Reporter()))
+FluoresingCatalytic(10.0)

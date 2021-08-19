@@ -1,0 +1,178 @@
+directive simulation {initial=0; final=36000; points=2000; plots=[<MSB_0a MSB_0b>; <MSB_1a MSB_1b>; <LSB_0a LSB_0b>; <LSB_1a LSB_1b>]}
+directive compilation infinite
+directive leak 1E-08
+directive tau 1
+def num = 15.0
+def Copies = 1000.0
+def lambda = 1.0
+def shorttoeholdunbind = 26.0
+def shorttoeholdbind = (50.0 * 5E-05)
+def untetheredunbind = shorttoeholdunbind
+def untetheredbind = shorttoeholdbind
+def tetheredunbind = untetheredunbind
+def tetheredbind = (untetheredbind * lambda)
+def ON = 1.0
+def STRAND(T, sa, sb) = <T^ sa sb>
+def INPUT(T, x, x_0a, x_0b, x_1a, x_1b) = 
+  (( ((1.0 - x) * ON) * STRAND(T,x_0a,x_0b)
+  | (x * ON) * STRAND(T,x_1a,x_1b)))
+def OR(Ti1, Input1a, Input1b, Ti2, Input2a, Input2b, To, Outputa, Outputb) = 
+  (( {Ti1^*}[Input1a]:[Input1b To^]<Outputa Outputb>
+  | {Ti2^*}[Input2a]:[Input2b To^]<Outputa Outputb>))
+def THREEINPUTOR(Ti1, Input1a, Input1b, Ti2, Input2a, Input2b, Ti3, Input3a, Input3b, To, Outputa, Outputb) = 
+  (( {Ti1^*}[Input1a]:[Input1b To^]<Outputa Outputb>
+  | {Ti2^*}[Input2a]:[Input2b To^]<Outputa Outputb>
+  | {Ti3^*}[Input3a]:[Input3b To^]<Outputa Outputb>))
+def AND(Ti1, Input1a, Input1b, Ti2, Input2a, Input2b, To, Outputa, Outputb) = {Ti1^*}[Input1a]:[Input1b Ti2^]:[Input2a]:[Input2b To^]<Outputa Outputb>
+def THREEINPUTAND(Ti1, Input1a, Input1b, Ti2, Input2a, Input2b, Ti3, Input3a, Input3b, To, Outputa, Outputb) = {Ti1^*}[Input1a]:[Input1b Ti2^]:[Input2a]:[Input2b Ti3^]:[Input3a]:[Input3b To^]<Outputa Outputb>
+def WIRE(Ti, Inputa, Inputb, To, Outputa, Outputb) = ( {Ti^*}[Inputa]:[Inputb To^]<Outputa Outputb>)
+def FANOUT(Ti, Inputa, Inputb, To, Outputa, Outputb, Degree) = 
+  (( (Degree - 1.0) * <Inputa Inputb To^>
+  | Degree * {Ti^*}[Inputa]:[Inputb To^]<Outputa Outputb>))
+def FANOUT2(Ti, Ia, Ib, To, Oa, Ob) = 
+  (( <To^ Fa Fb>
+  | {Ti^*}[Ia]:[Ib To^]<Oa Ob>:[Fa]:[Fb To^]<Oa Ob>))
+def REPORTER(Ti, Inputa, Inputb) = {Ti^*}[Inputa Inputb]
+def x1 = (((num + 1.0) /  2.0) - (num /  2.0))
+def x2 = ((((num /  2.0) + 1.0) /  2.0) - (num /  4.0))
+def x3 = ((((num /  4.0) + 1.0) /  2.0) - (num /  8.0))
+def x4 = ((((num /  8.0) + 1.0) /  2.0) - (num /  16.0))
+def MSB(N) = 
+  (new x1_0a
+  new x1_0b
+  new x1_1a
+  new x1_1b
+  new x2_0a
+  new x2_0b
+  new x2_1a
+  new x2_1b
+  new x3_0a
+  new x3_0b
+  new x3_1a
+  new x3_1b
+  new x4_0a
+  new x4_0b
+  new x4_1a
+  new x4_1b
+  new T @ untetheredbind, untetheredunbind
+  new Tmsb_0 @ tetheredbind, tetheredunbind
+  new Tmsb_1 @ tetheredbind, tetheredunbind
+  ( N * INPUT(T,x4,x4_0a,x4_0b,x4_1a,x4_1b)
+  | N * INPUT(T,x3,x3_0a,x3_0b,x3_1a,x3_1b)
+  | N * INPUT(T,x2,x2_0a,x2_0b,x2_1a,x2_1b)
+  | N * INPUT(T,x1,x1_0a,x1_0b,x1_1a,x1_1b)
+  | N * AND(T,x3_0a,x3_0b,T,x4_0a,x4_0b,Tmsb_0,MSB_0a,MSB_0b)
+  | N * REPORTER(Tmsb_0,MSB_0a,MSB_0b)
+  | N * OR(T,x3_1a,x3_1b,T,x4_1a,x4_1b,Tmsb_1,MSB_1a,MSB_1b)
+  | N * REPORTER(Tmsb_1,MSB_1a,MSB_1b)))
+def LSB1(N) = 
+  (new x1_0a
+  new x1_0b
+  new x1_1a
+  new x1_1b
+  new x2_0a
+  new x2_0b
+  new x2_1a
+  new x2_1b
+  new x3_0a
+  new x3_0b
+  new x3_1a
+  new x3_1b
+  new x4_0a
+  new x4_0b
+  new x4_1a
+  new x4_1b
+  new x4_1oa
+  new x4_1ob
+  new a1a
+  new a1b
+  new a2a
+  new a2b
+  new a3a
+  new a3b
+  new a4a
+  new a4b
+  new a5a
+  new a5b
+  new T @ untetheredbind, untetheredunbind
+  new Tx4_1o @ tetheredbind, tetheredunbind
+  new Ta1 @ tetheredbind, tetheredunbind
+  new Ta2 @ tetheredbind, tetheredunbind
+  new Ta3 @ tetheredbind, tetheredunbind
+  new Ta4 @ tetheredbind, tetheredunbind
+  new Ta5 @ tetheredbind, tetheredunbind
+  new Tlsb_1 @ tetheredbind, tetheredunbind
+  ( N * INPUT(T,x4,x4_0a,x4_0b,x4_1a,x4_1b)
+  | N * INPUT(T,x3,x3_0a,x3_0b,x3_1a,x3_1b)
+  | N * INPUT(T,x2,x2_0a,x2_0b,x2_1a,x2_1b)
+  | N * INPUT(T,x1,x1_0a,x1_0b,x1_1a,x1_1b)
+  | N * FANOUT(T,x4_1a,x4_1b,Tx4_1o,x4_1oa,x4_1ob,2.0)
+  | N * OR(T,x1_1a,x1_1b,T,x2_1a,x2_1b,Ta1,a1a,a1b)
+  | N * AND(T,x1_0a,x1_0b,T,x2_0a,x2_0b,Ta2,a2a,a2b)
+  | N * OR(Tx4_1o,x4_1oa,x4_1ob,T,x3_0a,x3_0b,Ta3,a3a,a3b)
+  | N * THREEINPUTAND(Tx4_1o,x4_1oa,x4_1ob,T,x3_1a,x3_1b,Ta2,a2a,a2b,Ta4,a4a,a4b)
+  | N * AND(Ta1,a1a,a1b,Ta3,a3a,a3b,Ta5,a5a,a5b)
+  | N * OR(Ta4,a4a,a4b,Ta5,a5a,a5b,Tlsb_1,LSB_1a,LSB_1b)
+  | N * REPORTER(Tlsb_1,LSB_1a,LSB_1b)))
+def LSB0(N) = 
+  (new x1_0a
+  new x1_0b
+  new x1_1a
+  new x1_1b
+  new x2_0a
+  new x2_0b
+  new x2_1a
+  new x2_1b
+  new x3_0a
+  new x3_0b
+  new x3_1a
+  new x3_1b
+  new x4_0a
+  new x4_0b
+  new x4_1a
+  new x4_1b
+  new x4_0oa
+  new x4_0ob
+  new a6a
+  new a6b
+  new a7a
+  new a7b
+  new a8a
+  new a8b
+  new a9a
+  new a9b
+  new a10a
+  new a10b
+  new T @ untetheredbind, untetheredunbind
+  new Tx4_0o @ tetheredbind, tetheredunbind
+  new Ta6 @ tetheredbind, tetheredunbind
+  new Ta7 @ tetheredbind, tetheredunbind
+  new Ta8 @ tetheredbind, tetheredunbind
+  new Ta9 @ tetheredbind, tetheredunbind
+  new Ta10 @ tetheredbind, tetheredunbind
+  new Tlsb_0 @ tetheredbind, tetheredunbind
+  ( N * INPUT(T,x4,x4_0a,x4_0b,x4_1a,x4_1b)
+  | N * INPUT(T,x3,x3_0a,x3_0b,x3_1a,x3_1b)
+  | N * INPUT(T,x2,x2_0a,x2_0b,x2_1a,x2_1b)
+  | N * INPUT(T,x1,x1_0a,x1_0b,x1_1a,x1_1b)
+  | N * FANOUT(T,x4_0a,x4_0b,Tx4_0o,x4_0oa,x4_0ob,2.0)
+  | N * OR(T,x1_1a,x1_1b,T,x2_1a,x2_1b,Ta6,a6a,a6b)
+  | N * AND(T,x1_0a,x1_0b,T,x2_0a,x2_0b,Ta7,a7a,a7b)
+  | N * AND(T,x3_1a,x3_1b,Tx4_0o,x4_0oa,x4_0ob,Ta8,a8a,a8b)
+  | N * THREEINPUTOR(Ta6,a6a,a6b,T,x3_0a,x3_0b,Tx4_0o,x4_0oa,x4_0ob,Ta9,a9a,a9b)
+  | N * OR(Ta7,a7a,a7b,Ta8,a8a,a8b,Ta10,a10a,a10b)
+  | N * AND(Ta9,a9a,a9b,Ta10,a10a,a10b,Tlsb_0,LSB_0a,LSB_0b)
+  | N * REPORTER(Tlsb_0,LSB_0a,LSB_0b)))
+def M0() = <MSB_0a MSB_0b>
+def M1() = <MSB_1a MSB_1b>
+def L0() = <LSB_0a LSB_0b>
+def L1() = <LSB_1a LSB_1b>
+def SQUAREROOT(N) = 
+  (( 0.0 * M0()
+  | 0.0 * M1()
+  | 0.0 * L0()
+  | 0.0 * L1()
+  | LSB0(N)
+  | LSB1(N)
+  | MSB(N)))
+SQUAREROOT(Copies)

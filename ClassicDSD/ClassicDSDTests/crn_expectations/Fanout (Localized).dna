@@ -1,0 +1,171 @@
+  (*------------------------------------------------------------------------------------
+  Circuit		:	FANOUT Gate
+  Notes		:	Use Compilation: Infinite;
+  Source		:	[1]
+  Modified by	:	Boyan Yordanov
+
+  Biological Computation Group
+  Microsoft Research
+  Cambridge UK
+  2013
+
+  [1] H. Chandran, N. Gopalkrishnan, A. Phillips, and J. Reif. Localized hybridization
+  circuits. DNA17, pages 64{83, 2011.
+  ------------------------------------------------------------------------------------*)
+
+
+(********************************************
+*               SPECIFICATIONS
+********************************************)
+
+
+(**********************************************
+* Specification 1: Correctness example
+***********************************************
+$init[0] and $terminal[10] and $FanoutSpec[10];
+
+$FanoutSpec :={
+OUTPUT = (FANOUT[0]+1)*INPUT[0]};
+************************************************)
+
+
+(**********************************************
+* Specification 2: Counter-example for default initial conditions
+***********************************************
+directive abstraction connected;
+$init[0] and
+$strandConservation[1] and
+$disabledReactions[1] and
+$terminal[1] and
+not $FanoutSpec[1];
+
+$disabledReactions :={
+(INPUT[0]=0 and sp_0[0]=0 and sp_2[0]=0) =>
+(OUTPUT<=OUTPUT[0])};
+
+$FanoutSpec :={
+OUTPUT = (FANOUT[0]+1)*INPUT[0]};
+************************************************)
+
+(**********************************************
+* Specification 3: Counter-example for generalized initial conditions with a single input
+***********************************************
+directive abstraction connected;
+$InitialConditions[0] and
+$strandConservation[1] and
+$disabledReactions[1] and
+$terminal[1] and
+not $FanoutSpec[1];
+
+$InitialConditions := {
+REPORTER > (FANOUT+1)*INPUT and
+OUTPUT = 0 and
+INPUT <= 1 and
+FANOUT_1 > INPUT and
+sp_2 = 0 and
+sp_1 = 0 and
+sp_0 = 0 and
+sp_3 = 0 and
+sp_4 = 0};
+
+$FanoutSpec :={
+OUTPUT = (FANOUT[0]+1)*INPUT[0]};
+
+
+$disabledReactions :={
+(INPUT[0]=0 and sp_0[0]=0 and sp_2[0]=0) =>
+(OUTPUT <=OUTPUT[0])};
+************************************************)
+
+
+(**********************************************
+* Specification 4: Counter-example for generalized initial conditions with multiple inputs
+***********************************************
+$InitialConditions[0] and $terminal[10] and not $FanoutSpec[10];
+
+$FanoutSpec :={
+OUTPUT = (FANOUT[0]+1)*INPUT[0]};
+
+$InitialConditions := {
+REPORTER > (FANOUT+1)*INPUT and
+OUTPUT = 0 and
+FANOUT_1 > INPUT and
+sp_2 = 0 and
+sp_1 = 0 and
+sp_0 = 0 and
+sp_3 = 0 and
+sp_4 = 0};
+************************************************)
+
+
+(**********************************************
+* Specification 5: Counter-example for modified specification
+***********************************************
+directive abstraction connected;
+$InitialConditions[0] and
+$strandConservation[1] and
+$disabledReactions[1] and
+$terminal[1] and
+not $FanoutSpec2[1];
+
+$FanoutSpec2 :={
+(INPUT[0]=0 => OUTPUT=0) and
+(INPUT[0]>0 => (OUTPUT = FANOUT[0]+INPUT[0]))};
+
+$disabledReactions :={
+(INPUT[0]=0 and sp_0[0]=0 and sp_2[0]=0) =>
+(OUTPUT<=OUTPUT[0])};
+
+$InitialConditions := {
+REPORTER > (FANOUT+1)*INPUT and
+OUTPUT = 0 and
+FANOUT_1 > INPUT and
+sp_2 = 0 and
+sp_1 = 0 and
+sp_0 = 0 and
+sp_3 = 0 and
+sp_4 = 0};
+************************************************)
+
+
+(********************************************
+*               CIRCUIT
+********************************************)
+
+(* Setting number of second to be simulated and the number of data points *)
+directive duration 3600.0 points 2000
+directive scale 1.0
+directive leak 1.0E-8 (* Leak rate 10^-8 /nM/s at lambda = 1. Manually multiply by lambda *)
+directive tau 1.0 (* Branch migration rate 1/s (from Zhang and Winfree 2009)*)
+(* Plots the reporter strand's concentration *)
+directive plot <Ca Cb>
+directive compilation infinite
+
+(* Defining speedup factor *)
+def lambda = 1.0E+0
+
+(* Winfree's parameters*)
+def shorttoeholdunbind = 26.0 (* Short toehold dissociation rate constant 26/s *)
+def shorttoeholdbind = 50.0 * 5.0E-5 (* Short toehold binding rate constant 5x10^-5/nM/s *)
+
+def untetheredunbind = shorttoeholdunbind (* fast toehold dissociation rate constant /s *)
+def untetheredbind = shorttoeholdbind (* slow toehold binding rate constant /nM/s *)
+
+def tetheredunbind = untetheredunbind (* toehold dissociation rate constant /s *)
+def tetheredbind = untetheredbind*lambda (* toehold binding rate constant /nM/s *)
+
+def ON = 1 (* Input concentration *)
+
+(* Definition of the OR, AND, FANOUT and WIRE gates, reporter complex and input strands *)
+def STRAND (T, sa, sb) = <T^ sa sb>
+def FANOUT (Ti, Inputa, Inputb, To, Outputa, Outputb, Degree) =
+    ((Degree-1) * <Inputa Inputb To^>| Degree * {Ti^*}[Inputa]:[Inputb To^]<Outputa Outputb> )
+def REPORTER (Ti, Inputa, Inputb) =  {Ti^*}[Inputa Inputb]
+def OUTPUT() = <Ca Cb>
+def INPUT() = <tA^ Aa Ab>
+(
+ 0 * OUTPUT()
+|1 * INPUT()
+|1 * FANOUT(tA, Aa, Ab, tC, Ca, Cb, 2)
+|10 * REPORTER(tC,Ca,Cb)
+)

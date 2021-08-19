@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk.Web">
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <!-- Prevents CS5001 -->
+    <OutputType>Library</OutputType>
+    <YarnBuildCommand>--mutex file install</YarnBuildCommand>
+    <NodeJsExecutablePath>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\..\packages\javascriptbuild\Node.js.redist\tools\win-x64\node.exe'))</NodeJsExecutablePath>
+  </PropertyGroup>
+  <PropertyGroup>
+    <RunPostBuildEvent>Always</RunPostBuildEvent>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\CRNEngine\CRNEngineTSWrapper\CRNEngineTSWrapper.csproj" />
+    <ProjectReference Include="..\ClassicDSDJS\ClassicDSDJS.fsproj">
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+  </ItemGroup>
+  <PropertyGroup>
+    <PostBuildEvent>
+      rem this ensures that a file exists in the place where webpack expects it, in cases where we do not run W#.
+      if not exist $(MSBuildProjectDirectory)\..\ClassicDSDJS\Content\ClassicDSDJS.js copy /Y $(MSBuildProjectDirectory)\..\ClassicDSDJS\Content\placeholder.js $(MSBuildProjectDirectory)\..\ClassicDSDJS\Content\ClassicDSDJS.js
+      if not exist $(MSBuildProjectDirectory)\..\ClassicDSDJS\Content\ClassicDSDJS.min.js copy /Y $(MSBuildProjectDirectory)\..\ClassicDSDJS\Content\placeholder.js $(MSBuildProjectDirectory)\..\ClassicDSDJS\Content\ClassicDSDJS.min.js
+    </PostBuildEvent>
+  </PropertyGroup>
+  <Import Project="..\..\.paket\Paket.Restore.targets" />
+</Project>

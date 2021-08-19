@@ -1,0 +1,67 @@
+directive sample 0.0,50000.0 1000
+directive plot "<fl^ rbx>"; "<fl^ rbx2>"
+directive simulation deterministic
+directive parameters
+  [ kt, (1E-05, 0.002), 0.0001, log, random
+  ; ku1, (1E-06, 0.002), 0.0001, log, random
+  ; ut = 0.0
+  ; Xi = 10.0
+  ; NGi = 30.0
+  ; NHi = 30.0
+  ; NRi = 30.0
+  ; NMi = 100.0
+  ; leakJoinBX_B, (0.0, 0.2), 0.01, real, random
+  ; badJoinBX_B, (0.0, 0.5), 0.2, real, random
+  ; leakJoinBX_X, (0.0, 0.2), 0.01, real, random
+  ; badJoinBX_X, (0.0, 0.5), 0.2, real, random
+  ; T1, (7000.0, 8000.0), 7200.0, real, random
+  ; T2, (7000.0, 8000.0), 7200.0, real, random
+  ; N = 0.6 ]
+directive sweep input =
+  { N = [0.0, 0.2, 0.4, 0.6] }
+directive fit {input; JoinBX_AddB; ["<fl^ rbx>"] }
+directive fit {input; JoinBX_AddX; ["<fl^ rbx2>"] }
+directive fit_run { burnin      = 500
+                  ; samples     = 500
+                  ; mle_burnin  = 100
+                  ; mle_samples = 100
+                  ; thin        = 10
+                  ; separatenoise = false }
+directive plotwindow 0.0 20000.0 0.0 7.0
+
+event "<t2^ x2>" ((Xi * N) * (1.0 - badJoinBX_X)) @ T2 |
+event "<t^ b>" ((Xi * N) * (1.0 - badJoinBX_B)) @ T1 |
+init "<t^ x>" NMi |
+init "<t2^ x2>" 0.0 |
+init "<x t^>" 0.0 |
+init "<x2 t2^>" 0.0 |
+init "<t^ rbx>" NMi |
+init "<t2^ rbx2>" NMi |
+init "<t^ b>" 0.0 |
+init "<t2^ b2>" NMi |
+init "<b t^>" 0.0 |
+init "<b2 t2^>" 0.0 |
+init "{t^*}[b t^]:[x t^]:[rbx u1^]" (NGi * (1.0 - leakJoinBX_B)) |
+init "[t^ b]{t^*}:[x t^]:[rbx u1^]" 0.0 |
+init "[t^ b]:[t^ x]{t^*}:[rbx u1^]" 0.0 |
+init "[t^ b]:[t^ x]:[t^ rbx]{u1^*}" 0.0 |
+init "<rbx u1^>" (NGi * leakJoinBX_B) |
+init "{t2^*}[b2 t2^]:[x2 t2^]:[rbx2 u12^]" (NGi * (1.0 - leakJoinBX_X)) |
+init "[t2^ b2]{t2^*}:[x2 t2^]:[rbx2 u12^]" 0.0 |
+init "[t2^ b2]:[t2^ x2]{t2^*}:[rbx2 u12^]" 0.0 |
+init "[t2^ b2]:[t2^ x2]:[t2^ rbx2]{u12^*}" 0.0 |
+init "<rbx2 u12^>" (NGi * leakJoinBX_X) |
+init "<fl^>[rbx]{u1^*}" NRi |
+init "[rbx u1^]" 0.0 |
+init "<fl^ rbx>" 0.0 |
+init "<fl^>[rbx2]{u12^*}" NRi |
+init "[rbx2 u12^]" 0.0 |
+init "<fl^ rbx2>" 0.0 |
+"{t^*}[b t^]:[x t^]:[rbx u1^]" + "<t^ b>" <->{kt}{kt} "[t^ b]{t^*}:[x t^]:[rbx u1^]" + "<b t^>" |
+"[t^ b]{t^*}:[x t^]:[rbx u1^]" + "<t^ x>" <->{kt}{kt} "[t^ b]:[t^ x]{t^*}:[rbx u1^]" + "<x t^>" |
+"[t^ b]:[t^ x]{t^*}:[rbx u1^]" + "<t^ rbx>" <->{kt}{ku1} "[t^ b]:[t^ x]:[t^ rbx]{u1^*}" + "<rbx u1^>" |
+"{t2^*}[b2 t2^]:[x2 t2^]:[rbx2 u12^]" + "<t2^ b2>" <->{kt}{kt} "[t2^ b2]{t2^*}:[x2 t2^]:[rbx2 u12^]" + "<b2 t2^>" |
+"[t2^ b2]{t2^*}:[x2 t2^]:[rbx2 u12^]" + "<t2^ x2>" <->{kt}{kt} "[t2^ b2]:[t2^ x2]{t2^*}:[rbx2 u12^]" + "<x2 t2^>" |
+"[t2^ b2]:[t2^ x2]{t2^*}:[rbx2 u12^]" + "<t2^ rbx2>" <->{kt}{ku1} "[t2^ b2]:[t2^ x2]:[t2^ rbx2]{u12^*}" + "<rbx2 u12^>" |
+"<fl^>[rbx]{u1^*}" + "<rbx u1^>" ->{ku1} "[rbx u1^]" + "<fl^ rbx>" |
+"<fl^>[rbx2]{u12^*}" + "<rbx2 u12^>" ->{ku1} "[rbx2 u12^]" + "<fl^ rbx2>"

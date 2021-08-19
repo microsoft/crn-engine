@@ -1,0 +1,155 @@
+directive rules {
+
+bind(P1,P2,Q,D!i) :- 
+  P1 = C1 [D@X], compl(D, D'), P2 = C2 [D'@Y], 
+  Q = C1 [D!i] | C2 [D'!i], freshBond(D!i, P1|P2),
+  not hidden(D@X, Q),
+  not hidden(D'@Y, Q).
+
+displace(P,Q,E!j,D!i) :-
+  P = C [E!j D] [D!i] [D'!i E'!k], junction(E!j, E'!k, P),
+  Q = C [E!j D!i] [D] [D'!i E'!k].
+
+displaceL(P,Q,E!j,D!i) :- 
+  P = C [D!i] [D E!j] [E'!k D'!i], junction(E!j, E'!k, P),
+  Q = C [D] [D!i E!j] [E'!k D'!i].
+
+unbind(P,Q,D!i) :-
+  P = C [D!i] [D'!i], toehold(D), 
+  Q = C [D] [D'], not adjacent(D!i,_,P).
+
+adjacent(D!i,E!j,P) :- P = C [D!i E!j] [E'!j D'!i].
+adjacent(D!i,E!j,P) :- P = C [E!j D!i] [D'!i E'!j].
+ 
+
+cover(P,Q,E!j,D!i) :-
+  P = C [E!j D] [D' E'!j], compl(D, D'), 
+  Q = C [E!j D!i] [D'!i E'!j], freshBond(D!i,P).
+
+coverL(P,Q,E!j,D!i) :- 
+  P = C [D E!j] [E'!j D'], compl(D, D'), 
+  Q = C [D!i E!j] [E'!j D'!i], freshBond(D!i,P).
+
+binds(P1,P2,R,D!i,[D#L]) :- bind(P1,P2,Q,D!i), not coverL(Q,_,D!i,_), covers(Q,R,D!i,L).
+binds(P1,P2,Q,D!i,[D]) :- bind(P1,P2,Q,D!i), not coverL(Q,_,D!i,_), not cover(Q,_,D!i,_).
+
+displaces(P,R,E!j,[D#L]) :- displace(P,Q,E!j,D!i), displaces(Q,R,D!i,L).
+displaces(P,Q,E!j,[D]) :- displace(P,Q,E!j,D!i), not displace(Q,_,D!i,_).
+
+displacesL(P,R,E!j,[D#L]) :- displaceL(P,Q,E!j,D!i), displacesL(Q,R,D!i,L).
+displacesL(P,Q,E!j,[D]) :- displaceL(P,Q,E!j,D!i), not displaceL(Q,_,D!i,_).
+
+covers(P,R,E!j,[D#L]) :- cover(P,Q,E!j,D!i), covers(Q,R,D!i,L).
+covers(P,Q,E!j,[D]) :- cover(P,Q,E!j,D!i), not cover(Q,_,D!i,_).
+
+coversL(P,R,E!j,[D#L]) :- coverL(P,Q,E!j,D!i), coversL(Q,R,D!i,L).
+coversL(P,Q,E!j,[D]) :- coverL(P,Q,E!j,D!i), not coverL(Q,_,D!i,_).
+
+unbinds(P,R,D!i,[D#L]) :- 
+  P = C [D!i E!j] [E'!j D'!i], toehold(D), not boundL(D!i,_,P), 
+  Q = C [D E!j] [E'!j D'], unbinds(Q,R,E!j,L). 
+boundL(D!i,E!j,P) :- P = C [E!j D!i] [D'!i E'!j].
+unbinds(P,Q,D!i,[D]) :- unbind(P,Q,D!i).
+
+(* auxiliary functions *)
+hidden(D@X, P) :-
+  unbound(D),
+  P = C [A@End D@X B@Start], 
+  path(B@Start, _@End, P, "right", [], Path).
+
+hidden(D@X, P) :-
+  unbound(D),
+  P = C [B@Start D@X A@End], 
+  path(B@Start, _@End, P, "left", [], Path).
+
+(* path predicate: find a @Path from @Start to @End *)
+path(_@End, _@End, _, _, Visited, Path) :-
+  reverse(Visited, Path).
+
+path(X@Start, _@End, P, "left", Visited, Path) :-
+  not (Start = End),
+  P = C[Y@Start' X@Start],
+  not member(Y@Start', Visited),
+  path(Y@Start', _@End, P, "left", [X@Start # Visited], Path).
+
+path(X@Start, _@End, P, "right", Visited, Path) :-
+  not (Start = End),
+  P = C[X@Start Y@Start'],
+  not member(Y@ Start', Visited),
+  path(Y@Start', _@End, P, "right", [X@Start # Visited], Path).
+  
+path(X@Start, _@End, P, "any", Visited, Path) :-
+  not (Start = End),
+  path(X@Start, _@End, P, "left", Visited, Path).
+
+path(X@Start, _@End, P, "any", Visited, Path) :-
+  not (Start = End),
+  path(X@Start, _@End, P, "right", Visited, Path).
+
+path(D!i@Start, _@End, P, _, Visited, Path) :-
+  not (Start = End),
+  P = C [D!i@Start] [D'!i@Start'],
+  not member(D'!i@Start', Visited),
+  path(D'!i@Start', _@End, P, "any", [D!i@Start # Visited], Path).
+
+junction(A, B, P) :- junctionR(A, B, P, []).
+junction(A, B, P) :- junctionL(A, B, P, []).
+junctionR(_!j,_!j,_,_). 
+junctionR(E!j,F!k,Q,V):- 
+  Q = C [F!k] [G!l@X E'!j@Y] [E!j],
+  not member(X, V),
+  not member(Y, V),
+  junctionR(G!l,F!k,Q,[X;Y#V]).
+
+junctionL(_!j,_!j,_, _).
+junctionL(E!j,F!k,Q, V):- 
+  Q = C [F!k] [E'!j@X G!l@Y] [E!j],
+  not member(X, V),
+  not member(Y, V),
+  junctionL(G!l,F!k,Q,[X;Y#V]).
+
+
+(* infinite semantics *)
+find(D,Type,Rate):- rate(D,Type,Rate).
+find(D,Type,Rate):- default(D,Type,Rate), not rate(D,Type,_).
+
+slow(P1, P2, Rate, Q) :- binds(P1,P2,Q,D!i,L),find(L, "bind", Rate), productive(Q,_,D!i,L).
+slow(P1, P2, Rate, Q) :- binds(P1,P2,Q,D!i,L),find(L, "bind", Rate), not unbind(Q, _, D!i, _).
+fast(P, Q) :- displaces(P,Q,_,L).//, find(L, "displace", Rate).
+fast(P, Q) :- displacesL(P,Q,_,L).//, find(L, "displace", Rate).
+fast(P, Q) :- covers(P,Q,_,L).//, find(L, "cover", Rate).
+fast(P, Q) :- coversL(P,Q,_,L).//, find(L, "cover", Rate).
+fast(P, Q) :- unbinds(P,Q,_,L).//, find(L, "unbind", Rate).
+
+productive(P,Q,E!j,L) :- displace(P,Q,E!j,L).
+productive(P,Q,E!j,L) :- displaceL(P,Q,E!j,L).
+productive(P,Q,E!j,L) :- cover(P,Q,E!j,L).
+productive(P,Q,E!j,L) :- coverL(P,Q,E!j,L).
+
+merge(P,P,V) :- not fast(P,_).
+merge(P,R,V) :- fast(P,Q), not member(Q,V), merge(Q,R,[Q#V]).
+
+reaction([P1; P2], Rate, R) :- slow(P1, P2, Rate, Q), merge(Q,R,[(P1|P2);Q]).
+reaction([P], Rate, R) :- slow(P, Rate, Q), merge(Q,R,[P;Q]).
+
+default([_],"unbind",0.1).
+default(_,"bind","bind").
+default(_,"displace",1.0).
+default(_,"cover",1.0).
+
+(* ribosome binding and expression *)
+reaction([P], "expression", Q) :-
+    P = C [rbs@X D aug^] [nil],  not hidden(rbs@X, P), 
+    Q = C [rbs D aug^]   [<gfp>].
+
+}
+directive parameters [
+  bind = 1;
+  expression = 1;
+]
+
+directive simulation { final=5000; plots=[<gfp>] }
+
+( 1 [<u* a1*>]
+| 1 [<a2* u  >]
+| 1 [<a1 a2!0 blank top^!1 rbs top^*!1 aug^ a2*!0 linker gfp>] )

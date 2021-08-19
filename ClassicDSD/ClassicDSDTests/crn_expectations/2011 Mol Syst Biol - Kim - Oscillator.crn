@@ -1,0 +1,44 @@
+directive sample 0.0,72000.0 1000
+directive plot "<a1^* p^* t^>[prom trI2 ta2^ a2^ t^ h]"; "<a2^ t^>[prom tra1 a1^ ta1^ tdI1^ t^ h]"
+directive simulation deterministicstiff
+directive parameters
+  [ kTA21 = 7.4E-05
+  ; kTA12 = 1.4E-05
+  ; kAI1 = 5.3E-05
+  ; krAI1 = 2.4E-05
+  ; kAI2 = 3.1E-05
+  ; kTAI21 = 2.8E-05
+  ; kTAI12 = 0.00014
+  ; kAIrA1 = 2.8E-05
+  ; cRNaseH = 15.0
+  ; cRNAP = 125.0
+  ; kRNAP = 0.0323
+  ; kRNaseH = 0.0196
+  ; S = 0.02 ]
+
+init "<t^* p^ a1^ ta1^>" 250.0 |
+init "<t^*>[p^ a1^ ta1^]{tdI1^*}" 0.0 |
+init "<t^* a2^* ta2^*>" 500.0 |
+init "<trI2>[ta2^ a2^ t^]<h>" 0.0 |
+init "<a2^ t^>[prom tra1 a1^ ta1^ tdI1^ t^ h]" 120.0 |
+init "{ta2^*}[a2^ t^]::[prom tra1 a1^ ta1^ tdI1^ t^ h]" 0.0 |
+init "<a1^* p^* t^>[prom trI2 ta2^ a2^ t^ h]" 250.0 |
+init "{ta1^}[a1^* p^* t^]::[prom trI2 ta2^ a2^ t^ h]" 0.0 |
+init "<tdI1^* ta1^* a1^* p^*>" 1000.0 |
+init "<tra1 a1^ ta1^ tdI1^ t^ h>" 0.0 |
+init "{p^*}<tra1>[a1^ ta1^ tdI1^]<t^ h>" 0.0 |
+init "<trI2 ta2^ a2^ t^ h>" 0.0 |
+"<trI2>[ta2^ a2^ t^]<h>" ->{((S * 0.24) * (cRNaseH / 18.4))} "<t^* a2^* ta2^*>" |
+"{p^*}<tra1>[a1^ ta1^ tdI1^]<t^ h>" ->{((S * 0.05) * (cRNaseH / 76.5))} "<tdI1^* ta1^* a1^* p^*>" |
+"{ta2^*}[a2^ t^]::[prom tra1 a1^ ta1^ tdI1^ t^ h]" ->{(0.05 * (cRNAP / (68.5 + cRNAP)))} "{ta2^*}[a2^ t^]::[prom tra1 a1^ ta1^ tdI1^ t^ h]" + "<tra1 a1^ ta1^ tdI1^ t^ h>" |
+"{ta1^}[a1^* p^* t^]::[prom trI2 ta2^ a2^ t^ h]" ->{(0.08 * (cRNAP / (247.8 + cRNAP)))} "{ta1^}[a1^* p^* t^]::[prom trI2 ta2^ a2^ t^ h]" + "<trI2 ta2^ a2^ t^ h>" |
+"<a2^ t^>[prom tra1 a1^ ta1^ tdI1^ t^ h]" ->{(0.002 * (cRNAP / (2620.02 + cRNAP)))} "<a2^ t^>[prom tra1 a1^ ta1^ tdI1^ t^ h]" + "<tra1 a1^ ta1^ tdI1^ t^ h>" |
+"<a1^* p^* t^>[prom trI2 ta2^ a2^ t^ h]" ->{(0.02 * (cRNAP / (2670.2 + cRNAP)))} "<a1^* p^* t^>[prom trI2 ta2^ a2^ t^ h]" + "<trI2 ta2^ a2^ t^ h>" |
+"<a2^ t^>[prom tra1 a1^ ta1^ tdI1^ t^ h]" + "<t^* a2^* ta2^*>" ->{kTA12} "{ta2^*}[a2^ t^]::[prom tra1 a1^ ta1^ tdI1^ t^ h]" |
+"<a1^* p^* t^>[prom trI2 ta2^ a2^ t^ h]" + "<t^* p^ a1^ ta1^>" ->{kTA21} "{ta1^}[a1^* p^* t^]::[prom trI2 ta2^ a2^ t^ h]" |
+"<a1^* p^* t^>[prom trI2 ta2^ a2^ t^ h]" + "<t^*>[p^ a1^ ta1^]{tdI1^*}" <->{0.0}{kTAI21} "{ta1^}[a1^* p^* t^]::[prom trI2 ta2^ a2^ t^ h]" + "<tdI1^* ta1^* a1^* p^*>" |
+"<tdI1^* ta1^* a1^* p^*>" + "<t^* p^ a1^ ta1^>" ->{kAI1} "<t^*>[p^ a1^ ta1^]{tdI1^*}" |
+"<tra1 a1^ ta1^ tdI1^ t^ h>" + "<tdI1^* ta1^* a1^* p^*>" ->{krAI1} "{p^*}<tra1>[a1^ ta1^ tdI1^]<t^ h>" |
+"<t^*>[p^ a1^ ta1^]{tdI1^*}" + "<tra1 a1^ ta1^ tdI1^ t^ h>" <->{kAIrA1}{0.0} "{p^*}<tra1>[a1^ ta1^ tdI1^]<t^ h>" + "<t^* p^ a1^ ta1^>" |
+"{ta2^*}[a2^ t^]::[prom tra1 a1^ ta1^ tdI1^ t^ h]" + "<trI2 ta2^ a2^ t^ h>" ->{kTAI12} "<trI2>[ta2^ a2^ t^]<h>" + "<a2^ t^>[prom tra1 a1^ ta1^ tdI1^ t^ h]" |
+"<trI2 ta2^ a2^ t^ h>" + "<t^* a2^* ta2^*>" ->{kAI2} "<trI2>[ta2^ a2^ t^]<h>"

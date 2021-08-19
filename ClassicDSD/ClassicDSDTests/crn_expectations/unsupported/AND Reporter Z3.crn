@@ -1,0 +1,48 @@
+directive sample 0.0,10000.0 1000
+directive plot "<tb^ b>"; "<tx^ x>"; "<fl^ x>"
+
+predicate out2 = {
+"<fl^ x>" = "<tx^ x>"@[0.0]
+} |
+predicate out1 = {
+"<fl^ x>" = "<tb^ b>"@[0.0]
+} |
+predicate min2 = {
+"<tb^ b>" >= "<tx^ x>"
+} |
+predicate min1 = {
+"<tb^ b>" < "<tx^ x>"
+} |
+predicate MinFn = {
+min1 -> out1 and min2 -> out2
+} |
+predicate Error = {
+not MinFn
+} |
+query errorComputation = {
+abstraction connected;
+
+Init@[0.0] and Terminal@[1.0] and ConservationOfMass@[1.0] and Error@[1.0]
+} |
+query correctComputation = {
+abstraction stutter;
+
+Init@[0.0] and Terminal@[5.0] and ConservationOfMass@[5.0] and MinFn@[5.0]
+} |
+init "<tb^ b>" 1.0 |
+init "<tx^ x>" 1.0 |
+init "{tb^*}[b tx^]:[x to^]" 3.0 |
+init "[tb^ b]:<b>[tx^]:[x to^]" 0.0 |
+init "[tb^ b]{tx^*}:[x to^]" 0.0 |
+init "[tb^ b]:[tx^ x]:<x>[to^]" 0.0 |
+init "[tb^ b]:[tx^ x]{to^*}" 0.0 |
+init "<x to^>" 0.0 |
+init "<b tx^>" 0.0 |
+init "<fl^>[x]{to^*}" 3.0 |
+init "[x to^]" 0.0 |
+init "<fl^ x>" 0.0 |
+"{tb^*}[b tx^]:[x to^]" + "<tb^ b>" <->{0.0003}{0.1126} "[tb^ b]:<b>[tx^]:[x to^]" |
+"[tb^ b]{tx^*}:[x to^]" + "<tx^ x>" <->{0.0003}{0.1126} "[tb^ b]:[tx^ x]:<x>[to^]" |
+"[tb^ b]:[tx^ x]:<x>[to^]" <->{0.1126}{0.0003} "[tb^ b]:[tx^ x]{to^*}" + "<x to^>" |
+"[tb^ b]:<b>[tx^]:[x to^]" <->{0.1126}{0.0003} "[tb^ b]{tx^*}:[x to^]" + "<b tx^>" |
+"<fl^>[x]{to^*}" + "<x to^>" ->{0.0003} "[x to^]" + "<fl^ x>"

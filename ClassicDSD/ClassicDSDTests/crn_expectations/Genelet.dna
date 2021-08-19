@@ -1,0 +1,231 @@
+(*------------------ Genelet implementation ----------------*)
+
+(*------------------ Settings ------------------------------*)
+directive compilation infinite
+directive simulation deterministicstiff
+(* PI Controller settings *)
+directive duration 250000.0 points 1000
+directive plot
+  sub(<r^ rs>; <r^* rs'>); (* R - R' *)
+  sub(<v^ vs>; <v^* vs'>); (* V - V' *)
+  sub(<y^ ys>; <y^* ys'>); (* Y - Y' *)
+  sub(<load>; <load'>) 
+
+directive event <r^* rs'>  2.0*x0 @  50000.0
+directive event <r^ rs>    2.0*x0 @ 100000.0
+directive event <load>        2.0 @ 150000.0
+directive event <load'>       1.0 @ 200000.0
+
+(*
+directive duration 500000.0 points 1000
+directive event <r^* rs'>  2*x0 @  50000.0
+directive event <r^ rs>    2*x0 @ 100000.0
+directive event <r^* rs'>  2*x0 @ 150000.0
+directive event <r^ rs>    2*x0 @ 200000.0
+directive event <r^* rs'>  2*x0 @ 250000.0
+directive event <r^ rs>    2*x0 @ 300000.0
+directive event <r^* rs'>  2*x0 @ 350000.0
+directive event <r^ rs>    2*x0 @ 400000.0
+directive event <r^* rs'>  2*x0 @ 450000.0
+*)
+(* Circuit component settings (no events) 
+directive duration 10000.0 points 1000
+directive plot  X(); X'(); Y(); Y'(); R(); E(); E'(); V(); V'()
+*)
+directive parameters
+  [ deg = 0.0008
+  ; pol = 0.0167
+  ; nick = 0.0167
+  ; x0 = 4.0
+  ; ann = 0.01
+  ; bind = 0.001
+  ; unbind = 0.1126
+  ; Cmax = 1000.0 
+  ; k = 0.05
+  ]
+
+new x@k*bind,unbind
+new r@k*bind,unbind
+new e@k*bind,unbind
+new v@k*bind,unbind
+new y@k*bind,unbind
+new t@bind,unbind
+new u@bind,unbind
+
+(* Plotting *)
+def R()  = <r^ rs>   (* Signal(r,rs) *)
+def R'() = <r^* rs'> (* Signal'(r,rs') *)
+def E()  = <e^ es>   (* Signal(e,es) *)
+def E'() = <e^* es'> (* Signal'(e,es') *)
+def V()  = <v^ vs>   (* Signal(v,vs) *)
+def V'() = <v^* vs'> (* Signal'(v,vs') *)
+def Y()  = <y^ ys>   (* Signal(y,ys) *)
+def Y'() = <y^* ys'> (* Signal'(y,ys') *)
+def X() = <x^ xs>    (* Signal'(x,xs') *)
+def X'() = <x^* xs'> (* Signal'(x,xs') *)
+def Load() = <load>
+def Load'() = <load'>
+
+(* Species *)
+def Signal(x,xs) = <x^ xs>
+def Signal'(x,xs') = <x^* xs'>
+def Template(x,xs,y,ys) = {u^*}[xs t^]:[prom y^ ys]
+def Template'(x,xs',y,ys') = {u^*}[xs' t^]:[prom y^* ys']
+def TemplateOff(x,xs,y,ys) = [u^ xs]{t^*}:[prom y^ ys]
+def TemplateOff'(x,xs',y,ys') = [u^ xs']{t^*}:[prom y^* ys']
+def TemplateOffInv(x,xs,y,ys') = [u^ xs]{t^*}:[prom y^* ys']
+def TemplateOffInv'(x,xs',y,ys) = [u^ xs']{t^*}:[prom y^ ys]
+def TemplateInv(x,xs,y,ys') = {u^*}[xs t^]:[prom y^* ys']
+def TemplateInv'(x,xs',y,ys) = {u^*}[xs' t^]:[prom y^ ys]
+def Transducer(x,xs) = {x^*}[xs t^]
+def Transducer'(x,xs') = {x^}[xs' t^]
+def TransducerRev(x,xs) = [x^ xs]{t^*}
+def TransducerRev'(x,xs') = [x^* xs']{t^*}
+
+(*------------------ Basic Reactions -----------------------*)
+def Catalysis(k,x,xs,y,ys) = (* x -> x + y *) 
+( Cmax*k * TemplateOff(x,xs,y,ys)
+| Cmax*k * Transducer(x,xs)
+| Cmax*k * TransducerRev(x,xs)
+| Cmax*k * <u^ xs>
+| rxn Template(x,xs,y,ys) ->{pol} Template(x,xs,y,ys) + Signal(y,ys)
+)
+def Catalysis'(k,x,xs',y,ys') = (* x' -> x' + y' *) 
+( Cmax*k * TemplateOff'(x,xs',y,ys')
+| Cmax*k * Transducer'(x,xs')
+| Cmax*k * TransducerRev'(x,xs')
+| Cmax*k * <u^ xs'>
+| rxn Template'(x,xs',y,ys') ->{pol} Template'(x,xs',y,ys') + Signal'(y,ys')
+)
+def CatalysisInv(k,x,xs,y,ys') = (* x -> x + y' *) 
+( Cmax*k * TemplateOffInv(x,xs,y,ys')
+| Cmax*k * Transducer(x,xs)
+| Cmax*k * TransducerRev(x,xs)
+| Cmax*k * <u^ xs>
+| rxn TemplateInv(x,xs,y,ys') ->{pol} TemplateInv(x,xs,y,ys') + Signal'(y,ys')
+)
+def CatalysisInv'(k,x,xs',y,ys) = (* x' -> x' + y *) 
+( Cmax*k * TemplateOffInv'(x,xs',y,ys)
+| Cmax*k * Transducer'(x,xs')
+| Cmax*k * TransducerRev'(x,xs')
+| Cmax*k * <u^ xs'>
+| rxn TemplateInv'(x,xs',y,ys) ->{pol} TemplateInv'(x,xs',y,ys) + Signal(y,ys)
+)
+def Degradation(k,x,xs,xs') = 
+(* CatalysisInv(k,x,xs,x,xs') *)
+  ( rxn Signal(x,xs) ->{deg/k} )
+  
+def Degradation'(k,x,xs,xs') = 
+(* CatalysisInv'(k,x,xs',x,xs) *)
+  ( rxn Signal'(x,xs') ->{deg/k} )
+
+def Catalysis2(k,x,xs,xs',y,ys,ys') =
+( Catalysis(k,x,xs,y,ys)
+| Catalysis'(k,x,xs',y,ys')
+)
+def Catalysis2Inv(k,x,xs,xs',y,ys,ys') =
+( CatalysisInv(k,x,xs,y,ys')
+| CatalysisInv'(k,x,xs',y,ys)
+)
+def Degradation2(k,x,xs,xs') =
+( Degradation(k,x,xs,xs')
+| Degradation'(k,x,xs,xs')
+)
+def Annihilation(x,xs,xs') = 
+  ( rxn Signal(x,xs) + Signal'(x,xs') ->{ann} (* {xs'}[x^]<xs> *) )
+
+(*------------------ Blocks --------------------------------*)
+def Integration(kI,x,xs,xs',y,ys,ys') = 
+  ( Catalysis2(kI,x,xs,xs',y,ys,ys') )
+
+def Gain(k,kD,x,xs,xs',y,ys,ys') =
+( Catalysis2(k,x,xs,xs',y,ys,ys') 
+| Degradation2(kD,y,ys,ys')
+)
+def Summation(k1,k2,kD,x1,x1s,x1s',x2,x2s,x2s',y,ys,ys') = 
+( Catalysis2(k1,x1,x1s,x1s',y,ys,ys') 
+| Catalysis2(k2,x2,x2s,x2s',y,ys,ys')
+| Degradation2(kD,y,ys,ys')
+)
+def SummationInv(k1,k2,kD,x1,x1s,x1s',x2,x2s,x2s',y,ys,ys') = 
+( Catalysis2(k1,x1,x1s,x1s',y,ys,ys') 
+| Catalysis2Inv(k2,x2,x2s,x2s',y,ys,ys')
+| Degradation2(kD,y,ys,ys')
+)
+
+def PI(kP,kI, r,rs,rs', y,ys,ys', v,vs,vs') = 
+( SummationInv(1.0,1.0,1.0,r,rs,rs',y,ys,ys',e,es,es')
+| Integration(kI,e,es,es',x,xs,xs')
+| Summation(kP,1.0,1.0,e,es,es',x,xs,xs',v,vs,vs')
+| Annihilation(x,xs,xs')
+)
+def Plant(v,vs,vs', y,ys,ys') =
+( rxn Signal(v,vs)  ->{0.2} Signal(v,vs)  + Signal(y,ys)
+| rxn Signal'(v,vs')->{0.2} Signal'(v,vs')+ Signal'(y,ys')
+| rxn Signal(y,ys) ->{0.1}
+| rxn Signal'(y,ys')->{0.1}
+| rxn Load() + Signal(y,ys) ->{0.01} Load()
+| rxn Load'() + Signal'(y,ys') ->{0.01} Load'()
+| rxn Load() + Load'() ->{1.0}
+)
+def Plottables() =
+( 0 * R()
+| 0 * R'()
+| 0 * V()
+| 0 * V'()
+| 0 * Y()
+| 0 * Y'()
+| 0 * Load()
+| 0 * Load'()
+)
+
+(*------------------ Full system  ----------------------------*)
+def System() =
+( Plottables()
+| x0 * R()
+| PI(1.0,1.0, r,rs,rs', y,ys,ys', v,vs,vs')
+| Plant(v,vs,vs', y,ys,ys')
+| Annihilation(r,rs,rs')
+| Annihilation(y,ys,ys')
+| Annihilation(v,vs,vs')
+| Annihilation(e,es,es')
+)
+
+(*------------------ Tests -----------------------------------*)
+def TestAnnihilation() = 
+( 2 * X() | X'()
+| Annihilation(x,xs,xs')
+)
+def TestCatalysis() = 
+( X() | 0 * Y()
+| Catalysis(1.0, x,xs, y,ys)
+)
+def TestDegradation() = 
+( X() 
+| Degradation(1.0, x,xs,xs')
+)
+def TestGain() = 
+( X() | 0 * Y() | 0 * Y'()
+| Gain(1.0,2.0, x,xs,xs', y,ys,ys')
+)
+def TestSummation() = 
+( 2 * X() | E() | 0 * V() | 0 * V'()
+| Summation(1.0,1.0,1.0, x,xs,xs' ,e,es,es', v,vs,vs')
+)
+def TestSummationInv() = 
+( 2 * Y() | R() | 0 * E() | 0 * E'()
+| SummationInv(1.0,1.0,1.0, y,ys,ys', r,rs,rs',  e,es,es')
+| Annihilation(e,es,es')
+)
+
+(*------------------ Run -------------------------------------*)
+System()
+(*
+TestAnnihilation()
+TestCatalysis()
+TestDegradation()
+System()
+TestGain()
+TestSummation() 
+TestSummationInv()
+*)

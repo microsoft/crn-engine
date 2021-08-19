@@ -1,0 +1,324 @@
+directive sample 10000000.0 1000000
+directive compilation infinite
+directive simulation jit
+directive polymers
+directive plot sum(<_ T^ pS1>); sum(<_ T^ pS2>); sum(<_ ^ pS3>);
+sum(<_ T^ pS4>); sum(<_ T^ pS5>); sum(<_ T^ pS6>); sum(<_ T^ pS7>);
+sum(<_ T^ pS8>); sum(<_ T^ pS9>); sum(<_ T^ pS10>); sum(<_ T^ pS11>);
+sum(<_ T^ pS12>); sum(<_ T^ pS13>); sum(<_ T^ pAcc>); sum(<_ T^ pRej>)
+
+(* Keep relatively large concentrations of fuels etc *)
+def lots = 20
+
+(* Need a special sequence to represent "bottom", a domain for sealing irreversible gates and a single toehold. *)
+new mBot new pBot new T
+
+(* Fuel needed to edit a stack of type Z *)
+def EditStack(mPushZ,pPushZ,mPopZ,pPopZ,GlueZ) =
+(* Fuel strand 1 *)
+( lots * <pPushZ T^>
+(* Fuel strand 2 *)
+| lots * {GlueZ T^}
+(* Backbone monomer 1 *)
+| lots * <T^>[GlueZ* T^*]<mPopZ>
+(* Backbone monomer 2 *)
+| lots * {T^}[mPopZ T^]<pPopZ>:[pPushZ T^]{GlueZ} )
+
+(* The empty stack of type Z *)
+def EmptyStack(mPushZ,pPushZ,mPopZ,pPopZ,GlueZ) =
+( <mBot mPushZ>[T^ pPushZ]<pBot>:[T^ GlueZ*]::[T^* mPopZ]:{T^*}:[pPushZ T^]{GlueZ}
+| EditStack(mPushZ,pPushZ,mPopZ,pPopZ,GlueZ) )
+
+(* Stack of type Z containing 1 element. *)
+def OneStack(mPushZ,pPushZ,mPopZ,pPopZ,GlueZ,mX,pX) =
+( <mBot mPushZ>[T^ pPushZ]<pBot>:[T^ GlueZ*]::[T^* mPopZ]:
+<mX mPushZ>[T^ pPushZ]<pX>:[T^ GlueZ*]::[T^* mPopZ]{T^*}:[pPushZ T^]{GlueZ}
+| EditStack(mPushZ,pPushZ,mPopZ,pPopZ,GlueZ) )
+
+(* Stack of type Z containing 2 elements (final argument at the top). *)
+def TwoStack(mPushZ,pPushZ,mPopZ,pPopZ,GlueZ,mX,pX,mY,pY) =
+( <mBot mPushZ>[T^ pPushZ]<pBot>:[T^ GlueZ*]::[T^* mPopZ]:
+<mX mPushZ>[T^ pPushZ]<pX>:[T^ GlueZ*]::[T^* mPopZ]:
+<mY mPushZ>[T^ pPushZ]<pY>:[T^ GlueZ*]::[T^* mPopZ]{T^*}:[pPushZ T^]{GlueZ}
+| EditStack(mPushZ,pPushZ,mPopZ,pPopZ,GlueZ) )
+
+(* Stack of type Z containing 3 elements (final argument at the top). *)
+def ThreeStack(mPushZ,pPushZ,mPopZ,pPopZ,GlueZ,mX,pX,mY,pY,mW,pW) =
+( <mBot mPushZ>[T^ pPushZ]<pBot>:[T^ GlueZ*]::[T^* mPopZ]:
+<mX mPushZ>[T^ pPushZ]<pX>:[T^ GlueZ*]::[T^* mPopZ]:
+<mY mPushZ>[T^ pPushZ]<pY>:[T^ GlueZ*]::[T^* mPopZ]:
+<mW mPushZ>[T^ pPushZ]<pW>:[T^ GlueZ*]::[T^* mPopZ]{T^*}:[pPushZ T^]{GlueZ}
+| EditStack(mPushZ,pPushZ,mPopZ,pPopZ,GlueZ) )
+
+(* Stack of type Z containing 4 elements (final argument at the top). *)
+def FourStack(mPushZ,pPushZ,mPopZ,pPopZ,GlueZ,mX,pX,mY,pY,mW,pW,mU,pU) =
+( <mBot mPushZ>[T^ pPushZ]<pBot>:[T^ GlueZ*]::[T^* mPopZ]:
+<mX mPushZ>[T^ pPushZ]<pX>:[T^ GlueZ*]::[T^* mPopZ]:
+<mY mPushZ>[T^ pPushZ]<pY>:[T^ GlueZ*]::[T^* mPopZ]:
+<mW mPushZ>[T^ pPushZ]<pW>:[T^ GlueZ*]::[T^* mPopZ]:
+<mU mPushZ>[T^ pPushZ]<pU>:[T^ GlueZ*]::[T^* mPopZ]{T^*}:[pPushZ T^]{GlueZ}
+| EditStack(mPushZ,pPushZ,mPopZ,pPopZ,GlueZ) )
+
+(* Stack of type Z containing 5 elements (final argument at the top). *)
+def FiveStack(mPushZ,pPushZ,mPopZ,pPopZ,GlueZ,mX,pX,mY,pY,mW,pW,mU,pU,mR,pR) =
+( <mBot mPushZ>[T^ pPushZ]<pBot>:[T^ GlueZ*]::[T^* mPopZ]:
+<mX mPushZ>[T^ pPushZ]<pX>:[T^ GlueZ*]::[T^* mPopZ]:
+<mY mPushZ>[T^ pPushZ]<pY>:[T^ GlueZ*]::[T^* mPopZ]:
+<mW mPushZ>[T^ pPushZ]<pW>:[T^ GlueZ*]::[T^* mPopZ]:
+<mU mPushZ>[T^ pPushZ]<pU>:[T^ GlueZ*]::[T^* mPopZ]:
+<mR mPushZ>[T^ pPushZ]<pR>:[T^ GlueZ*]::[T^* mPopZ]{T^*}:[pPushZ T^]{GlueZ}
+| EditStack(mPushZ,pPushZ,mPopZ,pPopZ,GlueZ) )
+
+(* Stack of type Z containing 6 elements (final argument at the top). *)
+def SixStack(mPushZ,pPushZ,mPopZ,pPopZ,GlueZ,mX,pX,mY,pY,mW,pW,mU,pU,mR,pR,mP,pP) =
+( <mBot mPushZ>[T^ pPushZ]<pBot>:[T^ GlueZ*]::[T^* mPopZ]:
+<mX mPushZ>[T^ pPushZ]<pX>:[T^ GlueZ*]::[T^* mPopZ]:
+<mY mPushZ>[T^ pPushZ]<pY>:[T^ GlueZ*]::[T^* mPopZ]:
+<mW mPushZ>[T^ pPushZ]<pW>:[T^ GlueZ*]::[T^* mPopZ]:
+<mU mPushZ>[T^ pPushZ]<pU>:[T^ GlueZ*]::[T^* mPopZ]:
+<mR mPushZ>[T^ pPushZ]<pR>:[T^ GlueZ*]::[T^* mPopZ]:
+<mP mPushZ>[T^ pPushZ]<pP>:[T^ GlueZ*]::[T^* mPopZ]{T^*}:[pPushZ T^]{GlueZ}
+| EditStack(mPushZ,pPushZ,mPopZ,pPopZ,GlueZ) )
+
+(* Stack of type Z containing 7 elements (final argument at the top). *)
+def SevenStack(mPushZ,pPushZ,mPopZ,pPopZ,GlueZ,mA,pA,mB,pB,mC,pC,mD,pD,mE,pE,mF,pF,mG,pG) =
+( <mBot mPushZ>[T^ pPushZ]<pBot>:[T^ GlueZ*]::[T^* mPopZ]:
+<mA mPushZ>[T^ pPushZ]<pA>:[T^ GlueZ*]::[T^* mPopZ]:
+<mB mPushZ>[T^ pPushZ]<pB>:[T^ GlueZ*]::[T^* mPopZ]:
+<mC mPushZ>[T^ pPushZ]<pC>:[T^ GlueZ*]::[T^* mPopZ]:
+<mD mPushZ>[T^ pPushZ]<pD>:[T^ GlueZ*]::[T^* mPopZ]:
+<mE mPushZ>[T^ pPushZ]<pE>:[T^ GlueZ*]::[T^* mPopZ]:
+<mF mPushZ>[T^ pPushZ]<pF>:[T^ GlueZ*]::[T^* mPopZ]:
+<mG mPushZ>[T^ pPushZ]<pG>:[T^ GlueZ*]::[T^* mPopZ]{T^*}:[pPushZ T^]{GlueZ}
+| EditStack(mPushZ,pPushZ,mPopZ,pPopZ,GlueZ) )
+
+(* Stack of type Z containing 8 elements (final argument at the top). *)
+def EightStack(mPushZ,pPushZ,mPopZ,pPopZ,GlueZ,mA,pA,mB,pB,mC,pC,mD,pD,mE,pE,mF,pF,mG,pG,mH,pH) =
+( <mBot mPushZ>[T^ pPushZ]<pBot>:[T^ GlueZ*]::[T^* mPopZ]:
+<mA mPushZ>[T^ pPushZ]<pA>:[T^ GlueZ*]::[T^* mPopZ]:
+<mB mPushZ>[T^ pPushZ]<pB>:[T^ GlueZ*]::[T^* mPopZ]:
+<mC mPushZ>[T^ pPushZ]<pC>:[T^ GlueZ*]::[T^* mPopZ]:
+<mD mPushZ>[T^ pPushZ]<pD>:[T^ GlueZ*]::[T^* mPopZ]:
+<mE mPushZ>[T^ pPushZ]<pE>:[T^ GlueZ*]::[T^* mPopZ]:
+<mF mPushZ>[T^ pPushZ]<pF>:[T^ GlueZ*]::[T^* mPopZ]:
+<mG mPushZ>[T^ pPushZ]<pG>:[T^ GlueZ*]::[T^* mPopZ]:
+<mH mPushZ>[T^ pPushZ]<pH>:[T^ GlueZ*]::[T^* mPopZ]{T^*}:[pPushZ T^]{GlueZ}
+| EditStack(mPushZ,pPushZ,mPopZ,pPopZ,GlueZ) )
+
+(* Element strand for stack type Z, carrying signal X *)
+def Element(mX,mPushZ,pPushZ,pX) = <mX mPushZ T^ pPushZ pX>
+
+(* Three-domain signal strand carrying signal X *)
+def Signal(mX,pX) = <mX T^ pX>
+
+(* Irreversible reaction (3+3 -> 3+3) [X+Y -> A+B] *)
+def Irrev33x33(mX,pX,mY,pY, mA,pA,mB,pB) = new mA
+(* Reaction gate *)
+( lots * {T^*}[pX T^]:[pY T^]:[mA T^]<pA>:[mB T^]<pB>
+(* Fuel *)
+| lots * <T^ mA T^ mB> )
+
+(* Irreversible reaction 5+3 -> 3+5 [X(Z1)+Y -> B+A(Z2)] *)
+def Irrev53x35(mX,mPushZ1,pPushZ1,pX,mY,pY, mB,pB,mA,mPushZ2,pPushZ2,pA) = new mB
+(* Reaction gate *)
+( lots * {T^*}[pPushZ1 pX T^]:[pY T^]:[mB T^]<pB>:[mA mPushZ2 T^]<pPushZ2 pA>
+(* Fuel *)
+| lots * <T^ mB T^ mA mPushZ2> )
+
+(* Irreversible reaction 5+3 -> 3+3 [X(Z1)+Y -> A+B] *)
+def Irrev53x33(mX,mPushZ1,pPushZ1,pX,mY,pY, mA,pA,mB,pB) = new mA
+(* Reaction gate *)
+( lots * {T^*}[pPushZ1 pX T^]:[pY T^]:[mA T^]<pA>:[mB T^]<pB>
+(* Fuel *)
+| lots * <T^ mA T^ mB> )
+
+(* Irreversible reaction 5+3 -> 3 [X(Z1)+Y -> A] *)
+def Irrev53x3(mX,mPushZ1,pPushZ1,pX,mY,pY, mA,pA) = new mA
+(* Reaction gate *)
+( lots * {T^*}[pPushZ1 pX T^]:[pY T^]:[mA T^]<pA>
+(* Fuel *)
+| lots * <T^ mA T^> )
+
+(* Irreversible reaction 3+3 -> 3+5 [X+Y -> B+A(Z2)] *)
+def Irrev33x35(mX,pX,mY,pY, mB,pB,mA,mPushZ2,pPushZ2,pA) = new mB
+(* Reaction gate *)
+( lots * {T^*}[pX T^]:[pY T^]:[mB T^]<pB>:[mA mPushZ2 T^]<pPushZ2 pA>
+(* Fuel *)
+| lots * <T^ mB T^ mA mPushZ2> )
+
+(* *** EXAMPLE - RIPPLE CARRY ADDER *** *)
+new mPushA new pPushA new mPopA new pPopA new GlueA
+new mPushB new pPushB new mPopB new pPopB new GlueB
+new mPushC new pPushC new mPopC new pPopC new GlueC
+new mPushX new pPushX new mPopX new pPopX new GlueX
+new mZero new pZero new mOne new pOne
+new mS1 new pS1 new mS2 new pS2 new mS3 new pS3 new mS4 new pS4
+new mS5 new pS5 new mS6 new pS6 new mS7 new pS7 new mS8 new pS8
+new mS9 new pS9 new mS10 new pS10 new mS11 new pS11 new mS12 new pS12
+new mS13 new pS13 new mAcc new pAcc new mRej new pRej
+
+(* Input stacks A and B for 2-bit example A (in binary, 00 + 00) *)
+( TwoStack(mPushA,pPushA,mPopA,pPopA,GlueA, mZero,pZero,mZero,pZero)
+| TwoStack(mPushB,pPushB,mPopB,pPopB,GlueB, mZero,pZero,mZero,pZero)
+
+(* Input stacks A and B for 2-bit example B (in binary, 00 + 01) *)
+(*
+( TwoStack(mPushA,pPushA,mPopA,pPopA,GlueA, mZero,pZero,mZero,pZero)
+| TwoStack(mPushB,pPushB,mPopB,pPopB,GlueB, mZero,pZero,mOne,pOne)
+*)
+
+(* Input stacks A and B for 2-bit example C (in binary, 00 + 10) *)
+(*
+( TwoStack(mPushA,pPushA,mPopA,pPopA,GlueA, mZero,pZero,mZero,pZero)
+| TwoStack(mPushB,pPushB,mPopB,pPopB,GlueB, mOne,pOne,mZero,pZero)
+*)
+
+(* Input stacks A and B for 2-bit example D (in binary, 00 + 11) *)
+(*
+( TwoStack(mPushA,pPushA,mPopA,pPopA,GlueA, mZero,pZero,mZero,pZero)
+| TwoStack(mPushB,pPushB,mPopB,pPopB,GlueB, mOne,pOne,mOne,pOne)
+*)
+
+(* Input stacks A and B for 2-bit example E (in binary, 01 + 00) *)
+(*
+( TwoStack(mPushA,pPushA,mPopA,pPopA,GlueA, mZero,pZero,mOne,pOne)
+| TwoStack(mPushB,pPushB,mPopB,pPopB,GlueB, mZero,pZero,mZero,pZero)
+*)
+
+(* Input stacks A and B for 2-bit example F (in binary, 01 + 01) *)
+(*
+( TwoStack(mPushA,pPushA,mPopA,pPopA,GlueA, mZero,pZero,mOne,pOne)
+| TwoStack(mPushB,pPushB,mPopB,pPopB,GlueB, mZero,pZero,mOne,pOne)
+*)
+
+(* Input stacks A and B for 2-bit example G (in binary, 01 + 10) *)
+(*
+( TwoStack(mPushA,pPushA,mPopA,pPopA,GlueA, mZero,pZero,mOne,pOne)
+| TwoStack(mPushB,pPushB,mPopB,pPopB,GlueB, mOne,pOne,mZero,pZero)
+*)
+
+(* Input stacks A and B for 2-bit example H (in binary, 01 + 11) *)
+(*
+( TwoStack(mPushA,pPushA,mPopA,pPopA,GlueA, mZero,pZero,mOne,pOne)
+| TwoStack(mPushB,pPushB,mPopB,pPopB,GlueB, mOne,pOne,mOne,pOne)
+*)
+
+(* Input stacks A and B for 2-bit example I (in binary, 10 + 00) *)
+(*
+( TwoStack(mPushA,pPushA,mPopA,pPopA,GlueA, mOne,pOne,mZero,pZero)
+| TwoStack(mPushB,pPushB,mPopB,pPopB,GlueB, mZero,pZero,mZero,pZero)
+*)
+
+(* Input stacks A and B for 2-bit example J (in binary, 10 + 01) *)
+(*
+( TwoStack(mPushA,pPushA,mPopA,pPopA,GlueA, mOne,pOne,mZero,pZero)
+| TwoStack(mPushB,pPushB,mPopB,pPopB,GlueB, mZero,pZero,mOne,pOne)
+*)
+
+(* Input stacks A and B for 2-bit example K (in binary, 10 + 10) *)
+(*
+( TwoStack(mPushA,pPushA,mPopA,pPopA,GlueA, mOne,pOne,mZero,pZero)
+| TwoStack(mPushB,pPushB,mPopB,pPopB,GlueB, mOne,pOne,mZero,pZero)
+*)
+
+(* Input stacks A and B for 2-bit example L (in binary, 10 + 11) *)
+(*
+( TwoStack(mPushA,pPushA,mPopA,pPopA,GlueA, mOne,pOne,mZero,pZero)
+| TwoStack(mPushB,pPushB,mPopB,pPopB,GlueB, mOne,pOne,mOne,pOne)
+*)
+
+(* Input stacks A and B for 2-bit example M (in binary, 11 + 00) *)
+(*
+( TwoStack(mPushA,pPushA,mPopA,pPopA,GlueA, mOne,pOne,mOne,pOne)
+| TwoStack(mPushB,pPushB,mPopB,pPopB,GlueB, mZero,pZero,mZero,pZero)
+*)
+
+(* Input stacks A and B for 2-bit example N (in binary, 11 + 01) *)
+(*
+( TwoStack(mPushA,pPushA,mPopA,pPopA,GlueA, mOne,pOne,mOne,pOne)
+| TwoStack(mPushB,pPushB,mPopB,pPopB,GlueB, mZero,pZero,mOne,pOne)
+*)
+
+(* Input stacks A and B for 2-bit example O (in binary, 11 + 10) *)
+(*
+( TwoStack(mPushA,pPushA,mPopA,pPopA,GlueA, mOne,pOne,mOne,pOne)
+| TwoStack(mPushB,pPushB,mPopB,pPopB,GlueB, mOne,pOne,mZero,pZero)
+*)
+
+(* Input stacks A and B for 2-bit example P (in binary, 11 + 11) *)
+(*
+( TwoStack(mPushA,pPushA,mPopA,pPopA,GlueA, mOne,pOne,mOne,pOne)
+| TwoStack(mPushB,pPushB,mPopB,pPopB,GlueB, mOne,pOne,mOne,pOne)
+*)
+
+(* Input stacks A and B for 8-bit example (in decimal, 111+222=333) *)
+(*
+( EightStack(mPushA,pPushA,mPopA,pPopA,GlueA, mZero,pZero, mOne,pOne, mOne,pOne,   mZero,pZero, mOne,pOne, mOne,pOne, mOne,pOne, mOne,pOne)
+| EightStack(mPushB,pPushB,mPopB,pPopB,GlueB, mOne,pOne,   mOne,pOne, mZero,pZero, mOne,pOne,   mOne,pOne, mOne,pOne, mOne,pOne, mZero,pZero)
+*)
+
+(* Input stacks A and B for stochastic simulation example from paper *)
+(*
+( OneStack(mPushA,pPushA,mPopA,pPopA,GlueA, mOne,pOne)
+| OneStack(mPushB,pPushB,mPopB,pPopB,GlueB, mZero,pZero)
+*)
+
+(* Initial carry-in and output stacks - always the same *)
+| OneStack(mPushC,pPushC,mPopC,pPopC,GlueC,mZero,pZero)
+| EmptyStack(mPushX,pPushX,mPopX,pPopX,GlueX)
+(* Initial state strand and initial "instruction" strand *)
+| Signal(mS1, pS1) | Signal(mPopA, pPopA)
+(* State transition #1 -> #2 [Bot_A + S1 -> S2 + Pop_B] *)
+| Irrev53x33(mBot,mPushA,pPushA,pBot,mS1,pS1, mS2,pS2,mPopB,pPopB)
+(* State transition #1 -> #3 [One_A + S1 -> S3 + Pop_B] *)
+| Irrev53x33(mOne,mPushA,pPushA,pOne,mS1,pS1, mS3,pS3,mPopB,pPopB)
+(* State transition #1 -> #4 [Zero_A + S1 -> S4 + Pop_B] *)
+| Irrev53x33(mZero,mPushA,pPushA,pZero,mS1,pS1, mS4,pS4,mPopB,pPopB)
+(* State transition #2 -> ACC [Bot_B + S2 -> ACC] *)
+| Irrev53x3(mBot,mPushB,pPushB,pBot,mS2,pS2, mAcc,pAcc)
+(* State transition #2 -> REJ [One_B + S2 -> REJ] *)
+| Irrev53x3(mOne,mPushB,pPushB,pOne,mS2,pS2, mRej,pRej)
+(* State transition #2 -> REJ [Zero_B + S2 -> REJ] *)
+| Irrev53x3(mZero,mPushB,pPushB,pZero,mS2,pS2, mRej,pRej)
+(* State transition #3 -> REJ [Bot_B + S3 -> REJ] *)
+| Irrev53x3(mBot,mPushB,pPushB,pBot,mS3,pS3, mRej,pRej)
+(* State transition #3 -> #5 [One_B + S3 -> S5 + Pop_C] *)
+| Irrev53x33(mOne,mPushB,pPushB,pOne,mS3,pS3, mS5,pS5,mPopC,pPopC)
+(* State transition #3 -> #6 [Zero_B + S3 -> S6 + Pop_C] *)
+| Irrev53x33(mZero,mPushB,pPushB,pZero,mS3,pS3, mS6,pS6,mPopC,pPopC)
+(* State transition #4 -> REJ [Bot_B + S4 -> REJ] *)
+| Irrev53x3(mBot,mPushB,pPushB,pBot,mS4,pS4, mRej,pRej)
+(* State transition #4 -> #6 [One_B + S4 -> S6 + Pop_C] *)
+| Irrev53x33(mOne,mPushB,pPushB,pOne,mS4,pS4, mS6,pS6,mPopC,pPopC)
+(* State transition #4 -> #7 [Zero_B + S4 -> S7 + Pop_C] *)
+| Irrev53x33(mZero,mPushB,pPushB,pZero,mS4,pS4, mS7,pS7,mPopC,pPopC)
+(* State transition #5 -> REJ [Bot_C + S5 -> REJ] *)
+| Irrev53x3(mBot,mPushC,pPushC,pBot,mS5,pS5, mRej,pRej)
+(* State transition #5 -> #8 [One_C + S5 -> S8 + One_C] *)
+| Irrev53x35(mOne,mPushC,pPushC,pOne,mS5,pS5, mS8,pS8,mOne,mPushC,pPushC,pOne)
+(* State transition #5 -> #9 [Zero_C + S5 -> S9 + One_C] *)
+| Irrev53x35(mZero,mPushC,pPushC,pZero,mS5,pS5, mS9,pS9,mOne,mPushC,pPushC,pOne)
+(* State transition #6 -> REJ [Bot_C + S6 -> REJ] *)
+| Irrev53x3(mBot,mPushC,pPushC,pBot,mS6,pS6, mRej,pRej)
+(* State transition #6 -> #9 [One_C + S6 -> S9 + One_C] *)
+| Irrev53x35(mOne,mPushC,pPushC,pOne,mS6,pS6, mS9,pS9,mOne,mPushC,pPushC,pOne)
+(* State transition #6 -> #10 [Zero_C + S6 -> S10 + Zero_C] *)
+| Irrev53x35(mZero,mPushC,pPushC,pZero,mS6,pS6, mS10,pS10,mZero,mPushC,pPushC,pZero)
+(* State transition #7 -> REJ [Bot_C + S7 -> REJ] *)
+| Irrev53x3(mBot,mPushC,pPushC,pBot,mS7,pS7, mRej,pRej)
+(* State transition #7 -> #10 [One_C + S7 -> S10 + Zero_C] *)
+| Irrev53x35(mOne,mPushC,pPushC,pOne,mS7,pS7, mS10,pS10,mZero,mPushC,pPushC,pZero)
+(* State transition #7 -> #11 [Zero_C + S7 -> S11 + Zero_C] *)
+| Irrev53x35(mZero,mPushC,pPushC,pZero,mS7,pS7, mS11,pS11,mZero,mPushC,pPushC,pZero)
+(* State transition #8 -> #13 [Pop_C + S8 -> S13 + One_X] *)
+| Irrev33x35(mPopC,pPopC,mS8,pS8, mS13,pS13,mOne,mPushX,pPushX,pOne)
+(* State transition #9 -> #12 [Pop_C + S9 -> S12 + Zero_X] *)
+| Irrev33x35(mPopC,pPopC,mS9,pS9, mS12,pS12,mZero,mPushX,pPushX,pZero)
+(* State transition #10 -> #13 [Pop_C + S10 -> S13 + One_X] *)
+| Irrev33x35(mPopC,pPopC,mS10,pS10, mS13,pS13,mOne,mPushX,pPushX,pOne)
+(* State transition #11 -> #12 [Pop_C + S11 -> S12 + Zero_X] *)
+| Irrev33x35(mPopC,pPopC,mS11,pS11, mS12,pS12,mZero,mPushX,pPushX,pZero)
+(* State transition #12 -> #1 [Pop_X + S12 -> S1 + Pop_A] *)
+| Irrev33x33(mPopX,pPopX,mS12,pS12, mS1,pS1,mPopA,pPopA)
+(* State transition #13 -> #1 [Pop_X + S13 -> S1 + Pop_A] *)
+| Irrev33x33(mPopX,pPopX,mS13,pS13, mS1,pS1,mPopA,pPopA) )

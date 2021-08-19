@@ -1,0 +1,23 @@
+directive simulation {final=40000; plots=[input(); fuel(); probe(); reporter()]; }
+directive simulator deterministic
+directive deterministic {stiff=true}
+directive polymers
+directive localconcentrations [(a, 100000); (b, 100000)]
+dom a0  = {colour = "red"}
+dom x  = {colour = "green"}
+dom y  = {colour = "blue"}
+dom r  = {colour = "purple"}
+dom Q  = {colour = "black"}
+dom F  = {colour = "black"}
+def input() = <a0^ s>
+def fuel() = <y^*>[s*]{x^>
+def probe() = <r^*>[s*]<Q^>{F^}
+def origami1() = [[ {tether(a) a0^*}[s]{y^> | {tether(a, b) x^*}[s]{y^> | {tether(b) x^*}<b0^>[s]]]
+def origami2() = [[ {tether(a) b0^*}[s]{y^> | {tether(a, b) x^*}[s]{y^> | {tether(b) x^*}[s]{r^>]]
+def reporter() = {s F^}
+( input()
+| 4.0 * fuel()
+| probe()
+| origami1()
+| origami2()
+| 0.0 * reporter())

@@ -1,0 +1,33 @@
+(* A representation of an And Gate, requiring two species to release, from Fig S11 *)
+directive plot <S34 S1 S2a S2b^ S2c^>; Gate()
+
+dom S1 = { seq=CTTTCCTACA }
+dom S2a = { seq=CCTACG} (* x *)
+dom S2b = { seq=TCTCCA; bind=4.2E-4; unbind=4.0E-2} (* y *)
+dom S2c = { seq=ACTAACTTACGG}
+dom S3 = { seq=CCCT; bind=4.2E-4; unbind=4.0E-2}
+dom S4a = { seq=CATTCAATAC}
+dom S4b = {seq=CCTACG} (* x *)
+dom S5 = {seq=TCTCCA; bind=6.5E-4; unbind=4.0E-3} (* y *)
+dom S6 = {seq=CCACATACATCATATT}
+dom S7 = {seq=TACTTATTAGCC}
+dom S8 = {seq=GACA; bind=5.0E-4; unbind=1.9E-4}
+dom S9a = {seq=CTACTTTCAC}
+dom S9b = {seq=CCTACG} (* x *)
+dom S10 = {seq=TCTCCA; bind=6.5E-4; unbind=4.0E-3} (* y *)
+dom S31 = {seq=CACACA}
+dom S32 = {seq=ACTTCAGTCATTAAGC}
+dom S33 = {seq = AGAC }
+dom S34 = {seq = CCATACAAGTATCA }
+
+
+def FuelOne() = <S32 S33^ S34 S1>
+def FuelTwo() = <S2a S2b^ S2c^ S3^ S4a S4b^>
+def Gate() = {S31^*}[S32 S33^]:[S34 S1]::[S2a S2b^ S2c^]:<S6>[S3^ S4a S4b^]{S5^*}
+
+def AndGate(N) =
+  ( N*Gate()  | N* <S31^ S32>
+  | N*<S4a S4b^ S5^>
+  | N*FuelOne() | N*FuelTwo())
+
+AndGate(10)

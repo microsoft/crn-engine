@@ -1,0 +1,19 @@
+directive sample 0.0,10000.0 1000
+directive plot sp_0; sp_8
+directive parameters
+  [ e = 2.71828183
+  ; R = 0.0019872
+  ; T = 298.15 ]
+
+init sp_0 1.0 |
+init T_3 1.0 |
+init T_2 1.0 |
+init T_1 1.0 |
+init T 1.0 |
+T_2 + sp_0 <->{0.0003}{0.0003} sp_2 + sp_1 |
+sp_4 + T ->{0.0003} sp_6 + sp_5 |
+sp_2 + T <->{0.0003}{0.0003} sp_4 + sp_3 |
+T_3 + sp_3 <->{0.0003}{0.0003} sp_7 + T |
+sp_9 + sp_1 ->{0.0003} sp_11 + sp_10 |
+sp_7 + T_1 <->{0.0003}{0.0003} sp_9 + sp_8
+

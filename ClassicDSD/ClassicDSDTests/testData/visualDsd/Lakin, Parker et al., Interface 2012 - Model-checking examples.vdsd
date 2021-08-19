@@ -1,0 +1,207 @@
+(* *********************************************** *)
+
+(* *** USE INFINITE SEMANTICS *** *)
+directive compilation infinite
+directive sample 300000.0 1000
+directive plot <t^ x>; <t^ y>; <t^ b>
+
+directive leak 1.0e-9  (* 1.0 /M/s  * 1.0e-9 nM  *)  (* /nM/s *)
+directive scale 1.0 (* for stochastic simulation *)
+def kt = 1.0e+6 (* /M/s *)
+def exp_DeltaG_over_RT = 3.75479e-7 (* T=25C, DeltaG=-8.76 kcal/mol *) 
+def bind = kt*1.0e-9 (* /nM/s *)
+def unbind =  kt*exp_DeltaG_over_RT (* /s *)
+
+new t@bind,unbind
+
+(* *********************************************** *)
+
+(* Signal strand *)
+def S(N, x) = N * <t^ x>
+
+(* Transducer gate - buggy, with GC *)
+def T(N, x, y) = new c
+( N * <t^ c a>
+| N * <y c t^>
+| N * {t^*}:[x t^]:[c]:[a t^]:[a]
+| N * [x]:[t^ y]:[c]:[t^ a]:{t^*} )
+
+(* Transducer gate - fixed, with GC *)
+def T2(N, x, y) = new a new c
+( N * <t^ c a>
+| N * <y c t^>
+| N * {t^*}:[x t^]:[c]:[a t^]:[a]
+| N * [x]:[t^ y]:[c]:[t^ a]:{t^*} )
+
+(* Catalyst gate - with GC *)
+def C(N,x,y,z) = new a new c
+( N * {t^*}[x t^]:[y t^]:[c]:[a t^]:[a] 
+| N * <t^ c a>
+| N * [x]:[t^ z]:[c]:[t^ y]:[t^ a]{t^*} 
+| N * <z c t^>
+)
+
+(* Catalyst gate - no GC *)
+def C_NoGC(N,x,y,z) = new a new c
+( N * {t^*}[x t^]:[y t^]:[c]:[a t^](*:[a]*)
+| N * <t^ c a>
+| N * (*[x]:*)[t^ z]:[c]:[t^ y]:[t^ a]{t^*}
+| N * <z c t^>
+)
+
+(* Catalyst gate - no GC, using "constant" for fuels and waste *)
+def C_NoGC_Constant(N,x,y,z) = new a new c
+( constant N * {t^*}[x t^]:[y t^]:[c]:[a t^](*:[a]*) 
+| constant N * <t^ c a>
+| constant N * <t^ a>
+| constant N * (*[x]:*)[t^ z]:[c]:[t^ y]:[t^ a]{t^*} 
+| constant N * <z c t^>
+| constant N * [t^ x]:[t^ y]:[t^ c a]{t^*} (* 0? *)
+| constant N * {t^*}[z c t^]:[y t^]:[a t^] (* 0? *)
+| constant N * <x> (* 0? *)
+| constant N * <c> (* 0? *)
+| constant N * <x t^>
+)
+
+(* *********************************************** *)
+
+(* Example 1 - two buggy transducers in series *)
+(* Increase N to see increased probability of correctness *)
+(* *** DSD is OK up to N=4, crashes when N=5. *** *)
+
+new x0 new x1 new x2
+def N = 1
+( S(N, x0) | T(N, x0, x1) | T(N, x1, x2) )
+
+
+(* Example 2a - one corrected transducer (K=1) *)
+(* Don't modify N in this example *)
+(* DSD can build this example. *)
+(*
+new x0 new x1
+def N = 1
+( S(N, x0) | T2(N, x0, x1) )
+*)
+
+(* Example 2b - two corrected transducers in series (K=2) *)
+(* Don't modify N in this example *)
+(* DSD can build this example. *)
+(*
+new x0 new x1 new x2
+def N = 1
+( S(N, x0) | T2(N, x0, x1) | T2(N, x1, x2) )
+*)
+
+(* Example 2c - three corrected transducers in series (K=3) *)
+(* Don't modify N in this example *)
+(* DSD can build this example. *)
+(*
+new x0 new x1 new x2 new x3
+def N = 1
+( S(N, x0) | T2(N, x0, x1) | T2(N, x1, x2) | T2(N, x2, x3) )
+*)
+
+(* Example 2d - four corrected transducers in series (K=4) *)
+(* Don't modify N in this example *)
+(* DSD can build this example. *)
+(*
+new x0 new x1 new x2 new x3 new x4
+def N = 1
+( S(N, x0) | T2(N, x0, x1) | T2(N, x1, x2) | T2(N, x2, x3) | T2(N, x3, x4) )
+*)
+
+(* Example 2e - five corrected transducers in series (K=5) *)
+(* Don't modify N in this example *)
+(* DSD can build this example. *)
+(*
+new x0 new x1 new x2 new x3 new x4 new x5
+def N = 1 
+( S(N, x0) | T2(N, x0, x1) | T2(N, x1, x2) | T2(N, x2, x3) | T2(N, x3, x4) | T2(N, x4, x5) )
+*)
+
+(* Example 2f - six corrected transducers in series (K=6) *)
+(* Don't modify N in this example *)
+(* DSD can build this example. *)
+(*
+new x0 new x1 new x2 new x3 new x4 new x5 new x6
+def N = 1
+( S(N, x0) | T2(N, x0, x1) | T2(N, x1, x2) | T2(N, x2, x3) | T2(N, x3, x4) | T2(N, x4, x5) | T2(N, x5, x6) )
+*)
+
+(* Example 2g - seven corrected transducers in series (K=7) *)
+(* Don't modify N in this example *)
+(* This is the longest chain example you can build in DSD. *)
+(*
+new x0 new x1 new x2 new x3 new x4 new x5 new x6 new x7
+def N = 1
+( S(N, x0) | T2(N, x0, x1) | T2(N, x1, x2) | T2(N, x2, x3) | T2(N, x3, x4) | T2(N, x4, x5) | T2(N, x5, x6) | T2(N, x6, x7) )
+*)
+
+(* Example 2h - eight corrected transducers in series (K=8) *)
+(* Don't modify N in this example *)
+(* *** DSD crashes on this example *** *)
+(*
+new x0 new x1 new x2 new x3 new x4 new x5 new x6 new x7 new x8
+def N = 1
+( S(N, x0) | T2(N, x0, x1) | T2(N, x1, x2) | T2(N, x2, x3) | T2(N, x3, x4) | T2(N, x4, x5) | T2(N, x5, x6) | T2(N, x6, x7) | T2(N, x7, x8) )
+*)
+
+(* Example 2i - nine corrected transducers in series (K=9) *)
+(* Don't modify N in this example *)
+(* *** DSD crashes on this example *** *)
+(*
+new x0 new x1 new x2 new x3 new x4 new x5 new x6 new x7 new x8 new x9
+def N = 1
+( S(N, x0) | T2(N, x0, x1) | T2(N, x1, x2) | T2(N, x2, x3) | T2(N, x3, x4) | T2(N, x4, x5) | T2(N, x5, x6) | T2(N, x6, x7) | T2(N, x7, x8) | T2(N, x8, x9) )
+*)
+
+(* Example 2j - ten corrected transducers in series (K=10) *)
+(* Don't modify N in this example *)
+(* *** DSD crashes on this example *** *)
+(*
+new x0 new x1 new x2 new x3 new x4 new x5 new x6 new x7 new x8 new x9 new x10
+def N = 1
+( S(N, x0) | T2(N, x0, x1) | T2(N, x1, x2) | T2(N, x2, x3) | T2(N, x3, x4) | T2(N, x4, x5) | T2(N, x5, x6) | T2(N, x6, x7) | T2(N, x7, x8) | T2(N, x8, x9) | T2(N, x9, x10) )
+*)
+
+(* *********************************************** *)
+
+(* Example 3 - catalyst gate with GC *)
+(* Increase N to observe kinetics. *)
+(* *** DSD is OK up to N=9, crashes when N=10. *** *)
+(*
+new x new y new z
+def N = 9
+( S(N, x) | S(N, y) | C(N, x, y, z) )
+*)
+
+(* Example 4 - catalyst gate without GC *)
+(* Increase N to observe kinetics *)
+(* *** DSD is OK up to N=15, crashes when N=16. *** *)
+(*
+new x new y new z
+def N = 15
+( S(N, x) | S(N, y) | C_NoGC(N, x, y, z) )
+*)
+
+(* *********************************************** *)
+
+(* Example 5 - approximate majority *)
+(* Size of state space should be independent of N. *)
+(* Modify InitialX and InitialY. *)
+(* *** DSD is OK to InputX=3, InputY=3 if require InputX=InputY. *** *)
+(*
+new x new y new z new b
+def Cat(N,x,y,z) = C_NoGC_Constant(N,x,y,z)
+def InitialX = 3
+def InitialY = 3
+def N = 10000
+( C_NoGC_Constant(N,x,y,b)
+| C_NoGC_Constant(N,y,x,b)
+| C_NoGC_Constant(N,b,x,x)
+| C_NoGC_Constant(N,b,y,y)
+| InitialX * <t^ x>
+| InitialY * <t^ y> )
+*)
+
+(* *********************************************** *)

@@ -1,0 +1,63 @@
+directive sample 0.0,100000.0 1000
+directive plot "<a^>"; "<b^>"; "<inh^>"
+directive simulation deterministicstiff
+directive parameters
+  [ ka = 0.00043333
+  ; kda = 0.0383
+  ; kdb = 0.0135
+  ; kdInhT1 = 9.5E-05
+  ; kdInhT3 = 3.5E-05
+  ; kpol = 0.2833
+  ; kIpol = 0.115
+  ; knick = 0.05
+  ; kexoa = 0.0053
+  ; kexob = 0.0062
+  ; kexoInh = 0.02
+  ; ku = 0.0 ]
+
+init "<a^>" 0.1 |
+init "<b^>" 0.1 |
+init "[a^ b^]" 0.0 |
+init "[b^ inh^]" 0.0 |
+init "[a^ a^]" 0.0 |
+init "<inh^>" 0.1 |
+init "[a^ inh^ a^]" 0.0 |
+init "[a^]:[b^]" 0.0 |
+init "{a^*}[b^]" 0.0 |
+init "{a^* b^*}" 5.0 |
+init "[a^]{b^*}" 0.0 |
+init "[b^]:[inh^]" 0.0 |
+init "{b^*}[inh^]" 0.0 |
+init "{b^* inh^*}" 30.0 |
+init "[b^]{inh^*}" 0.0 |
+init "[a^]:[a^]" 0.0 |
+init "{a^*}[a^]" 0.0 |
+init "{a^* a^*}" 30.0 |
+init "[a^]{a^*}" 0.0 |
+"[a^]{b^*}" ->{kpol} "[a^ b^]" |
+"[a^ b^]" ->{knick} "[a^]:[b^]" |
+"[a^]:[b^]" ->{kpol} "[a^ b^]" + "<b^>" |
+"[b^]{inh^*}" ->{kIpol} "[b^ inh^]" |
+"[b^ inh^]" ->{knick} "[b^]:[inh^]" |
+"[b^]:[inh^]" ->{kIpol} "[b^ inh^]" + "<inh^>" |
+"[a^]{a^*}" ->{kpol} "[a^ a^]" |
+"[a^ a^]" ->{knick} "[a^]:[a^]" |
+"[a^]:[a^]" ->{kpol} "[a^ a^]" + "<a^>" |
+"<inh^>" + "{a^* a^*}" <->{ka}{kdInhT1} "[a^ inh^ a^]" |
+"<inh^>" + "[a^]{a^*}" <->{ka}{ku} "[a^ inh^ a^]" + "<a^>" |
+"<inh^>" + "{a^*}[a^]" <->{ka}{ku} "[a^ inh^ a^]" + "<a^>" |
+"<a^>" ->{kexoa} |
+"<b^>" ->{kexob} |
+"<inh^>" ->{kexoInh} |
+"[a^]:[b^]" <->{kda}{ka} "{a^*}[b^]" + "<a^>" |
+"{a^*}[b^]" <->{kdb}{ka} "{a^* b^*}" + "<b^>" |
+"{a^* b^*}" + "<a^>" <->{ka}{kda} "[a^]{b^*}" |
+"[a^]:[b^]" <->{kdb}{ka} "[a^]{b^*}" + "<b^>" |
+"[b^]:[inh^]" <->{kdb}{ka} "{b^*}[inh^]" + "<b^>" |
+"{b^*}[inh^]" <->{kdInhT3}{ka} "{b^* inh^*}" + "<inh^>" |
+"{b^* inh^*}" + "<b^>" <->{ka}{kdb} "[b^]{inh^*}" |
+"[b^]:[inh^]" <->{kdInhT3}{ka} "[b^]{inh^*}" + "<inh^>" |
+"[a^]:[a^]" <->{kda}{ka} "{a^*}[a^]" + "<a^>" |
+"{a^*}[a^]" <->{kda}{ka} "{a^* a^*}" + "<a^>" |
+"{a^* a^*}" + "<a^>" <->{ka}{kda} "[a^]{a^*}" |
+"[a^]:[a^]" <->{kda}{ka} "[a^]{a^*}" + "<a^>"

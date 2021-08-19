@@ -1,0 +1,57 @@
+directive sample 0.0,10000.0 1000
+directive simulation deterministicstiff
+
+init "<y^*>[s*]{x^>" 3.0 |
+init "<a0^ s>" 1.0 |
+init "[[ {tether(a, b) a0^*}[s]{y^>
+ | {tether(a, c) x^*}[s]{blank^>
+ | {tether(b, d) x^*}[s]{y^>
+ | {tether(c, d) b0^*}[s]{y^> ]]" 1.0 |
+init "[[ {tether(a, b)}[a0^ s]{y^ s}
+ | {tether(a, c) x^*}[s]{blank^>
+ | {tether(b, d) x^*}[s]{y^>
+ | {tether(c, d) b0^*}[s]{y^> ]]" 0.0 |
+init "[[ {tether(a, b)}[a0^ s]:[y^* s*]<x^ s>
+ | {tether(a, c) x^*}[s]{blank^>
+ | {tether(b, d) x^*}[s]{y^>
+ | {tether(c, d) b0^*}[s]{y^> ]]" 0.0 |
+init "[[ {tether(a, b)}[a0^ s]:[y^* s*]::{tether(a, c)}[x^ s]{blank^ s}
+ | {tether(b, d) x^*}[s]{y^>
+ | {tether(c, d) b0^*}[s]{y^> ]]" 0.0 |
+init "[[ {tether(a, b)}[a0^ s]:[y^* s*]::{tether(b, d)}[x^ s]{y^ s}
+ | {tether(a, c) x^*}[s]{blank^>
+ | {tether(c, d) b0^*}[s]{y^> ]]" 0.0 |
+init "[[ {tether(a, b)}[a0^ s]:[y^* s*]::{tether(b, d)}[x^ s]:[y^* s*]<x^ s>
+ | {tether(a, c) x^*}[s]{blank^>
+ | {tether(c, d) b0^*}[s]{y^> ]]" 0.0 |
+"[[ {tether(a, b) a0^*}[s]{y^>
+ | {tether(a, c) x^*}[s]{blank^>
+ | {tether(b, d) x^*}[s]{y^>
+ | {tether(c, d) b0^*}[s]{y^> ]]" + "<a0^ s>" ->{0.0003} "[[ {tether(a, b)}[a0^ s]{y^ s}
+ | {tether(a, c) x^*}[s]{blank^>
+ | {tether(b, d) x^*}[s]{y^>
+ | {tether(c, d) b0^*}[s]{y^> ]]" |
+"[[ {tether(a, b)}[a0^ s]{y^ s}
+ | {tether(a, c) x^*}[s]{blank^>
+ | {tether(b, d) x^*}[s]{y^>
+ | {tether(c, d) b0^*}[s]{y^> ]]" + "<y^*>[s*]{x^>" ->{0.0003} "[[ {tether(a, b)}[a0^ s]:[y^* s*]<x^ s>
+ | {tether(a, c) x^*}[s]{blank^>
+ | {tether(b, d) x^*}[s]{y^>
+ | {tether(c, d) b0^*}[s]{y^> ]]" |
+"[[ {tether(a, b)}[a0^ s]:[y^* s*]<x^ s>
+ | {tether(a, c) x^*}[s]{blank^>
+ | {tether(b, d) x^*}[s]{y^>
+ | {tether(c, d) b0^*}[s]{y^> ]]" ->{300.0} "[[ {tether(a, b)}[a0^ s]:[y^* s*]::{tether(a, c)}[x^ s]{blank^ s}
+ | {tether(b, d) x^*}[s]{y^>
+ | {tether(c, d) b0^*}[s]{y^> ]]" |
+"[[ {tether(a, b)}[a0^ s]:[y^* s*]<x^ s>
+ | {tether(a, c) x^*}[s]{blank^>
+ | {tether(b, d) x^*}[s]{y^>
+ | {tether(c, d) b0^*}[s]{y^> ]]" ->{30.0} "[[ {tether(a, b)}[a0^ s]:[y^* s*]::{tether(b, d)}[x^ s]{y^ s}
+ | {tether(a, c) x^*}[s]{blank^>
+ | {tether(c, d) b0^*}[s]{y^> ]]" |
+"[[ {tether(a, b)}[a0^ s]:[y^* s*]::{tether(b, d)}[x^ s]{y^ s}
+ | {tether(a, c) x^*}[s]{blank^>
+ | {tether(c, d) b0^*}[s]{y^> ]]" + "<y^*>[s*]{x^>" ->{0.0003} "[[ {tether(a, b)}[a0^ s]:[y^* s*]::{tether(b, d)}[x^ s]:[y^* s*]<x^ s>
+ | {tether(a, c) x^*}[s]{blank^>
+ | {tether(c, d) b0^*}[s]{y^> ]]"

@@ -1,0 +1,136 @@
+directive deterministic { stiff=true }
+directive simulator deterministic
+directive parameters [
+  deg = 0.0008; cat = 0.0008; pol = 0.0167; nick = 0.0167; ann = 0.01; //0.01, 0.001
+  bind = 5.4E-06; bind1 = 5E-05; unbind = 0.1126; bind2 = 0.001; //0.001, 5.4e-6
+  Cmax = 1000 ; c = 0.0008; kt = 0.001; ku = 0.001; s = 2; x0 = 4; //4, 8
+]
+directive declare
+//directive simulation { final=10000; plots=[ X(); X'(); Y(); Y'(); R(); E(); E'(); V(); V'() ] }
+//directive simulation { final=500000; plots=[ [R()]-[R'()]; [V()]-[V'()]; [Y()]-[Y'()] ] }
+directive simulation { final=150000; plots=[ [R()]-[R'()]; [V()]-[V'()]; [Y()]-[Y'()]; [L()]-[L'()] ] }
+
+//------------------ 2Domain DNA Strand Displacement  ------------------
+directive compilation infinite
+
+new t@kt,unbind
+new u@ku,unbind
+new x new x' new v new v' new y new y' new r new r' 
+new e new e' new load new load' new i 
+
+def Signal((x,x')) = <t^ x>
+def Degradation(k,(x,x')) = Cmax/k * {t^(c)*}[x]
+def Annihilation((x,x')) = 
+( Cmax * {t^*}[x t^]:[x'] 
+| Cmax * {t^*}[x' t^]:[x] 
+| Cmax * <x t^>
+| Cmax * <x' t^>
+)
+def Catalysis(k,(x,x'),(y,y')) =
+( Cmax*k * {t^(c)*}[x u^]:[y u^]:[i]
+| Cmax*k * [i]:[t^ x]{u^*}
+| Cmax*k * [i]:[t^ y]{u^*}
+| Cmax*k * <u^ y>
+| Cmax*k * <u^ i>
+| Cmax*k * <i t^>
+)
+def Signal'((x,x')) = Signal((x',x))
+def Degradation'(k,(x,x')) = Degradation(k,(x',x))
+def Catalysis'(k,(x,x'),(y,y')) = Catalysis(k,(x',x),(y',y)) 
+def CatalysisInv(k,x,(y,y')) = Catalysis(k,x,(y',y))
+def CatalysisInv'(k,(x,x'),y) = Catalysis(k,(x',x),y)
+
+def x = (x,x')
+def y = (y,y')
+def v = (v,v')
+def e = (e,e')
+def r = (r,r')
+
+//------------------ Blocks --------------------------------
+def Catalysis2(k,x,y) = ( Catalysis(k,x,y) | Catalysis'(k,x,y) )
+def Catalysis2Inv(k,x,y) = ( CatalysisInv(k,x,y) | CatalysisInv'(k,x,y) )
+def Degradation2(k,x) = ( Degradation(k,x) | Degradation'(k,x) )   
+def Integration(kI,x,y) = Catalysis2(kI,x,y) 
+def Gain(k,kD,x,y) = ( Catalysis2(k,x,y) | Degradation2(kD,y) )
+def Summation(k1,k2,kD,x1,x2,y) = 
+( Catalysis2(k1,x1,y) 
+| Catalysis2(k2,x2,y)
+| Degradation2(kD,y)
+)
+def SummationInv(k1,k2,kD,x1,x2,y) = 
+( Catalysis2(k1,x1,y) 
+| Catalysis2Inv(k2,x2,y)
+| Degradation2(kD,y)
+)
+def PI(kP,kI, r, y, v,e) = 
+( SummationInv(1,1,1,r,y,e)
+| Integration(kI,e,x)
+| Summation(kP,1,1,e,x,v)
+| Annihilation(x)
+)
+def R()  = Signal(r)
+def R'() = Signal'(r)
+def E()  = Signal(e)
+def E'() = Signal'(e)
+def V()  = Signal(v)
+def V'() = Signal'(v)
+def Y()  = Signal(y)
+def Y'() = Signal'(y)
+def X() = Signal(x)
+def X'() = Signal'(x)
+def L() = <load>
+def L'() = <load'>
+def Plant(v, y) =
+( rxn Signal(v)  ->{0.2} Signal(v)  + Signal(y)
+| rxn Signal'(v) ->{0.2} Signal'(v) + Signal'(y)
+| rxn Signal(y)  ->{0.1}
+| rxn Signal'(y) ->{0.1}
+| rxn Signal'(y) + Signal(y) ->{0.1}
+| rxn L() + Signal(y)   ->{0.01} L()
+| rxn L'() + Signal'(y) ->{0.01} L'()
+| rxn L() + L'() -> {1.0}
+)
+
+//------------------ Full system  ----------------------------
+def System() =
+( 0 * V() | 0 * V'()
+| 0 * Y() | 0 * Y'() 
+| 0 * L() | 0 * L'()
+| x0* R() | 0 * R'() 
+| PI(1,1,r,y,v,e)
+| Plant(v,y)
+| Annihilation(r)
+| Annihilation(v)
+| Annihilation(e)
+)
+def VarySignal() = ( 2*x0 * R'() @ 50000 | 2*x0 * R() @ 100000 )
+def VaryLoad() = ( 2*L() @ 50000 | L'() @ 100000  )
+def VaryLong() =
+( 2*x0 * R'()  @  50000  | 2*x0 * R() @ 100000
+| 2*x0 * R'()  @  150000 | 2*x0 * R() @ 200000
+| 2*x0 * R'()  @  250000 | 2*x0 * R() @ 300000
+| 2*x0 * R'()  @  350000 | 2*x0 * R() @ 400000
+| 2*x0 * R'()  @  450000 
+) 
+
+//------------------ Tests -----------------------------------
+def TestAnnihilation() = ( 2*X() | X'()| Annihilation(x) )
+def TestCatalysis() = ( X() | 0*Y() | Catalysis(1,x,y) )
+def TestDegradation() = ( X() | 0*X'() | Degradation(1,x) )
+def TestGain() = ( X() | 0*Y() | 0*Y'() | Gain(1,2,x,y) | Annihilation(y) )
+def TestSummation() = ( 2*X() | E() | 0*V() | 0*V'() | Summation(1,1,1,x,e,v) | Annihilation(v) )
+def TestSummationInv() = ( 2*Y() | R() | 0*E() | 0*E'() | SummationInv(1,1,1,y,r,e) | Annihilation(e) )
+
+//------------------ Run -------------------------------------
+(*
+( System() | VarySignal() )
+( System() | VaryLoad() )
+( System() | VaryLong() )
+TestAnnihilation()
+TestCatalysis()
+TestDegradation()
+TestGain()
+TestSummation() 
+TestSummationInv()
+*)
+( System() | VarySignal() )

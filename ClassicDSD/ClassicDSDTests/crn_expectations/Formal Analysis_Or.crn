@@ -1,0 +1,21 @@
+directive sample 0.0,3600.0 2000
+directive plot "<Ca Cb>"
+
+init "<tA^ Aa Ab>" 0.0 |
+init "<tB^ Ba Bb>" 0.0 |
+init "{tB^*}[Ba]:[Bb tC^]<Ca Cb>" 10.0 |
+init "[tB^ Ba Bb]{tC^*}" 0.0 |
+init "<Ba>" 0.0 |
+init "<Bb tC^ Ca Cb>" 0.0 |
+init "{tA^*}[Aa]:[Ab tC^]<Ca Cb>" 10.0 |
+init "[tA^ Aa Ab]{tC^*}" 0.0 |
+init "<Aa>" 0.0 |
+init "<Ab tC^ Ca Cb>" 0.0 |
+init "<Ca Cb>" 0.0 |
+init "{tC^*}[Ca Cb]" 10.0 |
+init "<Bb>[tC^ Ca Cb]" 0.0 |
+init "<Ab>[tC^ Ca Cb]" 0.0 |
+"{tB^*}[Ba]:[Bb tC^]<Ca Cb>" + "<tB^ Ba Bb>" ->{0.0003} "[tB^ Ba Bb]{tC^*}" + "<Ba>" + "<Bb tC^ Ca Cb>" |
+"{tA^*}[Aa]:[Ab tC^]<Ca Cb>" + "<tA^ Aa Ab>" ->{0.0003} "[tA^ Aa Ab]{tC^*}" + "<Aa>" + "<Ab tC^ Ca Cb>" |
+"{tC^*}[Ca Cb]" + "<Bb tC^ Ca Cb>" ->{0.0003} "<Bb>[tC^ Ca Cb]" + "<Ca Cb>" |
+"{tC^*}[Ca Cb]" + "<Ab tC^ Ca Cb>" ->{0.0003} "<Ab>[tC^ Ca Cb]" + "<Ca Cb>"

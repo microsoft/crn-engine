@@ -1,0 +1,176 @@
+directive sample 0.0,150000.0 1000
+directive plot ("<rh r1^ r2 r3^>" - "<rh' r1'^ r2' r3'^>"); ("<vh v1^ v2 v3^>" - "<vh' v1'^ v2' v3'^>"); ("<yh y1^ y2 y3^>" - "<yh' y1'^ y2' y3'^>"); ("<load.1>" - "<load'.2>")
+directive simulation deterministicstiff
+directive parameters
+  [ deg = 0.0008
+  ; cat = 0.0008
+  ; pol = 0.0167
+  ; nick = 0.0167
+  ; x0 = 4.0
+  ; ann = 0.01
+  ; bind = 5.4E-06
+  ; bind2 = 0.001
+  ; bind1 = 5E-05
+  ; unbind = 0.1126
+  ; Cmax = 1000.0
+  ; c = 0.0008
+  ; kt = 0.001
+  ; ku = 0.001
+  ; s = 2.0 ]
+
+event "<rh r1^ r2 r3^>" (2.0 * x0) @ 100000.0 |
+event "<rh' r1'^ r2' r3'^>" (2.0 * x0) @ 50000.0 |
+init "{x1^*}[x2 x3^ x1'^]:[x2' x3'^]" Cmax |
+init "<x2 x3^ x1'^>" Cmax |
+init "{x1'^*}[x2' x3'^ x1^]:[x2 x3^]" Cmax |
+init "<x2' x3'^ x1^>" Cmax |
+init "{r1^*}[r2 r3^ r1'^]:[r2' r3'^]" Cmax |
+init "<r2 r3^ r1'^>" Cmax |
+init "{r1'^*}[r2' r3'^ r1^]:[r2 r3^]" Cmax |
+init "<r2' r3'^ r1^>" Cmax |
+init "{v1^*}[v2 v3^ v1'^]:[v2' v3'^]" Cmax |
+init "<v2 v3^ v1'^>" Cmax |
+init "{v1'^*}[v2' v3'^ v1^]:[v2 v3^]" Cmax |
+init "<v2' v3'^ v1^>" Cmax |
+init "{e1^*}[e2 e3^ e1'^]:[e2' e3'^]" Cmax |
+init "<e2 e3^ e1'^>" Cmax |
+init "{e1'^*}[e2' e3'^ e1^]:[e2 e3^]" Cmax |
+init "<e2' e3'^ e1^>" Cmax |
+init "{r1^(c)*}[r2 r3^]<eh e1^ rh r1^>" Cmax |
+init "{r3^*}[eh e1^]<e2 e3^>:[rh r1^]<r2 r3^>" Cmax |
+init "{e1^(c)*}[e2 e3^]<xh x1^ eh e1^>" Cmax |
+init "{e3^*}[xh x1^]<x2 x3^>:[eh e1^]<e2 e3^>" Cmax |
+init "{e1^(c)*}[e2 e3^]<vh v1^ eh e1^>" Cmax |
+init "{e3^*}[vh v1^]<v2 v3^>:[eh e1^]<e2 e3^>" Cmax |
+init "{x1^(c)*}[x2 x3^]<vh v1^ xh x1^>" Cmax |
+init "{x3^*}[vh v1^]<v2 v3^>:[xh x1^]<x2 x3^>" Cmax |
+init "{r1'^(c)*}[r2' r3'^]<eh' e1'^ rh' r1'^>" Cmax |
+init "{r3'^*}[eh' e1'^]<e2' e3'^>:[rh' r1'^]<r2' r3'^>" Cmax |
+init "{e1'^(c)*}[e2' e3'^]<xh' x1'^ eh' e1'^>" Cmax |
+init "{e3'^*}[xh' x1'^]<x2' x3'^>:[eh' e1'^]<e2' e3'^>" Cmax |
+init "{e1'^(c)*}[e2' e3'^]<vh' v1'^ eh' e1'^>" Cmax |
+init "{e3'^*}[vh' v1'^]<v2' v3'^>:[eh' e1'^]<e2' e3'^>" Cmax |
+init "{x1'^(c)*}[x2' x3'^]<vh' v1'^ xh' x1'^>" Cmax |
+init "{x3'^*}[vh' v1'^]<v2' v3'^>:[xh' x1'^]<x2' x3'^>" Cmax |
+init "{y1^(c)*}[y2 y3^]<eh' e1'^ yh y1^>" Cmax |
+init "{y3^*}[eh' e1'^]<e2' e3'^>:[yh y1^]<y2 y3^>" Cmax |
+init "{y1'^(c)*}[y2' y3'^]<eh e1^ yh' y1'^>" Cmax |
+init "{y3'^*}[eh e1^]<e2 e3^>:[yh' y1'^]<y2' y3'^>" Cmax |
+init "{e1^(c)*}[e2 e3^]" Cmax |
+init "{v1^(c)*}[v2 v3^]" Cmax |
+init "{e1'^(c)*}[e2' e3'^]" Cmax |
+init "{v1'^(c)*}[v2' v3'^]" Cmax |
+init "<load.1>" 0.0 |
+init "<load'.2>" 0.0 |
+init "<rh r1^ r2 r3^>" x0 |
+init "<rh>[r1^ r2 r3^]{r1'^*}:[r2' r3'^]" 0.0 |
+init "<rh>[r1^(c) r2 r3^]" 0.0 |
+init "<r2 r3^ eh e1^ rh r1^>" 0.0 |
+init "<r2>[r3^ eh e1^ rh r1^]" 0.0 |
+init "<eh e1^ e2 e3^>" 0.0 |
+init "<eh>[e1^ e2 e3^]{e1'^*}:[e2' e3'^]" 0.0 |
+init "<eh>[e1^(c) e2 e3^]" 0.0 |
+init "<e2 e3^ xh x1^ eh e1^>" 0.0 |
+init "<e2>[e3^ xh x1^ eh e1^]" 0.0 |
+init "<xh x1^ x2 x3^>" 0.0 |
+init "<xh>[x1^ x2 x3^]{x1'^*}:[x2' x3'^]" 0.0 |
+init "<xh>[x1^(c) x2 x3^]" 0.0 |
+init "<x2 x3^ vh v1^ xh x1^>" 0.0 |
+init "<x2>[x3^ vh v1^ xh x1^]" 0.0 |
+init "<vh v1^ v2 v3^>" 0.0 |
+init "<vh>[v1^ v2 v3^]{v1'^*}:[v2' v3'^]" 0.0 |
+init "<vh>[v1^(c) v2 v3^]" 0.0 |
+init "<v2 v3^>" 0.0 |
+init "<e2 e3^ vh v1^ eh e1^>" 0.0 |
+init "<e2>[e3^ vh v1^ eh e1^]" 0.0 |
+init "<e2 e3^>" 0.0 |
+init "<rh' r1'^ r2' r3'^>" 0.0 |
+init "<rh'>[r1'^ r2' r3'^]{r1^*}:[r2 r3^]" 0.0 |
+init "<rh'>[r1'^ r2' r3'^]:<rh>[r1^ r2 r3^]" 0.0 |
+init "<r2 r3^>" 0.0 |
+init "<rh'>[r1'^(c) r2' r3'^]" 0.0 |
+init "<r2' r3'^ eh' e1'^ rh' r1'^>" 0.0 |
+init "<r2'>[r3'^ eh' e1'^ rh' r1'^]" 0.0 |
+init "<eh' e1'^ e2' e3'^>" 0.0 |
+init "<eh'>[e1'^ e2' e3'^]{e1^*}:[e2 e3^]" 0.0 |
+init "<eh'>[e1'^ e2' e3'^]:<eh>[e1^ e2 e3^]" 0.0 |
+init "<eh'>[e1'^(c) e2' e3'^]" 0.0 |
+init "<e2' e3'^ xh' x1'^ eh' e1'^>" 0.0 |
+init "<e2'>[e3'^ xh' x1'^ eh' e1'^]" 0.0 |
+init "<xh' x1'^ x2' x3'^>" 0.0 |
+init "<xh'>[x1'^ x2' x3'^]{x1^*}:[x2 x3^]" 0.0 |
+init "<xh'>[x1'^ x2' x3'^]:<xh>[x1^ x2 x3^]" 0.0 |
+init "<x2 x3^>" 0.0 |
+init "<xh'>[x1'^(c) x2' x3'^]" 0.0 |
+init "<x2' x3'^ vh' v1'^ xh' x1'^>" 0.0 |
+init "<x2'>[x3'^ vh' v1'^ xh' x1'^]" 0.0 |
+init "<vh' v1'^ v2' v3'^>" 0.0 |
+init "<vh'>[v1'^ v2' v3'^]{v1^*}:[v2 v3^]" 0.0 |
+init "<vh'>[v1'^ v2' v3'^]:<vh>[v1^ v2 v3^]" 0.0 |
+init "<vh'>[v1'^(c) v2' v3'^]" 0.0 |
+init "<v2' v3'^>" 0.0 |
+init "<vh>[v1^ v2 v3^]:<vh'>[v1'^ v2' v3'^]" 0.0 |
+init "<xh>[x1^ x2 x3^]:<xh'>[x1'^ x2' x3'^]" 0.0 |
+init "<x2' x3'^>" 0.0 |
+init "<e2' e3'^ vh' v1'^ eh' e1'^>" 0.0 |
+init "<e2'>[e3'^ vh' v1'^ eh' e1'^]" 0.0 |
+init "<e2' e3'^>" 0.0 |
+init "<eh>[e1^ e2 e3^]:<eh'>[e1'^ e2' e3'^]" 0.0 |
+init "<rh>[r1^ r2 r3^]:<rh'>[r1'^ r2' r3'^]" 0.0 |
+init "<r2' r3'^>" 0.0 |
+init "<yh y1^ y2 y3^>" 0.0 |
+init "<yh>[y1^(c) y2 y3^]" 0.0 |
+init "<y2 y3^ eh' e1'^ yh y1^>" 0.0 |
+init "<y2>[y3^ eh' e1'^ yh y1^]" 0.0 |
+init "<yh' y1'^ y2' y3'^>" 0.0 |
+init "<yh'>[y1'^(c) y2' y3'^]" 0.0 |
+init "<y2' y3'^ eh e1^ yh' y1'^>" 0.0 |
+init "<y2'>[y3'^ eh e1^ yh' y1'^]" 0.0 |
+"<vh v1^ v2 v3^>" ->{0.2} "<vh v1^ v2 v3^>" + "<yh y1^ y2 y3^>" |
+"<vh' v1'^ v2' v3'^>" ->{0.2} "<vh' v1'^ v2' v3'^>" + "<yh' y1'^ y2' y3'^>" |
+"<yh y1^ y2 y3^>" ->{0.1} |
+"<yh' y1'^ y2' y3'^>" ->{0.1} |
+"<yh' y1'^ y2' y3'^>" + "<yh y1^ y2 y3^>" ->{0.1} |
+"<load.1>" + "<yh y1^ y2 y3^>" ->{0.01} "<load.1>" |
+"<load'.2>" + "<yh' y1'^ y2' y3'^>" ->{0.01} "<load'.2>" |
+"<load.1>" + "<load'.2>" ->{1.0} |
+"{r1^(c)*}[r2 r3^]<eh e1^ rh r1^>" + "<rh r1^ r2 r3^>" ->{(kt * c)} "<rh>[r1^(c) r2 r3^]" + "<r2 r3^ eh e1^ rh r1^>" |
+"{r1^*}[r2 r3^ r1'^]:[r2' r3'^]" + "<rh r1^ r2 r3^>" <->{kt}{kt} "<rh>[r1^ r2 r3^]{r1'^*}:[r2' r3'^]" + "<r2 r3^ r1'^>" |
+"{r3^*}[eh e1^]<e2 e3^>:[rh r1^]<r2 r3^>" + "<r2 r3^ eh e1^ rh r1^>" ->{kt} "<r2>[r3^ eh e1^ rh r1^]" + "<eh e1^ e2 e3^>" + "<rh r1^ r2 r3^>" |
+"{e1^(c)*}[e2 e3^]<xh x1^ eh e1^>" + "<eh e1^ e2 e3^>" ->{(kt * c)} "<eh>[e1^(c) e2 e3^]" + "<e2 e3^ xh x1^ eh e1^>" |
+"{e1^(c)*}[e2 e3^]<vh v1^ eh e1^>" + "<eh e1^ e2 e3^>" ->{(kt * c)} "<eh>[e1^(c) e2 e3^]" + "<e2 e3^ vh v1^ eh e1^>" |
+"{e1^(c)*}[e2 e3^]" + "<eh e1^ e2 e3^>" ->{(kt * c)} "<eh>[e1^(c) e2 e3^]" + "<e2 e3^>" |
+"{e1^*}[e2 e3^ e1'^]:[e2' e3'^]" + "<eh e1^ e2 e3^>" <->{kt}{kt} "<eh>[e1^ e2 e3^]{e1'^*}:[e2' e3'^]" + "<e2 e3^ e1'^>" |
+"{e3^*}[xh x1^]<x2 x3^>:[eh e1^]<e2 e3^>" + "<e2 e3^ xh x1^ eh e1^>" ->{kt} "<e2>[e3^ xh x1^ eh e1^]" + "<xh x1^ x2 x3^>" + "<eh e1^ e2 e3^>" |
+"{x1^(c)*}[x2 x3^]<vh v1^ xh x1^>" + "<xh x1^ x2 x3^>" ->{(kt * c)} "<xh>[x1^(c) x2 x3^]" + "<x2 x3^ vh v1^ xh x1^>" |
+"{x1^*}[x2 x3^ x1'^]:[x2' x3'^]" + "<xh x1^ x2 x3^>" <->{kt}{kt} "<xh>[x1^ x2 x3^]{x1'^*}:[x2' x3'^]" + "<x2 x3^ x1'^>" |
+"{x3^*}[vh v1^]<v2 v3^>:[xh x1^]<x2 x3^>" + "<x2 x3^ vh v1^ xh x1^>" ->{kt} "<x2>[x3^ vh v1^ xh x1^]" + "<vh v1^ v2 v3^>" + "<xh x1^ x2 x3^>" |
+"{v1^(c)*}[v2 v3^]" + "<vh v1^ v2 v3^>" ->{(kt * c)} "<vh>[v1^(c) v2 v3^]" + "<v2 v3^>" |
+"{v1^*}[v2 v3^ v1'^]:[v2' v3'^]" + "<vh v1^ v2 v3^>" <->{kt}{kt} "<vh>[v1^ v2 v3^]{v1'^*}:[v2' v3'^]" + "<v2 v3^ v1'^>" |
+"{e3^*}[vh v1^]<v2 v3^>:[eh e1^]<e2 e3^>" + "<e2 e3^ vh v1^ eh e1^>" ->{kt} "<e2>[e3^ vh v1^ eh e1^]" + "<vh v1^ v2 v3^>" + "<eh e1^ e2 e3^>" |
+"{r1'^(c)*}[r2' r3'^]<eh' e1'^ rh' r1'^>" + "<rh' r1'^ r2' r3'^>" ->{(kt * c)} "<rh'>[r1'^(c) r2' r3'^]" + "<r2' r3'^ eh' e1'^ rh' r1'^>" |
+"<rh>[r1^ r2 r3^]{r1'^*}:[r2' r3'^]" + "<rh' r1'^ r2' r3'^>" ->{kt} "<rh>[r1^ r2 r3^]:<rh'>[r1'^ r2' r3'^]" + "<r2' r3'^>" |
+"{r1'^*}[r2' r3'^ r1^]:[r2 r3^]" + "<rh' r1'^ r2' r3'^>" <->{kt}{kt} "<rh'>[r1'^ r2' r3'^]{r1^*}:[r2 r3^]" + "<r2' r3'^ r1^>" |
+"<rh'>[r1'^ r2' r3'^]{r1^*}:[r2 r3^]" + "<rh r1^ r2 r3^>" ->{kt} "<rh'>[r1'^ r2' r3'^]:<rh>[r1^ r2 r3^]" + "<r2 r3^>" |
+"{r3'^*}[eh' e1'^]<e2' e3'^>:[rh' r1'^]<r2' r3'^>" + "<r2' r3'^ eh' e1'^ rh' r1'^>" ->{kt} "<r2'>[r3'^ eh' e1'^ rh' r1'^]" + "<eh' e1'^ e2' e3'^>" + "<rh' r1'^ r2' r3'^>" |
+"{e1'^(c)*}[e2' e3'^]<xh' x1'^ eh' e1'^>" + "<eh' e1'^ e2' e3'^>" ->{(kt * c)} "<eh'>[e1'^(c) e2' e3'^]" + "<e2' e3'^ xh' x1'^ eh' e1'^>" |
+"{e1'^(c)*}[e2' e3'^]<vh' v1'^ eh' e1'^>" + "<eh' e1'^ e2' e3'^>" ->{(kt * c)} "<eh'>[e1'^(c) e2' e3'^]" + "<e2' e3'^ vh' v1'^ eh' e1'^>" |
+"{e1'^(c)*}[e2' e3'^]" + "<eh' e1'^ e2' e3'^>" ->{(kt * c)} "<eh'>[e1'^(c) e2' e3'^]" + "<e2' e3'^>" |
+"<eh>[e1^ e2 e3^]{e1'^*}:[e2' e3'^]" + "<eh' e1'^ e2' e3'^>" ->{kt} "<eh>[e1^ e2 e3^]:<eh'>[e1'^ e2' e3'^]" + "<e2' e3'^>" |
+"{e1'^*}[e2' e3'^ e1^]:[e2 e3^]" + "<eh' e1'^ e2' e3'^>" <->{kt}{kt} "<eh'>[e1'^ e2' e3'^]{e1^*}:[e2 e3^]" + "<e2' e3'^ e1^>" |
+"<eh'>[e1'^ e2' e3'^]{e1^*}:[e2 e3^]" + "<eh e1^ e2 e3^>" ->{kt} "<eh'>[e1'^ e2' e3'^]:<eh>[e1^ e2 e3^]" + "<e2 e3^>" |
+"{e3'^*}[xh' x1'^]<x2' x3'^>:[eh' e1'^]<e2' e3'^>" + "<e2' e3'^ xh' x1'^ eh' e1'^>" ->{kt} "<e2'>[e3'^ xh' x1'^ eh' e1'^]" + "<xh' x1'^ x2' x3'^>" + "<eh' e1'^ e2' e3'^>" |
+"{x1'^(c)*}[x2' x3'^]<vh' v1'^ xh' x1'^>" + "<xh' x1'^ x2' x3'^>" ->{(kt * c)} "<xh'>[x1'^(c) x2' x3'^]" + "<x2' x3'^ vh' v1'^ xh' x1'^>" |
+"<xh>[x1^ x2 x3^]{x1'^*}:[x2' x3'^]" + "<xh' x1'^ x2' x3'^>" ->{kt} "<xh>[x1^ x2 x3^]:<xh'>[x1'^ x2' x3'^]" + "<x2' x3'^>" |
+"{x1'^*}[x2' x3'^ x1^]:[x2 x3^]" + "<xh' x1'^ x2' x3'^>" <->{kt}{kt} "<xh'>[x1'^ x2' x3'^]{x1^*}:[x2 x3^]" + "<x2' x3'^ x1^>" |
+"<xh'>[x1'^ x2' x3'^]{x1^*}:[x2 x3^]" + "<xh x1^ x2 x3^>" ->{kt} "<xh'>[x1'^ x2' x3'^]:<xh>[x1^ x2 x3^]" + "<x2 x3^>" |
+"{x3'^*}[vh' v1'^]<v2' v3'^>:[xh' x1'^]<x2' x3'^>" + "<x2' x3'^ vh' v1'^ xh' x1'^>" ->{kt} "<x2'>[x3'^ vh' v1'^ xh' x1'^]" + "<vh' v1'^ v2' v3'^>" + "<xh' x1'^ x2' x3'^>" |
+"{v1'^(c)*}[v2' v3'^]" + "<vh' v1'^ v2' v3'^>" ->{(kt * c)} "<vh'>[v1'^(c) v2' v3'^]" + "<v2' v3'^>" |
+"<vh>[v1^ v2 v3^]{v1'^*}:[v2' v3'^]" + "<vh' v1'^ v2' v3'^>" ->{kt} "<vh>[v1^ v2 v3^]:<vh'>[v1'^ v2' v3'^]" + "<v2' v3'^>" |
+"{v1'^*}[v2' v3'^ v1^]:[v2 v3^]" + "<vh' v1'^ v2' v3'^>" <->{kt}{kt} "<vh'>[v1'^ v2' v3'^]{v1^*}:[v2 v3^]" + "<v2' v3'^ v1^>" |
+"<vh'>[v1'^ v2' v3'^]{v1^*}:[v2 v3^]" + "<vh v1^ v2 v3^>" ->{kt} "<vh'>[v1'^ v2' v3'^]:<vh>[v1^ v2 v3^]" + "<v2 v3^>" |
+"{e3'^*}[vh' v1'^]<v2' v3'^>:[eh' e1'^]<e2' e3'^>" + "<e2' e3'^ vh' v1'^ eh' e1'^>" ->{kt} "<e2'>[e3'^ vh' v1'^ eh' e1'^]" + "<vh' v1'^ v2' v3'^>" + "<eh' e1'^ e2' e3'^>" |
+"{y1^(c)*}[y2 y3^]<eh' e1'^ yh y1^>" + "<yh y1^ y2 y3^>" ->{(kt * c)} "<yh>[y1^(c) y2 y3^]" + "<y2 y3^ eh' e1'^ yh y1^>" |
+"{y3^*}[eh' e1'^]<e2' e3'^>:[yh y1^]<y2 y3^>" + "<y2 y3^ eh' e1'^ yh y1^>" ->{kt} "<y2>[y3^ eh' e1'^ yh y1^]" + "<eh' e1'^ e2' e3'^>" + "<yh y1^ y2 y3^>" |
+"{y1'^(c)*}[y2' y3'^]<eh e1^ yh' y1'^>" + "<yh' y1'^ y2' y3'^>" ->{(kt * c)} "<yh'>[y1'^(c) y2' y3'^]" + "<y2' y3'^ eh e1^ yh' y1'^>" |
+"{y3'^*}[eh e1^]<e2 e3^>:[yh' y1'^]<y2' y3'^>" + "<y2' y3'^ eh e1^ yh' y1'^>" ->{kt} "<y2'>[y3'^ eh e1^ yh' y1'^]" + "<eh e1^ e2 e3^>" + "<yh' y1'^ y2' y3'^>"

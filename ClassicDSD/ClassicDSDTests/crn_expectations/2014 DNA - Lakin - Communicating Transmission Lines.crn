@@ -1,0 +1,77 @@
+directive sample 0.0,40000.0 1000
+directive plot "<a0^ s>"; "<y^*>[s*]{x^>"; "<r^*>[s*]<Q^>{F^}"; "{s F^}"
+directive simulation deterministicstiff
+
+init "<y^*>[s*]{x^>" 4.0 |
+init "<a0^ s>" 1.0 |
+init "[[ {tether(b) x^*}<b0^>[s]
+ | {tether(a) a0^*}[s]{y^>
+ | {tether(a, b) x^*}[s]{y^> ]]" 1.0 |
+init "[[ {tether(a)}[a0^ s]{y^ s}
+ | {tether(b) x^*}<b0^>[s]
+ | {tether(a, b) x^*}[s]{y^> ]]" 0.0 |
+init "[[ {tether(a)}[a0^ s]:[y^* s*]<x^ s>
+ | {tether(b) x^*}<b0^>[s]
+ | {tether(a, b) x^*}[s]{y^> ]]" 0.0 |
+init "[[ {tether(a)}[a0^ s]:[y^* s*]::{tether(a, b)}[x^ s]{y^ s}
+ | {tether(b) x^*}<b0^>[s] ]]" 0.0 |
+init "[[ {tether(a)}[a0^ s]:[y^* s*]::{tether(a, b)}[x^ s]:[y^* s*]<x^ s>
+ | {tether(b) x^*}<b0^>[s] ]]" 0.0 |
+init "<b0^ s>" 0.0 |
+init "[[ {tether(a)}[a0^ s]:[y^* s*]::{tether(a, b)}[x^ s]:[y^* s*]::{tether(b)}[x^ s] ]]" 0.0 |
+init "[[ {tether(a) b0^*}[s]{y^>
+ | {tether(a, b) x^*}[s]{y^>
+ | {tether(b) x^*}[s]{r^> ]]" 1.0 |
+init "[[ {tether(a)}[b0^ s]{y^ s}
+ | {tether(a, b) x^*}[s]{y^>
+ | {tether(b) x^*}[s]{r^> ]]" 0.0 |
+init "[[ {tether(a)}[b0^ s]:[y^* s*]<x^ s>
+ | {tether(a, b) x^*}[s]{y^>
+ | {tether(b) x^*}[s]{r^> ]]" 0.0 |
+init "[[ {tether(a)}[b0^ s]:[y^* s*]::{tether(a, b)}[x^ s]{y^ s}
+ | {tether(b) x^*}[s]{r^> ]]" 0.0 |
+init "[[ {tether(a)}[b0^ s]:[y^* s*]::{tether(a, b)}[x^ s]:[y^* s*]<x^ s>
+ | {tether(b) x^*}[s]{r^> ]]" 0.0 |
+init "[[ {tether(a)}[b0^ s]:[y^* s*]::{tether(a, b)}[x^ s]:[y^* s*]::{tether(b)}[x^ s]{r^ s} ]]" 0.0 |
+init "<r^*>[s*]<Q^>{F^}" 1.0 |
+init "{s F^}" 0.0 |
+init "[[ {tether(a)}[b0^ s]:[y^* s*]::{tether(a, b)}[x^ s]:[y^* s*]::{tether(b)}[x^ s]:[r^* s*]<Q^> ]]" 0.0 |
+"[[ {tether(b) x^*}<b0^>[s]
+ | {tether(a) a0^*}[s]{y^>
+ | {tether(a, b) x^*}[s]{y^> ]]" + "<a0^ s>" ->{0.0003} "[[ {tether(a)}[a0^ s]{y^ s}
+ | {tether(b) x^*}<b0^>[s]
+ | {tether(a, b) x^*}[s]{y^> ]]" |
+"[[ {tether(a)}[a0^ s]{y^ s}
+ | {tether(b) x^*}<b0^>[s]
+ | {tether(a, b) x^*}[s]{y^> ]]" + "<y^*>[s*]{x^>" ->{0.0003} "[[ {tether(a)}[a0^ s]:[y^* s*]<x^ s>
+ | {tether(b) x^*}<b0^>[s]
+ | {tether(a, b) x^*}[s]{y^> ]]" |
+"[[ {tether(a)}[a0^ s]:[y^* s*]<x^ s>
+ | {tether(b) x^*}<b0^>[s]
+ | {tether(a, b) x^*}[s]{y^> ]]" ->{30.0} "[[ {tether(a)}[a0^ s]:[y^* s*]::{tether(a, b)}[x^ s]{y^ s}
+ | {tether(b) x^*}<b0^>[s] ]]" |
+"[[ {tether(a)}[a0^ s]:[y^* s*]::{tether(a, b)}[x^ s]{y^ s}
+ | {tether(b) x^*}<b0^>[s] ]]" + "<y^*>[s*]{x^>" ->{0.0003} "[[ {tether(a)}[a0^ s]:[y^* s*]::{tether(a, b)}[x^ s]:[y^* s*]<x^ s>
+ | {tether(b) x^*}<b0^>[s] ]]" |
+"[[ {tether(a)}[a0^ s]:[y^* s*]::{tether(a, b)}[x^ s]:[y^* s*]<x^ s>
+ | {tether(b) x^*}<b0^>[s] ]]" ->{30.0} "<b0^ s>" + "[[ {tether(a)}[a0^ s]:[y^* s*]::{tether(a, b)}[x^ s]:[y^* s*]::{tether(b)}[x^ s] ]]" |
+"[[ {tether(a) b0^*}[s]{y^>
+ | {tether(a, b) x^*}[s]{y^>
+ | {tether(b) x^*}[s]{r^> ]]" + "<b0^ s>" ->{0.0003} "[[ {tether(a)}[b0^ s]{y^ s}
+ | {tether(a, b) x^*}[s]{y^>
+ | {tether(b) x^*}[s]{r^> ]]" |
+"[[ {tether(a)}[b0^ s]{y^ s}
+ | {tether(a, b) x^*}[s]{y^>
+ | {tether(b) x^*}[s]{r^> ]]" + "<y^*>[s*]{x^>" ->{0.0003} "[[ {tether(a)}[b0^ s]:[y^* s*]<x^ s>
+ | {tether(a, b) x^*}[s]{y^>
+ | {tether(b) x^*}[s]{r^> ]]" |
+"[[ {tether(a)}[b0^ s]:[y^* s*]<x^ s>
+ | {tether(a, b) x^*}[s]{y^>
+ | {tether(b) x^*}[s]{r^> ]]" ->{30.0} "[[ {tether(a)}[b0^ s]:[y^* s*]::{tether(a, b)}[x^ s]{y^ s}
+ | {tether(b) x^*}[s]{r^> ]]" |
+"[[ {tether(a)}[b0^ s]:[y^* s*]::{tether(a, b)}[x^ s]{y^ s}
+ | {tether(b) x^*}[s]{r^> ]]" + "<y^*>[s*]{x^>" ->{0.0003} "[[ {tether(a)}[b0^ s]:[y^* s*]::{tether(a, b)}[x^ s]:[y^* s*]<x^ s>
+ | {tether(b) x^*}[s]{r^> ]]" |
+"[[ {tether(a)}[b0^ s]:[y^* s*]::{tether(a, b)}[x^ s]:[y^* s*]<x^ s>
+ | {tether(b) x^*}[s]{r^> ]]" ->{30.0} "[[ {tether(a)}[b0^ s]:[y^* s*]::{tether(a, b)}[x^ s]:[y^* s*]::{tether(b)}[x^ s]{r^ s} ]]" |
+"[[ {tether(a)}[b0^ s]:[y^* s*]::{tether(a, b)}[x^ s]:[y^* s*]::{tether(b)}[x^ s]{r^ s} ]]" + "<r^*>[s*]<Q^>{F^}" ->{0.0003} "{s F^}" + "[[ {tether(a)}[b0^ s]:[y^* s*]::{tether(a, b)}[x^ s]:[y^* s*]::{tether(b)}[x^ s]:[r^* s*]<Q^> ]]"

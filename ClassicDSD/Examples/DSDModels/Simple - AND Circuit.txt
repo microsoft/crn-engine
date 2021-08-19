@@ -1,0 +1,13 @@
+directive simulation {initial=0; final=1000000; points=1000; plots=[<1^ 2>; <3 4^>; <2 3>]}
+directive stochastic {scale = 100.000000; trajectories = 1}
+def N1 = 1.0
+def N2 = 1.0
+def N = 10.0
+def Input1() = <1^ 2>
+def Input2() = <3 4^>
+def Output() = <2 3>
+def AND() = {1^*}[2 3]{4^*}
+( N1 * Input1()
+| N2 * Input2()
+| N * AND()
+| 0.0 * Output())

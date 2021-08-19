@@ -1,0 +1,21 @@
+directive sample 0.0,10000.0 1000
+directive plot "<tb^ b>"; "<tx^ x>"; "<fl^ x>"
+directive scale 10.0
+
+init "<tb^ b>" 10.0 |
+init "<tx^ x>" 10.0 |
+init "{tb^*}[b tx^]:[x to^]" 100.0 |
+init "[tb^ b]:<b>[tx^]:[x to^]" 0.0 |
+init "[tb^ b]{tx^*}:[x to^]" 0.0 |
+init "[tb^ b]:[tx^ x]:<x>[to^]" 0.0 |
+init "[tb^ b]:[tx^ x]{to^*}" 0.0 |
+init "<x to^>" 0.0 |
+init "<b tx^>" 0.0 |
+init "<fl^>[x]{to^*}" 100.0 |
+init "[x to^]" 0.0 |
+init "<fl^ x>" 0.0 |
+"{tb^*}[b tx^]:[x to^]" + "<tb^ b>" <->{0.0003}{0.1126} "[tb^ b]:<b>[tx^]:[x to^]" |
+"[tb^ b]{tx^*}:[x to^]" + "<tx^ x>" <->{0.0003}{0.1126} "[tb^ b]:[tx^ x]:<x>[to^]" |
+"[tb^ b]:[tx^ x]:<x>[to^]" <->{0.1126}{0.0003} "[tb^ b]:[tx^ x]{to^*}" + "<x to^>" |
+"[tb^ b]:<b>[tx^]:[x to^]" <->{0.1126}{0.0003} "[tb^ b]{tx^*}:[x to^]" + "<b tx^>" |
+"<fl^>[x]{to^*}" + "<x to^>" ->{0.0003} "[x to^]" + "<fl^ x>"

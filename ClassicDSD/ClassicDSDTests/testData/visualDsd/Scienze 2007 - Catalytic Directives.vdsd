@@ -1,0 +1,15 @@
+(* A simple catalytic circuit based on Zhang (Science 2007), demonstrating each directive. *)
+directive duration 7000.0 points 1000
+directive leak 1.0E-9 (* default leakage rate /nM/s *)
+directive tau 0.1126 (* default merged rate /s *)
+directive migrate 8000.0 (* default nucleotide migration rate /s *)
+directive lengths 6 20 (* default toehold and normal domain lengths *)
+directive tolerance 1.0E-6 (* default ODE tolerance for deterministic simulator *)
+directive plot <2 3^ 4>; <4 5^>; <1 2>; <6 3^ 4>; <1>[2]:<6>[3^ 4]{5^*} (* plot a subset of gates and strands *)
+directive scale 500.0 (* multiply concentrations, divide binding and leak rates *)
+new 3@ 4.2E-4 , 4.0E-2
+new 5@ 6.5E-4 , 4.0E-3
+( 13 * <2 3^ 4>
+| 10 * <4 5^>
+| 10 * <1>[2]:<6>[3^ 4]{5^*}
+)

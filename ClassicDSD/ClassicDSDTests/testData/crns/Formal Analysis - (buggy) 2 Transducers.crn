@@ -1,0 +1,47 @@
+directive sample 0.0,300000.0 1000
+directive parameters
+  [ e = 2.71828183
+  ; R = 0.0019872
+  ; T = 298.15 ]
+
+query good = {
+enumeration limit 5;
+
+Terminal@[0.0] and Invariant@[0.0] and NoReactiveGates@[0.0]
+} |
+query findGood = {
+abstraction stutter;
+
+Init@[0.0] and Terminal@[20.0] and NoReactiveGates@[20.0]
+} |
+query findBad = {
+abstraction stutter;
+
+Init@[0.0] and Terminal@[20.0] and not NoReactiveGates@[20.0]
+} |
+query bad = {
+enumeration limit 5;
+
+Terminal@[0.0] and Invariant@[0.0] and not NoReactiveGates@[0.0]
+} |
+init S 1.0 |
+init T_7 1.0 |
+init T_6 1.0 |
+init T_5 1.0 |
+init T_4 1.0 |
+init T_3 1.0 |
+init T_2 1.0 |
+init T_1 1.0 |
+init T 1.0 |
+T_2 + S <->{0.001}{0.001} sp_1 + sp_0 |
+sp_1 + T ->{0.001} sp_4 + sp_3 + sp_2 |
+sp_7 + T_5 ->{0.001} sp_10 + sp_9 + sp_8 |
+sp_4 + sp_5 ->{0.001} sp_12 + sp_11 |
+T_7 + sp_2 <->{0.001}{0.001} sp_7 + sp_5 |
+sp_6 + T_1 ->{0.001} sp_14 + sp_3 + sp_13 |
+T_3 + sp_2 <->{0.001}{0.001} sp_6 + sp_5 |
+sp_14 + sp_0 ->{0.001} sp_16 + sp_15 |
+sp_18 + T_4 ->{0.001} sp_19 + sp_9 + sp_2 |
+sp_19 + sp_5 ->{0.001} sp_20 + sp_11 |
+sp_10 + sp_17 ->{0.001} sp_22 + sp_21 |
+T_6 + sp_13 <->{0.001}{0.001} sp_18 + sp_17

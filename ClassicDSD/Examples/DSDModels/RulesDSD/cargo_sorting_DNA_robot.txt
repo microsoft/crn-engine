@@ -1,0 +1,172 @@
+directive rules{
+  // Classic DSD semantics apart from bind
+  unbind(P,Q,D!i) :-
+    P = C [D!i] [D'!i], toehold(D), 
+    Q = C [D] [D'], not adjacent(D!i,_,P).
+
+  adjacent(D!i,E!j,P) :- P = C [D!i E!j] [E'!j D'!i].
+  adjacent(D!i,E!j,P) :- P = C [E!j D!i] [D'!i E'!j].
+
+  displace(P,Q,E!j,D!i) :-
+    P = C [E!j D] [D!i] [D'!i E'!j],
+    Q = C [E!j D!i] [D] [D'!i E'!j].
+
+  displaceL(P,Q,E!j,D!i) :- 
+    P = C [D!i] [D E!j] [E'!j D'!i],
+    Q = C [D] [D!i E!j] [E'!j D'!i].
+
+  cover(P,Q,E!j,D!i) :-
+    P = C [E!j D] [D' E'!j], compl(D, D'), 
+    Q = C [E!j D!i] [D'!i E'!j], freshBond(D!i,P).
+
+  coverL(P,Q,E!j,D!i) :- 
+    P = C [D E!j] [E'!j D'], compl(D, D'), 
+    Q = C [D!i E!j] [E'!j D'!i], freshBond(D!i,P).
+  
+  binds(P1,P2,R,D!i,[D#L]) :- bind(P1,P2,Q,D!i), not coverL(Q,_,D!i,_), covers(Q,R,D!i,L).
+  binds(P1,P2,Q,D!i,[D]) :- bind(P1,P2,Q,D!i), not coverL(Q,_,D!i,_), not cover(Q,_,D!i,_).
+
+  displaces(P,R,E!j,[D#L]) :- displace(P,Q,E!j,D!i), displaces(Q,R,D!i,L).
+  displaces(P,Q,E!j,[D]) :- displace(P,Q,E!j,D!i), not displace(Q,_,D!i,_).
+
+  displacesL(P,R,E!j,[D#L]) :- displaceL(P,Q,E!j,D!i), displacesL(Q,R,D!i,L).
+  displacesL(P,Q,E!j,[D]) :- displaceL(P,Q,E!j,D!i), not displaceL(Q,_,D!i,_).
+
+  covers(P,R,E!j,[D#L]) :- cover(P,Q,E!j,D!i), covers(Q,R,D!i,L).
+  covers(P,Q,E!j,[D]) :- cover(P,Q,E!j,D!i), not cover(Q,_,D!i,_).
+
+  coversL(P,R,E!j,[D#L]) :- coverL(P,Q,E!j,D!i), coversL(Q,R,D!i,L).
+  coversL(P,Q,E!j,[D]) :- coverL(P,Q,E!j,D!i), not coverL(Q,_,D!i,_).
+
+  unbinds(P,R,D!i,[D#L]) :- 
+    P = C [D!i E!j] [E'!j D'!i], toehold(D), not boundL(D!i,_,P), 
+    Q = C [D E!j] [E'!j D'], unbinds(Q,R,E!j,L). 
+  boundL(D!i,E!j,P) :- P = C [E!j D!i] [D'!i E'!j].
+  unbinds(P,Q,D!i,[D]) :- unbind(P,Q,D!i).
+
+  find(D,Type,Rate):- rate(D,Type,Rate).
+  find(D,Type,Rate):- default(D,Type,Rate), not rate(D,Type,_).
+
+  //order of find and binds clauses could be reversed.
+  slow(P1, P2, Rate, Q) :- find(L, "bind", Rate), binds(P1,P2,Q,_,L). //, productive(Q,_,_!i,L).
+  fast(P, Rate, Q) :- displaces(P,Q,_,L), find(L, "displace", Rate).
+  fast(P, Rate, Q) :- displacesL(P,Q,_,L), find(L, "displace", Rate).
+  fast(P, Rate, Q) :- covers(P,Q,_,L), find(L, "cover", Rate).
+  fast(P, Rate, Q) :- coversL(P,Q,_,L), find(L, "cover", Rate).
+  fast(P, Rate, Q) :- unbinds(P,Q,_,L), find(L, "unbind", Rate).
+
+  productive(P,Q,E!j,L) :- displaces(P,Q,E!j,L).
+  productive(P,Q,E!j,L) :- displacesL(P,Q,E!j,L).
+  productive(P,Q,E!j,L) :- covers(P,Q,E!j,L).
+  productive(P,Q,E!j,L) :- coversL(P,Q,E!j,L).
+
+  mergestep(P,Q,V) :- fast(P,_,Q), not member(Q,V).
+  merge(P,P,V) :- not fast(P,_,_).
+  merge(P,R,V) :- mergestep(P,Q,V), merge(Q,R,[Q#V]).
+
+  infinite([P1; P2], Rate, R) :- slow(P1, P2, Rate, Q), merge(Q,R,[(P1|P2);Q]).
+  infinite([P], Rate, R) :- slow(P, Rate, Q), merge(Q,R,[P;Q]).
+
+  detailed([P1; P2], Rate, Q):- slow(P1, P2, Rate, Q).
+  detailed([P], Rate, Q) :- slow(P, Rate, Q).
+  detailed([P], Rate, Q) :- fast(P, Rate, Q).
+
+  default([_],"unbind",0.1).
+  default(_,"bind",0.0003).
+  default(_,"displace",1.0).
+  default(_,"cover",1.0).
+
+  //The following specifies infinite compilation mode
+  reaction([P1; P2], Rate, R) :- infinite([P1; P2], Rate, R).
+  reaction([P], Rate, R) :- infinite([P], Rate, R).
+
+// Localised bind rule
+  bind(P1,P2,Q,D!i) :- 
+    proximal(P1, P2),
+    P1 = C1 [D], P2 = C2 [D'], compl(D, D'), 
+    Q  = C1 [D!i] | C2 [D'!i], freshBond(D!i, P1|P2).
+
+  (*** proximal(P1, P2):  P1 and P2 are close enough if either one of them is not tethered, 
+                          or if they are tethered in the same region. ***)
+  proximal(P1, P2) :-
+    tethers(P1, Ts1), 
+    tethers(P2, Ts2), 
+    shared(Ts1, Ts2),
+    pruning(P1, P2).
+  
+  shared([], _).
+  shared(_, []).
+  shared(Ts1, Ts2) :-
+    not (Ts1 = []), not (Ts2 = []),
+    hasIntersection(Ts1, Ts2).
+
+  hasIntersection(Ts1, Ts2) :- 
+  	concat(Ts1, T1),
+    concat(Ts2, T2),
+    not intersection(T1, T2, []).
+
+  (* CRN pruning: bind P1 and P2 only if they have a most one tether each. 
+                Tethers are also unique, so discard P1 and P2 if they both share a tether *)
+  pruning(P1, P2) :-
+    tetheredDomains(P1, D1), length(D1, N1), N1 <= 1,
+    tetheredDomains(P2, D2), length(D2, N2), N2 <= 1,
+    intersection(D1, D2, []).
+     
+
+  (*** tetheredDomains(P, TDs) :  find all tethered domains in P ***)
+  filterTetheredDomains([], []).
+  filterTetheredDomains([D#Ds], [D#Ts]) :-
+    tethered(D, _),
+    filterTetheredDomains(Ds, Ts).
+  
+  filterTetheredDomains([D#Ds], Ts) :-
+    not tethered(D, _),
+    filterTetheredDomains(Ds, Ts).
+  
+  tetheredDomains(P, TDs) :-
+    toDomains(P, Ds),                 // in-built predicate
+    filterTetheredDomains(Ds, TDs).
+    
+  (*** tethers(P, L): find all the tethers L in process P ***)
+  filterTethers([], []).
+  filterTethers([T#Ds], [Ls#Ts]) :-
+    tethered(T, Ls),
+    filterTethers(Ds, Ts).
+  
+  filterTethers([D#Ds], Ts) :-
+    not tethered(D, _),
+    filterTethers(Ds, Ts).
+  
+  tethers(P, Ts) :-
+    toDomains(P, Ds),        // in-built predicate
+    filterTethers(Ds, Ts).
+
+tethered(start,["dropA"; "toCargo"]).
+tethered(track1,["toCargo"; "xing1"]).
+tethered(track2,["xing1"; "xing2"; "pkup"]).
+tethered(track3,["xing2"; "dropB"]).
+tethered(goal1p,["dropA"]).
+tethered(goal2p,["dropB"]).
+tethered(cargo1p*,["pkup"; "xing1"]).
+tethered(cargo2p*,["pkup"; "xing2"]).
+}
+( // robot
+1 [ <hand^ arm foot^ leg!0 foot^!1>
+| <start*!3 foot^*!1 leg*!0>
+| <start!3> ]
+// goals
+| 1 [ <hand^ arm cargo1^* goal1p*!0>
+| <goal1p!0> ]
+| 1 [ <hand^ arm cargo2^* goal2p*!0>
+| <goal2p!0> ]
+// cargos
+| 1 [ <cargo1^ arm*!0 hand^* cargoA>
+| <arm!0 cargo1p!1>
+| <cargo1p*!1> ]
+| 1 [ <cargo2^ arm*!0 hand^* cargoB>
+| <arm!0 cargo2p!1>
+| <cargo2p*!1> ]
+//tracks
+| 1 [ <track1 leg* foot^*> ]
+| 1 [ <track2 foot^* leg*> ]
+| 1 [ <track3 leg* foot^*> ] )

@@ -1,0 +1,58 @@
+﻿directive simulation { final = 40000.0; points = 1000; plots = [<rbx>]}
+directive deterministic {stiff = true}
+
+directive compilation infinite
+
+directive fit_run { burnin      = 1000
+                  ; samples     = 1000
+                  ; thin        = 10
+                  ; separatenoise = false }
+
+(* Events for forward direction *)
+directive event <t^ b> 10.0 * N  @ T1_BX
+
+directive parameters [
+kBind,(1.0e-5,1.0e-2),0.0001,log,random;
+
+T1_BX = 7313.346;
+NRepR = 30.0; NMi = 100.0; NG = 30.0;
+N=0.6; dummy1 = 0.0; dummy2 = 0.0;
+leakJoinBX_B = 0.24
+]
+(* Directives for parameter inference *)
+(*directive sweep sweepJoinBX_AddB = { N = [0.0,0.2,0.4,0.6], dummy1 = [0.0] }
+directive fit { sweepJoinBX_AddB; JoinBX_AddB; < rbx> }*)
+
+dom t = {seq = CTGATC; bind=kBind}  (* bind=kbt; unbind=kut} *)
+dom u1 = {seq = CTTCAG; bind=kBind} (* bind=kbu1; unbind=kuu1} *)
+dom u2 = {seq = CTTCAG; bind=kBind} (* bind=kbu1; unbind=kuu1} *)
+dom u3 = {seq = CTTCAG; bind=kBind} (* bind=kbu1; unbind=kuu1} *)
+dom b = {seq = CATTGCCAATTCCTACGAGTCTACC}
+dom x = {seq = CATTGCTTTATTTACCGAGTCTTAT}
+dom rbx = {seq = CATTGCCAAACCATTAGAGTCAAAC}
+(*  dom fl = {seq = TCT; bind=kBind } 	*)
+ dom fq = {seq = T; bind=kBind }	
+ dom rq = {seq = TAC; bind=kBind }	
+
+def RepR(x,tx) = [ x]{tx^*}
+
+def Join_AB(ta,a,tb,b,tr,r,tq) = {ta^*}[a tb^]:[b tr^]:[r tq^]
+
+def Join( inputOne, inputTwo, inputThree, gate, leak, t1,d1,t2,d2,t3,d3,t4) =
+( (gate - leak) * Join_AB(t1,d1,t2,d2,t3,d3,t4)
+| inputOne * <t1^ d1>
+| inputTwo * <t2^ d2>
+| inputThree * <t3^ d3> 
+| leak * <d3 t4^>
+)
+
+def RepJoinR(N,NR,r,tq) =
+( N  * <r tq^> 
+| NR * RepR(r,tq)
+)
+
+( RepJoinR(0.0, NRepR,rbx,u1)
+| Join(0.0,NMi,NMi,NG,leakJoinBX_B,t,b,t,x,t,rbx,u1)
+| dummy1*Join(0.0,NMi,NMi,NG,leakJoinBX_B,t,b,t,x,t,rbx,u2)
+| dummy2*Join(0.0,NMi,NMi,NG,leakJoinBX_B,t,b,t,x,t,rbx,u3)
+)

@@ -1,0 +1,4 @@
+directive simulation {points=100; }
+directive polymers
+directive jit
+( 5.0 * {t^*}[x]:[y]<t^ x>)

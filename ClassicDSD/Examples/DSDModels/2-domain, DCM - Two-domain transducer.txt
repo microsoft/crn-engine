@@ -1,0 +1,11 @@
+directive simulation {initial=0; final=10000; points=1000; plots=[<t^ x>; <t^ y>; <t^ z>]}
+directive compilation infinite
+new t 
+def T(N, x, y) = 
+  (new a
+  ( N * <t^ a>
+  | N * <y t^>
+  | N * {t^*}[x t^]:[a t^]:[a]
+  | N * [x]:[t^ y]:[t^ a]{t^*}))
+( <t^ x>
+| T(1.0,x,y))

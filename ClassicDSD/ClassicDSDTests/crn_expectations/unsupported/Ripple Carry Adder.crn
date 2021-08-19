@@ -1,0 +1,82 @@
+directive sample 0.0,10000000.0 1000000
+directive plot sum("<mS1 T^ pS1>")
+directive simulation jit
+
+init "<pPushA T^>" 20.0 |
+init "{GlueA T^}" 20.0 |
+init "<T^>[GlueA* T^*]<mPopA>" 20.0 |
+init "{T^}[mPopA T^]<pPopA>:[pPushA T^]{GlueA}" 20.0 |
+init "<pPushB T^>" 20.0 |
+init "{GlueB T^}" 20.0 |
+init "<T^>[GlueB* T^*]<mPopB>" 20.0 |
+init "{T^}[mPopB T^]<pPopB>:[pPushB T^]{GlueB}" 20.0 |
+init "<pPushC T^>" 20.0 |
+init "{GlueC T^}" 20.0 |
+init "<T^>[GlueC* T^*]<mPopC>" 20.0 |
+init "{T^}[mPopC T^]<pPopC>:[pPushC T^]{GlueC}" 20.0 |
+init "<pPushX T^>" 20.0 |
+init "{GlueX T^}" 20.0 |
+init "<T^>[GlueX* T^*]<mPopX>" 20.0 |
+init "{T^}[mPopX T^]<pPopX>:[pPushX T^]{GlueX}" 20.0 |
+init "<mBot mPushX>[T^ pPushX]<pBot>:[T^ GlueX*]::[T^* mPopX]{T^*}:[pPushX T^]{GlueX}" 1.0 |
+init "{T^*}[pPopX T^]:[pS12 T^]:[mA.24 T^]<pS1>:[mPopA T^]<pPopA>" 20.0 |
+init "<T^ mA.24 T^ mPopA>" 20.0 |
+init "{T^*}[pPopX T^]:[pS13 T^]:[mA.25 T^]<pS1>:[mPopA T^]<pPopA>" 20.0 |
+init "<T^ mA.25 T^ mPopA>" 20.0 |
+init "{T^*}[pPopC T^]:[pS8 T^]:[mB.20 T^]<pS13>:[mOne mPushX T^]<pPushX pOne>" 20.0 |
+init "<T^ mB.20 T^ mOne mPushX>" 20.0 |
+init "{T^*}[pPopC T^]:[pS9 T^]:[mB.21 T^]<pS12>:[mZero mPushX T^]<pPushX pZero>" 20.0 |
+init "<T^ mB.21 T^ mZero mPushX>" 20.0 |
+init "{T^*}[pPopC T^]:[pS10 T^]:[mB.22 T^]<pS13>:[mOne mPushX T^]<pPushX pOne>" 20.0 |
+init "<T^ mB.22 T^ mOne mPushX>" 20.0 |
+init "{T^*}[pPopC T^]:[pS11 T^]:[mB.23 T^]<pS12>:[mZero mPushX T^]<pPushX pZero>" 20.0 |
+init "<T^ mB.23 T^ mZero mPushX>" 20.0 |
+init "{T^*}[pPushB pBot T^]:[pS2 T^]:[mA.3 T^]<pAcc>" 20.0 |
+init "<T^ mA.3 T^>" 20.0 |
+init "{T^*}[pPushB pOne T^]:[pS2 T^]:[mA.4 T^]<pRej>" 20.0 |
+init "<T^ mA.4 T^>" 20.0 |
+init "{T^*}[pPushB pZero T^]:[pS2 T^]:[mA.5 T^]<pRej>" 20.0 |
+init "<T^ mA.5 T^>" 20.0 |
+init "{T^*}[pPushB pBot T^]:[pS3 T^]:[mA.6 T^]<pRej>" 20.0 |
+init "<T^ mA.6 T^>" 20.0 |
+init "{T^*}[pPushB pBot T^]:[pS4 T^]:[mA.9 T^]<pRej>" 20.0 |
+init "<T^ mA.9 T^>" 20.0 |
+init "{T^*}[pPushC pBot T^]:[pS5 T^]:[mA.12 T^]<pRej>" 20.0 |
+init "<T^ mA.12 T^>" 20.0 |
+init "{T^*}[pPushC pBot T^]:[pS6 T^]:[mA.14 T^]<pRej>" 20.0 |
+init "<T^ mA.14 T^>" 20.0 |
+init "{T^*}[pPushC pBot T^]:[pS7 T^]:[mA.17 T^]<pRej>" 20.0 |
+init "<T^ mA.17 T^>" 20.0 |
+init "{T^*}[pPushA pBot T^]:[pS1 T^]:[mA T^]<pS2>:[mPopB T^]<pPopB>" 20.0 |
+init "<T^ mA T^ mPopB>" 20.0 |
+init "{T^*}[pPushA pOne T^]:[pS1 T^]:[mA.1 T^]<pS3>:[mPopB T^]<pPopB>" 20.0 |
+init "<T^ mA.1 T^ mPopB>" 20.0 |
+init "{T^*}[pPushA pZero T^]:[pS1 T^]:[mA.2 T^]<pS4>:[mPopB T^]<pPopB>" 20.0 |
+init "<T^ mA.2 T^ mPopB>" 20.0 |
+init "{T^*}[pPushB pOne T^]:[pS3 T^]:[mA.7 T^]<pS5>:[mPopC T^]<pPopC>" 20.0 |
+init "<T^ mA.7 T^ mPopC>" 20.0 |
+init "{T^*}[pPushB pZero T^]:[pS3 T^]:[mA.8 T^]<pS6>:[mPopC T^]<pPopC>" 20.0 |
+init "<T^ mA.8 T^ mPopC>" 20.0 |
+init "{T^*}[pPushB pOne T^]:[pS4 T^]:[mA.10 T^]<pS6>:[mPopC T^]<pPopC>" 20.0 |
+init "<T^ mA.10 T^ mPopC>" 20.0 |
+init "{T^*}[pPushB pZero T^]:[pS4 T^]:[mA.11 T^]<pS7>:[mPopC T^]<pPopC>" 20.0 |
+init "<T^ mA.11 T^ mPopC>" 20.0 |
+init "{T^*}[pPushC pOne T^]:[pS5 T^]:[mB T^]<pS8>:[mOne mPushC T^]<pPushC pOne>" 20.0 |
+init "<T^ mB T^ mOne mPushC>" 20.0 |
+init "{T^*}[pPushC pZero T^]:[pS5 T^]:[mB.13 T^]<pS9>:[mOne mPushC T^]<pPushC pOne>" 20.0 |
+init "<T^ mB.13 T^ mOne mPushC>" 20.0 |
+init "{T^*}[pPushC pOne T^]:[pS6 T^]:[mB.15 T^]<pS9>:[mOne mPushC T^]<pPushC pOne>" 20.0 |
+init "<T^ mB.15 T^ mOne mPushC>" 20.0 |
+init "{T^*}[pPushC pZero T^]:[pS6 T^]:[mB.16 T^]<pS10>:[mZero mPushC T^]<pPushC pZero>" 20.0 |
+init "<T^ mB.16 T^ mZero mPushC>" 20.0 |
+init "{T^*}[pPushC pOne T^]:[pS7 T^]:[mB.18 T^]<pS10>:[mZero mPushC T^]<pPushC pZero>" 20.0 |
+init "<T^ mB.18 T^ mZero mPushC>" 20.0 |
+init "{T^*}[pPushC pZero T^]:[pS7 T^]:[mB.19 T^]<pS11>:[mZero mPushC T^]<pPushC pZero>" 20.0 |
+init "<T^ mB.19 T^ mZero mPushC>" 20.0 |
+init "<mBot mPushC>[T^ pPushC]<pBot>:[T^ GlueC*]::[T^* mPopC]:<mZero mPushC>[T^ pPushC]<pZero>:[T^ GlueC*]::[T^* mPopC]{T^*}:[pPushC T^]{GlueC}" 1.0 |
+init "<mPopA T^ pPopA>" 1.0 |
+init "<mS1 T^ pS1>" 1.0 |
+init "<mBot mPushB>[T^ pPushB]<pBot>:[T^ GlueB*]::[T^* mPopB]:<mZero mPushB>[T^ pPushB]<pZero>:[T^ GlueB*]::[T^* mPopB]:<mZero mPushB>[T^ pPushB]<pZero>:[T^ GlueB*]::[T^* mPopB]{T^*}:[pPushB T^]{GlueB}" 1.0 |
+init "<mBot mPushA>[T^ pPushA]<pBot>:[T^ GlueA*]::[T^* mPopA]:<mZero mPushA>[T^ pPushA]<pZero>:[T^ GlueA*]::[T^* mPopA]:<mZero mPushA>[T^ pPushA]<pZero>:[T^ GlueA*]::[T^* mPopA]{T^*}:[pPushA T^]{GlueA}" 1.0 |
+init "<mBot mPushA>[T^ pPushA]<pBot>:[T^ GlueA*]::[T^* mPopA]:<mZero mPushA>[T^ pPushA]<pZero>:[T^ GlueA*]::[T^* mPopA]:<mZero mPushA>[T^ pPushA]<pZero>:[T^ GlueA*]<T^* mPopA>" 0.0 |
+"<mBot mPushA>[T^ pPushA]<pBot>:[T^ GlueA*]::[T^* mPopA]:<mZero mPushA>[T^ pPushA]<pZero>:[T^ GlueA*]::[T^* mPopA]:<mZero mPushA>[T^ pPushA]<pZero>:[T^ GlueA*]::[T^* mPopA]{T^*}:[pPushA T^]{GlueA}" + "<mPopA T^ pPopA>" ->{0.0003} "{T^}[mPopA T^]<pPopA>:[pPushA T^]{GlueA}" + "<mBot mPushA>[T^ pPushA]<pBot>:[T^ GlueA*]::[T^* mPopA]:<mZero mPushA>[T^ pPushA]<pZero>:[T^ GlueA*]::[T^* mPopA]:<mZero mPushA>[T^ pPushA]<pZero>:[T^ GlueA*]<T^* mPopA>"

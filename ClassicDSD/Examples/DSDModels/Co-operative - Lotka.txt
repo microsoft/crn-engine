@@ -1,0 +1,23 @@
+directive simulation {initial=0; final=20000; points=1000; plots=[<y1l t^ y1 x^>; <y2 t^ y2r>]}
+directive deterministic {stiff=false; reltolerance=1E-07; abstolerance=1E-06}
+def bind = 1E-05
+def unbind = 0.1
+def Excess = 100.0
+new x  @ bind, unbind
+new t  @ bind, unbind
+def SpeciesL(N, al, a) = N * <al t^ a x^>
+def SpeciesR(N, a, ar) = N * <a t^ ar>
+def BinaryLRxRR(N, al, a, b, br, c, cr, d, dr) = 
+  (new i
+  ( constant N * {t^*}[a x^ b]<i t^ cr t^ dr>{t^*}
+  | constant (N * Excess) * {x^*}[b i]:<c>[t^ cr]:<d>[t^ dr]))
+def UnaryLxLL(N, al, a, cl, c, dl, d) = 
+  (new i
+  ( constant N * {t^*}[a x^]<i cl t^ dl t^>
+  | constant (N * Excess) * {x^*}[i]:[cl t^]<c x^>:[dl t^]<d x^>))
+def UnaryRx(N, a, ar) = constant N * [a]{t^*}
+( UnaryLxLL(1000.0,y1l,y1,y1l,y1,y1l,y1)
+| BinaryLRxRR(30000.0,y1l,y1,y2,y2r,y2,y2r,y2,y2r)
+| UnaryRx(1000.0,y2,y2r)
+| SpeciesL(1000.0,y1l,y1)
+| SpeciesR(1000.0,y2,y2r))

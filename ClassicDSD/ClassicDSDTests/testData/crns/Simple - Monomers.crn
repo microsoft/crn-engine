@@ -1,0 +1,9 @@
+directive sample 0.0,1000.0 100
+directive simulation jit
+directive parameters
+  [ e = 2.71828183
+  ; R = 0.0019872
+  ; T = 298.15 ]
+
+init sp_0 5.0 |
+2sp_0 ->{0.0006} sp_2 + sp_1

@@ -1,0 +1,44 @@
+directive duration 20000.0 points 1000
+directive plot Signal()
+directive scale 10.0
+directive compilation infinite
+directive simulation deterministicstiff
+directive event <tb^ b> N*(1.0-Bad)*10.0 @ T1
+directive parameters [ 
+  N = 1.0; 
+  ktb,(1.0e-5,2.0e-3),0.0003,log,random;
+  ktx,(1.0e-5,2.0e-3),0.0003,log,random;
+  kto,(1.0e-5,2.0e-3),0.0003,log,random;
+  T1,(3600.0,8000.0),3800.0,real,random;
+  Leak,(0.0,0.05),0.001,real,random;
+  Bad,(0.0,0.3),0.0,real,random
+]
+
+(* Directives for parameter inference *)
+(* Burn-in, runs, optimisation burn-in, optimisation of maximum likelihood,... *)
+directive fit_run { burnin = 2000
+                  ; samples = 20000
+                  ; mle_burnin = 1000
+                  ; mle_samples = 1000
+                  ; thin = 10 }
+directive fit { s1; JoinBX_AddB; <fl^ x> }
+directive sweep s1 = {N = [0.0,0.2,0.4,0.6]}
+
+def ut = 0.1
+new tb@ktb,ut
+new tx@ktx,ut
+new to@kto,ut
+
+def Input1() = <tb^ b>
+def Input2() = <tx^ x>
+def Output() = <x to^>
+def Join() = {tb^*}[b tx^]:[x to^]
+def Reporter() = <fl^>[x]{to^*}
+def Signal() = <fl^ x>
+( 0.0*Input1()
+| 30.0*Input2()
+| 30.0*(1.0-Leak)*Join()
+| 30.0*Leak*Output()
+| 30.0*Reporter()
+| 0.0*Signal()
+)

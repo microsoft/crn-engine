@@ -1,0 +1,37 @@
+directive sample 250000.0 1000
+directive plot sum(<_ t^ A>); sum(<_ t^ B>); sum(<_ t^ C>);
+               {t^*}[K t^]:[A t^]<I>:[B t^]<K>:[Ch t^]<B>:[Dh t^]<B>:[J t^]:[I];
+               {t^*}[K t^]:[B t^]<I>:[C t^]<K>:[Ch t^]<C>:[Dh t^]<C>:[J t^]:[I];
+               {t^*}[K t^]:[C t^]<I>:[A t^]<K>:[Ch t^]<A>:[Dh t^]<A>:[J t^]:[I]
+
+directive scale 100.0
+directive reltolerance 1e-4
+
+def bind = 0.0003
+def unbind = 0.1126
+new t@bind,unbind
+
+(* Signal species A. *)
+def Species(M, h, A) = M * <h t^ A>
+
+(* Buffered join gate A + B -> C + D. *)
+def BJ2x2(Buffer,Fuel,Init,A,B,C,D) =
+new I new J new K new Ch new Dh
+( Buffer * {t^*}[K t^]:[ A t^]<I>:[B t^]<K>:[Ch t^]<C>:[Dh t^]<D>:[J t^]:[I]
+| Fuel * <t^ Ch t^ Dh t^ J>
+| Fuel * [J]{t^*}
+| Fuel * [K]{t^*}
+| (Init*10) * <A t^ I>
+| Init * <B t^ K> )
+
+(* Buffered three-phase oscillator (ABC). *)
+def Buffer = 100
+def Init = 10
+def Fuel = 1000
+new Ah new A new Bh new B new Ch new C
+( BJ2x2(Buffer, Fuel, Init, A, B, B, B)
+| BJ2x2(Buffer, Fuel, Init, B, C, C, C)
+| BJ2x2(Buffer, Fuel, Init, C, A, A, A)
+| Species(2, Ah, A)
+| Species(4, Bh, B)
+| Species(2, Ch, C) )

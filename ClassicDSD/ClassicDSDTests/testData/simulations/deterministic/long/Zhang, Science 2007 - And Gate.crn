@@ -1,0 +1,37 @@
+directive plot sp_15; Gate
+directive parameters
+  [ e = 2.71828183
+  ; R = 0.0019872
+  ; T = 298.15 ]
+
+init AndGate_1 10.0 |
+init AndGate 10.0 |
+init FuelOne 10.0 |
+init FuelTwo 10.0 |
+init Gate 10.0 |
+Gate + AndGate_1 <->{0.00065}{0.004} sp_1 |
+sp_4 + FuelTwo ->{0.00042} sp_6 + sp_5 |
+sp_4 + AndGate <->{0.0003}{0.1126} sp_7 |
+sp_7 + FuelTwo ->{0.00042} sp_6 + sp_8 |
+sp_10 + FuelOne ->{0.0003} sp_13 + sp_12 |
+sp_10 + FuelTwo ->{0.00042} sp_6 + sp_11 |
+sp_13 <->{0.1126}{0.0003} sp_14 + AndGate |
+sp_12 + FuelTwo ->{0.00042} sp_6 + sp_15 |
+sp_6 <->{0.004}{0.00065} sp_16 + AndGate_1 |
+sp_11 + FuelOne ->{0.0003} sp_13 + sp_15 |
+sp_7 <->{0.1126}{0.0003} sp_10 + sp_9 |
+sp_11 + sp_9 <->{0.0003}{0.1126} sp_8 |
+sp_8 <->{0.1126}{0.0003} sp_5 + AndGate |
+sp_1 <->{0.04}{0.00042} sp_4 + sp_3 |
+sp_1 + AndGate <->{0.0003}{0.1126} sp_2 |
+sp_7 + sp_3 <->{0.00042}{0.04} sp_2 |
+sp_10 + sp_3 <->{0.00042}{0.04} sp_18 |
+sp_18 + FuelOne ->{0.0003} sp_13 + sp_17 |
+sp_2 <->{0.1126}{0.0003} sp_18 + sp_9 |
+sp_18 <->{0.004}{0.00065} sp_19 + AndGate_1 |
+sp_19 + FuelOne ->{0.0003} sp_13 + sp_20 |
+sp_12 + sp_3 <->{0.00042}{0.04} sp_17 |
+sp_20 + AndGate_1 <->{0.00065}{0.004} sp_17 |
+Gate + AndGate <->{0.0003}{0.1126} sp_0 |
+sp_19 + sp_9 <->{0.0003}{0.1126} sp_0 |
+sp_2 <->{0.004}{0.00065} sp_0 + AndGate_1

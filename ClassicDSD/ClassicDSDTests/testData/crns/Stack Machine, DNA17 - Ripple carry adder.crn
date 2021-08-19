@@ -1,0 +1,85 @@
+directive sample 0.0,10000000.0 1000000
+directive plot sum(Signal)
+directive simulation jit
+directive parameters
+  [ e = 2.71828183
+  ; R = 0.0019872
+  ; T = 298.15 ]
+
+init EditStack_15 20.0 |
+init EditStack_14 20.0 |
+init EditStack_13 20.0 |
+init EditStack_12 20.0 |
+init EditStack_11 20.0 |
+init EditStack_10 20.0 |
+init EditStack_9 20.0 |
+init EditStack_8 20.0 |
+init EditStack_7 20.0 |
+init EditStack_6 20.0 |
+init EditStack_5 20.0 |
+init EditStack_4 20.0 |
+init EditStack_3 20.0 |
+init EditStack_2 20.0 |
+init EditStack_1 20.0 |
+init EditStack 20.0 |
+init EmptyStack 1.0 |
+init Irrev33x33_3 20.0 |
+init Irrev33x33_2 20.0 |
+init Irrev33x33_1 20.0 |
+init Irrev33x33 20.0 |
+init Irrev33x35_7 20.0 |
+init Irrev33x35_6 20.0 |
+init Irrev33x35_5 20.0 |
+init Irrev33x35_4 20.0 |
+init Irrev33x35_3 20.0 |
+init Irrev33x35_2 20.0 |
+init Irrev33x35_1 20.0 |
+init Irrev33x35 20.0 |
+init Irrev53x3_15 20.0 |
+init Irrev53x3_14 20.0 |
+init Irrev53x3_13 20.0 |
+init Irrev53x3_12 20.0 |
+init Irrev53x3_11 20.0 |
+init Irrev53x3_10 20.0 |
+init Irrev53x3_9 20.0 |
+init Irrev53x3_8 20.0 |
+init Irrev53x3_7 20.0 |
+init Irrev53x3_6 20.0 |
+init Irrev53x3_5 20.0 |
+init Irrev53x3_4 20.0 |
+init Irrev53x3_3 20.0 |
+init Irrev53x3_2 20.0 |
+init Irrev53x3_1 20.0 |
+init Irrev53x3 20.0 |
+init Irrev53x33_13 20.0 |
+init Irrev53x33_12 20.0 |
+init Irrev53x33_11 20.0 |
+init Irrev53x33_10 20.0 |
+init Irrev53x33_9 20.0 |
+init Irrev53x33_8 20.0 |
+init Irrev53x33_7 20.0 |
+init Irrev53x33_6 20.0 |
+init Irrev53x33_5 20.0 |
+init Irrev53x33_4 20.0 |
+init Irrev53x33_3 20.0 |
+init Irrev53x33_2 20.0 |
+init Irrev53x33_1 20.0 |
+init Irrev53x33 20.0 |
+init Irrev53x35_11 20.0 |
+init Irrev53x35_10 20.0 |
+init Irrev53x35_9 20.0 |
+init Irrev53x35_8 20.0 |
+init Irrev53x35_7 20.0 |
+init Irrev53x35_6 20.0 |
+init Irrev53x35_5 20.0 |
+init Irrev53x35_4 20.0 |
+init Irrev53x35_3 20.0 |
+init Irrev53x35_2 20.0 |
+init Irrev53x35_1 20.0 |
+init Irrev53x35 20.0 |
+init OneStack 1.0 |
+init Signal_1 1.0 |
+init Signal 1.0 |
+init TwoStack_1 1.0 |
+init TwoStack 1.0 |
+TwoStack + Signal_1 ->{0.0003} EditStack_3 + sp_0

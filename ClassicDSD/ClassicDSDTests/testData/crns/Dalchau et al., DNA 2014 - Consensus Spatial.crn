@@ -1,0 +1,102 @@
+directive sample 0.0,(96.0 * 3600.0) 1000
+directive plot Input; Catalyst; Input_1
+directive simulation spatial1d
+directive dt 20.0
+directive xmax 0.1
+directive spatialplot Input
+directive spatialic random 0.2
+directive spatialbc zeroflux
+directive defaultdiffusion 1E-10
+directive parameters
+  [ kJ1 = 9.3389E-06
+  ; kJ1r = 5.8863E-05
+  ; kJ2 = 8.1539E-05
+  ; kJ2r = 6.9742E-05
+  ; kJ3 = 0.00040619
+  ; kJ3r = 3.3053E-06
+  ; kF1 = 1.2135E-05
+  ; kF1_YY = 4.2054E-06
+  ; kF1r = 0.00012982
+  ; kF2 = 4.5807E-05
+  ; kF2r = 0.0004789
+  ; kF3 = 0.00012031
+  ; kF3r = 1.1956E-06
+  ; kF4 = 3.597E-06
+  ; kF4r = 0.0004789
+  ; kF5 = 7.1967E-06
+  ; kFRpb = 0.00031439
+  ; kFRpx = 0.00066487
+  ; kFRpy = 0.00015619
+  ; leakXY2B_J = 0.0142
+  ; leakXY2B_F = 0.0098
+  ; leakBX2X_J = 0.0107
+  ; leakBX2X_F = 5.7837E-07
+  ; leakBY2Y_J = 0.0088
+  ; leakBY2Y_F = 0.0175
+  ; X = 80.0
+  ; NG = 160.0
+  ; NH = 160.0
+  ; e = 2.71828183
+  ; R = 0.0019872
+  ; T = 298.15 ]
+
+init Catalyst 3.78 |
+init End (4.0 * NH) |
+init Fork_2 (NG * (1.0 - leakBY2Y_F)) |
+init Fork_1 (NG * (1.0 - leakBX2X_F)) |
+init Fork (NG * (1.0 - leakXY2B_F)) |
+init Helper_2 NH |
+init Helper_1 NH |
+init Helper NH |
+init Input 6.22 |
+init Join_2 (NG * (1.0 - leakBY2Y_J)) |
+init Translator_2 (NG * leakBY2Y_J) |
+init Join_1 (NG * (1.0 - leakBX2X_J)) |
+init Translator_1 (NG * leakBX2X_J) |
+init Join (NG * (1.0 - leakXY2B_J)) |
+init Translator (NG * leakXY2B_J) |
+init Output_2 (NG * leakBY2Y_F) |
+init Output_1 (NG * leakBX2X_F) |
+init Output (NG * leakXY2B_F) |
+init Output1R_2 NH |
+init Output1R_1 NH |
+init Output1R NH |
+init Output2R_2 NH |
+init Output2R_1 NH |
+init Output2R NH |
+init Output3R_2 NH |
+init Output3R_1 NH |
+init Output3R NH |
+init RepB NG |
+init RepX NG |
+init RepY NG |
+sp_8 + sp_13 <->{kJ1r}{kJ1} Input + Join |
+sp_2 + sp_14 <->{kJ2r}{kJ2} Catalyst + sp_13 |
+Translator + sp_15 <->{kJ3r}{kJ3} Helper + sp_14 |
+sp_16 + sp_17 <->{kF1r}{kF1} Translator + Fork |
+Input_1 + sp_20 <->{kF2r}{kF2} Output1R + sp_17 |
+Output + sp_23 <->{kF3r}{kF3} Output2R + sp_20 |
+Input_1 + sp_29 <->{kF2r}{kF4} Output3R + sp_23 |
+End + sp_29 ->{kF5} sp_30 + sp_25 |
+Output + RepB ->{kFRpb} sp44 + sp_31 |
+sp_0 + sp_7 <->{kJ1r}{kJ1} Input_1 + Join_1 |
+sp_8 + sp_9 <->{kJ2r}{kJ2} Input + sp_7 |
+Translator_1 + sp_10 <->{kJ3r}{kJ3} Helper_1 + sp_9 |
+sp_11 + sp_12 <->{kF1r}{kF1} Translator_1 + Fork_1 |
+Input + sp_19 <->{kF2r}{kF2} Output1R_1 + sp_12 |
+Output_1 + sp_22 <->{kF3r}{kF3} Output2R_1 + sp_19 |
+Input + sp_27 <->{kF2r}{kF4} Output3R_1 + sp_22 |
+End + sp_27 ->{kF5} sp_28 + sp_25 |
+Output_1 + RepX ->{kFRpx} sp56 + sp_33 |
+sp_0 + sp_1 <->{kJ1r}{kJ1} Input_1 + Join_2 |
+sp_2 + sp_3 <->{kJ2r}{kJ2} Catalyst + sp_1 |
+Translator_2 + sp_4 <->{kJ3r}{kJ3} Helper_2 + sp_3 |
+sp_5 + sp_6 <->{kF1r}{kF1} Translator_2 + Fork_2 |
+Catalyst + sp_18 <->{kF2r}{kF2} Output1R_2 + sp_6 |
+Output_2 + sp_21 <->{kF3r}{kF3} Output2R_2 + sp_18 |
+Catalyst + sp_24 <->{kF2r}{kF4} Output3R_2 + sp_21 |
+End + sp_24 ->{kF5} sp_26 + sp_25 |
+Output_2 + RepY ->{kFRpy} sp67 + sp_35 |
+RepB + Output <->{0.0}{0.0} sp_32 + sp_31 |
+RepX + Output_1 <->{0.0}{0.0} sp_34 + sp_33 |
+RepY + Output_2 <->{0.0}{0.0} sp_36 + sp_35

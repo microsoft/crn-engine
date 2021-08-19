@@ -1,0 +1,45 @@
+directive duration 720.0 points 1000
+directive simulation cme
+directive compilation infinite
+
+directive leaks
+directive leak 1.0E-9*c
+directive tau 1.0 (* Branch migration rate 1/s (from Zhang and Winfree 2009)*)
+
+(* Plots the reporter strand's concentration *)
+directive plot <Ga Gb>
+
+(* Defining speedup factor *)
+directive parameters [c = 50.0]
+directive sweep c = [50.0, 500.0, 5000.0, 50000.0, 500000.0, 5000000.0]
+
+(* Input settings, following (Si1 AND Si2) OR (Si3 AND Si4) *)
+def Si1 = 0
+def Si2 = 0
+def Si3 = 0
+def Si4 = 1
+
+(* Winfree's parameters*)
+def bind = 5.0E-5 (* Short toehold binding rate constant 5x10^-5/nM/s *)
+def unbind = 26.0 (* Short toehold dissociation rate constant 26/s *)
+
+(* Definition of the OR, AND, FANOUT and WIRE gates, reporter complex and input strands *)
+def STRAND (T, sa, sb) = <T^ sa sb>
+def OR (Ti1, Input1a, Input1b, Ti2, Input2a, Input2b, To, Outputa, Outputb) = ({Ti1^*}[Input1a]:[Input1b To^]<Outputa Outputb>
+| {Ti2^*}[Input2a]:[Input2b To^]<Outputa Outputb>
+)
+def AND (Ti1, Input1a, Input1b, Ti2, Input2a, Input2b, To, Outputa, Outputb) = {Ti1^*}[Input1a]:[Input1b Ti2^]:[Input2a]:[Input2b To^]<Outputa Outputb> 
+def REPORTER (Ti, Inputa, Inputb) =  {Ti^*}[Inputa Inputb]
+
+new T@ c * bind, unbind
+
+( 
+  Si1*STRAND(T, Aa, Ab)
+| Si2*STRAND(T, Ba, Bb)
+| Si3*STRAND(T, Ca, Cb)
+| Si4*STRAND(T, Da, Db)
+| AND(T, Aa, Ab, T, Ba, Bb, T, Ea, Eb)
+| AND(T, Ca, Cb, T, Da, Db, T, Fa, Fb)
+| OR(T, Ea, Eb, T, Fa, Fb, T, Ga, Gb)
+| REPORTER(T, Ga, Gb)
+)

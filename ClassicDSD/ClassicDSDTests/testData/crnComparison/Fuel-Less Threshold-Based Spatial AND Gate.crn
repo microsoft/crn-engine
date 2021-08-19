@@ -1,0 +1,48 @@
+directive sample 0.0,40000.0 1000
+directive plot "<s F>"
+directive simulation deterministic
+
+init "<a0^ s>" 1.0 |
+init "[[ <tether(a, c) x^*>[s*]{blank^>
+ | <tether(b, d) x^*>[s*]{y^>
+ | {tether(a, b) a0^*}[s]{x^>
+ | {tether(c, d) b0^*}[s]{x^> ]]" 1.0 |
+init "[[ {tether(a, b)}[a0^ s]{x^ s}
+ | <tether(a, c) x^*>[s*]{blank^>
+ | <tether(b, d) x^*>[s*]{y^>
+ | {tether(c, d) b0^*}[s]{x^> ]]" 0.0 |
+init "[[ {tether(a, b)}[a0^ s]:<tether(a, c)>[x^* s*]<blank^ s>
+ | <tether(b, d) x^*>[s*]{y^>
+ | {tether(c, d) b0^*}[s]{x^> ]]" 0.0 |
+init "[[ {tether(a, b)}[a0^ s]:<tether(b, d)>[x^* s*]<y^ s>
+ | <tether(a, c) x^*>[s*]{blank^>
+ | {tether(c, d) b0^*}[s]{x^> ]]" 0.0 |
+init "{y^*}[s]<F>{Q}" 1.0 |
+init "<s F>" 0.0 |
+init "[[ {tether(a, b)}[a0^ s]:<tether(b, d)>[x^* s*]::[y^ s]{Q}
+ | <tether(a, c) x^*>[s*]{blank^>
+ | {tether(c, d) b0^*}[s]{x^> ]]" 0.0 |
+"[[ <tether(a, c) x^*>[s*]{blank^>
+ | <tether(b, d) x^*>[s*]{y^>
+ | {tether(a, b) a0^*}[s]{x^>
+ | {tether(c, d) b0^*}[s]{x^> ]]" + "<a0^ s>" ->{0.0003} "[[ {tether(a, b)}[a0^ s]{x^ s}
+ | <tether(a, c) x^*>[s*]{blank^>
+ | <tether(b, d) x^*>[s*]{y^>
+ | {tether(c, d) b0^*}[s]{x^> ]]" |
+"[[ {tether(a, b)}[a0^ s]{x^ s}
+ | <tether(a, c) x^*>[s*]{blank^>
+ | <tether(b, d) x^*>[s*]{y^>
+ | {tether(c, d) b0^*}[s]{x^> ]]" ->{300.0} "[[ {tether(a, b)}[a0^ s]:<tether(a, c)>[x^* s*]<blank^ s>
+ | <tether(b, d) x^*>[s*]{y^>
+ | {tether(c, d) b0^*}[s]{x^> ]]" |
+"[[ {tether(a, b)}[a0^ s]{x^ s}
+ | <tether(a, c) x^*>[s*]{blank^>
+ | <tether(b, d) x^*>[s*]{y^>
+ | {tether(c, d) b0^*}[s]{x^> ]]" ->{30.0} "[[ {tether(a, b)}[a0^ s]:<tether(b, d)>[x^* s*]<y^ s>
+ | <tether(a, c) x^*>[s*]{blank^>
+ | {tether(c, d) b0^*}[s]{x^> ]]" |
+"[[ {tether(a, b)}[a0^ s]:<tether(b, d)>[x^* s*]<y^ s>
+ | <tether(a, c) x^*>[s*]{blank^>
+ | {tether(c, d) b0^*}[s]{x^> ]]" + "{y^*}[s]<F>{Q}" ->{0.0003} "<s F>" + "[[ {tether(a, b)}[a0^ s]:<tether(b, d)>[x^* s*]::[y^ s]{Q}
+ | <tether(a, c) x^*>[s*]{blank^>
+ | {tether(c, d) b0^*}[s]{x^> ]]"

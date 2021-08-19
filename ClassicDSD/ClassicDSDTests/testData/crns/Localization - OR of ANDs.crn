@@ -1,0 +1,30 @@
+directive sample 0.0,720.0 1000
+directive plot sp_6
+directive simulation cme
+directive parameters
+  [ c = 50.0
+  ; e = 2.71828183
+  ; R = 0.0019872
+  ; T = 298.15 ]
+directive sweep sweep_1 =
+  { c = [50.0, 500.0, 5000.0, 50000.0, 500000.0, 5000000.0] }
+
+init AND_1 1.0 |
+init AND 1.0 |
+init OR_1 1.0 |
+init OR 1.0 |
+init REPORTER 1.0 |
+init STRAND_3 1.0 |
+AND_1 + STRAND_3 ->{(1E-09 * c)} sp_2 + sp_1 + sp_0 |
+OR_1 + sp_1 ->{(c * 5E-05)} sp_5 + sp_4 + sp_3 |
+REPORTER + sp_3 <->{(c * 5E-05)}{(1E-09 * c)} sp_7 + sp_6 |
+AND_1 + STRAND_2 ->{(c * 5E-05)} sp_11 + sp_9 + sp_8 |
+sp_2 + STRAND_2 ->{(c * 5E-05)} sp_10 + sp_9 + sp_8 |
+sp_11 + STRAND_3 ->{(c * 5E-05)} sp_10 + sp_0 + sp_1 |
+AND + STRAND_1 ->{(1E-09 * c)} sp_14 + sp_13 + sp_12 |
+OR + sp_13 ->{(c * 5E-05)} sp_17 + sp_16 + sp_15 |
+sp_7 + sp_15 <->{(1E-09 * c)}{(1E-09 * c)} sp_18 + sp_3 |
+REPORTER + sp_15 <->{(c * 5E-05)}{(1E-09 * c)} sp_18 + sp_6 |
+AND + STRAND ->{(c * 5E-05)} sp_22 + sp_20 + sp_19 |
+sp_14 + STRAND ->{(c * 5E-05)} sp_21 + sp_20 + sp_19 |
+sp_22 + STRAND_1 ->{(c * 5E-05)} sp_21 + sp_12 + sp_13

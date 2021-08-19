@@ -1,0 +1,24 @@
+directive simulation {initial=0; final=18000; points=1000; plots=[<C>]}
+directive simulator cme
+directive parameters [
+  in1 = 0, {interval=Real; distribution=Uniform(0,0); variation=Fixed};
+  in2 = 0, {interval=Real; distribution=Uniform(0,0); variation=Fixed};
+  c0 = 50, {interval=Real; distribution=Uniform(50,50); variation=Fixed};
+]
+directive sweeps [
+  mysweep = [in1 = [0; 1]; in2 = [0; 1]];
+]
+directive compilation infinite
+directive tau 1
+def bind = 5E-05
+def unbind = 26.0
+def STRAND(T, s) = <T^ s>
+def OR(Ti1, Input1, Ti2, Input2, To, Output) = 
+  (( {Ti1^*}[Input1 To^]<Output>
+  | {Ti2^*}[Input2 To^]<Output>))
+def REPORTER(Ti, Input) = {Ti^*}[Input]
+new T  @ (c0 * bind), unbind
+( in1 * STRAND(T,A)
+| in2 * STRAND(T,B)
+| OR(T,A,T,B,T,C)
+| REPORTER(T,C))

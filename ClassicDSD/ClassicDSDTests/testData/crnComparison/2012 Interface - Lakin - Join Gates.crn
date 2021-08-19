@@ -1,0 +1,41 @@
+directive sample 0.0,2000000.0 1000
+directive plot sum("<hA t^ A>"); sum("<hB t^ B>"); sum("<Ch t^ C>"); sum("<Dh t^ D>"); "<B t^ K>"
+directive scale 100.0
+
+init "{t^*}[K t^]:[A t^]<I>:[B t^]<K>:[Ch t^]<C>:[Dh t^]<D>:[J t^]:[I]" 1000.0 |
+init "<t^ Ch t^ Dh t^ J>" 1000.0 |
+init "[J]{t^*}" 1000.0 |
+init "[K]{t^*}" 1000.0 |
+init "<A t^ I>" 10.0 |
+init "<B t^ K>" 1.0 |
+init "<B>[t^ K]:<K>[t^]:[A t^]<I>:[B t^]<K>:[Ch t^]<C>:[Dh t^]<D>:[J t^]:[I]" 0.0 |
+init "<B>[t^ K]{t^*}:[A t^]<I>:[B t^]<K>:[Ch t^]<C>:[Dh t^]<D>:[J t^]:[I]" 0.0 |
+init "<K t^>" 0.0 |
+init "[K t^]" 0.0 |
+init "<K>" 0.0 |
+init "<hA t^ A>" 1.0 |
+init "<B>[t^ K]:<hA>[t^ A]:<A>[t^]<I>:[B t^]<K>:[Ch t^]<C>:[Dh t^]<D>:[J t^]:[I]" 0.0 |
+init "<B>[t^ K]:<hA>[t^ A]{t^*}:[B t^]<K>:[Ch t^]<C>:[Dh t^]<D>:[J t^]:[I]" 0.0 |
+init "<hB t^ B>" 1.0 |
+init "<B>[t^ K]:<hA>[t^ A]:<hB>[t^ B]:<B>[t^]<K>:[Ch t^]<C>:[Dh t^]<D>:[J t^]:[I]" 0.0 |
+init "<B>[t^ K]:<hA>[t^ A]:<hB>[t^ B]{t^*}:[Ch t^]<C>:[Dh t^]<D>:[J t^]:[I]" 0.0 |
+init "<B>[t^ K]:<hA>[t^ A]:<hB>[t^ B]:[t^ Ch t^ Dh t^ J]:<J>[t^]:[I]" 0.0 |
+init "<B>[t^ K]:<hA>[t^ A]:<hB>[t^ B]:[t^ Ch t^ Dh t^ J]{t^*}:[I]" 0.0 |
+init "<B>[t^ K]:<hA>[t^ A]:<hB>[t^ B]:[t^ Ch t^ Dh t^ J]:<A>[t^ I]" 0.0 |
+init "<I>" 0.0 |
+init "<J t^>" 0.0 |
+init "[J t^]" 0.0 |
+init "<J>" 0.0 |
+init "<Ch t^ C>" 0.0 |
+init "<Dh t^ D>" 0.0 |
+"{t^*}[K t^]:[A t^]<I>:[B t^]<K>:[Ch t^]<C>:[Dh t^]<D>:[J t^]:[I]" + "<B t^ K>" <->{0.0003}{0.1126} "<B>[t^ K]:<K>[t^]:[A t^]<I>:[B t^]<K>:[Ch t^]<C>:[Dh t^]<D>:[J t^]:[I]" |
+"[K]{t^*}" + "<K t^>" ->{0.0003} "[K t^]" + "<K>" |
+"<B>[t^ K]:<K>[t^]:[A t^]<I>:[B t^]<K>:[Ch t^]<C>:[Dh t^]<D>:[J t^]:[I]" <->{0.1126}{0.0003} "<B>[t^ K]{t^*}:[A t^]<I>:[B t^]<K>:[Ch t^]<C>:[Dh t^]<D>:[J t^]:[I]" + "<K t^>" |
+"<B>[t^ K]{t^*}:[A t^]<I>:[B t^]<K>:[Ch t^]<C>:[Dh t^]<D>:[J t^]:[I]" + "<hA t^ A>" <->{0.0003}{0.1126} "<B>[t^ K]:<hA>[t^ A]:<A>[t^]<I>:[B t^]<K>:[Ch t^]<C>:[Dh t^]<D>:[J t^]:[I]" |
+"<B>[t^ K]:<hA>[t^ A]:<A>[t^]<I>:[B t^]<K>:[Ch t^]<C>:[Dh t^]<D>:[J t^]:[I]" <->{0.1126}{0.0003} "<B>[t^ K]:<hA>[t^ A]{t^*}:[B t^]<K>:[Ch t^]<C>:[Dh t^]<D>:[J t^]:[I]" + "<A t^ I>" |
+"<B>[t^ K]:<hA>[t^ A]{t^*}:[B t^]<K>:[Ch t^]<C>:[Dh t^]<D>:[J t^]:[I]" + "<hB t^ B>" <->{0.0003}{0.1126} "<B>[t^ K]:<hA>[t^ A]:<hB>[t^ B]:<B>[t^]<K>:[Ch t^]<C>:[Dh t^]<D>:[J t^]:[I]" |
+"<B>[t^ K]:<hA>[t^ A]:<hB>[t^ B]{t^*}:[Ch t^]<C>:[Dh t^]<D>:[J t^]:[I]" + "<t^ Ch t^ Dh t^ J>" ->{0.0003} "<B>[t^ K]:<hA>[t^ A]:<hB>[t^ B]:[t^ Ch t^ Dh t^ J]:<J>[t^]:[I]" + "<Ch t^ C>" + "<Dh t^ D>" |
+"<B>[t^ K]:<hA>[t^ A]:<hB>[t^ B]:<B>[t^]<K>:[Ch t^]<C>:[Dh t^]<D>:[J t^]:[I]" <->{0.1126}{0.0003} "<B>[t^ K]:<hA>[t^ A]:<hB>[t^ B]{t^*}:[Ch t^]<C>:[Dh t^]<D>:[J t^]:[I]" + "<B t^ K>" |
+"<B>[t^ K]:<hA>[t^ A]:<hB>[t^ B]:[t^ Ch t^ Dh t^ J]{t^*}:[I]" + "<A t^ I>" ->{0.0003} "<B>[t^ K]:<hA>[t^ A]:<hB>[t^ B]:[t^ Ch t^ Dh t^ J]:<A>[t^ I]" + "<I>" |
+"[J]{t^*}" + "<J t^>" ->{0.0003} "[J t^]" + "<J>" |
+"<B>[t^ K]:<hA>[t^ A]:<hB>[t^ B]:[t^ Ch t^ Dh t^ J]:<J>[t^]:[I]" <->{0.1126}{0.0003} "<B>[t^ K]:<hA>[t^ A]:<hB>[t^ B]:[t^ Ch t^ Dh t^ J]{t^*}:[I]" + "<J t^>"

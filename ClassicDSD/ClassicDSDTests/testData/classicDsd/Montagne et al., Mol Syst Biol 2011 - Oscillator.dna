@@ -1,0 +1,62 @@
+directive simulation {final=100000; plots=[A(); B(); Inh()]; }
+directive simulator deterministic
+directive deterministic {stiff=true}
+directive parameters [
+  ka = 0.00043333, {interval=Real; distribution=Uniform(0.00043333,0.00043333); variation=Fixed};
+  kda = 0.0383, {interval=Real; distribution=Uniform(0.0383,0.0383); variation=Fixed};
+  kdb = 0.0135, {interval=Real; distribution=Uniform(0.0135,0.0135); variation=Fixed};
+  kdInhT1 = 9.5E-05, {interval=Real; distribution=Uniform(9.5E-05,9.5E-05); variation=Fixed};
+  kdInhT3 = 3.5E-05, {interval=Real; distribution=Uniform(3.5E-05,3.5E-05); variation=Fixed};
+  kpol = 0.2833, {interval=Real; distribution=Uniform(0.2833,0.2833); variation=Fixed};
+  kIpol = 0.115, {interval=Real; distribution=Uniform(0.115,0.115); variation=Fixed};
+  knick = 0.05, {interval=Real; distribution=Uniform(0.05,0.05); variation=Fixed};
+  kexoa = 0.0053, {interval=Real; distribution=Uniform(0.0053,0.0053); variation=Fixed};
+  kexob = 0.0062, {interval=Real; distribution=Uniform(0.0062,0.0062); variation=Fixed};
+  kexoInh = 0.02, {interval=Real; distribution=Uniform(0.02,0.02); variation=Fixed};
+  ku = 0, {interval=Real; distribution=Uniform(0,0); variation=Fixed};
+]
+directive unproductive
+dom a  = {bind = ka; unbind = kda; colour = "red"}
+dom b  = {bind = ka; unbind = kdb; colour = "green"}
+dom inh  = {bind = ka; unbind = kdInhT3; colour = "blue"}
+def Signal(x) = <x^>
+def Primed(x, y) = [x^]{y^*}
+def Extended(x, y) = [x^ y^]
+def Template(x, y) = {x^* y^*}
+def LHTemplate(x, y) = [x^]{y^*}
+def RHTemplate(x, y) = {x^*}[y^]
+def Nicked(x, y) = [x^]:[y^]
+def Inhibited(x, y) = [y^ x^ y^]
+def Activation(N, x, y, kp, kn) = 
+  (( N * Template(x,y)
+  | rxn Primed(x,y) ->{kp} Extended(x,y)
+  | rxn Extended(x,y) ->{kn} Nicked(x,y)
+  | rxn Nicked(x,y) ->{kp} Extended(x,y) + Signal(y)
+  | 0.0 * Primed(x,y)
+  | 0.0 * Extended(x,y)
+  | 0.0 * Nicked(x,y)))
+def Repression(N, x, y, kp, kn) = 
+  (( Activation(N,y,y,kp,kn)
+  | rxn Signal(x) + Template(y,y) <->{ka}{kdInhT1} Inhibited(x,y)
+  | rxn Signal(x) + LHTemplate(y,y) <->{ka}{ku} Inhibited(x,y) + Signal(y)
+  | rxn Signal(x) + RHTemplate(y,y) <->{ka}{ku} Inhibited(x,y) + Signal(y)
+  | 0.0 * Inhibited(x,y)))
+def Exo(x, k) = ( rxn Signal(x) ->{k} )
+def A() = Signal(a)
+def B() = Signal(b)
+def Inh() = Signal(inh)
+def Oscillator() = 
+  (( 0.1 * A()
+  | 0.1 * B()
+  | 0.1 * Inh()
+  | Activation(5.0,a,b,kpol,knick)
+  | Activation(30.0,b,inh,kIpol,knick)
+  | Repression(30.0,inh,a,kpol,knick)
+  | Exo(a,kexoa)
+  | Exo(b,kexob)
+  | Exo(inh,kexoInh)))
+def Catalysis() = 
+  (( 0.1 * A()
+  | 0.1 * B()
+  | Activation(5.0,a,b,kpol,knick)))
+Oscillator()

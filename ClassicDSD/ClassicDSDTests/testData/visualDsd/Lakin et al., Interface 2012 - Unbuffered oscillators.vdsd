@@ -1,0 +1,34 @@
+directive sample 5000000.0 5000
+directive plot sum(<_ t^ A>); sum(<_ t^ B>); sum(<_ t^ C>);
+               {t^*}[A t^]<I>:[B t^]<K>:[Ch t^]<B>:[Dh t^]<B>;
+               {t^*}[B t^]<I>:[C t^]<K>:[Ch t^]<C>:[Dh t^]<C>;
+               {t^*}[C t^]<I>:[A t^]<K>:[Ch t^]<A>:[Dh t^]<A>
+
+directive scale 100.0
+directive reltolerance 1e-4
+directive simulation deterministicstiff
+
+def bind = 0.0003 (* /nM/s *)
+def unbind = 0.1126 (* /s *)
+new t@bind,unbind
+
+(* Signal species A. *)
+def Species(M, h, A) = M * <h t^ A>
+
+(* Unbuffered join gate (no GC) A + B -> C + D. *)
+def J2x2_NoGC(Fuel, N, A, B, C, D) =
+new I new J new K new Ch new Dh
+( N * {t^*}[A t^]<I>:[B t^]<K>:[Ch t^]<C>:[Dh t^]<D>
+| Fuel * <t^ Ch t^ Dh t^>
+| (N*10) * <A t^ I> )
+
+(* Unbuffeed three-phase oscillator (ABC). *)
+def N = 100
+def Fuel = 1000
+new Ah new A new Bh new B new Ch new C
+( J2x2_NoGC(Fuel, N, A, B, B, B)
+| J2x2_NoGC(Fuel, N, B, C, C, C)
+| J2x2_NoGC(Fuel, N, C, A, A, A)
+| Species(2, Ah, A)
+| Species(4, Bh, B)
+| Species(2, Ch, C) )

@@ -1,0 +1,5 @@
+( <a b c>
+| {1 2 3}
+| [hello world]
+| <upper left>{lower left}[middle]{lower right}<upper right>
+)

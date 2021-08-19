@@ -1,0 +1,53 @@
+directive sample 0.0,720.0 1000
+directive plot "<Ga Gb>"
+directive simulation cme
+directive parameters
+  [ c = 50.0 ]
+directive sweep sweep_1 =
+  { c = [50.0, 500.0, 5000.0, 50000.0, 500000.0, 5000000.0] }
+
+init "{T^*}[Ca]:[Cb T^]:[Da]:[Db T^]<Fa Fb>" 1.0 |
+init "{T^*}[Aa]:[Ab T^]:[Ba]:[Bb T^]<Ea Eb>" 1.0 |
+init "{T^*}[Fa]:[Fb T^]<Ga Gb>" 1.0 |
+init "{T^*}[Ea]:[Eb T^]<Ga Gb>" 1.0 |
+init "{T^*}[Ga Gb]" 1.0 |
+init "<T^ Aa Ab>" 0.0 |
+init "[T^ Aa Ab]{T^*}:[Ba]:[Bb T^]<Ea Eb>" 0.0 |
+init "<Aa>" 0.0 |
+init "<Ab T^>" 0.0 |
+init "<T^ Ba Bb>" 0.0 |
+init "{T^*}[Aa]:[Ab T^]:<T^>[Ba Bb]{T^*}" 0.0 |
+init "[T^ Aa Ab]:[T^ Ba Bb]{T^*}" 0.0 |
+init "<Bb T^ Ea Eb>" 0.0 |
+init "<Bb>[T^ Ea Eb]{T^*}" 0.0 |
+init "<Ea>" 0.0 |
+init "<Eb T^ Ga Gb>" 0.0 |
+init "<Eb>[T^ Ga Gb]" 0.0 |
+init "<Ga Gb>" 0.0 |
+init "<Ba>" 0.0 |
+init "<T^ Ca Cb>" 0.0 |
+init "[T^ Ca Cb]{T^*}:[Da]:[Db T^]<Fa Fb>" 0.0 |
+init "<Ca>" 0.0 |
+init "<Cb T^>" 0.0 |
+init "<T^ Da Db>" 1.0 |
+init "{T^*}[Ca]:[Cb T^]:<T^>[Da Db]{T^*}" 0.0 |
+init "[T^ Ca Cb]:[T^ Da Db]{T^*}" 0.0 |
+init "<Db T^ Fa Fb>" 0.0 |
+init "<Db>[T^ Fa Fb]{T^*}" 0.0 |
+init "<Fa>" 0.0 |
+init "<Fb T^ Ga Gb>" 0.0 |
+init "<Fb>[T^ Ga Gb]" 0.0 |
+init "<Da>" 0.0 |
+"{T^*}[Aa]:[Ab T^]:[Ba]:[Bb T^]<Ea Eb>" + "<T^ Aa Ab>" ->{(c * 5E-05)} "[T^ Aa Ab]{T^*}:[Ba]:[Bb T^]<Ea Eb>" + "<Aa>" + "<Ab T^>" |
+"{T^*}[Aa]:[Ab T^]:[Ba]:[Bb T^]<Ea Eb>" + "<T^ Ba Bb>" ->{(1E-09 * c)} "{T^*}[Aa]:[Ab T^]:<T^>[Ba Bb]{T^*}" + "<Bb T^ Ea Eb>" + "<Ba>" |
+"[T^ Aa Ab]{T^*}:[Ba]:[Bb T^]<Ea Eb>" + "<T^ Ba Bb>" ->{(c * 5E-05)} "[T^ Aa Ab]:[T^ Ba Bb]{T^*}" + "<Ba>" + "<Bb T^ Ea Eb>" |
+"{T^*}[Aa]:[Ab T^]:<T^>[Ba Bb]{T^*}" + "<T^ Aa Ab>" ->{(c * 5E-05)} "[T^ Aa Ab]:[T^ Ba Bb]{T^*}" + "<Aa>" + "<Ab T^>" |
+"{T^*}[Ea]:[Eb T^]<Ga Gb>" + "<Bb T^ Ea Eb>" ->{(c * 5E-05)} "<Bb>[T^ Ea Eb]{T^*}" + "<Ea>" + "<Eb T^ Ga Gb>" |
+"{T^*}[Ga Gb]" + "<Eb T^ Ga Gb>" <->{(c * 5E-05)}{(1E-09 * c)} "<Eb>[T^ Ga Gb]" + "<Ga Gb>" |
+"{T^*}[Ca]:[Cb T^]:[Da]:[Db T^]<Fa Fb>" + "<T^ Ca Cb>" ->{(c * 5E-05)} "[T^ Ca Cb]{T^*}:[Da]:[Db T^]<Fa Fb>" + "<Ca>" + "<Cb T^>" |
+"{T^*}[Ca]:[Cb T^]:[Da]:[Db T^]<Fa Fb>" + "<T^ Da Db>" ->{(1E-09 * c)} "{T^*}[Ca]:[Cb T^]:<T^>[Da Db]{T^*}" + "<Db T^ Fa Fb>" + "<Da>" |
+"[T^ Ca Cb]{T^*}:[Da]:[Db T^]<Fa Fb>" + "<T^ Da Db>" ->{(c * 5E-05)} "[T^ Ca Cb]:[T^ Da Db]{T^*}" + "<Da>" + "<Db T^ Fa Fb>" |
+"{T^*}[Ca]:[Cb T^]:<T^>[Da Db]{T^*}" + "<T^ Ca Cb>" ->{(c * 5E-05)} "[T^ Ca Cb]:[T^ Da Db]{T^*}" + "<Ca>" + "<Cb T^>" |
+"{T^*}[Fa]:[Fb T^]<Ga Gb>" + "<Db T^ Fa Fb>" ->{(c * 5E-05)} "<Db>[T^ Fa Fb]{T^*}" + "<Fa>" + "<Fb T^ Ga Gb>" |
+"<Eb>[T^ Ga Gb]" + "<Fb T^ Ga Gb>" <->{(1E-09 * c)}{(1E-09 * c)} "<Fb>[T^ Ga Gb]" + "<Eb T^ Ga Gb>" |
+"{T^*}[Ga Gb]" + "<Fb T^ Ga Gb>" <->{(c * 5E-05)}{(1E-09 * c)} "<Fb>[T^ Ga Gb]" + "<Ga Gb>"

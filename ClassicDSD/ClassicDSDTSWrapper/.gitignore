@@ -1,0 +1,14 @@
+Content
+Samples/**/*.d.ts
+Samples/**/*.js
+Samples/**/*.js.map
+Scripts/*.d.ts
+!Scripts/declarations.d.ts
+Scripts/*.js
+Scripts/*.wasm
+Scripts/*.js.map
+
+#Residual files from before webpack
+Scripts/src
+Scripts/ClassicDSD
+Scripts/CRNEngine

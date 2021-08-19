@@ -1,0 +1,44 @@
+directive duration 20000.0 points 1000
+directive plot <kkks t^ kkksr>; <kkppl t^ kkpp x^>; <kpp t^ kppr>;
+<kkk t^ kkkr>; <kkl t^ kk x^>; <k t^ kr>; <kkpl t^ kkp x^>; <kp t^ kpr>
+directive scale 10.0
+def bind = 0.0003 (* /nM/s *)
+def unbind = 0.1126 (* /s *)
+def Init = 50
+def Low = 1
+def Excess = 100
+
+new x@ bind,unbind
+new t@ bind,unbind
+
+def SpeciesL(N,al,a) = N * <al t^ a x^>
+def SpeciesR(N,a,ar) = N * <a t^ ar>
+def BinaryLRxLR(N,al,a,b,br,cl,c,d,dr) = (* A + B ->{N} C + D *)
+new i
+( constant N * {t^*}:[a x^ b]<i cl t^ i t^ dr>:{t^*}
+| constant N * Excess * {x^*}:[b i]:[cl t^]<c x^>:[i]:<d>[t^ dr]
+)
+
+new e1l new e1 new kkk new kkkr new kkl new kk new k new kr
+new e2l new e2 new kkpase new kkpaser new kpasel new kpase
+new kkks new kkksr new kkpl new kkp new kkppl new kkpp 
+new kp new kpr new kpp new kppr 
+
+( SpeciesL(1,e1l,e1) (* E1 *)
+| SpeciesR(10,kkk,kkkr) (* 10 KKK *)
+| SpeciesL(100,kkl,kk) (* 100 KK *)
+| SpeciesR(100,k,kr) (* 100 K *)
+| SpeciesL(1,e2l,e2) (* E2 *)
+| SpeciesR(1,kkpase,kkpaser) (* KKPase *)
+| SpeciesL(1,kpasel,kpase) (* KPase *) 
+| BinaryLRxLR(Init,e1l,e1,kkk,kkkr,e1l,e1,kkks,kkksr) (* E1 + KKK ->{r} E1 + KKKs *)
+| BinaryLRxLR(Low,e2l,e2,kkks,kkksr,e2l,e2,kkk,kkkr) (* E2 + KKKs ->{r} E2 + KKK *)
+| BinaryLRxLR(Init,kkl,kk,kkks,kkksr,kkpl,kkp,kkks,kkksr) (* KK + KKKs ->{r} KKP + KKKs *)
+| BinaryLRxLR(Init,kkpl,kkp,kkks,kkksr,kkppl,kkpp,kkks,kkksr) (* KKP + KKKs ->{r} KKPP + KKKs *)
+| BinaryLRxLR(Low,kkppl,kkpp,kkpase,kkpaser,kkpl,kkp,kkpase,kkpaser) (* KKPP + KKPase ->{r} KKP + KKPase *)
+| BinaryLRxLR(Low,kkpl,kkp,kkpase,kkpaser,kkl,kk,kkpase,kkpaser) (* KKP + KKPase ->{r} KK + KKPase *)
+| BinaryLRxLR(Init,kkppl,kkpp,k,kr,kkppl,kkpp,kp,kpr) (* KKPP + K ->{r} KKPP + KP *)
+| BinaryLRxLR(Init,kkppl,kkpp,kp,kpr,kkppl,kkpp,kpp,kppr) (* KKPP + KP ->{r} KKPP + KPP *)
+| BinaryLRxLR(Low,kpasel,kpase,kpp,kppr,kpasel,kpase,kp,kpr) (* KPase + KPP ->{r} KPase + KP *)
+| BinaryLRxLR(Low,kpasel,kpase,kp,kpr,kpasel,kpase,k,kr) (* KPase + KP ->{r} KPase + K *)
+)

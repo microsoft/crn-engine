@@ -1,0 +1,29 @@
+directive simulation {initial=0; final=1000; points=1000; plots=[<S34 S1 S2a S2b^ S2c^>; Gate()]}
+dom S1  = {seq = CTTTCCTACA}
+dom S2a  = {seq = CCTACG}
+dom S2b  = {seq = TCTCCA; bind = 0.00042; unbind = 0.04}
+dom S2c  = {seq = ACTAACTTACGG}
+dom S3  = {seq = CCCT; bind = 0.00042; unbind = 0.04}
+dom S4a  = {seq = CATTCAATAC}
+dom S4b  = {seq = CCTACG}
+dom S5  = {seq = TCTCCA; bind = 0.00065; unbind = 0.004}
+dom S6  = {seq = CCACATACATCATATT}
+dom S7  = {seq = TACTTATTAGCC}
+dom S8  = {seq = GACA; bind = 0.0005; unbind = 0.00019}
+dom S9a  = {seq = CTACTTTCAC}
+dom S9b  = {seq = CCTACG}
+dom S10  = {seq = TCTCCA; bind = 0.00065; unbind = 0.004}
+dom S31  = {seq = CACACA}
+dom S32  = {seq = ACTTCAGTCATTAAGC}
+dom S33  = {seq = AGAC}
+dom S34  = {seq = CCATACAAGTATCA}
+def FuelOne() = <S32 S33^ S34 S1>
+def FuelTwo() = <S2a S2b^ S2c^ S3^ S4a S4b^>
+def Gate() = {S31^*}[S32 S33^]:[S34 S1]::[S2a S2b^ S2c^]:<S6>[S3^ S4a S4b^]{S5^*}
+def AndGate(N) = 
+  (( N * Gate()
+  | N * <S31^ S32>
+  | N * <S4a S4b^ S5^>
+  | N * FuelOne()
+  | N * FuelTwo()))
+AndGate(10.0)

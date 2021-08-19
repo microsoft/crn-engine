@@ -1,0 +1,68 @@
+directive sample 0.0,(48.0 * 3600.0) 1000
+directive plot "<t^ x>"; "<t^ b>"
+directive simulation spatial1d
+directive dt 20.0
+directive xmax 0.1
+directive spatialplot "<t^ x>"
+directive spatialic centralcore { species = "<t^ x>"; width = 0.1; inner = 1.0 }
+directive spatialbc zeroflux
+directive defaultdiffusion 1E-10
+directive parameters
+  [ kJ1 = 9.3389E-06
+  ; kJ1r = 5.8863E-05
+  ; kJ2 = 8.1539E-05
+  ; kJ2r = 6.9742E-05
+  ; kJ3 = 0.00040619
+  ; kJ3r = 3.3053E-06
+  ; kF1 = 1.2135E-05
+  ; kF1r = 0.00012982
+  ; kF2 = 4.5807E-05
+  ; kF2r = 0.0004789
+  ; kF3 = 0.00012031
+  ; kF3r = 1.1956E-06
+  ; kF4 = 3.597E-06
+  ; kF4r = 0.0004789
+  ; kF5 = 7.1967E-06
+  ; kFRpx = 0.00066487
+  ; leakBX2X_J = 0.0
+  ; leakBX2X_F = 0.0
+  ; NG = 200.0
+  ; NH = 200.0 ]
+
+init "<t^ x>" 0.0 |
+init "<ig t^>" NH |
+init "[ig]:[t^ x]:[u3^ px]:[t^ x]:[u2^ rbx]{u1^*}" (NG * (1.0 - leakBX2X_F)) |
+init "<t^ rbx>" NH |
+init "<t^ b>" 5.0 |
+init "{t^*}[b t^]:[x t^]:[rbx u1^]" (NG * (1.0 - leakBX2X_J)) |
+init "[t^ b]{t^*}:[x t^]:[rbx u1^]" 0.0 |
+init "[t^ b]:[t^ x]{t^*}:[rbx u1^]" 0.0 |
+init "[t^ b]:[t^ x]:[t^ rbx]{u1^*}" 0.0 |
+init "<rbx u1^>" (NG * leakBX2X_J) |
+init "[ig]:[t^ x]:[u3^ px]:[t^ x]{u2^*}:[rbx u1^]" 0.0 |
+init "<u2^ rbx>" 0.0 |
+init "<x t^>" 0.0 |
+init "<b t^>" 0.0 |
+init "<u3^ px>" (NG * leakBX2X_F) |
+init "<x u2^>" NH |
+init "[ig]:[t^ x]:[u3^ px]{t^*}:[x u2^]:[rbx u1^]" 0.0 |
+init "<px t^>" NH |
+init "[ig]:[t^ x]{u3^*}:[px t^]:[x u2^]:[rbx u1^]" 0.0 |
+init "<x u3^>" NH |
+init "[ig]{t^*}:[x u3^]:[px t^]:[x u2^]:[rbx u1^]" 0.0 |
+init "[ig t^]:[x u3^]:[px t^]:[x u2^]:[rbx u1^]" 0.0 |
+init "<ig>" 0.0 |
+init "{u3^*}[px fl^]" NG |
+init "[u3^ px]{fl^*}" 0.0 |
+init "<px fl^>" 0.0 |
+init "[u3^ px]" 0.0 |
+"<u3^ px>" + "{u3^*}[px fl^]" ->{kFRpx} "[u3^ px]" + "<px fl^>" |
+"<t^ rbx>" + "[t^ b]:[t^ x]{t^*}:[rbx u1^]" <->{kJ3}{kJ3r} "<rbx u1^>" + "[t^ b]:[t^ x]:[t^ rbx]{u1^*}" |
+"<rbx u1^>" + "[ig]:[t^ x]:[u3^ px]:[t^ x]:[u2^ rbx]{u1^*}" <->{kF1}{kF1r} "<u2^ rbx>" + "[ig]:[t^ x]:[u3^ px]:[t^ x]{u2^*}:[rbx u1^]" |
+"<t^ x>" + "[t^ b]{t^*}:[x t^]:[rbx u1^]" <->{kJ2}{kJ2r} "<x t^>" + "[t^ b]:[t^ x]{t^*}:[rbx u1^]" |
+"<t^ b>" + "{t^*}[b t^]:[x t^]:[rbx u1^]" <->{kJ1}{kJ1r} "<b t^>" + "[t^ b]{t^*}:[x t^]:[rbx u1^]" |
+"<x u2^>" + "[ig]:[t^ x]:[u3^ px]:[t^ x]{u2^*}:[rbx u1^]" <->{kF2}{kF2r} "<t^ x>" + "[ig]:[t^ x]:[u3^ px]{t^*}:[x u2^]:[rbx u1^]" |
+"<px t^>" + "[ig]:[t^ x]:[u3^ px]{t^*}:[x u2^]:[rbx u1^]" <->{kF3}{kF3r} "<u3^ px>" + "[ig]:[t^ x]{u3^*}:[px t^]:[x u2^]:[rbx u1^]" |
+"<x u3^>" + "[ig]:[t^ x]{u3^*}:[px t^]:[x u2^]:[rbx u1^]" <->{kF4}{kF2r} "<t^ x>" + "[ig]{t^*}:[x u3^]:[px t^]:[x u2^]:[rbx u1^]" |
+"<ig t^>" + "[ig]{t^*}:[x u3^]:[px t^]:[x u2^]:[rbx u1^]" ->{kF5} "[ig t^]:[x u3^]:[px t^]:[x u2^]:[rbx u1^]" + "<ig>" |
+"{u3^*}[px fl^]" + "<u3^ px>" <->{0.0}{0.0} "[u3^ px]{fl^*}" + "<px fl^>"

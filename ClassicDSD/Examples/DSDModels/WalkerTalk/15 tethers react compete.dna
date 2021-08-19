@@ -1,0 +1,8 @@
+directive locations [a = 100000]
+directive unproductive
+
+( [[ <tether(a) x^>
+   | {tether(a) x^*}
+  ]]
+| {x^*}
+)

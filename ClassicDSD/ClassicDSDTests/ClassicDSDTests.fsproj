@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <OutputType>Exe</OutputType>
+    <Platforms>x64</Platforms>
+  </PropertyGroup>
+  <ItemGroup>
+    <EmbeddedResource Remove="Scripts\**" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AssemblyInfo.fs" />
+    <Compile Include="TestUtils.fs" />
+    <Compile Include="DSDGenerators.fs" />
+    <Compile Include="Deterministic simulator regression test.fs" />
+    <Compile Include="ReinParser.fs" />
+    <Compile Include="SimulatorRegressions.fs" />
+    <Compile Include="CRNRegressions.fs" />
+    <Compile Include="FilzbachTest.fs" />
+    <Compile Include="CalculusTests.fs" />
+    <Compile Include="DSDUnitTests.fs" />
+    <Compile Include="OldSyntax.fs" />
+    <Compile Include="PropertyTesting.fs" />
+    <Compile Include="DsdParserTests.fs" />
+    <Compile Include="RenderingTests.fs" />
+    <Content Include="app.config" />
+    <None Include="paket.references" />
+    <None Include="deterministicANDCircuir.csv" />
+    <None Include="deterministicUltrasensitive.csv" />
+    <Content Include="DSDCompilationTests.xml" />
+    <Content Include="JoinBX_AddB.txt" />
+    <Content Include="Rep_rbxu1.txt" />
+    <None Include="CircuitsFilzbach.dna" />
+    <None Include="PruneTest.dna" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ClassicDSDDotNet\ClassicDSDDotNet.fsproj" />
+    <ProjectReference Include="..\..\PDESolvers\ReactionDiffusion\ReactionDiffusion.fsproj" />
+    <ProjectReference Include="..\..\RulesDSD\RulesDSD\RulesDSD.fsproj" />
+    <Reference Include="Oslo.FSharp">
+      <HintPath>..\..\Lib\Oslo.FSharp\Oslo.FSharp.dll</HintPath>
+    </Reference>
+    <ProjectReference Include="..\..\CRNEngine\CRNEngineDotNet\CRNEngineDotNet.fsproj" />
+    <ProjectReference Include="..\..\Filzbach.FSharp\Filzbach.FSharp.Portable.fsproj" />
+    <ProjectReference Include="..\..\ParserCombinators\ParserCombinators\ParserCombinators.fsproj" />
+  </ItemGroup>
+  <Target Name="Copying Sundials" AfterTargets="AfterBuild" Condition="$(OS) == Windows_NT">
+    <Exec Command="xcopy /y /q /d &quot;$(SolutionDir)x64\$(Configuration)\SundialsSolver15.dll&quot; &quot;$(OutDir)&quot;" />
+    <Exec Command="xcopy /y /q /d &quot;$(SolutionDir)x64\$(Configuration)\SundialsSolver15.pdb&quot; &quot;$(OutDir)&quot;" />
+  </Target>
+  <Import Project="..\..\.paket\Paket.Restore.targets" />
+</Project>

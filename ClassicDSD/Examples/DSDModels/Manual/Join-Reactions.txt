@@ -1,0 +1,26 @@
+directive simulation {
+  final=600; 
+  plots=[Input1();Input2();Output();Signal()];
+}
+directive simulator deterministic
+directive parameters [k=0.003;u=0.1;r=0.01]
+directive compilation infinite
+dom tb = {bind=k;unbind=u;colour="red"}
+dom tx = {bind=k;unbind=u;colour="green"}
+dom to = {bind=k;unbind=u;colour="blue"}
+def Input1() = <tb^ b>
+def Input2() = <tx^ x>
+def Output() = <x to^>
+def Join() = {tb^*}[b tx^]:[x to^]
+def Reporter() = <fl^>[x]{to^*}
+def Signal() = <fl^ x>
+( 0 Input1()
+| ->{0.1} Input1()
+| Input1() ->{0.01}
+| Output() + Reporter() ->{r} [x to^] + Signal()
+| 10 Input2()
+| 0 Output()
+| 100 Join()
+| 100 Reporter()
+| 0 Signal()
+)

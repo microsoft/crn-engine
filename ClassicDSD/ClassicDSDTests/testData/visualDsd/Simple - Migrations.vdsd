@@ -1,0 +1,6 @@
+(* Example demonstrating the branch migration rate *)
+directive compilation detailed
+directive duration 1.0 points 1000
+( 1000 * [a1]<a2 a3>:[a2 a3]
+| 1000 * [b1]<b2 b3>:[b2]:[b3]
+)

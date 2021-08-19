@@ -1,0 +1,55 @@
+directive sample 0.0,(48.0 * 3600.0) 1000
+directive plot Catalyst; Input
+directive simulation spatial1d
+directive dt 20.0
+directive xmax 0.1
+directive spatialplot Catalyst
+directive spatialic centralcore { species = Catalyst; inner = 1.0; width = 0.1 }
+directive spatialbc zeroflux
+directive defaultdiffusion 1E-10
+directive parameters
+  [ kJ1 = 9.3389E-06
+  ; kJ1r = 5.8863E-05
+  ; kJ2 = 8.1539E-05
+  ; kJ2r = 6.9742E-05
+  ; kJ3 = 0.00040619
+  ; kJ3r = 3.3053E-06
+  ; kF1 = 1.2135E-05
+  ; kF1r = 0.00012982
+  ; kF2 = 4.5807E-05
+  ; kF2r = 0.0004789
+  ; kF3 = 0.00012031
+  ; kF3r = 1.1956E-06
+  ; kF4 = 3.597E-06
+  ; kF4r = 0.0004789
+  ; kF5 = 7.1967E-06
+  ; kFRpx = 0.00066487
+  ; leakBX2X_J = 0.0
+  ; leakBX2X_F = 0.0
+  ; NG = 200.0
+  ; NH = 200.0
+  ; e = 2.71828183
+  ; R = 0.0019872
+  ; T = 298.15 ]
+
+init End NH |
+init Fork (NG * (1.0 - leakBX2X_F)) |
+init Helper NH |
+init Input 5.0 |
+init Join (NG * (1.0 - leakBX2X_J)) |
+init Translator (NG * leakBX2X_J) |
+init Output (NG * leakBX2X_F) |
+init Output1R NH |
+init Output2R NH |
+init Output3R NH |
+init RepX NG |
+sp_0 + sp_1 <->{kJ1r}{kJ1} Input + Join |
+sp_2 + sp_3 <->{kJ2r}{kJ2} Catalyst + sp_1 |
+Translator + sp_4 <->{kJ3r}{kJ3} Helper + sp_3 |
+sp_5 + sp_6 <->{kF1r}{kF1} Translator + Fork |
+Catalyst + sp_7 <->{kF2r}{kF2} Output1R + sp_6 |
+Output + sp_8 <->{kF3r}{kF3} Output2R + sp_7 |
+Catalyst + sp_9 <->{kF2r}{kF4} Output3R + sp_8 |
+End + sp_9 ->{kF5} sp_11 + sp_10 |
+Output + RepX ->{kFRpx} sp25 + sp_12 |
+RepX + Output <->{0.0}{0.0} sp_13 + sp_12

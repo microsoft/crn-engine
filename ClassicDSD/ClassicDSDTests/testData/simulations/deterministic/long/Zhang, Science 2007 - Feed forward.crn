@@ -1,0 +1,24 @@
+directive plot F0; F1; sp_15
+directive parameters
+  [ e = 2.71828183
+  ; R = 0.0019872
+  ; T = 298.15 ]
+
+init C0 100.0 |
+init F0 100.0 |
+init F1 100.0 |
+init FluorescingFeedforward 100.0 |
+init OBSB0 100.0 |
+init OBSB1 100.0 |
+FluorescingFeedforward + F1 <->{0.00042}{0.04} sp_0 |
+OBSB0 + C0 <->{0.00065}{0.004} sp_1 |
+sp_3 + F0 ->{0.0005} sp_5 + sp_4 |
+sp_5 <->{0.004}{0.00065} sp_6 + C0 |
+sp_1 <->{0.00019}{0.0005} sp_3 + sp_2 |
+OBSB1 + F0 <->{0.00065}{0.004} sp_8 |
+OBSB1 + sp_4 <->{0.00065}{0.004} sp_7 |
+sp_10 + F1 ->{0.00042} sp_12 + sp_11 |
+sp_12 <->{0.004}{0.00065} sp_13 + sp_4 |
+sp_13 + F0 <->{0.00065}{0.004} sp_14 |
+FluorescingFeedforward + sp_11 ->{0.00042} sp_16 + sp_15 |
+sp_7 <->{0.04}{0.00042} sp_10 + sp_9

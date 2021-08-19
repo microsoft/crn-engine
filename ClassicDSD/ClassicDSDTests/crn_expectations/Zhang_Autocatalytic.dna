@@ -1,0 +1,26 @@
+(* An auto-catalyzing circuit, with a fluorescing output, from Fig 4*)
+directive duration 1000.0 points 100
+directive scale 500.0
+directive polymers
+directive plot Fuel(); Autocatalyst(); <S6 S3^>
+
+dom S1 = { seq=CTTTCCTACA }
+dom S2a = { seq=CCTACG}
+dom S2b = { seq=TCTCCA}
+dom S2c = { seq=ACTAACTTACGG}
+dom S3 = { seq=CCCT; bind=4.2E-4; unbind=4.0E-2}
+dom S4a = { seq=CATTCAATAC}
+dom S4b = {seq=CCTACG}
+dom S5 = {seq=TCTCCA; bind=6.5E-4; unbind=4.0E-3}
+dom S6 = {seq=CCACATACATCATATT}
+
+def Fuel() = <S4b^ S2b^ S2c S3^ S4a^ S4b^>
+def Autocatalyst() = <S4a^ S4b^ S2b^ S2c>
+def Substrate() = <S4a^>[S4b^ S2b^ S2c]:<S6>[S3^ S4a^ S4b^]{S2b^*}
+
+def Autocatalytic(N) = (N* Fuel() |N* Autocatalyst() |N* Substrate() )
+
+def FluorescingAutocatalytic(N) =
+   (Autocatalytic(N) | N* [S6 S3^]{S4a^* S4b^*})
+
+FluorescingAutocatalytic(100)

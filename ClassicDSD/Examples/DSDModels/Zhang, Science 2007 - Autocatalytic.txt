@@ -1,0 +1,23 @@
+directive simulation {initial=0; final=1000; points=100; plots=[Fuel(); Autocatalyst(); <S6 S3^>]}
+directive stochastic {scale = 500.000000; trajectories = 1}
+directive polymers
+dom S1  = {seq = CTTTCCTACA}
+dom S2a  = {seq = CCTACG}
+dom S2b  = {seq = TCTCCA}
+dom S2c  = {seq = ACTAACTTACGG}
+dom S3  = {seq = CCCT; bind = 0.00042; unbind = 0.04}
+dom S4a  = {seq = CATTCAATAC}
+dom S4b  = {seq = CCTACG}
+dom S5  = {seq = TCTCCA; bind = 0.00065; unbind = 0.004}
+dom S6  = {seq = CCACATACATCATATT}
+def Fuel() = <S4b^ S2b^ S2c S3^ S4a^ S4b^>
+def Autocatalyst() = <S4a^ S4b^ S2b^ S2c>
+def Substrate() = <S4a^>[S4b^ S2b^ S2c]:<S6>[S3^ S4a^ S4b^]{S2b^*}
+def Autocatalytic(N) = 
+  (( N * Fuel()
+  | N * Autocatalyst()
+  | N * Substrate()))
+def FluorescingAutocatalytic(N) = 
+  (( Autocatalytic(N)
+  | N * [S6 S3^]{S4a^* S4b^*}))
+FluorescingAutocatalytic(100.0)

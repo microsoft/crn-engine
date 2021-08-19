@@ -1,0 +1,2 @@
+directive parameters [deg = 0.01]
+rxn <a x> ->{deg}

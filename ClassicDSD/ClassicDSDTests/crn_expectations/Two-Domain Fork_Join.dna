@@ -1,0 +1,20 @@
+(*Two domain fork/join from Fig 18 of Cardelli DCM2010*)
+directive duration 300.0 points 1000
+directive compilation infinite
+directive plot <t^ yv>; <t^ yw>; <t^ zv>; <t^ zw>; sum([t^ _]:[_ t^])
+new t@1.0,1.0
+
+def F(N, x, y, z) = new a
+( N * <t^ a> | N * <y t^> | N * <z t^>
+| N * {t^*}:[x t^]:[a t^]:[a]
+| N * [x]:[t^ z]:[t^ y]:[t^ a]:{t^*} )
+
+def J(N, x, y, z) = new a new b
+( N * <t^ a> | N * <b t^> | N * <z t^>
+| N * {t^*}:[x t^]:[y t^]:[a t^]:[a]
+| N * [x]:[t^ b]:[t^ z]:[t^ a]:{t^*}
+| N * {t^*}:[b y]:{t^*} )
+
+( F(10, x, y, z) | F(10, u, v, w) | J(10, y, v, yv)
+| J(10, y, w, yw) | J(10, z, v, zv) | J(10, z, w, zw)
+| 1 * <t^ x> | 1 * <t^ u> )

@@ -1,0 +1,24 @@
+directive sample 0.0,18000.0 1000
+directive plot sp_3
+directive simulation cme
+directive parameters
+  [ in1 = 0.0
+  ; in2 = 0.0
+  ; c0 = 50.0
+  ; c = 50.0
+  ; e = 2.71828183
+  ; R = 0.0019872
+  ; T = 298.15 ]
+directive sweep mysweep =
+  { in1 = [0.0, 1.0]
+  , in2 = [0.0, 1.0] }
+
+init AND 1.0 |
+init REPORTER 1.0 |
+init STRAND_1 in2 |
+init STRAND in1 |
+AND + STRAND_1 ->{(1E-09 * c)} sp_2 + sp_1 + sp_0 |
+REPORTER + sp_1 <->{(c * 5E-05)}{(1E-09 * c)} sp_4 + sp_3 |
+AND + STRAND ->{(c * 5E-05)} sp_8 + sp_6 + sp_5 |
+sp_2 + STRAND ->{(c * 5E-05)} sp_7 + sp_6 + sp_5 |
+sp_8 + STRAND_1 ->{(c * 5E-05)} sp_7 + sp_0 + sp_1

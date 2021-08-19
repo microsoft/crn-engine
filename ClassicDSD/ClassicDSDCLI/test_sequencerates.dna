@@ -1,0 +1,14 @@
+﻿directive simulation {initial=0; final=7000}
+directive sequenceRates
+
+dom 1 = { seq = CCCAAAACAAAACAAAACAA }  	
+dom 2 = { seq = CCCTTTTCTAAACTAAACAA }  	
+dom 3 = { bind = 4.2E-4; unbind = 4.0E-2; seq = TATTCC }
+dom 4 = { seq = CCCTTATCATATCAATACAA }  	
+dom 5 = { bind = 6.5E-4; unbind = 4.0E-3; seq = GCTA }
+dom 6 = { seq = CCCTTTACATTACATAACAA }  	
+
+( 13 * <2 3^ 4>
+| 10 * <4 5^>
+| 10 * <1>[2]:<6>[3^ 4]{5^*}
+)

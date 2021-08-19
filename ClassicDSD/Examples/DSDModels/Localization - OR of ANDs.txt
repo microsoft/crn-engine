@@ -1,0 +1,33 @@
+directive simulation {initial=0; final=720; points=1000; plots=[<Ga Gb>]}
+directive simulator cme
+directive parameters [
+  c = 50, {interval=Real; distribution=Uniform(50,50); variation=Fixed};
+]
+directive sweeps [
+  sweep_1 = [c = [50; 500; 5000; 50000; 500000; 5000000]];
+]
+directive compilation infinite
+directive leaks
+directive leak (1E-09 * c)
+directive tau 1
+def Si1 = 0.0
+def Si2 = 0.0
+def Si3 = 0.0
+def Si4 = 1.0
+def bind = 5E-05
+def unbind = 26.0
+def STRAND(T, sa, sb) = <T^ sa sb>
+def OR(Ti1, Input1a, Input1b, Ti2, Input2a, Input2b, To, Outputa, Outputb) = 
+  (( {Ti1^*}[Input1a]:[Input1b To^]<Outputa Outputb>
+  | {Ti2^*}[Input2a]:[Input2b To^]<Outputa Outputb>))
+def AND(Ti1, Input1a, Input1b, Ti2, Input2a, Input2b, To, Outputa, Outputb) = {Ti1^*}[Input1a]:[Input1b Ti2^]:[Input2a]:[Input2b To^]<Outputa Outputb>
+def REPORTER(Ti, Inputa, Inputb) = {Ti^*}[Inputa Inputb]
+new T  @ (c * bind), unbind
+( Si1 * STRAND(T,Aa,Ab)
+| Si2 * STRAND(T,Ba,Bb)
+| Si3 * STRAND(T,Ca,Cb)
+| Si4 * STRAND(T,Da,Db)
+| AND(T,Aa,Ab,T,Ba,Bb,T,Ea,Eb)
+| AND(T,Ca,Cb,T,Da,Db,T,Fa,Fb)
+| OR(T,Ea,Eb,T,Fa,Fb,T,Ga,Gb)
+| REPORTER(T,Ga,Gb))

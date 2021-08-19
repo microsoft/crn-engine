@@ -1,0 +1,7 @@
+directive simulation {final=7000; }
+directive stochastic {scale=500}
+new 3  @ 0.00042, 0.04
+new 5  @ 0.00065, 0.004
+( 13.0 * <2 3^ 4>
+| 10.0 * <4 5^>
+| 10.0 * <1>[2]:<6>[3^ 4]{5^*})

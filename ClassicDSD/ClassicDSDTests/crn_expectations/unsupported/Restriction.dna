@@ -1,0 +1,72 @@
+directive sample 50000.0 1000
+directive compilation infinite
+directive simulation deterministic
+directive declare
+directive time s
+directive concentration nM
+directive plot <_ fl^>; <fl^ _>
+directive plotwindow 0.0 20000.0 0.0 7.0
+
+directive event <t^ b> Xi * N * (1.0-badJoinBX_B) @ T1
+directive event <t2^ x2> Xi * N * (1.0-badJoinBX_X) @ T2
+directive parameters [
+  kt,(1.0e-5,2.0e-3),0.0001,log,random;
+  ku1,(1.0e-6,2.0e-3),0.0001,log,random;
+  ut,(0.0,0.0),0.0,real,fixed;
+  Xi = 10.0; NGi = 30.0;  NHi = 30.0;  NRi = 30.0; NMi = 100.0;
+
+  leakJoinBX_B,(0.0,0.2),0.01,real,random;
+  badJoinBX_B,(0.0,0.5),0.20,real,random;
+  leakJoinBX_X,(0.0,0.2),0.01,real,random;
+  badJoinBX_X,(0.0,0.5),0.20,real,random;
+  T1,(7000.0,8000.0),7200.0,real,random;
+  T2,(7000.0,8000.0),7200.0,real,random;
+  N,(0.0,1.0),0.6,real,fixed
+]
+directive sweep input = { N = [0.0,0.2,0.4,0.6] }
+directive fit_run { burnin = 500
+                  ; samples = 500
+                  ; mle_burnin = 100
+                  ; mle_samples = 100
+                  ; thin = 10 }
+directive fit {input; JoinBX_AddB; <fl^ rbx>}
+directive fit {input; JoinBX_AddX; <fl^ rbx2>}
+
+new fl@0.0,0.0
+
+def Input(ta,a) = <ta^ a>
+def Catalyst(tb,b) = <tb^ b>
+def Helper(tr,r) = <tr^ r>
+def Translator(x,tx) = <x tx^>
+def InputR(h,th) = <h th^>
+def CatalystR(h,th) = <h th^>
+def SignalR(fl,c) = <fl^ c>
+def RepR(x,tx) = <fl^>[x]{tx^*}
+def Join_AB(ta,a,tb,b,tr,r,tq) = {ta^*}[a tb^]:[b tr^]:[r tq^]
+
+def Join(NA,NB,NH,NG,NV,Leak,ta,a,tb,b,tr,r,tq) =
+( NG*(1.0-Leak) * Join_AB(ta,a,tb,b,tr,r,tq)
+| NG*Leak * Translator(r,tq)
+| NA * Input(ta,a)
+| NB * Catalyst(tb,b)
+| NH * Helper(tr,r)
+| NV * InputR(a,tb)
+| NV * CatalystR(b,tr) )
+
+def RepJoin(N,NR,r,tq) =
+( N * Translator(r,tq)
+| NR * RepR(r,tq)
+| 0 * SignalR(fl,r) )
+
+new x new y new b new rbx new t@kt,ut new u1@ku1,ut
+def RepJoinBX(NR) = RepJoin(0.0,NR,rbx,u1)
+def JoinBX(NB,NX,NH,NG,Leak) = Join(NB,NX,NH,NG,0.0,Leak,t,b,t,x,t,rbx,u1)
+
+new x2 new y2 new b2 new rbx2 new t2@kt,ut new u12@ku1,ut
+def RepJoinBX2(NR) = RepJoin(0.0,NR,rbx2,u12)
+def JoinBX2(NB,NX,NH,NG,Leak) = Join(NB,NX,NH,NG,0.0,Leak,t2,b2,t2,x2,t2,rbx2,u12)
+
+def JoinBX_AddB(N) = ( JoinBX(0.0,NMi,NMi,NGi,leakJoinBX_B) | RepJoinBX(NRi) )
+def JoinBX_AddX(N) = ( JoinBX2(NMi,0.0,NMi,NGi,leakJoinBX_X) | RepJoinBX2(NRi) )
+
+( JoinBX_AddB(N) | JoinBX_AddX(N) )
