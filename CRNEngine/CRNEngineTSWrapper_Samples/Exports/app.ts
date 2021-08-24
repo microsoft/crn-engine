@@ -1,4 +1,7 @@
-﻿import * as Interfaces from "../../CRNEngineTSWrapper/Scripts/Interfaces";
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+import * as Interfaces from "../../CRNEngineTSWrapper/Scripts/Interfaces";
 import CRNEngine from "../../CRNEngineTSWrapper/Scripts/CRNEngine";
 import "../samples.css";
 import "./styles.css";

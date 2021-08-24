@@ -1,4 +1,7 @@
-﻿import { WebSharperGeneratedInterfaces as WGI } from "./WebSharperGeneratedInterfaces";
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+import { WebSharperGeneratedInterfaces as WGI } from "./WebSharperGeneratedInterfaces";
 import * as Interfaces from './Interfaces';
 import * as Internals from './InternalInterfaces';
 

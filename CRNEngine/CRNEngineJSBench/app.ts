@@ -1,4 +1,7 @@
-﻿var Microsoft: any;
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+var Microsoft: any;
 
 let CRNEngine = Microsoft.Research.CRNEngine;
 

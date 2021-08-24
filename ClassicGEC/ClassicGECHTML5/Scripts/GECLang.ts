@@ -1,3 +1,6 @@
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
 var GECLanguage = {
     displayName: 'GEC',       // start by writing your language name here
     name: 'GEC',

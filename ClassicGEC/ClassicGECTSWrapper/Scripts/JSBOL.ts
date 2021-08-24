@@ -1,4 +1,7 @@
-﻿import * as CRNInterfaces from "./../../../CRNEngine/CRNEngineTSWrapper/Scripts/InternalInterfaces";
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+import * as CRNInterfaces from "./../../../CRNEngine/CRNEngineTSWrapper/Scripts/InternalInterfaces";
 import * as Interfaces from "./Interfaces";
 import * as sboljs from 'sboljs';
 

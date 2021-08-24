@@ -1,4 +1,7 @@
-﻿import * as CRN from '../../../CRNEngine/CRNEngineTSWrapper/Scripts/InternalInterfaces';
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+import * as CRN from '../../../CRNEngine/CRNEngineTSWrapper/Scripts/InternalInterfaces';
 import * as Interfaces from '../../../CRNEngine/CRNEngineTSWrapper/Scripts/Interfaces';
 import { WebSharperGeneratedInterfaces as WGI } from "./WebSharperGeneratedInterfaces";
 

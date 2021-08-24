@@ -1,4 +1,7 @@
-﻿import * as $ from 'jquery';
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+import * as $ from 'jquery';
 import GEC from '../../../ClassicGECTSWrapper/Scripts/ClassicGEC';
 import * as Interfaces from '../../../ClassicGECTSWrapper/Scripts/Interfaces';
 import * as CRN from '../../../../CRNEngine/CRNEngineTSWrapper/Scripts/Interfaces';

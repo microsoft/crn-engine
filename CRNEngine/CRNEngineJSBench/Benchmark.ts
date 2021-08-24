@@ -1,4 +1,7 @@
-﻿class BenchmarkResult {
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+class BenchmarkResult {
     constructor(public Name: string, public Min: number, public Max: number, public Mean: number, public Median: number, public StdDev: number, public SampleCount: number) { };
 }
 

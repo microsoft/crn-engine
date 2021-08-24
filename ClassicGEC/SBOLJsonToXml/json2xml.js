@@ -1,3 +1,6 @@
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
 var fs = require('fs');
 var SBOLDocument = require('sboljs');
 

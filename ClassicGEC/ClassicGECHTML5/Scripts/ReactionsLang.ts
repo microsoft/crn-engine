@@ -1,4 +1,7 @@
-﻿var ReactionsLanguage = {
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+var ReactionsLanguage = {
     displayName: 'GECReactions',       // start by writing your language name here
     name: 'GECReactions',
     mimeTypes: ['text/x-crn'],

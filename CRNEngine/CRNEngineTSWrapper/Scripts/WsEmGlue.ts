@@ -1,4 +1,7 @@
-﻿class WsEmGlue {
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+class WsEmGlue {
     constructor(public Module: any) { }
     /*
             sN:int,

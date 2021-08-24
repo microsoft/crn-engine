@@ -1,4 +1,7 @@
-﻿import "./SequencesDatabase.css"
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+import "./SequencesDatabase.css"
 import * as ko from 'knockout';
 import DSD from '../../../ClassicDSDTSWrapper/Scripts/ClassicDSD';
 import * as fileSaver from "file-saver";

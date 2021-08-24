@@ -1,3 +1,6 @@
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
 // Webpack is executed by a custom target in the .csproj file. Webpack output is collected for packaging and deployment by another custom target.
 "use strict";
 var webpack = require('webpack');
