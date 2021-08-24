@@ -1,4 +1,7 @@
-﻿namespace ReactionDiffusionTests.AssemblyInfo
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+namespace ReactionDiffusionTests.AssemblyInfo
 
 open System.Reflection
 open System.Runtime.CompilerServices

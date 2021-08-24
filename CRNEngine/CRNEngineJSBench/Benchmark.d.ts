@@ -1,3 +1,6 @@
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
 declare class BenchmarkResult {
     Name: string;
     Min: number;

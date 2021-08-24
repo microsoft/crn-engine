@@ -1,4 +1,7 @@
-﻿module Microsoft.Research.ClassicDSDServer.Messages
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+module Microsoft.Research.ClassicDSDServer.Messages
 
 open Microsoft.Research.CRNEngine
 open Microsoft.Research.Filzbach

@@ -1,4 +1,7 @@
-﻿module Microsoft.Research.CRNEngineWebServer.Program
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+module Microsoft.Research.CRNEngineWebServer.Program
 
 open System
 open System.Net.WebSockets

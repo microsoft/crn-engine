@@ -1,4 +1,7 @@
-﻿module Microsoft.Research.CRNEngine.Tests.ExportTests
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+module Microsoft.Research.CRNEngine.Tests.ExportTests
 
 open Xunit
 open FsUnit

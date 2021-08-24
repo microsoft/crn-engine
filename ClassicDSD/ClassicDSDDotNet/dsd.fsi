@@ -1,4 +1,7 @@
-﻿module Microsoft.Research.DNA.Dsd
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+module Microsoft.Research.DNA.Dsd
 open Microsoft.Research.DNA
 
 open Microsoft.Research.CRNEngine

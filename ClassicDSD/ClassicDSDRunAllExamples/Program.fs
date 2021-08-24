@@ -1,4 +1,7 @@
-﻿module Microsoft.Research.CRNEngine.RunAllExamples.Program
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+module Microsoft.Research.CRNEngine.RunAllExamples.Program
 open Microsoft.Research.CRNEngine
 open Microsoft.Research.CliLibrary.Testing
 open Microsoft.Research.DNA

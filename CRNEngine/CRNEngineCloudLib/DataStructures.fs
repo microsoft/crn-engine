@@ -1,4 +1,7 @@
-﻿module Microsoft.Research.CRNEngineCloudLib.DataStructures
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+module Microsoft.Research.CRNEngineCloudLib.DataStructures
 
 type JobState =
 | [<WebSharper.Constant("Waiting")>] Waiting

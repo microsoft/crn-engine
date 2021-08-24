@@ -1,4 +1,7 @@
-﻿module Microsoft.Research.GEC.HypothesisTest
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+module Microsoft.Research.GEC.HypothesisTest
 
 open Xunit
 open FsUnit.Xunit

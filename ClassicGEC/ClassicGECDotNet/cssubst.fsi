@@ -1,4 +1,7 @@
-﻿module Microsoft.Research.GEC.Cssubst
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+module Microsoft.Research.GEC.Cssubst
 
 open Microsoft.Research.GEC
 

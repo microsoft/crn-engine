@@ -1,4 +1,7 @@
-﻿module Microsoft.Research.CRNEngineServerLib.Server
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+module Microsoft.Research.CRNEngineServerLib.Server
 
 open System
 open Giraffe

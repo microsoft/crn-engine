@@ -1,4 +1,7 @@
-﻿var database = {
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+var database = {
     toeholds: "TATTCC\r\n" +
     "GCTA\r\n" +
     "GTCA\r\n" +

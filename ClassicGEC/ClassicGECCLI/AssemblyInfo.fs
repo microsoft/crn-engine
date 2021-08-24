@@ -1,4 +1,7 @@
-﻿namespace ClassicGECCLI.AssemblyInfo
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+namespace ClassicGECCLI.AssemblyInfo
 
 open System.Reflection
 open System.Runtime.CompilerServices

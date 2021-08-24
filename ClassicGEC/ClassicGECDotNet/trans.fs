@@ -1,8 +1,11 @@
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
 (*
 Defines the main translation function for LSB programs.
 
 Author: Michael Pedersen.
-Copyright © Microsoft Research, 2008-2009.
+Copyright ï¿½ Microsoft Research, 2008-2009.
 *)
 
 #light

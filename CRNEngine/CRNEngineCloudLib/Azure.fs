@@ -1,4 +1,7 @@
-﻿module Microsoft.Research.CRNEngineCloudLib.Azure
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+module Microsoft.Research.CRNEngineCloudLib.Azure
 
 open System
 open System.Globalization

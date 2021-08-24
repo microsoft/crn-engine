@@ -1,4 +1,7 @@
-﻿[<JavaScript>]
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+[<JavaScript>]
 
 (* Old version 
 module Microsoft.Research.CRNEngine.Assignment

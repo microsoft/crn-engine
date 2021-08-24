@@ -1,4 +1,7 @@
-﻿namespace ClassicDSDTests.AssemblyInfo
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+namespace ClassicDSDTests.AssemblyInfo
 
 open System.Reflection
 open System.Runtime.CompilerServices

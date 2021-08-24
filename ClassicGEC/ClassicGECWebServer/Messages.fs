@@ -1,4 +1,7 @@
-﻿module Microsoft.Research.ClassicGECWebServer.Messages
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+module Microsoft.Research.ClassicGECWebServer.Messages
 
 open Microsoft.Research.CRNEngine
 open Microsoft.Research.Filzbach

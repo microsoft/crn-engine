@@ -1,4 +1,7 @@
-﻿module Microsoft.Research.FSBOL.CircuitTest
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+module Microsoft.Research.FSBOL.CircuitTest
 
 open Microsoft.Research.FSBOL.Component
 open Microsoft.Research.FSBOL.ComponentDefinition

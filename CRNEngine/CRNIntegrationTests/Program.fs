@@ -1,4 +1,7 @@
-﻿open System
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+open System
 open System.IO
 open Expecto
 open Microsoft.AspNetCore.Hosting

@@ -1,4 +1,7 @@
-﻿module Microsoft.Research.CRNEngine.Species
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+module Microsoft.Research.CRNEngine.Species
 
 type t = { name: string }
 

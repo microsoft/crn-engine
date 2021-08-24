@@ -1,4 +1,7 @@
-﻿/*import { ServiceWorker } from './Scripts/ServiceWorker';
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+/*import { ServiceWorker } from './Scripts/ServiceWorker';
 let serviceWorker = new ServiceWorker();*/
 
 import "jqueryui";

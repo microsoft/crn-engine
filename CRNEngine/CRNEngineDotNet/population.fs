@@ -1,4 +1,7 @@
-﻿namespace Microsoft.Research.CRNEngine
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+namespace Microsoft.Research.CRNEngine
 [<JavaScript>]
 type Population<'species,'value> = 
   {

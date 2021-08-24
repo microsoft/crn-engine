@@ -1,10 +1,13 @@
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
 (*
 Provides top-level access to LSB translation. Functions in this module
 will invoke the LSB compiler, invoke the Prolog engine and parse the results
 in to an appropriate .NET data structure.
 
 Author: Michael Pedersen.
-Copyright © Microsoft Research, 2008-2009.
+Copyright ï¿½ Microsoft Research, 2008-2009.
 *)
 
 [<JavaScript>]

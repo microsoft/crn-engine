@@ -1,4 +1,7 @@
-﻿var database = {
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+var database = {
     parts: "i723017,pcr,codes(xylR;0.001)\n" +
         "i723024, pcr, codes(phzM;0.001)\n" +
         "e0040, pcr, codes(gfp;0.01)\n" +

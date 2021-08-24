@@ -1,4 +1,7 @@
-﻿module Microsoft.Research.CRNEngine.Tests.PruneTests
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+module Microsoft.Research.CRNEngine.Tests.PruneTests
 open Xunit
 open FsUnit.Xunit
 open Microsoft.Research.CRNEngine

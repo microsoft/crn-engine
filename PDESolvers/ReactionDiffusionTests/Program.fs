@@ -1,4 +1,7 @@
-﻿module Program
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+module Program
 
 open Microsoft.Research.ReactionDiffusion
 

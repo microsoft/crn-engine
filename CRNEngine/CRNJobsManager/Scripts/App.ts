@@ -1,4 +1,7 @@
-﻿import * as ko from "knockout";
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+import * as ko from "knockout";
 import { Observable } from "rx";
 import CRNEngine from './../../CRNEngineTSWrapper/Scripts/CRNEngine';
 import { JobDescriptor, JobFile } from "../../CRNEngineTSWrapper/Scripts/Interfaces";

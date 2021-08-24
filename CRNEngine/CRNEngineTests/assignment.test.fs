@@ -1,4 +1,7 @@
-﻿module Microsoft.Research.CRNEngine.Tests.AssignmentTest
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+module Microsoft.Research.CRNEngine.Tests.AssignmentTest
 open Operators
 open Xunit
 open FsUnit.Xunit

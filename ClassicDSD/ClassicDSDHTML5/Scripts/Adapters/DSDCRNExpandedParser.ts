@@ -1,4 +1,7 @@
-﻿import * as GenericExpandingParser from '../../../../HTML5SharedGUI/HTML5DSD_Generic/Scripts/Adapters/GenericExpandingParser';
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+import * as GenericExpandingParser from '../../../../HTML5SharedGUI/HTML5DSD_Generic/Scripts/Adapters/GenericExpandingParser';
 import DSD from '../../../ClassicDSDTSWrapper/Scripts/ClassicDSD';
 import * as Interfaces from '../../../ClassicDSDTSWrapper/Scripts/Interfaces';
 import * as CrnInterfaces from '../../../../CRNEngine/CRNEngineTSWrapper/Scripts/Interfaces';

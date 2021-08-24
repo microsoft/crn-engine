@@ -1,4 +1,7 @@
-﻿module Microsoft.Research.DNA.OldSyntax
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+module Microsoft.Research.DNA.OldSyntax
 
 open FsUnit
 open Xunit

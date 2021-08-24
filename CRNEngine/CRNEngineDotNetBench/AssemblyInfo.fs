@@ -1,4 +1,7 @@
-﻿namespace CRNEngineDotNetBench.AssemblyInfo
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+namespace CRNEngineDotNetBench.AssemblyInfo
 
 open System.Reflection
 open System.Runtime.CompilerServices

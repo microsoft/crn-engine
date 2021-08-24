@@ -1,3 +1,6 @@
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
 module Microsoft.Research.DNA.Options
 open Microsoft.Research.DNA
 

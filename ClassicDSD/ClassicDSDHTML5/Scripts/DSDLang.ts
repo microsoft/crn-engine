@@ -1,4 +1,7 @@
-﻿var DSDLanguage = {
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+var DSDLanguage = {
     displayName: 'DSD',       // start by writing your language name here
     name: 'DSD',
     mimeTypes: ['text/x-dsd'],

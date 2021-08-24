@@ -1,4 +1,7 @@
-﻿module Microsoft.Research.CRNEngine.Tests.ParserTests
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+module Microsoft.Research.CRNEngine.Tests.ParserTests
 open Xunit
 open FsUnit
 open Operators

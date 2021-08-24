@@ -1,4 +1,7 @@
-﻿namespace Microsoft.Research.Filzbach
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+namespace Microsoft.Research.Filzbach
 
 [<JavaScript>]
 module DataStructures =

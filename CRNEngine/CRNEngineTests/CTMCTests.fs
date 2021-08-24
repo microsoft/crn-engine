@@ -1,4 +1,7 @@
-﻿module Microsoft.Research.CRNEngine.Tests.CTMCTests
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+module Microsoft.Research.CRNEngine.Tests.CTMCTests
 open Xunit
 open FsUnit
 open Microsoft.Research.CRNEngine.Api

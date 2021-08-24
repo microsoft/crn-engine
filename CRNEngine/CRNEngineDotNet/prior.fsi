@@ -1,4 +1,7 @@
-﻿module Microsoft.Research.CRNEngine.Prior
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+module Microsoft.Research.CRNEngine.Prior
 open WebSharper
 
 type posterior = Posterior.t

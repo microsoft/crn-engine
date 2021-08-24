@@ -1,4 +1,7 @@
-﻿module Microsoft.Research.CRNEngine.Tests.Program
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+module Microsoft.Research.CRNEngine.Tests.Program
 
 open Microsoft.Research.Filzbach
 open Microsoft.Research.CRNEngine

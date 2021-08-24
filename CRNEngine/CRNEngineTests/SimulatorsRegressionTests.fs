@@ -1,4 +1,7 @@
-﻿module Microsoft.Research.CRNEngine.Tests.SimulatorsRegressionTests
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+module Microsoft.Research.CRNEngine.Tests.SimulatorsRegressionTests
 
 open System.IO
 open Xunit

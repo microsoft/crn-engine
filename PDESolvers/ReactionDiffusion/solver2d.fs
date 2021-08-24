@@ -1,4 +1,7 @@
-﻿[<JavaScript>]
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+[<JavaScript>]
 module Microsoft.Research.ReactionDiffusion.Solver2d
 
 open Microsoft.Research.ReactionDiffusion.Lib

@@ -1,4 +1,7 @@
-﻿module Microsoft.Research.CRNEngine.Posterior
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+module Microsoft.Research.CRNEngine.Posterior
 
 type t = float list list
 

@@ -1,4 +1,7 @@
-﻿import "jquery";
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+import "jquery";
 import * as Rx from 'rx';
 import * as InternalInterfaces from '../../../CRNEngine/CRNEngineTSWrapper/Scripts/InternalInterfaces';
 import * as CRNInterfaces from '../../../CRNEngine/CRNEngineTSWrapper/Scripts/Interfaces';

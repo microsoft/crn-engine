@@ -1,4 +1,7 @@
-﻿module Microsoft.Research.CRNEngineServerLib.Synthesis
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+module Microsoft.Research.CRNEngineServerLib.Synthesis
 
 open Microsoft.Research.CRNEngineServerLib.Serialisation
 open System.Net.WebSockets

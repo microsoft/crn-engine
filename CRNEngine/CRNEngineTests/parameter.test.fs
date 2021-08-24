@@ -1,4 +1,7 @@
-﻿module Microsoft.Research.CRNEngine.Tests.ParameterTest
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+module Microsoft.Research.CRNEngine.Tests.ParameterTest
 open Xunit
 open FsUnit.Xunit
 open Microsoft.Research.CRNEngine

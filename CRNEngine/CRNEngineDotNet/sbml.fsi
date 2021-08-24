@@ -1,3 +1,6 @@
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
 module Microsoft.Research.CRNEngine.Sbml
 (* sbml.ml - types representing SBML documents, with to_string functions.
  * Currently working towards Level 2, Version 4, Release 1 of SBML. *)

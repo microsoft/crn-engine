@@ -1,3 +1,6 @@
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
 import Editor from '../GECCodeEditor';
 import * as ModificationIndicator from '../../../../HTML5SharedGUI/GenericComponents/Scripts/ModificationIndicators';
 import * as Features from '../Features';

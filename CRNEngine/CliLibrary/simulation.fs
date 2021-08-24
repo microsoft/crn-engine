@@ -1,4 +1,7 @@
-﻿module Microsoft.Research.CliLibrary.Simulation
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+module Microsoft.Research.CliLibrary.Simulation
 
 open System.IO
 open Microsoft.Research.CRNEngine

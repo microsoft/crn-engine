@@ -1,4 +1,7 @@
-﻿module Microsoft.Research.CRNEngineServerLib.Jobs
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+module Microsoft.Research.CRNEngineServerLib.Jobs
 
 open Microsoft.Research.CRNEngineServerLib.Serialisation
 open Microsoft.Research.CRNEngineCloudLib.AzureJobsManagement

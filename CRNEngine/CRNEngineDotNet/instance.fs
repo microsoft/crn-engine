@@ -1,4 +1,7 @@
-﻿namespace Microsoft.Research.CRNEngine
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+namespace Microsoft.Research.CRNEngine
 [<JavaScript>]
 type Instance<'e> when 'e:equality = 
   { model:string; sweep:string; assignment:string; environment:Environment.t; settings:Simulation_settings<'e>; name:string }

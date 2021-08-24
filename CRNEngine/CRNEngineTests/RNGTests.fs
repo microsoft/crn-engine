@@ -1,4 +1,7 @@
-﻿module Microsoft.Research.CRNEngine.Tests.RNGTests
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+module Microsoft.Research.CRNEngine.Tests.RNGTests
 open Xunit
 open FsUnit
 open Microsoft.Research.CRNEngine

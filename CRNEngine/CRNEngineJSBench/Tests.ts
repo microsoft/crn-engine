@@ -1,4 +1,7 @@
-﻿// var Papa: any;
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+// var Papa: any;
 declare var Papa: any;
 
 class Tests {

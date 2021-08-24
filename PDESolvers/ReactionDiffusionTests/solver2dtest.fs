@@ -1,4 +1,7 @@
-﻿module Solver2Dtest
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+module Solver2Dtest
 open Xunit
 open FsUnit
 
