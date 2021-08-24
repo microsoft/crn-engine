@@ -15,7 +15,7 @@ jobs:
     - name: Restore tools
       run: dotnet tool restore    
     - name: Restore CRN dependencies
-      run: dotnet restore CRNEngine/CRNEngineCli.sln
+      run: dotnet restore Checks/Checks.sln
     - name: Run checks
       working-directory: ./Checks/Checks
       shell: cmd
