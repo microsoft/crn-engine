@@ -1,0 +1,21 @@
+name: Checks
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  implementation:
+    runs-on: windows-2019
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Restore tools
+      run: dotnet tool restore    
+    - name: Restore dependencies
+      run: dotnet restore Checks/Checks.sln
+    - name: Run checks
+      working-directory: ./Checks/Checks
+      run: dotnet run
