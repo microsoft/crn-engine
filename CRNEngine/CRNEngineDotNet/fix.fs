@@ -1,4 +1,7 @@
-﻿[<JavaScript>]
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+[<JavaScript>]
 module Microsoft.Research.CRNEngine.Fix
 
   let eval (env:Environment.t) (ratesEnv:Map<string,Expression.t<Key2<int>>>) (r:Rate<Value,Expression.t<Key<int>>>) : Rate<float,Lambda.t<Key2<int>>> = 

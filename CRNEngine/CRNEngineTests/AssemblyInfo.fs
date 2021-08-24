@@ -1,4 +1,7 @@
-﻿namespace CRNEngineTests.AssemblyInfo
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+namespace CRNEngineTests.AssemblyInfo
 
 open System.Reflection
 open System.Runtime.CompilerServices

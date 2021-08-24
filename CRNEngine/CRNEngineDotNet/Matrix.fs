@@ -1,4 +1,7 @@
-﻿namespace Microsoft.Research.CRNEngine
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+namespace Microsoft.Research.CRNEngine
 
 //This matrix class is used only for the older RKF54 solver. It's from the PowerPack, don't use for anything else. 
 

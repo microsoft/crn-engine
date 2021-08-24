@@ -1,4 +1,7 @@
-﻿module Microsoft.Research.CliLibrary.Program
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+module Microsoft.Research.CliLibrary.Program
 
 open Microsoft.Research.CRNEngine
 open Microsoft.Research.CRNEngineCloudLib

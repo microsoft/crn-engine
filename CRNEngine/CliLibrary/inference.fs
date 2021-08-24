@@ -1,4 +1,7 @@
-﻿module Microsoft.Research.CliLibrary.Inference
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+module Microsoft.Research.CliLibrary.Inference
 
 open System.IO
 open Microsoft.Research.CRNEngine

@@ -1,4 +1,7 @@
-﻿module Microsoft.Research.CRNEngineCloudLib.AzureJobs
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+module Microsoft.Research.CRNEngineCloudLib.AzureJobs
 
 open System
 open Microsoft.WindowsAzure.Storage.Blob

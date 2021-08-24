@@ -1,4 +1,7 @@
-﻿module Microsoft.Research.CliLibrary.Testing
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+module Microsoft.Research.CliLibrary.Testing
 open Microsoft.Research.CRNEngine
 open Microsoft.Research.CliLibrary
 open Microsoft.Research.CRNEngine.JSAPI

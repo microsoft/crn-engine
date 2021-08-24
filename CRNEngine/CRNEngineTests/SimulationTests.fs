@@ -1,4 +1,7 @@
-﻿module Microsoft.Research.CRNEngine.Tests.SimulationTests
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+module Microsoft.Research.CRNEngine.Tests.SimulationTests
 
 open Xunit
 open FsUnit

@@ -1,4 +1,7 @@
-﻿module Microsoft.Research.DNA.Svg
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+module Microsoft.Research.DNA.Svg
 open Microsoft.Research.DNA
 open Microsoft.Research.CRNEngine
 open Microsoft.Research.DNA.Options

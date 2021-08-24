@@ -1,4 +1,7 @@
-﻿namespace RulesDSD.AssemblyInfo
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+namespace RulesDSD.AssemblyInfo
 
 open System.Reflection
 open System.Runtime.CompilerServices

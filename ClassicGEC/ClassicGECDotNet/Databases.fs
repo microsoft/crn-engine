@@ -1,4 +1,7 @@
-﻿module Microsoft.Research.GEC.Databases
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+module Microsoft.Research.GEC.Databases
 
 let defaultParts = "i723017,pcr,codes(xylR;0.001)
 i723024, pcr, codes(phzM;0.001)

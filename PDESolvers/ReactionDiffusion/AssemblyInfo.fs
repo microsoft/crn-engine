@@ -1,4 +1,7 @@
-﻿namespace ReactionDiffusion.AssemblyInfo
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+namespace ReactionDiffusion.AssemblyInfo
 
 open System.Reflection
 open System.Runtime.CompilerServices

@@ -1,4 +1,7 @@
-﻿namespace Microsoft.Research.CRNEngine
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+namespace Microsoft.Research.CRNEngine
 
 // Minimal implementation of the F# Powerpack Matrix that can be cross-compiled to JavaScript.
 // Additional methods can be ported as needed to a JavaScript compatible container.

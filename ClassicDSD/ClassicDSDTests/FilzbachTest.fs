@@ -1,4 +1,7 @@
-﻿module Microsoft.Research.DNA.FilzbachTest
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+module Microsoft.Research.DNA.FilzbachTest
 //
 //open FsUnit
 //open FsUnit.Xunit

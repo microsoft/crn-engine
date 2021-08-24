@@ -1,4 +1,7 @@
-﻿[<JavaScriptExport>]
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+[<JavaScriptExport>]
 module Microsoft.Research.DNA.JSONAPI
 open WebSharper
 open Microsoft.Research.DNA.Dsd

@@ -1,4 +1,7 @@
-﻿module Microsoft.Research.GEC.TransCrnTest
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+module Microsoft.Research.GEC.TransCrnTest
 
 open Microsoft.Research.GEC.GECEngine
 open Microsoft.Research.GEC.JSAPI

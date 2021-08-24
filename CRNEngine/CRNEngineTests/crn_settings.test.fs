@@ -1,4 +1,7 @@
-﻿module Microsoft.Research.CRNEngine.Tests.Crn_settingsTest
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+module Microsoft.Research.CRNEngine.Tests.Crn_settingsTest
 open Operators
 open Xunit
 open FsUnit.Xunit

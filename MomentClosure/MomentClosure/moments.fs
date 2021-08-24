@@ -1,4 +1,7 @@
-﻿module Microsoft.Research.CRNEngine.Moments
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+module Microsoft.Research.CRNEngine.Moments
 
 open MathNet.Symbolics
 open Microsoft.Research.CRNEngine

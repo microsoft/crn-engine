@@ -1,4 +1,7 @@
-﻿module Microsoft.Research.ClassicGECWebServer.GEC
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+module Microsoft.Research.ClassicGECWebServer.GEC
 
 open System.Net.WebSockets
 open Messages

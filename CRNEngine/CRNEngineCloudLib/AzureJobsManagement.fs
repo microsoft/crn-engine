@@ -1,4 +1,7 @@
-﻿module Microsoft.Research.CRNEngineCloudLib.AzureJobsManagement
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+module Microsoft.Research.CRNEngineCloudLib.AzureJobsManagement
 
 open System
 open System.IO

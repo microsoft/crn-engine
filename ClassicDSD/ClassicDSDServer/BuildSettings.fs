@@ -1,4 +1,7 @@
-﻿module ClassicDSDServer.BuildSettings
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+module ClassicDSDServer.BuildSettings
 
 let homeFolder = "ClassicDSDHTML5"
 let jobsFolder = "CRNJobsManager"

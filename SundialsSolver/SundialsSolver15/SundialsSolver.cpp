@@ -1,3 +1,6 @@
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
 // SundialsSolver.cpp : Defines the exported functions for the DLL application.
 
 #include "stdafx.h"

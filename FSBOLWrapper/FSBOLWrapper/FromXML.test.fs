@@ -1,4 +1,7 @@
-﻿module Microsoft.Research.FSBOL.FromXMLTest
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+module Microsoft.Research.FSBOL.FromXMLTest
 
 open Microsoft.Research.FSBOL.Sequence
 

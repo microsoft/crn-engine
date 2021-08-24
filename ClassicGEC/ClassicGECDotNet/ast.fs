@@ -1,9 +1,12 @@
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
 (*
 Defines the abstract syntax tree data types for GEC.
 Also defines compiler exceptions.
 
 Author: Michael Pedersen.
-Copyright © Microsoft Research, 2009.
+Copyright ï¿½ Microsoft Research, 2009.
 *)
 
 [<JavaScript>] 

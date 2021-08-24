@@ -1,4 +1,7 @@
-﻿module Microsoft.Research.CRNEngineServerLib.StateSpace
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+module Microsoft.Research.CRNEngineServerLib.StateSpace
 
 open Microsoft.Research.CRNEngineServerLib.Serialisation
 open System.Net.WebSockets

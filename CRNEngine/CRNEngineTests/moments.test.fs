@@ -1,4 +1,7 @@
-﻿module Microsoft.Research.CRNEngine.Tests.MomentClosureTests
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+module Microsoft.Research.CRNEngine.Tests.MomentClosureTests
 
 open Xunit
 open FsUnit.Xunit

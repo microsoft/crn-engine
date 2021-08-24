@@ -1,4 +1,7 @@
-﻿module Microsoft.Research.GEC.Database
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+module Microsoft.Research.GEC.Database
 
 open Microsoft.Research.GEC
 open FSBOL.ComponentDefinition

@@ -1,4 +1,7 @@
-﻿module Microsoft.Research.DNA.``Deterministic simulator regression test``
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+module Microsoft.Research.DNA.``Deterministic simulator regression test``
 
 //open System.IO
 ////open System.Xml

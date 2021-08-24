@@ -1,4 +1,7 @@
-﻿module GEC.Characterization
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+module GEC.Characterization
 
 open Microsoft.Research.Filzbach //MCMC inference
 open System.Collections.Generic

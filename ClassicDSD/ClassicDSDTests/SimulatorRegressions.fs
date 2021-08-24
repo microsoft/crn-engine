@@ -1,4 +1,7 @@
-﻿module Microsoft.Research.DNA.SimulatorRegressions
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+module Microsoft.Research.DNA.SimulatorRegressions
 
 //open System.IO
 //open FsUnit

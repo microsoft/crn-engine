@@ -1,4 +1,7 @@
-﻿namespace Microsoft.Research.CRNEngine
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+namespace Microsoft.Research.CRNEngine
 open Oslo
 open Microsoft.FSharp.NativeInterop
 open Microsoft.Research.CRNEngine.Sundials.external_sundials

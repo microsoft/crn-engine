@@ -1,4 +1,7 @@
-﻿namespace CliCRN.AssemblyInfo
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+namespace CliCRN.AssemblyInfo
 
 open System.Reflection
 open System.Runtime.CompilerServices

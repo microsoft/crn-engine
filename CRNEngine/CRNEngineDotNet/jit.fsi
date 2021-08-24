@@ -1,4 +1,7 @@
-﻿[<JavaScript>] 
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+[<JavaScript>] 
 module Microsoft.Research.CRNEngine.Jit
 
 type reaction<'s> when 's : equality = Reaction<'s, Expression.t<string>, Expression.t< Key<'s >>>

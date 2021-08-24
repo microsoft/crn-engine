@@ -1,4 +1,7 @@
-﻿namespace ClassicDSDIntegrationTests.AssemblyInfo
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+namespace ClassicDSDIntegrationTests.AssemblyInfo
 
 open System.Reflection
 open System.Runtime.CompilerServices

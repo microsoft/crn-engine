@@ -1,4 +1,7 @@
-﻿[<JavaScript>]
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+[<JavaScript>]
 module Microsoft.Research.GEC.Settings
 open Microsoft.Research.CRNEngine
 open Microsoft.Research.GEC.Ast

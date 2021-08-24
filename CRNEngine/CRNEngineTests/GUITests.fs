@@ -1,4 +1,7 @@
-﻿module Microsoft.Research.CRNEngine.Tests.GUITests
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+module Microsoft.Research.CRNEngine.Tests.GUITests
 
 open Xunit
 open FsUnit

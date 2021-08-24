@@ -1,4 +1,7 @@
-﻿module Microsoft.Research.CRNEngine.Svg
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+module Microsoft.Research.CRNEngine.Svg
 
 type point = { x: float; y: float }
 

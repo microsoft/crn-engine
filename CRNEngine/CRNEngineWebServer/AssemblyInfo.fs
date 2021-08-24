@@ -1,4 +1,7 @@
-﻿namespace Microsoft.Research.CRNEngineWebServer.AssemblyInfo
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+namespace Microsoft.Research.CRNEngineWebServer.AssemblyInfo
 
 open System.Reflection
 open System.Runtime.CompilerServices

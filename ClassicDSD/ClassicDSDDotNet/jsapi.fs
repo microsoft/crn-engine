@@ -1,4 +1,7 @@
-﻿[<JavaScriptExport>]
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+[<JavaScriptExport>]
 module Microsoft.Research.DNA.JSAPI
 open Microsoft.Research.CRNEngine
 open Microsoft.Research.DNA.Dsd

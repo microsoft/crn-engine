@@ -1,4 +1,7 @@
-﻿module Microsoft.Research.GEC.Classic
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+module Microsoft.Research.GEC.Classic
 
 open Microsoft.Research.CliLibrary
 open Microsoft.Research.CRNEngine

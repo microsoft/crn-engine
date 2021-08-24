@@ -1,4 +1,7 @@
-﻿module Microsoft.Research.CRNEngine.Tests.SweepTest
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+module Microsoft.Research.CRNEngine.Tests.SweepTest
 open Operators
 open Xunit
 open FsUnit.Xunit

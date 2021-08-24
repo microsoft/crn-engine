@@ -1,4 +1,7 @@
-﻿namespace FSBOL.AssemblyInfo
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+namespace FSBOL.AssemblyInfo
 
 open System.Reflection
 open System.Runtime.CompilerServices

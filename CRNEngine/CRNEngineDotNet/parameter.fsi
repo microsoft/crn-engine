@@ -1,4 +1,7 @@
-﻿module Microsoft.Research.CRNEngine.Parameter
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+module Microsoft.Research.CRNEngine.Parameter
 
 module filzbach = Microsoft.Research.Filzbach.Parameters
 type t = {

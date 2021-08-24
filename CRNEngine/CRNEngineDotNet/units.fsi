@@ -1,4 +1,7 @@
-﻿module Microsoft.Research.CRNEngine.Units
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+module Microsoft.Research.CRNEngine.Units
 open WebSharper
 
 [<NamedUnionCases>]

@@ -1,4 +1,7 @@
-﻿module Microsoft.Research.CliCRN
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+module Microsoft.Research.CliCRN
 
 open Microsoft.Research.CRNEngine
 open Microsoft.Research.CliLibrary

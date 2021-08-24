@@ -1,4 +1,7 @@
-﻿module Microsoft.Research.DNA.SequenceCalc
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+module Microsoft.Research.DNA.SequenceCalc
 open Microsoft.Research.DNA
 
 open Microsoft.Research.DNA.Measures

@@ -1,4 +1,7 @@
-﻿namespace proxies
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+namespace proxies
 
 open WebSharper
 open WebSharper.JavaScript

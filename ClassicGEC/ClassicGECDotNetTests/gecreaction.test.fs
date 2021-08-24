@@ -1,4 +1,7 @@
-﻿module Microsoft.Research.GEC.GecreactionTest
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+module Microsoft.Research.GEC.GecreactionTest
 
 open Microsoft.Research.GEC.Gecreaction
 

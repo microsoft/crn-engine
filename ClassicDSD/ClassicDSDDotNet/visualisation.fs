@@ -1,3 +1,6 @@
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
 [<JavaScript>]
 module Microsoft.Research.DNA.Visualisation
 open Microsoft.Research.DNA

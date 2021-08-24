@@ -1,4 +1,7 @@
-﻿module parsingTests
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+module parsingTests
 
 open Xunit
 open FsUnit

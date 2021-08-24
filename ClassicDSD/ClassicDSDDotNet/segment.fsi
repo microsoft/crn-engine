@@ -1,3 +1,6 @@
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
 module Microsoft.Research.DNA.Segment
 open Microsoft.Research.DNA
 open Microsoft.Research.CRNEngine

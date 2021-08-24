@@ -1,4 +1,7 @@
-﻿module Microsoft.Research.CRNEngine.Tests.ExpressionTest
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+module Microsoft.Research.CRNEngine.Tests.ExpressionTest
 open Xunit
 open FsUnit.Xunit
 open Microsoft.Research.CRNEngine.Expression

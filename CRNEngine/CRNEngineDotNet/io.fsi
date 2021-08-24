@@ -1,4 +1,7 @@
-﻿module Microsoft.Research.CRNEngine.Io
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+module Microsoft.Research.CRNEngine.Io
 
 #if JavaScript
 //This probably won't work in JavaScript...

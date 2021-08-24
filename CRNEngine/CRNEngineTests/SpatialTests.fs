@@ -1,4 +1,7 @@
-﻿module Microsoft.Research.CRNEngine.Tests.SpatialTests
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+module Microsoft.Research.CRNEngine.Tests.SpatialTests
 
 open Xunit
 open FsUnit

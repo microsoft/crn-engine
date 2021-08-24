@@ -1,4 +1,7 @@
-﻿module Microsoft.Research.CRNEngineServerLib.Parse
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+module Microsoft.Research.CRNEngineServerLib.Parse
 
 open Microsoft.Research.CRNEngineServerLib.Serialisation
 open System.Net.WebSockets

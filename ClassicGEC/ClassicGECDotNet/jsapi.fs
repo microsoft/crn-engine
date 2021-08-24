@@ -1,4 +1,7 @@
-﻿[<JavaScriptExport>]
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+[<JavaScriptExport>]
 module Microsoft.Research.GEC.JSAPI
 
 open Microsoft.Research.GEC.GECEngine

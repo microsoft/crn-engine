@@ -1,4 +1,7 @@
-﻿module Microsoft.Research.DNA.Pattern
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+module Microsoft.Research.DNA.Pattern
 open Microsoft.Research.DNA
 
 type value = Value.t

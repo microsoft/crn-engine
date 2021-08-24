@@ -1,4 +1,7 @@
-﻿module modelGenerationTests
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+module modelGenerationTests
 
 
 open Xunit

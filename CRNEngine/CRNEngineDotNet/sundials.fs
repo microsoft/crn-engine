@@ -1,4 +1,7 @@
-﻿module Microsoft.Research.CRNEngine.Sundials
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+module Microsoft.Research.CRNEngine.Sundials
 
 open System.Runtime.InteropServices
 open System.Security
