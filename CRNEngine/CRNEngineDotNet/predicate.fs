@@ -1,4 +1,7 @@
-﻿module predicate
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+module predicate
 
 (*
 type 'key pred when 'key:equality =

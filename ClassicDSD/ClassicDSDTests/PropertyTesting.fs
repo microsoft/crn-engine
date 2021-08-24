@@ -1,4 +1,7 @@
-﻿module Microsoft.Research.DNA.PropertyTesting
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+module Microsoft.Research.DNA.PropertyTesting
 
 open FsUnit
 open FsUnit.Xunit

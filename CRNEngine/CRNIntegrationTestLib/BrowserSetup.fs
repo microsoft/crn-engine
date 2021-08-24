@@ -1,4 +1,7 @@
-﻿module Microsoft.Research.CRNIntegrationTestLib.BrowserSetup
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+module Microsoft.Research.CRNIntegrationTestLib.BrowserSetup
 
 open System
 open canopy

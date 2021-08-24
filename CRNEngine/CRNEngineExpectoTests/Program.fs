@@ -1,4 +1,7 @@
-﻿open Expecto
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+open Expecto
 
 open Microsoft.Research.CRNEngine
 open System

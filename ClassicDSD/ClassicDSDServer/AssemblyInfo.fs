@@ -1,4 +1,7 @@
-﻿namespace ClassicDSDServer.AssemblyInfo
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+namespace ClassicDSDServer.AssemblyInfo
 
 open System.Reflection
 open System.Runtime.CompilerServices

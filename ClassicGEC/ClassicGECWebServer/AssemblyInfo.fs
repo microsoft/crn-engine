@@ -1,4 +1,7 @@
-﻿namespace ClassicGECWebServer.AssemblyInfo
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+namespace ClassicGECWebServer.AssemblyInfo
 
 open System.Reflection
 open System.Runtime.CompilerServices

@@ -1,4 +1,7 @@
-﻿import * as Interfaces from './Interfaces';
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+import * as Interfaces from './Interfaces';
 import * as Internals from './InternalInterfaces';
 
 importScripts("WebWorkerSafeChecks.js");

@@ -1,4 +1,7 @@
-﻿module RulesDSD.ResolutionTests
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+module RulesDSD.ResolutionTests
 
 open FsUnit
 open Xunit

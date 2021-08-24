@@ -1,4 +1,7 @@
-﻿[<JavaScript>]
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+[<JavaScript>]
 module Microsoft.Research.DNA.CirclesRenderer
 open Microsoft.Research.DNA.LogicDSD
 open Microsoft.Research.DNA.Species

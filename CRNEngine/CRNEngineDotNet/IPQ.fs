@@ -1,4 +1,7 @@
-﻿[<JavaScript>]
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+[<JavaScript>]
 module Microsoft.Research.CRNEngine.IPQ
 
 (* A treap is either empty or a node with children and a priority *)

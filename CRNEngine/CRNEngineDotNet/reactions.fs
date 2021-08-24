@@ -1,4 +1,7 @@
-﻿namespace Microsoft.Research.CRNEngine
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+namespace Microsoft.Research.CRNEngine
 [<JavaScript>]
 type Reactions<'s ,'v,'e> when 's:equality and 'v:equality and 'e:equality =
   {list:Reaction<'s,'v,'e> list} //Dummy type

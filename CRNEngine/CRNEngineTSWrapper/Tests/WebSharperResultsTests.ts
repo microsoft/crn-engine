@@ -1,4 +1,7 @@
-﻿import Config = require('./Config');
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+import Config = require('./Config');
 
 declare var Microsoft: any;
 

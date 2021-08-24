@@ -1,4 +1,7 @@
-﻿namespace Microsoft.Research.CRNEngine
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+namespace Microsoft.Research.CRNEngine
 [<JavaScript>] 
 type Calculus<'s> when 's : comparison = 
   { react : 's list -> 's -> Reaction<'s,Value,Expression.t<Key<'s>>> list }

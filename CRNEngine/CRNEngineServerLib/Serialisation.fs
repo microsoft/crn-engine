@@ -1,4 +1,7 @@
-﻿module Microsoft.Research.CRNEngineServerLib.Serialisation
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+module Microsoft.Research.CRNEngineServerLib.Serialisation
 
 open System
 open System.Threading

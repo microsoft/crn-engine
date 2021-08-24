@@ -1,4 +1,7 @@
-﻿module Microsoft.Research.CRNEngineServerLib.Utility
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+module Microsoft.Research.CRNEngineServerLib.Utility
 
 // Lock on this object to make printfn thread-safe.
 let private lockobj = new obj()

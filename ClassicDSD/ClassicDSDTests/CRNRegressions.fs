@@ -1,4 +1,7 @@
-﻿module Microsoft.Research.DNA.CRNRegressions
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+module Microsoft.Research.DNA.CRNRegressions
 
 open System.IO
 open FsUnit

@@ -1,3 +1,6 @@
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
 (* Produce long strings relatively efficiently without too much allocation. *)
 
 [<JavaScript>]

@@ -1,4 +1,7 @@
-﻿module deviceEnumerationTests
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+module deviceEnumerationTests
 
 open Xunit
 open FsUnit

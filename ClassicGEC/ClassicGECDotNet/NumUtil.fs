@@ -1,4 +1,7 @@
-﻿module Microsoft.Research.GEC.NumUtil
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+module Microsoft.Research.GEC.NumUtil
 
 #if JavaScript
 

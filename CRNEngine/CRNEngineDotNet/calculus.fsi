@@ -1,4 +1,7 @@
-﻿module Microsoft.Research.CRNEngine.Calculus
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+module Microsoft.Research.CRNEngine.Calculus
 
 type value = Expression.t<string>
 type key<'k> = Key.t<'k>

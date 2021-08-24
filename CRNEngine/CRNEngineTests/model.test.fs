@@ -1,4 +1,7 @@
-﻿module Microsoft.Research.CRNEngine.Tests.ModelTest
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+module Microsoft.Research.CRNEngine.Tests.ModelTest
 open Microsoft.Research.CRNEngine
 open Microsoft.Research.CRNEngine.Api
 open Xunit

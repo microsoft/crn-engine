@@ -1,4 +1,7 @@
-﻿//PhantomJS which is used in build agent test environment does not have console. Placing a stub here, so the scripts calling console won't crash
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+//PhantomJS which is used in build agent test environment does not have console. Placing a stub here, so the scripts calling console won't crash
 if (typeof console === "undefined")
     console = <any>{
         assert: (test?: boolean, message?: string, ...optionalParams: any[]) => { throw "Assertion not supported";},

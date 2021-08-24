@@ -1,4 +1,7 @@
-﻿import CodePad from "../../../HTML5SharedGUI/CodeEditor/Scripts/CodePad";
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+import CodePad from "../../../HTML5SharedGUI/CodeEditor/Scripts/CodePad";
 import { INamedMonarchLanguage } from '../../../HTML5SharedGUI/CodeEditor/Scripts/CodeEditor';
 
 class GECCodeEditor extends CodePad {

@@ -1,4 +1,7 @@
-﻿//[<JavaScript>]
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+//[<JavaScript>]
 namespace Microsoft.Research.CRNEngine
 open Top
 

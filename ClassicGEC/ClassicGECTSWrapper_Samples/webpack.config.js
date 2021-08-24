@@ -1,4 +1,7 @@
-﻿"use strict";
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+"use strict";
 var webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var CleanWebpackPlugin = require('clean-webpack-plugin');

@@ -1,4 +1,7 @@
-﻿[<JavaScript>]
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+[<JavaScript>]
 module Microsoft.Research.CRNEngine.LegacyParser
 
 // parses a CRN written in the deprecated Silver Light version of the CRN tool, and updates it to the new syntax

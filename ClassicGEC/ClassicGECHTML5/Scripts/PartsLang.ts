@@ -1,4 +1,7 @@
-﻿var PartsLanguage = {
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+var PartsLanguage = {
     displayName: 'GECParts',       // start by writing your language name here
     name: 'GECParts',
     mimeTypes: ['text/x-crn'],

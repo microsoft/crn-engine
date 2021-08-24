@@ -1,4 +1,7 @@
-﻿// Import the generic Worker. Note that here I'm importing it as a regular module, rather than as a web worker constructor (i.e. via worker-loader).
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+// Import the generic Worker. Note that here I'm importing it as a regular module, rather than as a web worker constructor (i.e. via worker-loader).
 import * as CRNEngineWorker from "../../../CRNEngine/CRNEngineTSWrapper/Scripts/CRNEngine.worker";
 import { WebSharperGeneratedInterfaces as WGI } from "./WebSharperGeneratedInterfaces";
 import * as Interfaces from "./Interfaces";

@@ -1,3 +1,6 @@
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
 //These interfaces are code generated from F#, any changes to this file will be lost.
 export namespace WebSharperGeneratedInterfaces {
 

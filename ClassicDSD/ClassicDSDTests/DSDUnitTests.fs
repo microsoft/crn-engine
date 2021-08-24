@@ -1,4 +1,7 @@
-﻿module Microsoft.Research.DNA.DSDUnitTests
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+module Microsoft.Research.DNA.DSDUnitTests
 
 open FsUnit
 open Xunit

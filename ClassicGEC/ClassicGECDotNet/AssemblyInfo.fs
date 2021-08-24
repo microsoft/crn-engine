@@ -1,4 +1,7 @@
-﻿namespace ClassicGECDotNet.AssemblyInfo
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+namespace ClassicGECDotNet.AssemblyInfo
 
 open System.Reflection
 open System.Runtime.CompilerServices

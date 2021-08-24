@@ -1,4 +1,7 @@
-﻿module Microsoft.Research.DNA.TestUtils
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+module Microsoft.Research.DNA.TestUtils
 
 // open FsUnit.Xunit
 open FsUnit

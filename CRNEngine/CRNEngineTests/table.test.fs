@@ -1,4 +1,7 @@
-﻿module Microsoft.Research.CRNEngine.Tests.TableTest
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+module Microsoft.Research.CRNEngine.Tests.TableTest
 open Xunit
 open FsUnit.Xunit
 open Microsoft.Research.CRNEngine

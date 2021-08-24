@@ -1,4 +1,7 @@
-﻿module Microsoft.Research.CRNEngine.Tests.CMETest
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+module Microsoft.Research.CRNEngine.Tests.CMETest
 
 open Xunit
 open FsUnit

@@ -1,4 +1,7 @@
-﻿module Microsoft.Research.GEC.Hypothesis
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+module Microsoft.Research.GEC.Hypothesis
 
 open Parser
 open Microsoft.Research.CRNEngine

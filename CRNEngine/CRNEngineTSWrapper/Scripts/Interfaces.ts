@@ -1,4 +1,7 @@
-﻿import { WebSharperGeneratedInterfaces as WGI } from "./WebSharperGeneratedInterfaces";
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+import { WebSharperGeneratedInterfaces as WGI } from "./WebSharperGeneratedInterfaces";
 export type CRN = WGI.Microsoft.Research.CRNEngine.Gui;
 export type Model = WGI.Microsoft.Research.CRNEngine.GuiModel;
 export type IG = WGI.Microsoft.Research.CRNEngine.GuiIG;

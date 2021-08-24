@@ -1,4 +1,7 @@
-﻿module Microsoft.Research.DNA.CalculusTests
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+module Microsoft.Research.DNA.CalculusTests
 
 open FsUnit
 open FsUnit.Xunit

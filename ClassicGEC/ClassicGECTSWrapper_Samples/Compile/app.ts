@@ -1,4 +1,7 @@
-﻿import ClassicGEC from "../../ClassicGECTSWrapper/Scripts/ClassicGEC";
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+import ClassicGEC from "../../ClassicGECTSWrapper/Scripts/ClassicGEC";
 import * as CRNInterfaces from "../../../CRNEngine/CRNEngineTSWrapper/Scripts/Interfaces";
 import "../samples.css"
 

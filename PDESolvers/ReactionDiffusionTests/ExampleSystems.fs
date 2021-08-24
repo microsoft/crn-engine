@@ -1,4 +1,7 @@
-﻿module ExampleSystems
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+module ExampleSystems
 
 open Xunit
 open FsUnit

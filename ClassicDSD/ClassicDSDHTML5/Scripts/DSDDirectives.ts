@@ -1,4 +1,7 @@
-﻿import { ExternalSetting as ExternalSetting, CRN as CRN } from '../../../HTML5SharedGUI/CRNComponent/Scripts/crnVM';
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+import { ExternalSetting as ExternalSetting, CRN as CRN } from '../../../HTML5SharedGUI/CRNComponent/Scripts/crnVM';
 import { DsdSettings as DsdSettings } from '../../ClassicDSDTSWrapper/Scripts/Interfaces';
 import * as DsdInterfaces from '../../ClassicDSDTSWrapper/Scripts/WebSharperGeneratedInterfaces';
 import * as ko from "knockout";

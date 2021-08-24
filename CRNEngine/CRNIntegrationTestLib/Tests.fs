@@ -1,4 +1,7 @@
-﻿module Microsoft.Research.CRNIntegrationTestLib.Tests
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+module Microsoft.Research.CRNIntegrationTestLib.Tests
 
 open System
 open Expecto

@@ -1,4 +1,7 @@
-﻿module RulesDSD.ParserTests
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+module RulesDSD.ParserTests
 
 open FsUnit
 open Xunit

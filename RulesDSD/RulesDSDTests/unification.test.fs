@@ -1,4 +1,7 @@
-﻿module RulesDSD.UnificationTests
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+module RulesDSD.UnificationTests
 
 open FsUnit
 open Xunit

@@ -1,4 +1,7 @@
-﻿module Tests
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+module Tests
 
 open Expecto
 open canopy

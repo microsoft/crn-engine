@@ -1,4 +1,7 @@
-﻿//F# 4.0
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+//F# 4.0
 
 [<CompilationRepresentation(CompilationRepresentationFlags.ModuleSuffix)>]
 [<RequireQualifiedAccess>]

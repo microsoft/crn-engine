@@ -1,4 +1,7 @@
-﻿module RulesDSD.IntegrationTests
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+module RulesDSD.IntegrationTests
 
 open FsUnit
 open Xunit

@@ -1,3 +1,6 @@
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
 #ifndef __EMSCRIPTEN__
 #if defined(_MSC_VER)
 //  Microsoft 

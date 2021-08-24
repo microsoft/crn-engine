@@ -1,4 +1,7 @@
-﻿[<JavaScript>]
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+[<JavaScript>]
 module Microsoft.Research.ReactionDiffusion.Solver
 
 let DotProduct a b = Array.fold2 (fun s ai bi -> s + ai * bi) 0.0 a b

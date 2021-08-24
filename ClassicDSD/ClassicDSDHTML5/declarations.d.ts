@@ -1,4 +1,7 @@
-﻿declare module "raw-loader*"
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+declare module "raw-loader*"
 declare module "idd" {
     var InteractiveDataDisplay: any;
     export = InteractiveDataDisplay;

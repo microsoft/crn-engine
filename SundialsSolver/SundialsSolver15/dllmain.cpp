@@ -1,3 +1,6 @@
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
 // dllmain.cpp : Defines the entry point for the DLL application.
 #include "stdafx.h"
 

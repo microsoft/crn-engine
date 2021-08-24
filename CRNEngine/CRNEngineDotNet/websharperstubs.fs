@@ -1,4 +1,7 @@
-﻿namespace global
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+namespace global
 
 //These abbreviations map to the real WebSharper types.
 

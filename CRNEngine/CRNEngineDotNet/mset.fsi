@@ -1,4 +1,7 @@
-﻿module Microsoft.Research.CRNEngine.Mset
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+module Microsoft.Research.CRNEngine.Mset
 
 type entry<'a> = {
   element:'a;

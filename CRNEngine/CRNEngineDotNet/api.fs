@@ -1,4 +1,7 @@
-﻿[<JavaScript>]
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+[<JavaScript>]
 module Microsoft.Research.CRNEngine.Api
 
 let (<->) rev fwd = Some (Rate.MassAction rev), Rate.MassAction fwd

@@ -1,4 +1,7 @@
-﻿module Microsoft.Research.DNA.BranchesRenderer
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+module Microsoft.Research.DNA.BranchesRenderer
 open Microsoft.Research.CRNEngine
 open Microsoft.Research.DNA.Options
 

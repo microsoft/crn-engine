@@ -1,4 +1,7 @@
-﻿
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+
 //We have to use the slow attribute once in each test project or the test fail on CI
 //(this likely to get fixed so periodically try removing this!)
 //Related to:

@@ -1,4 +1,7 @@
-﻿import * as GenericDSDParser from '../../../../HTML5SharedGUI/HTML5DSD_Generic/Scripts/Adapters/GenericDSDParser';
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+import * as GenericDSDParser from '../../../../HTML5SharedGUI/HTML5DSD_Generic/Scripts/Adapters/GenericDSDParser';
 import DSD from '../../../ClassicDSDTSWrapper/Scripts/ClassicDSD';
 import * as Interfaces from '../../../ClassicDSDTSWrapper/Scripts/Interfaces';
 import DSDParsingOptions from '../DSDParsingOptions';

@@ -1,4 +1,7 @@
-﻿module Microsoft.Research.GEC.Subst
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+module Microsoft.Research.GEC.Subst
 
 open Microsoft.Research.GEC
 

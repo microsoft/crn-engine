@@ -1,4 +1,7 @@
-﻿module Microsoft.Research.FSBOL.SequenceTest
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+module Microsoft.Research.FSBOL.SequenceTest
 
 open Microsoft.Research.FSBOL.Sequence
 open Microsoft.Research.FSBOL.Terms

@@ -1,4 +1,7 @@
-﻿module Microsoft.Research.CRNEngine.Pde
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+module Microsoft.Research.CRNEngine.Pde
 open WebSharper;
 
 type lambda = Lambda<Inlined<int>>

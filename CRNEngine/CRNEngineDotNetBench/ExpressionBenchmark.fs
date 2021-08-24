@@ -1,4 +1,7 @@
-﻿namespace CRNEngineDotNetBench
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+namespace CRNEngineDotNetBench
 
 open BenchmarkDotNet
 open BenchmarkDotNet.Attributes

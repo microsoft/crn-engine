@@ -1,4 +1,7 @@
-﻿import ClassicDSD from "../../ClassicDSDTSWrapper/Scripts/ClassicDSD";
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+import ClassicDSD from "../../ClassicDSDTSWrapper/Scripts/ClassicDSD";
 import * as Interfaces from "../../ClassicDSDTSWrapper/Scripts/Interfaces";
 import * as CRNInterfaces from "../../../CRNEngine/CRNEngineTSWrapper/Scripts/Interfaces";
 import "../samples.css"

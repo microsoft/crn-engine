@@ -1,4 +1,7 @@
-﻿// This file contains the interfaces for the messages exchanged by the background threads and the main thread.
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+// This file contains the interfaces for the messages exchanged by the background threads and the main thread.
 import * as I from "./Interfaces";
 
 export type WorkerResponse_Error = { mtype: "error", error: I.Error }

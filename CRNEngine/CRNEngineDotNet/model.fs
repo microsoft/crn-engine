@@ -1,4 +1,7 @@
-﻿//module Microsoft.Research.CRNEngine.Model
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+//module Microsoft.Research.CRNEngine.Model
 namespace Microsoft.Research.CRNEngine
 open Operators
 open Inference

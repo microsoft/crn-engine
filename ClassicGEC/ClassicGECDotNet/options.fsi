@@ -1,4 +1,7 @@
-﻿module Microsoft.Research.GEC.Options
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+module Microsoft.Research.GEC.Options
 
 type t
 val default_options : t

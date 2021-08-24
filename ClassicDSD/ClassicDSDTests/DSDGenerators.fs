@@ -1,4 +1,7 @@
-﻿module Microsoft.Research.DNA.DSDGenerators
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+module Microsoft.Research.DNA.DSDGenerators
 
 open FsCheck
 

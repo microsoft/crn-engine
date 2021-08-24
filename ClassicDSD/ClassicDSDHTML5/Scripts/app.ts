@@ -1,4 +1,7 @@
-﻿import { Launch as Bootstrap } from '../../../HTML5SharedGUI/HTML5DSD_Generic/Scripts/GenericApp';
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+import { Launch as Bootstrap } from '../../../HTML5SharedGUI/HTML5DSD_Generic/Scripts/GenericApp';
 import { Parser as NotExpandingParser } from './Adapters/DSDCRNUnexpandedParser';
 import { Parser as ExpandingParser } from './Adapters/DSDCRNExpandedParser';
 import { INamedMonarchLanguage } from '../../../HTML5SharedGUI/CodeEditor/Scripts/CodeEditor';

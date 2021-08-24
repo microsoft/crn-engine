@@ -1,4 +1,7 @@
-﻿module Microsoft.Research.CRNIntegrationTestLib.Program
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+module Microsoft.Research.CRNIntegrationTestLib.Program
 
 open System
 open BrowserSetup

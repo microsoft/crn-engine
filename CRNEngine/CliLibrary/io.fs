@@ -1,4 +1,7 @@
-﻿module Microsoft.Research.CliLibrary.Io
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+module Microsoft.Research.CliLibrary.Io
 
 module Stringbuilder = Microsoft.Research.CRNEngine.Stringbuilder
 

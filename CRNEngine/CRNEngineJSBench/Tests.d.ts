@@ -1,3 +1,6 @@
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
 declare var Papa: any;
 declare class Tests {
     private static program_simulate_oslo_am;

@@ -1,4 +1,7 @@
-﻿module Microsoft.Research.CRNEngineServerLib.Exports
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+module Microsoft.Research.CRNEngineServerLib.Exports
 
 open Microsoft.Research.CRNEngineServerLib.Serialisation
 open System.Net.WebSockets

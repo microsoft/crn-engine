@@ -1,4 +1,7 @@
-﻿module Microsoft.Research.ClassicDSDServer.DSD
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+module Microsoft.Research.ClassicDSDServer.DSD
 
 open System.Net.WebSockets
 open Messages
