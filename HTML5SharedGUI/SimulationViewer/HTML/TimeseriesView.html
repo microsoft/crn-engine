@@ -1,0 +1,142 @@
+﻿<div class="c-toolbar">
+    <!-- ko if: Filter != null && Filter.vm.IsAnyVisible() -->
+    <!-- ko with: Filter.vm -->
+    <multi-instances-filter-view class="c-toolbar__item"></multi-instances-filter-view>
+    <!-- /ko -->
+    <!-- /ko -->
+    <dropdown class="c-toolbar__item">
+        <dropdownheader data-bind="style: { 'color': PlotCountCapExceeded() ? 'red' : undefined }">Plots</dropdownheader>
+        <dropdowncontent>
+            <div class="c-dropdown__item">
+                <label data-bind="style: { 'color': PlotCountCapExceeded() ? 'red' : undefined }">
+                    Max:
+                    <input type="number" data-bind="value: PlotCountCap" />
+                </label>
+            </div>
+            <div class="c-dropdown__item">
+                <label><input type="checkbox" data-bind="checked: SelectedAllVisible" /><strong>All</strong></label>
+            </div>
+            <!-- ko foreach: FilteredPlottables -->
+            <div class="c-dropdown__item">
+                <label>
+                    <input type="checkbox" data-bind="checked: IsVisible" />
+                    <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="15" height="15">
+                        <line x0="0px" x1="15px" y0="0px" y1="15px" stroke-width="2px" data-bind="attr: { stroke: Colour.Hex() }"></line>
+                    </svg>
+                    <span data-bind="text: VisibleName"></span>
+                </label>
+            </div>
+            <!-- /ko -->
+        </dropdowncontent>
+    </dropdown>
+    <dropdown class="c-toolbar__item">
+        <dropdownheader>Colours</dropdownheader>
+        <dropdowncontent data-bind="foreach: FilteredPlottables">
+            <!-- ko if: IsVisible-->
+            <!-- ko with: Colour -->
+            <tracecoloureditor class="c-dropdown__item"></tracecoloureditor>
+            <!-- /ko -->
+            <!-- /ko -->
+        </dropdowncontent>
+    </dropdown>
+    <!-- ko if: AllSpeciesAreBoundsAvailable() -->
+    <div class="c-toolbar__item">
+        <input type="checkbox" data-bind="checked: AreBoundsEnabled" />
+        <label>Bounds</label>
+    </div>
+    <!-- /ko -->
+    <!-- ko if: AllSpeciesHaveStructural() -->
+    <div class="c-toolbar__item">
+        <input type="checkbox" data-bind="checked: AreNamesEnabled" />
+        <label>Names</label>
+    </div>
+    <!-- /ko -->
+    <div class="c-toolbar__item">
+        <input type="checkbox" data-bind="checked: IsLegendVisible" />
+        <label>Legend</label>
+    </div>
+    <div class="c-toolbar__item">
+        <input type="checkbox" data-bind="checked: IsGridVisible" />
+        <label>Grid</label>
+    </div>
+    <button data-bind="click: CaptureSVG" class="c-toolbar__item--btn">Save</button>
+    <!-- ko if: Progress != null -->
+    <!-- ko with: Progress -->
+    <sim-progress-view class="c-toolbar__item"></sim-progress-view>
+    <!-- /ko -->
+    <!-- /ko -->
+</div>
+<div data-idd-plot="figure" class="c-sim-plot-container" data-bind="iddYAxisSettings: YTicks, iddXAxisSettings: XTicks, iddAutoFitMode: AutoFitString" data-idd-style="padding: 0">
+    <div data-idd-plot='grid' data-idd-placement='center' data-bind="visible: IsGridVisible"></div>
+
+    <div class="j-bottom-axis" data-idd-axis="numeric" data-idd-placement="bottom"></div>
+    <div class="j-left-axis" data-idd-axis="numeric" data-idd-placement="left"></div>
+
+    <div class="idd-horizontalTitle" data-idd-placement='top' data-bind="text: PlotTitle, style: { fontSize: labelSize() }, visible: PlotTitle() != '' && PlotTitle() != null"></div>
+    <div class="idd-horizontalTitle" data-idd-placement='bottom' data-bind="text:XLabel, style: { fontSize: labelSize() }"></div>
+    <div class="idd-verticalTitle" data-idd-placement="left">
+        <div class="idd-verticalTitle-inner" data-bind="text:YLabel, style: { fontSize: labelSize() }"></div>
+    </div>
+    <div data-idd-plot="plot">
+        <!-- this  -->
+        <div class="idd-legend-visibility-wrapper" data-bind="visible: IsLegendVisible">
+            <div class="idd-legend-cover"></div>
+        </div>
+        <!-- ko foreach: FilteredPlottables -->
+        <!-- ko if: IsVisible() && HasObservations() -->
+        <div data-idd-plot="markers"
+             data-bind="iddX: ObservationTimes,
+                            iddY: ObservationCounts,
+                            iddSize: 6,
+                            iddPlotName: ObservationName + ' (Measured)',
+                            iddColor: Colour.Hex(),
+                            iddShape: 'circle',
+                            iddPlotOrder: $parent.FilteredPlottables().length*2 - $index()*2  - 3">
+        </div>
+        <!-- /ko -->
+        <!-- ko if: IsVisible() && (!$parent.AreBoundsEnabled() || !BoundsAvailable()) -->
+        <div data-idd-plot="polyline"
+             data-bind="
+             iddX: Times,
+             iddY: Counts,
+             iddStroke: Colour.Hex(),
+             iddThickness: 3,
+             iddPlotName: $parent.AreNamesEnabled()?DisplayName():DisplayStructural(),
+             iddPlotOrder: $parent.FilteredPlottables().length*2 - $index()*2  - 2">
+        </div>
+        <!-- /ko -->
+        <!-- ko if: $parent.AreBoundsEnabled() && BoundsAvailable() && IsVisible() -->
+        <div data-idd-plot="polyline"
+             data-bind="
+             iddX: Times,
+             iddYMedian: Counts,
+             iddLower68: LowerCounts,
+             iddUpper68: UpperCounts,
+             iddStroke: Colour.Hex(),
+             iddFill68: Colour.TransparentRGBA(),
+             iddThickness: 3,
+             iddPlotName: $parent.AreNamesEnabled()?DisplayName():DisplayStructural(),
+             iddPlotOrder: $parent.FilteredPlottables().length*2 - $index()*2  - 2">
+        </div>
+        <!-- /ko -->
+        <!-- /ko -->
+        <!-- ko foreach: VBoundaries -->
+        <div data-idd-plot="boundaryLine"
+             data-bind="iddX: $data,
+                        iddThickness: 2,
+                        iddLineDash: 'dash',
+                        iddPlotOrder: 1000,
+                        iddStroke: 'black'">
+        </div>
+        <!-- /ko -->
+        <!-- ko foreach: HBoundaries -->
+        <div data-idd-plot="boundaryLine"
+             data-bind="iddY: $data,
+                        iddThickness: 2,
+                        iddLineDash: 'dash',
+                        iddPlotOrder: 1000,
+                        iddStroke: 'black'">
+        </div>
+        <!-- /ko -->
+    </div>
+</div>

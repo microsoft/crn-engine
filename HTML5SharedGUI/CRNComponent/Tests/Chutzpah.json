@@ -1,0 +1,15 @@
+﻿{
+  "Framework": "jasmine",
+  "TestHarnessReferenceMode": "AMD",
+  "TestFileTimeout": "300000",
+  "TestHarnessLocationMode": "SettingsFileAdjacent",
+  "AMDBaseUrl": "../",
+  "AMDAppDirectory": "../",
+  "References": [
+    { "Path": "https://cdnjs.cloudflare.com/ajax/libs/require.js/2.2.0/require.min.js" },
+    { "Path": "../Samples/Config.js" },    
+  ],
+  "Tests": [
+    { "Path": "./", "Include": "*Tests.js"}
+  ]
+}

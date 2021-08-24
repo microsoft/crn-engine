@@ -1,0 +1,27 @@
+﻿<!-- ko if: Content() != null && Content().length > 0 -->
+    <!-- ko if: ContentType() == 'text/plain' -->
+        <textarea class="c-export--text" data-bind="text: JoinedContent" title="CRN Code" readonly></textarea>
+    <!-- /ko -->
+    <!-- ko if: ContentType() != 'text/plain' -->
+        <button data-bind="click: saveAs, visible: CanSave">Save</button>
+        <!-- ko if: Content().length == 1 -->
+            <div class="c-export--svg" data-bind="html: JoinedContent"></div>
+        <!-- /ko -->
+        <!-- ko if: Content().length > 1 -->
+            <span>Items on page: </span>
+            <select data-bind="value: PageSize">
+                <option value="10">10</option>
+                <option value="25">25</option>
+                <option value="50">50</option>
+                <option value="100">100</option>
+            </select>
+            <span>Page:</span>
+            <!-- ko foreach: Pages() -->
+                <a href="#" class="c-export__page-selector" data-bind="text: $data, click: function() { $parent.SetPage($data); }, style: { backgroundColor: ($data == $parent.CurrentPageNumber() + 1) ? 'rgb(170,170,170)' : '' }"></a>
+            <!-- /ko -->
+            <!-- ko foreach: CurrentPage() -->
+                <div class="c-export--svg" data-bind="html: $data"></div>
+            <!-- /ko -->
+        <!-- /ko -->
+    <!-- /ko -->
+<!-- /ko -->

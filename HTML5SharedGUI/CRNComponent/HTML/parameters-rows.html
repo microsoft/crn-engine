@@ -1,0 +1,41 @@
+﻿<template id="parameters-template" type="text/html">
+    <td class="s-crn__cell c-parameters__name">
+        <input type="text" class="s-crn__edit" data-bind="value: name" />
+    </td>
+    <td class="s-crn__cell c-parameters__value">
+        <input type="text" class="s-crn__edit c-parameters__value" data-bind="value: value" />
+    </td>
+    <td class="s-crn__cell c-parameters__select">
+        <select class="s-crn__edit c-parameters__select" data-bind="options: distributionSelect, value: distribution"></select>
+    </td>
+    <td class="s-crn__cell c-parameters__value">
+        <input type="text" class="s-crn__edit c-parameters__value" data-bind="value: min" />
+    </td>
+    <td class="s-crn__cell c-parameters__value">
+        <input type="text" class="s-crn__edit c-parameters__value" data-bind="value: max" />
+    </td>
+    <td class="s-crn__cell c-parameters__value">
+        <input type="text" class="s-crn__edit c-parameters__value" data-bind="value: mean" />
+    </td>
+    <td class="s-crn__cell c-parameters__value">
+        <input type="text" class="s-crn__edit c-parameters__value" data-bind="value: stdev" />
+    </td>
+    <td class="s-crn__cell c-parameters__select">
+        <select class="s-crn__edit c-parameters__select" data-bind="options: intervalSelect, value: interval"></select>
+    </td>
+    <td class="s-crn__cell c-parameters__select">
+        <select class="s-crn__edit c-parameters__select" data-bind="options: variationSelect, value: variation"></select>
+    </td>
+</template>
+
+<template id="parameters-header" type="text/html">
+    <th class="s-crn__cell c-parameters__name">Name</th>
+    <th class="s-crn__cell c-parameters__value">Value</th>
+    <th class="s-crn__cell c-parameters__select">Distribution</th>
+    <th class="s-crn__cell c-parameters__value">Min</th>
+    <th class="s-crn__cell c-parameters__value">Max</th>
+    <th class="s-crn__cell c-parameters__value">Mean</th>
+    <th class="s-crn__cell c-parameters__value">Stdev</th>
+    <th class="s-crn__cell c-parameters__select">Interval</th>
+    <th class="s-crn__cell c-parameters__select">Variation</th>
+</template>

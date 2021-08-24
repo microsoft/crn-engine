@@ -260,12 +260,14 @@ let defaultProcessRequest (webSocket:WebSocket) (mtype:string) (json:string) (ca
             let getProbabilities = WebSharper.Json.Deserialize<Messages.Request_GetProbabilityMap> json
             let map = JSAPI.getProbabilityMap getProbabilities.probabilities getProbabilities.species getProbabilities.lowerBound
             sendObject webSocket { mtype = "probabilitymap" ; map = map }
+        (*
         | "synthesis" ->
             let synthesis = WebSharper.Json.Deserialize<Messages.Request_Synthesis> json
             Synthesis.processSynthesisRequest synthesis.model synthesis.nodeId synthesis.crnId webSocket
         | "bistability" ->
             let bistability = WebSharper.Json.Deserialize<Messages.Request_Bistability> json
             Synthesis.processGetBistabilityPlot bistability.crn bistability.solution bistability.spX bistability.spY bistability.numPoints webSocket
+        *)
         | "getcloudcapabilities" ->
             sendObject webSocket { mtype= "pools" ; account = Azure.batchAccountName ; pools = Azure.getPoolNames() |> Seq.toArray };
         | "getjobs" ->

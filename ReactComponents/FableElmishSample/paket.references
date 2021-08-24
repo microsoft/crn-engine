@@ -1,0 +1,3 @@
+group DOTNETCORE
+    dotnet-fake
+    dotnet-fable

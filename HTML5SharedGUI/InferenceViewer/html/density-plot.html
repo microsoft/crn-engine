@@ -1,0 +1,37 @@
+﻿<div class="c-toolbar">
+    <div class="c-toolbar__item">
+        <label>Plot: </label>
+        <select data-bind="options: names, value: selected, event: { change: onSelectedNameChanged }"></select>
+    </div>
+    <div class="c-toolbar__item">
+        <label>Bins: </label>
+        <select data-bind="options: AvailableBands, value: Bands"></select>
+    </div>
+    <div class="c-toolbar__item">
+        <label>log X</label>
+        <input type="checkbox" data-bind="checked: logX" />
+    </div>
+
+    <button class="c-toolbar__item--btn" data-bind="click: CaptureSVG" style="margin-right: 20px">Save</button>
+
+    <!-- ko if: Progress != null -->
+    <!-- ko with: Progress -->
+    <inference-progress class="c-toolbar__item"></inference-progress>
+    <!-- /ko -->
+    <!-- /ko -->
+</div>
+<div data-idd-plot="figure" class="c-inf-plot-container" data-idd-style="padding: 0">
+    <div data-idd-plot='grid' data-idd-placement='center'></div>
+
+    <div class="j-dp__bottomaxis" data-idd-axis="numeric" data-idd-placement="bottom" data-bind="iddAxisSettings:XTicks"></div>
+    <div class="j-dp__leftaxis" data-idd-axis="numeric" data-idd-placement="left" data-bind="iddAxisSettings:YTicks"></div>
+
+    <div data-idd-plot="plot">
+        <!--<div data-idd-plot="area" data-bind="visible: UseKDE, iddX: KDEX, iddY1: KDEY1, iddY2: KDEY2, iddFill: 'blue'">
+        </div>
+        <div data-idd-plot="markers" data-bind="visible: !UseKDE(), iddX: HistX, iddY: HistY, iddColor: 'dimgrey', iddBarWidth: BarWidth, iddOrientation: 'v', iddShadow: 'none', iddShape: 'bars'"></div>-->
+        <div data-idd-plot="markers" data-bind="iddX: HistX, iddY: HistY, iddColor: 'dimgrey', iddBarWidth: BarWidth, iddOrientation: 'v', iddShadow: 'none', iddShape: 'bars', iddXlog: logX"></div>
+        <div data-idd-plot="polyline" class="density-lower-bound" data-idd-style="ignored-by-fit-to-view: true" data-bind="iddX: ParameterLowerX, iddY: ParameterBoundY, iddStroke: 'blue', iddXlog: logX"></div>
+        <div data-idd-plot="polyline" class="density-upper-bound" data-idd-style="ignored-by-fit-to-view: true" data-bind="iddX: ParameterUpperX, iddY: ParameterBoundY, iddStroke: 'blue', iddXlog: logX"></div>
+    </div>
+</div>

@@ -1,0 +1,72 @@
+/* The multi-instances filter. */
+multi-instances-filter-view {
+    display: flex;
+}
+
+/* The single-instance filter. */
+single-species-filter-view {
+    display: flex;
+}
+
+/* The custom control for the time series IDD-based viewer. */
+species-timeseries-view {
+    display: block;
+    height: 100%;
+}
+
+/* A header of the sim results table. */
+.c-sim-table__header {
+    padding-left: 2px;
+}
+
+/* A cell of the sim results table. */
+.c-sim-table__cell {
+    padding-left: 2px;
+}
+
+/* The simulation progress bar control. I'm giving it flex-grow because it's in the toolbars and I want it to occupy all remaining space. */
+sim-progress-view {
+    flex-grow: 1;
+}
+
+/* The main container of the simulation progress bar control. */
+.c-sim-progress {
+    float: right;
+    flex-direction: row;
+}
+
+/* The progress control of the simulation progress bar. */
+.c-sim-progress__bar {
+    width: 200px;
+}
+
+/* The container for the IDD chart for a simulation view. */
+.c-sim-plot-container {
+    height: calc(100% - 36px);
+    min-height: 270px;
+    width: 100%;
+}
+
+/* The container for the IDD chart for a probability view (map + bars). */
+.c-probability-plot-container {
+    display: flex
+}
+
+/* The container for the heatmap part of a probability view. */
+.c-probability-plot-container__map {
+    height: 95%;
+    flex-grow: 7;
+}
+
+/* The container for the bars part of a probability view. */
+.c-probability-plot-container__bars {
+    height: 95%;
+    flex-grow: 3;
+}
+
+/* The header for one of the equations areas in synthesis equations view. */
+.c-synthesis-equations__header {
+    font-size: larger;
+    font-weight: bold;
+    margin-top: 30px;
+}

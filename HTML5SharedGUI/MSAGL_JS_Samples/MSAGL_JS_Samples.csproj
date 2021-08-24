@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk.Web">
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <!-- Prevents CS5001 -->
+    <OutputType>Library</OutputType>
+    <YarnBuildCommand>--mutex file install</YarnBuildCommand>
+  </PropertyGroup>
+  <Target Name="Webpack" AfterTargets="PostBuildEvent">
+    <!-- This runs Webpack. -->
+    <PropertyGroup>
+      <NodeJsExecutablePath>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\..\packages\javascriptbuild\Node.js.redist\tools\win-x64\node.exe'))</NodeJsExecutablePath>
+    </PropertyGroup>
+    <Exec Command="$(NodeJsExecutablePath) ..\..\node_modules\webpack\bin\webpack.js --env.mode=production" Condition="'$(Configuration)' == 'Release'" />
+    <Exec Command="$(NodeJsExecutablePath) ..\..\node_modules\webpack\bin\webpack.js --env.mode=development" Condition="'$(Configuration)' == 'Debug'" />
+  </Target>
+  <PropertyGroup>
+    <!-- This means "you must run the CollectWebpackOutput target before the collecting files step can be considered done". -->
+    <CopyAllFilesToSingleFolderForPackageDependsOn>
+      $(CopyAllFilesToSingleFolderForPackageDependsOn);
+      CollectWebpackOutput;
+    </CopyAllFilesToSingleFolderForPackageDependsOn>
+    <CopyAllFilesToSingleFolderForMsdeployDependsOn>
+      $(CopyAllFilesToSingleFolderForMsdeployDependsOn);
+      CollectWebpackOutput;
+    </CopyAllFilesToSingleFolderForMsdeployDependsOn>
+  </PropertyGroup>
+  <Target Name="CollectWebpackOutput">
+    <!-- This means "add everything in the dist folder to the list of files for packaging". -->
+    <ItemGroup>
+      <_CustomFiles Include="dist\**\*" />
+      <FilesForPackagingFromProject Include="%(_CustomFiles.Identity)">
+        <DestinationRelativePath>%(RecursiveDir)%(Filename)%(Extension)</DestinationRelativePath>
+      </FilesForPackagingFromProject>
+    </ItemGroup>
+    <Message Text="CollectWebpackOutput list: %(_CustomFiles.Identity)" />
+  </Target>
+  <ItemGroup>
+    <ProjectReference Include="..\MSAGL_JS\MSAGL_JS.csproj" />
+  </ItemGroup>
+  <Import Project="..\..\.paket\Paket.Restore.targets" />
+</Project>

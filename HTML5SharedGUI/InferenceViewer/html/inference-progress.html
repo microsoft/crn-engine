@@ -1,0 +1,7 @@
+﻿<div class="c-inference-progress__progress">
+    <progress data-bind="attr: { value: progress }" max="100" class="c-inference-progress__bar"></progress>
+    <span data-bind="text: progress() + '%'"></span>
+</div>
+<span class="c-inference-progress__text" data-bind="text: 'Iteration: ' + iteration()"></span>
+<span class="c-inference-progress__text" data-bind="text: 'LogLikelihood: ' + lglk().toFixed(3)"></span>
+<span class="c-inference-progress__text" data-bind="text: 'Maximum: ' + max().toFixed(3)"></span>

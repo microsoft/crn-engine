@@ -1,0 +1,393 @@
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+html {
+    font-size: small;
+}
+
+/* This is the overlay that prevents the user from interacting with the app while it is loading. */
+#app-cover {
+    position: absolute;
+    display: block;
+    z-index: 2000;
+    height: 100%;
+    width: 100%;
+}
+
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+    #app-cover {
+        /*IE 10 and above*/
+        background: rgba(255, 255, 255, 0.8);
+    }
+}
+
+/* This is the MS logo. */
+#logo {
+    padding: 7px;
+    align-self: flex-start
+}
+
+/* The wrapper for the loading screen. */
+#loading-screen {
+    position: absolute;
+    z-index: 2010;
+    left: 50%;
+    top: 50%;
+}
+
+/* The loading screen. */
+#loading-screen__inner {
+    position: relative;
+    left: -50%;
+    z-index: 2010;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.1);
+    padding: 2em;
+    border-radius: 1em;
+}
+
+/* The main page. This is initially blurred; the filter will be removed after loading is completed. */
+#app {
+    filter: blur(3px) grayscale(100%);
+    -webkit-filter: blur(3px) grayscale(100%);
+    height: 100%;
+}
+
+/* The application's main toolbar (with the method buttons). */
+#toolbar {
+    padding: 5px;
+    min-height: 2.5em;
+    flex: 1
+}
+
+/* The application header (top) area. */
+#header {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    height: 34px;
+}
+
+/* The label for the current execution status. */
+#execution-status {
+    margin-left: 20px;
+}
+
+/* The area of the header where docs and notices are located. */
+#docs {
+    padding: 8px;
+    margin-left: 30px;
+    font-size: xx-small;
+}
+
+/* The text that indicates when the application can be used offline. */
+#offline-text {
+    margin-left: 16px;
+}
+
+/* One of the main buttons. */
+.c-action-button {
+    padding: 0 10px 0 10px;
+}
+
+/* A class that simply adds full height to any element. */
+.s-full-height {
+    height: 100%;
+}
+
+/* A link to some docs. */
+.c-doc__button {
+    padding: 0 4px 0 0;
+    text-decoration: none;
+    color: initial;
+}
+
+/* The left area. */
+#input-area {
+    height: calc(100% - 36px);
+    width: calc(50% - 10px);
+    float: left;
+}
+
+/* The right area. */
+#output-area {
+    height: calc(100% - 36px);
+    width: calc(50% - 10px);
+    float: right;
+}
+
+/* The handle that allows resizing the left and right areas. */
+#separator {
+    background-color: #f6f6f6;
+    border: 1px solid #dddddd;
+    cursor: ew-resize;
+    height: calc(100% - 36px);
+    left: calc(50% - 5px);
+    position: absolute;
+    width: 10px;
+}
+
+    /* Style to highlight the separator when the mouse is over it. */
+    #separator:hover {
+        background-color: #ededed;
+        border: 1px solid #cccccc;
+    }
+
+/* The resizable upper part of the data area (where the list of data sets resides). */
+#datasets-viewer {
+    height: calc(40% - 4px);
+    overflow: auto;
+}
+
+/* The resizable lower part of the data area (where the selected data set resides). */
+#dataset-viewer {
+    height: calc(60% - 4px);
+    overflow: auto;
+    padding-top: 5px;
+}
+
+/* The separator that allows for resizing the data area. */
+#dataset-separator {
+    background-color: #f6f6f6;
+    border: 1px solid #dddddd;
+    cursor: ns-resize;
+    width: 100%;
+    top: calc(40% - 6px);
+    height: 6px;
+    position: static;
+}
+
+    /* Style to highlight the separator when the mouse is over it. */
+    #dataset-separator:hover {
+        background-color: #ededed;
+        border: 1px solid #cccccc;
+    }
+
+/* The parameter tab main container. */
+#crnParameters {
+    display: flex;
+}
+
+/* The table that contains an SSA summary. */
+.c-ssa-summary__state {
+    border: 2px solid black;
+    display: inline-block;
+    margin: 1vh;
+}
+
+/* The species count for a species in a SSA state. */
+.c-ssa-summary__value {
+    display: inline-block;
+}
+
+/* The species graphics for a species in a SSA state. */
+.c-ssa-summary__graphics {
+    display: inline-block;
+}
+
+/* The species text for a species in a SSA state. */
+.c-ssa-summary__text {
+    text-align: center;
+}
+
+/* The custom control that implements a drop-down panel. */
+dropdown {
+    text-align: center;
+    margin: 0;
+    padding-left: 0;
+    float: left;
+    display: inline
+}
+
+/* The header for a drop-down panel. */
+dropdownheader {
+    display: block;
+    padding: 0.2em;
+    color: #444;
+    background-color: #f6f6f6;
+    border-radius: 3px;
+    border: 1px solid #c5c5c5;
+    margin: 0.1em;
+}
+
+/* The content of a drop-down panel. */
+dropdowncontent {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    background: #f6f6f6;
+    z-index: 1510; /* This is to ensure it stays on top of IDD. */
+    padding-left: 0;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+/* A style for a row of a drop-down panel. */
+.c-dropdown__item {
+    padding: 0.2em
+}
+
+/* A horizontal toolbar. */
+div.c-toolbar {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    height: 30px;
+    margin-bottom: 6px;
+}
+
+/* An item of a toolbar. */
+.c-toolbar__item {
+    vertical-align: central;
+    padding-left: 0;
+    padding-top: 0;
+    margin-right: 5px;
+}
+
+.c-toolbar__item--btn {
+    vertical-align: central;
+    margin-right: 5px;
+}
+
+/* A cell for one of our tables. */
+.s-crn__cell {
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.s-crn__cell--nowrap {
+    padding-left: 5px;
+    padding-right: 5px;
+    white-space: nowrap;
+}
+
+/* An editing element contained within one of our tables. Trims away the chrome to make it as small as possible. */
+.s-crn__edit {
+    border: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+
+/* The control that implements a zoom slider. */
+zoomslider {
+    display: flex
+}
+
+/* The text part of the zoom slider. */
+.c-zoom__input {
+    width: 50px;
+    align-self: center;
+}
+
+/* The slider part for the zoom slider. */
+.c-zoom__range {
+    max-width: 200px;
+}
+
+/* The percentage sign of the zoom slider. */
+.c-zoom_perc-sign {
+    align-self: center;
+}
+
+/* The control that allows to edit a colour for a trace. */
+tracecoloureditor {
+    display: flex;
+    align-items: center;
+}
+
+/* The label for a row of a traces palette editor. */
+.c-colour-editor__display-name {
+    padding-left: 0.2em;
+}
+
+/* The text editor for a trace colour. */
+.c-colour-editor__text {
+    display: inline-block;
+    width: 5em;
+    float: right;
+}
+
+/* The little icon that generates a random colour. */
+.c-colour-editor__regenerate {
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    float: right;
+    vertical-align: middle;
+    margin: 3px;
+    border-radius: 2px;
+}
+
+    /* Makes the cursor look clickable when hovering ovr the colour editor button. */
+    .c-colour-editor__regenerate:hover {
+        cursor: pointer;
+    }
+
+/* The small sample colour in the traces colour editor. */
+.c-colour-editor__demo {
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    float: right;
+    vertical-align: middle;
+    margin: 3px;
+    border-radius: 2px;
+}
+
+paletteeditor {
+    display: flex;
+    align-items: center;
+}
+
+/* The container of the palette editor for a heatmap-type simulation result viewer. */
+.c-heatmap-palette {
+    width: 250px;
+    margin-right: 10px;
+    z-index: 1500;
+}
+
+/* The div that controls legend visibility. Used to be able to toggle the legend from outside IDD. */
+.idd-legend-visibility-wrapper {
+    float: right;
+    z-index: 1000000;
+}
+
+/* The div that contains the IDD legend. This needs a higher Z-index in order to be able to capture mouse hover. Not sure why this isn't done at the IDD level. */
+.idd-legend-cover {
+    z-index: 1501;
+}
+
+/* Reduces the default jQueryUI padding for the tab header area. */
+body .ui-tabs .ui-tabs-nav {
+    padding: 0 1px;
+}
+
+    /* Reduces the default jQueryUI padding for tab headers. */
+    body .ui-tabs .ui-tabs-nav .ui-tabs-anchor {
+        padding: 1px 1em;
+    }
+
+/* Reduces the default jQueryUI padding for tab content. */
+body .ui-tabs .ui-tabs-panel {
+    padding: 0.2em;
+}
+
+/* Fix accessibility issue with the jQueryUI default theme, without forcing us to deploy a custom theme. */
+.ui-state-active,
+.ui-widget-content .ui-state-active,
+.ui-widget-header .ui-state-active,
+a.ui-button:active,
+.ui-button:active,
+.ui-button.ui-state-active:hover {
+    background: #006dff !important /*{bgColorActive}*/ /*{bgImgUrlActive}*/ /*{bgActiveXPos}*/ /*{bgActiveYPos}*/ /*{bgActiveRepeat}*/;
+}

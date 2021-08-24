@@ -1,0 +1,38 @@
+﻿/* The custom control to show inference progress. */
+inference-progress {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    float: right;
+}
+
+/* The container for the progress bar of the inference progress control. */
+.c-inference-progress__progress {
+    display: flex
+}
+
+/* The text part of the progress bar of the inference progress control. */
+.c-inference-progress__text{
+    margin: 0px 10px 0px 10px;
+}
+
+/* The graphical bar of the progress bar for the inference progress control. */
+.c-inference-progress__bar {
+    margin-right: 2px;
+}
+
+/* The container for an IDD plot for inference. */
+.c-inf-plot-container {
+    height: calc(100% - 4em);
+    min-height: 270px;
+    width: 100%;
+}
+
+/* The text area where the text summary for inference is displayed. */
+.c-inference-summary {
+    font-family: Lucida Console, Monaco, monospace !important;
+    width: 100%;
+    height: 95%;
+    resize: none;
+    white-space: pre;
+}

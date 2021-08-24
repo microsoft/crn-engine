@@ -1,0 +1,12 @@
+﻿<template id="synthesis-table-header" type="text/html">
+    <th><span type="text" class="c-sim-table__header">Name</span></th>
+    <th><span type="text" class="c-sim-table__header">Value</span></th>
+    <th><span type="text" class="c-sim-table__header">Lower Bound</span></th>
+    <th><span type="text" class="c-sim-table__header">Upper Bound</span></th>
+</template>
+<template id="synthesis-table-row" type="text/html">
+    <td><span type="text" class="c-sim-table__cell" data-bind="text: name"></span></td>
+    <td><span type="text" class="c-sim-table__cell" data-bind="text: v.value"></span></td>
+    <td><span type="text" class="c-sim-table__cell" data-bind="text: v.lowerBound"></span></td>
+    <td><span type="text" class="c-sim-table__cell" data-bind="text: v.upperBound"></span></td>
+</template>

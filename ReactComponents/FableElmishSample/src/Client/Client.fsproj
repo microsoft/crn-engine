@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="../Shared/SharedIDD.fs" />
+    <Compile Include="../Shared/SharedMSAGL.fs" />
+    <Compile Include="../Shared/SharedCodePad.fs" />
+    <Compile Include="CrnLanguage.fs" />
+    <Compile Include="App.fs" />
+    <Compile Include="Client.fs" />
+  </ItemGroup>
+  <Import Project="..\..\..\..\.paket\Paket.Restore.targets" />
+</Project>

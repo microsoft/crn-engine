@@ -1,0 +1,8 @@
+group DOTNETCORE
+    Giraffe
+    FSharp.Core
+    Saturn
+    Fable.JsonConverter
+    dotnet-fable
+    Fable.Remoting.Server
+    Fable.Remoting.Giraffe

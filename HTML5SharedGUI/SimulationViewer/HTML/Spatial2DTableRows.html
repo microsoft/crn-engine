@@ -1,0 +1,14 @@
+﻿<template id="spatial-2d-table-view-template" type="text/html">
+    <td>
+        <span type="text" data-bind="text: y.toString()"></span>
+    </td>
+    <!-- ko foreach: values -->
+    <td><span type="text" data-bind="text: $data.toString()"></span></td>
+    <!-- /ko -->
+</template>
+<template id="spatial-2d-table-view-header" type="text/html">
+    <th>Y\X</th>
+    <!-- ko foreach: xAxis -->
+        <th><span type="text" data-bind="text: $data"></span></th>
+    <!-- /ko -->
+</template>

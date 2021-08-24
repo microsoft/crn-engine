@@ -1,0 +1,75 @@
+﻿<dropdown class="c-toolbar__item" data-bind="visible: IsSystemsVisible">
+    <dropdownheader>Systems</dropdownheader>
+    <dropdowncontent>
+        <div class="c-dropdown__item">
+            <input type="checkbox" data-bind="checked: SelectedAllSystems" />
+            <label><strong>All</strong></label>
+        </div>
+        <!-- ko foreach: SelectableSystems -->
+        <div class="c-dropdown__item" data-bind="click: function(data,event){return $data.Clicked($data,event)}">
+            <input type="checkbox" data-bind="checked: IsChosen" />
+            <label data-bind="text: Name"></label>
+        </div>
+        <!-- /ko -->
+    </dropdowncontent>
+</dropdown>
+<dropdown class="c-toolbar__item" data-bind="visible: IsSettingsVisible">
+    <dropdownheader>Settings</dropdownheader>
+    <dropdowncontent>
+        <div class="c-dropdown__item">
+            <input type="checkbox" data-bind="checked: SelectedAllSettings" />
+            <label><strong>All</strong></label>
+        </div>
+        <!-- ko foreach: SelectableSettings -->
+        <div class="c-dropdown__item" data-bind="click: function(data,event){return $data.Clicked($data,event)}">
+            <input type="checkbox" data-bind="checked: IsChosen" />
+            <label data-bind="text: Name"></label>
+        </div>
+        <!-- /ko -->
+    </dropdowncontent>
+</dropdown>
+<dropdown class="c-toolbar__item" data-bind="visible: IsSweepsVisible">
+    <dropdownheader>Sweeps</dropdownheader>
+    <dropdowncontent>
+        <div class="c-dropdown__item">
+            <input type="checkbox" data-bind="checked: SelectedAllSweeps" />
+            <label><strong>All</strong></label>
+        </div>
+        <!-- ko foreach: SelectableSweeps -->
+        <div class="c-dropdown__item" data-bind="click: function(data,event){return $data.Clicked($data,event)}">
+            <input type="checkbox" data-bind="checked: IsChosen" />
+            <label data-bind="text: Name"></label>
+        </div>
+        <!-- /ko -->
+    </dropdowncontent>
+</dropdown>
+<dropdown class="c-toolbar__item" data-bind="visible: IsInstancesVisible">
+    <dropdownheader>Instances</dropdownheader>
+    <dropdowncontent>
+        <div class="c-dropdown__item">
+            <input type="checkbox" data-bind="checked: SelectedAllInstances" />
+            <label><strong>All</strong></label>
+        </div>
+        <!-- ko foreach: SelectableInstances -->
+        <div class="c-dropdown__item" data-bind="click: function(data,event){return $data.Clicked($data,event)}">
+            <input type="checkbox" data-bind="checked: IsChosen" />
+            <label data-bind="text: Name"></label>
+        </div>
+        <!-- /ko -->
+    </dropdowncontent>
+</dropdown>
+<dropdown class="c-toolbar__item" data-bind="visible: IsSpeciesVisible">
+    <dropdownheader>Species</dropdownheader>
+    <dropdowncontent>
+        <div class="c-dropdown__item">
+            <input type="checkbox" data-bind="checked: SelectedAllSpecies" />
+            <label><strong>All</strong></label>
+        </div>
+        <!-- ko foreach: SelectableSpecies-->
+        <div class="c-dropdown__item" data-bind="click: function(data,event){return $data.Clicked($data,event)}">
+            <input type="checkbox" data-bind="checked: IsChosen" />
+            <label data-bind="text: Name"></label>
+        </div>
+        <!-- /ko -->
+    </dropdowncontent>
+</dropdown>

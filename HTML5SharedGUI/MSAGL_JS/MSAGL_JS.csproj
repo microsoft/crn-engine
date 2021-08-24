@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk.Web">
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <!-- Prevents CS5001 -->
+    <OutputType>Library</OutputType>
+    <YarnBuildCommand>--mutex file install</YarnBuildCommand>
+    <NodeJsExecutablePath>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\..\packages\javascriptbuild\Node.js.redist\tools\win-x64\node.exe'))</NodeJsExecutablePath>
+  </PropertyGroup>
+  <ItemGroup>
+    <Content Include="..\..\paket-files\javascriptbuild\SharpKit\SharpKit-SDK\Frameworks\JsClr\res\jsclr.js">
+      <Paket>True</Paket>
+      <Link>Scripts/jsclr.js</Link>
+    </Content>
+    <Content Include="..\..\paket-files\javascriptbuild\SharpKit\SharpKit-SDK\Frameworks\JsClr\res\jsclr.min.js">
+      <Paket>True</Paket>
+      <Link>Scripts/jsclr.min.js</Link>
+    </Content>
+    <Content Include="..\..\paket-files\javascriptbuild\microsoft\automatic-graph-layout\GraphLayout\MsaglSharpkit\WebMsagl\Scripts\src\Microsoft.Msagl.js">
+      <Paket>True</Paket>
+      <Link>Scripts/Microsoft.Msagl.js</Link>
+    </Content>
+    <Content Include="..\..\paket-files\javascriptbuild\microsoft\automatic-graph-layout\GraphLayout\MsaglSharpkit\WebMsagl\Scripts\src\Microsoft.Msagl.min.js">
+      <Paket>True</Paket>
+      <Link>Scripts/Microsoft.Msagl.min.js</Link>
+    </Content>
+  </ItemGroup>
+  <Target Name="CopyGeneratedJSFiles" AfterTargets="PostBuildEvent">
+    <ItemGroup>
+      <_CustomFiles Include="..\..\paket-files\javascriptbuild\SharpKit\SharpKit-SDK\Frameworks\JsClr\res\jsclr.js" Link="Scripts/jsclr.js" />
+      <_CustomFiles Include="..\..\paket-files\javascriptbuild\SharpKit\SharpKit-SDK\Frameworks\JsClr\res\jsclr.min.js" Link="Scripts/jsclr.min.js" />
+      <_CustomFiles Include="..\..\paket-files\javascriptbuild\microsoft\automatic-graph-layout\GraphLayout\MsaglSharpkit\WebMsagl\Scripts\src\Microsoft.Msagl.js" Link="Scripts/Microsoft.Msagl.js" />
+      <_CustomFiles Include="..\..\paket-files\javascriptbuild\microsoft\automatic-graph-layout\GraphLayout\MsaglSharpkit\WebMsagl\Scripts\src\Microsoft.Msagl.min.js" Link="Scripts/Microsoft.Msagl.min.js" />
+    </ItemGroup>
+    <Copy SourceFiles="%(_CustomFiles.Identity)"
+      DestinationFiles="$(MSBuildProjectDirectory)\%(_CustomFiles.Link)"
+      SkipUnchangedFiles="true"
+      OverwriteReadOnlyFiles="true" />
+  </Target>
+  <Import Project="..\..\.paket\Paket.Restore.targets" />
+</Project>

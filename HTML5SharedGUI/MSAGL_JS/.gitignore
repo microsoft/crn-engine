@@ -1,0 +1,18 @@
+#Residual files from before webpack. They should be deleted.
+Scripts/IDD/**
+Scripts/MSAGL/**
+Scripts/src/**
+
+**/*.js
+!lib/require.min.js
+**/*.js.map
+bin
+bower_components
+node_modules
+obj
+Scripts/*.d.ts
+!Scripts/declarations.d.ts
+Samples/**/*.d.ts
+
+!sharpkit_post.js
+!sharpkit_pre.js

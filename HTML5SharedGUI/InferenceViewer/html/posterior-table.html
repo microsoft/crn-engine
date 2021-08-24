@@ -1,0 +1,21 @@
+﻿<template id="posterior-table-template" type="text/html">
+    <td class="s-crn__cell crnParametersName">
+        <span data-bind="text: iteration"></span>
+    </td>
+    <td class="s-crn__cell crnParametersName">
+        <span data-bind="text: lglk"></span>
+    </td>    
+    <!-- ko foreach: values-->
+    <td class="s-crn__cell crnParametersName">
+        <span data-bind="text: $data"></span>
+    </td>
+    <!-- /ko -->
+</template>
+
+<template id="posterior-table-header" type="text/html">
+    <th class="s-crn__cell crnParametersName">Iteration</th>
+    <th class="s-crn__cell crnParametersName">log Likelihood</th>
+    <!-- ko foreach: names-->
+    <th class="s-crn__cell crnParametersName" data-bind="text: $data"></th>
+    <!-- /ko -->
+</template>

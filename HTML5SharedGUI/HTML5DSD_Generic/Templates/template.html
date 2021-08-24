@@ -1,0 +1,233 @@
+﻿<div id="app-cover"><!-- captures user's mouse events. hides app from the user during the load in IE --></div>
+<div id="loading-screen">
+    <div id="loading-screen">
+        <h1>Loading...</h1>
+    </div>
+</div>
+<div id="app">
+    <div id="header">
+        <div id="toolbar">
+            <button id="crnButton" class="c-action-button" data-bind="enable:IsCRNButtonEnabled" title="Parses the current model code, and expands the resulting species into a CRN">CRN</button>
+            <button id="exportButton" class="c-action-button" data-bind="enable:IsExportButtonEnabled" title="Generates exports for the current model">Export</button>
+            <button id="simulateButton" class="c-action-button" data-bind="enable:AreActionButtonsEnabled" title="Runs a simulation of the current model">Simulate</button>
+            <button id="inferButton" class="c-action-button" data-bind="enable:AreActionButtonsEnabled" title="Runs inference on the current model">Infer</button>
+            <button id="statesButton" class="c-action-button" data-bind="enable:AreActionButtonsEnabled" title="Generates the state space of the current model">CTMC</button>
+            <button id="synthesisButton" class="c-action-button" data-bind="enable:CanStartNewAction" title="Runs Z3 analysis on the current model">Synthesis</button>
+            <button id="stopButton" class="c-action-button" data-bind="enable:CanStopOngoingAction" title="Stops the current operation">Stop</button>
+            <crnselector id="CRNSelector"></crnselector>
+            <label id="execution-status" data-bind="text: ExecutionStatus, style: { color: IsError()?'red':'black' }"></label>
+        </div>
+        <div id="options"></div>
+        <div id="docs">
+            <span id="worker">
+                <!-- ko if: offlineStatus-->
+                <span id="offline-text" data-bind="text: 'Offline ready |', attr: {title: hint}"></span>
+                <!-- /ko -->
+            </span>
+            <a href="Docs\license.html" target="doc" class="c-doc__button">License</a>|
+            <!--<a href="Docs\manual.html" target="doc" class="c-doc__button">Manual</a>|
+            <a href="Docs\tutorial.html" target="doc" class="c-doc__button">Tutorial</a>|-->
+            <a href="https://go.microsoft.com/fwlink/?LinkId=521839" class="c-doc__button" target="_blank">Privacy &amp; Cookies</a>
+            <p style="margin: 0px">© 2018-2020 Microsoft. All Rights reserved.</p>
+        </div>
+    </div>
+    <div id="input-area">
+        <div id="inputTabs" class="j-has-tabs">
+            <ul>
+                <li><a href="#libraryTab">Library</a></li>
+                <li><a href="#sgTab">DSD</a></li>
+                <li><a href="#crnTab">CRN</a></li>
+            </ul>
+            <div id="libraryTab" class="j-has-tabs">
+                <ul>
+                    <li><a href="#dataTab">Data</a></li>
+                </ul>
+                <div id="dataTab">
+                    <div id="inferenceDataSets">
+                        <div id="datasets-viewer">
+                            <datasets-viewer></datasets-viewer>
+                        </div>
+                        <div id="dataset-separator"></div>
+                        <div id="dataset-viewer">
+                            <dataset-viewer></dataset-viewer>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="sgTab" class="j-has-tabs">
+                <ul>
+                    <li><a href="#dsdCode" class="j-dsd-code-tab-header">Code</a></li>
+                    <li><a href="#sgDirectives">Directives</a></li>
+                    <li><a href="#sgParameters">Parameters</a></li>
+                    <li><a href="#sgSpecies">Species</a></li>
+                    <li><a href="#sgReactions">Reactions</a></li>
+                </ul>
+                <div id="dsdCode">
+                    <dsd-generic-editor-widget id="sg-editor" params="editorText: editorText, errors: errors, editorLoadEvents: editorLoadEvents"></dsd-generic-editor-widget>
+                </div>
+                <div id="sgDirectives">
+                    <crnsettings></crnsettings>
+                </div>
+                <div id="sgParameters">
+                    <parameters-viewer></parameters-viewer>
+                </div>
+                <div id="sgSpecies">
+                    <species-viewer></species-viewer>
+                </div>
+                <div id="sgReactions">
+                    <reactions-viewer></reactions-viewer>
+                </div>
+            </div>
+            <div id="crnTab" class="j-has-tabs">
+                <ul>
+                    <li><a href="#crnCode" class="j-code-tab-header">Code</a></li>
+                    <li><a href="#crnDirectives" class="j-crn-tab-header">Directives</a></li>
+                    <li><a href="#crnParameters" class="j-crn-tab-header">Parameters</a></li>
+                    <li><a href="#crnSpecies" class="j-crn-tab-header">Species</a></li>
+                    <li><a href="#crnReactions" class="j-crn-tab-header">Reactions</a></li>
+                    <li id="crnInferenceGraphTab" data-bind="visible: Nodes().length > 1"><a href="#crnInferenceGraph" class="j-crn-tab-header">Inference Graph</a></li>
+                </ul>
+                <div id="crnCode">
+                    <crn-editor-widget id="crn-editor" params="editorText: editorText, errors: errors, editorLoadEvents: editorLoadEvents"></crn-editor-widget>
+                </div>
+                <div id="crnDirectives">
+                    <crnsettings></crnsettings>
+                </div>
+                <div id="crnParameters">
+                    <parameters-viewer></parameters-viewer>
+                </div>
+                <div id="crnSpecies">
+                    <species-viewer></species-viewer>
+                </div>
+                <div id="crnReactions">
+                    <reactions-viewer></reactions-viewer>
+                </div>
+                <div id="crnInferenceGraph">
+                    <inferencegraph id="inferenceGraph"></inferencegraph>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="separator"></div>
+    <div id="output-area">
+        <div id="resultsTabs" class="j-has-tabs s-full-height">
+            <ul>
+                <li><a href="#crnExport">Export</a></li>
+                <li><a href="#simulationViewerTab">Simulation</a></li>
+                <li><a href="#inferenceViewer">Inference</a></li>
+                <li><a href="#StatesViewerTab">CTMC</a></li>
+                <li><a href="#synthesisTab">Synthesis</a></li>
+            </ul>
+            <div id="crnExport" class="s-full-height j-has-tabs">
+                <ul>
+                    <li><a href="#crnGraphTab">Network</a></li>
+                    <li><a href="#export-code">Code</a></li>
+                    <li><a href="#export-initials">Initials</a></li>
+                    <li><a href="#export-finals">Finals</a></li>
+                    <li><a href="#export-reactions">Reactions</a></li>
+                </ul>
+                <div id="crnGraphTab">
+                    <crnreactiongraph id="crnGraph"></crnreactiongraph>
+                </div>
+                <div id="export-code" class="c-export" data-bind="with: byID('code')">
+                    <crn-export></crn-export>
+                </div>
+                <div id="export-initials" class="c-export" data-bind="with: byID('initials')">
+                    <crn-export></crn-export>
+                </div>
+                <div id="export-finals" class="c-export" data-bind="with: byID('finals')">
+                    <crn-export></crn-export>
+                </div>
+                <div id="export-reactions" class="c-export" data-bind="with: byID('reactions')">
+                    <crn-export></crn-export>
+                </div>
+            </div>
+            <div id="simulationViewerTab" style="padding: 0" class="s-full-height">
+                <div id="simulationViewer" class="s-full-height"></div>
+                <div id="spatial1dViewer" class="s-full-height" style="display: none"></div>
+                <div id="spatial2dViewer" class="s-full-height" style="display: none"></div>
+            </div>
+            <div id="inferenceViewer" class="s-full-height j-has-tabs">
+                <ul>
+                    <li><a href="#inferenceParameters">Parameters</a></li>
+                    <li><a href="#inferenceDynamics">Time Series</a></li>
+                    <li><a href="#inferencePosterior">Posterior</a></li>
+                    <li><a href="#inferenceSummary">Summary</a></li>
+                </ul>
+                <div id="inferenceParameters">
+                    <inferred-parameters-viewer></inferred-parameters-viewer>
+                </div>
+                <div id="inferenceDynamics">
+                    <model-data-dynamics></model-data-dynamics>
+                </div>
+                <div id="inferencePosterior" class="j-has-tabs">
+                    <ul>
+                        <li><a href="#posteriorTable">Table</a></li>
+                        <li><a href="#posteriorScatterPlot">Scatter Plot</a></li>
+                        <li><a href="#posteriorDensity">Density</a></li>
+                    </ul>
+                    <div id="posteriorTable">
+                        <posterior-table-viewer></posterior-table-viewer>
+                    </div>
+                    <div id="posteriorScatterPlot">
+                        <posterior-scatter-plot></posterior-scatter-plot>
+                    </div>
+                    <div id="posteriorDensity">
+                        <density-plot></density-plot>
+                    </div>
+                </div>
+                <div id="inferenceSummary">
+                    <inference-summary-viewer></inference-summary-viewer>
+                </div>
+            </div>
+            <div id="StatesViewerTab" class="s-full-height j-has-tabs">
+                <ul>
+                    <li><a href="#ssaGraphTab">Graph</a></li>
+                    <li><a href="#ssaTextTab">Text</a></li>
+                    <li><a href="#ssaSummaryTab">Summary</a></li>
+                    <li><a href="#probabilitiesTab">Probabilities</a></li>
+                </ul>
+                <div id="ssaGraphTab">
+                    <statespacegraph id="ssaGraph"></statespacegraph>
+                </div>
+                <div id="ssaTextTab">
+                    <p></p>
+                </div>
+                <div id="ssaSummaryTab">
+                    <ssa-summary-viewer id="ssaSummary" params="initialState:initialState, terminalStates:terminalStates"></ssa-summary-viewer>
+                </div>
+                <div id="probabilitiesTab">
+                    <probability-map></probability-map>
+                </div>
+            </div>
+            <div id="synthesisTab" class="s-full-height j-has-tabs">
+                <ul>
+                    <li><a href="#SynthesisViewer-values-tab">Values</a></li>
+                    <li><a href="#SynthesisViewer-equations-tab">Equations</a></li>
+                    <li><a href="#SynthesisViewer-jacobian-tab">Jacobian</a></li>
+                    <li><a href="#SynthesisViewer-dispersion-tab">Turing</a></li>
+                    <li><a href="#SynthesisViewer-bistability-tab">Bistability</a></li>
+                    <li><a href="#SynthesisViewer-code-tab">Updated CRN Code</a></li>
+                </ul>
+                <div id="SynthesisViewer-values-tab">
+                    <synthesis-values></synthesis-values>
+                </div>
+                <div id="SynthesisViewer-equations-tab" class="s-full-height">
+                    <synthesis-equations></synthesis-equations>
+                </div>
+                <div id="SynthesisViewer-jacobian-tab" class="s-full-height">
+                    <synthesis-jacobian></synthesis-jacobian>
+                </div>
+                <div id="SynthesisViewer-dispersion-tab" class="s-full-height">
+                    <synthesis-dispersion></synthesis-dispersion>
+                </div>
+                <div id="SynthesisViewer-bistability-tab" class="s-full-height">
+                    <bistability-viewer></bistability-viewer>
+                </div>
+                <div id="SynthesisViewer-code-tab" class="s-full-height">
+                    <synthesis-code></synthesis-code>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

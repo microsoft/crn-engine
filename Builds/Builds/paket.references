@@ -1,0 +1,8 @@
+﻿group BUILD
+
+FSharp.Core
+Yarn.MSBuild
+Node.js.redist
+
+Fake.Core.Target
+Fake.DotNet.Paket

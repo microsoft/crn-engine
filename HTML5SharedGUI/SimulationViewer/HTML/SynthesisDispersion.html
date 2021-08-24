@@ -1,0 +1,27 @@
+﻿<div class="c-toolbar">
+    <button data-bind="click: SaveDispersion" class="c-toolbar__item--btn">Save</button>
+</div>
+<div data-idd-plot="figure" class="c-sim-plot-container" data-bind="iddAutoFitMode: DispersionAutoFitString" data-idd-style="padding: 0">
+    <div class="j-bottom-axis" data-idd-axis="numeric" data-idd-placement="bottom"></div>
+    <div class="j-left-axis" data-idd-axis="numeric" data-idd-placement="left"></div>
+
+    <div class="idd-horizontalTitle" style="font-size:large" data-idd-placement='top'>Dispersion relation</div>
+    <div class="idd-horizontalTitle" style="font-size:large" data-idd-placement='bottom'>Wavenumber, w</div>
+    <div class="idd-verticalTitle" style="font-size:large" data-idd-placement="left"><div class="idd-verticalTitle-inner">max(Re(λ))</div></div>
+    <div data-idd-plot="plot">
+        <div data-idd-plot="markers"
+             data-bind="iddX: DispersionMarkersX,
+                        iddY: DispersionMarkersY,
+                        iddSize: 10,
+                        iddColor: 'red',
+                        iddShape: 'circle'">
+        </div>
+        <div data-idd-plot="polyline"
+             data-bind="
+             iddX: DispersionPlotX,
+             iddY: DispersionPlotY,
+             iddStroke: 'blue',
+             iddThickness: 3">
+        </div>
+    </div>
+</div>

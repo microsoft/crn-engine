@@ -1,0 +1,134 @@
+﻿<div class="c-toolbar" data-bind="using: CurrentNode()">
+    <!-- ko if: Filter != null && Filter.vm.IsAnyVisible() -->
+    <!-- ko with: Filter.vm -->
+    <multi-instances-filter-view class="c-toolbar__item"></multi-instances-filter-view>
+    <!-- /ko -->
+    <!-- /ko -->
+    <dropdown class="c-toolbar__item">
+        <dropdownheader data-bind="style: { 'color': PlotCountCapExceeded() ? 'red' : undefined }">Plots</dropdownheader>
+        <dropdowncontent>
+            <div class="c-dropdown__item">
+                <label data-bind="style: { 'color': PlotCountCapExceeded() ? 'red' : undefined }">Max:<input type="number" data-bind="value: PlotCountCap" /></label>
+            </div>
+            <div class="c-dropdown__item">
+                <label>
+                    <input type="checkbox" data-bind="checked: SelectedAllVisible" />
+                    <strong>All</strong>
+                </label>
+            </div>
+            <!-- ko foreach: FilteredPlottables -->
+            <div class="c-dropdown__item">
+                <label>
+                    <input type="checkbox" data-bind="checked: IsVisible" />
+                    <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="15" height="15">
+                        <line x0="0px" x1="15px" y0="0px" y1="15px" stroke-width="2px" data-bind="attr: { stroke: Colour.Hex() }"></line>
+                    </svg>
+                    <span data-bind="text: VisibleName"></span>
+                </label>
+            </div>
+            <!-- /ko -->
+        </dropdowncontent>
+    </dropdown>
+    <dropdown class="c-toolbar__item" style="margin-right: 20px">
+        <dropdownheader>Colours</dropdownheader>
+        <dropdowncontent data-bind="foreach: FilteredPlottables">
+            <!-- ko if: IsVisible-->
+            <!-- ko with: Colour -->
+            <tracecoloureditor class="c-dropdown__item"></tracecoloureditor>
+            <!-- /ko -->
+            <!-- /ko -->
+        </dropdowncontent>
+    </dropdown>
+
+    <!-- ko if: AllSpeciesHaveStructural() -->
+    <div class="c-toolbar__item" style="margin-right: 20px">
+        <label>
+            <input type="checkbox" data-bind="checked: AreNamesEnabled" />
+            Names
+        </label>
+    </div>
+    <!-- /ko -->
+    <div class="c-toolbar__item" style="margin-right: 20px">
+        <label>
+            <input type="checkbox" data-bind="checked: IsLegendVisible" />
+            Legend
+        </label>
+    </div>
+    <div class="c-toolbar__item" style="margin-right: 20px">
+        <label>
+            <input type="checkbox" data-bind="checked: IsGridVisible" />
+            Grid
+        </label>
+    </div>
+
+    <button data-bind="click: $root.CaptureSVG" class="c-toolbar__item--btn" style="margin-right: 20px">Save</button>
+
+    <!-- ko if: $root.Progress != null -->
+    <!-- ko with: $root.Progress -->
+    <inference-progress class="c-toolbar__item"></inference-progress>
+    <!-- /ko -->
+    <!-- /ko -->
+</div>
+
+<div data-idd-plot="figure" class="c-inf-plot-container" data-bind="using: CurrentNode, iddYAxisSettings: CurrentNode().YTicks(), iddXAxisSettings: CurrentNode().XTicks(), event: { frameRendered: onFrameRendered }, iddAutoFitMode: CurrentNode().AutoFitString()" data-idd-style="padding: 0">
+    <div data-idd-plot='grid' data-idd-placement='center' data-bind="visible: IsGridVisible"></div>
+
+    <div class="j-mdd__bottomaxis" data-idd-axis="numeric" data-idd-placement="bottom"></div>
+    <div class="j-mdd__leftaxis" data-idd-axis="numeric" data-idd-placement="left"></div>
+
+    <div class="idd-horizontalTitle" data-idd-placement='bottom' data-bind="text:XLabel, style: { fontSize: labelSize() }"></div>
+    <div class="idd-verticalTitle" data-idd-placement="left">
+        <div class="idd-verticalTitle-inner" data-bind="text:YLabel, style: { fontSize: labelSize() }"></div>
+    </div>
+    <div data-idd-plot="plot">
+        <div class="idd-legend-visibility-wrapper" data-bind="visible: IsLegendVisible">
+            <div class="idd-legend-cover"></div>
+        </div>
+
+        <div data-idd-plot="plot" data-bind="event: { childrenChanged: $parent.onChildrenChanged }">
+            <!-- ko foreach: VisiblePlottables -->
+            <!-- ko if: ObservationTimes -->
+            <div data-idd-plot="markers"
+                 data-bind="iddX: ObservationTimes,
+                            iddY: ObservationCounts,
+                            iddSize: 6,
+                            iddPlotName: ObservationName + ' (Measured)',
+                            iddColor: Colour.Hex(),
+                            iddShape: 'circle',
+                            iddPlotOrder: $parent.VisiblePlottables().length*2 - $index()*2  - 3">
+            </div>
+            <!-- /ko -->
+            <!-- /ko -->
+        </div>
+
+        <!-- ko foreach: VisiblePlottables -->
+        <div data-idd-plot="polyline"
+             data-idd-style="ignored-by-fit-to-view: true"
+             data-bind="iddX: SimulationTimes(),
+                        iddY: SimulationCounts(),
+                        iddThickness: 3,
+                        iddStroke: Colour.Hex(),
+                        iddPlotName: ($parent.AreNamesEnabled() ? DisplayName() : DisplayStructural()) + ' (Model)',
+                        iddPlotOrder: $parent.VisiblePlottables().length*2 - $index()*2 - 2">
+        </div>
+        <!-- /ko -->
+        <!-- ko foreach: VBoundaries -->
+        <div data-idd-plot="boundaryLine"
+             data-bind="iddX: $data,
+                        iddThickness: 2,
+                        iddLineDash: 'dash',
+                        iddPlotOrder: 1000,
+                        iddStroke: 'black'">
+        </div>
+        <!-- /ko -->
+        <!-- ko foreach: HBoundaries -->
+        <div data-idd-plot="boundaryLine"
+             data-bind="iddY: $data,
+                        iddThickness: 2,
+                        iddLineDash: 'dash',
+                        iddPlotOrder: 1000,
+                        iddStroke: 'black'">
+        </div>
+        <!-- /ko -->
+    </div>
+</div>

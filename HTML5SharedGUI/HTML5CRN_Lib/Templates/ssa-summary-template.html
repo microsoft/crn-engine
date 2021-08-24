@@ -1,0 +1,30 @@
+﻿<p>Render species: <input type="checkbox" data-bind="checked: render" /></p>
+INITIAL STATE:
+<div data-bind="with: initialState">
+    <table class="c-ssa-summary__state">
+        <tbody data-bind="foreach: $data">
+            <tr>
+                <td class="c-ssa-summary__value" data-bind="text: value">value</td>
+                <td class="c-ssa-summary__graphics">
+                    <div data-bind="html: graphics, visible:$component.render">graphics</div>
+                    <div class="c-ssa-summary__text" data-bind="text: name">graphics</div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+TERMINAL STATES:
+<div data-bind="foreach:terminalStates">
+    <table class="c-ssa-summary__state">
+        <tbody data-bind="foreach: $data">
+            <tr>
+                <td class="c-ssa-summary__value" data-bind="text: value">value</td>
+                <td class="c-ssa-summary__graphics">
+                    <div data-bind="html: graphics, visible:$component.render">graphics</div>
+                    <div class="c-ssa-summary__text" data-bind="text: name">graphics</div>
+                </td>
+            </tr>
+        </tbody>
+    </table><br />
+</div>

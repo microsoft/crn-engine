@@ -1,0 +1,7 @@
+﻿<div data-bind="event: {drop: drop, dragenter: drag, dragover: drag, dragleave: dragleave}, css: dragClass" >
+    <button data-bind="click: LoadDataSet">Load</button>
+    <button data-bind="click: RemoveDataSet">Unload</button>
+    <p class="c-datasets__tooltip">You can drag and drop your CSV files here</p>
+    <input type="file" class="j-csv-load" multiple style="display: none" data-bind="event: {change: listener}" />
+    <table-viewer params="config: inferenceConfig"></table-viewer>
+</div>

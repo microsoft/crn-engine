@@ -1,0 +1,13 @@
+﻿<div>
+    <select data-bind="options: available, value: selected"></select>
+    <button data-bind="click: Add, enable: available().length" style="float: right">Add</button>
+</div>
+<!-- ko if: sortedList().length-->
+<hr />
+<!-- /ko -->
+<div data-bind="foreach: sortedList, uiSortableList: sortedList">
+    <div class="ui-state-default ui-corner-all c-sortable__item">
+        <span data-bind="click: $parent.Remove" class="ui-icon ui-icon-minusthick c-sortable__remove"></span>
+        <!-- ko text: $data--><!-- /ko -->
+    </div>
+</div>

@@ -1,0 +1,10 @@
+﻿<div class="c-toolbar">
+    <button data-bind="click: saveAs" class="c-toolbar__item--btn" style="margin-right: 20px">Save</button>
+
+    <!-- ko if: Progress != null -->
+    <!-- ko with: Progress -->
+    <inference-progress class="c-toolbar__item"></inference-progress>
+    <!-- /ko -->
+    <!-- /ko -->
+</div>
+<textarea class="c-inference-summary" readonly data-bind="text: summary"></textarea>

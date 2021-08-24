@@ -1,0 +1,61 @@
+﻿<div class="c-toolbar">
+    <button data-bind="click: SaveBistability" class="c-toolbar__item--btn">Save</button>
+    <div class="c-toolbar__item t-bistability_species" style="margin-right: 20px">
+        <label>
+            Select species X
+            <select data-bind="options: BistabilitySpeciesNames, value: BistabilitySelectedSpeciesX"></select>
+        </label>
+    </div>
+    <div class="c-toolbar__item t-bistability_species" style="margin-right: 20px">
+        <label>
+            Select species Y
+            <select data-bind="options: BistabilitySpeciesNames, value: BistabilitySelectedSpeciesY"></select>
+        </label>
+    </div>
+    <div class="c-toolbar__item t-bistability_points" style="margin-right: 20px">
+        <label>
+            Select points
+            <input type="number" data-bind="value: BistabilitySelectedPoints" style="width: 50px"/>
+        </label>
+    </div>
+    <button data-bind="click: OnBistabilityClick" class="c-toolbar__item--btn">Generate</button>
+</div>
+<div data-idd-plot="figure" class="c-sim-plot-container" data-idd-style="padding: 0">
+    <div class="j-bottom-axis" data-idd-axis="numeric" data-idd-placement="bottom"></div>
+    <div class="j-left-axis" data-idd-axis="numeric" data-idd-placement="left"></div>
+
+    <div class="idd-horizontalTitle" style="font-size:large" data-idd-placement='bottom' data-bind="text: BistabilityXLabel"></div>
+    <div class="idd-verticalTitle" style="font-size:large" data-idd-placement="left"><div class="idd-verticalTitle-inner" data-bind="text:BistabilityYLabel"></div></div>
+    <div data-idd-plot="plot">
+        <div data-idd-plot="markers"
+             data-bind="iddX: BistabilitySpeciesX,
+                        iddY: BistabilitySpeciesY,
+                        iddSize: 10,
+                        iddColor: BistabilityStateColors,
+                        iddShape: 'circle'">
+        </div>
+        <div data-idd-plot="markers"
+             data-bind="iddX: BistabilityInitialsX,
+                        iddY: BistabilityInitialsY,
+                        iddSize: 3,
+                        iddColor: 'black',
+                        iddShape: 'circle'">
+        </div>
+        <!-- ko foreach: BistabilityState1Traces -->
+        <div data-idd-plot="polyline"
+             data-bind="iddX: x,
+                        iddY: y,
+                        iddStroke: $parent.BistabilityStateColors[0],
+                        iddThickness: 1">
+        </div>
+        <!-- /ko -->
+        <!-- ko foreach: BistabilityState2Traces -->
+        <div data-idd-plot="polyline"
+             data-bind="iddX: x,
+                        iddY: y,
+                        iddStroke: $parent.BistabilityStateColors[1],
+                        iddThickness: 1">
+        </div>
+        <!-- /ko -->
+    </div>
+</div>

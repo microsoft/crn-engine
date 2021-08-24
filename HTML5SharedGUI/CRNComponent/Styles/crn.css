@@ -1,0 +1,294 @@
+﻿/* The container for a CRN settings component (i.e. the Directives tab). This will arrange its panels as wrapping blocks. */
+div.c-settings, div.c-parameters {
+    align-content: flex-start;
+    display: flex;
+    flex-flow: row wrap;
+    height: 100%;
+    justify-content: space-around;
+    width: 100%;
+}
+
+/* One of the blocks in a CRN settings component. */
+.c-settings__group {
+    margin: 0.4vw;
+    flex: auto;
+    background-color: #f6f6f6;
+    border-radius: 0.5em;
+    padding: 0.4em;
+}
+
+/* The header for a block in a CRN settings component. */
+h4.c-settings__group-header {
+    color: black;
+    font-size: small;
+    margin-top: 0;
+}
+
+/* Additional styles for the plots block in the CRN settings component. */
+.c-settings__group-plots {
+    display: flex;
+    flex-direction: column;
+}
+
+/* The container of one specific setting within a block of a CRN settings component. */
+div.c-settings__one {
+    height: 25px;
+    font-size: small;
+}
+
+/* The header for one specific setting in a CRN settings component. */
+div.c-settings__header {
+    font-weight: 300;
+    display: inline;
+}
+
+/* A viewer/editor for the value of a setting in a CRN settings component. */
+.c-settings__value {
+    display: inline;
+    width: 5vw;
+    float: right;
+}
+
+/* A viewer/editor for the value of a setting in a CRN settings component. This is wider, and is to be used for settings that require more space. */
+.c-settings__value--long {
+    display: inline;
+    width: 13em;
+    float: right;
+}
+
+/* A viewer/editor for the value of a setting in a CRN settings component. This is for boolean settings. */
+.c-settings__value--checkbox {
+    display: inline;
+    float: right;
+}
+
+/* The text area for plots in the settings control. */
+textarea.c-settings__plots {
+    flex: auto;
+    height: 10em;
+    margin: 0.2vh;
+    resize: none;
+}
+
+/* The component that displays CRN parameters and inference-related settings. */
+parameters-viewer {
+    overflow: auto;
+}
+
+/* The header and cell for a parameter name within the parameters table. */
+td.c-parameters__name, th.c-parameters__name {
+    width: 20%;
+}
+
+/* The text editor for a field of a CRN parameter. */
+input.c-parameters__value {
+    min-width: 75px;
+    max-width: 75px;
+}
+
+/* The header and cell for a text editor within the parameters table. */
+td.c-parameters__value, th.c-parameters__value {
+    width: 10%;
+}
+
+/* The selector for a field of a CRN parameter. */
+select.c-parameters__select {
+    min-width: 75px;
+    max-width: 75px;
+}
+
+/* The container for the CRN parameters table. */
+.c-parameters__table {
+    overflow: auto;
+    flex: auto;
+}
+
+/* The container for the sweeps table in the parameters control. */
+.c-parameters__sweeps {
+    align-items: flex-start;
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: flex-start;
+    overflow: auto;
+}
+
+/* The header for a column of the sweeps table. */
+.c-parameters__sweeps-header {
+    vertical-align: middle;
+    font-weight: 600;
+}
+
+/* A cell of the species table that contains a species population. */
+td.c-species__population {
+    text-align: right;
+}
+
+/* The cell containing a rate in the reactions table, if the rates are in text mode. */
+td.c-reactions__rate {
+    text-align: right;
+}
+
+/* The cell containing a reverse rate in the reactions table, if the rates are in text mode. */
+td.c-reactions__reverse-rate {
+    text-align: right;
+}
+
+/* The container for a set of species in the reactions viewer. */
+span.c-species-list {
+    white-space: nowrap;
+}
+
+/* One span element of a species list (i.e. the '+' sign). */
+.c-species-list span {
+    display: inline-block;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+/* One div element of a species list. */
+.c-species-list div {
+    display: inline-block;
+    vertical-align: middle;
+    text-align: center;
+}
+
+    /* The text for a species within a species list. */
+    .c-species-list div p {
+        margin: 0px;
+    }
+
+/* The graphics for a species within the species list of a reaction. */
+svg.c-species-list__svg-species {
+    margin: 0 5px 0 5px;
+}
+
+/* The editor for a sweep name in the sweeps control. */
+input.c-sweeps__name {
+    background-color: transparent;
+    border: 0;
+    font-size: large;
+    font-weight: 600;
+    display: inline-block;
+    width: 150px;
+    vertical-align: middle;
+}
+
+/* The editor for the name of a sweep variable. */
+input.c-sweeps__var-name {
+    display: inline-block;
+    float: right;
+    font-weight: lighter;
+    width: 70px;
+    height: 20px;
+    border: 0;
+}
+
+/* The table and cells for the sweep editor table. */
+table.c-sweeps__table, table.c-sweeps__table tr, table.c-sweeps__table td {
+    border: 0.5px solid black;
+    border-collapse: collapse;
+    text-align: center;
+}
+
+    /* The header for the sweep editor table. */
+    table.c-sweeps__table thead tr {
+        background-color: rgb(238,238,238);
+    }
+
+/* The editor for the list of sweep values. */
+input.c-sweeps__values {
+    width: 200px;
+    height: 20px;
+    display: inline-block;
+    border: 0;
+}
+
+/* The main container for a MSAGL graph.*/
+.c-graph {
+    height: 100%;
+    display: flex;
+    flex-direction: column
+}
+
+/* The graph container for a MSAGL graph (the div that contains the actual MSAGLJS control). */
+.c-graph__graph {
+    flex-grow: 1;
+}
+
+/* The container for a sweep in the sweep editor. */
+.c-sweeps_one {
+    margin: 0.25vw;
+}
+
+/* The main container for an export. */
+.c-export {
+    display: flex;
+    height: 100%;
+}
+
+/* The class of one of the clickable page numbers in the viewer for a paged export. */
+.c-export__page-selector {
+    padding: 0.1em;
+}
+
+/* The container for an SVG export. */
+.c-export--svg {
+    width: 100%;
+    transform-origin: top left;
+}
+
+/* The container for a text export. */
+.c-export--text {
+    resize: none;
+    width: 100%;
+    height: 100%;
+}
+
+/* The header for a system, in exports that merge multiple systems. */
+.c-export__system-header {
+    font-size: xx-large;
+}
+
+/* The main container for the species or reactions control. */
+div.c-species-table, div.c-reactions-table {
+    height: 100%;
+}
+
+    /* The species and reactions tables. */
+    div.c-species-table table-viewer, div.c-reactions-table table-viewer {
+        overflow: auto;
+    }
+
+/* The button that lets you remove an item from the selected observation files list (in the parameters tab). */
+.c-sortable__remove {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    margin-top: -8px;
+    cursor: pointer;
+}
+
+/* A selected observation file in the files list (in the parameters tab). */
+.c-sortable__item {
+    position: relative;
+    margin: 2px;
+    height: 25px;
+    line-height: 25px;
+    cursor: ns-resize;
+    padding-left: 0.5em;
+}
+
+/* This class gets added to a draggable data set file, while it is being dragged. */
+.c-datasets__over {
+    opacity: 0.6;
+}
+
+/* The help text for the Data tab. */
+.c-datasets__tooltip {
+    display: inline-block;
+}
+
+/* The custom control that allows to select a CRN. */
+c-crn-selector {
+    margin-left: 5px;
+}

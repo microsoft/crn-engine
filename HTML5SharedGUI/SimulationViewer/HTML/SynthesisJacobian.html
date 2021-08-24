@@ -1,0 +1,35 @@
+﻿<div class="c-graph">
+    <div class="c-toolbar">
+        <dropdown class="c-toolbar__item SynthesisJacobianToolbar" style="margin-left: 10px">
+            <dropdownheader>Options</dropdownheader>
+            <dropdowncontent>
+                <div class="c-dropdown__item">
+                    <label><input type="checkbox" data-bind="checked: JacobianHorizontalLayout" />Horizontal layout</label>
+                </div>
+                <div class="c-dropdown__item">
+                    <label><input type="checkbox" data-bind="checked: JacobianAspectRatio" />Aspect ratio</label>
+                </div>
+            </dropdowncontent>
+        </dropdown>
+        <div class="c-toolbar__item">
+            <label>
+                Edge routing:
+                <select data-bind="value: JacobianRouting">
+                    <option value="splines">Splines</option>
+                    <option value="splinesbundling">Splines with Bundling</option>
+                    <option value="straightline">Straight Line</option>
+                    <option value="sugiyamasplines" selected>Sugiyama Splines</option>
+                    <option value="rectilinear">Rectilinear</option>
+                    <option value="rectilineartocenter">Rectilinear to Center</option>
+                </select>
+            </label>
+        </div>
+        <div class="c-toolbar__item">
+            <!-- ko with: JacobianZoom -->
+            <zoomslider></zoomslider>
+            <!-- /ko -->
+        </div>
+        <button data-bind="click: SaveJacobian" class="c-toolbar__item">Save</button>
+    </div>
+    <div class="c-graph__graph"></div>
+</div>

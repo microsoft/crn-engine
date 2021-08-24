@@ -1,0 +1,83 @@
+﻿<template id="reactions-template" type="text/html">
+    <!-- ko if: $parent.ViewModel.reactionsShowOnlyNames -->
+    <td class="s-crn__cell">
+        <input class="s-crn__edit" type="text" data-bind="speciesarray: catalysts, error: ErrorInputCatalysts" />
+    </td>
+    <!-- /ko -->
+    <!-- ko ifnot: $parent.ViewModel.reactionsShowOnlyNames -->
+    <td class="s-crn__cell" data-bind="element: getSpeciesList($parent.ViewModel, catalysts())"></td>
+    <!-- /ko -->
+    
+    <!-- ko if: $parent.ViewModel.reactionsShowOnlyNames -->
+    <td class="s-crn__cell">
+        <input class="s-crn__edit" type="text" data-bind="speciesarray: reactants, error: ErrorInputReactants" />
+    </td>
+    <!-- /ko -->
+    <!-- ko ifnot: $parent.ViewModel.reactionsShowOnlyNames -->
+    <td class="s-crn__cell" data-bind="element: function(){ var span = getSpeciesList($parent.ViewModel, reactants()); span.style.cssFloat='right'; return span; }"></td>
+    <!-- /ko -->
+    
+    <!-- ko if: $parent.ViewModel.reactionsShowGraphic -->
+    <td class="s-crn__cell">
+        <!-- ko if: $parent.ViewModel.showRates -->
+        <svg xmlns="http://www.w3.org/2000/svg" height="50" data-bind="attr:{width:rateWidth(), viewBox:'0 0 '+rateWidth()+' 50'}">
+            <!-- ko if: reverseRate() != "" && reverseRate() != null -->
+            <polyline fill="none" stroke="#000000" stroke-width="1" data-bind="attr:{points:'0,20 '+rateWidth()+',20 '+(rateWidth()-10)+',10'}"></polyline>
+            <polyline fill="none" stroke="#000000" stroke-width="1" data-bind="attr:{points:''+rateWidth()+',25 0,25 10,35'}"></polyline>
+            <text data-bind="text: rate, attr:{x:rateWidth()/2}" y="17" text-anchor="middle"></text>
+            <text data-bind="text: reverseRate, attr:{x:rateWidth()/2}" y="38" text-anchor="middle"></text>
+            <!-- /ko -->
+            <!-- ko if: reverseRate() == "" || reverseRate() == null -->
+            <polyline fill="none" stroke="#000000" stroke-width="1" data-bind="attr:{points:'0,20 '+rateWidth()+',20 '+(rateWidth()-10)+',10'}"></polyline>
+            <polyline fill="none" stroke="#000000" stroke-width="1" data-bind="attr:{points:'0,20 '+rateWidth()+',20 '+(rateWidth()-10)+',30'}"></polyline>
+            <text data-bind="text: rate, attr:{x:rateWidth()/2}" y="17" text-anchor="middle"></text>
+            <!-- /ko -->
+        </svg>
+        <!-- /ko -->
+        <!-- ko ifnot: $parent.ViewModel.showRates -->
+        <svg xmlns="http://www.w3.org/2000/svg" height="50" width="100" viewBox="0 0 100 50">
+            <!-- ko if: reverseRate() != "" && reverseRate() != null -->
+            <polyline fill="none" stroke="#000000" stroke-width="1" points="10,20 90,20 80,10"></polyline>
+            <polyline fill="none" stroke="#000000" stroke-width="1" points="90,25 10,25 20,35"></polyline>
+            <!-- /ko -->
+            <!-- ko if: reverseRate() == "" || reverseRate() == null -->
+            <polyline fill="none" stroke="#000000" stroke-width="1" points="10,20 90,20 80,10"></polyline>
+            <polyline fill="none" stroke="#000000" stroke-width="1" points="10,20 90,20 80,30"></polyline>
+            <!-- /ko -->
+        </svg>
+        <!-- /ko -->
+    </td>
+    <!-- /ko -->
+
+    <!-- ko if: $parent.ViewModel.reactionsShowOnlyNames -->
+    <td class="s-crn__cell">
+        <input class="s-crn__edit" type="text" data-bind="speciesarray: products, error: ErrorInputProducts" />
+    </td>
+    <!-- /ko -->
+    <!-- ko ifnot: $parent.ViewModel.reactionsShowOnlyNames -->
+    <td class="s-crn__cell" data-bind="element: getSpeciesList($parent.ViewModel, products())"></td>
+    <!-- /ko -->
+
+    <!-- ko ifnot: $parent.ViewModel.reactionsShowGraphic -->
+    <td class="s-crn__cell c-reactions__rate">
+        <input type="text" class="s-crn__edit" data-bind="value: rate" />
+    </td>
+    <td class="s-crn__cell c-reactions__reverse-rate">
+        <input type="text" class="s-crn__edit" data-bind="value: reverseRate" />
+    </td>
+    <!-- /ko -->
+    <td class="s-crn__cell" style="width: 100%"></td>
+</template>
+<template id="reactions-header" type="text/html">
+    <th class="s-crn__cell">Catalysts</th>
+    <th class="s-crn__cell">Reactants</th>
+    <!-- ko if: reactionsShowGraphic -->
+    <th class="s-crn__cell">Rate</th>
+    <!-- /ko -->
+    <th class="s-crn__cell">Products</th>
+    <!-- ko ifnot: reactionsShowGraphic -->
+    <th class="s-crn__cell">Rate</th>
+    <th class="s-crn__cell">Reverse Rate</th>
+    <!-- /ko -->
+    <th class="s-crn__cell" style="width: 100%"></th>
+</template>
