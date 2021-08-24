@@ -14,9 +14,8 @@ jobs:
     - uses: actions/checkout@v2
     - name: Restore tools
       run: dotnet tool restore    
-    - name: Restore CRN dependencies
+    - name: Restore dependencies
       run: dotnet restore Checks/Checks.sln
     - name: Run checks
       working-directory: ./Checks/Checks
-      shell: cmd
       run: dotnet run
