@@ -1,5 +1,5 @@
 [![Windows-CLI](https://github.com/microsoft/CRN/actions/workflows/build-cli.yml/badge.svg)](https://github.com/microsoft/CRN/actions/workflows/build-cli.yml)
-[![Windows-Server](https://github.com/microsoft/CRN/actions/workflows/build-server.yml/badge.svg)](https://github.com/microsoft/CRN/actions/workflows/build-server.yml)
+[![Windows-Server](https://github.com/microsoft/CRN/actions/workflows/build-localhost.yml/badge.svg)](https://github.com/microsoft/CRN/actions/workflows/build-localhost.yml)
 [![Windows-HTML](https://github.com/microsoft/CRN/actions/workflows/build-html.yml/badge.svg)](https://github.com/microsoft/CRN/actions/workflows/build-html.yml)
 
 # Project
