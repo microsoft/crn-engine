@@ -2,15 +2,33 @@
 
 # Project
 
-> This repo has been populated by an initial template to help get you started. Please
-> make sure to update the content to build a great experience for community-building.
+Chemical Reaction Networks Engine (CRN-Engine) is an open source repository that enables programming and analysis of (bio)chemical systems. The implementation for several domain-specific programming languages (DSLs) are included, and have been published previously in web tools (Visual DSD, Visual GEC, Visual CRN) and the scientific literature. The languages compile to chemical reaction networks, which is a mathematical object that defines parameterised chemical systems. The included analysis methods on CRNs include stochastic simulation, approximate simulation of stochastic dynamics using moment closure techniques, integration of the chemical master equation, as well as satisfiability analysis for stable systems. Finally, the parameters of CRNs can be inferred from observation data, using Markov chain Monte Carlo (MCMC).
 
-As the maintainer of this project, please make a few updates:
+## Getting Started
 
-- Improving this README.MD file to provide a great experience
-- Updating SUPPORT.MD with content about this project's support experience
-- Understanding the security reporting process in SECURITY.MD
-- Remove this section from the README
+For building on Windows, the following are required:
+
+- Visual Studio 2019
+    - Workloads tab:
+        - .NET desktop development
+        - Desktop development with C++
+        - Azure development
+    - Individual Components tab, ".NET" section:
+        - .NET Framework 4.7.2 SDK
+        - .NET Framework 4.7.2 targeting pack
+    - Individual Components tab, "Compilers, build tools, and runtimes" section:
+        - MSVC (XYZ) - VS 2019; Libs for Spectre (x86 and x64) [where XYZ is the highest version corresponding to the VC++ 2019 version (XYZ) latest v142 tools, which might have been selected already]
+    - Individual Components tab, "Development activities" section:
+        - F# desktop language support
+        - F# language support
+        - F# language support for web projects
+    - Individual Components tab, "SDKs, libraries, and frameworks" section:
+        - Windows 10 SDK (10.0.17763.0)
+- .NET Core SDK 3.0.* 
+- .NET Core SDK 3.1.* 
+- NodeJS  (this may involve restarting your computer several times)
+- Yarn 
+- C++ CRT  (C Run Time Library)
 
 ## Contributing
 
