@@ -1,7 +1,9 @@
-To regenerate SundialsSolver.js and SundialsSolver.wasm on Linux
+# Building SUNDIALS for Web Assembly
+
+## Building on Linux
+Instructions for regenerating SundialsSolver.js and SundialsSolver.wasm on Linux.
 
 Prepare prerequisites:
-
 1. Install CMake 3.10.2
 2. Install Emscripten SDK 1.38.4
 
@@ -22,19 +24,27 @@ WebAssembly build procedure:
 8. SundialsSolver.js and SundialsSolver.wasm are generated.
 
 
-example of CMake options:
+Example of CMake options:
 
+```
 -DBUILD_SHARED_LIBS:BOOL="0" -DCMAKE_INSTALL_PREFIX:PATH="/usr/local" -DCMAKE_C_COMPILER_RANLIB:FILEPATH="/home/dmitry/Desktop/emsdk/clang/e1.38.4_64bit/llvm-ranlib" -DCMAKE_AR:FILEPATH="/home/dmitry/Desktop/emsdk/clang/e1.38.4_64bit/llvm-ar" -DCMAKE_CXX_FLAGS_DEBUG:STRING="-g" -DCMAKE_LINKER:FILEPATH="/home/dmitry/Desktop/emsdk/clang/e1.38.4_64bit/emcc" -DCMAKE_RANLIB:FILEPATH="/home/dmitry/Desktop/emsdk/clang/e1.38.4_64bit/llvm-ranlib" -DCMAKE_CXX_COMPILER:FILEPATH="/home/dmitry/Desktop/emsdk/emscripten/1.38.4/em++" -DCMAKE_CXX_COMPILER_AR:FILEPATH="/home/dmitry/Desktop/emsdk/clang/e1.38.4_64bit/llvm-ar" -DCMAKE_CXX_COMPILER_RANLIB:FILEPATH="/home/dmitry/Desktop/emsdk/clang/e1.38.4_64bit/llvm-ranlib" -DEXAMPLES_INSTALL_PATH:PATH="/home/dmitry/Desktop/instdir/examples" -DCMAKE_C_COMPILER:FILEPATH="/home/dmitry/Desktop/emsdk/emscripten/1.38.4/emcc" -DCMAKE_BUILD_TYPE:STRING="" -DCMAKE_CXX_FLAGS:STRING="" -DCMAKE_COLOR_MAKEFILE:BOOL="1" -DCMAKE_C_COMPILER_AR:FILEPATH="/home/dmitry/Desktop/emsdk/clang/e1.38.4_64bit/llvm-ar" -DSUNDIALS_INDEX_TYPE:STRING="int32_t" 
+```
 
 
+## Building on Windows (experimental)
 
-Building on Windows (experimental!)
-===================================
-
+```
 enable_language(CXX)
+```
 
+```
 SET(EM_JS_OUT_FLAGS "-s RESERVED_FUNCTION_POINTERS=5 -s \"EXPORTED_FUNCTIONS=['_fnSundialsSolver','_fnSundialsCMESolver']\" -s \"EXTRA_EXPORTED_RUNTIME_METHODS=['ccall', 'cwrap', 'addFunction', 'removeFunction', '_free', '_malloc']\" -s MODULARIZE=1 -s \"EXPORT_NAME='CVode'\"")
+```
 
+```
 C:\Program Files (x86)\Microsoft Visual Studio\2017\Enterprise\VC\Auxiliary\Build\vcvars64.bat
+```
 
+```
 emconfigure cmake -G "NMake Makefiles" -DBUILD_SHARED_LIBS:BOOL="0" -DEXAMPLES_ENABLE_C:BOOL="0" -DSUNDIALS_INDEX_TYPE:STRING="int32_t" E:\dev\sundials-3.1.2
+```

@@ -1,4 +1,4 @@
-name: Windows localhost
+name: Windows HTML
 
 on:
   push:
@@ -28,19 +28,19 @@ jobs:
       run: dotnet tool restore
     
     - name: Restore CRN dependencies
-      run: dotnet restore CRNEngine/CRNEngineServer.sln
+      run: dotnet restore CRNEngine/CRNEngineHTML.sln
     - name: Build CRN
       shell: cmd
-      run: msbuild CRNEngine/CRNEngineServer.sln /p:Configuration=Release /p:Platform=x64
+      run: msbuild CRNEngine/CRNEngineHTML.sln /p:Configuration=Release /p:Platform=x64
     
     - name: Restore GEC dependencies
-      run: dotnet restore ClassicGEC/ClassicGECServer.sln
+      run: dotnet restore ClassicGEC/ClassicGECHTML.sln
     - name: Build GEC
       shell: cmd
-      run: msbuild ClassicGEC/ClassicGECServer.sln /p:Configuration=Release /p:Platform=x64
+      run: msbuild ClassicGEC/ClassicGECHTML.sln /p:Configuration=Release /p:Platform=x64
     
     - name: Restore DSD dependencies
-      run: dotnet restore ClassicDSD/ClassicDSDServer.sln
+      run: dotnet restore ClassicDSD/ClassicDSDHTML5.sln
     - name: Build DSD
       shell: cmd
-      run: msbuild ClassicDSD/ClassicDSDServer.sln /p:Configuration=Release /p:Platform=x64
+      run: msbuild ClassicDSD/ClassicDSDHTML5.sln /p:Configuration=Release /p:Platform=x64
