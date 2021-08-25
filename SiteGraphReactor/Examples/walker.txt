@@ -1,0 +1,11 @@
+  [ <c^ y^!e0 d^!e1 a^!e2 x^!e3 y^* c^* b^* x^*!e3 a^*!e2 d^*!e1 y^*!e0> ]
+| [ <TRK1!t0 s1^ a^!a0 x^!a1 b^!a2 c^!a3 y^!a4 x^*!a5 a^* d^* y^* c^* b^* x^*>
+  | <TRK2!t1 TRK3!t2>
+  | <TRK1!t3 s1^ a^!c5 x^!c4 b^!c3 c^!c2 y^!c1 x^*!c0 a^* d^* y^* c^* b^* x^*>
+  | <TRK2!t4 TRK3!t5>
+  | <TRK1!t6 s1^ a^ x^!d0 b^!d1 c^!d2 y^!d3 x^* a^* d^* y^*!d3 c^*!d2 b^*!d1 x^*!d0>
+  | <TRK2!t7 TRK3!t8>
+  | <TRK3*!t8 TRK2*!t7 TRK1*!t6 TRK3*!t5>
+  | <TRK2*!t4 TRK1*!t3 TRK3*!t2 TRK2*!t1 TRK1*!t0>
+  | <BRACE!b0 s2^ x^!a5 y^*!a4 c^*!a3 b^*!a2 x^*!a1 a^*!a0>
+  | <BRACE*!b0 s2^ x^!c0 y^*!c1 c^*!c2 b^*!c3 x^*!c4 a^*!c5> ]

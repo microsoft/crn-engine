@@ -1,0 +1,24 @@
+Scripts/**/*.js
+!Scripts/src/WorkerBoot.js
+Scripts/**/*.js.map
+Scripts/**/*.d.ts
+!Scripts/typings/**/*.d.ts
+Tests/**/*.js
+Tests/**/*.js.map
+Tests/**/*.d.ts
+
+#residual files from before webpack
+vs/
+Scripts/CodeEditor/
+Scripts/InferenceViewer
+Scripts/Common/
+Scripts/CRN
+Scripts/CrnApp
+Scripts/CRNEngine
+Scripts/KnockoutGrid
+Scripts/DsdGeneric
+Scripts/MSAGL
+Scripts/SimulationViewer
+Scripts/StrandGraphs
+Scripts/IDD
+offlineServiceWorker.js

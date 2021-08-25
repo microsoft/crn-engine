@@ -1,0 +1,20 @@
+﻿html {
+    height: 97%;
+}
+
+body {
+    height: 100%;
+}
+
+.codeBox {
+    height: 35%;
+    width: 100%;
+}
+
+.status {
+    font-family: monospace;
+}
+
+.status > p {
+    margin: 0px;
+}

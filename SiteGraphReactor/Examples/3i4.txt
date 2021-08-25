@@ -1,0 +1,8 @@
+  <tether T2^!a X*!b T1^>
+| <A X!b T2^*!a>
+| <T1^* X!c RA>
+| <X*!c A*!d>
+| <A!d>
+| <RA!e>
+| <RA*!e X*!f>
+| <B X!f T2^*>

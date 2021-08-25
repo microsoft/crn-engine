@@ -1,0 +1,7 @@
+  [ <y* b* x* a*> ]
+
+| [ <a x!a1 b!a2 y!a3 z* c* y*!a3 b*!a2 x*!a1> ]
+
+| [ <b y!b1 c!b2 z!b3 x* a* z*!b3 c*!b2 y*!b1> ]
+
+| [ <c z!c1 a!c2 x!c3 y* b* x*!c3 a*!c2 z*!c1> ]

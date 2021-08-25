@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DefineConstants>TRACE;JavaScript</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DefineConstants>TRACE;JavaScript</DefineConstants>
+  </PropertyGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="Scripts\scratch.fsx" />
+    <Compile Include="..\SiteGraphReactor\Calculus.fs">
+      <Link>Calculus.fs</Link>
+    </Compile>
+    <Compile Include="..\SiteGraphReactor\TimeSeparation.fs">
+      <Link>TimeSeparation.fs</Link>
+    </Compile>
+    <Compile Include="..\SiteGraphReactor\Tiles.fs">
+      <Link>Tiles.fs</Link>
+    </Compile>
+    <Compile Include="..\SiteGraphReactor\Strands.fs">
+      <Link>Strands.fs</Link>
+    </Compile>
+    <Compile Include="..\SiteGraphReactor\Species.fs">
+      <Link>Species.fs</Link>
+    </Compile>
+    <Compile Include="..\SiteGraphReactor\CirclesRenderer.fs">
+      <Link>CirclesRenderer.fs</Link>
+    </Compile>
+    <Compile Include="..\SiteGraphReactor\Reactions.fs">
+      <Link>Reactions.fs</Link>
+    </Compile>
+    <Compile Include="..\SiteGraphReactor\States.fs">
+      <Link>States.fs</Link>
+    </Compile>
+    <Compile Include="..\SiteGraphReactor\ReactionGraph.fs">
+      <Link>ReactionGraph.fs</Link>
+    </Compile>
+    <Compile Include="..\SiteGraphReactor\Syntax.fs">
+      <Link>Syntax.fs</Link>
+    </Compile>
+    <Compile Include="..\SiteGraphReactor\ExtendedSyntax.fs">
+      <Link>ExtendedSyntax.fs</Link>
+    </Compile>
+    <Compile Include="..\SiteGraphReactor\sitegraphs.fs">
+      <Link>sitegraphs.fs</Link>
+    </Compile>
+    <None Include="paket.references" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\ParserCombinators\ParserCombinatorsJS\ParserCombinatorsJS.fsproj" />
+  </ItemGroup>
+  <Import Project="..\..\.paket\Paket.Restore.targets" />
+</Project>

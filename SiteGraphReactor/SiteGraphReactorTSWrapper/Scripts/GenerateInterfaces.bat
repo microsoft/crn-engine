@@ -1,0 +1,1 @@
+.\..\..\..\packages\javascriptbuild\TypesTSFS\tools\TypesTSFS.exe --style websharper --projectfilepath "../../SiteGraphCRNJS/SiteGraphCRNJS.fsproj" --outputpath "./WebSharperGeneratedInterfaces.ts"

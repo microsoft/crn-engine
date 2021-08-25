@@ -44,3 +44,9 @@ jobs:
     - name: Build DSD
       shell: cmd
       run: msbuild ClassicDSD/ClassicDSDHTML5.sln /p:Configuration=Release /p:Platform=x64
+
+    - name: Restore Strand Graphs dependencies
+      run: dotnet restore HTML5StrandGraphs/HTML5StrandGraphs.sln
+    - name: Build Strand Graphs
+      shell: cmd
+      run: msbuild HTML5StrandGraphs/HTML5StrandGraphs.sln /p:Configuration=Release /p:Platform=x64
