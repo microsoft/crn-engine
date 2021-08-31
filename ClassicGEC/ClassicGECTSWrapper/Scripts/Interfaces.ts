@@ -9,251 +9,25 @@ import * as Interfaces from '../../../CRNEngine/CRNEngineTSWrapper/Scripts/Inter
 // TODO: Update FSBOL and re-plumb SBOL components
 //export type jSBOLDocument = WGI.FSBOL.JsonSerializer.rSBOLDocument;
 
-/*
-export type rAttachment = {
-    uri: string;
-    version: string;
-    name: string;
-    displayId: string;
-    persistentIdentity: string;
-    attachments: Array<string>;
-    description: string;
-    annotations: Array<rAnnotation>;
-    source: string;
-    format: string;
-    size: number;
-    hash: string;
-}
-export type rCollection = {
-    uri: string;
-    version: string;
-    name: string;
-    displayId: string;
-    persistentIdentity: string;
-    attachments: Array<string>;
-    description: string;
-    annotations: Array<rAnnotation>;
-    members: Array<string>;
-}
-export type rCombinatorialDerivation = {
-    uri: string;
-    version: string;
-    name: string;
-    displayId: string;
-    persistentIdentity: string;
-    attachments: Array<string>;
-    description: string;
-    annotations: Array<rAnnotation>;
-    strategy: string;
-    template: string;
-    variableComponents: Array<rVariableComponent>;
-}
-export type rFunctionalComponent = {
-    uri: string;
-    version: string;
-    name: string;
-    displayId: string;
-    persistentIdentity: string;
-    description: string;
-    annotations: Array<rAnnotation>;
-    definition: string;
-    access: string;
-    mapsTos: Array<rMapsTo>;
-    direction: string;
-}
-export type rImplementation = {
-    uri: string;
-    version: string;
-    name: string;
-    displayId: string;
-    persistentIdentity: string;
-    attachments: Array<string>;
-    description: string;
-    annotations: Array<rAnnotation>;
-    built: string;
-}
-export type rInteraction = {
-    uri: string;
-    version: string;
-    name: string;
-    displayId: string;
-    persistentIdentity: string;
-    description: string;
-    annotations: Array<rAnnotation>;
-    types: Array<string>;
-    participations: Array<rParticipation>;
-}
-export type rModel = {
-    uri: string;
-    version: string;
-    name: string;
-    displayId: string;
-    persistentIdentity: string;
-    attachments: Array<string>;
-    description: string;
-    annotations: Array<rAnnotation>;
-    source: string;
-    language: string;
-    framework: string;
-}
-export type rModule = {
-    uri: string;
-    version: string;
-    name: string;
-    displayId: string;
-    persistentIdentity: string;
-    description: string;
-    annotations: Array<rAnnotation>;
-    definition: string;
-    mapsTos: Array<rMapsTo>;
-}
-export type rModuleDefinition = {
-    uri: string;
-    version: string;
-    name: string;
-    displayId: string;
-    persistentIdentity: string;
-    attachments: Array<string>;
-    description: string;
-    annotations: Array<rAnnotation>;
-    roles: Array<string>;
-    functionalComponents: Array<rFunctionalComponent>;
-    interactions: Array<rInteraction>;
-    modules: Array<rModule>;
-    models: Array<string>;
-}
-export type rParticipation = {
-    uri: string;
-    version: string;
-    name: string;
-    displayId: string;
-    persistentIdentity: string;
-    description: string;
-    annotations: Array<rAnnotation>;
-    roles: Array<string>;
-    participant: string;
-}
-export type rSequence = {
-    uri: string;
-    version: string;
-    name: string;
-    displayId: string;
-    persistentIdentity: string;
-    attachments: Array<string>;
-    description: string;
-    annotations: Array<rAnnotation>;
-    elements: string;
-    encoding: string;
-}
-export type rVariableComponent = {
-    uri: string;
-    version: string;
-    name: string;
-    displayId: string;
-    persistentIdentity: string;
-    description: string;
-    annotations: Array<rAnnotation>;
-    operator: string;
-    variants: Array<string>;
-    variantCollections: Array<string>;
-    variantDerivations: Array<string>;
-    variable: string;
-}
-*/
-
-////////////////////////
-export type rCut = {
-    uri: string;
-    version: string;
-    name: string;
-    displayId: string;
-    persistentIdentity: string;
-    description: string;
-    annotations: Array<rAnnotation>;
-    orientation: string;
-    at: number;
-}
-export type rGenericLocation = {
-    uri: string;
-    version: string;
-    name: string;
-    displayId: string;
-    persistentIdentity: string;
-    description: string;
-    annotations: Array<rAnnotation>;
-    orientation: string;
-}
+// Workaround: define the structure that is used, to prevent build errors
 export type rRange = {
-    uri: string;
-    version: string;
     name: string;
     displayId: string;
     persistentIdentity: string;
-    description: string;
-    annotations: Array<rAnnotation>;
-    orientation: string;
+    version: string;
+    uri: string;
     startIndex: number;
     endIndex: number;
-}
-export type rLiteral = {
-    literalType: string;
-    string: string;
-    int: number;
-    int64: number;
-    double: number;
-    bool: boolean;
-}
-export type rQName = {
-    qNameType: string;
-    name: string;
-    prefix: string;
-    nameSpaceUri: string;
-}
-export type rMapsTo = {
-    uri: string;
-    version: string;
-    name: string;
-    displayId: string;
-    persistentIdentity: string;
-    description: string;
-    annotations: Array<rAnnotation>;
-    local: string;
-    remote: string;
-    refinment: string;
-}
+    orientation: string;
+ }
 export type rSequenceAnnotation = {
-    uri: string;
-    version: string;
     name: string;
     displayId: string;
     persistentIdentity: string;
-    description: string;
-    annotations: Array<rAnnotation>;
+    version: string;
+    uri: string;
     ranges: Array<rRange>;
-    cuts: Array<rCut>;
-    genericLocations: Array<rGenericLocation>;
     roles: Array<string>;
-    componentObj: string;
-}
-export type rAnnotation = {
-    qName: rQName;
-    valueType: string;
-    literal: rLiteral;
-    uri: string;
-    nestedQName: rQName;
-    annotations: Array<rAnnotation>;
-}
-export type rSequenceConstraint = {
-    uri: string;
-    version: string;
-    name: string;
-    displayId: string;
-    persistentIdentity: string;
-    description: string;
-    annotations: Array<rAnnotation>;
-    subject: string;
-    object: string;
-    restriction: string;
 }
 export type rComponent = {
     uri: string;
@@ -262,12 +36,8 @@ export type rComponent = {
     displayId: string;
     persistentIdentity: string;
     description: string;
-    annotations: Array<rAnnotation>;
     definition: string;
     access: string;
-    mapsTos: Array<rMapsTo>;
-    roles: Array<string>;
-    roleIntegrations: Array<string>;
 }
 export type rComponentDefinition = {
     uri: string;
@@ -277,23 +47,14 @@ export type rComponentDefinition = {
     persistentIdentity: string;
     attachments: Array<string>;
     description: string;
-    annotations: Array<rAnnotation>;
     components: Array<rComponent>;
     sequenceAnnotations: Array<rSequenceAnnotation>;
-    sequenceConstraints: Array<rSequenceConstraint>;
     sequences: Array<string>;
     types: Array<string>;
     roles: Array<string>;
 }
 export type rSBOLDocument = {
-    //attachments: Array<rAttachment>;
-    //sequences: Array<rSequence>;
     componentDefinitions: Array<rComponentDefinition>;
-    //moduleDefinitions: Array<rModuleDefinition>;
-    //models: Array<rModel>;
-    //implementations: Array<rImplementation>;
-    //collections: Array<rCollection>;
-    //CombinatorialDerivation: Array<rCombinatorialDerivation>;
 }
 export type jSBOLDocument = rSBOLDocument
 

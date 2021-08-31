@@ -24,10 +24,8 @@ export function jsbolToObject(jsbol: Interfaces.jSBOLDocument) {
             component.persistentIdentity = comp.persistentIdentity;
             component.version = comp.version;
             component.uri = comp.uri;
-
-            component.definition = comp.definition
+            component.definition = comp.definition;
             component.access = comp.access;
-
 
             compdef.addComponent(component);
         });
