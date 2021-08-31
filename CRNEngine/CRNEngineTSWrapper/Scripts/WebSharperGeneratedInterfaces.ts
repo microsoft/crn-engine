@@ -1,6 +1,3 @@
-// Copyright (c) Microsoft Corporation.
-// Licensed under the MIT License.
-
 //These interfaces are code generated from F#, any changes to this file will be lost.
 export namespace WebSharperGeneratedInterfaces {
 
@@ -84,6 +81,7 @@ export namespace WebSharperGeneratedInterfaces {
             sweeps: Array<Microsoft.Research.CRNEngine.Sweep>;
             rates: { [key: string]: e };
             plot: Microsoft.Research.CRNEngine.Plot_settings<e>;
+            quiet: boolean;
         }
         export interface Ctmc {
             graph: Microsoft.Research.CRNEngine.Dictionary.t<Opaque.FSharpMap<number, number>, Array<Microsoft.Research.CRNEngine.Transition>>;
@@ -244,6 +242,7 @@ export namespace WebSharperGeneratedInterfaces {
             seed?: number;
             kinetics: Microsoft.Research.CRNEngine.Kinetics;
             times: Array<number>;
+            prune: boolean;
             multicore: boolean;
             data: Array<string>;
             sweeps: Array<string>;
@@ -273,8 +272,8 @@ export namespace WebSharperGeneratedInterfaces {
             assignments: Array<Microsoft.Research.CRNEngine.Assignment>;
         }
         export interface Synthesis_settings {
-            mode: Microsoft.Research.CRNEngine.Synthesis_mode
-            solver: Microsoft.Research.CRNEngine.Z3Solver
+            mode: Microsoft.Research.CRNEngine.Synthesis_mode;
+            solver: Microsoft.Research.CRNEngine.Z3Solver;
             timeout?: number;
             seed?: number;
         }
@@ -283,7 +282,7 @@ export namespace WebSharperGeneratedInterfaces {
             columns: Array<Microsoft.Research.CRNEngine.Column<v>>;
         }
         export interface Task {
-            task_type: Microsoft.Research.CRNEngine.TaskType;
+            task_type?: Microsoft.Research.CRNEngine.TaskType;
             copies: number;
             copy_id: number;
             nodes: number;
@@ -386,129 +385,7 @@ export namespace WebSharperGeneratedInterfaces {
         }
     }
 
-    export namespace System {
-
-    }
-
-    export namespace Microsoft.Research.Filzbach.Filzbach {
-        export interface Burnin {
-            space: Microsoft.Research.Filzbach.DataStructures.AssociativeArray<Microsoft.Research.Filzbach.Parameters.ParameterRange>;
-            state: Microsoft.Research.Filzbach.Parameters.EvaluatedValues;
-            thinningSkippedCount: number;
-            chain: Array<Microsoft.Research.Filzbach.Parameters.EvaluatedValues>;
-            stats: Array<Microsoft.Research.Filzbach.Parameters.AcceptanceStatistics>;
-            randGen: Microsoft.Research.Filzbach.Lib.IRng;
-            innovationGens: Opaque.FSharpMap<number, Microsoft.Research.Filzbach.Lib.NormalGenerator>;
-            mle: Microsoft.Research.Filzbach.Parameters.EvaluatedValues;
-            priors: Array<Microsoft.Research.Filzbach.Parameters.PriorValue | null>;
-            indexes: Array<number>;
-        }
-        export interface Sampling {
-            space: Microsoft.Research.Filzbach.DataStructures.AssociativeArray<Microsoft.Research.Filzbach.Parameters.ParameterRange>;
-            state: Microsoft.Research.Filzbach.Parameters.EvaluatedValues;
-            thinningSkippedCount: number;
-            chain: Array<Microsoft.Research.Filzbach.Parameters.EvaluatedValues>;
-            burnin: Array<Microsoft.Research.Filzbach.Parameters.EvaluatedValues>;
-            randGen: Microsoft.Research.Filzbach.Lib.IRng;
-            innovationGens: Opaque.FSharpMap<number, Microsoft.Research.Filzbach.Lib.NormalGenerator>;
-            mle: Microsoft.Research.Filzbach.Parameters.EvaluatedValues;
-            priors: Array<Microsoft.Research.Filzbach.Parameters.PriorValue | null>;
-            indexes: Array<number>;
-            accepted: number;
-        }
-        export interface RunPhase {
-            BurninPhase?: Microsoft.Research.Filzbach.Filzbach.Burnin;
-            SamplingPhase?: Microsoft.Research.Filzbach.Filzbach.Sampling;
-        }
-    }
-
-    export namespace Microsoft.Research.CRNEngine.InferenceSiteGraph {
-        export interface IGraph {
-            task?: Microsoft.Research.CRNEngine.Task;
-            nodes: Opaque.FSharpMap<string, Microsoft.Research.CRNEngine.Model>;
-            edges: Opaque.FSharpMap<Microsoft.Research.CRNEngine.InferenceSiteGraph.Location, Array<Opaque.FSharpTuple>>;
-            expanded: boolean;
-        }
-        export interface Location {
-            NodeLoc?: string;
-            SystemLoc?: Opaque.FSharpTuple;
-        }
-        export type PriorKind = "Fixed2" | "Normal" | "LogNormal" | "TruncatedNormal"
-        export const PriorKindSelect = ["Fixed2", "Normal", "LogNormal", "TruncatedNormal"]
-    }
-
-    export namespace Microsoft.Research.Filzbach.Lib {
-        export interface IRng {
-            //NextDouble : () => Opaque.FSharpTuple;
-            //NextInt32 : () => Opaque.FSharpTuple;
-        }
-        export interface NormalGenerator {
-            //Mean : () => number;
-            //Sigma : () => number;
-            //State : () => Microsoft.Research.Filzbach.Lib.NormalGeneratorState;
-            //nextDouble : () => Opaque.FSharpTuple;
-        }
-        export interface NormalGeneratorState {
-            rnorm_phase: boolean;
-            rnorm_2: number;
-            rnorm_f: number;
-        }
-    }
-
-    export namespace Microsoft.Research.CRNEngine.Graph {
-        export type LineStyle = "Normal" | "Dashed"
-        export type Shape = "Ellipse" | "Box"
-        export interface Node {
-            id: string;
-            label?: string;
-            stroke?: string;
-            fill?: string;
-            shape?: Shape;
-        }
-        export interface Edge {
-            source: string;
-            destination: string;
-            label?: string;
-            style?: LineStyle;
-            stroke?: string;
-        }
-        export interface Graph {
-            nodes: Node[];
-            edges: Edge[];
-        }
-    }
-
     export namespace Microsoft.Research.CRNEngine.JSAPI {
-        export interface SynthesisDispersionResult {
-            markersX: number[];
-            markersY: number[];
-            plotX: number[];
-            plotY: number[];
-            xMin: number;
-            xMax: number;
-            yMin: number;
-            yMax: number;
-        }
-        export interface SynthesisValue {
-            value: number;
-            lowerBound?: number;
-            upperBound?: number;
-        }
-        export interface SynthesisEquations {
-            rateEquations: string;
-            jacobian: string;
-            diffusion: string;
-            csts: string;
-        }
-        export interface SynthesisResult {
-            message: string;
-            values: { [variable: string]: SynthesisValue };
-            equations: Microsoft.Research.CRNEngine.JSAPI.SynthesisEquations;
-            dispersion?: Microsoft.Research.CRNEngine.JSAPI.SynthesisDispersionResult;
-            jacobian?: Microsoft.Research.CRNEngine.Graph.Graph;
-            crn?: Gui;
-            code?: string;
-        }
         export interface BistabilityPlot {
             speciesX: string;
             speciesY: string;
@@ -516,12 +393,12 @@ export namespace WebSharperGeneratedInterfaces {
             state1y: number;
             state2x: number;
             state2y: number;
-            initialsX: number[];
-            initialsY: number[];
-            state1simsX: number[][];
-            state1simsY: number[][];
-            state2simsX: number[][];
-            state2simsY: number[][];
+            initialsX: Array<number>;
+            initialsY: Array<number>;
+            state1simsX: Array<Array<number>>;
+            state1simsY: Array<Array<number>>;
+            state2simsX: Array<Array<number>>;
+            state2simsY: Array<Array<number>>;
         }
         export interface InferenceParameter {
             name: string;
@@ -537,6 +414,36 @@ export namespace WebSharperGeneratedInterfaces {
             nodeId: string;
             parameters: Array<Microsoft.Research.CRNEngine.JSAPI.InferenceParameter>;
         }
+        export interface SynthesisDispersionResult {
+            markersX: Array<number>;
+            markersY: Array<number>;
+            plotX: Array<number>;
+            plotY: Array<number>;
+            xMin: number;
+            xMax: number;
+            yMin: number;
+            yMax: number;
+        }
+        export interface SynthesisEquations {
+            rateEquations: string;
+            jacobian: string;
+            diffusion: string;
+            csts: string;
+        }
+        export interface SynthesisResult {
+            message: string;
+            values: { [key: string]: Microsoft.Research.CRNEngine.JSAPI.SynthesisValue };
+            equations: Microsoft.Research.CRNEngine.JSAPI.SynthesisEquations;
+            dispersion?: Microsoft.Research.CRNEngine.JSAPI.SynthesisDispersionResult;
+            jacobian?: Microsoft.Research.CRNEngine.Graph.Graph;
+            crn?: Microsoft.Research.CRNEngine.Gui;
+            code?: string;
+        }
+        export interface SynthesisValue {
+            value: number;
+            lowerBound?: number;
+            upperBound?: number;
+        }
         export interface column_array<v> {
             name: string;
             values: Array<v>;
@@ -547,7 +454,7 @@ export namespace WebSharperGeneratedInterfaces {
             display_name: string;
             node_id?: string;
             instance?: string;
-            content?: string[];
+            content?: Array<string>;
             save_content?: string;
         }
         export interface inference_burnin {
@@ -616,6 +523,100 @@ export namespace WebSharperGeneratedInterfaces {
         export interface inference_phase {
             BurninPhase?: Microsoft.Research.CRNEngine.JSAPI.inference_burnin;
             SamplingPhase?: Microsoft.Research.CRNEngine.JSAPI.inference_sampling;
+        }
+    }
+
+    export namespace System {
+
+    }
+
+    export namespace Microsoft.Research.Filzbach.Filzbach {
+        export interface Burnin {
+            space: Microsoft.Research.Filzbach.DataStructures.AssociativeArray<Microsoft.Research.Filzbach.Parameters.ParameterRange>;
+            state: Microsoft.Research.Filzbach.Parameters.EvaluatedValues;
+            thinningSkippedCount: number;
+            chain: Array<Microsoft.Research.Filzbach.Parameters.EvaluatedValues>;
+            stats: Array<Microsoft.Research.Filzbach.Parameters.AcceptanceStatistics>;
+            randGen: Microsoft.Research.Filzbach.Lib.IRng;
+            innovationGens: Opaque.FSharpMap<number, Microsoft.Research.Filzbach.Lib.NormalGenerator>;
+            mle: Microsoft.Research.Filzbach.Parameters.EvaluatedValues;
+            priors: Array<Microsoft.Research.Filzbach.Parameters.PriorValue | null>;
+            indexes: Array<number>;
+        }
+        export interface Sampling {
+            space: Microsoft.Research.Filzbach.DataStructures.AssociativeArray<Microsoft.Research.Filzbach.Parameters.ParameterRange>;
+            state: Microsoft.Research.Filzbach.Parameters.EvaluatedValues;
+            thinningSkippedCount: number;
+            chain: Array<Microsoft.Research.Filzbach.Parameters.EvaluatedValues>;
+            burnin: Array<Microsoft.Research.Filzbach.Parameters.EvaluatedValues>;
+            randGen: Microsoft.Research.Filzbach.Lib.IRng;
+            innovationGens: Opaque.FSharpMap<number, Microsoft.Research.Filzbach.Lib.NormalGenerator>;
+            mle: Microsoft.Research.Filzbach.Parameters.EvaluatedValues;
+            priors: Array<Microsoft.Research.Filzbach.Parameters.PriorValue | null>;
+            indexes: Array<number>;
+            accepted: number;
+        }
+        export interface RunPhase {
+            BurninPhase?: Microsoft.Research.Filzbach.Filzbach.Burnin;
+            SamplingPhase?: Microsoft.Research.Filzbach.Filzbach.Sampling;
+        }
+    }
+
+    export namespace Microsoft.Research.CRNEngine.Graph {
+        export interface Edge {
+            source: string;
+            destination: string;
+            label?: string;
+            style?: Microsoft.Research.CRNEngine.Graph.LineStyle;
+            stroke?: string;
+        }
+        export interface Graph {
+            nodes: Array<Microsoft.Research.CRNEngine.Graph.Node>;
+            edges: Array<Microsoft.Research.CRNEngine.Graph.Edge>;
+        }
+        export interface Node {
+            id: string;
+            label?: string;
+            stroke?: string;
+            fill?: string;
+            shape?: Microsoft.Research.CRNEngine.Graph.Shape;
+        }
+        export type LineStyle = "Dashed"
+        export const LineStyleSelect = ["Dashed"]
+        export type Shape = "Ellipse" | "Box"
+        export const ShapeSelect = ["Ellipse", "Box"]
+    }
+
+    export namespace Microsoft.Research.CRNEngine.InferenceSiteGraph {
+        export interface IGraph {
+            task?: Microsoft.Research.CRNEngine.Task;
+            nodes: Opaque.FSharpMap<string, Microsoft.Research.CRNEngine.Model>;
+            edges: Opaque.FSharpMap<Microsoft.Research.CRNEngine.InferenceSiteGraph.Location, Array<Opaque.FSharpTuple>>;
+            expanded: boolean;
+        }
+        export interface Location {
+            NodeLoc?: string;
+            SystemLoc?: Opaque.FSharpTuple;
+        }
+        export type PriorKind = "Fixed2" | "Normal" | "LogNormal" | "TruncatedNormal"
+        export const PriorKindSelect = ["Fixed2", "Normal", "LogNormal", "TruncatedNormal"]
+    }
+
+    export namespace Microsoft.Research.Filzbach.Lib {
+        export interface IRng {
+            //NextDouble : () => Opaque.FSharpTuple;
+            //NextInt32 : () => Opaque.FSharpTuple;
+        }
+        export interface NormalGenerator {
+            //Mean : () => number;
+            //Sigma : () => number;
+            //State : () => Microsoft.Research.Filzbach.Lib.NormalGeneratorState;
+            //nextDouble : () => Opaque.FSharpTuple;
+        }
+        export interface NormalGeneratorState {
+            rnorm_phase: boolean;
+            rnorm_2: number;
+            rnorm_f: number;
         }
     }
 
@@ -859,6 +860,10 @@ export namespace WebSharperGeneratedInterfaces {
         (gui: Microsoft.Research.CRNEngine.GuiModel, jit: Microsoft.Research.CRNEngine.JSAPI.jit<a>, output: (p0: Microsoft.Research.CRNEngine.Row<number>) => void, output_plottable: (p0: Microsoft.Research.CRNEngine.Jit.newplottable) => void, output_export: (p0: Microsoft.Research.CRNEngine.JSAPI.export_def) => void, output_program: (p0: Microsoft.Research.CRNEngine.GuiIG) => void, cancel: Microsoft.FSharp.Core.Ref<boolean>): void
     }
 
+    export interface simulator_to_value_type {
+        (settings: Microsoft.Research.CRNEngine.Crn_settings<Microsoft.Research.CRNEngine.Expression.t<Microsoft.Research.CRNEngine.Key<Microsoft.Research.CRNEngine.Species>>>): Microsoft.Research.CRNEngine.JSAPI.ValueType
+    }
+
     export interface user_get_sim_runs {
         (guiig: Microsoft.Research.CRNEngine.GuiIG, model_id: string): Microsoft.Research.CRNEngine.JSAPI.sim_run
     }
@@ -888,7 +893,7 @@ export namespace WebSharperGeneratedInterfaces {
     }
 
     export interface convert_inference_result {
-        (nodeId: string, res: Microsoft.Research.CRNEngine.Inference.mcmc_intermediate_result, lkIncreased: boolean): Microsoft.Research.CRNEngine.JSAPI.inference_result
+        (nodeId: string, res: Microsoft.Research.CRNEngine.Inference.mcmc_intermediate_result, lkincreased: boolean): Microsoft.Research.CRNEngine.JSAPI.inference_result
     }
 
     export interface combine_dynchar_exports {

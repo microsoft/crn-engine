@@ -61,7 +61,8 @@ function getHardcoded() {
                 times: [],
                 multicore: false,
                 data: [],
-                sweeps: []
+                sweeps: [],
+                prune: true
             },
             simulations: [],
             data: [{
@@ -116,7 +117,8 @@ function getHardcoded() {
             synthesis: {
                 mode: "Multistability",
                 solver: "NLSat"
-            }
+            },
+            quiet: false
         },
         reactions: [{
             reactants: [{ element: "A", multiplicity: 1 }],
