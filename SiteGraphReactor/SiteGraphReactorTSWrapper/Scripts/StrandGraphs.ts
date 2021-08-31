@@ -4,10 +4,10 @@
 import "jquery";
 import * as Rx from 'rx';
 import * as InternalInterfaces from '../../../CRNEngine/CRNEngineTSWrapper/Scripts/InternalInterfaces';
-import * as CRNInterfaces from '../../../CRNEngine/CRNEngineTSWrapper/Scripts/Interfaces';
+//import * as CRNInterfaces from '../../../CRNEngine/CRNEngineTSWrapper/Scripts/Interfaces';
 import * as Interfaces from './Interfaces';
 import CRNEngine from '../../../CRNEngine/CRNEngineTSWrapper/Scripts/CRNEngine';
-import StrandGraphsWorker from "worker-loader?name=./StrandGraphs.worker.[hash].js!./StrandGraphs.worker.js";
+import StrandGraphsWorker from "worker-loader?filename=./StrandGraphs.worker.[hash].js!./StrandGraphs.worker.js";
 
 /** Provides asynchronous access to SiteGraphReactor F# methods. */
 class StrandGraphs extends CRNEngine {
