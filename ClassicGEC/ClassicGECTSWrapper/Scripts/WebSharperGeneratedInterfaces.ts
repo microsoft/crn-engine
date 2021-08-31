@@ -1,13 +1,7 @@
-// Copyright (c) Microsoft Corporation.
-// Licensed under the MIT License.
+import { rSBOLDocument } from "./Interfaces"
 
 //These interfaces are code generated from F#, any changes to this file will be lost.
 export namespace WebSharperGeneratedInterfaces {
-
-    export namespace FSBOL.ComponentInstance {
-        export type Access = "Public" | "Private"
-        export const AccessSelect = ["Public", "Private"]
-    }
 
     export namespace Microsoft.Research.CRNEngine {
         export interface Assignment {
@@ -39,6 +33,7 @@ export namespace WebSharperGeneratedInterfaces {
             sweeps: Array<Microsoft.Research.CRNEngine.Sweep>;
             rates: { [key: string]: e };
             plot: Microsoft.Research.CRNEngine.Plot_settings<e>;
+            quiet: boolean;
         }
         export interface Dataset {
             file: string;
@@ -148,6 +143,7 @@ export namespace WebSharperGeneratedInterfaces {
             seed?: number;
             kinetics: Microsoft.Research.CRNEngine.Kinetics;
             times: Array<number>;
+            prune: boolean;
             multicore: boolean;
             data: Array<string>;
             sweeps: Array<string>;
@@ -174,16 +170,17 @@ export namespace WebSharperGeneratedInterfaces {
             assignments: Array<Microsoft.Research.CRNEngine.Assignment>;
         }
         export interface Synthesis_settings {
-            mode: Microsoft.Research.CRNEngine.Synthesis_mode
-            solver: Microsoft.Research.CRNEngine.Z3Solver
+            mode: Microsoft.Research.CRNEngine.Synthesis_mode;
+            solver: Microsoft.Research.CRNEngine.Z3Solver;
             timeout?: number;
+            seed?: number;
         }
         export interface Table<v> {
             times: Array<number>;
             columns: Array<Microsoft.Research.CRNEngine.Column<v>>;
         }
         export interface Task {
-            task_type: Microsoft.Research.CRNEngine.TaskType;
+            task_type?: Microsoft.Research.CRNEngine.TaskType;
             copies: number;
             copy_id: number;
             nodes: number;
@@ -241,131 +238,34 @@ export namespace WebSharperGeneratedInterfaces {
         export const Z3SolverSelect = ["NLSat", "Portfolio"]
     }
 
-    export namespace FSBOL.Attachment {
-        export interface Attachment {
-            //format : () => string | null;
-            //hash : () => string | null;
-            //size : () => System.Int64 | null;
-            //source : () => string;
-        }
-    }
-
     export namespace System {
 
     }
 
-    export namespace FSBOL.Implementation {
-        export interface Implementation {
-            //built : () => FSBOL.Implementation.Built | null;
+    export namespace Microsoft.Research.GEC.JSAPI {
+        export interface ClassicResult {
+            solution: Microsoft.Research.GEC.GECEngine.t;
+            solutionCount: number;
+            model: Microsoft.Research.CRNEngine.GuiIG;
+            jsbol: rSBOLDocument;
+            sbol: System.Object;
         }
-        export interface Built {
-            CD?: FSBOL.ComponentDefinition.ComponentDefinition;
-            MD?: FSBOL.ModuleDefinition.ModuleDefinition;
+        export interface LogicResult {
+            solution: Microsoft.Research.GEC.GECEngine.t;
+            solutionCount: number;
+            model: Microsoft.Research.CRNEngine.GuiIG;
+            jsbol: rSBOLDocument;
+            sbol: System.Object;
         }
-    }
-
-    export namespace FSBOL.Collection {
-        export interface Collection {
-            //members : () => Array<string>;
+        export interface solution_result {
+            model: Microsoft.Research.CRNEngine.GuiIG;
+            jsbol: rSBOLDocument;
+            sbol: System.Object;
+            crnstring: string;
         }
-    }
-
-    export namespace FSBOL.CombinatorialDerivation {
-        export interface CombinatorialDerivation {
-            //strategy : () => FSBOL.CombinatorialDerivation.Strategy | null;
-            //template : () => string;
-            //variableComponents : () => Array<FSBOL.VariableComponent.VariableComponent>;
-        }
-        export type Strategy = "Enumerate" | "Sample"
-        export const StrategySelect = ["Enumerate", "Sample"]
-    }
-
-    export namespace FSBOL.Component {
-        export interface Component {
-            //roleIntegrations : () => Array<FSBOL.Component.RoleIntegration>;
-            //roles : () => Array<FSBOL.Role.Role>;
-        }
-        export type RoleIntegration = "OverrideRoles" | "MergeRoles"
-        export const RoleIntegrationSelect = ["OverrideRoles", "MergeRoles"]
-    }
-
-    export namespace FSBOL.ComponentDefinition {
-        export interface ComponentDefinition {
-            //components : () => Array<FSBOL.Component.Component>;
-            //roles : () => Array<FSBOL.Role.Role>;
-            //sequenceAnnotations : () => Array<FSBOL.SequenceAnnotation.SequenceAnnotation>;
-            //sequenceConstraints : () => Array<FSBOL.SequenceConstraint.SequenceConstraint>;
-            //sequences : () => Array<FSBOL.Sequence.Sequence>;
-            //types : () => Array<FSBOL.ComponentDefinition.ComponentDefinitionType>;
-        }
-        export interface ComponentDefinitionType {
-            DNA?: string;
-            RNA?: string;
-            Protein?: string;
-            SmallMolecule?: string;
-            Complex?: string;
-            Linear?: string;
-            Circular?: string;
-            SingleStranded?: string;
-            DoubleStranded?: string;
-            OtherType?: string;
-        }
-    }
-
-    export namespace FSBOL.FunctionalComponent {
-        export interface FunctionalComponent {
-            //direction : () => FSBOL.FunctionalComponent.Direction;
-        }
-        export type Direction = "In" | "Out" | "InOut" | "NoDirection"
-        export const DirectionSelect = ["In", "Out", "InOut", "NoDirection"]
-    }
-
-    export namespace FSBOL.Sequence {
-        export interface Sequence {
-            //elements : () => string;
-            //encoding : () => FSBOL.Sequence.Encoding;
-        }
-        export interface Encoding {
-            IUPACDNA?: string;
-            IUPACPROTEIN?: string;
-            SMILES?: string;
-            OtherEncoding?: string;
-        }
-    }
-
-    export namespace FSBOL.Model {
-        export interface Model {
-            //framework : () => FSBOL.Model.Framework;
-            //language : () => FSBOL.Model.Language;
-            //source : () => string;
-        }
-        export interface Framework {
-            Continuous?: string;
-            Discrete?: string;
-            OtherFramework?: string;
-        }
-        export interface Language {
-            SBML?: string;
-            CellML?: string;
-            BioPax?: string;
-            OtherLanguage?: string;
-        }
-    }
-
-    export namespace FSBOL.Interaction {
-        export interface Interaction {
-            //participations : () => Array<FSBOL.Participation.Participation>;
-            //types : () => Array<FSBOL.Interaction.InteractionType>;
-        }
-        export interface InteractionType {
-            Inhibition?: string;
-            Stimulation?: string;
-            BiochemicalReaction?: string;
-            NonCovalentBinding?: string;
-            Degradation?: string;
-            GeneticProduction?: string;
-            Control?: string;
-            OtherInteractionType?: string;
+        export interface solve_result {
+            ClassicGEC?: Microsoft.Research.GEC.JSAPI.ClassicResult;
+            LogicGEC?: Microsoft.Research.GEC.JSAPI.LogicResult;
         }
     }
 
@@ -378,141 +278,8 @@ export namespace WebSharperGeneratedInterfaces {
         export const PriorKindSelect = ["Fixed2", "Normal", "LogNormal", "TruncatedNormal"]
     }
 
-    export namespace FSBOL.Location {
-        export interface Location {
-            //orientation : () => FSBOL.Location.Orientation;
-        }
-        export interface Orientation {
-            Inline?: string;
-            ReverseComplement?: string;
-            OtherOrientation?: string;
-        }
-    }
-
-    export namespace FSBOL.MapsTo {
-        export interface MapsTo {
-            //local : () => string;
-            //refinement : () => FSBOL.MapsTo.Refinement;
-            //remote : () => string;
-        }
-        export interface Refinement {
-            UseRemote?: string;
-            UseLocal?: string;
-            VerifyIdentical?: string;
-            Merge?: string;
-            OtherRefinement?: string;
-        }
-    }
-
-    export namespace FSBOL.Module {
-        export interface Module {
-            //definition : () => string;
-            //mapsTos : () => Array<FSBOL.MapsTo.MapsTo>;
-        }
-    }
-
-    export namespace FSBOL.ModuleDefinition {
-        export interface ModuleDefinition {
-            //functionalComponents : () => Array<FSBOL.FunctionalComponent.FunctionalComponent>;
-            //interactions : () => Array<FSBOL.Interaction.Interaction>;
-            //models : () => Array<FSBOL.Model.Model>;
-            //modules : () => Array<FSBOL.Module.Module>;
-            //roles : () => Array<FSBOL.Role.Role>;
-        }
-    }
-
-    export namespace FSBOL.VariableComponent {
-        export interface VariableComponent {
-            //operator : () => FSBOL.VariableComponent.Operator;
-            //variable : () => string;
-            //variantCollections : () => Array<string>;
-            //variantDerivations : () => Array<string>;
-            //variants : () => Array<string>;
-        }
-        export type Operator = "ZeroOrOne" | "One" | "ZeroOrMore" | "OneOrMore"
-        export const OperatorSelect = ["ZeroOrOne", "One", "ZeroOrMore", "OneOrMore"]
-    }
-
     export namespace Microsoft.FSharp.Core {
 
-    }
-
-    export namespace FSBOL.Participation {
-        export interface Participation {
-            //participant : () => FSBOL.FunctionalComponent.FunctionalComponent;
-            //roles : () => Array<FSBOL.Participation.ParticipationRole>;
-        }
-        export interface ParticipationRole {
-            Inhibitor?: string;
-            Inhibited?: string;
-            Stimulator?: string;
-            Stimulated?: string;
-            Reactant?: string;
-            Product?: string;
-            PromoterParticipation?: string;
-            Modifier?: string;
-            Modified?: string;
-            Template?: string;
-            OtherParticipationRole?: string;
-        }
-    }
-
-    export namespace FSBOL.SequenceConstraint {
-        export interface SequenceConstraint {
-            //object : () => FSBOL.Component.Component;
-            //restriction : () => FSBOL.SequenceConstraint.Restriction;
-            //subject : () => FSBOL.Component.Component;
-        }
-        export interface Restriction {
-            Precedes?: string;
-            SameOrientationAs?: string;
-            OppositeOrientationAs?: string;
-            DifferentFrom?: string;
-            OtherRestriction?: string;
-        }
-    }
-
-    export namespace FSBOL.Role {
-        export interface Role {
-            Promoter?: string;
-            RBS?: string;
-            CDS?: string;
-            Terminator?: string;
-            Gene?: string;
-            Operator?: string;
-            EngineeredGene?: string;
-            MRNA?: string;
-            Effector?: string;
-            TranscriptionFactor?: string;
-            OtherRole?: string;
-        }
-    }
-
-    export namespace FSBOL.SBOLDocument {
-        export interface SBOLDocument {
-            //attachments : () => Array<FSBOL.Attachment.Attachment>;
-            //collections : () => Array<FSBOL.Collection.Collection>;
-            //combinatorialDerivations : () => Array<FSBOL.CombinatorialDerivation.CombinatorialDerivation>;
-            //componentDefinitions : () => Array<FSBOL.ComponentDefinition.ComponentDefinition>;
-            //implementations : () => Array<FSBOL.Implementation.Implementation>;
-            //models : () => Array<FSBOL.Model.Model>;
-            //moduleDefinitions : () => Array<FSBOL.ModuleDefinition.ModuleDefinition>;
-            //sequences : () => Array<FSBOL.Sequence.Sequence>;
-        }
-    }
-
-    export namespace FSBOL.SequenceAnnotation {
-        export interface SequenceAnnotation {
-            //componentObj : () => FSBOL.Component.Component | null;
-            //locations : () => Array<FSBOL.Location.Location>;
-            //roles : () => Array<FSBOL.Role.Role>;
-        }
-    }
-
-    export namespace FSBOL.TopLevel {
-        export interface TopLevel {
-            //attachments : () => Array<string>;
-        }
     }
 
     export namespace Microsoft.Research.GEC.Ast {
@@ -637,307 +404,6 @@ export namespace WebSharperGeneratedInterfaces {
         }
     }
 
-    export namespace FSBOL.JsonSerializer {
-        export interface rAnnotation {
-            qName: FSBOL.JsonSerializer.rQName;
-            valueType: string;
-            literal: FSBOL.JsonSerializer.rLiteral;
-            uri: string;
-            nestedQName: FSBOL.JsonSerializer.rQName;
-            annotations: Array<FSBOL.JsonSerializer.rAnnotation>;
-        }
-        export interface rAttachment {
-            uri: string;
-            version: string;
-            name: string;
-            displayId: string;
-            persistentIdentity: string;
-            attachments: Array<string>;
-            description: string;
-            annotations: Array<FSBOL.JsonSerializer.rAnnotation>;
-            source: string;
-            format: string;
-            size: number;
-            hash: string;
-        }
-        export interface rCollection {
-            uri: string;
-            version: string;
-            name: string;
-            displayId: string;
-            persistentIdentity: string;
-            attachments: Array<string>;
-            description: string;
-            annotations: Array<FSBOL.JsonSerializer.rAnnotation>;
-            members: Array<string>;
-        }
-        export interface rCombinatorialDerivation {
-            uri: string;
-            version: string;
-            name: string;
-            displayId: string;
-            persistentIdentity: string;
-            attachments: Array<string>;
-            description: string;
-            annotations: Array<FSBOL.JsonSerializer.rAnnotation>;
-            strategy: string;
-            template: string;
-            variableComponents: Array<FSBOL.JsonSerializer.rVariableComponent>;
-        }
-        export interface rComponent {
-            uri: string;
-            version: string;
-            name: string;
-            displayId: string;
-            persistentIdentity: string;
-            description: string;
-            annotations: Array<FSBOL.JsonSerializer.rAnnotation>;
-            definition: string;
-            access: string;
-            mapsTos: Array<FSBOL.JsonSerializer.rMapsTo>;
-            roles: Array<string>;
-            roleIntegrations: Array<string>;
-        }
-        export interface rComponentDefinition {
-            uri: string;
-            version: string;
-            name: string;
-            displayId: string;
-            persistentIdentity: string;
-            attachments: Array<string>;
-            description: string;
-            annotations: Array<FSBOL.JsonSerializer.rAnnotation>;
-            components: Array<FSBOL.JsonSerializer.rComponent>;
-            sequenceAnnotations: Array<FSBOL.JsonSerializer.rSequenceAnnotation>;
-            sequenceConstraints: Array<FSBOL.JsonSerializer.rSequenceConstraint>;
-            sequences: Array<string>;
-            types: Array<string>;
-            roles: Array<string>;
-        }
-        export interface rCut {
-            uri: string;
-            version: string;
-            name: string;
-            displayId: string;
-            persistentIdentity: string;
-            description: string;
-            annotations: Array<FSBOL.JsonSerializer.rAnnotation>;
-            orientation: string;
-            at: number;
-        }
-        export interface rFunctionalComponent {
-            uri: string;
-            version: string;
-            name: string;
-            displayId: string;
-            persistentIdentity: string;
-            description: string;
-            annotations: Array<FSBOL.JsonSerializer.rAnnotation>;
-            definition: string;
-            access: string;
-            mapsTos: Array<FSBOL.JsonSerializer.rMapsTo>;
-            direction: string;
-        }
-        export interface rGenericLocation {
-            uri: string;
-            version: string;
-            name: string;
-            displayId: string;
-            persistentIdentity: string;
-            description: string;
-            annotations: Array<FSBOL.JsonSerializer.rAnnotation>;
-            orientation: string;
-        }
-        export interface rImplementation {
-            uri: string;
-            version: string;
-            name: string;
-            displayId: string;
-            persistentIdentity: string;
-            attachments: Array<string>;
-            description: string;
-            annotations: Array<FSBOL.JsonSerializer.rAnnotation>;
-            built: string;
-        }
-        export interface rInteraction {
-            uri: string;
-            version: string;
-            name: string;
-            displayId: string;
-            persistentIdentity: string;
-            description: string;
-            annotations: Array<FSBOL.JsonSerializer.rAnnotation>;
-            types: Array<string>;
-            participations: Array<FSBOL.JsonSerializer.rParticipation>;
-        }
-        export interface rLiteral {
-            literalType: string;
-            string: string;
-            int: number;
-            int64: number;
-            double: number;
-            bool: boolean;
-        }
-        export interface rMapsTo {
-            uri: string;
-            version: string;
-            name: string;
-            displayId: string;
-            persistentIdentity: string;
-            description: string;
-            annotations: Array<FSBOL.JsonSerializer.rAnnotation>;
-            local: string;
-            remote: string;
-            refinment: string;
-        }
-        export interface rModel {
-            uri: string;
-            version: string;
-            name: string;
-            displayId: string;
-            persistentIdentity: string;
-            attachments: Array<string>;
-            description: string;
-            annotations: Array<FSBOL.JsonSerializer.rAnnotation>;
-            source: string;
-            language: string;
-            framework: string;
-        }
-        export interface rModule {
-            uri: string;
-            version: string;
-            name: string;
-            displayId: string;
-            persistentIdentity: string;
-            description: string;
-            annotations: Array<FSBOL.JsonSerializer.rAnnotation>;
-            definition: string;
-            mapsTos: Array<FSBOL.JsonSerializer.rMapsTo>;
-        }
-        export interface rModuleDefinition {
-            uri: string;
-            version: string;
-            name: string;
-            displayId: string;
-            persistentIdentity: string;
-            attachments: Array<string>;
-            description: string;
-            annotations: Array<FSBOL.JsonSerializer.rAnnotation>;
-            roles: Array<string>;
-            functionalComponents: Array<FSBOL.JsonSerializer.rFunctionalComponent>;
-            interactions: Array<FSBOL.JsonSerializer.rInteraction>;
-            modules: Array<FSBOL.JsonSerializer.rModule>;
-            models: Array<string>;
-        }
-        export interface rParticipation {
-            uri: string;
-            version: string;
-            name: string;
-            displayId: string;
-            persistentIdentity: string;
-            description: string;
-            annotations: Array<FSBOL.JsonSerializer.rAnnotation>;
-            roles: Array<string>;
-            participant: string;
-        }
-        export interface rQName {
-            qNameType: string;
-            name: string;
-            prefix: string;
-            nameSpaceUri: string;
-        }
-        export interface rRange {
-            uri: string;
-            version: string;
-            name: string;
-            displayId: string;
-            persistentIdentity: string;
-            description: string;
-            annotations: Array<FSBOL.JsonSerializer.rAnnotation>;
-            orientation: string;
-            startIndex: number;
-            endIndex: number;
-        }
-        export interface rSBOLDocument {
-            attachments: Array<FSBOL.JsonSerializer.rAttachment>;
-            sequences: Array<FSBOL.JsonSerializer.rSequence>;
-            componentDefinitions: Array<FSBOL.JsonSerializer.rComponentDefinition>;
-            moduleDefinitions: Array<FSBOL.JsonSerializer.rModuleDefinition>;
-            models: Array<FSBOL.JsonSerializer.rModel>;
-            implementations: Array<FSBOL.JsonSerializer.rImplementation>;
-            collections: Array<FSBOL.JsonSerializer.rCollection>;
-            CombinatorialDerivation: Array<FSBOL.JsonSerializer.rCombinatorialDerivation>;
-        }
-        export interface rSequence {
-            uri: string;
-            version: string;
-            name: string;
-            displayId: string;
-            persistentIdentity: string;
-            attachments: Array<string>;
-            description: string;
-            annotations: Array<FSBOL.JsonSerializer.rAnnotation>;
-            elements: string;
-            encoding: string;
-        }
-        export interface rSequenceAnnotation {
-            uri: string;
-            version: string;
-            name: string;
-            displayId: string;
-            persistentIdentity: string;
-            description: string;
-            annotations: Array<FSBOL.JsonSerializer.rAnnotation>;
-            ranges: Array<FSBOL.JsonSerializer.rRange>;
-            cuts: Array<FSBOL.JsonSerializer.rCut>;
-            genericLocations: Array<FSBOL.JsonSerializer.rGenericLocation>;
-            roles: Array<string>;
-            componentObj: string;
-        }
-        export interface rSequenceConstraint {
-            uri: string;
-            version: string;
-            name: string;
-            displayId: string;
-            persistentIdentity: string;
-            description: string;
-            annotations: Array<FSBOL.JsonSerializer.rAnnotation>;
-            subject: string;
-            object: string;
-            restriction: string;
-        }
-        export interface rVariableComponent {
-            uri: string;
-            version: string;
-            name: string;
-            displayId: string;
-            persistentIdentity: string;
-            description: string;
-            annotations: Array<FSBOL.JsonSerializer.rAnnotation>;
-            operator: string;
-            variants: Array<string>;
-            variantCollections: Array<string>;
-            variantDerivations: Array<string>;
-            variable: string;
-        }
-    }
-
-    export namespace Microsoft.Research.GEC.JSAPI {
-        export interface solution_result {
-            model: Microsoft.Research.CRNEngine.GuiIG;
-            jsbol: FSBOL.JsonSerializer.rSBOLDocument;
-            sbol: FSBOL.SBOLDocument.SBOLDocument;
-            crnstring: string;
-        }
-        export interface solve_result {
-            solution: Microsoft.Research.GEC.GECEngine.t;
-            solutionCount: number;
-            model: Microsoft.Research.CRNEngine.GuiIG;
-            jsbol: FSBOL.JsonSerializer.rSBOLDocument;
-            sbol: FSBOL.SBOLDocument.SBOLDocument;
-        }
-    }
-
     export namespace Microsoft.Research.GEC.GECEngine {
         export interface t {
             options: Microsoft.Research.GEC.Options.t;
@@ -977,7 +443,7 @@ export namespace WebSharperGeneratedInterfaces {
     }
 
     export interface get_solution {
-        (o: Microsoft.Research.GEC.JSAPI.solve_result, i: number): Microsoft.Research.GEC.JSAPI.solution_result
+        (so: Microsoft.Research.GEC.JSAPI.solve_result, i: number): Microsoft.Research.GEC.JSAPI.solution_result
     }
 
 }

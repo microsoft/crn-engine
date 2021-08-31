@@ -34,10 +34,10 @@ function handleCompile(code: string, parts: string, reactions: string) {
     local_result = compile(code, parts, reactions);
     local_solution = null;
     // Send the solution count to the main thread.
-    var count = (<any>local_result.solution).solution[1].numSolutions;
+    var count = (<any>local_result.ClassicGEC.solution).solution[1].numSolutions;
     var solsmsg: Interfaces.WorkerResponse_GECSolutions = { mtype: "gec.solutions", count: count };
     self.postMessage(solsmsg, undefined);
-    var jsbolmsg: Interfaces.WorkerResponse_JSBOL = { mtype: "gec.jsbol", document: local_result.jsbol };
+    var jsbolmsg: Interfaces.WorkerResponse_JSBOL = { mtype: "gec.jsbol", document: local_result.ClassicGEC.jsbol };
     self.postMessage(jsbolmsg, undefined);
 }
 
@@ -62,7 +62,7 @@ function processMessageGEC(e: any) {
                 if (local_solution != null)
                     exportmsg = jsbolToExport(local_solution.jsbol);
                 else if (local_result != null)
-                    exportmsg = jsbolToExport(local_result.jsbol);
+                    exportmsg = jsbolToExport(local_result.ClassicGEC.jsbol);
                 if (exportmsg != null)
                     self.postMessage(exportmsg, undefined);
                 break;
