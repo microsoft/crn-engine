@@ -1,6 +1,3 @@
-// Copyright (c) Microsoft Corporation.
-// Licensed under the MIT License.
-
 //These interfaces are code generated from F#, any changes to this file will be lost.
 export namespace WebSharperGeneratedInterfaces {
 
@@ -26,6 +23,7 @@ export namespace WebSharperGeneratedInterfaces {
             spatial: Microsoft.Research.CRNEngine.Spatial_settings<e>;
             inference: Microsoft.Research.CRNEngine.Inference_settings;
             moment_closure: Microsoft.Research.CRNEngine.Moment_closure_settings.t<Microsoft.Research.CRNEngine.Expression.t<Array<Opaque.FSharpTuple>>>;
+            synthesis: Microsoft.Research.CRNEngine.Synthesis_settings;
             data: Array<Microsoft.Research.CRNEngine.Dataset>;
             units: Microsoft.Research.CRNEngine.Units;
             simulator: Microsoft.Research.CRNEngine.Simulator;
@@ -33,6 +31,7 @@ export namespace WebSharperGeneratedInterfaces {
             sweeps: Array<Microsoft.Research.CRNEngine.Sweep>;
             rates: { [key: string]: e };
             plot: Microsoft.Research.CRNEngine.Plot_settings<e>;
+            quiet: boolean;
         }
         export interface Dataset {
             file: string;
@@ -123,6 +122,7 @@ export namespace WebSharperGeneratedInterfaces {
             seed?: number;
             kinetics: Microsoft.Research.CRNEngine.Kinetics;
             times: Array<number>;
+            prune: boolean;
             multicore: boolean;
             data: Array<string>;
             sweeps: Array<string>;
@@ -147,6 +147,12 @@ export namespace WebSharperGeneratedInterfaces {
         export interface Sweep {
             name: string;
             assignments: Array<Microsoft.Research.CRNEngine.Assignment>;
+        }
+        export interface Synthesis_settings {
+            mode: Microsoft.Research.CRNEngine.Synthesis_mode;
+            solver: Microsoft.Research.CRNEngine.Z3Solver;
+            timeout?: number;
+            seed?: number;
         }
         export interface Table<v> {
             times: Array<number>;
@@ -194,9 +200,13 @@ export namespace WebSharperGeneratedInterfaces {
         export interface Space {
             Metres: number;
         }
+        export type Synthesis_mode = "Multistability" | "Turing"
+        export const Synthesis_modeSelect = ["Multistability", "Turing"]
         export type Time = { Seconds: number }
         export type Variation = "Random" | "Fixed" | "Initial2" | "Multiple"
         export const VariationSelect = ["Random", "Fixed", "Initial2", "Multiple"]
+        export type Z3Solver = "NLSat" | "Portfolio"
+        export const Z3SolverSelect = ["NLSat", "Portfolio"]
     }
 
     export namespace System {
