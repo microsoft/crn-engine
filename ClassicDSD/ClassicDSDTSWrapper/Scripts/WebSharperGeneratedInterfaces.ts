@@ -1,6 +1,3 @@
-// Copyright (c) Microsoft Corporation.
-// Licensed under the MIT License.
-
 //These interfaces are code generated from F#, any changes to this file will be lost.
 export namespace WebSharperGeneratedInterfaces {
 
@@ -37,6 +34,7 @@ export namespace WebSharperGeneratedInterfaces {
             sweeps: Array<Microsoft.Research.CRNEngine.Sweep>;
             rates: { [key: string]: e };
             plot: Microsoft.Research.CRNEngine.Plot_settings<e>;
+            quiet: boolean;
         }
         export interface Dataset {
             file: string;
@@ -167,6 +165,7 @@ export namespace WebSharperGeneratedInterfaces {
             seed?: number;
             kinetics: Microsoft.Research.CRNEngine.Kinetics;
             times: Array<number>;
+            prune: boolean;
             multicore: boolean;
             data: Array<string>;
             sweeps: Array<string>;
@@ -193,16 +192,17 @@ export namespace WebSharperGeneratedInterfaces {
             assignments: Array<Microsoft.Research.CRNEngine.Assignment>;
         }
         export interface Synthesis_settings {
-            mode: Microsoft.Research.CRNEngine.Synthesis_mode
-            solver: Microsoft.Research.CRNEngine.Z3Solver
+            mode: Microsoft.Research.CRNEngine.Synthesis_mode;
+            solver: Microsoft.Research.CRNEngine.Z3Solver;
             timeout?: number;
+            seed?: number;
         }
         export interface Table<v> {
             times: Array<number>;
             columns: Array<Microsoft.Research.CRNEngine.Column<v>>;
         }
         export interface Task {
-            task_type: Microsoft.Research.CRNEngine.TaskType;
+            task_type?: Microsoft.Research.CRNEngine.TaskType;
             copies: number;
             copy_id: number;
             nodes: number;
@@ -274,60 +274,33 @@ export namespace WebSharperGeneratedInterfaces {
         export const Z3SolverSelect = ["NLSat", "Portfolio"]
     }
 
-    export namespace RulesDSD.Syntax {
-        export interface Clause {
-            head: RulesDSD.Syntax.Predicate;
-            body: Array<RulesDSD.Syntax.Literal>;
-        }
+    export namespace Microsoft.Research.DNA.LogicDSD {
         export interface Domain {
             name: string;
             isComplementary: boolean;
             isToehold: boolean;
-            tag?: RulesDSD.Syntax.Term;
+            tag: Microsoft.Research.DNA.LogicDSD.Tag;
         }
         export interface Bond {
             Bond?: number;
             Var?: Opaque.FSharpTuple;
         }
         export interface DomainT {
-            Dom?: RulesDSD.Syntax.Domain;
-            Var?: (Opaque.FSharpTuple | RulesDSD.Syntax.Term | null)[];
-        }
-        export interface Literal {
-            Pos?: RulesDSD.Syntax.Predicate;
-            Neg?: RulesDSD.Syntax.Predicate;
-        }
-        export interface Pattern {
-            Nicking?: Array<Opaque.FSharpTuple>[];
-            Inner?: Array<Opaque.FSharpTuple>;
-            Strand?: Array<Opaque.FSharpTuple>;
-            ThreePrime?: Array<Opaque.FSharpTuple>;
-            FivePrime?: Array<Opaque.FSharpTuple>;
-            Nihil?: string;
-        }
-        export interface Predicate {
-            Pred: (string | Array<RulesDSD.Syntax.Term>)[];
-        }
-        export interface Process {
-            Proc: Opaque.FSharpMap<number, Array<RulesDSD.Syntax.SiteT>>;
+            Dom?: Microsoft.Research.DNA.LogicDSD.Domain;
+            Var?: (Opaque.FSharpTuple | Microsoft.Research.DNA.LogicDSD.Tag)[];
         }
         export interface Site {
-            Unbound?: RulesDSD.Syntax.DomainT;
-            Bound?: (RulesDSD.Syntax.DomainT | RulesDSD.Syntax.Bond)[];
+            Unbound?: Microsoft.Research.DNA.LogicDSD.DomainT;
+            Bound?: (Microsoft.Research.DNA.LogicDSD.DomainT | Microsoft.Research.DNA.LogicDSD.Bond)[];
         }
         export interface SiteT {
-            Site?: RulesDSD.Syntax.Site;
+            Site?: Microsoft.Research.DNA.LogicDSD.Site;
             Var?: Opaque.FSharpTuple;
         }
-        export interface Term {
-            Var?: (number | string)[];
-            Const?: string;
-            Float?: number;
-            Func?: (string | Array<RulesDSD.Syntax.Term>)[];
-            TList?: Array<RulesDSD.Syntax.Term>;
-            TCons?: RulesDSD.Syntax.Term[];
-            Proc?: RulesDSD.Syntax.Process;
-            Pat?: RulesDSD.Syntax.Pattern;
+        export interface Tag {
+            NoTag?: string;
+            AnyTag?: string;
+            Tag?: RulesDSD.Syntax.Term<Microsoft.Research.DNA.LogicDSD.SiteT>;
         }
     }
 
@@ -350,12 +323,12 @@ export namespace WebSharperGeneratedInterfaces {
             dsdOptions: Microsoft.Research.DNA.Options.t;
         }
         export interface RulesBundle {
-            settings: Microsoft.Research.CRNEngine.Crn_settings<Microsoft.Research.CRNEngine.Expression.t<Microsoft.Research.CRNEngine.Key<RulesDSD.Syntax.Process>>>;
-            initials: Array<Microsoft.Research.CRNEngine.Initial<RulesDSD.Syntax.Process, Microsoft.Research.CRNEngine.Expression.t<string>>>;
-            reactions: Array<Microsoft.Research.CRNEngine.Reaction<RulesDSD.Syntax.Process, Microsoft.Research.CRNEngine.Expression.t<string>, Microsoft.Research.CRNEngine.Expression.t<Microsoft.Research.CRNEngine.Key<RulesDSD.Syntax.Process>>>>;
-            plotsCache: Opaque.Dictionary<RulesDSD.Syntax.Process, string>;
+            settings: Microsoft.Research.CRNEngine.Crn_settings<Microsoft.Research.CRNEngine.Expression.t<Microsoft.Research.CRNEngine.Key<RulesDSD.Syntax.Process<Microsoft.Research.DNA.LogicDSD.SiteT>>>>;
+            initials: Array<Microsoft.Research.CRNEngine.Initial<RulesDSD.Syntax.Process<Microsoft.Research.DNA.LogicDSD.SiteT>, Microsoft.Research.CRNEngine.Expression.t<string>>>;
+            reactions: Array<Microsoft.Research.CRNEngine.Reaction<RulesDSD.Syntax.Process<Microsoft.Research.DNA.LogicDSD.SiteT>, Microsoft.Research.CRNEngine.Expression.t<string>, Microsoft.Research.CRNEngine.Expression.t<Microsoft.Research.CRNEngine.Key<RulesDSD.Syntax.Process<Microsoft.Research.DNA.LogicDSD.SiteT>>>>>;
+            plotsCache: Opaque.Dictionary<RulesDSD.Syntax.Process<Microsoft.Research.DNA.LogicDSD.SiteT>, string>;
             dsdOptions: Microsoft.Research.DNA.Options.t;
-            rules: Opaque.Dictionary<Opaque.FSharpTuple, Array<RulesDSD.Syntax.Clause>>;
+            rules: Opaque.Dictionary<Opaque.FSharpTuple, Array<RulesDSD.Syntax.Clause<Microsoft.Research.DNA.LogicDSD.SiteT>>>;
         }
         export interface metadata {
             meta: Microsoft.Research.DNA.Sequence.mapping;
@@ -366,6 +339,43 @@ export namespace WebSharperGeneratedInterfaces {
         export interface bundle {
             ClassicDSD?: Microsoft.Research.DNA.Dsd.ClassicBundle;
             Rules?: Microsoft.Research.DNA.Dsd.RulesBundle;
+        }
+    }
+
+    export namespace RulesDSD.Syntax {
+        export interface Clause<s> {
+            head: RulesDSD.Syntax.Predicate<s>;
+            body: Array<RulesDSD.Syntax.Literal<s>>;
+        }
+        export interface Literal<s> {
+            Pos?: RulesDSD.Syntax.Predicate<s>;
+            Neg?: RulesDSD.Syntax.Predicate<s>;
+        }
+        export interface Pattern<s> {
+            Nicking?: Array<Opaque.FSharpTuple>[];
+            Inner?: Array<Opaque.FSharpTuple>;
+            Strand?: Array<Opaque.FSharpTuple>;
+            ThreePrime?: Array<Opaque.FSharpTuple>;
+            FivePrime?: Array<Opaque.FSharpTuple>;
+            Nihil?: string;
+        }
+        export interface Predicate<s> {
+            Pred: (string | Array<RulesDSD.Syntax.Term<s>>)[];
+        }
+        export interface Process<s> {
+            Proc: Opaque.FSharpMap<number, Array<s>>;
+        }
+        export interface Term<s> {
+            Var?: (number | string)[];
+            Const?: string;
+            Float?: number;
+            Func?: (string | Array<RulesDSD.Syntax.Term<s>>)[];
+            TList?: Array<RulesDSD.Syntax.Term<s>>;
+            TCons?: RulesDSD.Syntax.Term<s>[];
+            TCRN?: Array<RulesDSD.Syntax.Term<s>>;
+            TMSet?: Array<Opaque.FSharpTuple>;
+            Proc?: RulesDSD.Syntax.Process<s>;
+            Pat?: RulesDSD.Syntax.Pattern<s>;
         }
     }
 
@@ -457,14 +467,11 @@ export namespace WebSharperGeneratedInterfaces {
     }
 
     export namespace Microsoft.Research.DNA.Options {
-        export interface renderer_branches {
-            rotate_labels: boolean;
-            arrange: Microsoft.Research.DNA.Options.arrange_mode;
-        }
         export interface rendering {
             renderer: Microsoft.Research.DNA.Options.renderer;
-            branches: Microsoft.Research.DNA.Options.renderer_branches;
-            classic: Microsoft.Research.DNA.Options.renderer_classic;
+            mode: Microsoft.Research.DNA.Options.renderer_mode;
+            rotate_labels: boolean;
+            arrange: Microsoft.Research.DNA.Options.arrange_mode;
         }
         export interface t {
             rules: Microsoft.Research.DNA.Options.semantics;
@@ -500,7 +507,7 @@ export namespace WebSharperGeneratedInterfaces {
             generate_predicates: Microsoft.Research.DNA.Options.generate_predicates;
             rendering: Microsoft.Research.DNA.Options.rendering;
             is_jit: boolean;
-            rulesProgram?: Opaque.FSharpMap<Opaque.FSharpTuple, Array<RulesDSD.Syntax.Clause>>;
+            rulesProgram?: Opaque.FSharpMap<Opaque.FSharpTuple, Array<RulesDSD.Syntax.Clause<Microsoft.Research.DNA.LogicDSD.SiteT>>>;
         }
         export type arrange_mode = "Wide" | "Babylon"
         export const arrange_modeSelect = ["Wide", "Babylon"]
@@ -508,8 +515,8 @@ export namespace WebSharperGeneratedInterfaces {
         export const generate_predicatesSelect = ["All_predicates", "No_predicates"]
         export type renderer = "Classic" | "Circles" | "Branches"
         export const rendererSelect = ["Classic", "Circles", "Branches"]
-        export type renderer_classic = "Complement" | "Condensed" | "Nucleotides"
-        export const renderer_classicSelect = ["Complement", "Condensed", "Nucleotides"]
+        export type renderer_mode = "Complement" | "Condensed" | "Nucleotides"
+        export const renderer_modeSelect = ["Complement", "Condensed", "Nucleotides"]
         export type semantics = "Infinite" | "Default" | "Finite" | "Detailed"
         export const semanticsSelect = ["Infinite", "Default", "Finite", "Detailed"]
     }
@@ -621,6 +628,8 @@ export namespace WebSharperGeneratedInterfaces {
             Show?: (Microsoft.Research.DNA.Value.t | Opaque.FSharpTuple | null)[];
             Function?: (Microsoft.Research.DNA.Value.fn | Microsoft.Research.DNA.Value.t | Opaque.FSharpTuple | null)[];
             Tuple?: (Array<Microsoft.Research.DNA.Value.t> | Opaque.FSharpTuple | null)[];
+            Ceiling?: (Microsoft.Research.DNA.Value.t | Opaque.FSharpTuple | null)[];
+            Floor?: (Microsoft.Research.DNA.Value.t | Opaque.FSharpTuple | null)[];
         }
     }
 
@@ -645,7 +654,7 @@ export namespace WebSharperGeneratedInterfaces {
             GATE?: Array<Array<Microsoft.Research.DNA.Segment.t>>;
             ORIGAMI?: Array<Microsoft.Research.DNA.Origami.content>;
             UNKNOWN?: string;
-            LogicDsdProcess?: RulesDSD.Syntax.Process;
+            LogicDsdProcess?: RulesDSD.Syntax.Process<Microsoft.Research.DNA.LogicDSD.SiteT>;
         }
     }
 
@@ -693,7 +702,7 @@ export namespace WebSharperGeneratedInterfaces {
     }
 
     export interface parser {
-        (): (p0: string) => (p0: string) => (p0: string) => Microsoft.Research.DNA.Dsd.bundle
+        (): (p0: string) => (p0: string) => (p0: string) => Opaque.FSharpTuple
     }
 
     export interface user_parse {
@@ -721,7 +730,7 @@ export namespace WebSharperGeneratedInterfaces {
     }
 
     export interface get_jit_rules {
-        (bundle: Microsoft.Research.DNA.Dsd.bundle): Microsoft.Research.CRNEngine.JSAPI.jit<RulesDSD.Syntax.Process>
+        (bundle: Microsoft.Research.DNA.Dsd.bundle): Microsoft.Research.CRNEngine.JSAPI.jit<RulesDSD.Syntax.Process<Microsoft.Research.DNA.LogicDSD.SiteT>>
     }
 
     export interface is_jit {
