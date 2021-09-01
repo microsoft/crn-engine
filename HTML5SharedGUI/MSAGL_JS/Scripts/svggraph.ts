@@ -1,4 +1,7 @@
-﻿import * as G from './ggraph';
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+import * as G from './ggraph';
 import { saveAs } from "file-saver";
 
 /** This class, and its concrete subclasses, correlate a geometry object with the SVG object that's currently rendering it.

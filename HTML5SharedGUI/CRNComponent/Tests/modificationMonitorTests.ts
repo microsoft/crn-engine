@@ -1,4 +1,7 @@
-﻿/// <reference path="../Scripts/typings/jasmine/jasmine.d.ts" />
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+/// <reference path="../Scripts/typings/jasmine/jasmine.d.ts" />
 /// <reference path="../Scripts/typings/requirejs/require.d.ts" />
 
 import CrnVM = require('../Scripts/src/Scripts/crnVM');

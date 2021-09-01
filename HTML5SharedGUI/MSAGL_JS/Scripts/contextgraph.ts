@@ -1,4 +1,7 @@
-﻿import * as G from './ggraph';
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+import * as G from './ggraph';
 
 /** Abstract class for a renderer that targets a CanvasRenderingContext2D. */
 class ContextGraph {

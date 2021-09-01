@@ -1,4 +1,7 @@
-﻿declare var SVG: any;
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+declare var SVG: any;
 import "svg";
 import "idd";
 declare var InteractiveDataDisplay: any;

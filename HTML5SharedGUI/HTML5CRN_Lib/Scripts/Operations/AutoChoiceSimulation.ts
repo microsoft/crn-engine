@@ -1,4 +1,7 @@
-﻿import * as HintScreen from "../../../GenericComponents/Scripts/HintScreen";
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+import * as HintScreen from "../../../GenericComponents/Scripts/HintScreen";
 import * as Operations from "./LongOperations";
 import "idd";
 declare var InteractiveDataDisplay: any;

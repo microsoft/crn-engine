@@ -1,4 +1,7 @@
-﻿module Microsoft.Research.Biology.StabilityZ3.CRNs.Analyser
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+module Microsoft.Research.Biology.StabilityZ3.CRNs.Analyser
 
 open System.IO
 open Microsoft.Research.Biology.StabilityZ3

@@ -1,4 +1,7 @@
-﻿module Tests.StructureProperties
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+module Tests.StructureProperties
 
 open Microsoft.Research.Biology.StabilityZ3.CRNs.Enumerator
 open Xunit

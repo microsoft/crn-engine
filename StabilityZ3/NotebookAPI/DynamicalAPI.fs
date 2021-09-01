@@ -1,4 +1,7 @@
-﻿module Microsoft.Research.Biology.StabilityZ3.NotebookAPI.DynamicalAPI
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+module Microsoft.Research.Biology.StabilityZ3.NotebookAPI.DynamicalAPI
 
 open Microsoft.Research.Biology.StabilityZ3
 open FSharp.Plotly

@@ -1,4 +1,7 @@
-﻿module Tests.Dynamical
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+module Tests.Dynamical
 
 open Xunit
 open Microsoft.Research.Biology.StabilityZ3

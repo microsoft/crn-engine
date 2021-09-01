@@ -1,4 +1,7 @@
-﻿// (FP) This file contains code that binds together the plotter, bar chart and table view into a single component that shows
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+// (FP) This file contains code that binds together the plotter, bar chart and table view into a single component that shows
 // all three viewers in tabs.
 
 import * as $ from "jquery";

@@ -1,4 +1,7 @@
-﻿// (FP) This is a component that shows the progress of an inference run. It has a progress bar, plus some text fields.
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+// (FP) This is a component that shows the progress of an inference run. It has a progress bar, plus some text fields.
 
 import * as ko from "knockout";
 

@@ -1,4 +1,7 @@
-﻿//bind to specific DOM element and occupy it
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+//bind to specific DOM element and occupy it
 export interface IUIBindable {
     Bind(elem: HTMLElement): void;
 }

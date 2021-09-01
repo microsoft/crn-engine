@@ -1,4 +1,7 @@
-﻿/*import { ServiceWorker } from '../../HTML5CRN_Lib/Scripts/ServiceWorker';
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+/*import { ServiceWorker } from '../../HTML5CRN_Lib/Scripts/ServiceWorker';
 let serviceWorker = new ServiceWorker();*/
 
 import * as $ from 'jquery';

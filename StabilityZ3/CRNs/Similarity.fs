@@ -1,4 +1,7 @@
-﻿module Microsoft.Research.Biology.StabilityZ3.CRNs.Similarity
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+module Microsoft.Research.Biology.StabilityZ3.CRNs.Similarity
 
 open System.IO
 

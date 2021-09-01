@@ -1,4 +1,7 @@
-﻿// (FP) This file implements the table view (specifically for simulation results). Note that this does not implement the actual table: it makes use of the table component that's implemented in KnockoutGrid.js (found in HTML5SharedGUI). Also note that the internal logic has to be different here compared to TimeseriesView, because the data needs to be used by-row rather than by-column.
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+// (FP) This file implements the table view (specifically for simulation results). Note that this does not implement the actual table: it makes use of the table component that's implemented in KnockoutGrid.js (found in HTML5SharedGUI). Also note that the internal logic has to be different here compared to TimeseriesView, because the data needs to be used by-row rather than by-column.
 
 import "../../KnockoutGrid/knockoutgrid";
 import * as ko from "knockout";

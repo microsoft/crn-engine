@@ -1,4 +1,7 @@
-﻿module Microsoft.Research.Biology.StabilityZ3.Complex
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+module Microsoft.Research.Biology.StabilityZ3.Complex
 
 //open Microsoft.Research.Biology.TuringZ3.Encoding
 open Microsoft.Z3

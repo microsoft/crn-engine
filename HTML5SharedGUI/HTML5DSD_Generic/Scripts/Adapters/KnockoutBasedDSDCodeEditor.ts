@@ -1,4 +1,7 @@
-﻿import Editor from '../DsdGenericCodeEditor';
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+import Editor from '../DsdGenericCodeEditor';
 import * as ModificationIndicator from '../../../../HTML5SharedGUI/GenericComponents/Scripts/ModificationIndicators';
 import * as Features from '../Features';
 import * as KOCodeEditor from '../../../../HTML5SharedGUI/HTML5CRN_Lib/Scripts/Adapters/KnockoutBasedCodeEditor';

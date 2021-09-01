@@ -1,4 +1,7 @@
-﻿import * as GenericCRNParser from '../Adapters/GenericCRNParser';
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+import * as GenericCRNParser from '../Adapters/GenericCRNParser';
 import ME from '../../../../CRNEngine/CRNEngineTSWrapper/Scripts/CRNEngine';
 import * as jQuery from 'jquery';
 

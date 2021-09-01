@@ -1,4 +1,7 @@
-﻿/// <binding AfterBuild='Run - Development' />
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+/// <binding AfterBuild='Run - Development' />
 "use strict";
 var webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');

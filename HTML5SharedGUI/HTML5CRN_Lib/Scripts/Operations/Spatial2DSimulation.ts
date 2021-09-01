@@ -1,4 +1,7 @@
-﻿//Feature descriotion:
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+//Feature descriotion:
 //Gets CRN entities from the CRN Editor, passes them to the simulator, passes simulation info back to the Simulation viewer
 
 import * as Rx from "rx";

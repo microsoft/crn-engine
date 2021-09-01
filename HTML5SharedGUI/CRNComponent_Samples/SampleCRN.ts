@@ -1,4 +1,7 @@
-﻿import * as crnVM from "../CRNComponent/Scripts/crnVM";
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+import * as crnVM from "../CRNComponent/Scripts/crnVM";
 import * as CRNSettings from '../CRNComponent/Scripts/crnSettings';
 import { WebSharperGeneratedInterfaces as WGI } from '../../CRNEngine/CRNEngineTSWrapper/Scripts/WebSharperGeneratedInterfaces';
 

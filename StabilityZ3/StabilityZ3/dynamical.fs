@@ -1,4 +1,7 @@
-﻿namespace Microsoft.Research.Biology.StabilityZ3
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+namespace Microsoft.Research.Biology.StabilityZ3
 module MathNetWrapper = Microsoft.Research.Biology.StabilityZ3.MathNetWrapper
 
 //open Microsoft.Research.Biology

@@ -1,4 +1,7 @@
-﻿module Tests.LinearCrn
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+module Tests.LinearCrn
 
 open Xunit
 open Microsoft.Research.Biology.StabilityZ3

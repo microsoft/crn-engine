@@ -1,4 +1,7 @@
-﻿module Microsoft.Research.Biology.StabilityZ3.Encoding
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+module Microsoft.Research.Biology.StabilityZ3.Encoding
 //open Microsoft.Research.Biology.StabilityZ3.Complex
 
 open Microsoft.Research.Biology.StabilityZ3

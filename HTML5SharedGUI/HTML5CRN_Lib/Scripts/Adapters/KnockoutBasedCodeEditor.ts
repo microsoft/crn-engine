@@ -1,4 +1,7 @@
-﻿import * as CodeSource from "./CodeEditorCodeSource";
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+import * as CodeSource from "./CodeEditorCodeSource";
 import * as I from '../../../GenericComponents/Scripts/Interfaces';
 import * as GenericParseOperation from '../Operations/GenericCodeParsing';
 import * as ModificationIndicator from "../../../GenericComponents/Scripts/ModificationIndicators";

@@ -1,4 +1,7 @@
-﻿module Microsoft.Research.CliLibrary.Synthesis
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+module Microsoft.Research.CliLibrary.Synthesis
 
 open Microsoft.Research.CRNEngine
 open Microsoft.Research.Biology.StabilityZ3

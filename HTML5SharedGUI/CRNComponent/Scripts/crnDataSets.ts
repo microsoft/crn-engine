@@ -1,4 +1,7 @@
-﻿// (FP) This file contains code that handles observation data sets for inference.
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+// (FP) This file contains code that handles observation data sets for inference.
 
 import "../../KnockoutGrid/knockoutgrid";
 import * as Papa from "papaparse";

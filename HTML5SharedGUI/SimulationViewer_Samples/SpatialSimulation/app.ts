@@ -1,4 +1,7 @@
-﻿import * as FW from '../../SimulationViewer/Scripts/SimulationViewerFramework';
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+import * as FW from '../../SimulationViewer/Scripts/SimulationViewerFramework';
 import { Settings as SpatialViewerSettings } from '../../SimulationViewer/Scripts/SpatialViewerSettings';
 import Viewer1D from '../../SimulationViewer/Scripts/Spatial1DViewer';
 import Viewer2D from '../../SimulationViewer/Scripts/Spatial2DViewer';

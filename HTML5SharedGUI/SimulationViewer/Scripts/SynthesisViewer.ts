@@ -1,4 +1,7 @@
-﻿import "../../KnockoutGrid/knockoutgrid";
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+import "../../KnockoutGrid/knockoutgrid";
 import * as ko from "knockout";
 import "jquery-mousewheel";
 import "idd";

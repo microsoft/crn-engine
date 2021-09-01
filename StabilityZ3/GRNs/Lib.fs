@@ -1,4 +1,7 @@
-﻿module Microsoft.Research.Biology.StabilityZ3.GRNs.Lib
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+module Microsoft.Research.Biology.StabilityZ3.GRNs.Lib
 
 /// Rotates a list by one place forward.
 let rotate lst =

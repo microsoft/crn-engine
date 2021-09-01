@@ -1,4 +1,7 @@
-﻿import * as $ from 'jquery';
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+import * as $ from 'jquery';
 import * as ko from 'knockout';
 import * as LongOperationsKO from '../../../../HTML5SharedGUI/HTML5CRN_Lib/Scripts/Operations/LongOperationsKO';
 

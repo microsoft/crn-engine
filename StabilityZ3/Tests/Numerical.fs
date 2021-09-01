@@ -1,4 +1,7 @@
-﻿module Tests.Numerical
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+module Tests.Numerical
 
 open Xunit
 open Microsoft.Research.Biology.StabilityZ3

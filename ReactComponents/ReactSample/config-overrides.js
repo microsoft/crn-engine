@@ -1,3 +1,6 @@
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
 const MonacoWebpackPlugin = require('monaco-editor-webpack-plugin');
 
 module.exports = function override(config, env) {

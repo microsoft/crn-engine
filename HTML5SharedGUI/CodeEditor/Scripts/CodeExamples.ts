@@ -1,4 +1,7 @@
-﻿///<reference path="./Interfaces.ts"/>
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+///<reference path="./Interfaces.ts"/>
 
 // (FP) The code in this file handles the logic related to examples (i.e. the files you can load via the drop-down menu).
 

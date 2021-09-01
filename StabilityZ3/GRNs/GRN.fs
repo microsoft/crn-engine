@@ -1,4 +1,7 @@
-﻿module Microsoft.Research.Biology.StabilityZ3.GRNs.GRN
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+module Microsoft.Research.Biology.StabilityZ3.GRNs.GRN
 
 open Microsoft.Research.Biology.StabilityZ3
 open Microsoft.Research.Biology.StabilityZ3.Solver

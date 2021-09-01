@@ -1,4 +1,7 @@
-﻿module Microsoft.Research.Biology.StabilityZ3.LinearCRN
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+module Microsoft.Research.Biology.StabilityZ3.LinearCRN
 
 open Microsoft.Research.CRNEngine.Expression
 open Microsoft.Research.Biology.StabilityZ3

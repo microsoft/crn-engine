@@ -1,4 +1,7 @@
-﻿// (FP) The design of the SimulationViewer library is based on the notion that the outside world will send update messages to the library, and then the library will internally translate them and distribute them to the specific viewer (plotter, bar chart and table). This file implements the logic that allows distribution.
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+// (FP) The design of the SimulationViewer library is based on the notion that the outside world will send update messages to the library, and then the library will internally translate them and distribute them to the specific viewer (plotter, bar chart and table). This file implements the logic that allows distribution.
 
 import * as Rx from "rx";
 import * as I from "../../GenericComponents/Scripts/Interfaces";

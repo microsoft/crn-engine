@@ -1,4 +1,7 @@
-﻿module Tests.ByteEncoding
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+module Tests.ByteEncoding
 
 open Xunit
 open Microsoft.Research.Biology.StabilityZ3.CRNs.ByteEncoding

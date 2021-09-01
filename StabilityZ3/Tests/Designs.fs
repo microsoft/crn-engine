@@ -1,4 +1,7 @@
-﻿module Tests.Designs
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+module Tests.Designs
 
 open Xunit
 open Microsoft.Research.Biology.StabilityZ3

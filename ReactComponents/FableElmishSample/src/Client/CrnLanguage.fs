@@ -1,3 +1,6 @@
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
 module CrnLanguage
 open Fable.Core
 open ReactCodePad

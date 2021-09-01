@@ -1,4 +1,7 @@
-﻿import * as ko from "knockout";
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+import * as ko from "knockout";
 import * as Framework from "./SimulationViewerFramework";
 import * as I from "../../GenericComponents/Scripts/Interfaces";
 import * as template from 'raw-loader!../html/ProgressViewer.html';

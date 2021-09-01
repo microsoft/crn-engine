@@ -1,4 +1,7 @@
-﻿// (FP) This file contains the code for the time series plotter. Note that in the context of this file, "CI" typically refers to species concentration intervals.
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+// (FP) This file contains the code for the time series plotter. Note that in the context of this file, "CI" typically refers to species concentration intervals.
 
 import * as $ from "jquery";
 import * as ko from "knockout";

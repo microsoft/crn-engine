@@ -1,4 +1,7 @@
-﻿import * as ParseOperation from '../../../../HTML5SharedGUI/HTML5CRN_Lib/Scripts/Operations/GenericCodeParsing';
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+import * as ParseOperation from '../../../../HTML5SharedGUI/HTML5CRN_Lib/Scripts/Operations/GenericCodeParsing';
 import * as CRNParseOperation from '../../../../HTML5SharedGUI/HTML5CRN_Lib/Scripts/Operations/ParseCodeFillCRN';
 import * as DSDParseOperation from '../Operations/ParseSgCode';
 import * as serialization from '../../../../CRNEngine/CRNEngineTSWrapper/Scripts/Interfaces';

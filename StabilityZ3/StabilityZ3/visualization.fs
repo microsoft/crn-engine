@@ -1,4 +1,7 @@
-﻿module Microsoft.Research.Biology.StabilityZ3.Visualization
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+module Microsoft.Research.Biology.StabilityZ3.Visualization
 open Microsoft.Research.CRNEngine.Expression
 open Microsoft.Research.CRNEngine.Graph
 

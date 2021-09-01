@@ -1,4 +1,7 @@
-﻿module Microsoft.Research.Biology.StabilityZ3.MathNetWrapper
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+module Microsoft.Research.Biology.StabilityZ3.MathNetWrapper
 
 open MathNet.Symbolics
 open Microsoft.Research.Biology.StabilityZ3

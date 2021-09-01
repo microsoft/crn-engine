@@ -1,4 +1,7 @@
-﻿// Implements a reaction graph viewer that has a MSAGL/JS graph plus some controls to operate on it.
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+// Implements a reaction graph viewer that has a MSAGL/JS graph plus some controls to operate on it.
 
 import * as $ from 'jquery';
 import * as CRNvm from './crnVM';

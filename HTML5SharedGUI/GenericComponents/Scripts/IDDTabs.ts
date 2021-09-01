@@ -1,4 +1,7 @@
-﻿// This module uses jQuery's tab functionality to set up any element with the j-has-tabs class as a set of tabs. It also ensures that any IDD content is properly resized when the tab size changes.
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+// This module uses jQuery's tab functionality to set up any element with the j-has-tabs class as a set of tabs. It also ensures that any IDD content is properly resized when the tab size changes.
 import * as $ from "jquery"
 import "idd";
 declare var InteractiveDataDisplay: any;

@@ -1,3 +1,6 @@
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
 import * as MSAGL from "../../../MSAGL_JS/Scripts/msagl";
 import "./styles.css";
 import "../samples.css";

@@ -1,4 +1,7 @@
-﻿open Microsoft.Research.Biology.StabilityZ3
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+open Microsoft.Research.Biology.StabilityZ3
 open Microsoft.Research.Biology.StabilityZ3.GRNs.GRN
 open System.IO
 open Argu

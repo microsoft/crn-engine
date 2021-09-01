@@ -1,4 +1,7 @@
-﻿import * as G from './ggraph';
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+import * as G from './ggraph';
 import ContextGraph from './contextgraph';
 import "jquery-mousewheel";
 import { InteractiveDataDisplay, Plot } from "../node_modules/interactive-data-display/dist/idd.webpack";

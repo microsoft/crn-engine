@@ -1,4 +1,7 @@
-﻿import * as G from './ggraph';
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+import * as G from './ggraph';
 import * as M from './messages';
 
 if (G.GGraph.DebugLog)

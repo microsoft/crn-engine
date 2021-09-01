@@ -1,3 +1,6 @@
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
 module ReactCodePad
 open System.Text.RegularExpressions
 open FSharp.Collections

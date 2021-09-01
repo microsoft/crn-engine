@@ -1,4 +1,7 @@
-﻿module Microsoft.Research.Biology.StabilityZ3.NotebookAPI.CrnAPI
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+module Microsoft.Research.Biology.StabilityZ3.NotebookAPI.CrnAPI
 
 open Microsoft.Research.Biology.StabilityZ3
 open Microsoft.Research.CRNEngine

@@ -1,4 +1,7 @@
-﻿// This file contains general-purpose additional KO bindings.
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+// This file contains general-purpose additional KO bindings.
 
 import * as ko from 'knockout';
 

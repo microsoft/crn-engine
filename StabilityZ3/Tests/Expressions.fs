@@ -1,4 +1,7 @@
-﻿module Tests.Expressions
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+module Tests.Expressions
 
 open Xunit
 open Microsoft.Research.Biology.StabilityZ3

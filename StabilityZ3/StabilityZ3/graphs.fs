@@ -1,4 +1,7 @@
-﻿module Microsoft.Research.Biology.Graph
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+module Microsoft.Research.Biology.Graph
 
 
 type Graph = Set<int>[] // adj. list representation (output edges are stored as a set)

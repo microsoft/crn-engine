@@ -1,4 +1,7 @@
-﻿module Tests.Nontrivial
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+module Tests.Nontrivial
 
 open Microsoft.Research.Biology.StabilityZ3.CRNs.Enumerator
 open Xunit

@@ -1,4 +1,7 @@
-﻿module Tests.Test1
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+module Tests.Test1
 
 open Xunit
 open FsUnit

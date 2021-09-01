@@ -1,4 +1,7 @@
-﻿import * as crnKO from "../../CRNComponent/Scripts/crnKO";
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+import * as crnKO from "../../CRNComponent/Scripts/crnKO";
 import * as crnVM from "../../CRNComponent/Scripts/crnVM";
 import sampleCRN from "../SampleCRN";
 import "../samples.css";

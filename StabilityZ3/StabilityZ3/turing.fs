@@ -1,4 +1,7 @@
-﻿module Microsoft.Research.Biology.StabilityZ3.TuringSymbolic
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+module Microsoft.Research.Biology.StabilityZ3.TuringSymbolic
 
 module Stability = Microsoft.Research.Biology.StabilityZ3.Stability
 

@@ -1,4 +1,7 @@
-﻿module Microsoft.Research.Biology.StabilityZ3.Multistability
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+module Microsoft.Research.Biology.StabilityZ3.Multistability
 
 module Stability = Microsoft.Research.Biology.StabilityZ3.Stability 
 

@@ -1,4 +1,7 @@
-﻿module Microsoft.Research.Biology.StabilityZ3.Solver
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+module Microsoft.Research.Biology.StabilityZ3.Solver
 
 module Encoding = Microsoft.Research.Biology.StabilityZ3.Encoding
 open TuringSymbolic

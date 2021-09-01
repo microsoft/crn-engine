@@ -1,4 +1,7 @@
-﻿module Microsoft.Research.Biology.StabilityZ3.Z3Strategies
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+module Microsoft.Research.Biology.StabilityZ3.Z3Strategies
 
 
 type z3uint = 

@@ -1,4 +1,7 @@
-﻿import * as SimulateOperation from '../Operations/Spatial1DSimulation';
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+import * as SimulateOperation from '../Operations/Spatial1DSimulation';
 import ME from '../../../../CRNEngine/CRNEngineTSWrapper/Scripts/CRNEngine';
 import * as CRNInterfaces from '../../../../CRNEngine/CRNEngineTSWrapper/Scripts/Interfaces';
 import * as SimViewer from '../../../../HTML5SharedGUI/SimulationViewer/Scripts/SimulationViewerFramework';

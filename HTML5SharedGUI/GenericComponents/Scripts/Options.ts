@@ -1,4 +1,7 @@
-﻿import CRNEngine from '../../../CRNEngine/CRNEngineTSWrapper/Scripts/CRNEngine';
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+import CRNEngine from '../../../CRNEngine/CRNEngineTSWrapper/Scripts/CRNEngine';
 import "./Dropdown";
 
 class Options {

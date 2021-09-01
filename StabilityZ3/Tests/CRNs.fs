@@ -1,4 +1,7 @@
-﻿module Tests.CRNs
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+module Tests.CRNs
 
 open Xunit
 open Microsoft.Research.Biology.StabilityZ3

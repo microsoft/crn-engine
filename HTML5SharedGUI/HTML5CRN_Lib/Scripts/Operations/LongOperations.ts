@@ -1,4 +1,7 @@
-﻿/** The interface for an operation that can be processed by the state machine. */
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+/** The interface for an operation that can be processed by the state machine. */
 export interface IOperation {
     Initiate(): JQueryPromise<any>;
     Abort(): void;

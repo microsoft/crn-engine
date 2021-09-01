@@ -1,4 +1,7 @@
-﻿import * as PM from '../../SimulationViewer/Scripts/ProbabilityMapView';
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+import * as PM from '../../SimulationViewer/Scripts/ProbabilityMapView';
 import * as Framework from "../../SimulationViewer/Scripts/SimulationViewerFramework";
 import { Settings as SpatialViewerSettings } from '../../SimulationViewer/Scripts/SpatialViewerSettings';
 import "../../SimulationViewer/Styles/simulation.css";

@@ -1,4 +1,7 @@
-﻿module Tests.LinearAlgebra
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+module Tests.LinearAlgebra
 
 open Xunit
 open Microsoft.Research.Biology.StabilityZ3

@@ -1,4 +1,7 @@
-﻿import * as StateSpaceViewer from "../../../../HTML5SharedGUI/CRNComponent/Scripts/crnStateSpaceViewer";
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+import * as StateSpaceViewer from "../../../../HTML5SharedGUI/CRNComponent/Scripts/crnStateSpaceViewer";
 import * as SSA from "../Operations/StateSpaceAnalysis";
 import * as CRN from "../../../../CRNEngine/CRNEngineTSWrapper/Scripts/Interfaces";
 import * as CRNvm from '../../../../HTML5SharedGUI/CRNComponent/Scripts/crnVM';

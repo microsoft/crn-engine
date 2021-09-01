@@ -1,4 +1,7 @@
-﻿module Microsoft.Research.Biology.StabilityZ3.CRNs.ByteEncoding
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+module Microsoft.Research.Biology.StabilityZ3.CRNs.ByteEncoding
 
 open System.IO
 open Microsoft.Research.Biology.StabilityZ3

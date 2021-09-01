@@ -1,4 +1,7 @@
-﻿module Microsoft.Research.Biology.StabilityZ3.NotebookAPI.RDnets
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+module Microsoft.Research.Biology.StabilityZ3.NotebookAPI.RDnets
 
 open Microsoft.Research.CRNEngine.Expression
 open Microsoft.Research.Biology.StabilityZ3

@@ -1,4 +1,7 @@
-﻿import Worker from "worker-loader?filename=./msagl.worker.[hash].js!./msagl.worker.js";
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+import Worker from "worker-loader?filename=./msagl.worker.[hash].js!./msagl.worker.js";
 import { SetWorkerConstructor as SetWorkerConstructor } from "./ggraph"
 SetWorkerConstructor(Worker);
 

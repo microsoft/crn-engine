@@ -1,4 +1,7 @@
-﻿module Microsoft.Research.Biology.StabilityZ3.TuringNumerical
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+module Microsoft.Research.Biology.StabilityZ3.TuringNumerical
 
 open MathNet.Numerics.RootFinding
 open Microsoft.Research.CRNEngine.Expression

@@ -1,4 +1,7 @@
-﻿module Microsoft.Research.Biology.StabilityZ3.Stability
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+module Microsoft.Research.Biology.StabilityZ3.Stability
 
 module LinAlg = Microsoft.Research.Biology.StabilityZ3.LinearAlgebra
 

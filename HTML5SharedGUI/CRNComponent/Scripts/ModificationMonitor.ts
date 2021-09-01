@@ -1,4 +1,7 @@
-﻿import * as CrnVM from "./crnVM";
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+import * as CrnVM from "./crnVM";
 import * as rx from 'rx';
 import * as ko from 'knockout';
 

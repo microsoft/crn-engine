@@ -1,4 +1,7 @@
-﻿import * as SynthesisOperation from '../Operations/Synthesis';
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+import * as SynthesisOperation from '../Operations/Synthesis';
 import ME from '../../../../CRNEngine/CRNEngineTSWrapper/Scripts/CRNEngine';
 import * as MeInterfaces from '../../../../CRNEngine/CRNEngineTSWrapper/Scripts/Interfaces';
 import * as $ from 'jquery';

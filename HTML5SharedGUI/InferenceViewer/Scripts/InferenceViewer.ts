@@ -1,4 +1,7 @@
-﻿// (FP) This file does not contain any control; it only has some interfaces. These interfaces describe the shape of inference data, as expected by the various inference viewer controls contained in the library.
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+// (FP) This file does not contain any control; it only has some interfaces. These interfaces describe the shape of inference data, as expected by the various inference viewer controls contained in the library.
 
 import * as Rx from "rx";
 import * as ko from "knockout";

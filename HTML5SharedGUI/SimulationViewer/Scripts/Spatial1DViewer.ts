@@ -1,4 +1,7 @@
-﻿import * as $ from "jquery";
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+import * as $ from "jquery";
 import * as Rx from "rx";
 import * as Knockout from "knockout";
 import * as Framework from "./SimulationViewerFramework";

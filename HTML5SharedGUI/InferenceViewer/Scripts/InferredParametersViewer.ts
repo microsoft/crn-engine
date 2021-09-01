@@ -1,4 +1,7 @@
-﻿// (FP) This file contains the implementation of the parameters viewer. This viewer uses a table-viewer control internally (a KnockoutGrid).
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+// (FP) This file contains the implementation of the parameters viewer. This viewer uses a table-viewer control internally (a KnockoutGrid).
 
 import "../../KnockoutGrid/knockoutgrid";
 import * as ko from "knockout";

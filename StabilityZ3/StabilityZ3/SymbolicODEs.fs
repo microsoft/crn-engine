@@ -1,4 +1,7 @@
-﻿module Microsoft.Research.Biology.StabilityZ3.SymbolicODEs
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+module Microsoft.Research.Biology.StabilityZ3.SymbolicODEs
 
 open Microsoft.Research.CRNEngine
 open MathNet.Symbolics

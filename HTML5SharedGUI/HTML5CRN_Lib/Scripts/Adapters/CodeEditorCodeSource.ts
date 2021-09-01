@@ -1,3 +1,6 @@
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
 import * as I from '../../../GenericComponents/Scripts/Interfaces';
 import * as ModificationIndicator from '../../../GenericComponents/Scripts/ModificationIndicators';
 import * as GenericParseOperation from '../Operations/GenericCodeParsing';

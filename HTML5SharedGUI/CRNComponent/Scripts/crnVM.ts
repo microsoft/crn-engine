@@ -1,4 +1,7 @@
-﻿// Data structures that represent a CRN that comes from Crn.gui.
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+// Data structures that represent a CRN that comes from Crn.gui.
 import * as $ from 'jquery';
 import * as ko from 'knockout';
 import * as CRNSettings from './crnSettings';

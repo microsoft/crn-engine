@@ -1,4 +1,7 @@
-﻿module Microsoft.Research.Biology.StabilityZ3.Examples
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+module Microsoft.Research.Biology.StabilityZ3.Examples
 
 open Microsoft.Research.Biology.StabilityZ3
 //open Microsoft.Msagl.GraphViewerGdi

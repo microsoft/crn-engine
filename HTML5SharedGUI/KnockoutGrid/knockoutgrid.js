@@ -1,3 +1,6 @@
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
 define(['jquery', 'knockout'], function ($, ko) {
     // Private function
     function tableViewModel(params) {

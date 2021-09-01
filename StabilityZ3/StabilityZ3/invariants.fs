@@ -1,4 +1,7 @@
-﻿module Microsoft.Research.Biology.StabilityZ3.Invariants
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+module Microsoft.Research.Biology.StabilityZ3.Invariants
 
 
 let Transpose (S: int[][]) = Array.init S.[0].Length (fun i -> Array.init S.Length (fun j -> S.[j].[i]))
