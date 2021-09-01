@@ -1,4 +1,7 @@
-﻿import * as InferOperation from '../Operations/Inference';
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+import * as InferOperation from '../Operations/Inference';
 import ME from '../../../../CRNEngine/CRNEngineTSWrapper/Scripts/CRNEngine';
 import * as IV from '../../../../HTML5SharedGUI/InferenceViewer/Scripts/InferenceViewer';
 import * as MeInterfaces from '../../../../CRNEngine/CRNEngineTSWrapper/Scripts/Interfaces';

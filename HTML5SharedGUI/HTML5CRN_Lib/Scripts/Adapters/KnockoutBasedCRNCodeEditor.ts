@@ -1,4 +1,7 @@
-﻿import CRNEditor from '../Components/CRNCodeEditor';
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+import CRNEditor from '../Components/CRNCodeEditor';
 import * as I from '../../../GenericComponents/Scripts/Interfaces';
 import * as GenericParseOperation from '../Operations/GenericCodeParsing';
 import * as KOCodeEditor from "./KnockoutBasedCodeEditor";

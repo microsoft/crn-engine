@@ -1,4 +1,7 @@
-﻿declare module "*.html";
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+declare module "*.html";
 declare module "raw-loader*"
 declare module "idd" {
     var InteractiveDataDisplay: any;

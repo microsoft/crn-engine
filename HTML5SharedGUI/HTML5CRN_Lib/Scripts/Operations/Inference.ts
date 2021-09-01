@@ -1,4 +1,7 @@
-﻿import * as Rx from 'rx';
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+import * as Rx from 'rx';
 import * as $ from 'jquery';
 import * as Operations from "./LongOperations";
 import * as crn from "../../../../CRNEngine/CRNEngineTSWrapper/Scripts/Interfaces";

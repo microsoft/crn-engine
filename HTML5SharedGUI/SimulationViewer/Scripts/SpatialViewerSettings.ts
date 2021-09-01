@@ -1,4 +1,7 @@
-﻿import * as ko from "knockout";
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+import * as ko from "knockout";
 import "idd";
 declare var InteractiveDataDisplay: any;
 import * as $ from "jquery";

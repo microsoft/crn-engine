@@ -1,4 +1,7 @@
-﻿// This file implements a control that allows selecting traces. Traces are organised in a hierarchical structure of Model(CRN), Settings, Instance and Species. In this control, all such objects with the same name are collapsed in a single VM, which the user can select. For example, if we have two instances A and B each of which has species S1 and S2, then there will only be two species VMs, rather than 4. This means that the relationship between VMs and traces is many-to-many (i.e. an instance VM can be connected to multiple instances with the same name, and any given trace will be connected to a species, an instance, a settings and a model).
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+// This file implements a control that allows selecting traces. Traces are organised in a hierarchical structure of Model(CRN), Settings, Instance and Species. In this control, all such objects with the same name are collapsed in a single VM, which the user can select. For example, if we have two instances A and B each of which has species S1 and S2, then there will only be two species VMs, rather than 4. This means that the relationship between VMs and traces is many-to-many (i.e. an instance VM can be connected to multiple instances with the same name, and any given trace will be connected to a species, an instance, a settings and a model).
 
 import * as ko from "knockout";
 import * as $ from "jquery";

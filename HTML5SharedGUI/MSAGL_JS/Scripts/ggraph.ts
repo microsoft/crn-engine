@@ -1,4 +1,7 @@
-﻿import * as M from './messages';
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+import * as M from './messages';
 
 // This file contains classes that can be used to describe a geometry graph. The classes in this file, especially GGraph, are the main way you use MSAGL_JS. Generally speaking, you construct one of these classes by passing to the constructor a JS object with the relevant data, based on the declared interfaces. The objects themselves implement the same interfaces, so they can be copied easily by passing them to a constructor. This is important because these objects need to be shipped across web worker boundaries, and this approach makes serializing and deserializing them very easy.
 

@@ -1,4 +1,7 @@
-﻿import * as SimulateOperation from '../Operations/SimulateParsedCRN';
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+import * as SimulateOperation from '../Operations/SimulateParsedCRN';
 import * as I from '../../../GenericComponents/Scripts/Interfaces';
 import * as serialization from '../../../../CRNEngine/CRNEngineTSWrapper/Scripts/Interfaces';
 import * as ViewerFramework from '../../../../HTML5SharedGUI/SimulationViewer/Scripts/SimulationViewerFramework';

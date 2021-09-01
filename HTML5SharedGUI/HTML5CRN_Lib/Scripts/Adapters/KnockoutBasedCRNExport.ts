@@ -1,4 +1,7 @@
-﻿import * as ParseOperation from '../Operations/ParseCodeFillCRN';
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+import * as ParseOperation from '../Operations/ParseCodeFillCRN';
 import * as I from '../../../GenericComponents/Scripts/Interfaces';
 import * as CRN from "../../../../CRNEngine/CRNEngineTSWrapper/Scripts/Interfaces";
 import CRNEngine from "../../../../CRNEngine/CRNEngineTSWrapper/Scripts/CRNEngine";

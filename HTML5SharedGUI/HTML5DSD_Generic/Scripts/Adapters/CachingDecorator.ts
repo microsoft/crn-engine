@@ -1,4 +1,7 @@
-﻿import * as CRNViewer from '../../../../HTML5SharedGUI/HTML5CRN_Lib/Scripts/Adapters/KnockoutBasedCRNViewer';
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+import * as CRNViewer from '../../../../HTML5SharedGUI/HTML5CRN_Lib/Scripts/Adapters/KnockoutBasedCRNViewer';
 import * as Cache from './SVGStructuralCache';
 import * as serialization from '../../../../CRNEngine/CRNEngineTSWrapper/Scripts/Interfaces';
 

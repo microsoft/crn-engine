@@ -1,4 +1,7 @@
-﻿import * as MSAGL from "../../../MSAGL_JS/Scripts/msagl";
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+import * as MSAGL from "../../../MSAGL_JS/Scripts/msagl";
 import "./styles.css";
 import "../samples.css";
 import * as sampleGraph1 from 'raw-loader!./samplegraph1.txt';

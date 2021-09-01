@@ -1,4 +1,7 @@
-﻿// (FP) This file contains the implementation of the inference summary control, which is basically a text area showing the summary text (plus a progress control).
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+// (FP) This file contains the implementation of the inference summary control, which is basically a text area showing the summary text (plus a progress control).
 
 import * as ko from "knockout";
 import * as $ from "jquery";

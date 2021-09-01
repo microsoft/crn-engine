@@ -1,4 +1,7 @@
-﻿// Copy the element tree to the SVG tree. Assigning the element directly does not work.
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+// Copy the element tree to the SVG tree. Assigning the element directly does not work.
 export function copyTree(source: any, dest: Element) {
     if (source.tagName === undefined) {
         // It's a text node. Copy it.

@@ -1,4 +1,7 @@
-﻿import * as serialization from "../../../../CRNEngine/CRNEngineTSWrapper/Scripts/Interfaces";
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+import * as serialization from "../../../../CRNEngine/CRNEngineTSWrapper/Scripts/Interfaces";
 
 export class SVGStructuralCache  {
     private speciesCache: { [key: string]: serialization.SpeciesAttributes } = {}; 

@@ -1,4 +1,7 @@
-﻿import * as $ from 'jquery';
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+import * as $ from 'jquery';
 import * as crnVM from "../../../../HTML5SharedGUI/CRNComponent/Scripts/crnVM";
 import * as serialization from "../../../../CRNEngine/CRNEngineTSWrapper/Scripts/Interfaces";
 import * as HintScreen from "../../../GenericComponents/Scripts/HintScreen";

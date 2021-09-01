@@ -63,6 +63,8 @@ Project("{6EC3EE1D-3C4E-46DD-8F32-0CC8E7565705}") = "CRNEngineCloudLib", "..\CRN
 EndProject
 Project("{6EC3EE1D-3C4E-46DD-8F32-0CC8E7565705}") = "RulesDSD", "..\RulesDSD\RulesDSD\RulesDSD.fsproj", "{30177D74-4775-4629-BB08-CA533C6EB294}"
 EndProject
+Project("{6EC3EE1D-3C4E-46DD-8F32-0CC8E7565705}") = "StabilityZ3", "..\StabilityZ3\StabilityZ3\StabilityZ3.fsproj", "{A7F6C30E-8925-4A2F-BC4C-7C2560809609}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -173,6 +175,14 @@ Global
 		{66A501F9-427B-4DB8-9C72-9A844D917D2A}.Debug|x64.Build.0 = Debug|Any CPU
 		{66A501F9-427B-4DB8-9C72-9A844D917D2A}.Release|x64.ActiveCfg = Release|Any CPU
 		{66A501F9-427B-4DB8-9C72-9A844D917D2A}.Release|x64.Build.0 = Release|Any CPU
+		{30177D74-4775-4629-BB08-CA533C6EB294}.Debug|x64.ActiveCfg = Debug|x64
+		{30177D74-4775-4629-BB08-CA533C6EB294}.Debug|x64.Build.0 = Debug|x64
+		{30177D74-4775-4629-BB08-CA533C6EB294}.Release|x64.ActiveCfg = Release|x64
+		{30177D74-4775-4629-BB08-CA533C6EB294}.Release|x64.Build.0 = Release|x64
+		{A7F6C30E-8925-4A2F-BC4C-7C2560809609}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{A7F6C30E-8925-4A2F-BC4C-7C2560809609}.Debug|x64.Build.0 = Debug|Any CPU
+		{A7F6C30E-8925-4A2F-BC4C-7C2560809609}.Release|x64.ActiveCfg = Release|Any CPU
+		{A7F6C30E-8925-4A2F-BC4C-7C2560809609}.Release|x64.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

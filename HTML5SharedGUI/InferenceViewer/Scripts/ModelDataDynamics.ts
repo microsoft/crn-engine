@@ -1,4 +1,7 @@
-﻿// (FP) This file contains the implementation of the dynamics control (the inference plotter).
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+// (FP) This file contains the implementation of the dynamics control (the inference plotter).
 
 declare var SVG: any;
 import "svg";

@@ -1,4 +1,7 @@
-﻿// (FP) This file implements the posterior viewer. Like the simulation viewer, this actually encompasses three controls (the posterior table, the scatter plot and the density plot). Unlike the simulation viewer, here we don't have a template that organizes them in tabs; this is left to the higher layers. The control, however, will assume that all of the separate viewers are child of a given node (they can be organized in any way within that node). Note that there are three VMs, one for each type of control, but only one View class. Each of the VMs contains its own progress control, but they'll all bind to the same data.
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+// (FP) This file implements the posterior viewer. Like the simulation viewer, this actually encompasses three controls (the posterior table, the scatter plot and the density plot). Unlike the simulation viewer, here we don't have a template that organizes them in tabs; this is left to the higher layers. The control, however, will assume that all of the separate viewers are child of a given node (they can be organized in any way within that node). Note that there are three VMs, one for each type of control, but only one View class. Each of the VMs contains its own progress control, but they'll all bind to the same data.
 
 import "../../KnockoutGrid/knockoutgrid";
 import * as ko from "knockout";

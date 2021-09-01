@@ -1,4 +1,7 @@
-﻿import * as CRN from './crnVM';
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+import * as CRN from './crnVM';
 import * as ko from 'knockout';
 
 class ModelsVM {

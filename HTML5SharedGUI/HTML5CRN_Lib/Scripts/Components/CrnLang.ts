@@ -1,4 +1,7 @@
-﻿var crnLanguage = {
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+var crnLanguage = {
     displayName: 'CRN',       // start by writing your language name here
     name: 'crn',
     mimeTypes: ['text/x-crn'],

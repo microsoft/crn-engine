@@ -1,4 +1,7 @@
-﻿export type Req_RunLayout = { msgtype: "RunLayout", graph: string }
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+export type Req_RunLayout = { msgtype: "RunLayout", graph: string }
 export type Req_RouteEdges = { msgtype: "RouteEdges", graph: string, edges?: string[] }
 export type Req_SetPolyline = { msgtype: "SetPolyline", graph: string, edge: string, polyline: string }
 

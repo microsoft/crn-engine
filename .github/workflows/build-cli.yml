@@ -27,6 +27,14 @@ jobs:
     - name: Test CRN
       run: vstest.console.exe .\CRNEngine\CRNEngineTests\bin\Release\netcoreapp3.1\CRNEngineTests.dll /Platform:x64
     
+    - name: Restore StabilityZ3 dependencies
+      run: dotnet restore StabilityZ3/StabilityZ3.sln
+    - name: Build StabilityZ3
+      shell: cmd
+      run: msbuild StabilityZ3/StabilityZ3.sln /p:Configuration=Release /p:Platform=x64
+    - name: Test StabilityZ3
+      run: vstest.console.exe .\StabilityZ3\Tests\bin\Release\netcoreapp3.1\StabilityTests.dll /Platform:x64
+    
     - name: Restore GEC dependencies
       run: dotnet restore ClassicGEC/ClassicGECCli.sln
     - name: Build GEC

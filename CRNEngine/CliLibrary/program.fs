@@ -307,11 +307,21 @@ let run parser (programName:string) (parser_results:ParseResults<CliArguments>) 
                 let baseName = match copy with None -> baseName | Some copy -> (baseName+"_"+(string copy))
                 let results = Inference.do_inference inf_options model (Path.Combine [|baseName + "_inference" ;model.top.name|]) copy programCode
                 results.to_summary()
-            ) |> ignore
+            ) |> ignore                
                 
+        // Synthesis
+        if synthesize
+        then
+          updated_igraph 
+          |> InferenceSiteGraph.iterNodes (fun _ model ->
+            Synthesis.run model
+          )
+        
         // Output CRN (useful when the CRN comes from DSD for example)
         if text
           then printf "%s" (ig.to_string ())
+
+         
     done
 
 

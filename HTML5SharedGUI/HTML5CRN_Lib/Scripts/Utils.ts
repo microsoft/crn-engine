@@ -1,4 +1,7 @@
-﻿export function ExponentToConcentrationString(exponent: number): string {
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+export function ExponentToConcentrationString(exponent: number): string {
     var prefix = "";
     switch (exponent) {
         case 0: prefix = ""; break;

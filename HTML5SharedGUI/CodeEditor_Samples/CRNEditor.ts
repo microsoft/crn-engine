@@ -1,4 +1,7 @@
-﻿import CodePad from "../CodeEditor/Scripts/CodePad";
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+import CodePad from "../CodeEditor/Scripts/CodePad";
 import language from "./crnlang";
 
 class CRNEditor extends CodePad {

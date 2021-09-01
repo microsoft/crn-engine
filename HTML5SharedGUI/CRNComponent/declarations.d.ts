@@ -1,4 +1,7 @@
-﻿declare module "*.html"
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+declare module "*.html"
 declare module "idd" {
     var InteractiveDataDisplay: any;
     export = InteractiveDataDisplay;

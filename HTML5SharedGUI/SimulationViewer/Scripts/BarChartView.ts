@@ -1,4 +1,7 @@
-﻿// (PF) This file contains the implementation of the bar chart view (for simulations).
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+// (PF) This file contains the implementation of the bar chart view (for simulations).
 // A lot of this uses exactly the same designs as TimeseriesView.ts. Look at that file for explanations.
 // Design note: arguably, there is code duplication here. On the other hand, though, it's nice to keep things independant.
 

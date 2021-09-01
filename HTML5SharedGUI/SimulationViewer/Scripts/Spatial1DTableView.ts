@@ -1,4 +1,7 @@
-﻿// (FP) This file implements the table view (specifically for simulation results). Note that this does not implement the actual table: it makes use of the table component that's implemented in KnockoutGrid.js (found in HTML5SharedGUI).
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+// (FP) This file implements the table view (specifically for simulation results). Note that this does not implement the actual table: it makes use of the table component that's implemented in KnockoutGrid.js (found in HTML5SharedGUI).
 
 import "../../KnockoutGrid/knockoutgrid";
 import * as ko from "knockout";

@@ -1,4 +1,7 @@
-﻿import * as I from "./Interfaces";
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+import * as I from "./Interfaces";
 import * as ko from 'knockout';
 
 class HintScreenVM {

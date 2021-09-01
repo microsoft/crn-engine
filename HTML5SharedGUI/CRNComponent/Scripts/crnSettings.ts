@@ -1,4 +1,7 @@
-﻿import * as ko from 'knockout';
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+import * as ko from 'knockout';
 import { WebSharperGeneratedInterfaces as WGI } from "./../../../CRNEngine/CRNEngineTSWrapper/Scripts/WebSharperGeneratedInterfaces";
 // https://github.com/Microsoft/TypeScript/issues/5711
 import * as Serializable from '../../../CRNEngine/CRNEngineTSWrapper/Scripts/Interfaces';

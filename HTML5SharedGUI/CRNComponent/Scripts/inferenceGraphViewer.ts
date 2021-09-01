@@ -1,4 +1,7 @@
-﻿// Implements an inference graph viewer that has a MSAGL/JS graph plus some controls to operate on it.
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+// Implements an inference graph viewer that has a MSAGL/JS graph plus some controls to operate on it.
 
 import "./../../GenericComponents/Styles/shared.css";
 import "./../Styles/crn.css";

@@ -1,4 +1,7 @@
-﻿import * as ko from 'knockout';
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+import * as ko from 'knockout';
 import * as template from 'raw-loader!../Templates/dropdown.html';
 
 var allowCloseTypes = ["button", "checkbox", "hidden", "radio", "reset", "search", "submit"];

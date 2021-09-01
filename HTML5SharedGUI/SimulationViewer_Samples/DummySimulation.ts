@@ -1,4 +1,7 @@
-﻿import * as SimViewer from "../SimulationViewer/Scripts/Viewer";
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+import * as SimViewer from "../SimulationViewer/Scripts/Viewer";
 import * as SimViewerFramework from "../SimulationViewer/Scripts/SimulationViewerFramework";
 import * as Rx from "rx";
 import "./table.css";

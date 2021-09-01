@@ -1,4 +1,7 @@
-﻿/*
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+/*
 This file contains some additions and changes to the SharpKit library and to the SharpKit-generated code. Some of these are additions to the
 SharpKit implementation of the CLR types, which may involve changing the prototypes of core JS types to make them emulate the corresponding
 .NET core types. Others are workaround to SharpKit bugs. Many of these are required just because polymorphism causes some methods to have a

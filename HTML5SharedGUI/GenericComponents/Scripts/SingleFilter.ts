@@ -1,4 +1,7 @@
-﻿// (FP) This file implements a control that allows selection of a species from a list of species.
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+// (FP) This file implements a control that allows selection of a species from a list of species.
 
 import * as ko from "knockout";
 import * as I from "./Interfaces";

@@ -1,4 +1,7 @@
-﻿import * as SSAOperation from '../Operations/StateSpaceAnalysis';
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+import * as SSAOperation from '../Operations/StateSpaceAnalysis';
 import ME from '../../../../CRNEngine/CRNEngineTSWrapper/Scripts/CRNEngine';
 import * as MeInterfaces from '../../../../CRNEngine/CRNEngineTSWrapper/Scripts/Interfaces';
 import * as $ from 'jquery';

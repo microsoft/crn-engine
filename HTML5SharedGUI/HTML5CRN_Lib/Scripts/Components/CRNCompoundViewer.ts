@@ -1,4 +1,7 @@
-﻿import * as Interfaces from "../../../../CRNEngine/CRNEngineTSWrapper/Scripts/Interfaces";
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+import * as Interfaces from "../../../../CRNEngine/CRNEngineTSWrapper/Scripts/Interfaces";
 import * as Operation from '../Operations/ParseCodeFillCRN';
 import * as serialization from "../../../../CRNEngine/CRNEngineTSWrapper/Scripts/Interfaces";
 

@@ -1,4 +1,7 @@
-﻿import { IDataSet, IDataSetStorage } from './crnDataSets'
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+import { IDataSet, IDataSetStorage } from './crnDataSets'
 
 // (FP) This file contains several implementations of the IDataSetStorage interface, i.e. several different ways to store a set of
 // observation data points.

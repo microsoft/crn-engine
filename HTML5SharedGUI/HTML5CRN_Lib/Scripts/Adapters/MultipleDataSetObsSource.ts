@@ -1,4 +1,7 @@
-﻿//import crn = require("../../CRNEngine/Interfaces");
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+//import crn = require("../../CRNEngine/Interfaces");
 import { WebSharperGeneratedInterfaces as WGI } from '../../../../CRNEngine/CRNEngineTSWrapper/Scripts/WebSharperGeneratedInterfaces';
 import { IDataSetStorage, IDataSet } from '../../../../HTML5SharedGUI/CRNComponent/Scripts/crnDataSets';
 import * as InferenceOp from '../Operations/Inference';

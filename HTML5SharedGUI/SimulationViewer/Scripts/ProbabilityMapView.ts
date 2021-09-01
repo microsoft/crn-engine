@@ -1,4 +1,7 @@
-﻿// (FP) This file contains the implementation for the probability map control. Note that I made this myself, so it might be a bit different from the other designs in this project. The overall design assumes that probability maps are generated on-demand and asynchronously. Therefore, the higher layer needs to provide this control with the data required to generate probability maps, the list of species for which a probability map can be generated, and the function that asynchronously generates a probability map. The control will invoke this function with that data when the user requires it.
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+// (FP) This file contains the implementation for the probability map control. Note that I made this myself, so it might be a bit different from the other designs in this project. The overall design assumes that probability maps are generated on-demand and asynchronously. Therefore, the higher layer needs to provide this control with the data required to generate probability maps, the list of species for which a probability map can be generated, and the function that asynchronously generates a probability map. The control will invoke this function with that data when the user requires it.
 
 declare var SVG: any;
 import "svg";

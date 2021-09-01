@@ -1,3 +1,6 @@
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
 ///<reference path="./Interfaces.ts"/>
 
 // (FP) The code in this file represents the bare editor, by which I mean the text box alone. This has its own KO component, called code-editor-widget. The full editor, which is in CodePad.ts, makes use of it.

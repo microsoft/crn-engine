@@ -1,4 +1,7 @@
-﻿import * as SimRunner from './ModellingEngineSimulationRunner';
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+import * as SimRunner from './ModellingEngineSimulationRunner';
 import * as SVF from '../../../../HTML5SharedGUI/SimulationViewer/Scripts/SimulationViewerFramework';
 import * as ME from '../../../../CRNEngine/CRNEngineTSWrapper/Scripts/CRNEngine';
 import { WebSharperGeneratedInterfaces as WGI } from "../../../../CRNEngine/CRNEngineTSWrapper/Scripts/WebSharperGeneratedInterfaces";

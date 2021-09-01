@@ -1,4 +1,7 @@
-﻿// (FP) This file contains the code for the export viewer component, which is just a tabbed view of several text areas.
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+// (FP) This file contains the code for the export viewer component, which is just a tabbed view of several text areas.
 
 import * as $ from "jquery";
 import * as ko from "knockout";

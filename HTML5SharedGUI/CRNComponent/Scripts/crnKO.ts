@@ -1,4 +1,7 @@
-﻿import "../../KnockoutGrid/knockoutgrid";
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+import "../../KnockoutGrid/knockoutgrid";
 import * as $ from 'jquery';
 import * as ko from 'knockout';
 import * as CRNSettings from './crnSettings';

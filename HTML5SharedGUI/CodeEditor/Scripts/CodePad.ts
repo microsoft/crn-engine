@@ -1,3 +1,6 @@
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
 ///<reference path="./Interfaces.ts"/>
 
 // (FP) This file contains the logic for the full-fledged editor (i.e. including buttons and stuff).

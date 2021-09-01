@@ -1,4 +1,7 @@
-﻿import * as ko from "knockout";
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+import * as ko from "knockout";
 import { InferenceSummary } from "../../InferenceViewer/Scripts/InferenceSummary";
 import * as Inference from "../../InferenceViewer/Scripts/InferenceViewer";
 import * as Rx from "rx";

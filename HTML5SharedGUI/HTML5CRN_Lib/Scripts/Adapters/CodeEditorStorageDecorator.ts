@@ -1,4 +1,7 @@
-﻿import * as GenericParseOperation from '../Operations/GenericCodeParsing';
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+import * as GenericParseOperation from '../Operations/GenericCodeParsing';
 import * as KOCodeEditor from './KnockoutBasedCodeEditor';
 import * as ko from 'knockout';
 import * as Rx from 'rx';

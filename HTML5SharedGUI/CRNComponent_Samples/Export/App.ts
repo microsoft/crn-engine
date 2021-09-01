@@ -1,4 +1,7 @@
-﻿import * as ko from 'knockout';
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+import * as ko from 'knockout';
 import * as CRN from './../../../CRNEngine/CRNEngineTSWrapper/Scripts/Interfaces';
 import * as CRNExport from "./../../CRNComponent/Scripts/crnExport";
 import "../samples.css";

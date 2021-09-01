@@ -1,4 +1,7 @@
-﻿import * as SimulateOperation from '../Operations/SimulateParsedCRN';
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+import * as SimulateOperation from '../Operations/SimulateParsedCRN';
 import * as I from '../../../GenericComponents/Scripts/Interfaces';
 import CRNEngine from '../../../../CRNEngine/CRNEngineTSWrapper/Scripts/CRNEngine';
 import * as MeInterfaces from '../../../../CRNEngine/CRNEngineTSWrapper/Scripts/Interfaces';

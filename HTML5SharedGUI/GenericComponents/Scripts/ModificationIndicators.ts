@@ -1,4 +1,7 @@
-﻿import * as $ from 'jquery';
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+import * as $ from 'jquery';
 
 export interface IModificationIndicator {
     SetModified(): void;

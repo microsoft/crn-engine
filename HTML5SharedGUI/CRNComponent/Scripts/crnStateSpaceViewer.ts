@@ -1,4 +1,7 @@
-﻿import * as MSAGL from '../../../HTML5SharedGUI/MSAGL_JS/Scripts/msagl';
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+import * as MSAGL from '../../../HTML5SharedGUI/MSAGL_JS/Scripts/msagl';
 import { WebSharperGeneratedInterfaces as WGI } from "../../../CRNEngine/CRNEngineTSWrapper/Scripts/WebSharperGeneratedInterfaces"; // https://github.com/Microsoft/TypeScript/issues/5711
 import * as Interfaces from '../../../CRNEngine/CRNEngineTSWrapper/Scripts/Interfaces';
 import * as CRN from './crnVM';

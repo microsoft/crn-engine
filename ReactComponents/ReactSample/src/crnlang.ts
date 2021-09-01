@@ -1,3 +1,6 @@
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
 import * as monaco from 'monaco-editor/esm/vs/editor/editor.api'
 
 interface IExtendedMonarchLanguage extends monaco.languages.IMonarchLanguage {

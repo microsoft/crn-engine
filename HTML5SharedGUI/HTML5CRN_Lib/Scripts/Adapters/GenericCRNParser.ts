@@ -1,4 +1,7 @@
-﻿import * as ParseOperation from '../Operations/GenericCodeParsing';
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+import * as ParseOperation from '../Operations/GenericCodeParsing';
 import * as CRNParseOperation from '../Operations/ParseCodeFillCRN';
 import * as serialization from '../../../../CRNEngine/CRNEngineTSWrapper/Scripts/Interfaces';
 import * as jQuery from 'jquery';

@@ -1,4 +1,7 @@
-﻿import * as tinycolor from "tinycolor2";
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+import * as tinycolor from "tinycolor2";
 import * as ko from 'knockout';
 import * as template from 'raw-loader!../Templates/paletteeditor.html';
 import "idd";
