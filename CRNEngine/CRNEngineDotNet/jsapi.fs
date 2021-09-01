@@ -339,7 +339,7 @@ let simulateFloatJIT (gui:GuiModel) (jit:jit<'a>) (output : Row<float> -> unit) 
     let gui = { task = None; nodes = [("",gui)] |> Map.ofList; edges = Map.empty; expanded = false }
     output_program gui
 
-let simulator_to_value_type (settings:Crn_settings<_>) =
+let simulator_to_value_type (settings:Crn_settings<Functional>) =
     match settings.simulator with
     | Simulator.LNA -> MeanStdev
     | Simulator.CME | Simulator.CMESundials -> MeanStdevProbabilities

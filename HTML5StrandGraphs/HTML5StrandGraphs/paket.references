@@ -1,0 +1,6 @@
+﻿group JavaScriptBuild
+
+#FAKE
+Yarn.MSBuild
+Node.js.redist
+Microsoft.TypeScript.MSBuild

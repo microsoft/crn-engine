@@ -1,0 +1,1 @@
+<Y!c> | <Y!d> | <X!a Y*!c Y*!d X*!b> | <X!b Y*!e Y*!f X*!a> | <Y!e> | <Y!f>

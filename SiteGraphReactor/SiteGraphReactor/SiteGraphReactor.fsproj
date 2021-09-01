@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="Calculus.fs" />
+    <Compile Include="TimeSeparation.fs" />
+    <Compile Include="Tiles.fs" />
+    <Compile Include="Strands.fs" />
+    <Compile Include="Species.fs" />
+    <Compile Include="CirclesRenderer.fs" />
+    <Compile Include="Reactions.fs" />
+    <Compile Include="States.fs" />
+    <Compile Include="ReactionGraph.fs" />
+    <Compile Include="Syntax.fs" />
+    <Compile Include="ExtendedSyntax.fs" />
+    <Compile Include="sitegraphs.fs" />
+    <None Include="paket.references" />
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\ParserCombinators\ParserCombinators\ParserCombinators.fsproj" />
+  </ItemGroup>
+  <Import Project="..\..\.paket\Paket.Restore.targets" />
+</Project>

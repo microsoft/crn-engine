@@ -1,0 +1,107 @@
+State space
+  species: 16
+  states: 12
+  transitions: 15
+
+States
+state0  (Initial state):
+
+   1 of species0 : [ <d* e* c*> ]
+   1 of species1 : [ <e f*!0 g f!0 d a*!1 b a!1 c> ]
+   1 of species2 : [ <a*!0 b!1 a!2 c!3>
+                   | <c*!3 a*!2 b*!1 a!0 d*!4 f*!5 g* f!5 e*!6>
+                   | <a*!7 b a!7 c e!6 h!8 l x k h*!8 d!4> ]
+state1 :
+
+   1 of species1 : [ <e f*!0 g f!0 d a*!1 b a!1 c> ]
+   1 of species3 : [ <a*!0 b!1 a!2 c!3>
+                   | <c*!3 a*!2 b*!1 a!0 d* f*!4 g* f!4 e*> ]
+   1 of species4 : [ <a*!0 b a!0 c!1 e!2 h!3 l x k h*!3 d!4>
+                   | <d*!4 e*!2 c*!1> ]
+state2 :
+
+   1 of species5 : [ <a*!0 b a!0 c!1 e!2 h!3 l x k h*!3 d>
+                   | <d* e*!2 c*!1> ]
+   1 of species6 : [ <a*!0 b a!0 c!1>
+                   | <c*!1 a*!2 b*!3 a!4 d*!5 f*!6 g* f!7 e*!8>
+                   | <e!8 f*!7 g f!6 d!5 a*!4 b!3 a!2 c> ]
+state3 :
+
+   1 of species4 : [ <a*!0 b a!0 c!1 e!2 h!3 l x k h*!3 d!4>
+                   | <d*!4 e*!2 c*!1> ]
+   1 of species7 : [ <a*!0 b a!0 c!1>
+                   | <c*!1 a*!2 b*!3 a!4 d*!5 f*!6 g* f!7 e*>
+                   | <e f*!7 g f!6 d!5 a*!4 b!3 a!2 c> ]
+state4 :
+
+   1 of species4 : [ <a*!0 b a!0 c!1 e!2 h!3 l x k h*!3 d!4>
+                   | <d*!4 e*!2 c*!1> ]
+   1 of species8 : [ <a*!0 b!1 a!2 c!3>
+                   | <c*!3 a*!2 b*!1 a!0 d* f*!4 g* f!5 e*!6>
+                   | <e!6 f*!5 g f!4 d a*!7 b a!7 c> ]
+state5 :
+
+   1 of species9 : [ <d*!0 e*!1 c*>
+                   | <e!1 f*!2 g f!2 d!0 a*!3 b a!3 c> ]
+   1 of species2 : [ <a*!0 b!1 a!2 c!3>
+                   | <c*!3 a*!2 b*!1 a!0 d*!4 f*!5 g* f!5 e*!6>
+                   | <a*!7 b a!7 c e!6 h!8 l x k h*!8 d!4> ]
+state6 :
+
+   1 of species10: [ <d*!0 e* c*!1>
+                   | <e f*!2 g f!2 d!0 a*!3 b a!3 c!1> ]
+   1 of species2 : [ <a*!0 b!1 a!2 c!3>
+                   | <c*!3 a*!2 b*!1 a!0 d*!4 f*!5 g* f!5 e*!6>
+                   | <a*!7 b a!7 c e!6 h!8 l x k h*!8 d!4> ]
+state7 :
+
+   1 of species11: [ <d*!0 e* c*>
+                   | <e f*!1 g f!1 d!0 a*!2 b a!2 c> ]
+   1 of species2 : [ <a*!0 b!1 a!2 c!3>
+                   | <c*!3 a*!2 b*!1 a!0 d*!4 f*!5 g* f!5 e*!6>
+                   | <a*!7 b a!7 c e!6 h!8 l x k h*!8 d!4> ]
+state8 :
+
+   1 of species12: [ <d* e*!0 c*!1>
+                   | <e!0 f*!2 g f!2 d a*!3 b a!3 c!1> ]
+   1 of species2 : [ <a*!0 b!1 a!2 c!3>
+                   | <c*!3 a*!2 b*!1 a!0 d*!4 f*!5 g* f!5 e*!6>
+                   | <a*!7 b a!7 c e!6 h!8 l x k h*!8 d!4> ]
+state9 :
+
+   1 of species13: [ <d* e*!0 c*>
+                   | <e!0 f*!1 g f!1 d a*!2 b a!2 c> ]
+   1 of species2 : [ <a*!0 b!1 a!2 c!3>
+                   | <c*!3 a*!2 b*!1 a!0 d*!4 f*!5 g* f!5 e*!6>
+                   | <a*!7 b a!7 c e!6 h!8 l x k h*!8 d!4> ]
+state10:
+
+   1 of species14: [ <d* e* c*!0>
+                   | <e f*!1 g f!1 d a*!2 b a!2 c!0> ]
+   1 of species2 : [ <a*!0 b!1 a!2 c!3>
+                   | <c*!3 a*!2 b*!1 a!0 d*!4 f*!5 g* f!5 e*!6>
+                   | <a*!7 b a!7 c e!6 h!8 l x k h*!8 d!4> ]
+state11:
+
+   1 of species15: [ <a*!0 b!1 a!2 c!3>
+                   | <c*!3 a*!2 b*!1 a!0 d*!4 f*!5 g* f!5 e*!6>
+                   | <a*!7 b a!7 c!8 e!6 h!9 l x k h*!9 d!4>
+                   | <d*!10 e* c*!8>
+                   | <e f*!11 g f!11 d!10 a*!12 b a!12 c> ]
+
+Transitions
+state0  -> state1  (0.003)
+state0  -> state7  (0.003)
+state0  -> state9  (0.003)
+state0  -> state10 (0.003)
+state1  -> state3  (0.003)
+state1  -> state4  (0.003)
+state7  -> state5  (0.003)
+state7  -> state6  (0.003)
+state7  -> state11 (0.003)
+state9  -> state2  (0.003)
+state9  -> state4  (0.003)
+state9  -> state5  (0.003)
+state9  -> state8  (0.003)
+state10 -> state6  (0.003)
+state10 -> state8  (0.003)

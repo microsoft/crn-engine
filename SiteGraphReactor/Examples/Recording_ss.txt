@@ -1,0 +1,88 @@
+State space
+  species: 14
+  states: 12
+  transitions: 20
+
+States
+state0  (Initial state):
+
+   1 of species0 : [ <a*!0 b a!0 c> ]
+   1 of species1 : [ <c* a*!0 b* a!0 d* f*!1 g* f!1 e*> ]
+   1 of species2 : [ <a*!0 b a!0 c e h!1 l x k h*!1 d> ]
+state1 :
+
+   1 of species0 : [ <a*!0 b a!0 c> ]
+   1 of species3 : [ <c*!0 a*!1 b* a!2 d*!3 f*!4 g* f!4 e*!5>
+                   | <a*!2 b a!1 c!0 e!5 h!6 l x k h*!6 d!3> ]
+state2 :
+
+   1 of species0 : [ <a*!0 b a!0 c> ]
+   1 of species4 : [ <c*!0 a*!1 b* a!2 d*!3 f*!4 g* f!4 e*>
+                   | <a*!2 b a!1 c!0 e h!5 l x k h*!5 d!3> ]
+state3 :
+
+   1 of species0 : [ <a*!0 b a!0 c> ]
+   1 of species5 : [ <c*!0 a*!1 b* a!2 d* f*!3 g* f!3 e*!4>
+                   | <a*!2 b a!1 c!0 e!4 h!5 l x k h*!5 d> ]
+state4 :
+
+   1 of species0 : [ <a*!0 b a!0 c> ]
+   1 of species6 : [ <c*!0 a*!1 b* a!2 d* f*!3 g* f!3 e*>
+                   | <a*!2 b a!1 c!0 e h!4 l x k h*!4 d> ]
+state5 :
+
+   1 of species0 : [ <a*!0 b a!0 c> ]
+   1 of species7 : [ <c* a*!0 b* a!0 d*!1 f*!2 g* f!2 e*!3>
+                   | <a*!4 b a!4 c e!3 h!5 l x k h*!5 d!1> ]
+state6 :
+
+   1 of species0 : [ <a*!0 b a!0 c> ]
+   1 of species8 : [ <c* a*!0 b* a!0 d*!1 f*!2 g* f!2 e*>
+                   | <a*!3 b a!3 c e h!4 l x k h*!4 d!1> ]
+state7 :
+
+   1 of species0 : [ <a*!0 b a!0 c> ]
+   1 of species9 : [ <c* a*!0 b* a!0 d* f*!1 g* f!1 e*!2>
+                   | <a*!3 b a!3 c e!2 h!4 l x k h*!4 d> ]
+state8 :
+
+   1 of species2 : [ <a*!0 b a!0 c e h!1 l x k h*!1 d> ]
+   1 of species10: [ <a*!0 b a!1 c!2>
+                   | <c*!2 a*!1 b* a!0 d* f*!3 g* f!3 e*> ]
+state9 :
+
+   1 of species11: [ <a*!0 b a!1 c!2>
+                   | <c*!2 a*!1 b* a!0 d*!3 f*!4 g* f!4 e*!5>
+                   | <a*!6 b a!6 c e!5 h!7 l x k h*!7 d!3> ]
+state10:
+
+   1 of species12: [ <a*!0 b a!1 c!2>
+                   | <c*!2 a*!1 b* a!0 d*!3 f*!4 g* f!4 e*>
+                   | <a*!5 b a!5 c e h!6 l x k h*!6 d!3> ]
+state11:
+
+   1 of species13: [ <a*!0 b a!1 c!2>
+                   | <c*!2 a*!1 b* a!0 d* f*!3 g* f!3 e*!4>
+                   | <a*!5 b a!5 c e!4 h!6 l x k h*!6 d> ]
+
+Transitions
+state0  -> state4  (0.003)
+state0  -> state6  (0.003)
+state0  -> state7  (0.003)
+state0  -> state8  (0.003)
+state2  -> state1  (0.003)
+state3  -> state1  (0.003)
+state4  -> state2  (0.003)
+state4  -> state3  (0.003)
+state5  -> state1  (0.003)
+state5  -> state9  (0.003)
+state6  -> state2  (0.003)
+state6  -> state5  (0.003)
+state6  -> state10 (0.003)
+state7  -> state3  (0.003)
+state7  -> state5  (0.003)
+state7  -> state11 (0.003)
+state8  -> state10 (0.003)
+state8  -> state11 (0.003)
+state10 -> state9  (0.003)
+state11 -> state9  (0.003)

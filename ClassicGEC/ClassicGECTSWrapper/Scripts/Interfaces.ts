@@ -5,7 +5,59 @@ import * as CRN from '../../../CRNEngine/CRNEngineTSWrapper/Scripts/InternalInte
 import { WebSharperGeneratedInterfaces as WGI } from "./WebSharperGeneratedInterfaces";
 import * as Interfaces from '../../../CRNEngine/CRNEngineTSWrapper/Scripts/Interfaces';
 
-export type jSBOLDocument = WGI.FSBOL.JsonSerializer.rSBOLDocument;
+// The public FSBOL (github.com/SynBioDex/fSBOL) doesn't support TypesTSFS, so the auto-generated interfaces don't work
+// TODO: Update FSBOL and re-plumb SBOL components
+//export type jSBOLDocument = WGI.FSBOL.JsonSerializer.rSBOLDocument;
+
+// Workaround: define the structure that is used, to prevent build errors
+export type rRange = {
+    name: string;
+    displayId: string;
+    persistentIdentity: string;
+    version: string;
+    uri: string;
+    startIndex: number;
+    endIndex: number;
+    orientation: string;
+ }
+export type rSequenceAnnotation = {
+    name: string;
+    displayId: string;
+    persistentIdentity: string;
+    version: string;
+    uri: string;
+    ranges: Array<rRange>;
+    roles: Array<string>;
+}
+export type rComponent = {
+    uri: string;
+    version: string;
+    name: string;
+    displayId: string;
+    persistentIdentity: string;
+    description: string;
+    definition: string;
+    access: string;
+}
+export type rComponentDefinition = {
+    uri: string;
+    version: string;
+    name: string;
+    displayId: string;
+    persistentIdentity: string;
+    attachments: Array<string>;
+    description: string;
+    components: Array<rComponent>;
+    sequenceAnnotations: Array<rSequenceAnnotation>;
+    sequences: Array<string>;
+    types: Array<string>;
+    roles: Array<string>;
+}
+export type rSBOLDocument = {
+    componentDefinitions: Array<rComponentDefinition>;
+}
+export type jSBOLDocument = rSBOLDocument
+
 
 export type CompileGECObservables = {
     solution_count: Rx.Observable<number>,

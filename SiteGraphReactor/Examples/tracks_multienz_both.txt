@@ -1,0 +1,9 @@
+enzymes
+ [ nick (Gt^*,Gp1* Gp2* Gp3*)
+ ; nick (Bp3^* Bp2* Bp1*, Bt^*) ]
+
+  1 * [ [Gt^* Gp1* Gp2* Gp3*]<tethergreenstart>
+      | {Bt^*}<Gt^* Gp1* Gp2* Gp3*>[Bp1]<Bp2 Bp3^!2>{Bp2m Bp3^*!2}:[Gt^* Gp1*]<Gp2* Gp3*!1>{Gp2m Gp3!1 tetherjunction}
+      | <Gt^* Gp1* Gp2* Gp3* tethergreenend>
+      | [Bt^ Bp1 Bp2 Bp3^]<Gt^*>{tetherbluestart}
+      ]
