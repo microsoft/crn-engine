@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="WebSharperAbbreviations.fs" />
+    <Compile Include="..\Oslo.FSharp\Vector.fs">
+      <Link>Vector.fs</Link>
+    </Compile>
+    <Compile Include="..\Oslo.FSharp\Matrix.fs">
+      <Link>Matrix.fs</Link>
+    </Compile>
+    <Compile Include="..\Oslo.FSharp\SparseVector.fs">
+      <Link>SparseVector.fs</Link>
+    </Compile>
+    <Compile Include="..\Oslo.FSharp\SparseMatrix.fs">
+      <Link>SparseMatrix.fs</Link>
+    </Compile>
+    <Compile Include="..\Oslo.FSharp\Gauss.fs">
+      <Link>Gauss.fs</Link>
+    </Compile>
+    <Compile Include="..\Oslo.FSharp\RK547M.fs">
+      <Link>RK547M.fs</Link>
+    </Compile>
+    <Compile Include="..\Oslo.FSharp\GearBDF.fs">
+      <Link>GearBDF.fs</Link>
+    </Compile>
+    <Content Include="paket.references" />
+    <None Include="wsconfig.json" />
+  </ItemGroup>
+  <Import Project="..\..\.paket\Paket.Restore.targets" />
+</Project>

@@ -117,13 +117,9 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Filzbach.FSharp\Filzbach.FSharp.Portable.fsproj" />
+    <ProjectReference Include="..\..\Oslo\Oslo.FSharp\Oslo.FSharp.fsproj" />
     <ProjectReference Include="..\..\ParserCombinators\ParserCombinators\ParserCombinators.fsproj" />
     <ProjectReference Include="..\..\PDESolvers\ReactionDiffusion\ReactionDiffusion.fsproj" />
-  </ItemGroup>
-  <ItemGroup>
-    <Reference Include="Oslo.FSharp">
-      <HintPath>..\..\Lib\Oslo.FSharp\Oslo.FSharp.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <Target Name="Making Version" BeforeTargets="BeforeBuild">
     <Exec Command="git rev-parse --short HEAD &gt; $(ProjectDir)\version.txt" />

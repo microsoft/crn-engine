@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <PlatformTarget>x64</PlatformTarget>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="TestNotation.fs" />
+    <Compile Include="VectorTests.fs" />
+    <Compile Include="MatrixTests.fs" />
+    <Compile Include="SparseVectorTests.fs" />
+    <Compile Include="SparseMatrixTest.fs" />
+    <Compile Include="GaussianEliminationTests.fs" />
+    <Compile Include="GearTests.fs" />
+    <Compile Include="Program.fs" />
+    <None Include="paket.references" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Oslo.FSharp\Oslo.FSharp.fsproj" />
+  </ItemGroup>
+  <Import Project="..\..\.paket\Paket.Restore.targets" />
+</Project>

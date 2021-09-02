@@ -23,10 +23,5 @@
     <ProjectReference Include="..\CRNEngineCloudLib\CRNEngineCloudLib.fsproj" />
     <ProjectReference Include="..\CRNEngineDotNet\CRNEngineDotNet.fsproj" />
   </ItemGroup>
-  <ItemGroup>
-    <Reference Include="Oslo.FSharp">
-      <HintPath>..\..\Lib\Oslo.FSharp\Oslo.FSharp.dll</HintPath>
-    </Reference>
-  </ItemGroup>
   <Import Project="..\..\.paket\Paket.Restore.targets" />
 </Project>

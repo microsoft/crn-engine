@@ -1,0 +1,59 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Oscillating DNA</title>
+    <link rel="stylesheet" type="text/css" href="../Styles/d3.css" />
+    <script src="../Scripts/jquery-2.0.3.min.js"></script>
+    <script src="../Scripts/rx.js"></script>
+    <script src="../Scripts/rx.jQuery.js"></script>
+    <script src="../Scripts/d3.js"></script>
+    <script src="../Scripts/WebSharper/IntelliFactory.JavaScript/Runtime.js" ></script>
+    <script src="../Scripts/WebSharper/IntelliFactory.WebSharper.js" ></script>
+    <script src="../Scripts/WebSharper/Oslo.FSharp.WebSharper.js"></script>
+    <script src="../Scripts/WebSharper/Oslo.FSharp.Samples.js"></script>
+
+    <script type="application/javascript">
+
+        $(document).ready(function () {
+
+            var x1 = [], x2 = [], x3 = [], t = [], s = [], ts = [];
+
+            IntelliFactory.Runtime.Start();
+
+            var chart1 = D3.asPlot($("#OscillatingDNAChart"))
+
+            var polyline1 = chart1.get("x1");
+            var polyline2 = chart1.get("x2");
+            var polyline3 = chart1.get("x3");
+
+
+            //var chart2 = D3.asPlot($("#StepChart"))
+            //var polyline3 = chart2.get("s");
+
+            var worker = new Worker("../Scripts/DNA_worker.js");
+            worker.onmessage = function (msg) {
+                t = t.concat(msg.data.t);
+                x1 = x1.concat(msg.data.x1);
+                x2 = x2.concat(msg.data.x2);
+                x3 = x3.concat(msg.data.x3);
+                ts = ts.concat(msg.data.ts);
+                s = s.concat(msg.data.step);
+                polyline1.draw({ x: t, y: x1 });
+                polyline2.draw({ x: t, y: x2 });
+                polyline3.draw({ x: t, y: x3 });
+                chart1.fitToView();
+                //chart2.fitToView();
+            }
+        });
+    </script>
+</head>
+<body>    
+    <div id="OscillatingDNAChart" data-d3-plot="chart" style="width:600px;height:600px">
+        <div id="x1" data-d3-plot="polyline" data-d3-style="stroke: orange" data-d3-name="x1(t)"></div>
+        <div id="x2" data-d3-plot="polyline" data-d3-style="stroke: blue" data-d3-name="x2(t)"></div>
+        <div id="x3" data-d3-plot="polyline" data-d3-style="stroke: red" data-d3-name="x3(t)"></div>
+    </div>
+    <div id="timings" />
+</body>
+</html>
+

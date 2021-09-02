@@ -1,0 +1,58 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Benchmark Page</title>
+</head>
+<body>
+
+    <script type="text/javascript" src="/Scripts/WebSharper/IntelliFactory.JavaScript/Runtime.js"></script>
+    <script type="text/javascript" src="/Scripts/WebSharper/IntelliFactory.WebSharper.js"></script>
+    <script type="text/javascript" src="/Scripts/WebSharper/Oslo.FSharp.WebSharper.js"></script>
+    <script type="text/javascript" src="/Scripts/WebSharper/Oslo.FSharp.Samples.js"></script>
+
+    <script type="text/javascript">
+
+        function show(msg) {
+            console.log(msg);
+            var pre = document.createElement("pre");
+            pre.innerText = msg;
+            document.body.appendChild(pre);
+        }
+
+        function start() {
+
+            var IterationCount = 60;
+            var IterationSize = 20;
+
+            IntelliFactory.Runtime.Start();
+
+            show("Benchmarking OscDNA using GearBDF");
+
+            var start = new Date().getTime();
+            var dna = Oslo.FSharp.GearSamples.DNA_init();
+            var count = 0;
+            for (var i = 0; i < 5; i++) {
+                dna = Oslo.FSharp.GearSamples.DNA_solve(dna, 250)[4];
+                count += 250;
+                var end = new Date().getTime();
+                show("OscDNA using GearBDF: " + count + " points in " + (end - start) + " ms");
+            }
+
+            show("Benchmarking RM using R-K");
+
+            start = new Date().getTime();
+            var rm = Oslo.FSharp.Samples.RM_init();
+            count = 0;
+            for (var i = 0; i < 5; i++) {
+                rm = Oslo.FSharp.Samples.RM_solve(rm, 20000)[3];
+                count += 20000;
+                var end = new Date().getTime();
+                show("RM using R-K: " + count + " points in " + (end - start) + " ms");
+            }
+        }
+
+        start();
+    </script>
+
+</body>
+</html>

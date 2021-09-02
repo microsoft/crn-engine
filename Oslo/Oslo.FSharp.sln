@@ -1,0 +1,54 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27004.2002
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".paket", ".paket", "{816632C4-18B5-4AE2-96AA-7B8E9D6CF974}"
+	ProjectSection(SolutionItems) = preProject
+		paket.dependencies = paket.dependencies
+	EndProjectSection
+EndProject
+Project("{6EC3EE1D-3C4E-46DD-8F32-0CC8E7565705}") = "Oslo.FSharp.WebSharper", "Oslo.FSharp.WebSharper\Oslo.FSharp.WebSharper.fsproj", "{B577BC2C-D7C7-4A93-AC2A-0FBC47B3707E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Oslo.JavaScript.Samples", "Oslo.JavaScript.Samples\Oslo.JavaScript.Samples.csproj", "{26C5140E-6B59-4A5F-9C9B-03DAB71C87D8}"
+EndProject
+Project("{6EC3EE1D-3C4E-46DD-8F32-0CC8E7565705}") = "Oslo.FSharp.Samples", "Oslo.FSharp.Samples\Oslo.FSharp.Samples.fsproj", "{993CD92E-123B-4AB4-9DD7-D3B22173F5F3}"
+EndProject
+Project("{6EC3EE1D-3C4E-46DD-8F32-0CC8E7565705}") = "Oslo.FSharp", "Oslo.FSharp\Oslo.FSharp.fsproj", "{F3A00D99-016C-4D36-836A-2045ACD1CE8B}"
+EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Oslo.FSharp.Tests", "Oslo.FSharp.Tests\Oslo.FSharp.Tests.fsproj", "{D7898DC7-B7CF-45AC-B32A-07D4271F0AEE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B577BC2C-D7C7-4A93-AC2A-0FBC47B3707E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B577BC2C-D7C7-4A93-AC2A-0FBC47B3707E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B577BC2C-D7C7-4A93-AC2A-0FBC47B3707E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B577BC2C-D7C7-4A93-AC2A-0FBC47B3707E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{26C5140E-6B59-4A5F-9C9B-03DAB71C87D8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{26C5140E-6B59-4A5F-9C9B-03DAB71C87D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{26C5140E-6B59-4A5F-9C9B-03DAB71C87D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{26C5140E-6B59-4A5F-9C9B-03DAB71C87D8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{993CD92E-123B-4AB4-9DD7-D3B22173F5F3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{993CD92E-123B-4AB4-9DD7-D3B22173F5F3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{993CD92E-123B-4AB4-9DD7-D3B22173F5F3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{993CD92E-123B-4AB4-9DD7-D3B22173F5F3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F3A00D99-016C-4D36-836A-2045ACD1CE8B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F3A00D99-016C-4D36-836A-2045ACD1CE8B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F3A00D99-016C-4D36-836A-2045ACD1CE8B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F3A00D99-016C-4D36-836A-2045ACD1CE8B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D7898DC7-B7CF-45AC-B32A-07D4271F0AEE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D7898DC7-B7CF-45AC-B32A-07D4271F0AEE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D7898DC7-B7CF-45AC-B32A-07D4271F0AEE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D7898DC7-B7CF-45AC-B32A-07D4271F0AEE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3B9D903D-D040-4C4D-B18F-376221CE8DE3}
+	EndGlobalSection
+EndGlobal

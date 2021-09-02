@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <PlatformTarget>x64</PlatformTarget>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="WebSharperAttributes.fs" />
+    <Compile Include="Vector.fs" />
+    <Compile Include="Matrix.fs" />
+    <Compile Include="SparseVector.fs" />
+    <Compile Include="SparseMatrix.fs" />
+    <Compile Include="Gauss.fs" />
+    <Compile Include="RK547M.fs" />
+    <Compile Include="GearBDF.fs" />
+    <None Include="paket.references" />
+  </ItemGroup>
+  <Import Project="..\..\.paket\Paket.Restore.targets" />
+</Project>
