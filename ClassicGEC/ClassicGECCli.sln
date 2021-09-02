@@ -38,6 +38,8 @@ Project("{6EC3EE1D-3C4E-46DD-8F32-0CC8E7565705}") = "ClassicGECTests", "ClassicG
 EndProject
 Project("{6EC3EE1D-3C4E-46DD-8F32-0CC8E7565705}") = "RulesDSD", "..\RulesDSD\RulesDSD\RulesDSD.fsproj", "{22DF9340-8F96-4FBE-8001-675E2E55CB54}"
 EndProject
+Project("{6EC3EE1D-3C4E-46DD-8F32-0CC8E7565705}") = "StabilityZ3", "..\StabilityZ3\StabilityZ3\StabilityZ3.fsproj", "{067C2D8F-219E-4D5B-AEFA-1A59C64E2E1F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -108,6 +110,10 @@ Global
 		{22DF9340-8F96-4FBE-8001-675E2E55CB54}.Debug|x64.Build.0 = Debug|x64
 		{22DF9340-8F96-4FBE-8001-675E2E55CB54}.Release|x64.ActiveCfg = Release|x64
 		{22DF9340-8F96-4FBE-8001-675E2E55CB54}.Release|x64.Build.0 = Release|x64
+		{067C2D8F-219E-4D5B-AEFA-1A59C64E2E1F}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{067C2D8F-219E-4D5B-AEFA-1A59C64E2E1F}.Debug|x64.Build.0 = Debug|Any CPU
+		{067C2D8F-219E-4D5B-AEFA-1A59C64E2E1F}.Release|x64.ActiveCfg = Release|Any CPU
+		{067C2D8F-219E-4D5B-AEFA-1A59C64E2E1F}.Release|x64.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

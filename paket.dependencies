@@ -63,7 +63,7 @@ group NETSTANDARD
 	nuget FSBOLJS >= 2.2.1.5
 
     nuget Thoth.Json.net >= 2.5.0
-
+	
 group NETFRAMEWORK
 
     source https://api.nuget.org/v3/index.json

@@ -1,13 +1,5 @@
 ﻿group NETSTANDARD
 
-#FsCheck
-#FsUnit.xUnit
-# argu
-#xunit.core
-#xunit.runner.console
-#xunit.runner.visualstudio
 FParsec
 FSharp.Core
-# MathNet.Numerics
-# MathNet.Numerics.FSharp
 MathNet.Symbolics

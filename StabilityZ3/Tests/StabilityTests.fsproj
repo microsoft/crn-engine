@@ -44,10 +44,5 @@
     <ProjectReference Include="..\GRNs\GRNs.fsproj" />
     <ProjectReference Include="..\StabilityZ3\StabilityZ3.fsproj" />
   </ItemGroup>
-  <ItemGroup>
-    <Reference Include="Oslo.FSharp">
-      <HintPath>..\..\Lib\Oslo.FSharp\Oslo.FSharp.dll</HintPath>
-    </Reference>
-  </ItemGroup>
   <Import Project="..\..\.paket\Paket.Restore.targets" />
 </Project>

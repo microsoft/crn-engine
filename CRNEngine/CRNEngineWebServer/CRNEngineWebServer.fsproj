@@ -22,11 +22,6 @@
     <ProjectReference Include="..\HTML5CRN\HTML5CRN.csproj" />
     <ProjectReference Include="..\CRNJobsManager\CRNJobsManager.csproj" />
   </ItemGroup>
-  <ItemGroup>
-    <Reference Include="Oslo.FSharp">
-      <HintPath>..\..\Lib\Oslo.FSharp\Oslo.FSharp.dll</HintPath>
-    </Reference>
-  </ItemGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <PlatformTarget>x64</PlatformTarget>
   </PropertyGroup>

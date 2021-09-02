@@ -21,11 +21,6 @@
     <ProjectReference Include="..\..\RulesDSD\RulesDSD\RulesDSD.fsproj" />
     <ProjectReference Include="..\ClassicGECDotNet\ClassicGECDotNet.fsproj" />
   </ItemGroup>
-  <ItemGroup>
-    <Reference Include="Oslo.FSharp">
-      <HintPath>..\..\Lib\Oslo.FSharp\Oslo.FSharp.dll</HintPath>
-    </Reference>
-  </ItemGroup>
   <!--
   <Target Name="Copying Sundials" AfterTargets="AfterBuild" Condition="$(OS) == Windows_NT">
     <Exec Command="xcopy /y /q /d &quot;$(SolutionDir)x64\$(Configuration)\SundialsSolver15.dll&quot; &quot;$(OutDir)&quot;" />

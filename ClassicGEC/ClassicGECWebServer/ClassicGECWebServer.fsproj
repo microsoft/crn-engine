@@ -28,9 +28,6 @@
     <ProjectReference Include="..\..\PDESolvers\ReactionDiffusion\ReactionDiffusion.fsproj" />
     <ProjectReference Include="..\ClassicGECDotNet\ClassicGECDotNet.fsproj" />
     <ProjectReference Include="..\ClassicGECHTML5\ClassicGECHTML5.csproj" />
-    <Reference Include="Oslo.FSharp">
-      <HintPath>..\..\Lib\Oslo.FSharp\Oslo.FSharp.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <Target Name="AfterBuildFAKE" AfterTargets="AfterBuild">
     <Message Importance="high" Text="Running FAKE target Build" />
