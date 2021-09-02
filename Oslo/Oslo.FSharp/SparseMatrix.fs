@@ -83,10 +83,10 @@ module SparseMatrix =
             DM
             
         /// <summary>Accessor method for (i,j)th element</summary>
-        /// <param name="i">Row index</param>
-        /// <param name="j">Column index</param>
-        /// <returns>(i,j)th element</returns>
         member this.Item 
+          /// <param name="i">Row index</param>
+          /// <param name="j">Column index</param>
+          /// <returns>(i,j)th element</returns>
           with get(i : int, j : int) =
             if (i < 0 || j < 0 || i >= rows || j >= cols) 
               then
@@ -105,6 +105,9 @@ module SparseMatrix =
                     else
                       items.[i].[jidx]
             
+          /// <param name="i">Row index</param>
+          /// <param name="j">Column index</param>
+          /// <param name="value">Value to assign</param>
           and set(i, j) value =
             if (i < 0 || j < 0 || i >= rows || j >= cols) then
               failwith "Element index is out of range"
@@ -151,16 +154,18 @@ module SparseMatrix =
             
             
         /// <summary>Accessor method for ith row</summary>
-        /// <param name="i">Row index</param>
-        /// <returns>The ith row as a SparseVector</returns>
         member this.Item  
+          /// <param name="i">Row index</param>
+          /// <returns>The ith row as a SparseVector</returns>
           with get(i) = SparseVector(items.[i], indices.[i], cols)
+          /// <param name="i">Row index</param>
+          /// <param name="value">Value to assign</param>
           and set i (value : SparseVector) = 
             indices.[i] <- value.Indices
             items.[i] <- value.Items
             count.[i] <- value.Length
                         
-        /// <summaryTranpose</summary>
+        /// <summary>Tranpose</summary>
         /// <returns></returns>
         member this.transpose() =         
           let At = SparseMatrix(this.ColumnDimension, this.RowDimension)
@@ -313,9 +318,9 @@ module SparseMatrix =
           C
 
     /// <summary>Identity matrix in sparse form</summary>
-    /// <param name="this.m">Row dimension</param>
-    /// <param name="this.n">Column dimension</param>
-    /// <returns>An this.m x this.n sparse identity matrix</returns>
+    /// <param name="m">Row dimension</param>
+    /// <param name="n">Column dimension</param>
+    /// <returns>An m x n sparse identity matrix</returns>
     let inline Identity(m : int, n : int) = 
         let o =  Math.Min(m, n)
         let A = SparseMatrix(m, n)
