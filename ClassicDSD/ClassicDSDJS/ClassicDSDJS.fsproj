@@ -162,9 +162,6 @@
   <ItemGroup>
     <ProjectReference Include="..\..\PDESolvers\ReactionDiffusionJS\ReactionDiffusionJS.fsproj" />
     <ProjectReference Include="..\..\RulesDSD\RulesDSDJS\RulesDSDJS.fsproj" />
-    <Reference Include="Oslo.FSharp.WebSharper">
-      <HintPath>..\..\Lib\Oslo-FSharp.websharper\Oslo.FSharp.WebSharper.dll</HintPath>
-    </Reference>
     <ProjectReference Include="..\..\CRNEngine\CRNEngineJS\CRNEngineJS.fsproj" />
     <ProjectReference Include="..\..\Filzbach.FSharp.JS\Filzbach.FSharp.JS.fsproj" />
     <ProjectReference Include="..\..\ParserCombinators\ParserCombinatorsJS\ParserCombinatorsJS.fsproj" />

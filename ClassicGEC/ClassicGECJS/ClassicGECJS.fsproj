@@ -102,10 +102,5 @@
     <ProjectReference Include="..\..\ParserCombinators\ParserCombinatorsJS\ParserCombinatorsJS.fsproj" />
     <ProjectReference Include="..\..\RulesDSD\RulesDSDJS\RulesDSDJS.fsproj" />
   </ItemGroup>
-  <ItemGroup>
-    <Reference Include="Oslo.FSharp.WebSharper">
-      <HintPath>..\..\Lib\Oslo-FSharp.websharper\Oslo.FSharp.WebSharper.dll</HintPath>
-    </Reference>
-  </ItemGroup>
   <Import Project="..\..\.paket\Paket.Restore.targets" />
 </Project>

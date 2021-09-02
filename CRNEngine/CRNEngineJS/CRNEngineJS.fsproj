@@ -316,13 +316,9 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Filzbach.FSharp.JS\Filzbach.FSharp.JS.fsproj" />
+    <ProjectReference Include="..\..\Oslo\Oslo.FSharp.WebSharper\Oslo.FSharp.WebSharper.fsproj" />
     <ProjectReference Include="..\..\ParserCombinators\ParserCombinatorsJS\ParserCombinatorsJS.fsproj" />
     <ProjectReference Include="..\..\PDESolvers\ReactionDiffusionJS\ReactionDiffusionJS.fsproj" />
-  </ItemGroup>
-  <ItemGroup>
-    <Reference Include="Oslo.FSharp.WebSharper">
-      <HintPath>..\..\Lib\Oslo-FSharp.websharper\Oslo.FSharp.WebSharper.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <Import Project="..\..\.paket\Paket.Restore.targets" />
 </Project>

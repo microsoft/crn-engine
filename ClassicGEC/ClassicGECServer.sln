@@ -65,6 +65,8 @@ Project("{6EC3EE1D-3C4E-46DD-8F32-0CC8E7565705}") = "RulesDSD", "..\RulesDSD\Rul
 EndProject
 Project("{6EC3EE1D-3C4E-46DD-8F32-0CC8E7565705}") = "StabilityZ3", "..\StabilityZ3\StabilityZ3\StabilityZ3.fsproj", "{A7F6C30E-8925-4A2F-BC4C-7C2560809609}"
 EndProject
+Project("{6EC3EE1D-3C4E-46DD-8F32-0CC8E7565705}") = "Oslo.FSharp", "..\Oslo\Oslo.FSharp\Oslo.FSharp.fsproj", "{60A49E43-FB26-4F2F-B71F-BB34695EA47B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -183,6 +185,10 @@ Global
 		{A7F6C30E-8925-4A2F-BC4C-7C2560809609}.Debug|x64.Build.0 = Debug|Any CPU
 		{A7F6C30E-8925-4A2F-BC4C-7C2560809609}.Release|x64.ActiveCfg = Release|Any CPU
 		{A7F6C30E-8925-4A2F-BC4C-7C2560809609}.Release|x64.Build.0 = Release|Any CPU
+		{60A49E43-FB26-4F2F-B71F-BB34695EA47B}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{60A49E43-FB26-4F2F-B71F-BB34695EA47B}.Debug|x64.Build.0 = Debug|Any CPU
+		{60A49E43-FB26-4F2F-B71F-BB34695EA47B}.Release|x64.ActiveCfg = Release|Any CPU
+		{60A49E43-FB26-4F2F-B71F-BB34695EA47B}.Release|x64.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
