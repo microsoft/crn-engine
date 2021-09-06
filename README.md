@@ -8,9 +8,11 @@ Chemical Reaction Networks Engine (CRN-Engine) is an open source repository that
 
 ## Getting Started
 
+The main tools are located in the folders \CRNEngine, \ClassicGEC and \ClassicDSD. For each tool, there are solutions for a command-line interface (CLI), or with a visual front-end, either deployed as server-client (run-on-localhost) or fully HTML. To build these solutions, you will need to configure Visual Studio with the necessary add-ins, and also install a few more dependencies.
+
 The instructions for building on Windows are as follows:
 
-1. Install Visual Studio 2019
+1. **Install Visual Studio 2019**
 
     The components required are:
     - Workloads tab:
@@ -29,22 +31,11 @@ The instructions for building on Windows are as follows:
     - Individual Components tab, "SDKs, libraries, and frameworks" section:
         - Windows 10 SDK (10.0.17763.0)
 
-2. Install .NET Core SDKs
+2. **Install .NET Core SDKs**. These are available [here](https://dotnet.microsoft.com/download/visual-studio-sdks). The required versions are 2.1 and 3.1.
 
-    Required versions:
-    - 2.2.*
-    - 3.0.* 
-    - 3.1.*
+3. **Install NodeJS**. N.B. This may involve restarting your computer several times.
 
-3. Install NodeJS 
-
-    N.B. This may involve restarting your computer several times.
-
-4. Install Yarn 
-    
-    The instructions (for Windows) are [here](https://classic.yarnpkg.com/en/docs/install/#windows-stable).
-
-5. Install C++ CRT (C Run Time Library)
+4. **Install Yarn**. The instructions (for Windows) are [here](https://classic.yarnpkg.com/en/docs/install/#windows-stable).
 
 
 ## Contributing
