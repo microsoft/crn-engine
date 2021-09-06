@@ -16,27 +16,84 @@ steps:
 - script: 'dotnet tool restore'
   displayName: 'dotnet tool restore'
 
-- task: DotNetCoreCLI@2
-  displayName: 'dotnet restore: Classic DSD Server'
+- task: VSBuild@1
+  displayName: 'Build CRNEngine/CRNEngineCli.sln'
   inputs:
-    command: restore
-    projects: ClassicDSD/ClassicDSDServer.sln
+    solution: CRNEngine/CRNEngineCli.sln
+    vsVersion: 16.0
+    platform: '$(BuildPlatform)'
+    configuration: '$(BuildConfiguration)'
 
 - task: VSBuild@1
-  displayName: 'Build solution ClassicDSDServer'
+  displayName: 'Build CRNEngine/CRNEngineServer.sln'
+  inputs:
+    solution: CRNEngine/CRNEngineServer.sln
+    vsVersion: 16.0
+    platform: '$(BuildPlatform)'
+    configuration: '$(BuildConfiguration)'
+
+- task: VSBuild@1
+  displayName: 'Build CRNEngine/CRNEngineHTML.sln'
+  inputs:
+    solution: CRNEngine/CRNEngineHTML.sln
+    vsVersion: 16.0
+    platform: '$(BuildPlatform)'
+    configuration: '$(BuildConfiguration)'
+
+- task: VSBuild@1
+  displayName: 'Build ClassicGEC/ClassicGECCli.sln'
+  inputs:
+    solution: ClassicGEC/ClassicGECCli.sln
+    vsVersion: 16.0
+    platform: '$(BuildPlatform)'
+    configuration: '$(BuildConfiguration)'
+
+- task: VSBuild@1
+  displayName: 'Build ClassicGEC/ClassicGECServer.sln'
+  inputs:
+    solution: ClassicGEC/ClassicGECServer.sln
+    vsVersion: 16.0
+    platform: '$(BuildPlatform)'
+    configuration: '$(BuildConfiguration)'
+
+- task: VSBuild@1
+  displayName: 'Build ClassicGEC/ClassicGECHTML.sln'
+  inputs:
+    solution: ClassicGEC/ClassicGECHTML.sln
+    vsVersion: 16.0
+    platform: '$(BuildPlatform)'
+    configuration: '$(BuildConfiguration)'
+
+- task: VSBuild@1
+  displayName: 'Build ClassicDSD/ClassicDSD.sln'
+  inputs:
+    solution: ClassicDSD/ClassicDSD.sln
+    vsVersion: 16.0
+    platform: '$(BuildPlatform)'
+    configuration: '$(BuildConfiguration)'
+
+- task: VSBuild@1
+  displayName: 'Build ClassicDSD/ClassicDSDServer.sln'
   inputs:
     solution: ClassicDSD/ClassicDSDServer.sln
     vsVersion: 16.0
     platform: '$(BuildPlatform)'
     configuration: '$(BuildConfiguration)'
-    restoreNugetPackages: true
+
+- task: VSBuild@1
+  displayName: 'Build ClassicDSD/ClassicDSDHTML5.sln'
+  inputs:
+    solution: ClassicDSD/ClassicDSDHTML5.sln
+    vsVersion: 16.0
+    platform: '$(BuildPlatform)'
+    configuration: '$(BuildConfiguration)'
 
 - task: BinSkim@4
   inputs:
     InputType: 'Basic'
     Function: 'analyze'
     TargetPattern: 'guardianGlob'
-    AnalyzeTargetGlob: 'ClassicDSD/ClassicDSDServer/bin/x64/Release/netcoreapp3.1/*'
+    AnalyzeTargetGlob: '**/netcoreapp3.1/*'
 
 - task: CredScan@3
   condition: and(succeeded(), eq( variables['Agent.OS'], 'Windows_NT' ))
