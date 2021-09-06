@@ -36,7 +36,7 @@ steps:
     InputType: 'Basic'
     Function: 'analyze'
     TargetPattern: 'guardianGlob'
-    AnalyzeTargetGlob: '*.dll;*.exe;'
+    AnalyzeTargetGlob: 'ClassicDSD/ClassicDSDServer/bin/x64/Release/netcoreapp3.1/*'
 
 - task: CredScan@3
   condition: and(succeeded(), eq( variables['Agent.OS'], 'Windows_NT' ))
