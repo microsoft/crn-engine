@@ -46,6 +46,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GenericComponents", "..\HTM
 EndProject
 Project("{6EC3EE1D-3C4E-46DD-8F32-0CC8E7565705}") = "CRNIntegrationTestLib", "CRNIntegrationTestLib\CRNIntegrationTestLib.fsproj", "{27071C91-2959-4C5D-9933-1120868665D2}"
 EndProject
+Project("{6EC3EE1D-3C4E-46DD-8F32-0CC8E7565705}") = "Oslo.FSharp.WebSharper", "..\Oslo\Oslo.FSharp.WebSharper\Oslo.FSharp.WebSharper.fsproj", "{C873802D-E33F-4E84-844A-C21DC3B7788D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -117,6 +119,10 @@ Global
 		{27071C91-2959-4C5D-9933-1120868665D2}.Debug|x64.Build.0 = Debug|Any CPU
 		{27071C91-2959-4C5D-9933-1120868665D2}.Release|x64.ActiveCfg = Release|Any CPU
 		{27071C91-2959-4C5D-9933-1120868665D2}.Release|x64.Build.0 = Release|Any CPU
+		{C873802D-E33F-4E84-844A-C21DC3B7788D}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{C873802D-E33F-4E84-844A-C21DC3B7788D}.Debug|x64.Build.0 = Debug|Any CPU
+		{C873802D-E33F-4E84-844A-C21DC3B7788D}.Release|x64.ActiveCfg = Release|Any CPU
+		{C873802D-E33F-4E84-844A-C21DC3B7788D}.Release|x64.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

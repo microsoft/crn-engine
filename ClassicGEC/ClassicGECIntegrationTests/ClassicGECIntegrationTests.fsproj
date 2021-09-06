@@ -17,9 +17,6 @@
   <ItemGroup>
     <ProjectReference Include="..\..\CRNEngine\CRNIntegrationTestLib\CRNIntegrationTestLib.fsproj" />
     <ProjectReference Include="..\ClassicGECWebServer\ClassicGECWebServer.fsproj" />
-    <Reference Include="Oslo.FSharp">
-      <HintPath>..\..\Lib\Oslo.FSharp\Oslo.FSharp.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <Target Name="AfterBuildFAKE" AfterTargets="AfterBuild">
     <Message Importance="high" Text="Running FAKE target Build" />

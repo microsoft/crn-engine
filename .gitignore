@@ -409,6 +409,10 @@ CRNEngine/CRNEngineDotNet/version.txt
 /CRNEngine/HTML5CRN/lib/katex.css
 /CRNEngine/CRNEngineTSWrapper/Local/
 /CRNEngine/CRNEngineJSBench/CRNEngine
+/CRNEngine/CRNEngineJSBench/Benchmark.d.ts
+/CRNEngine/CRNEngineJSBench/BenchmarkApp.d.ts
+/CRNEngine/CRNEngineJSBench/Tests.d.ts
+/CRNEngine/CRNEngineJSBench/app.d.ts
 
 # Shared GUI
 /HTML5SharedGUI/SimulationViewer/Scripts/IDD

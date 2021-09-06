@@ -22,11 +22,6 @@
     <ProjectReference Include="..\CliLibrary\CliLibrary.fsproj" />
     <ProjectReference Include="..\CRNEngineDotNet\CRNEngineDotNet.fsproj" />
   </ItemGroup>
-  <ItemGroup>
-    <Reference Include="Oslo.FSharp">
-      <HintPath>..\..\Lib\Oslo.FSharp\Oslo.FSharp.dll</HintPath>
-    </Reference>
-  </ItemGroup>
   <PropertyGroup>
     <OutputType>Exe</OutputType>
   </PropertyGroup>

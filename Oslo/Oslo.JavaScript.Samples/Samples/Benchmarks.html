@@ -1,0 +1,27 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Oscillating DNA</title>
+    <link rel="stylesheet" type="text/css" href="../Styles/d3.css" />
+    <script src="../Scripts/jquery-2.0.3.min.js"></script>
+    <script src="../Scripts/WebSharper/IntelliFactory.JavaScript/Runtime.js" ></script>
+    <script src="../Scripts/WebSharper/IntelliFactory.WebSharper.js" ></script>
+    <script src="../Scripts/WebSharper/Oslo.FSharp.WebSharper.js"></script>
+    <script src="../Scripts/WebSharper/Oslo.FSharp.Samples.js"></script>
+
+    <script type="application/javascript">
+
+        $(document).ready(function () {
+
+            var worker = new Worker("../Scripts/Benchmarks.js");
+            worker.onmessage = function (msg) {
+                $("<div>" + msg.data.text + "</div><br/>").appendTo("#timings");
+            }
+        });
+    </script>
+</head>
+<body>    
+    <div id="timings" />
+</body>
+</html>
+

@@ -12,13 +12,9 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\MomentClosure\MomentClosure\MomentClosure.fsproj" />
+    <ProjectReference Include="..\..\Oslo\Oslo.FSharp\Oslo.FSharp.fsproj" />
     <ProjectReference Include="..\CliLibrary\CliLibrary.fsproj" />
     <ProjectReference Include="..\CRNEngineDotNet\CRNEngineDotNet.fsproj" />
-  </ItemGroup>
-  <ItemGroup>
-    <Reference Include="Oslo.FSharp">
-      <HintPath>..\..\Lib\Oslo.FSharp\Oslo.FSharp.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <Target Name="Copying Sundials" AfterTargets="AfterBuild" Condition="$(OS) == Windows_NT">
     <Exec Command="xcopy /y /q /d &quot;$(ProjectDir)..\x64\$(Configuration)\SundialsSolver15.dll&quot; &quot;$(OutDir)&quot;" />

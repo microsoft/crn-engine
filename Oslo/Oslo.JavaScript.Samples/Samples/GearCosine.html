@@ -1,0 +1,43 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Gear Cosinus</title>
+    <link rel="stylesheet" type="text/css" href="../Styles/d3.css" />
+    <script src="../Scripts/jquery-2.0.3.min.js"></script>
+    <script src="../Scripts/rx.js"></script>
+    <script src="../Scripts/rx.jQuery.js"></script>
+    <script src="../Scripts/d3.js"></script>
+    <script src="../Scripts/WebSharper/IntelliFactory.JavaScript/Runtime.js" ></script>
+    <script src="../Scripts/WebSharper/IntelliFactory.WebSharper.js" ></script>
+    <script src="../Scripts/WebSharper/Oslo.FSharp.WebSharper.js"></script>
+    <script src="../Scripts/WebSharper/Oslo.FSharp.Samples.js"></script>
+
+    <script type="application/javascript">
+
+        $(document).ready(function () {
+
+            IntelliFactory.Runtime.Start();
+            //===========
+            //=============
+            var startTime = new Date();
+            var sol1 = Oslo.FSharp.GearSamples.Trigonometric(0.0, 20.0);
+            var endTime = new Date();
+            $("#timings").text("It took " + (endTime - startTime) + "ms to compute " + sol1[0].length + " points");
+
+            var chart1 = D3.asPlot($("#CosineChart"))
+            var polyline1 = chart1.get("x2");
+            polyline1.draw({ x: sol1[0], y: sol1[1] });
+            polyline1.fitToView();
+
+        });
+
+    </script>
+</head>
+<body>    
+    <div id="CosineChart" data-d3-plot="chart" style="width:600px;height:600px">
+        <div id="x2" data-d3-plot="polyline" data-d3-style="stroke: orange" data-d3-name="x1(t)"></div>
+    </div>
+    <div id="timings" />
+</body>
+</html>
+

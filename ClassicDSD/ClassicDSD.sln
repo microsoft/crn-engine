@@ -37,6 +37,8 @@ Project("{6EC3EE1D-3C4E-46DD-8F32-0CC8E7565705}") = "CRNEngineCloudLib", "..\CRN
 EndProject
 Project("{6EC3EE1D-3C4E-46DD-8F32-0CC8E7565705}") = "ClassicDSDRunAllExamples", "ClassicDSDRunAllExamples\ClassicDSDRunAllExamples.fsproj", "{4984BA62-0817-4D38-A158-513F078B8204}"
 EndProject
+Project("{6EC3EE1D-3C4E-46DD-8F32-0CC8E7565705}") = "Oslo.FSharp", "..\Oslo\Oslo.FSharp\Oslo.FSharp.fsproj", "{60A49E43-FB26-4F2F-B71F-BB34695EA47B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -99,6 +101,10 @@ Global
 		{4984BA62-0817-4D38-A158-513F078B8204}.Debug|x64.Build.0 = Debug|x64
 		{4984BA62-0817-4D38-A158-513F078B8204}.Release|x64.ActiveCfg = Release|x64
 		{4984BA62-0817-4D38-A158-513F078B8204}.Release|x64.Build.0 = Release|x64
+		{60A49E43-FB26-4F2F-B71F-BB34695EA47B}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{60A49E43-FB26-4F2F-B71F-BB34695EA47B}.Debug|x64.Build.0 = Debug|Any CPU
+		{60A49E43-FB26-4F2F-B71F-BB34695EA47B}.Release|x64.ActiveCfg = Release|Any CPU
+		{60A49E43-FB26-4F2F-B71F-BB34695EA47B}.Release|x64.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

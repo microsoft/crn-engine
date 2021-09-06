@@ -37,9 +37,6 @@
     <ProjectReference Include="..\ClassicDSDDotNet\ClassicDSDDotNet.fsproj" />
     <ProjectReference Include="..\..\PDESolvers\ReactionDiffusion\ReactionDiffusion.fsproj" />
     <ProjectReference Include="..\..\RulesDSD\RulesDSD\RulesDSD.fsproj" />
-    <Reference Include="Oslo.FSharp">
-      <HintPath>..\..\Lib\Oslo.FSharp\Oslo.FSharp.dll</HintPath>
-    </Reference>
     <ProjectReference Include="..\..\CRNEngine\CRNEngineDotNet\CRNEngineDotNet.fsproj" />
     <ProjectReference Include="..\..\Filzbach.FSharp\Filzbach.FSharp.Portable.fsproj" />
     <ProjectReference Include="..\..\ParserCombinators\ParserCombinators\ParserCombinators.fsproj" />

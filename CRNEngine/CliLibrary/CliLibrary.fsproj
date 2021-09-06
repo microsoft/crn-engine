@@ -3,7 +3,6 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <PlatformTarget>x64</PlatformTarget>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="AssemblyInfo.fs" />
@@ -15,18 +14,12 @@
     <Compile Include="program.fs" />
     <Compile Include="testing.fs" />
     <None Include="paket.references" />
-    <Content Include="app.config" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\MomentClosure\MomentClosure\MomentClosure.fsproj" />
     <ProjectReference Include="..\..\StabilityZ3\StabilityZ3\StabilityZ3.fsproj" />
     <ProjectReference Include="..\CRNEngineCloudLib\CRNEngineCloudLib.fsproj" />
     <ProjectReference Include="..\CRNEngineDotNet\CRNEngineDotNet.fsproj" />
-  </ItemGroup>
-  <ItemGroup>
-    <Reference Include="Oslo.FSharp">
-      <HintPath>..\..\Lib\Oslo.FSharp\Oslo.FSharp.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <Import Project="..\..\.paket\Paket.Restore.targets" />
 </Project>

@@ -15,10 +15,5 @@
     <Compile Include="..\FSBOLWrapper\gecHelper.fs" Link="gecHelper.fs" />
     <None Include="paket.references" />
   </ItemGroup>
-  <ItemGroup>
-    <Reference Include="Oslo.FSharp.WebSharper">
-      <HintPath>..\..\Lib\Oslo-FSharp.websharper\Oslo.FSharp.WebSharper.dll</HintPath>
-    </Reference>
-  </ItemGroup>
   <Import Project="..\..\.paket\Paket.Restore.targets" />
 </Project>
