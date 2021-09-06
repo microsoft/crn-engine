@@ -1,0 +1,51 @@
+# Release pipeline
+
+pool:
+  name: Release pipeline
+  demands:
+  - msbuild
+  - visualstudio
+
+  timeoutInMinutes: 300
+
+variables:
+  BuildPlatform: 'x64'
+  BuildConfiguration: 'release'
+
+steps:
+- task: BinSkim@4
+  inputs:
+    InputType: 'Basic'
+    Function: 'analyze'
+    TargetPattern: 'guardianGlob'
+    AnalyzeTargetGlob: '$(Build.ArtifactStagingDirectory)\**.dll;$(Build.ArtifactStagingDirectory)\**.exe;'
+
+- task: CredScan@3
+  condition: and(succeeded(), eq( variables['Agent.OS'], 'Windows_NT' ))
+
+- task: Semmle@1
+  inputs:
+    sourceCodeDirectory: '$(Build.SourcesDirectory)'
+    language: 'tsandjs'
+    includeNodeModules: false
+    querySuite: 'Recommended'
+    timeout: '1800'
+    ram: '16384'
+    addProjectDirToScanningExclusionList: true
+
+- task: ComponentGovernanceComponentDetection@0
+  condition: succeeded()
+  inputs:
+    scanType: 'Register'
+    verbosity: 'Normal'
+    alertWarningLevel: 'High'
+    failOnAlert: true
+    failOnStderr: true
+
+- task: PostAnalysis@1
+  condition: and(succeeded(), eq( variables['Agent.OS'], 'Windows_NT' ))
+  displayName: 'Post Analysis'
+  inputs:
+    BinSkim: true
+    CredScan: true
+    Semmle: true
