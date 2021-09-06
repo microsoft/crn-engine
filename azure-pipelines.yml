@@ -31,32 +31,12 @@ steps:
     configuration: '$(BuildConfiguration)'
     restoreNugetPackages: true
 
-- script: |
-   cd $(Build.SourcesDirectory)/ClassicDSD/ClassicDSDServer/
-   dotnet publish --output publish_win-x64 --self-contained --runtime win-x64 --configuration release
-  displayName: 'Publish ClassicDSDServer (win-x64)'
-
-- task: CopyFiles@2
-  displayName: 'Copy Sundials to ClassicDSD Win-x64 Publish'
-  inputs:
-    SourceFolder: 'ClassicDSD/$(BuildPlatform)/'
-    Contents: |
-     **\*.dll
-     **\*.pdb
-    TargetFolder: 'ClassicDSD/ClassicDSDServer/publish_win-x64'
-
-- task: PublishPipelineArtifact@0
-  displayName: 'Publish ClassicDSDServer'
-  inputs:
-    artifactName: ClassicDSDServer
-    targetPath: '$(Build.ArtifactStagingDirectory)/ClassicDSDServer'
-
 - task: BinSkim@4
   inputs:
     InputType: 'Basic'
     Function: 'analyze'
     TargetPattern: 'guardianGlob'
-    AnalyzeTargetGlob: '$(Build.ArtifactStagingDirectory)\**.dll;$(Build.ArtifactStagingDirectory)\**.exe;'
+    AnalyzeTargetGlob: '*.dll;*.exe;'
 
 - task: CredScan@3
   condition: and(succeeded(), eq( variables['Agent.OS'], 'Windows_NT' ))
