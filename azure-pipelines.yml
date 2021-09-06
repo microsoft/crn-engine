@@ -13,6 +13,44 @@ variables:
   BuildConfiguration: 'release'
 
 steps:
+- script: 'dotnet tool restore'
+  displayName: 'dotnet tool restore'
+
+- task: DotNetCoreCLI@2
+  displayName: 'dotnet restore: Classic DSD Server'
+  inputs:
+    command: restore
+    projects: ClassicDSD/ClassicDSDServer.sln
+
+- task: VSBuild@1
+  displayName: 'Build solution ClassicDSDServer'
+  inputs:
+    solution: ClassicDSD/ClassicDSDServer.sln
+    vsVersion: 16.0
+    platform: '$(BuildPlatform)'
+    configuration: '$(BuildConfiguration)'
+    restoreNugetPackages: true
+
+- script: |
+   cd $(Build.SourcesDirectory)/ClassicDSD/ClassicDSDServer/
+   dotnet publish --output publish_win-x64 --self-contained --runtime win-x64 --configuration release
+  displayName: 'Publish ClassicDSDServer (win-x64)'
+
+- task: CopyFiles@2
+  displayName: 'Copy Sundials to ClassicDSD Win-x64 Publish'
+  inputs:
+    SourceFolder: 'ClassicDSD/$(BuildPlatform)/'
+    Contents: |
+     **\*.dll
+     **\*.pdb
+    TargetFolder: 'ClassicDSD/ClassicDSDServer/publish_win-x64'
+
+- task: PublishPipelineArtifact@0
+  displayName: 'Publish ClassicDSDServer'
+  inputs:
+    artifactName: ClassicDSDServer
+    targetPath: '$(Build.ArtifactStagingDirectory)/ClassicDSDServer'
+
 - task: BinSkim@4
   inputs:
     InputType: 'Basic'
