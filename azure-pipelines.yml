@@ -16,6 +16,12 @@ steps:
 - script: 'dotnet tool restore'
   displayName: 'dotnet tool restore'
 
+- task: DotNetCoreCLI@2
+  displayName: 'dotnet restore'
+  inputs:
+    command: restore
+    projects: '**/*.sln'
+
 - task: VSBuild@1
   displayName: 'Build CRNEngine/CRNEngineCli.sln'
   inputs:
