@@ -113,6 +113,9 @@ group DOTNETCORE
     nuget Node.js.redist 10.16.3
     
     nuget FSharp.Core ~> 4.7.0 redirects: force 
+
+    nuget System.Text.Encodings.Web >= 4.7.2
+
     nuget Fable.Core >= 3.1.2
     nuget Fable.Elmish >= 3.0.6
     nuget Fable.Elmish.React >= 3.0.1
