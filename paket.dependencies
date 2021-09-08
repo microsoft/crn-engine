@@ -11,6 +11,8 @@ group NETSTANDARD
     nuget WebSharper.FSharp = 4.5.19.349
 	nuget WebSharper.Core = 4.5.19.349
 
+    nuget System.Text.Encodings.Web >= 4.7.2
+
     nuget FSharp.Collections.ParallelSeq ~> 1.1.2
     nuget FSharp.Compiler.Service
     
@@ -217,6 +219,9 @@ group Build
 	nuget WindowsAzure.Storage 9.3.3
 
     nuget FSharp.Core ~> 4.7.0 redirects: force  // https://github.com/fsharp/FAKE/issues/2001
+
+    nuget System.Text.Encodings.Web >= 4.7.2
+
     nuget Fake.DotNet.Paket >= 5.20.0
     nuget Fake.Core.Target >= 5.20.0
     nuget Fake.Core.Process >= 5.20.0
