@@ -27,12 +27,12 @@ let processRequest (webSocket:WebSocket) (mtype:string) (json:string) (cancel:bo
     | "gec.getsolution" ->
         let getSolution = WebSharper.Json.Deserialize<Messages.Request_GECGetSolution> json
         GEC.processGetSolution getSolution.idx webSocket
-    | "generateexports" ->
+    (*| "generateexports" ->
         let generateExports = WebSharper.Json.Deserialize<Messages.Request_GenerateExports> json
         Exports.processGenerateExportsRequest generateExports.model generateExports.nodeId webSocket
         match GEC.getXMLExport () with
         | Some export -> sendObject webSocket export
-        | None -> ()
+        | None -> ()*)
     | _ -> defaultProcessRequest webSocket mtype json cancel
     
 let homeFolder = "ClassicGECHTML5"
