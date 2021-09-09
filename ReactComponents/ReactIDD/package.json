@@ -19,5 +19,8 @@
   "scripts": {
     "build": "tsc",
     "install": "tsc"
+  },
+  "resolutions":{
+    "cryptiles": "^4.1.2"
   }
 }
