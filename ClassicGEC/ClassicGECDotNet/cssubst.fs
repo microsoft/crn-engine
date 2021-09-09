@@ -5,8 +5,6 @@
 module Microsoft.Research.GEC.Cssubst
 
 open Microsoft.Research.GEC
-
-//open Microsoft.Research.ModellingEngine
 open Microsoft.Research.CRNEngine
 
 (* ************************************************************************************************************ *)

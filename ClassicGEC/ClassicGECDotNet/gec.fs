@@ -683,6 +683,9 @@ let rec evaluateExpression (exp:Expression.t<_>) (smap:Subst.t) =
         div%modul
     | Expression.If(bexp1,bexp2,bexp3) ->
         failwith "Unexpected expression type (If)"
+    | Expression.Ceiling(v) -> ceil (evaluateExpression v smap)
+    | Expression.Floor(v) -> floor (evaluateExpression v smap)
+    | Expression.Round(v) -> round (evaluateExpression v smap)
 
 let assignReverseRate (rxn:Reaction<Species,Value,Functional>) (smap:Subst.t) = 
     
