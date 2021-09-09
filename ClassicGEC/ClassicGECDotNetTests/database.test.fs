@@ -74,16 +74,16 @@ let databaseParserText() =
     let from_string (s:string) = Parser.from_string parse s
     let table0 = from_string sampledb0
     let table1 = from_string sampledb1
-    let sbol = Database.convertTableToSBOLDocument table0
+    //let sbol = Database.convertTableToSBOLDocument table0
     //Debug.WriteLine(sbolXmlString sbol)
 
-    let fwsw = new StreamWriter("gecSBOLdb.xml",false)
+    (*let fwsw = new StreamWriter("gecSBOLdb.xml",false)
     let fwxwSettings = new XmlWriterSettings()
     fwxwSettings.Indent <- true
     fwxwSettings.Encoding <- Encoding.UTF8
     let fwxw = XmlWriter.Create(fwsw,fwxwSettings)
     (XmlSerializer.sbolToXml sbol).WriteTo(fwxw)
-    fwxw.Close()
+    fwxw.Close()*)
 
     Assert.Equal(table0.parts.Count,24)
     Assert.True(table0.parts.ContainsKey("b0015"))
