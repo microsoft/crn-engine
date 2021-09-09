@@ -20,7 +20,6 @@
     <Compile Include="gecreaction.fs" />
     <Compile Include="directivesParser.fs" />
     <Compile Include="settings.fs" />
-    <Compile Include="database.fsi" />
     <Compile Include="database.fs" />
     <Compile Include="cssubst.fsi" />
     <Compile Include="cssubst.fs" />
