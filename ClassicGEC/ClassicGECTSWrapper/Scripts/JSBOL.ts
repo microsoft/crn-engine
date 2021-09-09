@@ -3,7 +3,7 @@
 
 import * as CRNInterfaces from "./../../../CRNEngine/CRNEngineTSWrapper/Scripts/InternalInterfaces";
 import * as Interfaces from "./Interfaces";
-import * as sboljs from 'sboljs';
+/*import * as sboljs from 'sboljs';
 
 export function jsbolToObject(jsbol: Interfaces.jSBOLDocument) {
     var sboldoc = new sboljs()
@@ -66,3 +66,4 @@ export function jsbolToExport(jsbol: Interfaces.jSBOLDocument) {
     var exportmsg: CRNInterfaces.WorkerResponse_Export = { mtype: "export", export: { "content_type": "text/plain", id: "sbol", display_name: "SBOL", content: sbolxmlstring } };
     return exportmsg;
 }
+*/

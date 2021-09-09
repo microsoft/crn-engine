@@ -7,18 +7,17 @@ module Microsoft.Research.GEC.GECEngine
 open System
 open Microsoft.Research.GEC 
 open Microsoft.Research.CRNEngine
-//open Microsoft.Research.ModellingEngine
-open Microsoft.Research.CRNEngine
+(*
 open FSBOL
 open FSBOL.JsonSerializer
 open FSBOL.SBOLDocument
 open FSBOL.TopLevel
-open FSBOL.ComponentDefinition
+*)
 open Microsoft.Research.CRNEngine.InferenceSiteGraph
 open Microsoft.Research.GEC.Trans
 open Microsoft.Research.GEC.Settings
 open Microsoft.Research.GEC.Program
-open Microsoft.Research.FSBOLWrapper
+//open Microsoft.Research.FSBOLWrapper
 
 (* Main GUI datatype. *)
 type t = {
@@ -364,7 +363,7 @@ let modify_crn (crn:Crn) (settings:Gec_settings) crnSettings=
 
 type solve_result = { solution : t
                     ; graph : InferenceSiteGraph.IGraph
-                    ; sbol : SBOLDocument 
+                    //; sbol : SBOLDocument 
                     ; crnString: string}
 
 let getLBSSystems (gecprog:ClassicProgram) (lbs:tLBSProg) = 
@@ -429,6 +428,7 @@ let create_inference_graph (crnSettings:Crn_settings<Functional>) (gecprog:Class
   dir_str + modules_str + devices_str + top_prog_str + system_str + ig_str
 
 
+(*
 let getSBOLAssignment (bbTemplates:Trans.tBbDevices) (table:Database.t) (substs:Subst.t list) (index:int)= 
     let assignment = substs.Item(index)
     
@@ -525,6 +525,7 @@ let getSBOLAssignment (bbTemplates:Trans.tBbDevices) (table:Database.t) (substs:
              //@ (mdList  |> List.map (fun x -> x :> TopLevel))
              )
     s
+*)
 
 
 let solveGEC (cancel_flag:bool ref) (program:string) (dbParts:string) (dbReactions:string) : solve_result =
@@ -616,13 +617,14 @@ let solveGEC (cancel_flag:bool ref) (program:string) (dbParts:string) (dbReactio
           | None -> None
         
         
-        let sbol = 
+        (*let sbol = 
           match solution' with
           | Some(dir,sol,gecConst,arthConst,_) -> getSBOLAssignment sol.bbDevices table sol.substs 0
           | None -> Database.convertTableToSBOLDocument table
+        *)
         { solution = {solution with solution = solution'} 
         ; graph = igraph
-        ; sbol = sbol 
+        //; sbol = sbol 
         ; crnString = crnString}
 
 
@@ -679,9 +681,8 @@ let rec evaluateExpression (exp:Expression.t<_>) (smap:Subst.t) =
         let div = evaluateExpression modulo.div smap
         let modul = evaluateExpression modulo.modulo smap
         div%modul
-    | Expression.If(bexp1,bexp2,bexp3) -> 
-        failwith "unexpected expression type"
-
+    | Expression.If(bexp1,bexp2,bexp3) ->
+        failwith "Unexpected expression type (If)"
 
 let assignReverseRate (rxn:Reaction<Species,Value,Functional>) (smap:Subst.t) = 
     
@@ -760,8 +761,8 @@ let assignReaction (rxn:Reaction<Species,Value,Functional>) (smap:Subst.t) =
     | Rate.Function(e) -> rxn //This case is encountered when userdefined CRNs are substituted.
 
     
-type solution_result = { model : InferenceSiteGraph.IGraph
-                       ; sbol : SBOLDocument }
+type solution_result = { model : InferenceSiteGraph.IGraph }
+                       //; sbol : SBOLDocument }
 
 let getCrnAssignment (igraph:InferenceSiteGraph.IGraph) (gecSol:t) (index:int) : solution_result = 
     if gecSol.solution.IsNone then 
@@ -771,7 +772,7 @@ let getCrnAssignment (igraph:InferenceSiteGraph.IGraph) (gecSol:t) (index:int) :
     let substitution = sol.substs.Item(index)
     
     //SBOL
-    let sbol = getSBOLAssignment sol.bbDevices gecSol.database sol.substs index
+    //let sbol = getSBOLAssignment sol.bbDevices gecSol.database sol.substs index
     
     //CRN
     let assign_crn (crn:Crn) = 
@@ -782,5 +783,6 @@ let getCrnAssignment (igraph:InferenceSiteGraph.IGraph) (gecSol:t) (index:int) :
         {node with top = (assign_crn node.top); systems = (node.systems |> List.map (fun x -> assign_crn x))})
 
     
-    { model = {igraph with nodes = nodes'} ; sbol = sbol }
+    { model = {igraph with nodes = nodes'} }
+    //; sbol = sbol }
         

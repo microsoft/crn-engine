@@ -6,7 +6,10 @@ import * as CRNEngineWorker from "../../../CRNEngine/CRNEngineTSWrapper/Scripts/
 import { WebSharperGeneratedInterfaces as WGI } from "./WebSharperGeneratedInterfaces";
 import * as Interfaces from "./Interfaces";
 import * as CRNInterfaces from "./../../../CRNEngine/CRNEngineTSWrapper/Scripts/InternalInterfaces";
-import { jsbolToExport } from "./JSBOL";
+//import { jsbolToExport } from "./JSBOL";
+
+// Create a dummy export message while jsbolToExport unavailable
+var dummyExportMsg : CRNInterfaces.WorkerResponse_Export = { mtype: "export", export: { "content_type": "text/plain", id: "sbol", display_name: "SBOL", content: ["SBOL not available"] } };
 
 // Configure the main worker.
 CRNEngineWorker.config.loader = () => {
@@ -60,9 +63,9 @@ function processMessageGEC(e: any) {
                 CRNEngineWorker.handleGenerateExports((<CRNInterfaces.WorkerRequest_GenerateExports>req).model, (<CRNInterfaces.WorkerRequest_GenerateExports>req).nodeId);
                 var exportmsg: CRNInterfaces.WorkerResponse_Export = null;
                 if (local_solution != null)
-                    exportmsg = jsbolToExport(local_solution.jsbol);
+                    exportmsg = null
                 else if (local_result != null)
-                    exportmsg = jsbolToExport(local_result.ClassicGEC.jsbol);
+                    exportmsg = null
                 if (exportmsg != null)
                     self.postMessage(exportmsg, undefined);
                 break;

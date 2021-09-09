@@ -48,9 +48,6 @@
     <Compile Include="..\ClassicGECDotNet\settings.fs">
       <Link>settings.fs</Link>
     </Compile>
-    <Compile Include="..\ClassicGECDotNet\database.fsi">
-      <Link>database.fsi</Link>
-    </Compile>
     <Compile Include="..\ClassicGECDotNet\database.fs">
       <Link>database.fs</Link>
     </Compile>
@@ -96,7 +93,6 @@
     <Content Include="app.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\FSBOLWrapper\FSBOLWrapperJS\FSBOLWrapperJS.fsproj" />
     <ProjectReference Include="..\..\PDESolvers\ReactionDiffusionJS\ReactionDiffusionJS.fsproj" />
     <ProjectReference Include="..\..\CRNEngine\CRNEngineJS\CRNEngineJS.fsproj" />
     <ProjectReference Include="..\..\Filzbach.FSharp.JS\Filzbach.FSharp.JS.fsproj" />

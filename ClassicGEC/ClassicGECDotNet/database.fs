@@ -5,6 +5,7 @@
 module Microsoft.Research.GEC.Database
 
 open Microsoft.Research.GEC
+(*
 open Microsoft.Research.FSBOLWrapper
 open FSBOL
 open FSBOL.Annotation
@@ -15,10 +16,9 @@ open FSBOL.Participation
 open FSBOL.Interaction
 open FSBOL.SBOLDocument
 open FSBOL.TopLevel
+*)
 open Parser
-open System.Diagnostics
 
-//open Microsoft.Research.ModellingEngine
 open Microsoft.Research.CRNEngine
 
 (* ************************************************************************************************* *)
@@ -85,6 +85,7 @@ let speciesInPartType (qt:partType) : string list list =
 type 'a entry = { value:'a; enabled:bool; comments:string }
 type t = { parts:partType entry Stringmap.t; devices: device list; reactions:Gecreaction.t entry list }
 
+(*
 let partTypeToSBOL (name:string) (p:partType entry)= 
     
     let role = match p.value with 
@@ -426,6 +427,7 @@ let convertTableToSBOLDocument (table:t) =
         (allCds |> List.map (fun x -> x :> TopLevel))
         @ (mds|> List.map (fun x -> x :> TopLevel))
     SBOLDocument(collections)
+*)
 
 (* The "empty" database. *)
 let empty = { parts=Stringmap.empty; devices = []; reactions=[] }
@@ -473,7 +475,6 @@ type parser = Parser.t<t>
 type partParser = Parser.t<t>
 
 
-
 let createEntry (id:string, part:partType) = 
     let entry:partType entry = {value = part;enabled = true;comments = ""}
     (id,entry)
@@ -482,8 +483,6 @@ let createEntry (id:string, part:partType) =
 let createTable (partMapList:(string*partType)list) (devicelist:device list)=
     let tableMap = partMapList |> List.map createEntry
     {parts = Stringmap.of_list(tableMap); reactions=[]; devices = devicelist}
-    
-
 
 
 let TAB = Parser.kw "\t"
@@ -537,10 +536,10 @@ let deviceParser = Parser.kw "devices" >>.
                     (Parser.sqBrackets (Parser.many parse_device)) .>> Parser.spaces
 
 
-
 type dnacomponent = 
     | Part of string * partType
     | Device of device
+
 
 let parse_deviceComponents = Parser.kw "components" >>. sqbracketNoSpace (Parser.sepBy (Parser.name .>> Parser.spaces) pdevicedelim) 
 
@@ -554,7 +553,6 @@ let partParser =
             pstring "ter" |>> fun (_) -> Part(n, TER)
             Parser.kw "device" >>. delimiter >>. parse_deviceComponents |>> fun (components) -> Device(n,components)
         ]
-
                     
 let fileParser = (Parser.sepBy partParser NEWLINE) 
 

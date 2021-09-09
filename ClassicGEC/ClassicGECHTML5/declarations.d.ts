@@ -18,4 +18,4 @@ declare module "worker-loader*" {
 }
 declare module "*index.js"
 declare module "*main.js"
-declare module "sboljs"
+//declare module "sboljs"
