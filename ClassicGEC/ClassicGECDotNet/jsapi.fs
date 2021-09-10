@@ -11,50 +11,42 @@ open WebSharper
 #endif
 
 open Microsoft.Research.CRNEngine
-open Microsoft.Research.CRNEngine.JSAPI
-open FSBOL
-open FSBOL.Component
-open FSBOL.ComponentDefinition
-open FSBOL.Sequence
-open FSBOL.Range
-open FSBOL.Location
-open FSBOL.SequenceAnnotation
-open FSBOL.FunctionalComponent
-open FSBOL.Interaction
-open FSBOL.ModuleDefinition
-open FSBOL.Participation
-open FSBOL.TopLevel
-open FSBOL.SBOLDocument
-open FSBOL.JsonSerializer
+
+// ND: SBOL support currently disabled. Awaiting on two developments:
+//  1. Updates to sboljs that pass component governance checks
+//  2. Updates to FSBOL that enable TypesTSFS to complete successfully
+//open FSBOL
+//open FSBOL.SBOLDocument
+//open FSBOL.JsonSerializer
 
 
 type ClassicResult = { solution : t
                      ; solutionCount: int
-                     ; model : GuiIG
-                     ; jsbol : rSBOLDocument
-                     ; sbol : SBOLDocument }
+                     ; model : GuiIG }
+                     //; jsbol : rSBOLDocument
+                     //; sbol : SBOLDocument }
 
 type LogicResult = { solution : t
                    ; solutionCount: int
-                   ; model : GuiIG
-                   ; jsbol : rSBOLDocument
-                   ; sbol : SBOLDocument }
+                   ; model : GuiIG }
+                   //; jsbol : rSBOLDocument
+                   //; sbol : SBOLDocument }
 
 type solve_result = ClassicGEC of ClassicResult | LogicGEC of LogicResult
 
 let compile (program:string) (dbParts:string) (dbReactions:string) : solve_result =
   let output = GECEngine.solveGEC (ref false) program dbParts dbReactions
   let graph = GuiIG.from_ig output.graph
-  let jsbol = JsonSerializer.sbolToJson output.sbol
+  //let jsbol = JsonSerializer.sbolToJson output.sbol
   let scount = 
     match output.solution.solution with 
     | Some(_,sol,_,_,_) -> sol.numSolutions 
     | None -> failwith "Output of solution is null" 
-  ClassicGEC { model = graph; solution = output.solution; solutionCount= scount; jsbol = jsbol; sbol = output.sbol }
+  ClassicGEC { model = graph; solution = output.solution; solutionCount= scount(*; jsbol = jsbol; sbol = output.sbol*) }
 
 type solution_result = { model : GuiIG
-                       ; jsbol : rSBOLDocument
-                       ; sbol : SBOLDocument 
+                       //; jsbol : rSBOLDocument
+                       //; sbol : SBOLDocument 
                        ; crnstring : string}
 
 let get_solution (so:solve_result) (i:int) : solution_result =
@@ -66,6 +58,9 @@ let get_solution (so:solve_result) (i:int) : solution_result =
     //let gmodel = model.to_model()
     let result = GECEngine.getCrnAssignment model o.solution (i-1)
     let model = GuiIG.from_ig result.model
-    let jsbol = JsonSerializer.sbolToJson result.sbol
-    { model = model ; jsbol = jsbol ; sbol = result.sbol ; crnstring = result.model.to_string()}
+    //let jsbol = JsonSerializer.sbolToJson result.sbol
+    { model = model 
+    //; jsbol = jsbol 
+    //; sbol = result.sbol 
+    ; crnstring = result.model.to_string()}
   | LogicGEC o -> failwith "Logic GEC solution selection not implemented yet."

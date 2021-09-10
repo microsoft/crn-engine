@@ -45,8 +45,8 @@ let processCompileGECRequest code dbparts dbreactions (webSocket:WebSocket) =
                    Response_Program.model = model }
       sendObject { Response_GECSolutions.mtype = "gec.solutions"
                    Response_GECSolutions.count = (match result.solution.solution with Some (_,s,_,_,_) -> s.numSolutions | _ -> 0) }
-      sendObject { Response_SBOL.mtype = "gec.jsbol"
-                   Response_SBOL.document = result.jsbol }
+      //sendObject { Response_SBOL.mtype = "gec.jsbol"
+      //             Response_SBOL.document = result.jsbol }
     with e -> match e with
               | :? CompileException as e -> match (e.Data0, e.Data1) with
                                             | parser, (:? Parser.Exception as e) -> sendObject { mtype = "error"
@@ -65,6 +65,7 @@ let processGetSolution idx (webSocket:WebSocket) =
     let model = result.model
     sendObject { Response_GECSolution.mtype = "gec.solution"
                  Response_GECSolution.solution = { model = model; code = result.crnstring } }
+    (*
     sendObject { Response_SBOL.mtype = "gec.jsbol"
                  Response_SBOL.document = result.jsbol }
     let xsbol = serializeSBOLDocumentToXML result.sbol
@@ -76,7 +77,9 @@ let processGetSolution idx (webSocket:WebSocket) =
                                             display_name = "SBOL"
                                             content = Some [|xsbol|]
                                             save_content = None } }
+    *)
 
+(*
 let getXMLExport () =
     let xsbol = match currentSolution with
                 | Some solution -> serializeSBOLDocumentToXML solution.sbol |> Some
@@ -96,3 +99,4 @@ let getXMLExport () =
                                               save_content = None } } |> Some
                  | None -> None
     export
+*)

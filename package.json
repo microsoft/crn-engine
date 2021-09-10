@@ -14,11 +14,11 @@
     "katex": "^0.x.x",
     "knockout": "^3.5.0",
     "loadcss": "^0.0.2",
-    "lodash": "^4.17.19",
+    "lodash": "^4.17.21",
     "monaco-editor": "^0.14.3",
     "monaco-editor-webpack-plugin": "^1.5.4",
     "mousetrap": "^1.6.2",
-    "node-forge": ">=0.8.5",
+    "node-forge": ">=0.10.0",
     "papaparse": "^5.x.x",
     "pathseg": "^1.1.0",
     "raw-loader": "^0.5.1",
@@ -27,12 +27,10 @@
     "requirejs": "^2.3.5",
     "requirejs-text": "^2.0.15",
     "rx": "^4.1.0",
-    "sboljs": "^2.2.2",
     "script-loader": "^0.7.2",
     "style-loader": "^0.23.1",
     "svgjs": "^2.6.2",
     "tinycolor2": "^1.4.1",
-    "visbol": "^1.4.26",
     "webpack-cli": "^3.3.9",
     "workbox-webpack-plugin": "5.x.x",
     "worker-loader": "^3.0.5"
@@ -60,11 +58,18 @@
     "webpack-dev-server": "^3.2.1"
   },
   "resolutions": {
-    "url-parse": "^1.4.3",
-    "lodash": "^4.17.15",
-    "cryptiles": "^4.1.3",
-    "hoek": "^4.2.1",
+    "dns-packet": "^1.3.2",
+    "ejs": "^3.1.6",
     "extend": "^2.0.2",
-    "jquery": "^3.4.0"
+    "glob-parent": "^5.1.2",
+    "hoek": "^4.2.1",
+    "immer": "^8.0.1",
+    "ini": "^1.3.6",
+    "jquery": "^3.4.0",
+    "serialize-javascript": "^3.1.0",
+    "ssri": "^8.0.1",
+    "tar": "^6.1.9",
+    "url-parse": "^1.5.0",
+    "y18n": "^4.0.1"
   }
 }

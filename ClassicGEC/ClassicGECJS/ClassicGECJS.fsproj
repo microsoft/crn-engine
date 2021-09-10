@@ -2,6 +2,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <PlatformTarget>x64</PlatformTarget>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
@@ -46,9 +47,6 @@
     </Compile>
     <Compile Include="..\ClassicGECDotNet\settings.fs">
       <Link>settings.fs</Link>
-    </Compile>
-    <Compile Include="..\ClassicGECDotNet\database.fsi">
-      <Link>database.fsi</Link>
     </Compile>
     <Compile Include="..\ClassicGECDotNet\database.fs">
       <Link>database.fs</Link>
@@ -95,7 +93,6 @@
     <Content Include="app.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\FSBOLWrapper\FSBOLWrapperJS\FSBOLWrapperJS.fsproj" />
     <ProjectReference Include="..\..\PDESolvers\ReactionDiffusionJS\ReactionDiffusionJS.fsproj" />
     <ProjectReference Include="..\..\CRNEngine\CRNEngineJS\CRNEngineJS.fsproj" />
     <ProjectReference Include="..\..\Filzbach.FSharp.JS\Filzbach.FSharp.JS.fsproj" />

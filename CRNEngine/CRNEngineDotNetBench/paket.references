@@ -1,9 +1,4 @@
 ﻿group DOTNETCORE
 
 BenchmarkDotNet
-#BenchmarkDotNet.Diagnostics.Windows
-#BenchmarkDotNet.Core
 FSharp.Core
-
-# System.Runtime.InteropServices.RuntimeInformation
-# System.Xml.ReaderWriter

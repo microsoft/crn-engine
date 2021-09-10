@@ -19,6 +19,12 @@
     </PostBuildEvent>
   </PropertyGroup>
   <ItemGroup>
+    <None Remove="Scripts\JSBOL.d.ts" />
+    <None Remove="Scripts\JSBOL.js" />
+    <None Remove="Scripts\JSBOL.js.map" />
+    <None Remove="Scripts\JSBOL.ts" />
+  </ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="..\..\CRNEngine\CRNEngineTSWrapper\CRNEngineTSWrapper.csproj" />
     <ProjectReference Include="..\ClassicGECJS\ClassicGECJS.fsproj">
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>

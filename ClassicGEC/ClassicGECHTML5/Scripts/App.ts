@@ -18,11 +18,11 @@ import "../../../HTML5SharedGUI/InferenceViewer/Styles/inference.css"
 import "../../../HTML5SharedGUI/CRNComponent/Styles/crn.css"
 import "idd";
 declare var InteractiveDataDisplay: any;
-import * as visbol from '../../../node_modules/visbol/index.js';
-import * as visbolfont from '../../../node_modules/visbol/font/sbolv/main.js';
+//import * as visbol from '../../../node_modules/visbol/index.js';
+//import * as visbolfont from '../../../node_modules/visbol/font/sbolv/main.js';
 import * as Utils from '../../../HTML5SharedGUI/HTML5CRN_Lib/Scripts/Utils';
 import "pathseg";
-import { jsbolToObject } from "../../ClassicGECTSWrapper/Scripts/JSBOL";
+//import { jsbolToObject } from "../../ClassicGECTSWrapper/Scripts/JSBOL";
 
 // import convertJsonToXml from './json2xml';
 import GECLanguage from './GECLang';
@@ -226,7 +226,7 @@ var getSolutionIdx = () => {
 //Start JSBOL -> SBOLJS Conversion
 
 var visbolDesign: any;
-
+/*
 function showSBOL(jsbol: GECInterfaces.jSBOLDocument) {
 
 
@@ -280,14 +280,18 @@ function showSBOL(jsbol: GECInterfaces.jSBOLDocument) {
         visbolDesign.setDisplayList(displayList);
         visbolDesign.redraw();
 
-        /*var xml = json2xml(jsbol);
-        console.log(visbol != null);
-        var xmlstring = JSON.stringify(xml);
-        visbolDiv.text(xmlstring);*/
+        //var xml = json2xml(jsbol);
+        //console.log(visbol != null);
+        //var xmlstring = JSON.stringify(xml);
+        //visbolDiv.text(xmlstring);
 
     } catch (e) {
         console.log(e)
     }
+}
+*/
+function showSBOL(v: GECInterfaces.jSBOLDocument) {
+    null
 }
 
 //Phase 2. Assembling higher level functionality from the components above

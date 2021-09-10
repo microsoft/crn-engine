@@ -3,6 +3,8 @@
 
 [<JavaScript>]
 module Oslo.SparseVector
+#nowarn "25"
+
 open System
 open Microsoft.FSharp.Core
 
