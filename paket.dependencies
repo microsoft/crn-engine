@@ -18,6 +18,7 @@ group NETSTANDARD
     
     nuget Giraffe >= 3.4.0
     nuget Microsoft.AspNetCore >= 2.1.6
+    nuget Microsoft.AspNetCore.Authentication.JwtBearer >= 3.1.18
     nuget Microsoft.AspNetCore.StaticFiles
     nuget Microsoft.AspNetCore.WebSockets
     nuget Microsoft.AspNetCore.WebSockets.Server
