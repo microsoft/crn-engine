@@ -21,5 +21,8 @@
   "scripts": {
     "build": "tsc",
     "install": "tsc"
+  },
+  "resolutions": {
+    "jquery": "^3.5.0"
   }
 }
