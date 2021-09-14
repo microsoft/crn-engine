@@ -677,9 +677,9 @@ var System$Collections$Generic$LinkedList$1 = {
         Insert: function (index, item) {
             this._list.insert(index, item);
         },
-        AddLast$$T: function (item) {
+        /*AddLast$$T: function (item) {
             this._list.insert(this._list.length, item);
-        },
+        },*/
         get_First: function () {
             var self = this;
             var get_Next = function (i) {
