@@ -21,6 +21,7 @@
     "install": "tsc"
   },
   "resolutions":{
+    "ajv": "^6.12.3",
     "cryptiles": "^4.1.2",
     "jquery": "^3.5.0"
   }

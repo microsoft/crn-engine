@@ -43,6 +43,7 @@
         "typescript": "^3.5.3"
     },
     "resolutions": {
+        "browserslist": "^4.16.5",
         "dns-packet": "^1.3.2",
         "glob-parent": "^5.1.2",
         "jquery": "^3.5.0",
