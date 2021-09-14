@@ -44,6 +44,7 @@
     },
     "resolutions": {
         "browserslist": "^4.16.5",
+        "css-select": "^4.1.3",
         "dns-packet": "^1.3.2",
         "glob-parent": "^5.1.2",
         "jquery": "^3.5.0",
