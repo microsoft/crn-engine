@@ -12,12 +12,15 @@
     "@types/rx": "^4.1.1",
     "@types/file-saver": "2.x.x",
     "interactive-data-display": "^1.5.39",
-    "jquery": "^3.4.0",
+    "jquery": "^3.5.0",
     "jquery-mousewheel": "3.x.x",
     "typescript": "^3.5.3",
     "file-saver": "2.x.x"
   },
   "devDependencies": {},
+  "resolutions": {
+    "jquery": "^3.5.0"
+  },
   "scripts": {
     "build": "tsc",
     "install": "tsc"

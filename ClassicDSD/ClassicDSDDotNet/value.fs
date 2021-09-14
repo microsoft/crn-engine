@@ -75,7 +75,7 @@ type t_env = t_bind list
 let rec get_range = function
   String(_,rng) | Int(_,rng) | Domain(_,_,_,_,rng) | DomainS(_,_,_,_,_,rng) | Bool(_,rng)
 | Char(_,rng) | Float(_,rng) | Variable(_,rng) | Op(_,_,_,rng)
-| Neg(_,rng) | Show(_,rng) | Function(_,_,rng) | Tuple(_,rng) -> rng
+| Neg(_,rng) | Show(_,rng) | Function(_,_,rng) | Tuple(_,rng) | Ceiling(_,rng) | Floor(_,rng) -> rng
 
 (* Erase the position information from a value (i.e. set them all to "empty") .*)
 let rec erasePosns = function

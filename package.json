@@ -54,22 +54,30 @@
     "tslint-microsoft-contrib": "^5.2.0",
     "typescript": "3.0.1",
     "webpack": "^4.x.x",
-    "webpack-aspnet-middleware": "^2.2.0",
-    "webpack-dev-server": "^3.2.1"
+    "webpack-dev-server": "^4.1.1"
   },
   "resolutions": {
+    "ajv": "^6.12.3",
+    "browserslist": "^4.16.5",
+    "css-select": "^4.1.3",
     "dns-packet": "^1.3.2",
     "ejs": "^3.1.6",
+    "elliptic": "^6.5.4",
     "extend": "^2.0.2",
     "glob-parent": "^5.1.2",
     "hoek": "^4.2.1",
-    "immer": "^8.0.1",
+    "immer": "^9.0.6",
     "ini": "^1.3.6",
-    "jquery": "^3.4.0",
+    "jquery": "^3.5.0",
+    "minimist": "^1.2.3",
+    "path-parse": "^1.0.7",
+    "postcss": "^8.2.13",
     "serialize-javascript": "^3.1.0",
     "ssri": "^8.0.1",
     "tar": "^6.1.9",
     "url-parse": "^1.5.0",
-    "y18n": "^4.0.1"
+    "ws": "^6.2.2",
+    "y18n": "^4.0.1",
+    "yargs-parser": "^13.1.2"
   }
 }

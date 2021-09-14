@@ -252,7 +252,7 @@ NUGET
       System.Runtime.Serialization.Formatters (>= 4.3) - restriction: && (< net20) (>= netstandard1.3) (< netstandard2.0)
       System.Runtime.Serialization.Primitives (>= 4.3) - restriction: || (&& (< net20) (>= netstandard1.0) (< netstandard1.3)) (&& (< net20) (>= netstandard1.3) (< netstandard2.0))
       System.Xml.XmlDocument (>= 4.3) - restriction: && (< net20) (>= netstandard1.3) (< netstandard2.0)
-    Node.js.redist (10.16.3)
+    Node.js.redist (14.2)
     NuGet.Common (5.6) - restriction: >= netstandard2.0
       NuGet.Frameworks (>= 5.6) - restriction: >= netstandard2.0
       System.Diagnostics.Process (>= 4.3) - restriction: && (< net472) (>= netstandard2.0)
@@ -1151,7 +1151,7 @@ NUGET
       Microsoft.AspNetCore.Authentication.Abstractions (>= 2.2)
       Microsoft.AspNetCore.Http (>= 2.2)
       Microsoft.AspNetCore.Http.Extensions (>= 2.2)
-    Microsoft.AspNetCore.Authentication.JwtBearer (3.1.1)
+    Microsoft.AspNetCore.Authentication.JwtBearer (3.1.18)
       Microsoft.IdentityModel.Protocols.OpenIdConnect (>= 5.5)
     Microsoft.AspNetCore.Authentication.OAuth (2.2)
       Microsoft.AspNetCore.Authentication (>= 2.2)
@@ -1522,7 +1522,7 @@ NUGET
     Newtonsoft.Json (12.0.2)
     NHamcrest (2.0.1)
       NETStandard.Library (>= 1.6.1)
-    Node.js.redist (10.16.3)
+    Node.js.redist (14.2)
     NuGet.Frameworks (5.4)
     Python.Runtime.NETStandard (3.7.1)
       System.Reflection.Emit (>= 4.3)
@@ -2081,16 +2081,16 @@ STORAGE: NONE
 NUGET
   remote: https://api.nuget.org/v3/index.json
     Microsoft.TypeScript.MSBuild (3.0.3)
-    Node.js.redist (10.16.3) - storage: packages
+    Node.js.redist (14.2) - storage: packages
     TypesTSFS (0.4) - storage: packages
     Yarn.MSBuild (1.22.4)
 GITHUB
   remote: SharpKit/SharpKit-SDK
-    Frameworks/JsClr/res/jsclr.js (602a5217110e4c81c9a3957ef3cc21e7aadfe355)
-    Frameworks/JsClr/res/jsclr.min.js (602a5217110e4c81c9a3957ef3cc21e7aadfe355)
+    Frameworks/JsClr/res/jsclr.js (66a6e64436c6254b60b7ea5aee54d026fff78237)
+    Frameworks/JsClr/res/jsclr.min.js (66a6e64436c6254b60b7ea5aee54d026fff78237)
   remote: microsoft/automatic-graph-layout
-    GraphLayout/MsaglSharpkit/WebMsagl/Scripts/src/Microsoft.Msagl.js (9a9ddaafff5e96d29ce031da987259269fbc2bb8)
-    GraphLayout/MsaglSharpkit/WebMsagl/Scripts/src/Microsoft.Msagl.min.js (9a9ddaafff5e96d29ce031da987259269fbc2bb8)
+    GraphLayout/MsaglSharpkit/WebMsagl/Scripts/src/Microsoft.Msagl.js (3c1c937ba3967a2989054d7d0c1e0e4a2c50a3c7)
+    GraphLayout/MsaglSharpkit/WebMsagl/Scripts/src/Microsoft.Msagl.min.js (3c1c937ba3967a2989054d7d0c1e0e4a2c50a3c7)
 GROUP NETFRAMEWORK
 REDIRECTS: ON
 STORAGE: NONE
