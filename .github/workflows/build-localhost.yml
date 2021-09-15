@@ -27,20 +27,14 @@ jobs:
     - name: Restore tools
       run: dotnet tool restore
     
-    - name: Restore CRN dependencies
-      run: dotnet restore CRNEngine/CRNEngineServer.sln
-    - name: Build CRN
+    - name: CRN
       shell: cmd
-      run: msbuild CRNEngine/CRNEngineServer.sln /p:Configuration=Release /p:Platform=x64
+      run: msbuild CRNEngine/CRNEngineServer.sln /p:Configuration=Release /p:Platform=x64 /restore
     
-    - name: Restore GEC dependencies
-      run: dotnet restore ClassicGEC/ClassicGECServer.sln
-    - name: Build GEC
+    - name: GEC
       shell: cmd
-      run: msbuild ClassicGEC/ClassicGECServer.sln /p:Configuration=Release /p:Platform=x64
+      run: msbuild ClassicGEC/ClassicGECServer.sln /p:Configuration=Release /p:Platform=x64 /restore
     
-    - name: Restore DSD dependencies
-      run: dotnet restore ClassicDSD/ClassicDSDServer.sln
-    - name: Build DSD
+    - name: DSD
       shell: cmd
-      run: msbuild ClassicDSD/ClassicDSDServer.sln /p:Configuration=Release /p:Platform=x64
+      run: msbuild ClassicDSD/ClassicDSDServer.sln /p:Configuration=Release /p:Platform=x64 /restore

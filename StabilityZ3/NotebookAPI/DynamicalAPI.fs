@@ -4,7 +4,7 @@
 module Microsoft.Research.Biology.StabilityZ3.NotebookAPI.DynamicalAPI
 
 open Microsoft.Research.Biology.StabilityZ3
-open FSharp.Plotly
+open Plotly.NET
 
 let ENCODE_TO_Z3 = true //for larger systems, it is more efficient to avoid the intermediate constraints
 let default_solver = Solver.PortfolioTO (uint32 10000)
@@ -123,7 +123,7 @@ let GetWMax S =
 let DisplayTabulatedTuring htmlView (S:Dynamical) = 
     let equations = S.ToText true true true
     let jacobian = match S.solution with SAT _ -> S |> Visualization.ToSVG 300.0 | _ -> ""
-    let dispersion = PlotWaves S |> FSharp.Plotly.GenericChart.toChartHtmlWithSize 450 250
+    let dispersion = PlotWaves S |> Plotly.NET.GenericChart.toChartHtmlWithSize 450 250
     let parameters = 
         match S.solution with 
         | SAT (v,_) -> 
@@ -148,7 +148,7 @@ let DisplayTabulatedTuring htmlView (S:Dynamical) =
 let DisplayTabulatedBistability htmlView (S:Dynamical) = 
     let equations = S.ToEquationsText true true
     //let jacobian = match S.solution with SAT _ -> S |> Visualization.ToSVG 300.0 | _ -> ""
-    //let dispersion = PlotWaves S |> FSharp.Plotly.GenericChart.toChartHtmlWithSize 450 250
+    //let dispersion = PlotWaves S |> Plotly.NET.GenericChart.toChartHtmlWithSize 450 250
     let parameters = 
         match S.solution with 
         | SAT (v,_) -> 

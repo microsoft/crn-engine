@@ -19,36 +19,28 @@ jobs:
     - name: Restore tools
       run: dotnet tool restore
     
-    - name: Restore CRN dependencies
-      run: dotnet restore CRNEngine/CRNEngineCli.sln
     - name: Build CRN
       shell: cmd
-      run: msbuild CRNEngine/CRNEngineCli.sln /p:Configuration=Release /p:Platform=x64
+      run: msbuild CRNEngine/CRNEngineCli.sln /p:Configuration=Release /p:Platform=x64 /restore
     - name: Test CRN
       run: vstest.console.exe .\CRNEngine\CRNEngineTests\bin\Release\netcoreapp3.1\CRNEngineTests.dll /Platform:x64
     
-    - name: Restore StabilityZ3 dependencies
-      run: dotnet restore StabilityZ3/StabilityZ3.sln
     - name: Build StabilityZ3
       shell: cmd
-      run: msbuild StabilityZ3/StabilityZ3.sln /p:Configuration=Release /p:Platform=x64
+      run: msbuild StabilityZ3/StabilityZ3.sln /p:Configuration=Release /p:Platform=x64 /restore
     - name: Test StabilityZ3
       run: vstest.console.exe .\StabilityZ3\Tests\bin\Release\netcoreapp3.1\StabilityTests.dll /Platform:x64
     
-    - name: Restore GEC dependencies
-      run: dotnet restore ClassicGEC/ClassicGECCli.sln
     - name: Build GEC
       shell: cmd
-      run: msbuild ClassicGEC/ClassicGECCli.sln /p:Configuration=Release /p:Platform=x64
+      run: msbuild ClassicGEC/ClassicGECCli.sln /p:Configuration=Release /p:Platform=x64 /restore
     - name: Test Classic GEC
       run: vstest.console.exe .\ClassicGEC\ClassicGECDotNetTests\bin\Release\netcoreapp3.1\ClassicGECDotNetTests.dll /Platform:x64
     - name: Test Logic GEC
-      run: vstest.console.exe .\ClassicGEC\ClassicGECTests\bin\Release\netcoreapp3.1\ClassicGECTests.dll /Platform:x64
+      run: vstest.console.exe .\ClassicGEC\LogicGECTests\bin\Release\netcoreapp3.1\LogicGECTests.dll /Platform:x64
 
-    - name: Restore DSD dependencies
-      run: dotnet restore ClassicDSD/ClassicDSD.sln
     - name: Build DSD
       shell: cmd
-      run: msbuild ClassicDSD/ClassicDSD.sln /p:Configuration=Release /p:Platform=x64
+      run: msbuild ClassicDSD/ClassicDSD.sln /p:Configuration=Release /p:Platform=x64 /restore
     - name: Test Classic DSD
       run: vstest.console.exe .\ClassicDSD\ClassicDSDTests\bin\x64\Release\netcoreapp3.1\ClassicDSDTests.dll /Platform:x64

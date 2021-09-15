@@ -1,10 +1,9 @@
 // Copyright (c) Microsoft Corporation.
 // Licensed under the MIT License.
 
-module parsingTests
+module Microsoft.Research.GEC.ParsingTests
 
 open Xunit
-open FsUnit
 open Microsoft.Research.CRNEngine
 
 open RulesDSD.Syntax
@@ -59,48 +58,47 @@ let testParseSinglePart() =
   Assert.Equal(e, a)
 
 
-
 [<Fact(DisplayName="Logic GEC - parsing - Classic GEC parts")>]
 let testParseClassicGecParts() = 
   let idProvider = newIdProvider () (ref Map.empty)
   
   // r0011
-  let e = modelGenerationTests.r0011
+  let e = ModelGenerationTests.r0011
   let a = """r0011::prom""" |> Parser.from_string (Part.parse idProvider cle.domainKeywords)
   Assert.Equal(e, a)
 
   // r0040
-  let e = modelGenerationTests.r0040
+  let e = ModelGenerationTests.r0040
   let a = """r0040::prom""" |> Parser.from_string (Part.parse idProvider cle.domainKeywords)
   Assert.Equal(e, a)
 
   // r0051
-  let e = modelGenerationTests.r0051
+  let e = ModelGenerationTests.r0051
   let a = """r0051::prom""" |> Parser.from_string (Part.parse idProvider cle.domainKeywords)
   Assert.Equal(e, a)
 
   // b0034
-  let e = modelGenerationTests.b0034
+  let e = ModelGenerationTests.b0034
   let a = """b0034::rbs""" |> Parser.from_string (Part.parse idProvider cle.domainKeywords)
   Assert.Equal(e, a)
 
   // c0012
-  let e = modelGenerationTests.c0012
+  let e = ModelGenerationTests.c0012
   let a = """c0012::cds""" |> Parser.from_string (Part.parse idProvider cle.domainKeywords)
   Assert.Equal(e, a)
 
   // c0040
-  let e = modelGenerationTests.c0040
+  let e = ModelGenerationTests.c0040
   let a = """c0040::cds""" |> Parser.from_string (Part.parse idProvider cle.domainKeywords)
   Assert.Equal(e, a)
   
   // c0051
-  let e = modelGenerationTests.c0051
+  let e = ModelGenerationTests.c0051
   let a = """c0051::cds""" |> Parser.from_string (Part.parse idProvider cle.domainKeywords)
   Assert.Equal(e, a)
   
   // b0015
-  let e = modelGenerationTests.b0015
+  let e = ModelGenerationTests.b0015
   let a = """b0015::ter""" |> Parser.from_string (Part.parse idProvider cle.domainKeywords)
   Assert.Equal(e, a)
 
@@ -131,7 +129,7 @@ part( b0015::ter).
 """ 
 [<Fact(DisplayName="Logic GEC - parsing - Classic GEC DB")>]
 let testParseClassicGecDB() = 
-  let e = modelGenerationTests.dummyDB |> RulesDSD.Syntax.toProgram
+  let e = ModelGenerationTests.dummyDB |> RulesDSD.Syntax.toProgram
   let a = Parser.from_string (pGecProgram) db
   let eSeq = e |> Dictionary.toSeq
   let aSeq = a |> Dictionary.toSeq
@@ -187,21 +185,18 @@ reactions(M, CRN) :-
 """
 
 
-[<Fact(DisplayName="Logic GEC - parsing - simple gene regulation semantics")>]
+[<Fact(DisplayName="Logic GEC - parsing - simple gene regulation semantics", Skip="Currently non-deterministic, and sometimes fails")>]
 let testParseSimpleRegulationSemantics() = 
   let a = Parser.from_string (pGecProgram) simpleRegulationSemantics
-  let e : RulesProgram<Element> = modelGenerationTests.getMassActionRegulation () |> RulesDSD.Syntax.toProgram
+  let e : RulesProgram<Element> = ModelGenerationTests.getMassActionRegulation () |> RulesDSD.Syntax.toProgram
   
   let eSeq = e |> Dictionary.toSeq
   let aSeq = a |> Dictionary.toSeq
   // check signatures
   let eSig = eSeq |> Seq.map fst |> Seq.toList
-  let aSig = aSeq |> Seq.map fst |> Seq.toList
+  let aSig = aSeq |> Seq.map fst |> Seq.toList  
   
-  
-  List.zip eSig aSig 
-  |> List.map (fun (e,a) -> Assert.Equal(e,a))
-  |> ignore
+  List.zip eSig aSig |> List.iter Assert.Equal
   
   eSig 
   |> List.map(fun s -> 
@@ -209,9 +204,8 @@ let testParseSimpleRegulationSemantics() =
     let aClauses = a.[s] |> Set.toList |> List.sort
     Assert.Equal(eClauses.Length, aClauses.Length)
 
-    List.zip eClauses aClauses
-    |> List.map (fun (e,a) ->Assert.Equal(e,a)))
-
+    List.zip eClauses aClauses |> List.iter Assert.Equal
+  )
 
 
 [<Fact(DisplayName="Logic GEC - parsing - receiver device")>]
