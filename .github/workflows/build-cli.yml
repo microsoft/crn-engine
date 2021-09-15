@@ -21,7 +21,7 @@ jobs:
     
     - name: Restore CRN dependencies
       shell: cmd
-      run: msbuild CRNEngine/CRNEngineCli.sln /t:Restore
+      run: msbuild CRNEngine/CRNEngineCli.sln /t:Restore /p:Configuration=Release /p:Platform=x64
     - name: Build CRN
       shell: cmd
       run: msbuild CRNEngine/CRNEngineCli.sln /p:Configuration=Release /p:Platform=x64
@@ -30,7 +30,7 @@ jobs:
     
     - name: Restore StabilityZ3 dependencies
       shell: cmd
-      run: msbuild StabilityZ3/StabilityZ3.sln /t:Restore
+      run: msbuild StabilityZ3/StabilityZ3.sln /t:Restore /p:Configuration=Release /p:Platform=x64
     - name: Build StabilityZ3
       shell: cmd
       run: msbuild StabilityZ3/StabilityZ3.sln /p:Configuration=Release /p:Platform=x64
@@ -39,7 +39,7 @@ jobs:
     
     - name: Restore GEC dependencies
       shell: cmd
-      run: msbuild ClassicGEC/ClassicGECCli.sln /t:Restore
+      run: msbuild ClassicGEC/ClassicGECCli.sln /t:Restore /p:Configuration=Release /p:Platform=x64
     - name: Build GEC
       shell: cmd
       run: msbuild ClassicGEC/ClassicGECCli.sln /p:Configuration=Release /p:Platform=x64
@@ -50,7 +50,7 @@ jobs:
 
     - name: Restore DSD dependencies
       shell: cmd
-      run: msbuild ClassicDSD/ClassicDSD.sln /t:Restore
+      run: msbuild ClassicDSD/ClassicDSD.sln /t:Restore /p:Configuration=Release /p:Platform=x64
     - name: Build DSD
       shell: cmd
       run: msbuild ClassicDSD/ClassicDSD.sln /p:Configuration=Release /p:Platform=x64
