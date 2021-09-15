@@ -27,26 +27,18 @@ jobs:
     - name: Restore tools
       run: dotnet tool restore
     
-    - name: Restore CRN dependencies
-      run: dotnet restore CRNEngine/CRNEngineHTML.sln
-    - name: Build CRN
+    - name: CRN
       shell: cmd
-      run: msbuild CRNEngine/CRNEngineHTML.sln /p:Configuration=Release /p:Platform=x64
+      run: msbuild CRNEngine/CRNEngineHTML.sln /p:Configuration=Release /p:Platform=x64 /restore
     
-    - name: Restore GEC dependencies
-      run: dotnet restore ClassicGEC/ClassicGECHTML.sln
-    - name: Build GEC
+    - name: GEC
       shell: cmd
-      run: msbuild ClassicGEC/ClassicGECHTML.sln /p:Configuration=Release /p:Platform=x64
+      run: msbuild ClassicGEC/ClassicGECHTML.sln /p:Configuration=Release /p:Platform=x64 /restore
     
-    - name: Restore DSD dependencies
-      run: dotnet restore ClassicDSD/ClassicDSDHTML5.sln
-    - name: Build DSD
+    - name: DSD
       shell: cmd
-      run: msbuild ClassicDSD/ClassicDSDHTML5.sln /p:Configuration=Release /p:Platform=x64
+      run: msbuild ClassicDSD/ClassicDSDHTML5.sln /p:Configuration=Release /p:Platform=x64 /restore
 
-    - name: Restore Strand Graphs dependencies
-      run: dotnet restore HTML5StrandGraphs/HTML5StrandGraphs.sln
-    - name: Build Strand Graphs
+    - name: Strand Graphs
       shell: cmd
-      run: msbuild HTML5StrandGraphs/HTML5StrandGraphs.sln /p:Configuration=Release
+      run: msbuild HTML5StrandGraphs/HTML5StrandGraphs.sln /p:Configuration=Release /restore
