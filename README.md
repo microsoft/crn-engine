@@ -38,6 +38,21 @@ The instructions for building on Windows are as follows:
 4. **Install Yarn**. The instructions (for Windows) are [here](https://classic.yarnpkg.com/en/docs/install/#windows-stable).
 
 
+## Contributions
+
+There have been several contributors to this codebase, prior to its migration to this location on GitHub. Significant contributions have come from:
+- Andrew Phillips ([ph1ll1ps](https://github.com/ph1ll1ps))
+- Neil Dalchau ([ndalchau](https://github.com/ndalchau))
+- Colin Gravill ([cgravill](https://github.com/cgravill))
+- Filippo Polo ([FilippoPolo](https://github.com/FilippoPolo))
+- Prashant Vaidyanathan ([PrashantVaidyanathan](https://github.com/PrashantVaidyanathan))
+- Carlo Spaccasassi ([CSpaccasassi](https://github.com/CSpaccasassi))
+- Boyan Yordanov ([byoyo](https://github.com/byoyo))
+- Rasmus Petersen ([yoff](https://github.com/yoff))
+- Matthew Lakin ([matthewlakin](https://github.com/matthewlakin))
+- Michael Pedersen ([mdpedersen](https://github.com/mdpedersen))
+
+
 ## Contributing
 
 This project welcomes contributions and suggestions.  Most contributions require you to agree to a
