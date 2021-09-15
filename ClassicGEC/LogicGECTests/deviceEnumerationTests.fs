@@ -1,7 +1,7 @@
 // Copyright (c) Microsoft Corporation.
 // Licensed under the MIT License.
 
-module deviceEnumerationTests
+module Microsoft.Research.GEC.DeviceEnumerationTests
 
 open Xunit
 open FsUnit
