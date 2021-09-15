@@ -15,7 +15,7 @@
 // MSAGL and charting dependencies
 #r @"../NotebookAPI/bin/Release/net472/Microsoft.Msagl.dll"
 #r @"../NotebookAPI/bin/Release/net472/Microsoft.Msagl.Drawing.dll"
-#r @"../NotebookAPI/bin/Release/net472/FSharp.Plotly.dll"
+#r @"../NotebookAPI/bin/Release/net472/Plotly.NET.dll"
 #r @"../NotebookAPI/bin/Release/net472/XPlot.Plotly.dll"
 
 // StabilityZ3 build

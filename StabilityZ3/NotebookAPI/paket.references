@@ -5,7 +5,7 @@ MathNet.Numerics
 MathNet.Numerics.FSharp
 MathNet.Symbolics
 XPlot.Plotly
-FSharp.Plotly
+Plotly.NET
 FSharp.Compiler.Service
 Microsoft.Msagl
 Microsoft.Msagl.Drawing

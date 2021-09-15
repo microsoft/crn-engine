@@ -75,20 +75,21 @@ group NETFRAMEWORK
 
     nuget FSharp.Core ~> 4.7.0 redirects: force 
 
-    nuget Newtonsoft.Json = 12.0.2
+    nuget Newtonsoft.Json
 
     #Only existed as netframework or netcore
     nuget FsLexYacc >= 10.0.0 
 	nuget FsLexYacc.Runtime >= 10.0.0 
 
 	# Dependencies for Turing-Z3 project
-	nuget Argu
+	nuget Argu 6.0.0
 	nuget MathNet.Numerics >= 4.7.0
     nuget MathNet.Numerics.FSharp >= 4.7.0
     nuget MathNet.Symbolics ~> 0.20.0
+    nuget FParsec = 1.1.1
 	nuget Microsoft.Z3.x64 4.8.4
 	nuget DynamicLanguageRuntime
-	nuget FSharp.Plotly
+	nuget Plotly.NET 2.0.0-alpha5
 	
     #Only existed as netframework currently, working on netstandard
     nuget Microsoft.Msagl 1.1.3
@@ -131,6 +132,7 @@ group DOTNETCORE
 
     nuget FSharpIDD >= 0.4.3
     nuget FSharpIDD.WS >= 0.4.3
+    nuget FParsec = 1.1.1
 
     nuget FsPickler >= 5.2.0
     nuget FsPickler.Json >= 5.2.0
