@@ -46,7 +46,7 @@ jobs:
     - name: Test Classic GEC
       run: vstest.console.exe .\ClassicGEC\ClassicGECDotNetTests\bin\Release\netcoreapp3.1\ClassicGECDotNetTests.dll /Platform:x64
     - name: Test Logic GEC
-      run: vstest.console.exe .\ClassicGEC\ClassicGECTests\bin\Release\netcoreapp3.1\ClassicGECTests.dll /Platform:x64
+      run: vstest.console.exe .\ClassicGEC\LogicGECTests\bin\Release\netcoreapp3.1\LogicGECTests.dll /Platform:x64
 
     - name: Restore DSD dependencies
       shell: cmd
