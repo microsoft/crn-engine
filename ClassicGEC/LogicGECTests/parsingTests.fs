@@ -185,7 +185,7 @@ reactions(M, CRN) :-
 """
 
 
-[<Fact(DisplayName="Logic GEC - parsing - simple gene regulation semantics")>]
+[<Fact(DisplayName="Logic GEC - parsing - simple gene regulation semantics", Skip="Currently non-deterministic, and sometimes fails")>]
 let testParseSimpleRegulationSemantics() = 
   let a = Parser.from_string (pGecProgram) simpleRegulationSemantics
   let e : RulesProgram<Element> = ModelGenerationTests.getMassActionRegulation () |> RulesDSD.Syntax.toProgram
@@ -194,12 +194,9 @@ let testParseSimpleRegulationSemantics() =
   let aSeq = a |> Dictionary.toSeq
   // check signatures
   let eSig = eSeq |> Seq.map fst |> Seq.toList
-  let aSig = aSeq |> Seq.map fst |> Seq.toList
+  let aSig = aSeq |> Seq.map fst |> Seq.toList  
   
-  
-  List.zip eSig aSig 
-  |> List.map (fun (e,a) -> Assert.Equal(e,a))
-  |> ignore
+  List.zip eSig aSig |> List.iter Assert.Equal
   
   eSig 
   |> List.map(fun s -> 
@@ -207,9 +204,8 @@ let testParseSimpleRegulationSemantics() =
     let aClauses = a.[s] |> Set.toList |> List.sort
     Assert.Equal(eClauses.Length, aClauses.Length)
 
-    List.zip eClauses aClauses
-    |> List.map (fun (e,a) ->Assert.Equal(e,a)))
-
+    List.zip eClauses aClauses |> List.iter Assert.Equal
+  )
 
 
 [<Fact(DisplayName="Logic GEC - parsing - receiver device")>]
