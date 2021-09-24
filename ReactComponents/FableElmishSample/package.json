@@ -43,6 +43,7 @@
         "typescript": "^3.5.3"
     },
     "resolutions": {
+        "ansi-regex": "^5.0.1",
         "browserslist": "^4.16.5",
         "css-select": "^4.1.3",
         "dns-packet": "^1.3.2",
@@ -51,6 +52,7 @@
         "jquery": "^3.5.0",
         "lodash": "^4.17.21",
         "postcss": "^8.2.13",
+        "set-value": "^4.0.1",
         "ssri": "^8.0.1",
         "url-parse": "^1.5.0",
         "ws": "^6.2.2"
