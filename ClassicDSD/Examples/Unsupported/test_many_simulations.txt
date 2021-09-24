@@ -1,3 +1,5 @@
+// This example depends on data that is not publicly available. 
+
 directive compilation infinite // detailed, infinite
 directive declare
 directive units {time=h; concentration=nM}
