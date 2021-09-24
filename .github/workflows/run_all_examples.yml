@@ -1,0 +1,30 @@
+name: Run all examples
+
+on:
+  schedule:
+    - cron: "0 0 * * 0" # Every Sunday at midnight
+
+jobs:
+  build:
+    runs-on: windows-2019
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Setup MSBuild
+      uses: microsoft/setup-msbuild@v1.0.2
+    - name: Restore tools
+      run: dotnet tool restore
+    
+    - name: Build CRN
+      shell: cmd
+      run: msbuild CRNEngine/CRNEngineCli.sln /p:Configuration=Release /p:Platform=x64 /restore
+    - name: Run CRN examples
+      run: dotnet run --project CRNEngineRunAllExamples --configuration Release --models Examples\CRNModels --observations Examples\Observations --results Examples\Results --timeout 3600
+      working-directory: .\CRNEngine
+
+    - name: Build DSD
+      shell: cmd
+      run: msbuild ClassicDSD/ClassicDSD.sln /p:Configuration=Release /p:Platform=x64 /restore
+    - name: Run DSD examples
+      run: dotnet run --project ClassicDSDRunAllExamples --configuration Release --models Examples\DSDModels --observations ..\CRNEngine\Examples\Observations --results Examples\Results --timeout 3600
+      working-directory: .\ClassicDSD
