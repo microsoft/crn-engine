@@ -15,18 +15,18 @@ The instructions for building on Windows are as follows:
 ### 1. Install Visual Studio 2019
 
 The community edition provides access to all of the necessary build components. After opening the Visual Studio installer, you should ensure that the following **Workloads** are selected:
-    - .NET desktop development
-    - Desktop development with C++
-    - Azure development
+- .NET desktop development
+- Desktop development with C++
+- Azure development
 
 Additionally, you should ensure that the following **Individual Components** are selected:
-    - .NET Framework 4.7.2 SDK
-    - .NET Framework 4.7.2 targeting pack
-    - MSVC v142 tools (latest version), and the corresponding libs for Spectre mitigation 
-    - F# desktop language support
-    - F# language support
-    - F# language support for web projects
-    - Windows 10 SDK (10.0.17763.0)
+- .NET Framework 4.7.2 SDK
+- .NET Framework 4.7.2 targeting pack
+- MSVC v142 tools (latest version), and the corresponding libs for Spectre mitigation 
+- F# desktop language support
+- F# language support
+- F# language support for web projects
+- Windows 10 SDK (10.0.17763.0)
 
 ### 2. Install dotnet tools
 
