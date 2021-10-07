@@ -6,6 +6,7 @@
     <!-- Prevents CS5001 -->
     <OutputType>Library</OutputType>
     <YarnBuildCommand>--mutex file install</YarnBuildCommand>
+    <NodeJsExecutablePath>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\..\packages\javascriptbuild\Node.js.redist\tools\win-x64\node.exe'))</NodeJsExecutablePath>
   </PropertyGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\HTML5SharedGUI\CodeEditor\CodeEditor.csproj"/>
@@ -17,10 +18,10 @@
     <ProjectReference Include="..\CRNEngineTSWrapper\CRNEngineTSWrapper.csproj"/>
   </ItemGroup>
   <Target Name="Webpack" AfterTargets="PostBuildEvent">
-    <!-- This runs Webpack. -->
     <PropertyGroup>
       <NodeJsExecutablePath>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\..\packages\javascriptbuild\Node.js.redist\tools\win-x64\node.exe'))</NodeJsExecutablePath>
     </PropertyGroup>
+    <!-- This runs Webpack. -->
     <Exec Command="$(NodeJsExecutablePath) ..\..\node_modules\webpack\bin\webpack.js --env.mode=production" Condition="'$(Configuration)' == 'Release'" />
     <Exec Command="$(NodeJsExecutablePath) ..\..\node_modules\webpack\bin\webpack.js --env.mode=development" Condition="'$(Configuration)' == 'Debug'" />
   </Target>

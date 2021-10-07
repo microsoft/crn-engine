@@ -6,6 +6,7 @@
     <!-- Prevents CS5001 -->
     <OutputType>Library</OutputType>
     <YarnBuildCommand>--mutex file install</YarnBuildCommand>
+    <NodeJsExecutablePath>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\..\packages\javascriptbuild\Node.js.redist\tools\win-x64\node.exe'))</NodeJsExecutablePath>
   </PropertyGroup>
   <ItemGroup>
     <ProjectReference Include="..\ClassicDSDTSWrapper\ClassicDSDTSWrapper.csproj"/>

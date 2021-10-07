@@ -12,11 +12,11 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - name: Setup .NET Core SDK 2.1.607
+    - name: Setup .NET Core SDK 2.1.818
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: '2.1.607'
-    - name: Setup .NET Core SDK 3.1.100
+    - name: Setup .NET Core SDK 3.1.413
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: '3.1.100'

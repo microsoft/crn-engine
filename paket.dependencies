@@ -1,4 +1,4 @@
-version 5.245.1
+version 5.257.0
 
 group NETSTANDARD
     source https://api.nuget.org/v3/index.json
@@ -234,6 +234,7 @@ group Build
     nuget Fake.Tools.Git >= 5.20.0
     nuget Fake.IO.Zip >= 5.20.0
     nuget BlackFox.Fake.BuildTask
+    nuget MSBuild.StructuredLogger 2.1.507  // https://github.com/fsprojects/FAKE/issues/2595
 
     #These need moving together... can we avoid fragility?
     nuget fantomas 3.2.0
