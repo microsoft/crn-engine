@@ -70,6 +70,8 @@ let main args =
             0
           else -1
       else
+        let crn:Crn = Dsd.convert_expand bundle
+        let () = Io.write_file ("./" + path + ".crn") (crn.to_string())
         let ret = Program.main parser args
         ret
 
