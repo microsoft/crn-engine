@@ -12,30 +12,56 @@ The main tools are located in the folders \CRNEngine, \ClassicGEC and \ClassicDS
 
 The instructions for building on Windows are as follows:
 
-1. **Install Visual Studio 2019**
+### 1. Install Visual Studio 2019
 
-    The components required are:
-    - Workloads tab:
-        - .NET desktop development
-        - Desktop development with C++
-        - Azure development
-    - Individual Components tab, ".NET" section:
-        - .NET Framework 4.7.2 SDK
-        - .NET Framework 4.7.2 targeting pack
-    - Individual Components tab, "Compilers, build tools, and runtimes" section:
-        - MSVC (XYZ) - VS 2019; Libs for Spectre (x86 and x64) [where XYZ is the highest version corresponding to the VC++ 2019 version (XYZ) latest v142 tools, which might have been selected already]
-    - Individual Components tab, "Development activities" section:
-        - F# desktop language support
-        - F# language support
-        - F# language support for web projects
-    - Individual Components tab, "SDKs, libraries, and frameworks" section:
-        - Windows 10 SDK (10.0.17763.0)
+The community edition provides access to all of the necessary build components. After opening the Visual Studio installer, you should ensure that the following **Workloads** are selected:
+- .NET desktop development
+- Desktop development with C++
+- Azure development
 
-2. **Install .NET Core SDKs**. These are available [here](https://dotnet.microsoft.com/download/visual-studio-sdks). The required versions are 2.1 and 3.1.
+Additionally, you should ensure that the following **Individual Components** are selected:
+- .NET Framework 4.7.2 SDK
+- .NET Framework 4.7.2 targeting pack
+- MSVC v142 tools (latest version), and the corresponding libs for Spectre mitigation 
+- F# desktop language support
+- F# language support
+- F# language support for web projects
+- Windows 10 SDK (10.0.17763.0)
 
-3. **Install NodeJS**. N.B. This may involve restarting your computer several times.
+### 2. Install .NET SDKs
 
-4. **Install Yarn**. The instructions (for Windows) are [here](https://classic.yarnpkg.com/en/docs/install/#windows-stable).
+The .NET Core SDKs required are [2.1](https://dotnet.microsoft.com/download/dotnet/2.1) and [3.1](https://dotnet.microsoft.com/download/dotnet/3.1). Currently, the build pipeline is working with 2.1.818 and 3.1.413.
+
+### 3. Install dotnet tools
+
+dotnet tools can be installed/restored by navigating to your repository directory and executing:
+
+`dotnet tool restore`
+
+This will install `paket` (package manager) and `fake` (library for simplifying .NET builds), which are used by the provided build pipeline.
+
+### 4. Restore dependencies
+
+You can restore the dependencies associated with your favourite solution by simplying calling:
+
+`dotnet restore [path/to/solution]`
+
+### 5. Build solution
+
+In Visual Studio, you can select Build Solution from the BUILD menu (or issue the standard shortcut Ctrl+Alt+B). If any projects fail, try building again before attempting to diagnose the problem.
+
+If you'd prefer not to open Visual Studio, you can run `msbuild` on the command-line. Simply add the directory containing msbuild (e.g. `C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Current\Bin`) to your `PATH` environment variable. Then you can build as:
+
+`msbuild [path/to/solution]`
+
+Various switches can be added to `msbuild`, such as changing configuration (`/p:Configuration=Release`) and/or restoring dependencies (`/restore`).
+
+### 6. Running examples
+
+Each program is run in different ways. 
+- **CLI tools**. After building, an .exe file will be in the corresponding `bin/x64/[Configuration]/netcoreapp3.1` folder. Each CLI tool has a different set of command-line arguments. Call `CliCRN.exe --help` for details. The basic idea is that a model file (`.crn`, `.gec` or `.dsd`) is supplied as the last argument, and different actions can be called (e.g. `--simulate`, `--infer [DATA-FOLDER]`).
+- **Server tools**. After building, an .exe file will be in the corresponding `bin/x64/[Configuration]/netcoreapp3.1` folder. Simply run the executable to bring up the GUI.
+- **HTML5-only tools**. In each of the HTML5 project folders (`CRNEngine\HTML5CRN`, `ClassicDSD\ClassicDSDHTML5`, `ClassicGEC\ClassicGECHTML5`), the `build.fsx` file describes the build targets, which includes a `run` action. This can be called as `dotnet fake build --target run` (this shortcut is in the `run.cmd` file). This will eventually open your default browser running the HTML5 GUI.
 
 
 ## Contributions

@@ -9,306 +9,111 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <DefineConstants>TRACE;JavaScript</DefineConstants>
+    <WarningLevel>5</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="..\CRNEngineDotNet\websharperstubs.fs">
-      <Link>websharperstubs.fs</Link>
-    </Compile>
+    <Compile Include="..\CRNEngineDotNet\websharperstubs.fs" Link="websharperstubs.fs" />
     <Compile Include="..\CRNEngineDotNet\graph.fs" Link="graph.fs" />
-    <Compile Include="..\CRNEngineDotNet\stringbuilder.fs">
-      <Link>stringbuilder.fs</Link>
-    </Compile>
+    <Compile Include="..\CRNEngineDotNet\stringbuilder.fs" Link="stringbuilder.fs" />
     <Compile Include="stringbuilder.proxy.fs" />
-    <Compile Include="..\CRNEngineDotNet\Keywords.fs">
-      <Link>Keywords.fs</Link>
-    </Compile>
-    <Compile Include="..\CRNEngineDotNet\sbml.fs">
-      <Link>sbml.fs</Link>
-    </Compile>
-    <Compile Include="..\CRNEngineDotNet\svg.fs">
-      <Link>svg.fs</Link>
-    </Compile>
-    <Compile Include="..\CRNEngineDotNet\RngAdapter.fs">
-      <Link>RngAdapter.fs</Link>
-    </Compile>
-    <Compile Include="..\CRNEngineDotNet\Matrix.fsi">
-      <Link>Matrix.fsi</Link>
-    </Compile>
-    <Compile Include="..\CRNEngineDotNet\Matrix.fs">
-      <Link>Matrix.fs</Link>
-    </Compile>
-    <Compile Include="..\CRNEngineDotNet\hashtable.fs">
-      <Link>hashtable.fs</Link>
-    </Compile>
-    <Compile Include="..\CRNEngineDotNet\dictionary.fs">
-      <Link>dictionary.fs</Link>
-    </Compile>
-    <Compile Include="..\CRNEngineDotNet\queue.fs">
-      <Link>queue.fs</Link>
-    </Compile>
-    <Compile Include="..\CRNEngineDotNet\lib.fs">
-      <Link>lib.fs</Link>
-    </Compile>
-    <Compile Include="..\CRNEngineDotNet\statistics.fs">
-      <Link>statistics.fs</Link>
-    </Compile>
-    <Compile Include="..\CRNEngineDotNet\operators.fs">
-      <Link>operators.fs</Link>
-    </Compile>
-    <Compile Include="..\CRNEngineDotNet\stringmap.fs">
-      <Link>stringmap.fs</Link>
-    </Compile>
-    <Compile Include="..\CRNEngineDotNet\pQueue.fs">
-      <Link>pQueue.fs</Link>
-    </Compile>
-    <Compile Include="..\CRNEngineDotNet\IPQ.fs">
-      <Link>IPQ.fs</Link>
-    </Compile>
-    <Compile Include="..\CRNEngineDotNet\errors.fs">
-      <Link>errors.fs</Link>
-    </Compile>
-    <Compile Include="..\CRNEngineDotNet\environment.fs">
-      <Link>environment.fs</Link>
-    </Compile>
-    <Compile Include="..\CRNEngineDotNet\mset.fsi">
-      <Link>mset.fsi</Link>
-    </Compile>
-    <Compile Include="..\CRNEngineDotNet\mset.fs">
-      <Link>mset.fs</Link>
-    </Compile>
-    <Compile Include="..\CRNEngineDotNet\lambda.fs">
-      <Link>lambda.fs</Link>
-    </Compile>
-    <Compile Include="..\CRNEngineDotNet\expression.fs">
-      <Link>expression.fs</Link>
-    </Compile>
-    <Compile Include="..\CRNEngineDotNet\inlined.fs">
-      <Link>inlined.fs</Link>
-    </Compile>
-    <Compile Include="..\CRNEngineDotNet\key.fs">
-      <Link>key.fs</Link>
-    </Compile>
-    <Compile Include="..\CRNEngineDotNet\value.fs">
-      <Link>value.fs</Link>
-    </Compile>
-    <Compile Include="..\CRNEngineDotNet\spatial_initial.fs">
-      <Link>spatial_initial.fs</Link>
-    </Compile>
-    <Compile Include="..\CRNEngineDotNet\population.fs">
-      <Link>population.fs</Link>
-    </Compile>
-    <Compile Include="..\CRNEngineDotNet\populations.fs">
-      <Link>populations.fs</Link>
-    </Compile>
-    <Compile Include="..\CRNEngineDotNet\rate.fs">
-      <Link>rate.fs</Link>
-    </Compile>
-    <Compile Include="..\CRNEngineDotNet\units.fs">
-      <Link>units.fs</Link>
-    </Compile>
-    <Compile Include="..\CRNEngineDotNet\target.fs">
-      <Link>target.fs</Link>
-    </Compile>
-    <Compile Include="..\CRNEngineDotNet\event.fs">
-      <Link>event.fs</Link>
-    </Compile>
-    <Compile Include="..\CRNEngineDotNet\species.fs">
-      <Link>species.fs</Link>
-    </Compile>
-    <Compile Include="..\CRNEngineDotNet\functional.fs">
-      <Link>functional.fs</Link>
-    </Compile>
-    <Compile Include="..\CRNEngineDotNet\reaction.fs">
-      <Link>reaction.fs</Link>
-    </Compile>
-    <Compile Include="..\CRNEngineDotNet\reactions.fs">
-      <Link>reactions.fs</Link>
-    </Compile>
-    <Compile Include="..\CRNEngineDotNet\point.fs">
-      <Link>point.fs</Link>
-    </Compile>
-    <Compile Include="..\CRNEngineDotNet\row.fs">
-      <Link>row.fs</Link>
-    </Compile>
-    <Compile Include="..\CRNEngineDotNet\column.fs">
-      <Link>column.fs</Link>
-    </Compile>
-    <Compile Include="..\CRNEngineDotNet\table.fs">
-      <Link>table.fs</Link>
-    </Compile>
-    <Compile Include="..\CRNEngineDotNet\dataset.fs">
-      <Link>dataset.fs</Link>
-    </Compile>
-    <Compile Include="..\CRNEngineDotNet\distribution.fs">
-      <Link>distribution.fs</Link>
-    </Compile>
-    <Compile Include="..\CRNEngineDotNet\interval.fs">
-      <Link>interval.fs</Link>
-    </Compile>
-    <Compile Include="..\CRNEngineDotNet\variation.fs">
-      <Link>variation.fs</Link>
-    </Compile>
-    <Compile Include="..\CRNEngineDotNet\prior.fs">
-      <Link>prior.fs</Link>
-    </Compile>
-    <Compile Include="..\CRNEngineDotNet\assignment.fs">
-      <Link>assignment.fs</Link>
-    </Compile>
-    <Compile Include="..\CRNEngineDotNet\sweep.fs">
-      <Link>sweep.fs</Link>
-    </Compile>
-    <Compile Include="..\CRNEngineDotNet\sweeps.fs">
-      <Link>sweeps.fs</Link>
-    </Compile>
-    <Compile Include="..\CRNEngineDotNet\parameter.fs">
-      <Link>parameter.fs</Link>
-    </Compile>
-    <Compile Include="..\CRNEngineDotNet\parameters.fs">
-      <Link>parameters.fs</Link>
-    </Compile>
-    <Compile Include="..\CRNEngineDotNet\parametersummary.fs">
-      <Link>parametersummary.fs</Link>
-    </Compile>
-    <Compile Include="..\CRNEngineDotNet\initial.fs">
-      <Link>initial.fs</Link>
-    </Compile>
-    <Compile Include="..\CRNEngineDotNet\initials.fs">
-      <Link>initials.fs</Link>
-    </Compile>
-    <Compile Include="..\CRNEngineDotNet\kinetics.fs">
-      <Link>kinetics.fs</Link>
-    </Compile>
-    <Compile Include="..\CRNEngineDotNet\simulation_settings.fs">
-      <Link>simulation_settings.fs</Link>
-    </Compile>
-    <Compile Include="..\CRNEngineDotNet\noise_parameter.fs">
-      <Link>noise_parameter.fs</Link>
-    </Compile>
-    <Compile Include="..\CRNEngineDotNet\noise_model.fs">
-      <Link>noise_model.fs</Link>
-    </Compile>
-    <Compile Include="..\CRNEngineDotNet\inference_settings.fs">
-      <Link>inference_settings.fs</Link>
-    </Compile>
-    <Compile Include="..\CRNEngineDotNet\deterministic_settings.fs">
-      <Link>deterministic_settings.fs</Link>
-    </Compile>
-    <Compile Include="..\CRNEngineDotNet\spatial_settings.fs">
-      <Link>spatial_settings.fs</Link>
-    </Compile>
-    <Compile Include="..\CRNEngineDotNet\stochastic_settings.fs">
-      <Link>stochastic_settings.fs</Link>
-    </Compile>
-    <Compile Include="..\CRNEngineDotNet\moment_closure_settings.fs">
-      <Link>moment_closure_settings.fs</Link>
-    </Compile>
+    <Compile Include="..\CRNEngineDotNet\Keywords.fs" Link="Keywords.fs" />
+    <Compile Include="..\CRNEngineDotNet\sbml.fs" Link="sbml.fs" />
+    <Compile Include="..\CRNEngineDotNet\svg.fs" Link="svg.fs" />
+    <Compile Include="..\CRNEngineDotNet\RngAdapter.fs" Link="RngAdapter.fs" />
+    <Compile Include="..\CRNEngineDotNet\Matrix.fsi" Link="Matrix.fsi" />
+    <Compile Include="..\CRNEngineDotNet\Matrix.fs" Link="Matrix.fs" />
+    <Compile Include="..\CRNEngineDotNet\hashtable.fs" Link="hashtable.fs" />
+    <Compile Include="..\CRNEngineDotNet\dictionary.fs" Link="dictionary.fs" />
+    <Compile Include="..\CRNEngineDotNet\queue.fs" Link="queue.fs" />
+    <Compile Include="..\CRNEngineDotNet\lib.fs" Link="lib.fs" />
+    <Compile Include="..\CRNEngineDotNet\statistics.fs" Link="statistics.fs" />
+    <Compile Include="..\CRNEngineDotNet\operators.fs" Link="operators.fs" />
+    <Compile Include="..\CRNEngineDotNet\stringmap.fs" Link="stringmap.fs" />
+    <Compile Include="..\CRNEngineDotNet\pQueue.fs" Link="pQueue.fs" />
+    <Compile Include="..\CRNEngineDotNet\IPQ.fs" Link="IPQ.fs" />
+    <Compile Include="..\CRNEngineDotNet\errors.fs" Link="errors.fs" />
+    <Compile Include="..\CRNEngineDotNet\environment.fs" Link="environment.fs" />
+    <Compile Include="..\CRNEngineDotNet\mset.fsi" Link="mset.fsi" />
+    <Compile Include="..\CRNEngineDotNet\mset.fs" Link="mset.fs" />
+    <Compile Include="..\CRNEngineDotNet\lambda.fs" Link="lambda.fs" />
+    <Compile Include="..\CRNEngineDotNet\expression.fs" Link="expression.fs" />
+    <Compile Include="..\CRNEngineDotNet\inlined.fs" Link="inlined.fs" />
+    <Compile Include="..\CRNEngineDotNet\key.fs" Link="key.fs" />
+    <Compile Include="..\CRNEngineDotNet\value.fs" Link="value.fs" />
+    <Compile Include="..\CRNEngineDotNet\spatial_initial.fs" Link="spatial_initial.fs" />
+    <Compile Include="..\CRNEngineDotNet\population.fs" Link="population.fs" />
+    <Compile Include="..\CRNEngineDotNet\populations.fs" Link="populations.fs" />
+    <Compile Include="..\CRNEngineDotNet\rate.fs" Link="rate.fs" />
+    <Compile Include="..\CRNEngineDotNet\units.fs" Link="units.fs" />
+    <Compile Include="..\CRNEngineDotNet\target.fs" Link="target.fs" />
+    <Compile Include="..\CRNEngineDotNet\event.fs" Link="event.fs" />
+    <Compile Include="..\CRNEngineDotNet\species.fs" Link="species.fs" />
+    <Compile Include="..\CRNEngineDotNet\functional.fs" Link="functional.fs" />
+    <Compile Include="..\CRNEngineDotNet\reaction.fs" Link="reaction.fs" />
+    <Compile Include="..\CRNEngineDotNet\reactions.fs" Link="reactions.fs" />
+    <Compile Include="..\CRNEngineDotNet\point.fs" Link="point.fs" />
+    <Compile Include="..\CRNEngineDotNet\row.fs" Link="row.fs" />
+    <Compile Include="..\CRNEngineDotNet\column.fs" Link="column.fs" />
+    <Compile Include="..\CRNEngineDotNet\table.fs" Link="table.fs" />
+    <Compile Include="..\CRNEngineDotNet\dataset.fs" Link="dataset.fs" />
+    <Compile Include="..\CRNEngineDotNet\distribution.fs" Link="distribution.fs" />
+    <Compile Include="..\CRNEngineDotNet\interval.fs" Link="interval.fs" />
+    <Compile Include="..\CRNEngineDotNet\variation.fs" Link="variation.fs" />
+    <Compile Include="..\CRNEngineDotNet\prior.fs" Link="prior.fs" />
+    <Compile Include="..\CRNEngineDotNet\assignment.fs" Link="assignment.fs" />
+    <Compile Include="..\CRNEngineDotNet\sweep.fs" Link="sweep.fs" />
+    <Compile Include="..\CRNEngineDotNet\sweeps.fs" Link="sweeps.fs" />
+    <Compile Include="..\CRNEngineDotNet\parameter.fs" Link="parameter.fs" />
+    <Compile Include="..\CRNEngineDotNet\parameters.fs" Link="parameters.fs" />
+    <Compile Include="..\CRNEngineDotNet\parametersummary.fs" Link="parametersummary.fs" />
+    <Compile Include="..\CRNEngineDotNet\initial.fs" Link="initial.fs" />
+    <Compile Include="..\CRNEngineDotNet\initials.fs" Link="initials.fs" />
+    <Compile Include="..\CRNEngineDotNet\kinetics.fs" Link="kinetics.fs" />
+    <Compile Include="..\CRNEngineDotNet\simulation_settings.fs" Link="simulation_settings.fs" />
+    <Compile Include="..\CRNEngineDotNet\noise_parameter.fs" Link="noise_parameter.fs" />
+    <Compile Include="..\CRNEngineDotNet\noise_model.fs" Link="noise_model.fs" />
+    <Compile Include="..\CRNEngineDotNet\inference_settings.fs" Link="inference_settings.fs" />
+    <Compile Include="..\CRNEngineDotNet\deterministic_settings.fs" Link="deterministic_settings.fs" />
+    <Compile Include="..\CRNEngineDotNet\spatial_settings.fs" Link="spatial_settings.fs" />
+    <Compile Include="..\CRNEngineDotNet\stochastic_settings.fs" Link="stochastic_settings.fs" />
+    <Compile Include="..\CRNEngineDotNet\moment_closure_settings.fs" Link="moment_closure_settings.fs" />
     <Compile Include="..\CRNEngineDotNet\synthesis_settings.fs" Link="synthesis_settings.fs" />
-    <Compile Include="..\CRNEngineDotNet\plot_settings.fs">
-      <Link>plot_settings.fs</Link>
-    </Compile>
-    <Compile Include="..\CRNEngineDotNet\instance.fs">
-      <Link>instance.fs</Link>
-    </Compile>
-    <Compile Include="..\CRNEngineDotNet\result.fs">
-      <Link>result.fs</Link>
-    </Compile>
-    <Compile Include="..\CRNEngineDotNet\simulator.fs">
-      <Link>simulator.fs</Link>
-    </Compile>
-    <Compile Include="..\CRNEngineDotNet\directive.fs">
-      <Link>directive.fs</Link>
-    </Compile>
-    <Compile Include="..\CRNEngineDotNet\crn_settings.fs">
-      <Link>crn_settings.fs</Link>
-    </Compile>
-    <Compile Include="..\CRNEngineDotNet\simulation.fs">
-      <Link>simulation.fs</Link>
-    </Compile>
-    <Compile Include="..\CRNEngineDotNet\inference.fs">
-      <Link>inference.fs</Link>
-    </Compile>
-    <Compile Include="..\CRNEngineDotNet\oslo_integrator.fs">
-      <Link>oslo_integrator.fs</Link>
-    </Compile>
-    <Compile Include="..\CRNEngineDotNet\odeoslo.fs">
-      <Link>odeoslo.fs</Link>
-    </Compile>
-    <Compile Include="..\CRNEngineDotNet\sundials.fs">
-      <Link>sundials.fs</Link>
-    </Compile>
-    <Compile Include="..\CRNEngineDotNet\odesundials.fs">
-      <Link>odesundials.fs</Link>
-    </Compile>
-    <Compile Include="..\CRNEngineDotNet\ctmc.fs">
-      <Link>ctmc.fs</Link>
-    </Compile>
-    <Compile Include="..\CRNEngineDotNet\probabilities.fs">
-      <Link>probabilities.fs</Link>
-    </Compile>
-    <Compile Include="..\CRNEngineDotNet\cme.fs">
-      <Link>cme.fs</Link>
-    </Compile>
-    <Compile Include="..\CRNEngineDotNet\pde.fs">
-      <Link>pde.fs</Link>
-    </Compile>
-    <Compile Include="..\CRNEngineDotNet\ssa.fs">
-      <Link>ssa.fs</Link>
-    </Compile>
-    <Compile Include="..\CRNEngineDotNet\lts.fs">
-      <Link>lts.fs</Link>
-    </Compile>
-    <Compile Include="..\CRNEngineDotNet\lna.fs">
-      <Link>lna.fs</Link>
-    </Compile>
-    <Compile Include="..\CRNEngineDotNet\ode.fs">
-      <Link>ode.fs</Link>
-    </Compile>
-    <Compile Include="..\CRNEngineDotNet\api.fs">
-      <Link>api.fs</Link>
-    </Compile>
-    <Compile Include="..\CRNEngineDotNet\attributes.fs">
-      <Link>attributes.fs</Link>
-    </Compile>
-    <Compile Include="..\CRNEngineDotNet\instruction.fs">
-      <Link>instruction.fs</Link>
-    </Compile>
-    <Compile Include="..\CRNEngineDotNet\adapter.fs">
-      <Link>adapter.fs</Link>
-    </Compile>
-    <Compile Include="..\CRNEngineDotNet\calculus.fs">
-      <Link>calculus.fs</Link>
-    </Compile>
-    <Compile Include="..\CRNEngineDotNet\crn.fs">
-      <Link>crn.fs</Link>
-    </Compile>
-    <Compile Include="..\CRNEngineDotNet\jit.fs">
-      <Link>jit.fs</Link>
-    </Compile>
-    <Compile Include="..\CRNEngineDotNet\legacyParser.fs">
-      <Link>legacyParser.fs</Link>
-    </Compile>
-    <Compile Include="..\CRNEngineDotNet\io.fs">
-      <Link>io.fs</Link>
-    </Compile>
-    <Compile Include="..\CRNEngineDotNet\model.fs">
-      <Link>model.fs</Link>
-    </Compile>
+    <Compile Include="..\CRNEngineDotNet\plot_settings.fs" Link="plot_settings.fs" />
+    <Compile Include="..\CRNEngineDotNet\instance.fs" Link="instance.fs" />
+    <Compile Include="..\CRNEngineDotNet\result.fs" Link="result.fs" />
+    <Compile Include="..\CRNEngineDotNet\simulator.fs" Link="simulator.fs" />
+    <Compile Include="..\CRNEngineDotNet\directive.fs" Link="directive.fs" />
+    <Compile Include="..\CRNEngineDotNet\crn_settings.fs" Link="crn_settings.fs" />
+    <Compile Include="..\CRNEngineDotNet\simulation.fs" Link="simulation.fs" />
+    <Compile Include="..\CRNEngineDotNet\inference.fs" Link="inference.fs" />
+    <Compile Include="..\CRNEngineDotNet\oslo_integrator.fs" Link="oslo_integrator.fs" />
+    <Compile Include="..\CRNEngineDotNet\odeoslo.fs" Link="odeoslo.fs" />
+    <Compile Include="..\CRNEngineDotNet\sundials.fs" Link="sundials.fs" />
+    <Compile Include="..\CRNEngineDotNet\odesundials.fs" Link="odesundials.fs" />
+    <Compile Include="..\CRNEngineDotNet\ctmc.fs" Link="ctmc.fs" />
+    <Compile Include="..\CRNEngineDotNet\probabilities.fs" Link="probabilities.fs" />
+    <Compile Include="..\CRNEngineDotNet\cme.fs" Link="cme.fs" />
+    <Compile Include="..\CRNEngineDotNet\pde.fs" Link="pde.fs" />
+    <Compile Include="..\CRNEngineDotNet\ssa.fs" Link="ssa.fs" />
+    <Compile Include="..\CRNEngineDotNet\lts.fs" Link="lts.fs" />
+    <Compile Include="..\CRNEngineDotNet\lna.fs" Link="lna.fs" />
+    <Compile Include="..\CRNEngineDotNet\ode.fs" Link="ode.fs" />
+    <Compile Include="..\CRNEngineDotNet\api.fs" Link="api.fs" />
+    <Compile Include="..\CRNEngineDotNet\attributes.fs" Link="attributes.fs" />
+    <Compile Include="..\CRNEngineDotNet\instruction.fs" Link="instruction.fs" />
+    <Compile Include="..\CRNEngineDotNet\adapter.fs" Link="adapter.fs" />
+    <Compile Include="..\CRNEngineDotNet\calculus.fs" Link="calculus.fs" />
+    <Compile Include="..\CRNEngineDotNet\crn.fs" Link="crn.fs" />
+    <Compile Include="..\CRNEngineDotNet\jit.fs" Link="jit.fs" />
+    <Compile Include="..\CRNEngineDotNet\legacyParser.fs" Link="legacyParser.fs" />
+    <Compile Include="..\CRNEngineDotNet\io.fs" Link="io.fs" />
+    <Compile Include="..\CRNEngineDotNet\model.fs" Link="model.fs" />
     <Compile Include="..\CRNEngineDotNet\task.fs" Link="task.fs" />
-    <Compile Include="..\CRNEngineDotNet\InferenceSiteGraph.fs">
-      <Link>InferenceSiteGraph.fs</Link>
-    </Compile>
-    <Compile Include="..\CRNEngineDotNet\gui.fs">
-      <Link>gui.fs</Link>
-    </Compile>
-    <Compile Include="..\CRNEngineDotNet\plotting.fs">
-      <Link>plotting.fs</Link>
-    </Compile>
-    <Compile Include="..\CRNEngineDotNet\html.fs">
-      <Link>html.fs</Link>
-    </Compile>
-    <Compile Include="..\CRNEngineDotNet\jsapi.fs">
-      <Link>jsapi.fs</Link>
-    </Compile>
+    <Compile Include="..\CRNEngineDotNet\InferenceSiteGraph.fs" Link="InferenceSiteGraph.fs" />
+    <Compile Include="..\CRNEngineDotNet\gui.fs" Link="gui.fs" />
+    <Compile Include="..\CRNEngineDotNet\plotting.fs" Link="plotting.fs" />
+    <Compile Include="..\CRNEngineDotNet\html.fs" Link="html.fs" />
+    <Compile Include="..\CRNEngineDotNet\jsapi.fs" Link="jsapi.fs" />
     <Compile Include="jsonapi.fs" />
     <Content Include="app.config" />
     <None Include="paket.references" />
